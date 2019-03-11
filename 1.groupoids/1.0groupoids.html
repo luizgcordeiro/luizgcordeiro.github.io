@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="mathjax/MathJax.js?config=default"></script>
+
+	
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+
+	<style>
+		body {
+			counter-reset: chapter;
+			counter-reset: section;
+		}
+
+		h1.chapter::before {
+			counter-increment: chapter 3;
+			content: "Chapter " counter(chapter) ": ";
+		}
+
+		h2.section::before {
+			counter-increment: section;
+			content: "Section " counter(chapter) "." counter(section) ": ";
+		}
+	</style>
+</head>
+
+<body>
+
+
+<h1 class=chapter> Groupoids and inverse semigroups</h1>
+
+<p>
+In this chapter we introduce all terms and notation that will be used throughout the thesis. For the sake of completeness, proofs are provided for most results, except those which are trivial consequences of previous ones or have essentially the same proof as in more well-known cases (for example, for groups). The introductory parts are somewhat based on \cite{MR1724106} and \cite{MR0466355}, although the order of presentation of the topics (and consequently some proofs) is substantially different from either.
+</p>
+
+<p>
+There are a few parts which are new to the theory, or at least not completely standardized, such as %a classification of groupoids in terms of transitive group actions (Theorem~\ref{theoremclassificationofgroupoids}),
+non-commutative versions of the Loomis-Sikorski Theorems (Theorems \ref{theoremncloomissikorskinontracial} and \ref{theoremtracialncloomissikorski}) and the study of quotients of distributive semigroups by $\lor$-ideals (Section \ref{sectionquotientsofsemigroups}). These abstract results will then be applied in subsequent chapters, and they will to simplify significantly some computations.
+</p>
+
+<p>
+We start by introducing groupoids in a graph-theoretical fashion, a manner similar to how categories are described in \cite{MR1712872}. Although this is a somewhat convoluted way of defining them, it should make the overall structure and dynamical nature of groupoids clearer. However after this we will give the algebraic definition of groupoids as well which will be used more often throughout this document for its succinctness.
+</p>
+</body>
+</html>
