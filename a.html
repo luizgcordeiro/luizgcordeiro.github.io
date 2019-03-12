@@ -1,14 +1,16 @@
 <html> 
   <head> 
-    <script src="jquery.js"></script> 
-    <script> 
-    $(function(){
-      $("#includedContent").load("b.html"); 
-    });
-    </script> 
+    <script src="jquery-3.3.1.min.js"></script> 
   </head> 
 
   <body> 
-     <div id="includedContent"></div>
-  </body> 
+	<ol id="list"></ol>
+
+	<script>
+		$( "#list" ).load( "b.html #toload li");
+	</script>
+	
+  </body>
+  
+  
 </html>

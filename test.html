@@ -11,12 +11,27 @@ body contains content
 <html>
 <head>
 
+
+<!--
+We use jquery (https://jquery.com) to load content and references from other places.
+
+More precisely, we use the ".load()" function, which is implemented by
+
+<... id="new.id"></...>
+
+<script>
+$( "#new.id" ).load( "source.html #old.id [tag]" );
+</script>
+
+This will create the item with ID "new.id", which will be empty at the beggining.
+The script then goes through "source.html", finding all items with ID "old.id" and adds
+them to "new.id". So for example, if "new.id" is a list, the items with id "old.id".
+
+If you add [tag] at the end, it will instead load elements with that tag, which are
+inside the "old.id" element.
+-->
 	<script src="jquery-3.3.1.min.js"></script> 
-	<script> 
-    $(function(){
-      $("#includedContent").load("copy.html"); 
-    });
-    </script>
+	
 <!--
 Below are scripts for MathJax
 -->
