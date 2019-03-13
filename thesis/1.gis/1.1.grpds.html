@@ -43,7 +43,7 @@ $( "#sidebar" ).load( "../src/sidebar" );
 <h3 class="subsection">1.1.1. Groupoids as directed graphs</h3>
 
 <div class="definition"><p><span class="envidentifier">Definition 1.1.1. </span>[\cite{MR1724106}]
-A <em>directed graph</em> is a tuple $\mathcal{G}=(\mathcal{G}^{(0)},\mathcal{G}^{(1)},\so,\ra)$, where $\mathcal{G}^{(0)}$ is a set whose elements are called <em>vertices<em>, $\mathcal{G}^{(1)}$ is a set whose elements are called <em>edges</em> or <em>arrows</em>, and $\mathfrak{s}$ and $\mathfrak{r}$ are maps from $\mathcal{G}^{(1)}$ to $\mathcal{G}^{(0)}$, called respectively the <em>source</em> and <em>range</em> maps.</p>
+A <em>directed graph</em> is a tuple $\mathcal{G}=(\mathcal{G}^{(0)},\mathcal{G}^{(1)},\so,\ra)$, where $\mathcal{G}^{(0)}$ is a set whose elements are called <em>vertices</em>, $\mathcal{G}^{(1)}$ is a set whose elements are called <em>edges</em> or <em>arrows</em>, and $\mathfrak{s}$ and $\mathfrak{r}$ are maps from $\mathcal{G}^{(1)}$ to $\mathcal{G}^{(0)}$, called respectively the <em>source</em> and <em>range</em> maps.</p>
 </div>
 	
 <p>
@@ -87,7 +87,7 @@ As a sub-example, let $X=\left\{a,b,c\right\}$ and $R=\left\{(b,a),(c,b),(a,c)\r
 
 <div class="example" id="examplegraphdynamicalsystem">
 <p>
-<span class="envidentifier">Example 1.1.4</span> Generally, a discrete-time dynamical system consists of a set $X$ and a collection $\mathcal{F}$ of partial functions of $X$, that is, functions $f:\dom(f)\to X$ where $\dom(f)\subseteq X$. Given such data, we define a directed graph $\mathcal{G}$ by letting $\mathcal{G}^{(0)}=X$, $\mathcal{G}^{(1)}=\left\{(f,x):f\in\mathcal{F},x\in\dom(f)\right\}$, $\so(f,x)=x$ and $\ra(f,x)=f(x)$.
+<span class="envidentifier">Example 1.1.4.</span> Generally, a discrete-time dynamical system consists of a set $X$ and a collection $\mathcal{F}$ of partial functions of $X$, that is, functions $f:\dom(f)\to X$ where $\dom(f)\subseteq X$. Given such data, we define a directed graph $\mathcal{G}$ by letting $\mathcal{G}^{(0)}=X$, $\mathcal{G}^{(1)}=\left\{(f,x):f\in\mathcal{F},x\in\dom(f)\right\}$, $\so(f,x)=x$ and $\ra(f,x)=f(x)$.
 </p>
 <p>	
 This directed graph $\mathcal{G}$ is depicted by drawing elements of $X$ as points and arrows from points of $X$ to their image under elements of $\mathcal{F}$, whenever defined.
@@ -114,7 +114,7 @@ In order to obtain a suitable notion for the composition of arrows, we need to i
 </p>
 
 <div class="definition">
-<p><span class="envidentifier">Definition 1.1.5</span><!--\nomenclature[G]{$\mathcal{G}_x$, $\mathcal{G}^y$, $\mathcal{G}_x^y$}{Arrows with specified source and range}--> Let $\mathcal{G}=(\mathcal{G}^{(0)},\mathcal{G}^{(1)},\so,\ra)$ be a directed graph. Given vertices $x,y\in\mathcal{G}^{(0)}$, denote by
+<p><span class="envidentifier">Definition 1.1.5.</span><!--\nomenclature[G]{$\mathcal{G}_x$, $\mathcal{G}^y$, $\mathcal{G}_x^y$}{Arrows with specified source and range}--> Let $\mathcal{G}=(\mathcal{G}^{(0)},\mathcal{G}^{(1)},\so,\ra)$ be a directed graph. Given vertices $x,y\in\mathcal{G}^{(0)}$, denote by
 <ul>
 	<li> $\mathcal{G}_x=\mathfrak{s}^{-1}(x)$, the set of arrows leaving from $x$;</li>
 	<li> $\mathcal{G}^y=\mathfrak{r}^{-1}(y)$, the set of arrows arriving at $y$;</li>
@@ -123,14 +123,30 @@ In order to obtain a suitable notion for the composition of arrows, we need to i
 </div>
 
 
-\begin{definition}
-A <em>small category</em> consists of a directed graph $\mathcal{C}=(\mathcal{C}^{(0)},\mathcal{C}^{(1)},\mathfrak{s},\mathfrak{r})$ together with the set $\mathcal{C}^{(2)}=\left\{(a,b)\in\mathcal{C}^{(1)}\times\mathcal{C}^{(1)}:\mathfrak{s}(a)=\mathfrak{r}(b)\right\}$ and a <em>composition</em> map $\mathcal{C}^{(2)}\to \mathcal{C}^{(1)}$, $(a,b)\mapsto ab$, satisfying the following properties:
+<div class="definition">
+<p><span class="envidentifier">Definition 1.1.6.</span> A <em>small category</em> consists of a directed graph $\mathcal{C}=(\mathcal{C}^{(0)},\mathcal{C}^{(1)},\mathfrak{s},\mathfrak{r})$ together with the set $\mathcal{C}^{(2)}=\left\{(a,b)\in\mathcal{C}^{(1)}\times\mathcal{C}^{(1)}:\mathfrak{s}(a)=\mathfrak{r}(b)\right\}$ and a <em>composition</em> map $\mathcal{C}^{(2)}\to \mathcal{C}^{(1)}$, $(a,b)\mapsto ab$, satisfying the following properties:
+
+<ol>
+  <li>Number 1</li>
+  <li>Number 2</li>
+  <li>Number 3</li>
+  <li>Number 4</li>
+  <li>Number 5</li>
+  <li>Number 6</li>
+</ol>
+
+<ol class="alphapar">
+	<li> If $(a,b)$ and $(b,c)\in\mathcal{C}^{(2)}$, then $(a,bc),(ab,c)\in\mathcal{C}^{(2)}$ and $a(bc)=(ab)c$.</li>
+	<li>For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.</li>
+</ol>
+
 \begin{enumerate}
 \item[(i)] If $(a,b)$ and $(b,c)\in\mathcal{C}^{(2)}$, then $(a,bc),(ab,c)\in\mathcal{C}^{(2)}$ and $a(bc)=(ab)c$.
 \item[(ii)] For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.
 \end{enumerate}
-The set $\mathcal{C}^{(2)}$ is called the set of <em>composable pairs</em>.\index{Composable}
-\end{definition}
+The set $\mathcal{C}^{(2)}$ is called the set of <em>composable pairs</em>.<!--\index{Composable}-->
+</p>
+</div>
 
 General categories are defined in the same manner, however we allow $\mathcal{C}^{(0)}$ and $\mathcal{C}^{(1)}$ to be general classes instead of sets, however we will restrict our study to sets.
 
