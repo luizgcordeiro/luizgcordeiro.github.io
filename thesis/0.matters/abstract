@@ -1,17 +1,12 @@
 <h2>Abstract</h2>
-
-	<p>
-		This thesis is divided into four chapters. In the first one, all the pre-requisite theory of semigroups and groupoids is introduced, as well as a few new results - such as a short study of \(\lor\)-ideals and quotients in distributive semigroups and a non-commutative Loomis-Sikorski Theorem.
-	</p>
-	
-	<p>
-		In the second chapter, we motivate and describe the sofic property for probability measure-preserving groupoids and prove several permanence properties for the class of sofic groupoids. This provides a common ground for similar results in the particular cases of groups (\cite{MR2220572}) and equivalence relations (\cite{MR2566316,MR2826401}). In particular, we prove that soficity is preserved under finite index extensions of groupoids. We also prove that soficity can be determined in terms of the full group alone, answering a question by Conley, Kechris and Tucker-Drob.
-	</p>
-
-	<p>
-		In the third chapter we turn to the classical problem of reconstructing a topological space from a suitable structure on the space of continuous functions. We prove that a locally compact Hausdorff space can be recovered from classes of functions with values on a Hausdorff space together with an appropriate notion of disjointness, as long as some natural regularity hypotheses are satisfied. This allows us to recover (and even generalize) classical theorem by Kaplansky, Milgram, Banach-Stone, among others, as well as recent results of a similar nature, and obtain new consequences as well. Furthermore, we extend the techniques used here to obtain structural theorems related to topological groupoids.
-	</p>
-
-	<p>
-		In the fourth and final chapter, we study dynamical aspects of partial actions of inverse semigroups, and in particular how to construct groupoids of germs and (partial) crossed products and how do they relate to each other. This chapter is based on joint work with Viviane Beuter.
-	</p>
+<p>
+This thesis is divided into four chapters. In the first one, all the pre-requisite theory of semigroups and groupoids is introduced, as well as a few new results - such as a short study of $\lor$-ideals and quotients in distributive semigroups and a non-commutative Loomis-Sikorski Theorem.
+</p>
+<p>
+In the second chapter, we motivate and describe the sofic property for probability measure-preserving groupoids and prove several permanence properties for the class of sofic groupoids. This provides a common ground for similar results in the particular cases of groups (\cite{MR2220572}) and equivalence relations (\cite{MR2566316,MR2826401}). In particular, we prove that soficity is preserved under finite index extensions of groupoids. We also prove that soficity can be determined in terms of the full group alone, answering a question by Conley, Kechris and Tucker-Drob.
+</p>
+<p>
+In the third chapter we turn to the classical problem of reconstructing a topological space from a suitable structure on the space of continuous functions. We prove that a locally compact Hausdorff space can be recovered from classes of functions with values on a Hausdorff space together with an appropriate notion of disjointness, as long as some natural regularity hypotheses are satisfied. This allows us to recover (and even generalize) classical theorem by Kaplansky, Milgram, Banach-Stone, among others, as well as recent results of a similar nature, and obtain new consequences as well. Furthermore, we extend the techniques used here to obtain structural theorems related to topological groupoids.
+</p>
+In the fourth and final chapter, we study dynamical aspects of partial actions of inverse semigroups, and in particular how to construct groupoids of germs and (partial) crossed products and how do they relate to each other. This chapter is based on joint work with Viviane Beuter.
+<p>
