@@ -131,6 +131,7 @@ text-align: justify;
 }
 ol,ul {
 	margin-top: 1ex;
+	margin-bottom: 1ex;
 }
 ol.roman {
     counter-reset: roman;
