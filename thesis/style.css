@@ -1,0 +1,126 @@
+*/
+First we set standards for the document
+*/
+
+body {
+	counter-reset: chapter section subsection generalcounter;
+}
+
+/*
+Now we set Chapter, Section, etc... formatting
+It should be done like this:
+"<h2 class="section">Vector spaces</h2>"
+This way, it will automatically show something like
+"Section 2.3. Vector spaces"
+*/
+
+h1.chapter::before {
+	counter-increment: chapter;
+	content: "Chapter " counter(chapter) ": ";
+}
+
+h1.chapter {
+	counter-reset: section subsection generalcounter;
+}
+
+
+h2.section::before {
+	counter-increment: section;
+	content: "Section " counter(chapter) "." counter(section) ": ";
+}
+
+h2.section {
+	counter-reset: subsection generalcounter;
+}
+
+h3.subsection::before {
+	counter-increment: subsection;
+	content: "Subsection " counter(chapter) "." counter(section) "." counter(subsection) ": ";
+}
+
+/*
+Definition, Lemma, etc... evironments are similar to sections
+Just type
+"<div class="example"><p>$V$ is a vector space</p></div>"
+and it will show something such as
+"Example 2.3.3. $V$ is a vector space"
+and "Example 2.3.3." will be properly formatted.
+*/
+
+div.env-definition {
+	font-type: normal;
+}
+
+div.env-definition::before{
+	counter-increment: generalcounter;
+	font-weight: bold;
+	content: "Definition " counter(chapter) "." counter(section) "." counter(generalcounter) ". ";
+}
+
+div.env-definition p:first-child {
+	display: inline;
+}
+
+	div.env-example {
+	font-type: normal;
+}
+
+div.env-example::before{
+	counter-increment: generalcounter;
+	font-weight: bold;
+	content: "Example " counter(chapter) "." counter(section) "." counter(generalcounter) ". ";
+}
+
+div.env-example p:first-child{
+	display: inline;
+}
+
+/*
+We now set the sidebar. It is not static, i.e. it disappears when scrolling down.
+This seems preferable since scrolling down can
+get a bit laggy and generally distracts from the reading
+
+The sidebar has a title (e.g. the book's title), chapters (given by h1's) and
+sections (given by h2's)
+*/
+
+div.sidebar {
+float: left;
+width: 20%;/* make sure this is compatible with the margin-left at div.main*/
+}
+
+div.sidebar h1 {
+background-color: #A6F9DD;
+font-weight: bold;
+display: block;
+font-size: 100%;
+}
+
+/*block occupies an entire line*/
+
+div.sidebar h2 {
+background-color: #C4FCF2;
+display: block;
+font-size:90%;
+margin-bottom: 0px;
+margin-top: 0px;
+}
+
+div.sidebar h1.sidebar-title {
+background-color: #AAD13E;
+display: block;
+font-size:180%;
+margin-bottom: 0px;
+margin-top: 0px;
+}
+
+/*
+The main part of the document is a floating block right of the sidebar
+*/
+
+div.main{
+margin-left: 20%;/* make sure this is compatible with the width of #sidebar*/
+width: 60%;
+padding: 10px;/* margin around <p>'s*/
+text-align: justify;
+}
