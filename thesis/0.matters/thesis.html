@@ -13,6 +13,21 @@ body contains content
 
 	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
 
+<!--
+Now we define "environments" and some
+codes that should run when some tags are called.
+
+These are done with CSS. Like
+
+tag.class { properties}
+
+can also use "outer tag"."outer class" "inside tag"."inside class" anc thind like this
+
+# (hash) goes for id
+
+div creates new boxes
+-->
+
 	<link rel="stylesheet" type="text/css" href="../src/style.css">
 
 <!--
@@ -57,22 +72,6 @@ Below are scripts for MathJax
 	</title>
 
 <!--
-Now we define "environments" and some
-codes that should run when some tags are called.
-
-These are done with CSS. Like
-
-tag.class { properties}
-
-can also use "outer tag"."outer class" "inside tag"."inside class" anc thind like this
-
-# (hash) goes for id
-
-div creates new boxes
--->
-
-
-<!--
 There is, however, one problem: Counters have to be added individually!
 To see this, suppose that page "a" is section 3.1, and we want to reference
 Example 3.1.4 (or whatever that is).
@@ -110,26 +109,11 @@ and make a link to it.
 <!--
 Below are LaTeX commands which will be used throughout
 -->
-<div style="display: none">
-\begin{equation*}
-\newcommand{\perpp}{\perp\!\!\!\perp}
-\DeclareMathOperator{\KB}{{\mathbf{KB}}}
-\newcommand{\GP}{\mathscr{G}_P}
-\DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\ran}{ran}
-\DeclareMathOperator{\so}{\mathfrak{s}}
-\DeclareMathOperator{\ra}{\mathfrak{r}}
-\newcommand{\id}{\operatorname{id}}
-\newcommand{\Lc}{\mathcal{L}_c}
-\newcommand{\Skew}{A \rtimes_\alpha S}
-\DeclareMathOperator{\supp}{\operatorname{supp}}
-\DeclareMathOperator{\BOR}{{\mathbf{Bor}}}
-\DeclareMathOperator{\MEAS}{{\mathbf{Meas}}}
-\DeclareMathOperator{\Fix}{Fix}
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\MAlg}{{\mathbf{MAlg}}}
-\end{equation*}
-</div>
+
+<div style="display: none" id="latexcommands"></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommand" );
+</script>
 
 <div id="sidebar" class="sidebar"></div>
 

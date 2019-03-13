@@ -25,26 +25,10 @@
 </head>
 <body>
 
-<div style="display: none">
-\begin{equation*}
-\newcommand{\perpp}{\perp\!\!\!\perp}
-\DeclareMathOperator{\KB}{{\mathbf{KB}}}
-\newcommand{\GP}{\mathscr{G}_P}
-\DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\ran}{ran}
-\DeclareMathOperator{\so}{\mathfrak{s}}
-\DeclareMathOperator{\ra}{\mathfrak{r}}
-\newcommand{\id}{\operatorname{id}}
-\newcommand{\Lc}{\mathcal{L}_c}
-\newcommand{\Skew}{A \rtimes_\alpha S}
-\DeclareMathOperator{\supp}{\operatorname{supp}}
-\DeclareMathOperator{\BOR}{{\mathbf{Bor}}}
-\DeclareMathOperator{\MEAS}{{\mathbf{Meas}}}
-\DeclareMathOperator{\Fix}{Fix}
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\MAlg}{{\mathbf{MAlg}}}
-\end{equation*}
-</div>
+<div style="display: none" id="latexcommands"></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommand" );
+</script>
 
 <div id="sidebar" class="sidebar"></div>
 

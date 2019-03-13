@@ -1,15 +1,51 @@
-%\input{../preamble}
+<!DOCTYPE html>
 
-%\usepackage[refpage]{nomencl}
-%\makenomenclature
+<html>
+<head>
 
-%\begin{document}
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="mathjax/MathJax.js?config=default"></script>
 
-%\printnomenclature
+	
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
 
-\subsection{Groupoids as directed graphs}
+	<style>
+		body {
+			counter-reset: chapter;
+			counter-reset: section;
+		}
 
-\begin{definition}[\cite{MR1724106}]
+		h1.chapter::before {
+			counter-increment: chapter 3;
+			content: "Chapter " counter(chapter) ": ";
+		}
+
+		h2.section::before {
+			counter-increment: section;
+			content: "Section " counter(chapter) "." counter(section) ": ";
+		}
+	</style>
+</head>
+
+<body>
+
+<h2 class="section">1.1. Groupoids</h2>
+
+<h3 class="subsection">1.1.1. Groupoids as directed graphs</h3>
+
+<div class="definition">[\cite{MR1724106}]
 A \emph{directed graph} is a tuple $\G=(\G[0],\G[1],\so,\ra)$, where $\mathcal{G}^{(0)}$ is a set whose elements are called \emph{vertices}, $\mathcal{G}^{(1)}$ is a set whose elements are called \emph{edges} or \emph{arrows}, and $\mathfrak{s}$ and $\mathfrak{r}$ are maps from $\mathcal{G}^{(1)}$ to $\mathcal{G}^{(0)}$, called respectively the \emph{source} and \emph{range} maps.
 \end{definition}
 
@@ -345,6 +381,3 @@ Then the map $(G\times X)\ltimes X\to G\times(X^2)$, $((g,x),y)\mapsto(g,(xy,y))
 %is an injective homomorphism, and since $S_{X\dot{\cup}[m]}\ltimes(X\dot{\cup}[m])\simeq S_{[|X|+m]}\ltimes[|X|+m]$, we are done.\qedhere
 \end{enumerate}
 \end{proof}
-
-
-%\end{document}

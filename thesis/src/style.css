@@ -1,80 +1,54 @@
-*/
-First we set standards for the document
-*/
-
-body {
-	counter-reset: chapter section subsection generalcounter;
+.envidentifier {
+		font-weight: bold;
 }
 
-/*
-Now we set Chapter, Section, etc... formatting
-It should be done like this:
-"<h2 class="section">Vector spaces</h2>"
-This way, it will automatically show something like
-"Section 2.3. Vector spaces"
-*/
-
-h1.chapter::before {
-	counter-increment: chapter;
-	content: "Chapter " counter(chapter) ": ";
-}
-
-h1.chapter {
-	counter-reset: section subsection generalcounter;
-}
-
-
-h2.section::before {
-	counter-increment: section;
-	content: "Section " counter(chapter) "." counter(section) ": ";
-}
-
-h2.section {
-	counter-reset: subsection generalcounter;
-}
-
-h3.subsection::before {
-	counter-increment: subsection;
-	content: "Subsection " counter(chapter) "." counter(section) "." counter(subsection) ": ";
-}
-
-/*
-Definition, Lemma, etc... evironments are similar to sections
-Just type
-"<div class="example"><p>$V$ is a vector space</p></div>"
-and it will show something such as
-"Example 2.3.3. $V$ is a vector space"
-and "Example 2.3.3." will be properly formatted.
-*/
-
-div.env-definition {
+div.definition {
 	font-type: normal;
 }
 
-div.env-definition::before{
-	counter-increment: generalcounter;
-	font-weight: bold;
-	content: "Definition " counter(chapter) "." counter(section) "." counter(generalcounter) ". ";
-}
-
-div.env-definition p:first-child {
+div.definition p:first-child {
 	display: inline;
 }
 
-	div.env-example {
+div.example {
 	font-type: normal;
 }
 
-div.env-example::before{
-	counter-increment: generalcounter;
-	font-weight: bold;
-	content: "Example " counter(chapter) "." counter(section) "." counter(generalcounter) ". ";
-}
-
-div.env-example p:first-child{
+div.example p:first-child {
 	display: inline;
 }
 
+div.theorem {
+	font-type: italic;
+}
+
+div.theorem p:first-child {
+	display: inline;
+}
+
+div.proposition {
+	font-type: italic;
+}
+
+div.proposition p:first-child {
+	display: inline;
+}
+
+div.lemma {
+	font-type: italic;
+}
+
+div.lemma p:first-child {
+	display: inline;
+}
+
+div.corollary {
+	font-type: italic;
+}
+
+div.corollary p:first-child {
+	display: inline;
+}
 /*
 We now set the sidebar. It is not static, i.e. it disappears when scrolling down.
 This seems preferable since scrolling down can
