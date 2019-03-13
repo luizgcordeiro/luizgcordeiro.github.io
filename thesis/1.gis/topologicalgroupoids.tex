@@ -1,0 +1,113 @@
+\begin{definition}\index{Groupoid!Topological}
+A \emph{topological groupoid} is a groupoid $\G$ endowed with a topology which makes the product map $\G[2]\to G$ and the inversion $\G\to \G$ continuous (where we consider the product topology on $\G[2]$).
+\end{definition}
+
+\begin{example}
+Any topological group, seen as a groupoid, is a topological groupoid.
+\end{example}
+
+\begin{example}
+If $R$ is an equivalence relation on a topological space $X$, then $R$ is a topological groupoid when endowed with the topology induced by the product topology of $X\times X$, however in general this is not the most suitable topology (see Example \ref{exampleequivalencerelationisnotetalewithproducttopology}).
+\end{example}
+
+\begin{example}
+Let $G$ be a topological group acting continuously on a topological space $X$ (that is, the action map $G\times X\to X$, $(g,x)\mapsto gx$ is continuous). Then the transformation groupoid $G\ltimes X$ endowed with the product topology of $G\times X$ is a topological groupoid.
+\end{example}
+
+\begin{example}\label{exampleweirdtopologicalgroupoid}
+Let $\G$ be any groupoid and assume $\G[0]$ is endowed with some (arbitrary) topology. Define a topology on $\G$ where $A\subseteq \G$ is open if and only if $A\cap\G[0]$ is open in $\G[0]$. This makes $\G$ a topological groupoid. Indeed, $A^{-1}\cap\G[0]=A\cap\G[0]$ for all $A\subseteq\G$, which implies that the inversion is continuous, so let us check the product is continuous: Let $(a,b)\in \G[2]$ and $U$ any open set containing $ab$. There are a few possibilities:
+\begin{itemize}
+\item If $a,b\not\in\G[0]$, then $\left\{a\right\}$ and $\left\{b\right\}$ are open and $\left\{a\right\}\left\{b\right\}=\left\{ab\right\}\subseteq U$;
+\item If $a\not\in \G[0]$ but $b\in\G[0]$, then $\left\{a\right\}$ and $\G[0]$ are open, respectively, and $\left\{a\right\}\G[0]=\left\{ab\right\}\subseteq U$;
+\item The case $a\in \G[0]$ and $b\not\in\G[0]$ is similar to the previous one;
+\item If both $a,b\in \G[0]$, then $a=b\in U\cap\G[0]$ and $(U\cap\G[0])(U\cap\G[0])=U\cap\G[0]\subseteq U$;
+\end{itemize}
+In any case there are open sets $A$ and $B$ containing $a$ and $b$, respectively, such that $AB\subseteq U$, which proves that the product is continuous.
+\end{example}
+
+\begin{definition}\label{definitionetalegroupoid}\index{Groupoid!étale}
+A groupoid is \emph{étale} if the source $\mathfrak{s}:\G\to\G[0]$ map is a local homeomorphism.
+\end{definition}
+
+Étale groupoids were first considered in depth by Renault in \cite{MR584266}, in connection with C*-algebras, as those groupoids which have open unit space and admit a left Haar system. We initially adopt the current (equivalent) working definition, see Definition 2.6 and Proposition 2.8 of \cite{MR584266}, and Theorem \ref{theoremequivalenceetale} below.
+
+\begin{example}
+Every topological space, seen as a unit groupoid (Example \ref{exampleunitgroupoid}), is étale.
+\end{example}
+
+\begin{example}
+If $G$ is a topological group acting continuously on a topological space $X$, then the transformation groupoid $G\ltimes X$ (endowed with the product topology) is étale if and only if $G$ is discrete.
+\end{example}
+
+\begin{example}\label{exampleequivalencerelationisnotetalewithproducttopology}
+Let $R$ be an equivalence relation on a topological space $(X,\nu)$.
+
+In general, the product topology makes $R$ a non-étale topological groupoid, the simplest example being $R=X\times X$ when $X$ has any non-isolated point (see Proposition \ref{propositionetalehasbasisofbisections}).
+
+On the other hand, suppose that $(X,\nu)$ is Hausdorff and $\tau$ is any topology on $R$ for which:
+\begin{enumerate}
+\item[(i)] $(R,\nu)$ is a compact étale topological groupoid;
+\item[(ii)] The range map $\ra:(R,\tau)\to(X,\nu)$ is continuous.
+\end{enumerate}
+Then $\tau$ is induced from the product topology of $(X,\nu)\times(X,\nu)$ (see \cite[Proposition 3.2]{MR2054051}). In particular, in this case the topology $\nu$ of $X$, identified with $R^{(0)}$, is induced from $\tau$. (Compare this with Example \ref{exampleborelstructureequivalencerelationisunique} in the Borel setting.)
+\end{example}
+
+The initial problem we will deal with is showing that $\G[0]$ is open in $\G$ whenever $\G$ is étale. This is not immediate from the étale condition, which deals, in principle, only with the relative topology of $\G[0]$ induced by that of $\G$.
+
+Note that if $\G$ is a topological groupoid and $A$ is open in $\G$, then $A^{-1}$ is immediately open (since the inversion $a\mapsto a^{-1}$ is a homeomorphism), however it is not necessarily true that $AB$ is open when $A$ and $B$ are open (e.g.\ in Example \ref{exampleweirdtopologicalgroupoid}).
+
+\begin{proposition}\label{propositionetalehasbasisofbisections}
+If $\G$ is an étale groupoid, then the open bisections of $\G$ form a basis for its topology. Moreover, if $A$ is any open bisection of an étale groupoid $\G$ then the source map restricts to a homeomorphism $\mathfrak{s}|_A:A\to \mathfrak{s}(A)$ (and similarly for the range map). In particular, $\mathfrak{s}^{-1}(x)$ is discrete for all $x\in\G[0]$.
+\end{proposition}
+\begin{proof}
+If $I:\G\to\G$, $I(a)=a^{-1}$ is the inversion map, then $\mathfrak{r}=\mathfrak{s}\circ I$, so both $\mathfrak{s}$ and $\mathfrak{r}$ are local homeomorphisms and it follows that open bisections form a basis for the topology of $\G$. Since the source map restricts to a bijective local homeomorphism on any open bisection it actually restricts to a homeomorphism, as desired.
+
+The last statement follows from the fact that if $A$ is a bisection and $x\in\G[0]$ then $\mathfrak{s}^{-1}(x)\cap A$ is either empty or a singleton.\qedhere
+\end{proof}
+
+\begin{theorem}[{\cite[Theorem~5.18]{MR2304314}}]\label{theoremequivalenceetale}
+Let $\G$ be a topological groupoid and let $m:\G[2]\to G$, $m(a,b)=ab$ be the product map. The following are equivalent:
+\begin{enumerate}
+\item[(1)] $\G$ is étale;
+\item[(2)] $\G[0]$ is open and $m$ is a local homeomorphism;
+\item[(3)] $\G[0]$ is open in $\G$ and $m$ is an open map (or equivalently, the product of open sets in $\G$ is open);
+\item[(4)] $\G[0]$ is open and the source map $\mathfrak{s}:\G\to\G[0]$ is an open map.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(1)$\Rightarrow$(2): Assume $\G$ is étale, and let $\pi:\G[2]\to\G$, $\pi(a,b)=b$, which is immediately continuous. Let us show that $\pi$ is a local homeomorphism: If $A$ and $B$ are open bisections in $\G$, then $\pi((A\times B)\cap\G[2])=B\cap\mathfrak{r}|_B^{-1}(\mathfrak{s}(A)\cap \mathfrak{r}(B))$. Since $\mathfrak{r}(B)$ and $\mathfrak{s}(A)$ are open in $\G[0]$ and $\mathfrak{r}|_B:B\to\mathfrak{r}(B)$ is a homeomorphism we conclude that $\pi$ is open, and since it is injective on $(A\times B)\cap\G[2]$, then $\pi$ is a local homeomorphism, as we wanted. We now have $\mathfrak{s}\circ m=\mathfrak{s}\circ\pi$, and both $\mathfrak{s}$ and $\pi$ are local homeomorphisms, so $m$ is a local homeomorphism as well. In particular, if $A$ is a bisection then $\mathfrak{s}(A)=m((A\times A^{-1})\cap \G[2])$ is open in $\G$, so since open bisections cover $\G$ and $\G[0]=\mathfrak{s}(\G)$, $\G[0]$ is open in $\G$.
+
+The implication (2)$\Rightarrow$(3) is trivial.
+
+(3)$\Rightarrow$(4): Assuming (3), if $A$ is open then $\mathfrak{s}(A)=(A^{-1}A)\cap \G[0]$ is open as well.
+
+(4)$\Rightarrow$(1): Let $a\in\G$. The map
+\[f:\left\{(g,h)\in\G:\so(g)=\so(h)\right\}\to\G,\qquad f(g,h)=gh^{-1}\]
+is continuous, since $\G$ is a topological groupoid. We have $f(a,a)=\ra(a)\in\G[0]$, and $\G[0]$ is open. Thus there exist open sets $C,D\subseteq\G$ containing $a$ such that 
+\[CD^{-1}=f\left(\left\{(c,d)\in C\times D:\so(c)=\so(d)\right\}\right)\subseteq\G[0].\]
+This implies that the source map is injective on the neighbourhood $C\cap D$ of $a$. Therefore, the source map is continuous (again, since $\G$ is a topological groupoid), open, and locally injective, hence a local homeomorphism.\qedhere
+\end{proof}
+
+The next examples prove that a topological groupoid may have open unit space but the product of two open sets might not be open and vice-versa.
+
+\begin{example}
+Given a topological group $G$, seen as a topological groupoid, the product of open sets of $G$ is always open, however the unit space is the singleton $\left\{1\right\}$, so $G$ is étale if and only if it is discrete.
+\end{example}
+
+\begin{example}\label{exampledifferenttopologyonZ}
+Given an infinite set $P$ of integers, we consider the topology on $\mathbb{Z}$ generated by the sets $p\mathbb{Z}+a$, where $a\in\mathbb{Z}$ and $p\in P$. This makes $\mathbb{Z}$ a non-discrete (i.e., non-étale), countable, second-countable, zero-dimensional, non-locally compact, Hausdorff topological group.
+\end{example}
+
+\begin{example}
+Let $\G$ be a groupoid such that $\G[0]$ is endowed with some topology, and consider $\G$ with the topology induced by $\G[0]$ as in example \ref{exampleweirdtopologicalgroupoid}. The unit space $\G[0]$ is open, so $\G$ is étale if and only if the product of open sets is open. This happens if and only if for every $a\in\G\setminus\G[0]$, $\mathfrak{s}(a)$ is isolated in $\G[0]$.
+\end{example}
+
+\begin{example}
+As a particular case of the previous example, let $\mathbb{Z}_2=\left\{0,1\right\}$ be the group with two elements, and consider the interval $[0,1]$ as a unit groupoid. Endow the (algebraic) product groupoid $\mathbb{Z}_2\times [0,1]$ with the topology whose open sets are those $A\subseteq\mathbb{Z}_2\times[0,1]$ such that $\left\{x\in[0,1]:(0,x)\in A\right\}$ is open in $[0,1]$. Then $\mathbb{Z}_2\times[0,1]$ is a non-étale, Hausdorff topological groupoid with open unit space. Indeed, $\left\{(1,0)\right\}$ is open in $\mathbb{Z}_2\times[0,1]$, but $\left\{(1,0)\right\}\left\{(1,0)\right\}=\left\{(0,0)\right\}$ is not.
+\end{example}
+
+Finally, whenever dealing with topological structures we will be mostly interested in maps which preserve the topology up to the correct degree, so we define precisely what we mean by \emph{topological} groupoid morphisms below.
+
+\begin{definition}\index{Morphism (of groupoids)!topological}\index{Isomorphism (of groupoids)!topological}
+A \emph{topological groupoid morphism} is a continuous groupoid morphism of topological groupoids. A \emph{topological groupoid isomorphism} is a groupoid morphism which is also a homeomorphism.
+\end{definition}

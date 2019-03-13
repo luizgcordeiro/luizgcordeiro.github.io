@@ -1,0 +1,35 @@
+<h1 class="sidebar-title">Table of contents<h1>
+	<h2><a href="../0.matters/abstract.html">Abstract</a></h2>
+	<h2><a href="../0.matters/acknowledgements.html">Acknowledgements</a></h2>
+	<h2><a href="../0.matters/preface.html">Preface</a></h2>
+	<h2><a href="../0.matters/symbols.html">List of symbols</a></h2>
+<h1><a href="../1.gis/1.0.intro.html">1. Groupoids and inverse semigroups</a></h1>
+	<h2>1.1. Groupoids</h2>
+	<h2>1.2. Inverse semigroups</h2>
+	<h2>1.3. Topological groupoids</h2>
+	<h2>1.4. Stone duality for ample Hausdorff groupoids</h2>
+	<h2>1.5. Quotients of distributive semigroups</h2>
+	<h2>1.6. Probability measure-preserving groupoids</h2>
+	<h2>1.7. Invariant means</h2>
+	<h2>1.8. Non-commutative Loomis-Sikorski theorem</h2>
+<h1>2. Sofic groupoids</h1>
+	<h2>2.1. Ultraproducts and continuous logic</h2>
+	<h2>2.2. Finite probability measure-preserving groupoids</h2>
+	<h2>2.3. Sofic groupoids</h2>
+	<h2>2.4. Soficity and the full group</h2>
+	<h2>2.5. Sofic group actions</h2>
+<h1>3. Disjoint continuous functions</h1>
+	<h2>3.1. Disjointness, $\perp$ and $\perpp$-isomorphisms</h2>
+	<h2>3.2. $\perpp$-ideals</h2>
+	<h2>3.3. Basic $\perpp$-isomorphisms</h2>
+	<h2>3.4. Recovering known results</h2>
+	<h2>3.5. New results</h2>
+<h1>4. Partial actions of inverse semigroups</h1>
+	<h2>4.1. Partial morphisms and partial actions</h2>
+	<h2>4.2. Topological partial actions and groupoid of germs</h2>
+	<h2>4.3. Algebraic partial actions and crossed products</h2>
+	<h2>4.4. Steinberg algebras</h2>
+	<h2>4.5. Partial actions from associated groups and inverse semigroups</h2>
+	<h2>4.6. Topologically free partial actions</h2>
+	<h2>4.7. Continuous orbit equivalence</h2>
+	<h2>4.8. Isomorphism theorems</h2>

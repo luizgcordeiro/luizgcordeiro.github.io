@@ -1,0 +1,580 @@
+%\input{../preamble}
+%
+%\begin{document}
+%\cite{MR3077869,MR2720249,BICE-Starling}
+%
+In \cite{MR1501865}, Marshall Stone first studied the representation theory of abstract (unital) Boolean algebras of sets, which culminates in a duality between the categories of unital Boolean algebras and of now called Stone spaces, which allows us to use both algebraic or geometric methods to study either of these types of structures. In fact, further improvements (\cite{dml124080}) of this theory lead to a more general duality between distributive lattices and coherent spaces (\cite[II.3.4]{MR861951}).
+
+In this section we will start by reviewing the classical version of Stone duality and the outline of its proof. Similar ideas will serve as a motivation for a more general (``non-commutative'') version which will be proven in details. The proof presented here is loosely based on \cite{MR2827424} and \cite{MR3077869}. We should note that even more general dualities between classes of inverse semigroups and topological groupoids have been obtained in recent years (for example, see \cite{arxiv1803.00394v2} and  \cite{MR3077869}), however the version presented here will be sufficient for all our goals.
+
+\subsection{Classical Stone duality}
+
+Let $(X,\tau)$ be a topological space, that is, $\tau$ is the lattice of open sets of $X$. The question we would like to study is ``how much of $X$ can one recover by looking solely at $\tau$, or actually any sublattice of it, as a poset''?
+
+\begin{example}
+Let $(X,\tau)$ be a topological space and $x,y\in X$ be such that every neighbourhood of $x$ contains $y$ and vice-versa. If we let $(Y,\tau_Y)$ be the quotient space obtained by identifying $x$ and $y$, endowed with the quotient topology, then the lattices of open sets $\tau_X$ and $\tau_Y$ are isomorphic. More precisely, the quotient map $\pi:X\to Y$ is continuous, so it induces a ``preimage map'' $\pi^{-1}:\tau_Y\to\tau_X$ which is in fact a lattice isomorphism.% In particular, note that if $Y$ is discrete and $\tau_Y$ and $\tau_X$ are Boolean algebras themselves.
+\end{example}
+
+This example shows that, in order to be able to recover $X$ from a lattice of open sets of $X$, we should start by restricting our study to $T_0$ spaces. The example above also points us how one could try to recover a point $x$ of a $T_0$ space $X$ from the lattice of open sets: By identifying $x$ with the collection $\tau_x=\left\{U\in\tau:x\in U\right\}$. In fact, the $T_0$ property states exactly that $x\mapsto \tau_x$ is an injective map. The problem then becomes to find topological conditions which allow us to characterize the subsets $\tau_x$ of $\tau$. When dealing with the whole topology $\tau$, these are the \emph{completely prime filters}. For details in this direction we refer to \cite[II.3.3 and 3.4]{MR861951}.% One such property is called \emph{soberness}.
+
+%\begin{definition}
+%A closed subset $F$ of a topological space $X$ is called \emph{irreducible} if whenever we write $F=F_1\cup F_2$, with $F_1$ and $F_2$ closed in $X$, we have $F=F_1$ or $F=F_2$. We say that $X$ is \emph{quasi-sober} if every nonempty irreducible closed set of $X$ is of the form $\overline{\left\{x\right\}}$ for some $x\in X$, and that $X$ is \emph{sober} if it is quasi-sober and $T_0$.
+%\end{definition}
+
+%Given a topological space $(X,\tau)$, a \emph{completely prime filter} of $\tau$ is a $\subseteq$-filter $\mathscr{U}\subseteq\tau$ which satisfies the extra condition that if $\mathscr{A}\subseteq\tau$ and $\bigcup\mathscr{A}\in\mathscr{U}$ then $\mathscr{A}\cap\mathscr{U}\neq\varnothing$.
+
+%\begin{proposition}[\cite[Proposition~1.3.1]{MR2868166}]
+%A topological space $(X,\tau)$ is quasi-sober (resp. sober) if and only if every completely prime proper filter of $\tau$ is of the form $\tau_x=\left\{U\in\tau:x\in U\right\}$ for some $x\in X$ (resp. unique $x\in X$).
+%\end{proposition}
+
+%\begin{example}
+%Every regular space is quasi-sober. In particular, locally compact Hausdorff spaces are sober.
+%\end{example}
+
+However, we will be mostly interested in Hausdorff, locally compact spaces, endowed with bases of open subsets which are not necessarily closed under arbitrary unions (such as bases of compact-open sets, or regular open sets). In this setting, it is possible to obtain a duality between a certain class of topological spaces, called \emph{Stone spaces}, and Boolean algebras.
+
+\begin{definition}\label{definitionstonespace}
+A \emph{Stone space} is a zero-dimensional, compact Hausdorff topological space.
+\end{definition}
+
+Given a Stone space $X$, the collection $\operatorname{Cl}(X)$ of clopen subsets of $X$ is a unital Boolean algebra (Definition \ref{definitionbooleanalgebra}). The direction which associates a topological space to a Boolean algebra uses the notion of \emph{ultrafilter}.
+
+\begin{definition}\label{definitionfilter}
+Let $P$ be a set and $\prec$ a transitive relation on $P$. A nonempty subset $F\subseteq P$ is said to be:
+\begin{enumerate}
+\item \emph{upwards} (respectively, \emph{downwards}) \emph{closed} if $x\in F$ and $x\prec y$ (respectively, $y\prec x$) imply $y\in F$ for all $x,y\in P$;\index{Upwards closed}\index{Downwards closed}
+\item \emph{downwards directed} if for all $x,y\in F$, there is $z\in F$ with $z\prec x$ and $z\prec y$;\index{Downwards directed}
+\item a \emph{$\prec$-filter} if it is nonempty, upwards closed and downwards directed;\index{Filter}
+\item a \emph{$\prec$-ultrafilter} if it is a maximal proper $\prec$-filter.\index{Filter!Ultrafilter}\index{Ultrafilter}
+\end{enumerate}
+In the case that $(P,\leq)$ is an ordered set and there is no risk of confusion, we will call $\leq$-filters and $\leq$-ultrafilters simply filters and ultrafilters.
+\end{definition}
+
+\begin{remark}\label{remarkfiltermeet}
+If $P$ is a $\land$-semilattice, then a subset $F\subseteq P$ is a filter if and only if $s,t\in F$ implies $s\land t\in F$. If $P$ is a poset with zero, then a filter $F\subseteq P$ is proper if and only if $0\not\in F$.
+\end{remark}
+
+Given a unital Boolean algebra $B$ we associate the collection $\widehat{B}$ of ultrafilters on $B$, and endow it with the topology generated by sets $[a]=\left\{F\in\widehat{B}:a\in F\right\}$, where $a\in B$, which makes it a Stone space (see \cite{MR1501905}\ftnt{In Stone's original work he considers \emph{ideals} instead of filters. These two types of sets are dual to each other and in natural bijection, see Chapters 3 and 5 of \cite{MR2446182}.})). These two constructions can be formalized as functors and yield the following duality:
+
+\begin{theorem}[Classical Stone duality]
+The category $\mathbf{Bool}$ of unital Boolean algebras and their morphisms is dually equivalent to the category $\mathbf{Ston}$ of Stone spaces and continuous functions.
+\end{theorem}
+
+In the rest of this section we will use these ideas in the more general setting of groupoids and inverse semigroups.
+
+\subsection{Recovering a locally compact Hausdorff space from its open sets}
+
+Let $(X,\tau)$ be a locally compact Hausdorff space, $\mathcal{B}$ a basis of open sets of $X$ and $x\in X$. Using the ideas above, we can retrieve a point $x\in X$ from the collection $\mathcal{B}_x=\left\{U\in\mathcal{B}:x\in U\right\}$ by taking their intersection: $\left\{x\right\}=\bigcap\mathcal{B}_x$, so the problem becomes to determine, in order-theoretic terms, which subsets of $\mathcal{B}$ have the form $\mathcal{B}_x$ for a certain $x\in X$.
+
+If the basis $\mathcal{B}$ is not closed under unions this is not always possible (the ideas in Theorem \ref{theoremperpisnotenough} can be adapted to provide an example of this). One possible way to solve this is to use an auxiliary relation given by ``compact containment''.
+
+\begin{definition}\nomenclature[O]{$\Subset$}{Compact containment}\index{Compact containment}\label{definitioncompactcontainment}
+Given $A,B\in\tau$, the \emph{compact containment relation} $\Subset$ is defined by
+\[A\Subset B\iff \overline{A}\text{ is compact and }\overline{A}\subseteq B\]
+\end{definition}
+
+\begin{example}
+If $X$ is a zero-dimensional, locally compact Hausdorff space and $\mathcal{B}$ is a basis of compact-open subsets of $X$, then $\Subset$ coincides with $\subseteq$ on $\mathcal{B}$.
+\end{example}
+
+This relation was first studied by Shirota in \cite{MR0052760}, where he managed to characterize bases consisting of all regular open subsets of compact Hausdorff spaces, as Boolean algebras endowed with an extra auxiliary relation which encodes the properties of ``compact containment''.% In the case where $\mathcal{B}$ consists of clopen subsets of a compact zero-dimensional space, $\Subset$ coincides with $\subseteq$ and Shirota's duality restricts to classical Stone duality.
+
+Similarly to classical Stone duality, we define $\widehat{\mathcal{B}}^\Subset$ as the set of all $\Subset$-ultrafilters on $\mathcal{B}$. The following result will be useful in the remaining of this section as well as in Chapter~\ref{chapterdisjointfunctions}. (Compare with \cite[Lemma 3]{MR0052760}. See also \cite[Proposition 3.4]{arxiv1803.00394v2}.)
+
+\begin{theorem}\label{theoremrecoverxfromultrafilters}
+Let $\mathcal{B}$ be a basis of relatively compact subsets of a locally compact Hausdorff space $X$. Then the map $\pi:X\to\widehat{\mathcal{B}}^\Subset$ defined by
+\[\pi(x)=\mathcal{B}_x=\left\{U\in\mathcal{B}:x\in U\right\}\]
+is a homeomorphism.
+\end{theorem}
+\begin{proof}
+First, we prove that $\pi$ is well-defined, that is, that $\mathcal{B}_x$ is indeed a $\Subset$-ultrafilter of $\mathcal{B}$. It is immediate to see that $\mathcal{B}_x$ is a proper $\Subset$-filter.
+
+Let us prove that every proper $\Subset$-filter $F$ of $\mathcal{B}$ is contained in some $\mathcal{B}_x$. Indeed, since $F$ is downwards directed with respect to $\Subset$, this means that for all $n\geq 1$ and $A_1,\ldots,A_n\in F$ there is some $U\in F$ with $\overline{U}$ compact and $\overline{U}\subseteq A_1\cap\cdots\cap A_n$. Then:
+\begin{enumerate}
+\item[(i)] Since $F$ is nonempty, at least one element of $F$ has compact closure.
+\item[(ii)] $\bigcap_{U\in F}\overline{U}=\bigcap_{A\in F}A$.
+\item[(iii)] The family $\left\{A:A\in F\right\}$ has the finite intersection property, because $F$ is proper.
+\end{enumerate}
+
+By Cantor's Intersection Theorem, $\bigcap_{A\in F}A=\bigcap_{U\in F}\overline{U}$ is nonempty. If we take any $x\in\bigcap_{A\in F}A$ we obtain $F\subseteq\mathcal{B}_x$.
+
+This fact now implies that $\mathcal{B}_x$ is indeed a $\Subset$-ultrafilter: If $F$ is any proper $\Subset$-filter containing $\mathcal{B}_x$, then, as seen above, there exists $y\in X$ with $\mathcal{B}_x\subseteq F\subseteq\mathcal{B}_y$. But $X$ is Hausdorff, so actually $x=y$ and $\mathcal{B}_x=F$. Therefore $\pi$ is well-defined.
+
+The same fact implies that $\pi$ is surjective: If $F$ is a $\Subset$-ultrafilter, we can choose $x$ such that $F\subseteq\mathcal{B}_x$, and maximality of $F$ implies $F=\mathcal{B}_x$.
+
+Finally, it is clear that $\pi(A)=[A]$ for all $A\in\mathcal{B}$, so $\pi$ is a bijection between topological spaces which sends basic open sets to (sub-)basic open sets, hence a homeomorphism.\qedhere
+\end{proof}
+
+\subsection{Non-commutative Stone duality for Boolean semigroups and ample Hausdorff groupoids.}
+
+We can now describe a duality theorem for ample Hausdorff groupoids and Boolean semigroups. This was first proved by Lawson and later generalized to non-Hausdorff groupoids in a joint work with Lenz, see \cite{MR2827424} and \cite{MR3077869} using techniques from the theory of locales. Even more recently, Bice and Starling (\cite{arxiv1803.00394v2}) have obtained a duality for groupoids which do not necessarily have bases of compact-open-sets, but which are locally Hausdorff, using a version of Theorem \ref{theoremrecoverxfromultrafilters}. It is important to note that these two results require distinct assumptions on the classes of groupoids considered, and are non-comparable at the present moment. The definitions below are adapted from \cite{MR3077869}, however we will refer to \emph{generalized Boolean algebras} (initially defined in \cite{MR1507106}) and \emph{unital Boolean algebras} explicitly, and we also adopt the more conventional nomenclature of \emph{ample} instead of \emph{Boolean} groupoids throughout this work. Most of the results here appear, in some form, in \cite{MR2827424}, but we will not assume the groupoids under consideration to have compact unit space.
+
+\begin{definition}\index{Groupoid!Ample}
+An étale groupoid $\G$ is \emph{ample} if it admits a basis of compact-open bisections.
+\end{definition}
+
+\begin{definition}\label{definitionbooleanalgebra}\index{Boolean algebra!Generalized Boolean Algebra}
+A \emph{generalized Boolean algebra} is a lattice with zero which is distributive (as a semigroup under meets) and which admits relative complements of any two (comparable) elements. A \emph{unital Boolean algebra} is a generalized Boolean algebra admitting a maximum (in particular, it is a monoid).
+\end{definition}
+
+\begin{definition}[{\cite[3.4]{MR3077869}}]\index{Semigroup!Boolean}\index{Semigroup!weakly Boolean}\label{definitionbooleaninversesemigroup}
+A distributive semigroup with zero $S$ is \emph{weakly Boolean} if $E(S)$ is a generalized Boolean algebra. A weakly Boolean semigroup which is also a $\wedge$-semilattice is called a \emph{Boolean} semigroup.
+\end{definition}
+
+\index{Relative complement}\nomenclature[S]{$t\setminus s$}{Relative complement of $s$ in $t$}
+If $B$ is a Boolean inverse semigroup, and $s,t\in B$, we define the \emph{relative complement} of $s$ in $t$ as
+\[t\setminus s=t\setminus(s\land t),\]
+which extends the notion of relative complement given in Definition \ref{definitionrelativecomplementdistributive} to non-compatible elements (this is the same procedure as in \cite[Notation 3.1.11]{MR3700423}). The same results as in Proposition \ref{propositionrelativecomplementsandoperations} hold with easy proofs.
+
+An immediate application of Proposition \ref{propositionrelativecomplementsandoperations}(a), which allows us to distribute products over relative complements, is the following:
+
+\begin{proposition}\label{propositionrelativecomplementofsmallerelementinweaklybooleansemigroup}
+If $S$ is a weakly Boolean inverse semigroup and $t\leq s$ in $S$, then $s\setminus t$ exists, and $s\setminus t=s(s^*s\setminus t^*t)$.
+\end{proposition}
+%
+%
+%In the case of Boolean inverse semigroups, we obtain a stronger result.
+
+%\begin{proposition}
+%If $S$ is a Boolean inverse semigroup, then any two elements $s,t\in S$ admit relative complements, namely $s\setminus t=s\left(s^*s\setminus\left((s\land t)^*(s\land t)\right)\right)$.
+%\end{proposition}
+%\begin{proof}
+%We apply both items of Proposition \ref{propositionrelativecomplementsandoperations}. Since $s^*s\setminus\left((s\land t)^*(s\land t)\right)$ exists we can calculate
+%\begin{align*}
+%s\left(s^*s\setminus\left((s\land t)^*(s\land t)\right)\right)=(ss^*s)\setminus\left(s(s\land t)^*(s\land t)\right)=s\setminus(s\land t)=s\setminus t\qedhere
+%\end{align*}
+%\end{proof}
+
+First let us prove that every ample Hausdorff groupoid gives rise to a Boolean inverse semigroup.
+
+\begin{proposition}[{\cite[Proposition 2.18(7)]{MR2827424}}]
+If $\G$ is an ample groupoid and $\G[0]$ is Hausdorff then the product of compact-open bisections is compact-open.
+\end{proposition}
+\begin{proof}
+Suppose $A$ and $B$ are compact-open bisections, and $AB\subseteq\bigcup_{i\in I}C_i$, where $C_i$ are also compact-open bisections. Then $A^{-1}A=\mathfrak{s}(A)$ and $BB^{-1}=\mathfrak{r}(B)$ are compact-open subsets of $\G[0]$, $A^{-1}ABB^{-1}=AA^{-1}\cap BB^{-1}$ is also open and compact, since compact subsets of $\G[0]$ are closed, and $A^{-1}ABB^{-1}\subseteq\bigcup_{i\in I}A^{-1}C_iB^{-1}$. We can then find a finite subset $\left\{C_1,\ldots,C_n\right\}\subseteq\left\{C_i:i\in I\right\}$ such that $A^{-1}ABB^{-1}\subseteq\bigcup_{i=1}^n A^{-1}C_iB^{-1}$, and thus
+\[AB=AA^{-1}ABB^{-1}B\subseteq A\left(\bigcup_{i=1}^nA^{-1}C_iB^{-1}\right)B=\bigcup_{i=1}^nAA^{-1}C_iB^{-1}B\subseteq\bigcup_{i=1}^n C_i.\qedhere\]
+\end{proof}
+
+\begin{example}\label{examplebugeyed}
+It is not necessarily true that the product of two compact-open bisections of an étale, non-Hausdorff groupoid, is compact-open as well. For example, let $X=\mathbb{N}\cup\left\{\infty_1,\infty_2\right\}$, where $\infty_1\neq\infty_2$ are two ``points at infinity'', be the following ``bug-eyed'' compactification of $\mathbb{N}$: a subset $A\subseteq X$ is open if and only if it is either cofinite or contained in $\mathbb{N}$.
+
+If we see $X$ as a compact, ample, non-Hausdorff unit groupoid (Example~\ref{exampleunitgroupoid}), so bisections of $X$ are simply its subsets and the product of bisections is their intersection. Then $A=\mathbb{N}\cup\left\{\infty_1\right\}$ and $B=\mathbb{N}\cup\left\{\infty_2\right\}$ are compact-open subsets of $X$, however their intersection $A\cap B=\mathbb{N}$ is not compact.
+\end{example}
+
+\begin{definition}\label{definitionkbg}\nomenclature[G]{$\mathbf{KB}(\G)$}{Ample semigroup of a groupoid $\G$}\nomenclature[S]{$\mathbf{KB}(\G)$}{Ample semigroup of a groupoid $\G$}\index{Semigroup!Ample}
+If $\G$ is an ample Hausdorff groupoid, we denote by $\mathbf{KB}(\G)$ the semigroup of compact-open bisections of $\G$, and call it the \emph{ample semigroup} of $\G$.
+\end{definition}
+
+\begin{proposition}[{\cite[Proposition 2.18(8)]{MR2827424}}]
+If $\G$ is an ample Hausdorff groupoid then $\mathbf{KB}(\G)$ is a Boolean inverse semigroup.
+\end{proposition}
+\begin{proof}
+Note that $E(\mathbf{KB}(\G))=\mathbf{KB}(\G[0])$, and this is precisely the collection of compact-open subsets of $\G[0]$. Since $\G[0]$ is Hausdorff it should be clear that this is a generalized Boolean algebra. Moreover, $\G$ is Hausdorff, so $\mathbf{KB}(\G)$ is closed under intersections and it is therefore a $\wedge$-semigroup as well. Distributivity is easy enough to verify.\qedhere
+\end{proof}
+
+The map $\G\mapsto\mathbf{KB}(\G)$ will yield one of the directions of the duality we desire. Now let us work in the other direction, constructing an ample Hausdorff groupoid from a Boolean inverse semigroup $S$.
+
+Let $S$ be a Boolean inverse semigroup. Given any two (possibly non-proper) filters $F$ and $G$ on $S$, define their \emph{product} as\nomenclature[S]{$F\cdot G$}{Product of two filters}
+\[F\cdot G=\left\{u\in S:u\geq fg\text{ for some }f\in F,g\in G\right\}\]
+(this is the \emph{upwards closure} of $FG=\left\{fg:f\in F, g\in G\right\}$), and define\nomenclature[S]{$F^{-1}=F^*$}{Inverse of a filter}
+\[F^{-1}=F^*=\left\{f^*:f\in F\right\}.\]
+The inversion map $I:s\mapsto s^*$ is an order isomorphism of $S$, so $I(F)=F^{-1}$ is a filter (respectively, proper filter, ultrafilter) on $S$ if and only if $F$ is a filter (respectively, proper filter, ultrafilter) on $S$.
+
+\begin{definition}
+Given a Boolean inverse semigroup $S$, denote by $\GP(S)$ the set of ultrafilters on $S$ (with respect to the usual order of $S$).\nomenclature[S]{$\GP(S)$}{Groupoids of ultrafilters on $S$}\nomenclature[G]{$\GP(S)$}{Groupoids of ultrafilters on $S$}
+\end{definition}
+
+We also define
+\[\GP(S)^{(2)}=\left\{(F,G)\in\GP(S)\times\GP(S):F\cdot G\neq S\right\}.\]
+Note that, by the definition of $F\cdot G$, we have $0\in F\cdot G$ if and only if there are $f\in F$ and $g\in G$ such that $fg=0$. Therefore,
+\[\GP(S)^{(2)}=\left\{(F,G)\in\GP(S)\times\GP(S):fg\neq 0\text{ for all }f\in F\text{ and }g\in G\right\}.\]
+
+\begin{proposition}[{Compare with \cite[Proposition 2.13]{MR2827424}}]\label{propositionproductofultrafilters}
+Let $S$ be a Boolean inverse semigroup.
+\begin{enumerate}
+\item[(a)] If $F,G$ are filters, then $F\cdot G$ is also a filter;
+\item[(b)] If $F,G,H$ are filters on $S$, then $F\cdot (G\cdot H)=(F\cdot G)\cdot H$ (and as usual we denote this common filter by $F\cdot G\cdot H$);
+\item[(c)] If $F\in\GP(S)$ then $F^{-1}\in\GP(S)$;
+\item[(d)] If $F\in\GP(S)$ and $G$ is a filter such that $fg\neq 0$ for all $f\in F$ and $g\in G$, then $F\cdot G\cdot G^{-1}=F$.
+\item[(e)] If $F\in\GP(S)$ and $G$ is a filter such that $fg\neq 0$ for all $f\in F$ and $g\in G$, then $F\cdot G\in\GP(S)$;
+\item[(f)] $\GP(S)$ is a groupoid with the product of ultrafilters restricted to $\GP(S)^{(2)}$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[(a)] As $F\cdot G$ is upwards closed,  we simply need to prove it is directed below: Suppose $u_1,u_2\in F\cdot G$, and choose $f_1,f_2\in F$, $g_1,g_2\in G$ with $f_ig_i\leq u_i$. Then
+\[(f_1\land f_2)(g_1\land g_2)\leq u_1\land u_2\]
+so $u_1\land u_2\in F\cdot G$. Therefore $F\cdot G$ is a filter.
+\item[(b)] and (c) are clear.
+\item[(d)] Suppose $F$ and $G$ satisfy the given properties. If $f\in F$ and $g\in G$ then $fgg^*\leq f$, so $f\in F\cdot G\cdot G^{-1}$. This proves that $F\subseteq F\cdot G\cdot G^{-1}$. If we show that $F\cdot G\cdot G^{-1}$ is a proper filter then maximality of $F$ implies that $F=F\cdot G\cdot G^{-1}$.
+
+Given $u\in F\cdot G\cdot G^{-1}$, choose $f\in F$ and $g_1,g_2\in G$ with $fg_1g_2^{-1}\leq u$. Let $g=g_1\land g_2\in G$. Since $0\neq fg=fgg^{-1}g$, we have $0\neq fgg^{-1}\leq u$, thus $F\cdot G\cdot G^{-1}$ is proper.
+\item[(e)] Suppose $P$ is any proper filter containing $F\cdot G$. Let us prove that $P\cdot G^{-1}$ is proper as well: Given $p\in P$ and $g\in G$, let $f$ be any element of $F$. Choose $q\in P$ with $q\leq fg,p$, so $0\leq q=qq^*q\leq pg^*f^*q$. In particular, $pg^*\neq 0$.
+
+We then obtain $F=F\cdot G\cdot G^{-1}\subseteq P\cdot G^{-1}$, so $F=P\cdot G^{-1}$ because $F$ is maximal. Therefore $P\subseteq P\cdot G^{-1}\cdot G=F\cdot G$.
+\item[(f)] follows from items (b), (c), (d), (e), and the simple fact that $(F,F^{-1})\in\GP(S)^{(2)}$ for all $F\in\GP(S)$. (Item (e) in fact implies that $F\cdot G\in\GP(S)$ whenever $(F,G)\in\GP(S)^{(2)}$.)\qedhere
+\end{enumerate}
+\end{proof}
+
+Now, we endow $\GP(S)$ with the topology generated by the family of subsets of the form\nomenclature[S]{$[s]$}{Basic open set of $\GP(S)$}
+\[[s]=\left\{F\in\GP(S):s\in F\right\},\qquad s\in S.\]
+Our next goal is to prove that this topology makes $\GP(S)$ an ample Hausdorff groupoid, but for this we need a lemma, which is well-known and widely used when dealing with Boolean algebras, and in fact the proof is essentially the same.
+
+\begin{lemma}\label{lemmaultrafilterprime}\index{Filter!Prime}
+A proper filter $F$ on a Boolean semigroup $S$ is an ultrafilter if and only if it is \emph{prime}: If $s\lor t\in F$, then $s\in F$ or $t\in F$.
+\end{lemma}
+\begin{proof}
+Suppose $F$ is an ultrafilter and $s\lor t\in F$. There are two possibilities:
+\begin{description}
+\item[Case 1:] There is some $f\in F$ with $f\land t=0$.
+
+Then $f\land(s\lor t)=(f\land s)\lor(f\land t)=f\land s\in F$, which implies $s\in F$;
+
+\item[Case 2:] For every $f\in F$, $f\land t\neq 0$.
+
+Then the set $\left\{u\in S:u\geq f\land t\text{ for some }f\in F\right\}$ is a proper filter containing $F$, so maximality implies it is equal to $F$. In particular, if $f\in F$ is arbitrary then $t\geq f\land t$ and therefore $t\in F$;
+\end{description}
+
+In the other directions, suppose $F$ is prime and $G$ is another proper filter containing $F$. Let $g\in G$ and $f\in F$. Then $f=(f\land g)\lor(f\setminus g)$. Since $g\land(f\setminus g)=0$, $f\setminus g$ does not belong to $G$ and in particular does not belong to $F$, so primeness of $F$ implies $f\land g\in F$ and therefore $g\in F$. This proves $F=G$ and therefore $F$ is an ultrafilter.\qedhere
+\end{proof}
+
+Recall from definition \ref{definitioncompatibility} that two elements $s,t$ of an inverse semigroup $S$ are compatible if $s^*t,st^*\in E(S)$.
+
+\begin{lemma}[{\cite[Lemma 2.21(2)-(8)]{MR2827424}}]\label{lemmabisectionsgs}
+Let $S$ be a Boolean inverse semigroup. Then for all $s,t\in S$,
+\begin{enumerate}
+\item[(a)] $[st]=[s][t]$;
+\item[(b)] $s\leq t$ if and only if $[s]\subseteq[t]$;
+\item[(c)] $[s\land t]=[s]\cap[t]$;
+\item[(d)] If $s$ and $t$ are compatible then $[s\lor t]=[s]\cup[t]$;
+\item[(e)] $[s^*]=[s]^{-1}$ for all $s\in S$;
+\item[(f)] If $s,t\in S$ and $[s]\cup[t]$ is a bisection then $s$ and $t$ are compatible.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item[(a)] The inclusion $[s][t]\subseteq[st]$ is clear from the definition of the product on $\GP(S)$. Suppose then that $P\in [st]$, and let $Q=\left\{q\in S:q\geq t^*\right\}$. Then $Q$ is a filter and $pq\neq 0$ for any $p\in P$ and $q\in Q$, so Proposition~\ref{propositionproductofultrafilters}(e) implies that $F=P\cdot Q\in\GP(S)$. Again, one readily verifies that $f^*p\neq 0$ whenever $f\in F$ and $p\in P$, so $G=F^{-1}\cdot P\in\GP(S)$ again by Proposition~\ref{propositionproductofultrafilters}(e) and (c). Using Proposition~\ref{propositionproductofultrafilters}(d) and (c) we get
+\[F\cdot G=F\cdot F^{-1}P=P\]
+and in particular $(F,G)\in\GP(S)^{(2)}$.
+\item[(b)] Since filters are upwards closed then $s\leq t$ implies $[s]\subseteq[t]$. Conversely, if $s$ is not smaller than $t$ this means that $s\setminus t\neq 0$. Any ultrafilter $F$ containing $s\setminus t$ (which exists by Zorn's lemma) will be an element of $[s]\setminus[t]$.
+\item[(c)] The inclusion $\subseteq$ follows from item (b), whereas inclusion $\supseteq$ follows from Remark~\ref{remarkfiltermeet}.
+\item[(d)] Inclusion $\supseteq$ follows from item (b), and inclusion $\subseteq$ follows from Lemma~\ref{lemmaultrafilterprime}.
+\item[(e)] is an easy calculation using the definition of the inverse of ultrafilters:
+\begin{align*}
+[s]^{-1}&=\left\{F^{-1}:F\in[s]\right\}=\left\{F^{-1}:s\in F\in\GP(S)\right\}\\
+&=\left\{G:s^*\in G\in\GP(S)\right\}=[s^*]
+\end{align*}
+\item[(f)] Suppose $[s]\cup [t]$ is a bisection. Then
+\[[s^*t]=[s]^{-1}[t]\subseteq([s]\cup[t])^{-1}([s]\cup[t])=\mathfrak{s}\left([s]\cup[t]\right)\subseteq\GP(S)^{(0)}\]
+and from this we conclude that $[s^*t]$ itself is a bisection, so (a) and (e) imply
+\[[s^*t]=[s^*t]^{-1}[s^*t]=[(s^*t)^*(s^*t)]\]
+and item (b) implies $s^*t=(s^*t)^*(s^*t)$, therefore $s^*t\in E(S)$ (Theorem \ref{theoremorder}(c)). The same argument with the bisection $([s]\cup[t])^{-1}=[s^*]\cup[t^*]$ implies $st^*\in E(S)$ as well, and therefore $s$ and $t$ are compatible.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[{\cite[Lemma 2.21(12)]{MR2827424}}]\label{propositionxisisanisomorphism}
+$\GP(S)$ is an ample Hausdorff groupoid and $\mathbf{KB}(\GP(S))=\left\{[s]:s\in S\right\}$.
+\end{proposition}
+\begin{proof}
+The inversion on $\GP(S)$ is continuous, since $[s]^{-1}=[s^*]$ for all $s\in S$. To prove that the product is continuous, suppose $(F,G)\in\GP(S)^{(2)}$ and $[s]$, $s\in S$, is a basic neighbourhood of $F\cdot G$. This means that $s\in F\cdot G$, so that there are $f\in F$ and $g\in G$ with $fg\leq s$. Therefore $[f]$ and $[g]$ are basic neighbourhoods of $F$ and $G$, respectively, and $[f][g]=[fg]\subseteq[s]$ by Lemma~\ref{lemmabisectionsgs}(a) and (b).
+
+In order to prove that $\GP(S)$ is étale, we first show that
+\[\GP(S)^{(0)}=\left\{P\in\GP(S):P\cap E(S)\neq\varnothing\right\}\]
+From this we obtain $\GP(S)^{(0)}=\bigcup_{e\in E(S)}[e]$, which is open.
+
+Suppose $P\in\GP(S)^{(0)}$, which means that $P=P^{-1}\cdot P$. Letting $s\in P$ be arbitrary, we have $s^*s\in(P^{-1}\cdot P)\cap E(S)=P\cap E(S)$.
+
+Conversely, suppose $P\in\GP(S)$ and $P\cap E(S)\neq\varnothing$. Let $e\in P\cap E(S)$ be arbitrary. For all $p\in P$, we have $p\land e\in E(S)\cap P$, so
+\[(p\land e)^*(p\land e)=p\land e\leq p\]
+which proves that $p\in P^{-1}\cdot P$, that is, $P\subseteq P^{-1}P$. From maximality of $P$ we obtain $P=P^{-1}\cdot P\in\GP(S)^{(0)}$.
+
+To conclude that $\GP(S)$ is étale, we notice that the product of open sets is open By Lemma \ref{lemmabisectionsgs}(a), and since $\GP(S)^{(0)}$ then $\GP(S)$ is étale by Theorem \ref{theoremequivalenceetale}.
+
+Now to show that $\GP(S)$ is ample, we prove that every basic open set $[s]$, $s\in S$, is compact: Suppose $[s]=\bigcup_{r\in R}[r]$. By taking intersections and applying Lemma~\ref{lemmabisectionsgs}(c) if necessary, we can assume $r\leq s$ for all $r\in R$, and in particular any two elements of $R$ are compatible. We will show that there is a finite subset $F\subseteq R$ such that $s=\bigvee F$.
+
+Suppose this was not the case. Then the family $\mathcal{B}=\left\{s\setminus\bigvee F:F\subseteq R\text{ finite}\right\}$ is a filter basis, that is, it is closed under meets and does not contain $0$, so its upwards closure
+\[\mathcal{B}^\uparrow=\left\{t\in S:\exists b\in\mathcal{B}(b\leq t)\right\}\]
+is a proper filter. Using Zorn's Lemma, let $F$ be any ultrafilter containing $\mathcal{B}$. Then $ F$ is an ultrafilter containing $s$ which does not contain any $r\in R$, that is, $ F\in[s]\setminus\bigcup_{r\in R}[r]$, a contradiction.
+
+Therefore there is a finite subset $F\subseteq R$ with $s=\bigvee F$, so $[s]=\bigcup_{r\in F}[r]$ by Lemma \ref{lemmabisectionsgs}(d), that is, $\left\{[r]:r\in F\right\}$ is a finite subcover of $\left\{[s]:r\in R\right\}$, and we conclude that $[s]$ is compact. All of this proves that $\GP(S)$ is ample.
+
+In order to prove that $[s]$ is a bisection let us just show that the source map $F\mapsto F^{-1}\cdot F$ is injective on $[s]$, since the range is dealt with similarly: Suppose $F,G\in [s]$ and $F^{-1}\cdot F=G^{-1}\cdot G$. Given $f\in F$, let $z=f\land s\in F$, so $z^*z\in F^{-1}\cdot F=G^{-1}\cdot G$ and we can choose $g\in G$ with $z^*z\geq g^*g$, thus
+\[f\geq z=sz^*z\geq sg^*g\in G\cdot G^{-1}\cdot G=G\]
+so $F\subseteq G$ and therefore $F=G$ by maximality. 
+
+Now let us show that $\GP(S)$ is Hausdorff: Suppose $F\neq G$ in $\GP(S)$. By symmetry, we may assume $ F\setminus G\neq\varnothing$, so let $s\in F\setminus G$ and $g\in G$ be an arbitrary element. On one hand, $s\land g\not\in G$, but $g=(s\land g)\lor(g\setminus s)$, so since $\G$ is prime this implies $g\setminus s\in\G$. Therefore $[s]$ and $[g\setminus s]$ are two disjoint open sets containing $F$ and $G$, respectively.
+
+Finally, we just need to prove that $\mathbf{KB}(\GP(S))=\left\{[s]:s\in S\right\}$. Any element of $\mathbf{KB}(\GP(S))$ can be written as a finite union $\bigcup_{i=1}^n[s_i]$ of basic open sets, so applying Lemma~\ref{lemmabisectionsgs}(f) we conclude that the elements $s_i$ are pairwise compatible rewrite it as $\bigcup_{i=1}^n[s_i]=[\bigvee_{i=1}^n s_i]$ by item (d) of the same lemma.\qedhere
+\end{proof}
+
+Given an ample Hausdorff groupoid $\G$, let $\kappa_{\G}:\G\to\GP(\mathbf{KB}(\G))$ be given by
+\[\kappa_{\G}(a)=\left\{A\in\mathbf{KB}(\G):a\in A\right\}\]
+(note this is well-defined by Lemma~\ref{lemmaultrafilterprime}, because $\kappa_{\G}(g)$ is a prime filter) and given a Boolean semigroup $S$, let $\zeta_S:S\to\mathbf{KB}(\GP(S))$ be given by
+\[\zeta_S(s)=\left\{F\in\GP(S):s\in F\right\}\]
+
+\begin{proposition}[{\cite[Proposition 2.23]{MR2827424}}]\label{propositionnaturaltransformationsncsd}
+If $S$ is a Boolean inverse semigroup then $\zeta_S$ is an inverse semigroup isomorphism. If $\G$ is an ample Hausdorff groupoid, then $\kappa_{\G}$ is a topological groupoid isomorphism.
+\end{proposition}
+\begin{proof}
+We already know that $\zeta_S$ is an inverse semigroup isomorphism by Proposition~\ref{propositionxisisanisomorphism} and Lemma~\ref{lemmabisectionsgs}(a).
+
+On the other hand, $\kappa_{\G}$ is a homeomorphism by Theorem~\ref{theoremrecoverxfromultrafilters}. To see that it is a groupoid morphism, let $(a,b)\in\G[2]$. If $A\in\kappa_{\G}(a)$ and $B\in\kappa_{\G}(b)$ then $ab\in AB$, so in particular $AB\neq\varnothing$ which proves, by Proposition~\ref{propositionproductofultrafilters}(e) that $(\kappa_{\G}(a),\kappa_{\G}(b))\in\GP(\mathbf{KB}(\G))^{(2)}$.
+
+The inclusion $\kappa_{\G}(a)\cdot \kappa_{\G}(b)\subseteq\kappa_{\G}(ab)$ is also clear from the argument above, so the fact that both $\kappa_{\G}(a)\cdot\kappa_{\G}(b)$ and $\kappa_{\G}(ab)$ are ultrafilters on $\mathbf{KB}(\G)$ implies that $\kappa_{\G}(a)\cdot\kappa_{\G}(b)=\kappa_{\G}(ab)$.\qedhere
+\end{proof}
+
+The only part that is left is to define the appropriate morphisms of Boolean inverse semigroups and ample Hausdorff groupoids.
+
+\begin{definition}\index{Morphism (of semigroups)!of Boolean inverse semigroups}\label{definitionmorphismofbooleaninversesemigroups}
+A \emph{morphism of Boolean inverse semigroups} is an inverse semigroup morphism $\theta:S\to T$ which is both a $\land$ and a $\lor$-morphism, and which satisfies $\theta(0)=0$. We say that $\theta$ is \emph{proper} if for all $t\in T$, there are $t_1,\ldots,t_n\in T$ and $s_1,\ldots,s_n\in S$ such that
+\[t=\bigvee_{i=1}^n t_i\qquad\text{and}\qquad t_i\leq\theta(s_i)\quad\text{for all }i.\]
+(Note that semigroup isomorphisms of Boolean inverse semigroups are proper morphisms of Boolean inverse semigroups.)
+\end{definition}
+
+\begin{remark}
+Every morphism of Boolean inverse semigroups $\theta:S\to T$ preserves relative complements, since if $s,t\in S$ then
+\[\theta(s)\leq\theta(t\lor(s\setminus t))=\theta(t)\lor\theta(s\setminus t)\]
+and
+\[\theta(t)\land\theta(s\setminus t)\theta(t\land(s\setminus t))=\theta(0)=0\]
+and this mean precisely that $\theta(s\setminus t)=\theta(s)\setminus\theta(t)$.
+\end{remark}
+
+\begin{example}
+A morphism of Boolean inverse \emph{monoids} $\theta:S\to T$ is proper if and only if $\theta(1)=1$.
+\end{example}
+\begin{definition}
+A groupoid morphism $\phi:\G\to\H$ is called
+\begin{enumerate}
+\item \emph{star-injective} if $\mathfrak{s}(a)=\mathfrak{s}(b)$ and $\phi(a)=\phi(b)$ implies $a=b$;\index{Morphism (of groupoids)!star-injective}
+\item \emph{star-surjective} if whenever $\mathfrak{s}(h)=\phi(x)$ where $x\in\G[0]$, there is $a\in\G$ with $\mathfrak{s}(a)=x$ and $\phi(a)=h$.\index{Morphism (of groupoids)!star-surjective}
+\item a \emph{covering} if it is both star-injective and surjective.\index{Morphism (of groupoids)!Covering}
+\end{enumerate}
+(Note that groupoid isomorphisms are coverings.)
+\end{definition}
+ 
+Recall that a map $\phi:X\to Y$ between topological spaces $X$ and $Y$ is \emph{proper} if whenever a subset $K\subseteq Y$ is compact, the preimage $\phi^{-1}(K)\subseteq X$ is compact as well.
+ 
+\begin{proposition}[{\cite[Propositions 2.20 and 2.22]{MR2827424}}]
+\begin{enumerate}
+\item[(a)] If $\phi:\G\to\H$ is a proper continuous covering morphism of ample Hausdorff groupoids, then
+\[\mathbf{KB}(\phi):\mathbf{KB}(\H)\to\mathbf{KB}(\G),\qquad A\mapsto\phi^{-1}(A),\]
+ is a proper morphism of Boolean inverse semigroups.
+\item[(b)] If $\theta:S\to T$ is a proper morphism of Boolean inverse semigroups, then
+\[\GP(\theta):\GP(T)\to\GP(S),\qquad F\mapsto\theta^{-1}(F),\]
+ is a proper continuous covering morphism of topological groupoids.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[(a)] If $A\in\KB(\H)$ then $\phi^{-1}(A)$ is open, since $\phi$ is continuous, and compact, since $\phi$ is proper, so in order to prove that $\KB(\phi)$ is well-defined it remains to prove that $\phi^{-1}(A)$ is a bisection.
+ 
+Suppose $g,h\in\phi^{-1}(A)$ with $\mathfrak{s}(g)=\mathfrak{s}(h)$. Then $\phi(g),\phi(h)\in A$, and
+\[\mathfrak{s}(\phi(g))=\phi(\mathfrak{s}(g))=\phi(\mathfrak{s}(h))=\mathfrak{s}(\phi(h)),\]
+so $\phi(g)=\phi(h)$ because $A$ is a bisection, and then $g=h$ because $\phi$ is star-injective. This prove that the source map is injective on $A$, and the range map is dealt with similarly, therefore $\phi^{-1}(A)\in \KB(\G)$.
+
+To prove that $\mathbf{KB}(\phi)$ is a morphism of inverse semigroups, let $A,B\in\mathbf{KB}(\H)$. Suppose $g\in\phi^{-1}(AB)$, so $\phi(g)\in AB$ and we can write $\phi(g)=ab$ for certain $a\in A$ and $b\in B$. Since $\phi$ is star-surjective, we have $b=\phi(h)$ for some $h\in\G$ with $\mathfrak{s}(h)=\mathfrak{s}(g)$, and so the product $gh^{-1}$ is well-defined and $a=\phi(gh^{-1})$. This proves that $g=(gh^{-1})h$, where $gh^{-1}\in\phi^{-1}(A)$ and $h\in\phi^{-1}(B)$. We conclude that $\phi^{-1}(AB)\subseteq\phi^{-1}(A)\phi^{-1}(B)$. The converse inclusion is trivial because $\phi$ is a morphism of groupoids. Moreover, $\mathbf{KB}(\phi)$ preserves empty sets (the zeroes of the semigroups), unions and intersections and therefore it is a Boolean inverse semigroup morphism.
+
+It remains only to check that $\KB(\phi)$ is proper: If $C\in\mathbf{KB}(\G)$, then $\phi(C)$ is a compact subset of $\H$, so we can find finitely many $A_1,\ldots,A_n\in\mathbf{KB}(\mathcal{H})$ such that $\phi(C)\subseteq\bigcup_{i=1}^n A_i$, that is, $C\subseteq\bigcup_{i=1}^n\phi^{-1}(A_i)$. We already know that $\phi^{-1}(A_i)\in\mathbf{KB}(\G)$, so taking $C_i=C\cap\phi^{-1}(A_i)\in\mathbf{KB}(\G)$ we conclude that
+\[C=\bigcup_{i=1}^n C_i\qquad\text{and}\qquad C_i\subseteq\phi^{-1}(A_i)=\mathbf{KB}(\phi)(A_i)\qquad\text{ for all }i\]
+which means that $\mathbf{KB}(\phi)$ is proper.
+%%%%%%%%%%
+ \item[(b)] To prove that $\GP(\theta)$ is well-defined, suppose that $F$ is a prime filter in $T$. First of all, let us prove that $\theta^{-1}(F)$ is nonempty. Letting $t\in F$ be arbitrary, choose $t_1,\ldots,t_n\in T$ and $s_1,\ldots,s_n\in S$ with
+ \[t=\bigvee_{i=1}^n t_i\qquad\text{and}\qquad t_i\leq\theta(s_i)\qquad\text{for all }i\]
+ which is possible because $\theta$ is proper. For some $i$ we have $t_i\in F$ and so $\theta(s_i)\in F$, that is, $s_i\in\theta^{-1}(F)$, which is therefore nonempty. The properties of Boolean inverse semigroup morphisms then imply, quite readily, that $\theta^{-1}(F)$ is a prime filter in $S$ whenever $F$ is a prime filter in $T$, so $\GP(\theta)$ is well-defined. Moreover, for all $s\in S$,
+\begin{align*}\GP(\theta)^{-1}([s])&=\left\{F\in\GP(T):\theta^{-1}(F)\in[s]\right\}\\
+&=\left\{F\in\GP(T):s\in\theta^{-1}(F)\right\}\\
+&=\left\{F\in\GP(T):\theta(s)\in F\right\}=[\theta(s)],
+\end{align*}
+so the preimage of basic compact-open sets of $\GP(S)$ is open in $\GP(T)$ and $\GP(\theta)$ is continuous and proper.
+ 
+%If $K\subseteq\GP(S)$ is compact then we can find $s_1,\ldots,s_n\in S$ with $K\subseteq\bigcup_{i=1}^n[s_i]$, so $\GP(\theta)^{-1}(K)$ is a closed subset of the compact set $\bigcup_{i=1}^n[\theta(s_i)]$, so it is compact and therefore $\GP(\theta)$ is also proper.
+ 
+Suppose now that $(F,G)\in\GP(T)^{(2)}$, and let us prove that $(\theta^{-1}(F),\theta^{-1}(G))\in\GP(S)^{(2)}$, or equivalently that whenever $t\in\theta^{-1}(F)$ and $r\in\theta^{-1}(G)$, we have $tr\neq 0$. Indeed, $\theta(tr)=\theta(t)\theta(r)\in FG$, which does not contain $0$, and so $tr\neq 0$ because $\theta(0)=0$. The inclusion $\theta^{-1}(F)\cdot\theta^{-1}(G)\subseteq\theta^{-1}(F\cdot G)$ is then clear, and since both sides are ultrafilters we conclude that $\theta^{-1}(F)\cdot \theta^{-1}(G)=\theta^{-1}(F\cdot G)$, so $\GP(\theta)$ is a groupoid morphism.
+
+In order to prove that $\GP(\phi)$ is star-injective, suppose $F,G\in\GP(T)$ are such that $\so(F)=\so(G)$ and $\theta^{-1}(F)=\theta^{-1}(G)$. Given an arbitrary element $t\in F$, properness of $\theta$ again yields $t_i\leq t$ and $s_i\in S$ such that $t_i\leq \theta(s_i)$, so $s_i\in\theta^{-1}(F)=\theta^{-1}(G)$, so $\theta(s_i)\in G\cap F$. Letting $z=\theta(s_i)\land t$, we have $z^*z\in\so(F)=\so(\G)$, so
+\[z=\theta(s_i)z^*z\in F\cap G\]
+so $t\geq z\in G$. Therefore $F\subseteq G$ and maximality implies $F=G$.
+
+It remains only to prove that $\GP(\phi)$ is star-surjective. Suppose $E\in\GP(T)^{(0)}$, $H\in\GP(S)$ and $\so(H)=\theta^{-1}(E)$. If $h\in H$ and $e\in E$, then $\theta(h)^*\theta(h)=\theta(h^*h)\sin\theta(\so(H))=E$, which implies $\theta(h)^*\theta(h)e\neq 0$ and in particular $\theta(h)e\neq 0$. Letting
+\[H'=\left\{u\in T:u\geq\theta(h)\text{ for some }h\in H\right\}\]
+we obtain, by Proposition \ref{propositionproductofultrafilters}(e), that $H'\cdot E\in\GP(T)$. Since $\so(H'\cdot E)\supseteq\so(E)=E$, then maximality of $E$ implies $\so(H'\cdot E)=E$. Again using $\so(H)=\theta^{-1}(E)$ and maximality of $H$ we obtain $H=\theta^{-1}(H'\cdot E)$.\qedhere
+\end{enumerate}
+\end{proof}
+ 
+Finally, it is straightforward to verify that covering groupoid morphisms are closed under composition, and similarly for proper morphisms of Boolean inverse semigroups, so we define $\mathrm{\bf Amp_H}$ as the category of ample Hausdorff groupoids and proper continuous covering morphisms, and $\mathrm{\bf Inv_{Bo}}$ the category of Boolean inverse semigroups and their proper morphisms.
+ 
+\begin{theorem}[{\cite[Theorem 3.25]{MR3077869}}]\label{theoremnoncommutativestoneduality}
+$\mathrm{\bf Amp_H}$ and $\mathrm{\bf Inv_{Bo}}$ are dually equivalent.
+\end{theorem}
+\begin{proof}
+This is done by noticing that the functors $\mathbf{KB}:\mathrm{\bf Amp_H}\to\mathrm{\bf Inv_{Bo}}$ and $\GP:\mathrm{\bf Inv_{Bo}}\to\mathrm{\bf Amp_H}$ along with the natural isomorphisms $\kappa$ and $\zeta$ of Proposition~\ref{propositionnaturaltransformationsncsd} describe a duality, which is an easy calculation: For example, if $\phi:\G\to\G$ is a proper continuous morphism of topological groupoids and $a\in\G$ then
+\begin{align*}
+\GP(\mathbf{KB}(\phi))(\kappa_{\G}(a))&=\mathbf{KB}(\phi)^{-1}(\kappa_{\G}(a))\\
+&=\left\{A\in\mathbf{KB}(\H):\mathbf{KB}(\phi)(A)\in\kappa_{\G}(a)\right\}\\
+&=\left\{A\in\mathbf{KB}(\H):\phi^{-1}(A)\in\kappa_{\G}(a)\right\}\\
+&=\left\{A\in\mathbf{KB}(\H):a\in\phi^{-1}(A)\right\}\\
+&=\left\{A\in\mathbf{KB}(\H):\phi(a)\in A\right\}=\kappa_{\H}(\phi(g))
+\end{align*}
+which means that the diagram
+\[\begin{tikzcd}[column sep=large]
+\G\arrow[r,"\phi"]\arrow[d,"\kappa_{\G}",swap]&\H\arrow[d,"\kappa_{\H}"]\\
+\GP(\mathbf{KB}(\G))\arrow[r,"\GP(\mathbf{KB}(\phi))"]&\GP(\mathbf{KB}(\H))
+\end{tikzcd}\]
+commutes, and this proves that $\kappa$ is a natural isomorphism. $\zeta$ is dealt with similarly.\qedhere
+\end{proof}
+
+%The next problem one usually deals with is to characterize which lattices are isomorphic to lattices of open sets of some sober topological space, and these are 
+%\begin{definition}
+%A \emph{frame} is a lattice $L$ satisfying:
+%\begin{enumerate}
+%5\item $L$ is \emph{infinitely distributive}: For every $S\subseteq L$, the supremum $\bigvee S$ exists, and for all $a\in L$,
+%\[a\bigvee S=\bigvee\left\{as:s\in S\right\}\]
+%\item
+%\end{enumerate}
+%\end{definition}
+%
+%A filter 
+%\begin{definition}
+%A.................... consists of an inverse semigroup together with an auxiliary relation $\prec$ satisfying:
+%\begin{enumerate}
+%\item 
+%\item 
+%\item 
+%\item 
+%\end{enumerate}
+%\end{definition}
+%
+%Classical Stone Duality states that the category unital Boolean algebras and their morphisms is dual to the category of Stone spaces (compact, zero-dimensional Hausdorff spaces) and continuous functions. 
+%
+%In this section we will describe two results which extend Stone duality to more general settings. One could ask for weaker conditions on the topological spaces to be considered, and there are two main directions which have been investigated:
+%\begin{itemize}
+%\item Every Stone space is an ample Hausdorff groupoid, and we can extend classical Stone duality to a duality between ample Hausdorff groupoids and Boolean inverse semigroups.
+%\item On the other hand, we could also try to consider possibly non-zero dimensional spaces, in which case the algebraic counterpart, which are called \emph{basic lattices}, consists of lattices endowed with an extra transitive relation.
+%\end{itemize}
+%
+%Of course, we could ask whether these two dualities are compatible, that is, if the class of Hausdorff étale groupoids is dual to a certain class of semigroups endowed with an extra transitive relation, in a way that extends both of these results.
+%
+%The goal for this section is to briefly sketch the proofs of these results. One of them will be used in section (?), where we classify all groupoids which are measured semigroups of 
+%
+%Let $\mathcal{A}\subseteq B(G)$ be a subset of open bisection of $G$ with compact closure which forms a basis of $G$. Let us define the following ternary relation $\cal{P}$ on $\mathcal{A}$:
+%\[(\alpha,\beta,\gamma)\in\cal{P}\iff\alpha\beta\subseteq\gamma\]
+%
+%Given $F,G\in\widehat{A}$, define the product
+%\[FG=\left\{\gamma\in\mathcal{A}:\exists(\alpha,\beta)\in F\times G,(\alpha,\beta,\gamma)\in\cal{P}\right\}\]
+%
+%\begin{proposition}
+%$FG$ is a
+%\end{proposition}
+%
+%\begin{example}
+%Let $\mathcal{B}$ be a basis of relatively compact subsets of a locally compact Hausdorff space $X$. Let us show that $\cal{P}$ is completely determined in terms of $\Subset$:
+%\[(A,B,C)\in\cal{P}\iff A\cap B\subseteq C\iff\forall D(D\subseteq A\text{ and }D\subseteq B\text{ implies }D\subseteq C)\]
+%so we're done, since $\subseteq$ is determined in terms of $\Subset$.
+%\end{example}
+%
+%\begin{proposition}
+%Let $G$ be a locally compact étale groupoid and $\mathcal{A}\subseteq B(G)$ a subset of open bisections of $G$ with compact closure. 
+%\end{proposition}
+%
+%\begin{definition}
+%An inverse semigroup is \emph{distributive} if whenever $F$ is a finite set of compatible elements of $S$, the supremum $\bigvee F$ exists in $S$ and for all $t\in S$,
+%\[t\left(\bigvee F\right)=\bigvee_{s\in F}ts,\qquad\text{and}\qquad\left(\bigvee F\right)t=\bigvee_{s\in F}st\]
+%\end{definition}
+%
+%\begin{definition}
+%A \emph{basic semigroup} is a pair $(S,\prec)$, where $S$ is a $\wedge$-semigroup and $\prec$ is a transitive binary relation on $S$ satisfying
+%\begin{enumerate}
+%\item $\left(s_1\prec s_2\text{ and }t_1\prec t_2\right)\Rightarrow s_1t_1\prec s_2t_2$;
+%\item $s\prec t_1,t_2\Rightarrow\exists z(s\prec z\prec t_1,t_2)$
+%\item $s\leq t\iff\forall z(z\prec s\Rightarrow z\prec t)$
+%\end{enumerate}
+%\end{definition}
+%
+%\begin{proposition}
+%If $\G$ is an étale groupoid then $(\G[0],\Subset)$ is a basic semigroup.
+%\end{proposition}
+%
+%\begin{definition}
+%If $\prec$ is a transitive binary relation on a set $X$, a ($\prec$)-\emph{filter} is a subset $F\subseteq X$ satisfying:
+%\begin{enumerate}
+%\item $(x\prec y\land x\in F)\Rightarrow y\in F$;
+%\item $(x\in F\land y\in F)\Rightarrow \exists z\in F(z\prec x\land z\prec y)$;
+%\item $x\prec y\Rightarrow\exists z(x\prec z\prec y)$.
+%\end{enumerate}
+%$F$ is a \emph{proper} filter if $F\neq X$, and an \emph{ultrafilter} if it is a maximal proper filter.
+%\end{definition}
+%
+%\begin{definition}
+%Let $(S,\prec)$ be a basic semigroup. Define $\widehat{S}$ to be the set of all $\prec$-ultrafilters of $S$, and for $F,G\in\widehat{S}$,
+%\[FG=\left\{fg:f\in F,g\in G\right\}\text{ and }F\cdot G=FG^\uparrow\]
+%Set $\widehat{S}^{(2)}=\left\{(F,G):F\cdot G\neq S\right\}$.
+%\end{definition}
+%
+%\begin{lemma}
+%If $F,G,H\in\widehat{S}$, then $(F\cdot G)\cdot H=F\cdot (G\cdot H)$
+%\end{lemma}
+%\begin{proof}
+%$(F\cdot G)\cdot H=((FG)^\uparrow H)\uparrow=((FG)H)^\uparrow$, because $(A^\uparrow B)^\uparrow=AB^\uparrow$.
+%\end{proof}
+%
+%\begin{lemma}
+%If $F$ is a filter and $f,g\in F$ then $fg^*g\in F$.
+%\end{lemma}
+%\begin{proof}
+%$z\leq f,g$, so $z=zz^*z\leq fg^*g$.\qedhere
+%\end{proof}
+
+%\begin{lemma}
+%If $(F,G)\in\widehat{S}^{(2)}$ then $(F\cdot G)\cdot G^{-1}\neq S$ and $F\cdot G\cdot G^{-1}=F$.
+%\end{lemma}
+%\begin{proof}
+%We show that $F\cdot G\cdot G^{-1}\neq S$, because if $fg_1g_2^{-1}=0$ then $fg_1g_2^{-1}g_2=0$, but $fg_1g_2^*g_2\in FG$ by the previous lemma, a contradiction. Thus $F\cdot G\cdot G^{-1}$ is a proper filter, and every element of $F$ is greater than some of $F\cdot G\cdot G^{-1}$, so $F=F\cdot G\cdot G^{-1}$.
+%\end{proof}
+
+%\begin{lemma}
+%A filter $F$ is an ultrafilter if and only if it satisfies the following property:
+%\[\forall s((\forall f\in F(s\Cap f))\Rightarrow(s\in F))\]
+%\end{lemma}
+%\begin{proof}
+%If the condition is satisfied, then $F$ is an ultrafilter. This is easy.
+
+%Conversely, suppose $F$ is an ultrafilter and $s$ satisfying the condition described above. Let $P$ be the set of all $q$ such that there exists $f\in F$ with $f\wedge s\leq  q$. Then $P$ is upwards closed: For downwards directedness, suppose $t_1,t_2\in Q$, and choose $q_i\prec t_i$ and $f_i\in F$ with. Then $f_i\wedge s\prec q_i\prec t_i$, so $f_1\wedge f_2\wedge s\prec q_1\wedge q_2\prec t_1\wedge t_2$, so $q_1\wedge q_2\prec t_1$ and $t_2$. $P$ contains $F$, since if $f\in F$, choose $g\prec f$ in $F$, so $g\wedge s\leq g\prec f$. Therefore $P=F$.
+
+%Now choose any $f\in F$, and $g\prec f$ also in $F$. Then $g\wedge s\prec f\wedge s\leq s$, so $s\in P=F$.\qedhere
+%\end{proof}
+
+%\begin{theorem}
+%If $S$ is a basic semigroup then $(\widehat{S},\widehat{S}^{(2)})$ is a groupoid.
+%\end{theorem}
+%\begin{proof}
+%Suppose $(F,G)\in\widehat{S}^{(2)}$. We show that $F\cdot G\in\widehat{S}$. It is straightforward that $F\cdot G$ is a filter, so the only nontrivial part is its maximality: If $F\cdot G\subseteq H$ then $F=F\cdot G\subseteq H\cdot G^{-1}$, so $F=H\cdot G^{-1}$ and thus $F\cdot G=H\cdot G^{-1}\cdot G=H$.\qedhere
+%\end{proof}
+
+%Endow the groupoid $\widehat{S}$ with the topology with base
+%\[[s]=\left\{F\in\widehat{S}:s\in F\right\}\]
+
+%\begin{lemma}
+%$(F,G)\in \widehat{S}^{(2)}$ if and only if $s(F)^\uparrow =r(G)^\uparrow$.\qedhere
+%\end{lemma}
+%\begin{proof}
+%Suppose $(F,G)\in\widehat{S}^{(2)}$. Then $s(F)=s(FGG^{-1})\subseteq r(G)$ and vice-versa.\qedhere
+%\end{proof}
+%
+%\begin{theorem}
+%$\widehat{S}$ is a Hausdorff topological groupoid.
+%\end{theorem}
+%\begin{proof}
+%If $F\neq G$, take $f\in F\setminus G$, so that $f$ does not intersect some element of $G$. Then $F\in[f]$, $G\in[g]$ but $[f]\cap[g]=\varnothing$, so $\widehat{S}$.
+%
+%To check that $\widehat{S}$  is a topological groupoid: If $[s]$ is a basis of $FG$, then $s\in FG$, so $0\neq fg\prec s$. Then $fgg^*\in F$ (indeed, there is $f_2$ with $f_2^*f_2\leq gg^*$, so $F\ni ff_2^*f_2\leq fgg^*$) and $f^*fg\in G$. Let us show $[fgg^*][f^*fg]\subseteq[s]$. If $fgg^*\in P$ and $f^*fg\in Q$ then $fgg^*f^*fg=ff^*fgg^*g=fg\in PQ$, so $s\in PQ$.\qedhere
+%\end{proof}
+%
+%\begin{theorem}
+%The category $\GP$ of locally compact Hausdorff étale groupoids is equivalent to the category of $(\wedge,\Subset)$-semigroups.
+%\end{theorem}
+%\begin{proof}
+%To a locally compact Hausdorff étale groupoid $\mathscr{G}$ we associate the semigroup $S(G)$ of open bisections of $G$ with compact closure.
+%
+%Conversely, if $S$ is a $(\wedge,\Subset)$-semigroup, let $G$ be the
+%\end{proof}
+%\end{document}
