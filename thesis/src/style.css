@@ -99,13 +99,21 @@ padding: 10px;/* margin around <p>'s*/
 text-align: justify;
 }
 
-ol {
-  counter-reset: list;
+ol.roman {
+    counter-reset: roman;
 }
-ol > li {
-  list-style: none;
+ol.alpha {
+    counter-reset: alpha
 }
-ol > li:before {
-  content: counter(list, lower-alpha) ") ";
-  counter-increment: list;
+ol li {
+    list-style: none;
+    position: relative;
+}
+ol.roman > li:before {
+    counter-increment: roman;
+    content:"(" counter(roman, lower-roman)") ";
+}
+ol.alpha > li:before {
+    counter-increment: alpha;
+    content:"(" counter(alpha, lower-alpha)") ";
 }
