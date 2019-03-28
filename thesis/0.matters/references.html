@@ -19,7 +19,7 @@
 	
 	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
 
-	<script>
+	<style>
 		ol.listofreferences {
 			counter-reset: refnumber;
 			position:relative;
@@ -29,7 +29,7 @@
 		}
 		ol.listofreferences > li:before {
 		  counter-increment: refnumber;
-		  content: "[" counter(refnumber,arabic) "]";
+		  content: "[" counter(refnumber) "]";
 		  position: absolute;
 		  left: 0em;
 		  display: inline-block;
@@ -37,9 +37,20 @@
 		  width: 2em;
 		  font-style: normal;
 		}
-	</script>
-	
-	
+		
+		span.author {
+		font-weight: bold;
+		}
+		
+		span.title {
+		font-style: italic;
+		}
+		
+		span.mrnumber {
+		style: hidden;
+		}
+	</style>
+		
 	<title>
 		Soficity and other dynamical aspects of groupoids and inverse semigroups
 	</title>
@@ -61,9 +72,63 @@ $( "#sidebar" ).load( "../src/sidebar" );
 
 <h1>References</h1>
 
+<ol class="roman">
+	<li> um
+	<li> dois
+</ol>
+
 <ol class="listofreferences">
-	<li tag="MR1724106"> <span class="author">Alan Leonard Tuke Paterson</span>, <span class="title">Groupoids, inverse semigroups, and their operator algebras</span>. <span class="series">Progress in Mathematics, 170</span>. <span class="publisher">Birkhäuser</span>, <span class="year">1999</span>. <span class="MRnumber">MR1724106</span>. <span class="doi">10.1007/978-1-4612-1774-9</span>
-	<li> segundo
+<!--
+	<li id="" class="book">
+		<span class="author"></span>,
+		<span class="title"></span>.
+		<span class="series"></span>,
+		<span class="volume"></span>.
+		<span class="publisher"></span>,
+		<span class="year"></span>.
+		<span class="mrnumber"><a href="mathscinet.ams.org/mathscinet-getitem?mr="></a></span>,
+		<span class="doi">DOI: <a href="https://doi.org/"></a></span>.
+		
+		Pra artigos, toma um pouco de cuidado com volume(number)
+		
+	<li id="" class="article">
+		<span class="author"></span>,
+		<span class="title"></span>.
+		<span class="journal"></span>,
+		<span class="volume"></span>(<span class="number"></span>),
+		<span class="year"></span>.
+		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr="></a></span>,
+		<span class="doi">DOI: <a href="https://doi.org/"></a></span>.
+-->
+	<li id="" class="article">
+		<span class="author">Fernando Abadie</span>,
+		<span class="title">On partial actions and groupoids</span>.
+		<span class="journal">Proceedings of the American Mathematical Society</span>,
+		<span class="volume">132</span>(<span class="number">4</span>),
+		<span class="year">2004</span>.
+		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=2045419">2045419</a></span>,
+		<span class="doi">DOI: <a href="https://doi.org/">10.1090/S0002-9939-03-07300-3</a></span>.
+		
+	<li id="" class="article">
+		<span class="author">Miklós Abért and Benjamin Weiss</span>,
+		<span class="title">Bernoulli actions are weakly contained in any free action</span>.
+		<span class="journal">Ergodic Theory and Dynamical Systems</span>,
+		<span class="volume">33</span>(<span class="number">2</span>),
+		<span class="year">2013</span>.
+		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=3035287">3035287</a></span>,
+		<span class="doi">DOI: <a href="https://doi.org/10.1017/S0143385711000988">10.1017/S0143385711000988</a></span>.
+		
+		
+		
+	<li id="MR1724106" class="book">
+		<span class="author">Alan Leonard Tuke Paterson</span>,
+		<span class="title">Groupoids, inverse semigroups, and their operator algebras</span>.
+		<span class="series">Progress in Mathematics</span>,
+		<span class="volume">170</span>.
+		<span class="publisher">Birkhäuser</span>,
+		<span class="year">1999</span>.
+		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=1724106">1724106</a></span>,
+		<span class="doi">DOI: <a href="https://doi.org/10.1007/978-1-4612-1774-9">10.1007/978-1-4612-1774-9</a></span>
 </ol>
 
 </div>
