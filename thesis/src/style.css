@@ -150,3 +150,30 @@ ol.roman > li:before {
   width: 2em;
   font-style: normal;
 }
+
+/*
+Now we add tooltips. These are the texts which will appear on the
+right-hand side of the screen when the mouse hovers over some
+reference and/or citation
+*/
+
+.hover {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.hover .hovertext {
+  visibility: hidden;
+  width: 20%;
+  background-color: gray;
+  color: #fff;
+  border-radius: 60px;
+  padding: 5px 0;
+  margin-left: 80%;
+  z-index: 1;
+}
+
+.hover:hover .hovertext {
+  visibility: visible;
+}
