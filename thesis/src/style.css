@@ -116,6 +116,7 @@ text-align: justify;
 
 div.rightbar div.reference{
 	display: none;
+	overflow:auto;
 }
 
 /*
