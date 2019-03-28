@@ -28,7 +28,7 @@
 <div style="display: none" id="latexcommands"></div>
 <script>
 $( "#latexcommands" ).load( "../src/latexcommands" );
-</script>
+	</script>
 
 <div id="sidebar" class="sidebar"></div>
 
@@ -36,18 +36,32 @@ $( "#latexcommands" ).load( "../src/latexcommands" );
 $( "#sidebar" ).load( "../src/sidebar" );
 </script>
 
+<div class="rightbar">
+<div class="reference" style="display:none" id="refMR1724106"></div>
+	<script>
+	$( "#refMR1724106" ).load( "../0.matters/references.html #MR1724106" );
+	</script>
+</div>
+
 <div class="main">
 
 <h2 class="section">1.1. Groupoids</h2>
 
 <h3 class="subsection">1.1.1. Groupoids as directed graphs</h3>
 
+
 <div class="definition"><p>
-	<span class="envidentifier">Definition 1.1.1. </span>
-	<span class="hover"><a href="../0.matters/references.html#MR1724106">[135]</a>
-		<span class="hovertext">mostra</span>
+	<span class="envidentifier">Definition 1.1.1.</span>
+	<span class="tooltip">
+		<a href="../0.matters/references.html#MR1724106">[135]</a>
+		<span class="tooltiptext">mostraaa</span>
 	</span>
-A <em>directed graph</em> is a tuple $\mathcal{G}=(\mathcal{G}^{(0)},\mathcal{G}^{(1)},\so,\ra)$, where $\mathcal{G}^{(0)}$ is a set whose elements are called <em>vertices</em>, $\mathcal{G}^{(1)}$ is a set whose elements are called <em>edges</em> or <em>arrows</em>, and $\mathfrak{s}$ and $\mathfrak{r}$ are maps from $\mathcal{G}^{(1)}$ to $\mathcal{G}^{(0)}$, called respectively the <em>source</em> and <em>range</em> maps.</p>
+	
+	<button type="button" class="btn" data-target="refMR1724106">Btn1</button>
+	
+	
+	
+	A <em>directed graph</em> is a tuple $\mathcal{G}=(\mathcal{G}^{(0)},\mathcal{G}^{(1)},\so,\ra)$, where $\mathcal{G}^{(0)}$ is a set whose elements are called <em>vertices</em>, $\mathcal{G}^{(1)}$ is a set whose elements are called <em>edges</em> or <em>arrows</em>, and $\mathfrak{s}$ and $\mathfrak{r}$ are maps from $\mathcal{G}^{(1)}$ to $\mathcal{G}^{(0)}$, called respectively the <em>source</em> and <em>range</em> maps.</p>
 </div>
 	
 <p>
@@ -394,5 +408,12 @@ Then the map $(G\times X)\ltimes X\to G\times(X^2)$, $((g,x),y)\mapsto(g,(xy,y))
 \end{proof}
 
 </div>
+
+$('.btn').click(function() {
+	$('#content div').hide();
+    var target = '#' + $(this).data('target');
+    $(target).show();
+})
+
 </body>
 </html>
