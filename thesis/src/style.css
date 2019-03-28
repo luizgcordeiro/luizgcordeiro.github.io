@@ -107,7 +107,7 @@ It will consist of a bunch of divs with the necessary references.
 div.rightbar{
 position: fixed;
 right:0%;
-width: 18%;/* make sure this is compatible with the width of #sidebar*/
+width: 17%;/* make sure this is compatible with the width of #sidebar*/
 padding: 10px;/* margin around <p>'s*/
 text-align: justify;
 }
