@@ -124,6 +124,29 @@ $( "#sidebar" ).load( "../src/sidebar" );
 </script>
 
 <!-------------------------------------------------------
+RIGHT BAR
+To make a reference to "ID", use
+	<a class="makeref" data-target="refID" href="referencia">"Nome apropriado"</a>
+in the main text, and add
+
+<div class="reference" id="refID"></div>
+	<script>
+	$( "#refID" ).load( "../0.matters/references.html #ID" );
+	</script>
+	
+(or whatever appropriate) to rightbar
+
+!!!Important: for references in the same page, instead copy the div to right bar
+--------------------------------------------------------->
+
+<div class="rightbar">
+</div>
+
+<!--
+Upper menu to make
+-->
+
+<!-------------------------------------------------------
 Now the main part starts
 --------------------------------------------------------->
 
@@ -154,29 +177,6 @@ University of Ottawa
 &copyLuiz Gustavo Cordeiro, Ottawa, Canada, 2018.
 </p>
 </div>
-
-<!-------------------------------------------------------
-RIGHT BAR
-To make a reference to "ID", use
-	<a class="makeref" data-target="refID" href="referencia">"Nome apropriado"</a>
-in the main text, and add
-
-<div class="reference" id="refID"></div>
-	<script>
-	$( "#refID" ).load( "../0.matters/references.html #ID" );
-	</script>
-	
-(or whatever appropriate) to rightbar
-
-!!!Important: for references in the same page, instead copy the div to right bar
---------------------------------------------------------->
-
-<div class="rightbar">
-</div>
-
-<!--
-Upper menu to make
--->
 
 </body>
 
