@@ -14,23 +14,6 @@ body contains content
 	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
 
 <!--
-Now we define "environments" and some
-codes that should run when some tags are called.
-
-These are done with CSS. Like
-
-tag.class { properties}
-
-can also use "outer tag"."outer class" "inside tag"."inside class" anc thind like this
-
-# (hash) goes for id
-
-div creates new boxes
--->
-
-	<link rel="stylesheet" type="text/css" href="../src/style.css">
-
-<!--
 We use jquery (https://jquery.com) to load content and references from other places.
 
 More precisely, we use the ".load()" function, which is implemented by
@@ -72,11 +55,28 @@ Below are scripts for MathJax
 	</title>
 
 <!--
+Now we define "environments" and some
+codes that should run when some tags are called.
+
+These are done with CSS. Like
+
+tag.class { properties}
+
+can also use "outer tag"."outer class" "inside tag"."inside class" anc thind like this
+
+# (hash) goes for id
+
+div creates new boxes
+-->
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+<!--
 There is, however, one problem: Counters have to be added individually!
 To see this, suppose that page "a" is section 3.1, and we want to reference
 Example 3.1.4 (or whatever that is).
 
-The couter for the last digit (in this case, 4) needs to be computed inside "a".
+The counter for the last digit (in this case, 4) needs to be computed inside "a".
 
 So if we want to reference 3.1.4 in "b", we would need to run all the code of "a"
 (or at least pass through 3.1.1, 3.1.2 and 3.1.3) to have the correct number.
@@ -123,9 +123,30 @@ Side bar
 $( "#sidebar" ).load( "../src/sidebar" );
 </script>
 
+<!-------------------------------------------------------
+RIGHT BAR
+To make a reference to "ID", use
+	<a class="makeref" data-target="refID" href="referencia">"Nome apropriado"</a>
+in the main text, and add
+
+<div class="reference" id="refID"></div>
+	<script>
+	$( "#refID" ).load( "../0.matters/references.html #ID" );
+	</script>
+	
+(or whatever appropriate) to rightbar
+--------------------------------------------------------->
+
+<div class="rightbar">
+</div>
+
 <!--
-Upper menu
+Upper menu to make
 -->
+
+<!-------------------------------------------------------
+Now the main part starts
+--------------------------------------------------------->
 
 <div class="main">
 
@@ -155,5 +176,13 @@ University of Ottawa
 </p>
 </div>
 </body>
+
+<script>
+$('.makeref').hover(function() {
+	$('.rightbar div').hide();
+    var target = '#' + $(this).data('target');
+    $(target).show();
+})
+</script>
 
 </html>

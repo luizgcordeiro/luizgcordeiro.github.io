@@ -4,7 +4,6 @@
 
 	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
 
-	<link rel="stylesheet" type="text/css" href="../src/style.css">
 	<script src="../../jquery-3.3.1.min.js"></script> 
 	<script type="text/x-mathjax-config">
 		MathJax.Hub.Config({
@@ -18,6 +17,8 @@
 	</script>
 	
 	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
 
 	<title>
 		Soficity and other dynamical aspects of groupoids and inverse semigroups
@@ -53,4 +54,13 @@ We start by introducing groupoids in a graph-theoretical fashion, a manner simil
 </p>
 </div>
 </body>
+
+<script>
+$('.makeref').click(function() {
+	$('.rightbar div').hide();
+    var target = '#' + $(this).data('target');
+    $(target).show();
+})
+</script>
+
 </html>

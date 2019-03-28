@@ -5,7 +5,6 @@
 <meta content="charset=utf-8">
 	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
 
-	<link rel="stylesheet" type="text/css" href="../src/style.css">
 	<script src="../../jquery-3.3.1.min.js"></script> 
 	<script type="text/x-mathjax-config">
 		MathJax.Hub.Config({
@@ -19,6 +18,8 @@
 	</script>
 	
 	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
 
 	<title>
 		Soficity and other dynamical aspects of groupoids and inverse semigroups
@@ -37,6 +38,14 @@ $( "#latexcommands" ).load( "../src/latexcommands" );
 $( "#sidebar" ).load( "../src/sidebar" );
 </script>
 
+<div class="rightbar">
+<div class="reference" id="refequationprefaceP1"></div>
+	<script>
+	$( "#refequationprefaceP1" ).load( "preface.html#equationprefaceP1" );
+	</script>
+
+</div>
+
 <div class="main">
 
 <h2>Preface</h2>
@@ -52,7 +61,7 @@ always has a unique solution $y^u$ defined on some maximal interval around $0$. 
 </p>
 
 <p>
-Given $t\in\mathbb{R}$, the equation $\theta_t(u)=Y(u,t)=y^u(t)$ defines a diffeomorphism $\theta_t:U_t\to V_t$ between open (possibly empty) subsets of $\Omega$, and uniqueness of the solutions of <a href="#equationprefaceP1">(P1)</a> implies that
+Given $t\in\mathbb{R}$, the equation $\theta_t(u)=Y(u,t)=y^u(t)$ defines a diffeomorphism $\theta_t:U_t\to V_t$ between open (possibly empty) subsets of $\Omega$, and uniqueness of the solutions of <a class="makeref" data-target="refequationprefaceP1" href="#equationprefaceP1">(P1)</a> implies that
 <div class="equation" id="equationP2preface">
 	\[
 	\theta_s(\theta_t(u))=\theta_{s+t}(u)\tag{P2}
@@ -91,4 +100,13 @@ In the last chapter, which is mostly based on joint work with Viviane Beuter, we
 
 </div>
 </body>
+
+<script>
+$('.makeref').hover(function() {
+	$('.rightbar div').hide();
+    var target = '#' + $(this).data('target');
+    $(target).show();
+})
+</script>
+
 </html>

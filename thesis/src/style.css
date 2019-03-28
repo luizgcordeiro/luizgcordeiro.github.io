@@ -1,3 +1,7 @@
+body {
+	background-color: #E1F9F6;
+}
+
 .envidentifier {
 		font-weight: bold;
 }
@@ -63,27 +67,25 @@ float: left;
 width: 20%;/* make sure this is compatible with the margin-left at div.main*/
 }
 
+div.sidebar h1.sidebar-title {
+background-color: #46CFA3;
+display: block; /*block occupies an entire line*/
+font-size:180%;
+margin-bottom: 0px;
+margin-top: 0px;
+}
+
 div.sidebar h1 {
-background-color: #A6F9DD;
+background-color: #4BE3B2;
 font-weight: bold;
 display: block;
 font-size: 100%;
 }
 
-/*block occupies an entire line*/
-
 div.sidebar h2 {
-background-color: #C4FCF2;
+background-color: #82F0CC;
 display: block;
 font-size:90%;
-margin-bottom: 0px;
-margin-top: 0px;
-}
-
-div.sidebar h1.sidebar-title {
-background-color: #AAD13E;
-display: block;
-font-size:180%;
 margin-bottom: 0px;
 margin-top: 0px;
 }
@@ -112,10 +114,21 @@ padding: 10px;/* margin around <p>'s*/
 text-align: justify;
 }
 
-
 div.rightbar div.reference{
 	display: none;
 }
+
+/*
+Buttons load content to the right bar. Let's make them look nices
+*/
+
+button.makeref {
+border: none;
+background-color: #C6ECE2;
+border: 1px dotted blue;
+padding: 2px;
+}
+
 /*
 Some useful commands
 */
@@ -195,17 +208,4 @@ reference and/or citation
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
-}
-
-.dan-profile-picture {
-    width:40px;
-    height:40px;
-    border:1px solid red;
-    position:in-line;
-}
-.dan-profile {
-    display:none;
-    width:20%;
-    height:40px;
-    border:1px solid black;
 }

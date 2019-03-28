@@ -4,7 +4,6 @@
 
 	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
 
-	<link rel="stylesheet" type="text/css" href="../src/style.css">
 	<script src="../../jquery-3.3.1.min.js"></script> 
 	<script type="text/x-mathjax-config">
 		MathJax.Hub.Config({
@@ -19,6 +18,8 @@
 	
 	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
 		
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+	
 	<title>
 		Soficity and other dynamical aspects of groupoids and inverse semigroups
 	</title>
@@ -72,7 +73,7 @@ $( "#sidebar" ).load( "../src/sidebar" );
 		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=2045419">2045419</a></span>,
 		<span class="doi">DOI: <a href="https://doi.org/">10.1090/S0002-9939-03-07300-3</a></span>.
 		
-	<li id="" class="article">
+	<li id="MR3035287" class="article">
 		<span class="author">Miklós Abért and Benjamin Weiss</span>,
 		<span class="title">Bernoulli actions are weakly contained in any free action</span>.
 		<span class="journal">Ergodic Theory and Dynamical Systems</span>,
@@ -96,4 +97,13 @@ $( "#sidebar" ).load( "../src/sidebar" );
 
 </div>
 </body>
+
+<script>
+$('.makeref').hover(function() {
+	$('.rightbar div').hide();
+    var target = '#' + $(this).data('target');
+    $(target).show();
+})
+</script>
+
 </html>
