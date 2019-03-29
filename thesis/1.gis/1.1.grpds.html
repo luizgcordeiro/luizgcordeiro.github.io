@@ -51,6 +51,9 @@ RIGHT BAR
 	\]
 </div>
 
+	<div class="reference" id="refdefinitionsmallcategory.identities">
+	<li> For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.</li>
+	</div>
 </div>
 
 <!-------------------------------------------------------
@@ -150,20 +153,29 @@ In order to obtain a suitable notion for the composition of arrows, we need to i
 <p><span class="envidentifier">Definition 1.1.6.</span> A <em>small category</em> consists of a directed graph $\mathcal{C}=(\mathcal{C}^{(0)},\mathcal{C}^{(1)},\mathfrak{s},\mathfrak{r})$ together with the set $\mathcal{C}^{(2)}=\left\{(a,b)\in\mathcal{C}^{(1)}\times\mathcal{C}^{(1)}:\mathfrak{s}(a)=\mathfrak{r}(b)\right\}$ and a <em>composition</em> map $\mathcal{C}^{(2)}\to \mathcal{C}^{(1)}$, $(a,b)\mapsto ab$, satisfying the following properties:
 <ol class="roman">
 	<li> If $(a,b)$ and $(b,c)\in\mathcal{C}^{(2)}$, then $(a,bc),(ab,c)\in\mathcal{C}^{(2)}$ and $a(bc)=(ab)c$.</li>
-	<li> For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.</li>
+	<li id="definitionsmallcategory.identities"> For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.</li>
 </ol>
 The set $\mathcal{C}^{(2)}$ is called the set of <em>composable pairs</em>.<!--\index{Composable}-->
 </p>
 </div>
 
+<p>
 General categories are defined in the same manner, however we allow $\mathcal{C}^{(0)}$ and $\mathcal{C}^{(1)}$ to be general classes instead of sets, however we will restrict our study to sets.
+</p>
 
-Note that $\mathcal{C}^{(2)}=\bigcup_{x\in\mathcal{C}^{(0)}}\mathcal{C}_x\times\mathcal{C}^x$, and so the pair $(a,b)$ of arrows in a category $\mathcal{C}$ is <em>composable</em> if they meet ``tip-to-tail'':
-\[\begin{tikzcd}[row sep=tiny]
-\underset{\so(b)}{\bullet}\arrow[r,"b"]\arrow[rr,bend right,"ab",swap]&\underset{\ra(b)=\so(a)}{\bullet}\arrow[r,"a"]&\underset{\ra(a)}{\bullet}
-\end{tikzcd}\]
+<p>
+Note that $\mathcal{C}^{(2)}=\bigcup_{x\in\mathcal{C}^{(0)}}\mathcal{C}_x\times\mathcal{C}^x$, and so the pair $(a,b)$ of arrows in a category $\mathcal{C}$ is <em>composable</em> if they meet "tip-to-tail":
+<div class="equation">\[
+\xymatrix{
+\underset{\so(b)}{\bullet}\ar[r]^b\ar@/_4ex/[rr]_{ab}
+	&{\underset{\ra(b)=\so(a)}{\bullet}}\ar[r]^b
+		&{\underset{\ra(a)}{\bullet}}
+}
+\]</div>
+</p>
 
-The arrow $\operatorname{id}_x\in\mathcal{C}_x^x$ in item (ii) is unique for each $x\in\mathcal{C}^{(0)}$, and it is called the <em>unit</em> at $x$. It is customary to identify each $x\in\mathcal{C}^{(0)}$ with its respective unit, thus viewing $\mathcal{C}^{(0)}$ as a subset of $\mathcal{C}^{(1)}$. This allows us, moreover, to identify a category with its set of arrows.
+<p>
+The arrow $\operatorname{id}_x\in\mathcal{C}_x^x$ in item <a class="makeref" data-target="refdefinitionsmallcategory.identities" href="#definitionsmallcategory.identities">(ii)</a> is unique for each $x\in\mathcal{C}^{(0)}$, and it is called the <em>unit</em> at $x$. It is customary to identify each $x\in\mathcal{C}^{(0)}$ with its respective unit, thus viewing $\mathcal{C}^{(0)}$ as a subset of $\mathcal{C}^{(1)}$. This allows us, moreover, to identify a category with its set of arrows.
 
 Moreover, from item (i) we obtain, whenever $(a,b)\in\mathcal{C}^{(2)}$, $(ab,\id_{\so(b)})\in\mathcal{C}^{(2)}$, and so $\so(ab)=\ra(\id_{\so(b)})=\so(b)$ and similarly $\ra(ab)=\ra(a)$.
 
@@ -390,7 +402,7 @@ Every groupoid $\mathcal{G}$ is a coproduct of connected groupoids.
 Let us denote by $\operatorname{orb}(\mathcal{G})$ the collection of orbits of elements of $\mathcal{G}^{(0)}$. If $A\in\operatorname{orb}(\mathcal{G})$ then the set $\mathcal{G}_A^A:=\so^{-1}(A)\cap\ra^{-1}(A)$ is a connected subgroupoid of $\mathcal{G}$, and it should be clear that $\mathcal{G}=\sqcup_{A\in\operatorname{orb}(\mathcal{G})}\mathcal{G}_A^A$.\qedhere
 \end{proof}
 
-The next theorem shows that transformation groupoids - or groups and principal groupoids - can be seen as the ``building blocks'' for general groupoids.
+The next theorem shows that transformation groupoids - or groups and principal groupoids - can be seen as the "building blocks" for general groupoids.
 
 \begin{theorem}\label{theoremclassificationofgroupoids}
 \begin{enumerate}
