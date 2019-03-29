@@ -29,7 +29,7 @@ The beggining should be equal for all files
 </head>
 <body>
 
-<div style="display: none" id="latexcommands"></div>
+<div style="display: none" id="latexcommands" style=""></div>
 <script>
 $( "#latexcommands" ).load( "../src/latexcommands" );
 	</script>
@@ -45,14 +45,41 @@ RIGHT BAR
 -------------------------------------------------------->
 
 <div class="rightbar">
-<div class="reference" id="refequationprefaceP1">
-	\[
-	y'(t)=F(y(t)),\quad y(0)=u,\qquad(u\in\Omega)\tag{P1}
-	\]
-</div>
-
-	<div class="reference" id="refdefinitionsmallcategory.identities">
-	<li> For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.</li>
+	<div class="reference" id="refMR1724106"></div>
+		<script>
+			$( "#refMR1724106" ).load( "../0.matters/references.html #MR1724106" );
+		</script>
+		
+	<div class="reference" id="refdefinitionsmallcategoryidentities">
+		<li> For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.</li>
+	</div>
+	
+	<div class="reference" id="refdefinitionsmallcategoryassociativity">
+		<li> If $(a,b)$ and $(b,c)\in\mathcal{C}^{(2)}$, then $(a,bc),(ab,c)\in\mathcal{C}^{(2)}$ and $a(bc)=(ab)c$.</li>
+	</div>
+	
+	<div class="reference" id="refexamplegraphtriangle">
+		<p>
+		<span class="envidentifier">Example 1.1.2.</span> Let $X$ be a set and $R$ any binary relation on $X$, i.e., a subset of $X^2$. Define a directed graph $\mathcal{G}$ by letting $\mathcal{G}^{(0)}=X$, $\mathcal{G}^{(1)}=R$, $\mathfrak{s}(y,x)=x$ and $\mathfrak{r}(y,x)=y$ for all $(y,x)\in R$.
+		</p>
+		<p>
+		As a sub-example, let $X=\left\{a,b,c\right\}$ and $R=\left\{(b,a),(c,b),(a,c)\right\}$. The associated graph can be depicted as
+		<div class="equation">\[
+			\xymatrix{
+			&b\ar[rd]&\\
+			a\ar[ur]&&c\ar[ll]
+			}
+		\]</div></p>
+	</div>
+	
+	<div class="reference" id="refexamplemonoidsarecategories">
+		<p><span class="envidentifier">Example 1.1.8</span>
+		Let $M$ be a monoid (see Definition~\ref{definitioninversesemigroup}). Let $M^{(0)}=\left\{\ast\right\}$ be a singleton set, $M^{(1)}=M$ and $\so(m)=\ra(m)=\ast$ for every $m\in M$. In this case $M^{(2)}=M\times M$, and define composition as the monoid operation of $M$. This allows us to see $M$ as a category.
+		</p>
+		
+		<p>
+		Conversely, if $\mathcal{C}$ is any category and $x\in\mathcal{C}^{(0)}$, then $\mathcal{C}_x^x$ is a monoid. If $\mathcal{C}^{(0)}=\left\{x\right\}$ is a singleton, then $\mathcal{C}$ is the category associated with the monoid $\mathcal{C}_x^x$ as above.
+		</p>
 	</div>
 </div>
 
@@ -67,8 +94,8 @@ MAIN
 <h3 class="subsection">1.1.1. Groupoids as directed graphs</h3>
 
 <div class="definition"><p>
-	<span class="envidentifier">Definition 1.1.1.</span>	
-	<a class="makeref" data-target="refMR1724106" href="../0.matters/references.html #MR1724106">[135]</a>
+	<span class="envidentifier">Definition 1.1.1.</span>
+	[<a class="makeref" data-target="refMR1724106" href="../0.matters/references.html #MR1724106">135</a>]
 	A <em>directed graph</em> is a tuple $\mathcal{G}=(\mathcal{G}^{(0)},\mathcal{G}^{(1)},\so,\ra)$, where $\mathcal{G}^{(0)}$ is a set whose elements are called <em>vertices</em>, $\mathcal{G}^{(1)}$ is a set whose elements are called <em>edges</em> or <em>arrows</em>, and $\mathfrak{s}$ and $\mathfrak{r}$ are maps from $\mathcal{G}^{(1)}$ to $\mathcal{G}^{(0)}$, called respectively the <em>source</em> and <em>range</em> maps.</p>
 </div>
 	
@@ -152,8 +179,8 @@ In order to obtain a suitable notion for the composition of arrows, we need to i
 <div class="definition">
 <p><span class="envidentifier">Definition 1.1.6.</span> A <em>small category</em> consists of a directed graph $\mathcal{C}=(\mathcal{C}^{(0)},\mathcal{C}^{(1)},\mathfrak{s},\mathfrak{r})$ together with the set $\mathcal{C}^{(2)}=\left\{(a,b)\in\mathcal{C}^{(1)}\times\mathcal{C}^{(1)}:\mathfrak{s}(a)=\mathfrak{r}(b)\right\}$ and a <em>composition</em> map $\mathcal{C}^{(2)}\to \mathcal{C}^{(1)}$, $(a,b)\mapsto ab$, satisfying the following properties:
 <ol class="roman">
-	<li> If $(a,b)$ and $(b,c)\in\mathcal{C}^{(2)}$, then $(a,bc),(ab,c)\in\mathcal{C}^{(2)}$ and $a(bc)=(ab)c$.</li>
-	<li id="definitionsmallcategory.identities"> For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.</li>
+	<li id="definitionsmallcategoryassociativity"> If $(a,b)$ and $(b,c)\in\mathcal{C}^{(2)}$, then $(a,bc),(ab,c)\in\mathcal{C}^{(2)}$ and $a(bc)=(ab)c$.</li>
+	<li id="definitionsmallcategoryidentities"> For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.</li>
 </ol>
 The set $\mathcal{C}^{(2)}$ is called the set of <em>composable pairs</em>.<!--\index{Composable}-->
 </p>
@@ -175,40 +202,62 @@ Note that $\mathcal{C}^{(2)}=\bigcup_{x\in\mathcal{C}^{(0)}}\mathcal{C}_x\times\
 </p>
 
 <p>
-The arrow $\operatorname{id}_x\in\mathcal{C}_x^x$ in item <a class="makeref" data-target="refdefinitionsmallcategory.identities" href="#definitionsmallcategory.identities">(ii)</a> is unique for each $x\in\mathcal{C}^{(0)}$, and it is called the <em>unit</em> at $x$. It is customary to identify each $x\in\mathcal{C}^{(0)}$ with its respective unit, thus viewing $\mathcal{C}^{(0)}$ as a subset of $\mathcal{C}^{(1)}$. This allows us, moreover, to identify a category with its set of arrows.
+The arrow $\operatorname{id}_x\in\mathcal{C}_x^x$ in item <a class="makeref" data-target="refdefinitionsmallcategoryidentities" href="#definitionsmallcategoryidentities">(ii)</a> is unique for each $x\in\mathcal{C}^{(0)}$, and it is called the <em>unit</em> at $x$. It is customary to identify each $x\in\mathcal{C}^{(0)}$ with its respective unit, thus viewing $\mathcal{C}^{(0)}$ as a subset of $\mathcal{C}^{(1)}$. This allows us, moreover, to identify a category with its set of arrows.
+</p>
 
-Moreover, from item (i) we obtain, whenever $(a,b)\in\mathcal{C}^{(2)}$, $(ab,\id_{\so(b)})\in\mathcal{C}^{(2)}$, and so $\so(ab)=\ra(\id_{\so(b)})=\so(b)$ and similarly $\ra(ab)=\ra(a)$.
+<p>
+Moreover, from item <a class="makeref" data-target="refdefinitionsmallcategoryassociativity" href="#definitionsmallcategoryassociativity">(i)</a> we obtain, whenever $(a,b)\in\mathcal{C}^{(2)}$, $(ab,\id_{\so(b)})\in\mathcal{C}^{(2)}$, and so $\so(ab)=\ra(\id_{\so(b)})=\so(b)$ and similarly $\ra(ab)=\ra(a)$.
+</p>
 
-\begin{definition}\index{Morphism (of groupoids)}\index{Isomorphism (of groupoids)}
-A <em>functor</em> between categories $\mathcal{C}$ and $\mathcal{D}$ is a map $\phi:\mathcal{C}\to\mathcal{D}$ satisfying:
-\begin{enumerate}
-\item[(i)] $\phi(\mathcal{C}^{(0)})\subseteq\mathcal{D}^{(0)}$.
-\item[(ii)] If $(a,b)\in\mathcal{C}^{(2)}$, then $(\phi(a),\phi(b))\in\mathcal{D}^{(2)}$ and $\phi(ab)=\phi(a)\phi(b)$.
-\end{enumerate}
-A functor $\phi$ is an <em>isomorphism</em> if it is bijective and $\phi^{-1}$ is also a functor.
-\end{definition}
+<div class="definition">
+<p><span class="envidentifier">Definition 1.1.7.</span> A <em>functor</em> between categories $\mathcal{C}$ and $\mathcal{D}$ is a map $\phi:\mathcal{C}\to\mathcal{D}$ satisfying:
+<ol class="roman">
+	<li> $\phi(\mathcal{C}^{(0)})\subseteq\mathcal{D}^{(0)}$.</li>
+	<li> If $(a,b)\in\mathcal{C}^{(2)}$, then $(\phi(a),\phi(b))\in\mathcal{D}^{(2)}$ and $\phi(ab)=\phi(a)\phi(b)$.</li>
+</ol>
+A functor $\phi$ is an <em>isomorphism</em> if it is bijective and $\phi^{-1}$ is also a functor.</p>
+</div>
 
-\begin{example}\label{examplepreordersarecategories}
-Let $X$ be a set and $\leq$ be a preorder on $X$ (i.e., a reflexive and transitive relation), and $R=\left\{(y,x):x\leq y\right\}$ the associated subset of $X^2$. Let $\mathcal{G}$ be the directed graph associated with this pair $(X,R)$ as in Example \ref{examplegraphtriangle}. In this case, we have $\mathcal{G}^{(2)}=\left\{((z,y),(y,x)):(y,x),(z,y)\in R\right\}$, so defining composition by $(z,y)(y,x)=(z,x)$ we obtain a category structure on $\mathcal{G}$.
+<!-- 1.1.7 -->
+<div class="example" id="examplepreordersarecategories">
+	<p><span class="envidentifier">Example 1.1.8</span>
+	Let $X$ be a set and $\leq$ be a preorder on $X$ (i.e., a reflexive and transitive relation), and $R=\left\{(y,x):x\leq y\right\}$ the associated subset of $X^2$. Let $\mathcal{G}$ be the directed graph associated with this pair $(X,R)$ as in Example <a class="makeref" data-target="refexamplegraphtriangle" href="#examplegraphtriangle">1.1.2</a>. In this case, we have $\mathcal{G}^{(2)}=\left\{((z,y),(y,x)):(y,x),(z,y)\in R\right\}$, so defining composition by $(z,y)(y,x)=(z,x)$ we obtain a category structure on $\mathcal{G}$.
+	</p>
 
-In fact, since $R$ is the set of arrows of $\mathcal{G}$ we identify $\mathcal{G}$ and $R$, and moreover, $R^{(0)}=\left\{(x,x):x\in X\right\}$ can be obviously identified with $X$ via $x\mapsto (x,x)$.
+	<p>
+	In fact, since $R$ is the set of arrows of $\mathcal{G}$ we identify $\mathcal{G}$ and $R$, and moreover, $R^{(0)}=\left\{(x,x):x\in X\right\}$ can be obviously identified with $X$ via $x\mapsto (x,x)$.
+	</p>
 
-The categories $\mathcal{C}$ obtained in this manner (up to isomorphism) are precisely those such that, for every $x,y\in\mathcal{C}^{(0)}$, $\mathcal{C}_x^y$ has at most one arrow.
-\end{example}
+	<p>
+	The categories $\mathcal{C}$ obtained in this manner (up to isomorphism) are precisely those such that, for every $x,y\in\mathcal{C}^{(0)}$, $\mathcal{C}_x^y$ has at most one arrow.
+</p>
+</div>
 
-\begin{example}\label{examplemonoidsarecategories}
-Let $M$ be a monoid (see Definition~\ref{definitioninversesemigroup}). Let $M^{(0)}=\left\{\ast\right\}$ be a singleton set, $M^{(1)}=M$ and $\so(m)=\ra(m)=\ast$ for every $m\in M$. In this case $M^{(2)}=M\times M$, and define composition as the monoid operation of $M$. This allows us to see $M$ as a category.
+<!-- 1.1.8 -->
+<div class="example" id="examplemonoidsarecategories">
+	<p><span class="envidentifier">Example 1.1.8</span>
+	Let $M$ be a monoid (see Definition~\ref{definitioninversesemigroup}). Let $M^{(0)}=\left\{\ast\right\}$ be a singleton set, $M^{(1)}=M$ and $\so(m)=\ra(m)=\ast$ for every $m\in M$. In this case $M^{(2)}=M\times M$, and define composition as the monoid operation of $M$. This allows us to see $M$ as a category.
+	</p>
+	
+	<p>
+	Conversely, if $\mathcal{C}$ is any category and $x\in\mathcal{C}^{(0)}$, then $\mathcal{C}_x^x$ is a monoid. If $\mathcal{C}^{(0)}=\left\{x\right\}$ is a singleton, then $\mathcal{C}$ is the category associated with the monoid $\mathcal{C}_x^x$ as above.
+	</p>
+</div>
 
-Conversely, if $\mathcal{C}$ is any category and $x\in\mathcal{C}^{(0)}$, then $\mathcal{C}_x^x$ is a monoid. If $\mathcal{C}^{(0)}=\left\{x\right\}$ is a singleton, then $\mathcal{C}$ is the category associated with the monoid $\mathcal{C}_x^x$ as above.
-\end{example}
+<!-- 1.1.9 -->
+<div class="example" id="monoidactioncategory">
+	<p><span class="envidentifier">Example 1.1.9</span>
+	Let $\theta$ be a global action (see Definition \ref{definitionactionspartialandglobal}) of a monoid $M$ on a set $X$, denoted by concatenation. We define the category $M\ltimes_\theta X$ whose underlying graph is similar to the one as in Example \ref{examplegraphdynamicalsystem}.
+	</p>
 
-\begin{example}\label{monoidactioncategory}
-Let $\theta$ be a global action (see Definition \ref{definitionactionspartialandglobal}) of a monoid $M$ on a set $X$, denoted by concatenation. We define the category $M\ltimes_\theta X$ whose underlying graph is similar to the one as in Example \ref{examplegraphdynamicalsystem}.
+	<p>
+	Namely, let $(M\ltimes_\theta X)^{(0)}=X$, $(M\ltimes_\theta X)^{(1)}=M\times X$, $\mathfrak{s}(m,x)=x$, $\mathfrak{r}(m,x)=mx$. In this case, $(M\ltimes_\theta X)^{(2)}=\left\{((m,nx),(n,x)):x\in X,m,n\in M\right\}$, so we define the composition as $(m,nx)(n,x)=(mn,x)$.
+	</p>
 
-Namely, let $(M\ltimes_\theta X)^{(0)}=X$, $(M\ltimes_\theta X)^{(1)}=M\times X$, $\mathfrak{s}(m,x)=x$, $\mathfrak{r}(m,x)=mx$. In this case, $(M\ltimes_\theta X)^{(2)}=\left\{((m,nx),(n,x)):x\in X,m,n\in M\right\}$, so we define the composition as $(m,nx)(n,x)=(mn,x)$.
-
-Note that if $X$ is a singleton $X=\left\{*\right\}$ and $M$ acts on $X$ trivially, we recover Example~\ref{examplemonoidsarecategories}.
-\end{example}
+	<p>
+	Note that if $X$ is a singleton $X=\left\{*\right\}$ and $M$ acts on $X$ trivially, we recover Example <a class="makeref" data-target="refexamplemonoidsarecategories" href="#examplemonoidsarecategories">1.1.8</a>.
+	</p>
+</div>
 
 We say that an arrow $a$ of a category $\mathcal{C}$ is <em>invertible</em> if there exists another arrow $b$ such that $(a,b),(b,a)\in \mathcal{C}^{(2)}$, $ba=\mathfrak{s}(a)$ and $ab=\mathfrak{r}(a)$. In this case, the arrow $b$ is unique and it is denoted by $a^{-1}$, we call $a^{-1}$ the <em>inverse</em> of $a$, and $a$ is called <em>invertible</em>.
 
