@@ -43,12 +43,52 @@ RIGHT BAR
 -------------------------------------------------------->
 
 <div class="rightbar">
-<div class="reference" id="refequationprefaceP1">
+	<div class="reference" id="refequationprefaceP1">
+		\[
+		y'(t)=F(y(t)),\quad y(0)=u,\qquad(u\in\Omega)\tag{P1}
+		\]
+	</div>
+	
+	<div class="reference" id="refequationprefaceP2">
 	\[
-	y'(t)=F(y(t)),\quad y(0)=u,\qquad(u\in\Omega)\tag{P1}
+	\theta_s(\theta_t(u))=\theta_{s+t}(u)\tag{P2}
 	\]
-</div>
-
+	</div>
+	
+	<div class="reference" id="refMR3077869"></div>
+		<script>
+			$( "#refMR3077869" ).load( "../0.matters/references.html #MR3077869" );
+		</script>
+		
+	<div class="reference" id="refMR1694588"></div>
+		<script>
+			$( "#refMR1694588" ).load( "../0.matters/references.html #MR1694588" );
+		</script>
+		
+	<div class="reference" id="refpestov_kwiatkowska_2012"></div>
+		<script>
+			$( "#refpestov_kwiatkowska_2012" ).load( "../0.matters/references.html #pestov_kwiatkowska_2012" );
+		</script>
+		
+	<div class="reference" id="refMR3286052"></div>
+		<script>
+			$( "#refMR3286052" ).load( "../0.matters/references.html #MR3286052" );
+		</script>
+		
+	<div class="reference" id="refMR3035288"></div>
+		<script>
+			$( "#refMR3035288" ).load( "../0.matters/references.html #MR3035288" );
+		</script>
+		
+	<div class="reference" id="refozawasoficnotes"></div>
+		<script>
+			$( "#refozawasoficnotes" ).load( "../0.matters/references.html #ozawasoficnotes" );
+		</script>
+		
+	<div class="reference" id="refMR3231479"></div>
+		<script>
+			$( "#refMR3231479" ).load( "../0.matters/references.html #MR3231479" );
+		</script>
 </div>
 
 <!-------------------------------------------------------
@@ -80,7 +120,7 @@ whenever the left-hand side is defined. In modern language, $t\mapsto\theta_t$ i
 </p>
 
 <p>
-Groupoids, on the other hand, provide a geometric counterpart to inverse semigroups and partial actions: Still considering the dynamical system provided by <a href="#equationprefaceP1">(P1)</a>, suppose $\theta_s(\theta_t(u))$ is defined, where $s,t\geq 0$, and consider partial trajectories $y^{u}|_{[0,t]}:[0,t]\to\Omega$ and $y^{\theta_t(u)}|_{[0,s]}:[0,s]\to\Omega$. Equation <a href="#equationP2preface">(P2)</a> then states that the concatenation of $y^{u}|_{[0,t]}$ with $y^{\theta_t(u)}|_{[0,s]}$ coincides with $y^ u|_{[0,s+t]}$:
+Groupoids, on the other hand, provide a geometric counterpart to inverse semigroups and partial actions: Still considering the dynamical system provided by <a class="makeref" data-target="refequationprefaceP1" href="#equationprefaceP1">(P1)</a>, suppose $\theta_s(\theta_t(u))$ is defined, where $s,t\geq 0$, and consider partial trajectories $y^{u}|_{[0,t]}:[0,t]\to\Omega$ and $y^{\theta_t(u)}|_{[0,s]}:[0,s]\to\Omega$. Equation <a class="makeref" data-target="refequationprefaceP2" href="#equationprefaceP2">(P2)</a> then states that the concatenation of $y^{u}|_{[0,t]}$ with $y^{\theta_t(u)}|_{[0,s]}$ coincides with $y^ u|_{[0,s+t]}$:
 <div class="equation">
 	\[
 	\xymatrix{
@@ -92,11 +132,11 @@ This construction can be generalized to a <em>transformation groupoid</em>, and 
 </p>
 
 <p>
-The main goal of this thesis is to study the dynamical properties of inverse semigroups and groupoids and how they relate to each other. In the first chapter we introduce groupoids and inverse semigroups, including all classical theorems which will be used throughout the next chapters. A precise relationship between groupoids and <em>distributive</em> inverse semigroups is provided by non-commutative Stone duality (based on \cite{MR3077869}) - and a measurable analogue by the non-commutative Loomis-Sikorski Theorem - and provides the picture that will be maintained throughout this thesis: Inverse semigroups should usually be thought of as semigroups of bisections of some groupoid. Even if this is not the case, the Vagner-Preston Theorem still allows us to regard inverse semigroups as semigroups of partial bijections on some set. We also develop a short theory of $\lor$-ideals for Boolean inverse semigroups and their quotients, which proves to be extremely manageable and adequate to the study of non-faithful invariant means on Boolean inverse semigroups.
+The main goal of this thesis is to study the dynamical properties of inverse semigroups and groupoids and how they relate to each other. In the first chapter we introduce groupoids and inverse semigroups, including all classical theorems which will be used throughout the next chapters. A precise relationship between groupoids and <em>distributive</em> inverse semigroups is provided by non-commutative Stone duality (based on [<a class="makeref" data-target="refMR3077869" href="../0.matters/references.html #MR3077869">113</a>]) - and a measurable analogue by the non-commutative Loomis-Sikorski Theorem - and provides the picture that will be maintained throughout this thesis: Inverse semigroups should usually be thought of as semigroups of bisections of some groupoid. Even if this is not the case, the Vagner-Preston Theorem still allows us to regard inverse semigroups as semigroups of partial bijections on some set. We also develop a short theory of $\lor$-ideals for Boolean inverse semigroups and their quotients, which proves to be extremely manageable and adequate to the study of non-faithful invariant means on Boolean inverse semigroups.
 </p>
 
 <p>
-In the second chapter we consider the <em>sofic property</em> for groupoids. Soficity was initially considered by Gromov, as a generalization of both amenability and residual finiteness for groups (\cite{MR1694588}), and is a general property of approximability by finite groups. We adopt the same point of view as \cite{pestov_kwiatkowska_2012}, by introducing soficity as a property regarding the existence of appropriate finite models, in the sense of continuous logic, for our groupoid. This approach significantly simplifies several approximation arguments and is in accordance to the more algebraic approach taken throughout this thesis. The first course of action is then to prove that finite groupoids are sofic in the usual sense (\cite{MR3286052,ozawasoficnotes,MR3035288}) and use this to provide a slightly modified, however equivalent and more manageable, description of the sofic property. Moreover, we study a notion of <em>finite index</em> for probability-measure preserving groupoids which restricts to the usual notions of finite index for subgroups and ergodic sub-equivalence relations. We then proceed to prove several permanence properties for the class of sofic groupoids, which can be used to provide an elementary proof that hyperfinite groupoids are sofic. We finish the chapter by proving that, under weak conditions, soficity can be determined in terms of the full group of a probability measure-preserving groupoid alone, which provides an answer to a question in \cite{MR3035288}.
+In the second chapter we consider the <em>sofic property</em> for groupoids. Soficity was initially considered by Gromov, as a generalization of both amenability and residual finiteness for groups ([<a class="makeref" data-target="refMR1694588" href="../0.matters/references.html #MR1694588">76</a>]), and is a general property of approximability by finite groups. We adopt the same point of view as [<a class="makeref" data-target="refpestov_kwiatkowska_2012" href=: ../0.matters/references.html #pestov_kwiatkowska_2012">140</a>], by introducing soficity as a property regarding the existence of appropriate finite models, in the sense of continuous logic, for our groupoid. This approach significantly simplifies several approximation arguments and is in accordance to the more algebraic approach taken throughout this thesis. The first course of action is then to prove that finite groupoids are sofic in the usual sense ([<a class="makeref" data-target="refMR3286052" href="../0.matters/references.html #MR3286052">19</a>,<a class="makeref" data-target="refMR3035288" href="../0.matters/references.html #MR3035288">31</a>,<a class="makeref" data-target="refozawasoficnotes" href="../0.matters/references.html #ozawasoficnotes">134</a>}]) and use this to provide a slightly modified, however equivalent and more manageable, description of the sofic property. Moreover, we study a notion of <em>finite index</em> for probability-measure preserving groupoids which restricts to the usual notions of finite index for subgroups and ergodic sub-equivalence relations. We then proceed to prove several permanence properties for the class of sofic groupoids, which can be used to provide an elementary proof that hyperfinite groupoids are sofic. We finish the chapter by proving that, under weak conditions, soficity can be determined in terms of the full group of a probability measure-preserving groupoid alone, which provides an answer to a question in [<a class="makeref" data-target="refMR3035288" href="../0.matters/references.html #MR3035288">31</a>].
 </p>
 
 <p>
@@ -104,7 +144,7 @@ The third chapter starts by introducing two notions of <em>disjointness</em> for
 </p>
 
 <p>
-In the last chapter, which is mostly based on joint work with Viviane Beuter, we deal with <em>partial actions</em> of inverse semigroups as considered by Buss and Exel in \cite{MR3231479}. We then define <em>groupoids of germs</em> - which generalize transformation groupoids - and <em>crossed products</em> associated to partial actions. In the main theorem of this chapter, Theorem \ref{theoremsteinbergiscrossed}, we describe the Steinberg algebra of an ample Hausdorff groupoid of germs as a crossed product algebra, which generalizes previously known results. In fact, we also employ the theory from the previous chapter to determine all diagonal-preserving isomorphisms between Steinberg algebras of ample Hausdorff groupoids. We proceed to describe relationships between global and partial actions of associated groups and semigroups, and again obtain new results related to canonical isomorphisms between the associated groupoids or algebras. We finish this chapter with a description and study of orbit equivalence for partial actions of inverse semigroups.
+In the last chapter, which is mostly based on joint work with Viviane Beuter, we deal with <em>partial actions</em> of inverse semigroups as considered by Buss and Exel in [<a class="makeref" data-target="refMR3231479" href="../0.matters/references.html #MR3231479">22</a>]. We then define <em>groupoids of germs</em> - which generalize transformation groupoids - and <em>crossed products</em> associated to partial actions. In the main theorem of this chapter, Theorem \ref{theoremsteinbergiscrossed}, we describe the Steinberg algebra of an ample Hausdorff groupoid of germs as a crossed product algebra, which generalizes previously known results. In fact, we also employ the theory from the previous chapter to determine all diagonal-preserving isomorphisms between Steinberg algebras of ample Hausdorff groupoids. We proceed to describe relationships between global and partial actions of associated groups and semigroups, and again obtain new results related to canonical isomorphisms between the associated groupoids or algebras. We finish this chapter with a description and study of orbit equivalence for partial actions of inverse semigroups.
 <p>
 
 </div>
