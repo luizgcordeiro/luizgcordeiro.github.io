@@ -6,6 +6,10 @@ body {
 		font-weight: bold;
 }
 
+.envidentifier::after {
+		content: ".";
+}
+
 div.definition {
 	font-type: normal;
 }
@@ -52,6 +56,19 @@ div.corollary {
 
 div.corollary p:first-child {
 	display: inline;
+}
+
+.proofbutton {
+	display: block;
+}
+
+div.proof {
+	display: none;
+	border-style: double;
+}
+
+div.proof p {
+	margin: 5pt;
 }
 /*
 We now set the sidebar. It is not static, i.e. it disappears when scrolling down.
@@ -116,7 +133,7 @@ text-align: justify;
 
 div.rightbar div.reference{
 	display: none;
-	overflow:auto;
+	overflow: auto;
 }
 
 /*
@@ -148,6 +165,24 @@ ol.roman > li {
 ol.roman > li:before {
   counter-increment: roman;
   content: "(" counter(roman,lower-roman) ")";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+
+ol.alphpar {
+    counter-reset: alphpar;
+	position:relative;
+}
+ol.alphpar > li {
+    list-style: none;
+}
+ol.alphpar > li:before {
+  counter-increment: alphpar;
+  content: "(" counter(alphpar,lower-alpha) ")";
   position: absolute;
   left: 0em;
   display: inline-block;
