@@ -21,6 +21,16 @@ The beggining should be equal for all files
 	
 	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
 
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
 	<link rel="stylesheet" type="text/css" href="../src/style.css">
 
 	<title>
@@ -73,12 +83,40 @@ RIGHT BAR
 	</div>
 	
 	<div class="reference" id="refexamplemonoidsarecategories">
-		<p><span class="envidentifier">Example 1.1.8</span>
+		<p><span class="envidentifier">Example 1.1.9</span>
 		Let $M$ be a monoid (see Definition~\ref{definitioninversesemigroup}). Let $M^{(0)}=\left\{\ast\right\}$ be a singleton set, $M^{(1)}=M$ and $\so(m)=\ra(m)=\ast$ for every $m\in M$. In this case $M^{(2)}=M\times M$, and define composition as the monoid operation of $M$. This allows us to see $M$ as a category.
 		</p>
 		
 		<p>
 		Conversely, if $\mathcal{C}$ is any category and $x\in\mathcal{C}^{(0)}$, then $\mathcal{C}_x^x$ is a monoid. If $\mathcal{C}^{(0)}=\left\{x\right\}$ is a singleton, then $\mathcal{C}$ is the category associated with the monoid $\mathcal{C}_x^x$ as above.
+		</p>
+	</div>
+	
+	<div class="reference" id="refmonoidactioncategory">
+		<p><span class="envidentifier">Example 1.1.10</span>
+		Let $\theta$ be a global action (see Definition \ref{definitionactionspartialandglobal}) of a monoid $M$ on a set $X$, denoted by concatenation. We define the category $M\ltimes_\theta X$ whose underlying graph is similar to the one as in Example \ref{examplegraphdynamicalsystem}.
+		</p>
+
+		<p>
+		Namely, let $(M\ltimes_\theta X)^{(0)}=X$, $(M\ltimes_\theta X)^{(1)}=M\times X$, $\mathfrak{s}(m,x)=x$, $\mathfrak{r}(m,x)=mx$. In this case, $(M\ltimes_\theta X)^{(2)}=\left\{((m,nx),(n,x)):x\in X,m,n\in M\right\}$, so we define the composition as $(m,nx)(n,x)=(mn,x)$.
+		</p>
+
+		<p>
+		Note that if $X$ is a singleton $X=\left\{*\right\}$ and $M$ acts on $X$ trivially, we recover Example <a class="makeref" data-target="refexamplemonoidsarecategories" href="#examplemonoidsarecategories">1.1.9</a>.
+		</p>
+	</div>
+	
+	<div class="reference" id="refexamplepreordersarecategories">
+		<p><span class="envidentifier">Example 1.1.8</span>
+		Let $X$ be a set and $\leq$ be a preorder on $X$ (i.e., a reflexive and transitive relation), and $R=\left\{(y,x):x\leq y\right\}$ the associated subset of $X^2$. Let $\mathcal{G}$ be the directed graph associated with this pair $(X,R)$ as in Example <a class="makeref" data-target="refexamplegraphtriangle" href="#examplegraphtriangle">1.1.2</a>. In this case, we have $\mathcal{G}^{(2)}=\left\{((z,y),(y,x)):(y,x),(z,y)\in R\right\}$, so defining composition by $(z,y)(y,x)=(z,x)$ we obtain a category structure on $\mathcal{G}$.
+		</p>
+
+		<p>
+		In fact, since $R$ is the set of arrows of $\mathcal{G}$ we identify $\mathcal{G}$ and $R$, and moreover, $R^{(0)}=\left\{(x,x):x\in X\right\}$ can be obviously identified with $X$ via $x\mapsto (x,x)$.
+		</p>
+
+		<p>
+		The categories $\mathcal{C}$ obtained in this manner (up to isomorphism) are precisely those such that, for every $x,y\in\mathcal{C}^{(0)}$, $\mathcal{C}_x^y$ has at most one arrow.
 		</p>
 	</div>
 </div>
@@ -209,6 +247,7 @@ The arrow $\operatorname{id}_x\in\mathcal{C}_x^x$ in item <a class="makeref" dat
 Moreover, from item <a class="makeref" data-target="refdefinitionsmallcategoryassociativity" href="#definitionsmallcategoryassociativity">(i)</a> we obtain, whenever $(a,b)\in\mathcal{C}^{(2)}$, $(ab,\id_{\so(b)})\in\mathcal{C}^{(2)}$, and so $\so(ab)=\ra(\id_{\so(b)})=\so(b)$ and similarly $\ra(ab)=\ra(a)$.
 </p>
 
+<!-- 1.1.7 -->
 <div class="definition">
 <p><span class="envidentifier">Definition 1.1.7.</span> A <em>functor</em> between categories $\mathcal{C}$ and $\mathcal{D}$ is a map $\phi:\mathcal{C}\to\mathcal{D}$ satisfying:
 <ol class="roman">
@@ -218,9 +257,9 @@ Moreover, from item <a class="makeref" data-target="refdefinitionsmallcategoryas
 A functor $\phi$ is an <em>isomorphism</em> if it is bijective and $\phi^{-1}$ is also a functor.</p>
 </div>
 
-<!-- 1.1.7 -->
+<!-- 1.1.8 -->
 <div class="example" id="examplepreordersarecategories">
-	<p><span class="envidentifier">Example 1.1.8</span>
+	<p><span class="envidentifier">Example 1.1.8.</span>
 	Let $X$ be a set and $\leq$ be a preorder on $X$ (i.e., a reflexive and transitive relation), and $R=\left\{(y,x):x\leq y\right\}$ the associated subset of $X^2$. Let $\mathcal{G}$ be the directed graph associated with this pair $(X,R)$ as in Example <a class="makeref" data-target="refexamplegraphtriangle" href="#examplegraphtriangle">1.1.2</a>. In this case, we have $\mathcal{G}^{(2)}=\left\{((z,y),(y,x)):(y,x),(z,y)\in R\right\}$, so defining composition by $(z,y)(y,x)=(z,x)$ we obtain a category structure on $\mathcal{G}$.
 	</p>
 
@@ -233,9 +272,9 @@ A functor $\phi$ is an <em>isomorphism</em> if it is bijective and $\phi^{-1}$ i
 </p>
 </div>
 
-<!-- 1.1.8 -->
+<!-- 1.1.9 -->
 <div class="example" id="examplemonoidsarecategories">
-	<p><span class="envidentifier">Example 1.1.8</span>
+	<p><span class="envidentifier">Example 1.1.9.</span>
 	Let $M$ be a monoid (see Definition~\ref{definitioninversesemigroup}). Let $M^{(0)}=\left\{\ast\right\}$ be a singleton set, $M^{(1)}=M$ and $\so(m)=\ra(m)=\ast$ for every $m\in M$. In this case $M^{(2)}=M\times M$, and define composition as the monoid operation of $M$. This allows us to see $M$ as a category.
 	</p>
 	
@@ -244,9 +283,9 @@ A functor $\phi$ is an <em>isomorphism</em> if it is bijective and $\phi^{-1}$ i
 	</p>
 </div>
 
-<!-- 1.1.9 -->
+<!-- 1.1.10 -->
 <div class="example" id="monoidactioncategory">
-	<p><span class="envidentifier">Example 1.1.9</span>
+	<p><span class="envidentifier">Example 1.1.10.</span>
 	Let $\theta$ be a global action (see Definition \ref{definitionactionspartialandglobal}) of a monoid $M$ on a set $X$, denoted by concatenation. We define the category $M\ltimes_\theta X$ whose underlying graph is similar to the one as in Example \ref{examplegraphdynamicalsystem}.
 	</p>
 
@@ -255,67 +294,103 @@ A functor $\phi$ is an <em>isomorphism</em> if it is bijective and $\phi^{-1}$ i
 	</p>
 
 	<p>
-	Note that if $X$ is a singleton $X=\left\{*\right\}$ and $M$ acts on $X$ trivially, we recover Example <a class="makeref" data-target="refexamplemonoidsarecategories" href="#examplemonoidsarecategories">1.1.8</a>.
+	Note that if $X$ is a singleton $X=\left\{*\right\}$ and $M$ acts on $X$ trivially, we recover Example <a class="makeref" data-target="refexamplemonoidsarecategories" href="#examplemonoidsarecategories">1.1.9</a>.
 	</p>
 </div>
 
+<p>
 We say that an arrow $a$ of a category $\mathcal{C}$ is <em>invertible</em> if there exists another arrow $b$ such that $(a,b),(b,a)\in \mathcal{C}^{(2)}$, $ba=\mathfrak{s}(a)$ and $ab=\mathfrak{r}(a)$. In this case, the arrow $b$ is unique and it is denoted by $a^{-1}$, we call $a^{-1}$ the <em>inverse</em> of $a$, and $a$ is called <em>invertible</em>.
-
+</p>
+<p>
 It is standard fact that $(a^{-1})^{-1}=a$ and $(ab)^{-1}=b^{-1}a^{-1}$ whenever $a$ and $b$ are invertible and $(a,b)\in\mathcal{C}^{(2)}$.
+</p>
 
-\begin{definition}[\cite{MR1724106}]
+<!-- 1.1.11 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.1.11.</span> [<a class="makeref" data-target="refMR1724106" href="../0.matters/references.html#MR1724106">135</a>]
 A <em>groupoid</em> $\mathcal{G}$ is a small category in which all arrows are invertible.
-\end{definition}
+</p>
+</div>
 
-\begin{example}
-Every group is a groupoid, in the same way as Example \ref{examplemonoidsarecategories}.
-\end{example}
+<!-- 1.1.12 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.1.12.</span>
+Every group is a groupoid, in the same way as Example <a class="makeref" data-target="refexamplemonoidsarecategories" href="#examplemonoidsarecategories">1.1.9</a>.
+</p>
+</div>
 
-\begin{example}\nomenclature[G]{$G\ltimes_\theta X$}{Transformation groupoid}\index{Groupoid!Transformation groupoid}\label{exampletransformationgroupoid}
-If $\theta$ is an action of a group $G$ on a set $X$ (as usual, denoted by concatenation), then the category $G\ltimes_\theta X$ (as in Example \ref{monoidactioncategory}) is a groupoid, which we call a <em>transformation groupoid</em>. The inverse of an arrow $(g,x)\in G\ltimes_\theta X$ is $(g^{-1},gx)$.
-\[\begin{tikzcd}[row sep=tiny]
-x\arrow[r,"g"]\arrow[rr,bend right,"hg",swap]&g x\arrow[r,"h"]&(hg)x
-\end{tikzcd}\]
+<!-- 1.1.13 -->
+<div class="example" id="exampletransformationgroupoid">
+<p><span class="envidentifier">Example 1.1.13.</span>
+If $\theta$ is an action of a group $G$ on a set $X$ (as usual, denoted by concatenation), then the category $G\ltimes_\theta X$ (as in Example <a class="makeref" data-target="refmonoidactioncategory" href="#monoidactioncategory">1.1.10</a>) is a groupoid, which we call a <em>transformation groupoid</em>. The inverse of an arrow $(g,x)\in G\ltimes_\theta X$ is $(g^{-1},gx)$.
+<div class="equation">\[
+\xymatrix{
+x\ar[r]^g\ar@/_2ex/[rr]_{hg}
+	&gx\ar[r]^h
+		&(hg)x
+}
+\]</div>
 When there is no risk of confusion, we will drop the index $\theta$ and denote this groupoid simply as $G\ltimes X$.
-\end{example}
+</p>
+</div>
 
-\begin{example}\label{exampleequivalencerelationsarecategories}
-A preorder $R$ on a set $X$, regarded as a category as in Example \ref{examplepreordersarecategories}, is a groupoid if and only if $R$ is an equivalence relation. (See \ref{definitionprincipalgroupoid} below.)
-\end{example}
+<!-- 1.1.14 -->
+<div class="example" id="exampleequivalencerelationsarecategories">
+<p><span class="envidentifier">Example 1.1.14.</span>
+A preorder $R$ on a set $X$, regarded as a category as in Example <a class="makeref" data-target="refexamplepreordersarecategories" href="#examplepreordersarecategories">1.1.8</a>, is a groupoid if and only if $R$ is an equivalence relation. (See <a class="makeref" data-target="refdefinitionprincipalgroupoid" href="#definitionprincipalgroupoid">1.1.17</a> below.)
+</p>
+</div>
 
-\begin{example}\label{exampleorbitgroupoid}\index{Orbit!equivalence relation}\index{Orbit}\nomenclature[G]{$\mathcal{R}(\mathcal{G})$}{Orbit equivalence relation of $\mathcal{G}$}\nomenclature[G]{$\mathcal{R}(\alpha)$}{Orbit groupoid of a group action $\alpha$}
+<!-- 1.1.15 -->
+<div class="example" id="exampleorbitgroupoid">
+<p><span class="envidentifier">Example 1.1.15.</span>
 If $\mathcal{G}$ is a groupoid, then the image of the map $(\ra,\so):\mathcal{G}\to\mathcal{G}^{(0)}\times\mathcal{G}^{(0)}$, $(\ra,\so)(a)=(\ra(a),\so(a))$, is an equivalence relation on $\mathcal{G}^{(0)}$, called the <em>orbit equivalence relation</em>, which we will denote by $\mathcal{R}(\mathcal{G})$. An $\mathcal{R}(\mathcal{G})$-equivalence class is called an <em>orbit</em>.
+</p>
+<ul>
+	<li> If $\theta$ is an action of a group $G$ on a space $X$, then $\mathcal{R}(G\ltimes_\theta X)$ is the usual orbit equivalence relation of the action $\theta$, so orbits of $G\ltimes_\theta X$ coincide with orbits of $\theta$. We will abuse notation and denote, in this case, the <em>orbit groupoid</em> as $\mathcal{R}(\theta)=\mathcal{R}(G\ltimes_\theta X)$.</li>
+	<li> If $R$ is an equivalence relation on a set $X$, then the orbit of an element $x\in X$ is the $R$-equivalence class of $x$.</li>
+</ul>
+</div>
 
-\begin{itemize}
-\item If $\theta$ is an action of a group $G$ on a space $X$, then $\mathcal{R}(G\ltimes_\theta X)$ is the usual orbit equivalence relation of the action $\theta$, so orbits of $G\ltimes_\theta X$ coincide with orbits of $\theta$. We will abuse notation and denote, in this case, the <em>orbit groupoid</em> as $\mathcal{R}(\theta)=\mathcal{R}(G\ltimes_\theta X)$.
-\item If $R$ is an equivalence relation on a set $X$, then the orbit of an element $x\in X$ is the $R$-equivalence class of $x$.
-\end{itemize}
-\end{example}
-
+<p>
 In fact, it is possible to determine the groupoids which are isomorphic to an equivalence relation, in the sense above, and those are called the <em>principal groupoids</em>.
+</p>
 
-\begin{definition}\label{definitionisotropygroup}\index{Isotropy group}\nomenclature[G]{$\mathcal{G}_x^x$}{Isotropy group at $x$}
+<!-- 1.1.16 -->
+<div class="definition" id="definitionisotropygroup">
+<p><span class="envidentifier">Definiion 1.1.16.
 If $\mathcal{G}$ is a groupoid and $x\in\mathcal{G}^{(0)}$, we call the set $\mathcal{G}_x^x$ the <em>isotropy group</em> of $\mathcal{G}$ at $x$.
-\end{definition}
+</p>
+</div>
 
+<p>
 Note that $\mathcal{G}_x^x$ is indeed a group with the operation inherited from $\mathcal{G}$.
+</p>
 
-\begin{definition}\index{Groupoid!Principal}\label{definitionprincipalgroupoid}
+<!-- 1.1.17 -->
+<div class="definition" id="definitionprincipalgroupoid">
+<p><span class="envidentifier"> Definition 1.1.17</span>
 A groupoid $\mathcal{G}$ is <em>principal</em> if $\mathcal{G}_x^x$ is a trivial group for all $x\in\mathcal{G}^{(0)}$.
-\end{definition}
+</div>
 
-\begin{example}\label{examplewhentransformationgroupoidisprincipal}
+<!-- 1.1.18 -->
+<div class="example" id="examplewhentransformationgroupoidisprincipal">
+<p><span class="envidentifier">Example 1.1.18</span>
 If $\theta$ is an action of a group $G$ on a set $X$, then the transformation groupoid $G\ltimes_\theta X$ is principal if, and only if, the action $\theta$ is free: Indeed, for all $x\in X$, let $G_x=\left\{g\in G:gx=x\right\}$ be the stabilizer of $x$, so the map
 \[G_x\to (G\ltimes_\theta X)_x^x,\qquad g\mapsto (g,x)\]
 is a group isomorphism. Thus $G\ltimes_\theta X$ is principal if and only if $G_x$ is trivial for all $x\in X$, i.e., $\theta$ is free.
-\end{example}
+</p></div>
 
-\begin{proposition}\label{principalequalequivalencerelation}
+<!-- 1.1.19 -->
+<div class="proposition" id="principalequalequivalencerelation">
+<p><span class="envidentifier">Proposition 1.1.19</span>
 A groupoid $\mathcal{G}$ is principal if and only if there exists an equivalence relation $R$ on a set $X$ which is isomorphic to $\mathcal{G}$, as a groupoid.
-\end{proposition}
-\begin{proof}
+</p>
+</div>
+<a href="" class="proofbutton" onclick="toggle_visibility('proofofprincipalequalequivalencerelation');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofprincipalequalequivalencerelation" style="display: block;">
 Every equivalence relation, regarded as a groupoid, is principal, and conversely if $\mathcal{G}$ is a principal groupoid then the map $(\ra,\so):\mathcal{G}\to\mathcal{R}(\mathcal{G})$ is a groupoid isomorphism.\qedhere
-\end{proof}
+</div>
 
 In the following sections and chapters, we will consider topological versions of these constructions, and generalize the transformation groupoids to <em>groupoids of germs</em> of partial actions of inverse semigroups.
 
@@ -478,11 +553,11 @@ Then the map $(G\times X)\ltimes X\to G\times(X^2)$, $((g,x),y)\mapsto(g,(xy,y))
 </body>
 
 <script>
-$('.makeref').hover(function() {
-	$('.rightbar div').hide();
-    var target = '#' + $(this).data('target');
-    $(target).show();
-})
+	$('.makeref').hover(function() {
+		$('.rightbar div').hide();
+		var target = '#' + $(this).data('target');
+		$(target).show();
+	})
 </script>
 
 </html>
