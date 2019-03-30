@@ -1,0 +1,391 @@
+\subsection{Topological partial actions}
+
+\begin{definition}\index{Partial action!topological}
+A (non-degenerate) \emph{topological partial action} of an inverse semigroup $S$ is a partial action $\theta$ of $S$ on a topological space $X$ which satisfies:
+\begin{enumerate}
+\item[(i)] For all $s\in S$, $X_s$ is an open subset of $X$ and $\theta_s:X_{s^*}\to X_s$ is a homeomorphism;
+\item[(ii)] $X=\bigcup_{s\in S}X_s$.
+\end{enumerate}
+\end{definition}
+
+Since $X_s\subseteq X_{ss^*}$ for all $s$, (ii) can be substituted with
+\begin{enumerate}
+\item[(ii')] $X=\bigcup_{e\in E(S)} X_e$;
+\end{enumerate}
+and we end up with an equivalent description of topological partial actions. Condition (ii)  is usually called \emph{non-degeneracy}, and it is more suitable to assume this as a necessary condition on all the partial actions we consider. If only (i) is satisfied then we can always substitute $X$ by $\bigcup_{s\in S}X_s$ and obtain a non-degenerate topological partial action of $S$. 
+
+The next theorem shows that partial actions on locally compact Hausdorff spaces can always be lifted to actions on zero-dimensional spaces. This is an equivariant version of the well-known fact that every compact metrizable Hausdorff space is the continuous image of the Cantor set (\cite{Alexandroff1927}). A proof of an analogue result for groups actions is given in \cite{MR1456297}.
+
+\begin{theorem}
+Let $X$ be a locally compact Hausdorff space and $\theta$ a topological partial action of an inverse semigroup $S$ on $X$. Then there exist
+\begin{itemize}
+\item a zero-dimensional, locally compact Hausdorff space $\mathfrak{C}$;
+\item a topological partial action $\alpha=(\alpha_s:\mathfrak{C}_{s^*}\to\mathfrak{C}_s)_{s\in S}$ of $S$ on $\mathfrak{C}$; and
+\item a continuous surjection $\pi:\mathfrak{C}\to X$;
+\end{itemize}
+such that $\pi^{-1}(X_s)\subseteq\mathfrak{C}_s$ and for all $c\in\pi^{-1}(X_s)$
+\[\pi(\alpha_s(c))=\theta_s(\pi(c)).\]
+\end{theorem}
+
+This is usually stated as $\theta$ being a \emph{factor} of $\alpha$.
+
+\begin{proof}
+Let $\mathcal{B}$ be the generalized Boolean algebra of regular open subsets of $X$ with compact closure. Let $\mathfrak{C}=\GP(\mathcal{B})$, the topological space of ultrafilters on $\mathcal{B}$ (as in non-commutative Stone duality). Recall that a basic open subset of $\mathfrak{C}$ has the form
+\[[U]=\left\{F\in\mathfrak{C}:U\in F\right\}\]
+for some $U\in\mathcal{B}$. Also recall that joins and meets in $\mathcal{B}$ are given by
+\[U\lor V=\operatorname{int}(\overline{U\cup V}),\qquad U\land V=U\cap V.\]
+
+For every ultrafilter $F\in\mathfrak{C}$, the intersection $\bigcap_{U\in F}\overline{U}$ is nonempty, because $F$ satisfies the finite intersection property, and is actually a singleton because $F$ is prime (see \ref{lemmaultrafilterprime}). Thus we can define a map $\pi:\mathfrak{C}\to X$ satisfying $\left\{\pi(F)\right\}=\bigcap_{U\in F}\overline{U}$.
+
+We first note the following property:
+\[\text{If}\quad F\in\mathfrak{C}\quad\text{and}\quad \pi(F)\in U\in\mathcal{B},\quad\text{then}\quad U\in F.\ntag\label{equationneighbourhoodbasisbooleanization}\]
+Indeed, suppose $\pi(F)\in U$. Let $V\in F$ be arbitrary. Then
+\[V=(V\land U)\lor (V\setminus \overline{U}),\]
+where ``$\setminus$'' is the usual set difference. Since $\pi(F)$ does not belong to $\overline{\left(V\setminus\overline{U}\right)}$ then $V\setminus\overline{U}\not\in F$, so primeness implies $V\land U\in F$ and therefore $U\in F$ as well since $F$ is a filter.
+
+If $U\in\mathcal{B}$, then Property (\ref{equationneighbourhoodbasisbooleanization}) implies that $\pi^{-1}(U)=[U]$, which is open in $\mathfrak{C}$. Since $\mathcal{B}$ is a basis for $X$ then $\pi$ is continuous.
+
+If $x\in X$, then the family $\left\{U\in\mathcal{B}:x\in U\right\}$ is a filter on $\mathcal{B}$ and therefore is contained in some ultrafilter $F\in\mathfrak{C}$, which necessarily satisfies $\pi(F)=x$ because
+\[\left\{\pi(F)\right\}=\bigcap_{U\in F}\overline{U}\subseteq\bigcap_{x\in U\in\mathcal{B}} \overline{U}=\left\{x\right\},\]
+and therefore $\pi$ is surjective.
+
+Define a partial action $\widetilde{\theta}$ of $S$ on $\mathcal{B}$ by setting, for all $s\in S$,
+\begin{itemize}
+\item $\mathcal{B}_s=\left\{U\in\mathcal{B}:U\subseteq X_s\right\}$; and 
+\item $\widetilde{\theta}_s:\mathcal{B}_{s^*}\to\mathcal{B}_s$, $\widetilde{\theta}_s(U)=\theta_s(U)$.
+\end{itemize}
+%The verification that $\widetilde{\theta}$ is indeed a partial action is easy enough.
+Note that each set $\mathcal{B}_s$ is an order ideal of $\mathcal{B}$, and that $\widetilde{\theta}_s:\mathcal{B}_{s^*}\to\mathcal{B}_s$ is an order isomorphism.
+
+Given $s\in S$, set
+\begin{itemize}
+\item $\mathfrak{C}_s=\left\{F\in\mathfrak{C}:F\cap\mathcal{B}_s\neq\varnothing\right\}$; and
+\item $\alpha_s(F)=\left\{U\in\mathcal{B}:\widetilde{\theta}_s(V)\subseteq U\text{ for some }V\in F\cap\mathcal{B}_{s^*}\right\}$ for all $F\in\mathfrak{C}_{s^*}$.
+\end{itemize}
+Note that $\alpha_s(F)$ is a proper filter on $\mathcal{B}$ for all $F\in\mathfrak{C}_{s^*}$, so let us verify that it is prime. Suppose $U_1\lor U_2\in\alpha_s(F)$. Then there is $V\in F\cap\mathcal{B}_{s^*}$ such that $\widetilde{\theta}_s(V)\subseteq U_1\lor U_2$, i.e.,
+\[(V\land\widetilde{\theta}_{s^*}(U_1))\lor(V\land\widetilde{\theta}_{s^*}(U_2))=V\in F,\]
+hence primeness of $F$ implies that $V_i:=V\land\widetilde{\theta}_{s^*}(U_i)\in F$ for some $i\in\left\{1,2\right\}$. Since $V_i\subseteq V$ and $\mathcal{B}_{s^*}$ is an order ideal then $V_i\in F\cap\mathcal{B}_{s^*}$, and moreover $\widetilde{\theta}_s(V_i)\subseteq U_i$, so $U_i\in\alpha_s(F)$. This proves that $\alpha_s(F)$ is prime.
+
+Therefore we obtain a partial action $\alpha=\left(\alpha_s:\mathfrak{C}_{s^*}\to\mathfrak{C}_s\right)_{s\in S}$. Given $s\in S$,
+\[\mathfrak{C}_s=\bigcup_{U\in\mathcal{B}_s}[U]\]
+is open in $\mathfrak{C}$. Let us verify that $\alpha_s$ is continuous for all $s\in S$. Suppose $F\in\mathfrak{C}_s$. Given $s\in S$, $F\in\mathfrak{C}$ and $U\in\mathcal{B}$,
+\[\alpha_s(F)\in[U]\iff \exists V\in\mathcal{B}\text{ such that }V\in F,\ V\in\mathcal{B}_{s^*}\text{ and }\widetilde{\theta}_s(V)\subseteq U\]
+which means that
+\[\alpha_s^{-1}([U])=\bigcup\left\{[V]:V\in\mathcal{B}_{s^*}\text{ and }\widetilde{\theta}_s(V)\subseteq U\right\}\]
+an open subset of $\mathfrak{C}$, thus $\alpha_s$ is continuous. This proves that $\alpha$ is a topological partial action of $S$ on $\mathfrak{C}$.
+
+Property (\ref{equationneighbourhoodbasisbooleanization}) also implies $\pi^{-1}(X_s)\subseteq\mathfrak{C}_s$. If $F\in\pi^{-1}(X_s)$,
+\[\left\{\pi(\alpha_s(F))\right\}=\bigcap_{U\in F}\overline{\alpha_s(U)}=\theta_s\left(\bigcap_{U\in F}\overline{U}\right)=\left\{\theta_s(\pi(F))\right\}\]
+which is the final desired property for $\alpha$.\qedhere
+\end{proof}
+
+%\begin{remark}
+%if $X$ is a compact metrizable space, then it is second countable and thus admits a countable basis of regular open sets $\mathcal{C}$, which then generates a countable unital Boolean algebra of regular open sets of $X$. If we substitute $\mathcal{B}$ in the proof above by this unital Boolean algebra, the space $\mathfrak{C}$ we obtain will also be second countable and compact. In particular this yields a proof that every compact metrizable space is a continuous image of a Cantor space (by considering the product of $\mathfrak{C}$ with a Cantor space first, if necessary).
+%\end{remark}
+
+\begin{example}\label{examplecanonicalaction}\index{Canonical action}\nomenclature[G]{$\operatorname{\bf{B}}(\G)$}{Semigroups of open bisections of $\G$}\nomenclature[S]{$\operatorname{\bf{B}}(\G)$}{Semigroups of open bisections of $\G$}
+Let $\mathcal{G}$ be an étale, locally compact Hausdorff groupoid, and denote by $\operatorname{\bf{B}}(\G)$ the semigroup of open bisections of $\G$.
+
+The \emph{canonical action} of $\operatorname{\bf{B}}(\G)$ on $\mathcal{G}^{(0)}$ is defined as $\tau=\left(\tau_U:\so(U)\to\ra(U)\right)_{U\in\operatorname{\bf{B}}(\G)}$, where $\tau_U:\so(U)\to\ra(U)$ is the homeomorphism $\tau_U=\ra\circ\so|_U^{-1}$. In simpler terms, $\tau_U(\so(a))=\ra(a)$ whenever $a$ is an arrow in $\G$ with $\so(a)\in\so(U)$.
+
+Let us prove that $\tau$ is a global action, that is, that $\tau_{UV}=\tau_U\circ\tau_V$ for any $U,V\in\operatorname{\bf{B}}(\G)$: We have
+\begin{align*}
+\tau_U^{-1}(\so(V))&=\left\{x\in\so(V):\ra(\so|_V^{-1}(x))\in\so(U)\right\}=\left\{x\in\so(V):x\in\so|_V(\ra^{-1}(\so(U)))\right\}\\
+&=\so(V\cap\ra^{-1}(\so(U)))=\so(UV)
+\end{align*}
+
+In other words, the domains of $\tau_{UV}$ and of $\tau_U\circ\tau_V$ are the same. For every $x\in\so(UV)$, take $a\in U$ and $b\in V$ such that $x=\so(ab)$. Then
+\[\tau_{UV}(x)=\ra(ab)=\ra(a)=\tau_U(\so(a))=\tau_U(\ra(b))=\tau_U(\tau_V(\so(b)))=\tau_U(\tau_V(x)).\qedhere\]
+\end{example}
+
+\subsection{$\perpp$-preserving partial actions}
+
+\begin{theorem}\label{theoremperpppartialactions}
+Suppose $(X,\theta,\mathcal{A})$ is weakly regular (\ref{definitionregularperpp}) and $\alpha=(\alpha_s:I_{s^*}\to I_s)_{s\in S}$ is a partial action of an inverse semigroup $S$ on $\mathcal{A}$ such that
+\begin{enumerate}
+\item[(i)] $I_s$ is a $\perpp$-ideal of $\mathcal{A}$;
+\item[(ii)] $\alpha_s:I_{s^*}\to I_s$ is a $\perpp$-isomorphism.
+\end{enumerate}
+Then there exists a unique collection of homeomorphisms $\theta_s:U_{s^*}\to U_s$ ($s\in S$) such that
+\begin{enumerate}
+\item[(1)] For all $s\in S$, $U_s$ is open in $X$ and $\theta_s:U_{s^*}\to U_s$ is a homeomorphism;
+\item[(2)] $I_s=\mathbf{I}(U_s)=\left\{f\in\mathcal{A}:\supp(f)\subseteq U_s\right\}$;
+\item[(3)] for all $f\in I_{s^*}$, $\theta_s(\supp(f))=\supp(\alpha_s(f))$.
+\end{enumerate}
+In this case, $\theta=\left(\theta_s\right)_{s\in S}$ is a topological partial action of $S$ on $X$. Moreover, $\alpha$ is a global action if and only if $\theta$ is global.
+\end{theorem}
+\begin{proof}
+As in Theorem \ref{theoremperppideals}, we associate to every $\perpp$-ideal $I$ of $\mathcal{A}$ the open set
+\[\mathbf{U}(I)=\bigcup_{f\in I}\sigma(f)=\bigcup_{f\in I}\supp(f),\]
+which yields an order isomorphism $I\mapsto \mathbf{U}(I)$ with inverse
+\[U\mapsto\mathbf{I}(U)=\left\{f\in\mathcal{A}:\supp(f)\subseteq U\right\}.\]
+
+For every $s\in S$, let $U_s=\mathbf{U}(I_s)$, so that $I_s=\mathbf{I}(U_s)$ is the $\perpp$-ideal associated to $U_s$. We identify $I_s$ with the class
+\[\mathcal{A}(U_s)=\left\{f|_{U_s}:\supp(f)\subseteq U_s\right\}\]
+via the map $I_s\to\mathcal{A}(U_s)$, $f\mapsto f|_{U_s}$, which preserves $\perpp$. Moreover, $(U_s,\theta|_{U_s},\mathcal{A}(U_s))$ is weakly regular, so $\alpha_s$ can be seen as a $\perpp$-isomorphism
+\[\alpha_s:\mathcal{A}(U_{s^*})\simeq I_{s^*}\to I_s\simeq\mathcal{A}(U_s)\]
+and by Theorem \ref{maintheorem}, there exists a homeomorphism $\theta_{s^*}:U_s\to U_{s^*}$ satisfying, for all $f\in I_{s^*}$,
+\[\theta_{s^*}(\supp\alpha_s(f))=\supp(f)\]
+Switching $s$ by $s^*$, and substituting $f$ by $\alpha_s(f)$ we obtain properties (1)-(3) for $\theta$.
+
+To verify that $\theta$ is a partial action, we will need the following: for all $s,t\in S$ and $f\in\mathcal{A}$,
+\begin{align*}
+\supp(f)\subseteq\mathbf{U}(\alpha_t^{-1}(I_{s^*}\cap I_t))\hspace{-2cm}&\hspace{2cm}\iff f\in\alpha_t^{-1}(I_{s^*}\cap I_t)\\
+&\iff f\in I_{t^*}\quad\text{and}\quad\alpha_t(f)\in I_{s^*}\\
+&\iff\supp(f)\subseteq U_{t^*}\quad\text{and}\quad \theta_t(\supp(f))=\supp(\alpha_t(f))\subseteq U_{s^*}\\
+&\iff\supp(f)\subseteq \theta_t^{-1}(U_{s^*}\cap U_t ),
+\end{align*}
+and therefore
+\[\mathbf{U}(\alpha_t^{-1}(I_{s^*}\cap I_t))=\theta_t^{-1}(U_{s^*}\cap U_t).\ntag\label{equationpartialactiononspacecperpp}\]
+
+ It remains only to prove that $\theta$ is a partial action. For this let us verify that the conditions of Definition~\ref{definitionpartialmorphism} are satisfied.
+
+\begin{enumerate}
+\item[(i)] Given $s\in S$, the map $\theta_{s^*}\circ\theta_s:U_{s^*}\to U_{s^*}$ is a homeomorphism, and for all $f\in\mathcal{A}(U_{s^*})$,
+\[\theta_{s^*}(\theta_s(\supp(f)))=\theta_{s^*}(\supp(\alpha_s(f)))=\supp(\alpha_{s^*}\alpha_s(f))=\supp(f)\]
+so weak regularity of $\mathcal{A}(U_{s^*})$ implies that $\theta_{s^*}\circ\theta_s=\id_{U_{s^*}}$. This is enough to conclude that $(\theta_{s^*})=(\theta_s)^*$ (because these functions have opposite domains and codomains).
+%
+\item[(ii)] Let $s,t\in S$. Since $\alpha_t^{-1}(I_s\cap I_t)\subseteq I_{(st)^*}$, and by Equation (\ref{equationpartialactiononspacecperpp}) we have
+\[\theta_t^{-1}(U_s\cap U_t)\subseteq\mathbf{U}(I_{(st)^*})=U_{(st)^*},\]
+and by property (2) we obtain that, whenever $\supp(f)\subseteq\theta_t^{-1}(U_t\cap U_{s^*})$,
+\[\theta_s(\theta_t(\supp(f)))=\theta_{st}(\supp(f)),\]
+so weak regularity again implies that $\theta_s\theta_t\leq\theta_{st}$.
+\item[(iii)] Suppose $s\leq t$ in $S$. Then $I_{s^*}\subseteq I_{t^*}$ and since the map $I\mapsto\mathbf{U}(I)$ is an order isomorphism (Theorem \ref{theoremperppideals}(c)), $U_{s^*}\subseteq U_{t^*}$. For all $f\in I_{s^*}$,
+\[\theta_s(\supp(f))=\supp(\alpha_s(f))=\supp(\alpha_t(f))=\theta_t(\supp(f))\]
+so weak regularity once again implies that $\theta_s(x)=\theta_t(x)$ for all $x\in U_{s^*}$, so $\theta_s\leq\theta_t$.
+\end{enumerate}
+
+Now note that $\alpha$ is global if and only if for all $s,t$, $I_{(st)^*}\subseteq\alpha_t^{-1}(I_{s^*}\cap I_t)$. By Equation (\ref{equationpartialactiononspacecperpp}), this is equivalent to
+\[U_{(st)^*}\subseteq\theta_t^{-1}(U_{s^*}\cap U_t)\]
+which happens if and only if $\theta$ is a global action.\qedhere
+\end{proof}
+
+\subsection{Groupoid of germs}\label{subsectiongroupoidofgerms}
+
+Groupoids of germs were already considered by Paterson (\cite{MR1724106}) for localizations of inverse semigroups, and for canonical actions of pseudogroups by Renault (\cite{MR2460017}). In \cite{MR2419901}, Exel defined groupoids of germs for arbitrary actions of inverse semigroups on topological spaces in a similar, albeit more general, manner than both previous definitions of groupoids of germs.
+
+The objective of this section is to construct a groupoid of germs associated to any partial action of an inverse semigroup in a way that generalizes both groupoids of germs of inverse semigroup actions, and transformation groupoids of partial group actions.
+
+Let $\theta$ be a topological partial action of an inverse semigroup $S$ on a topological space $X$. We denote by $S\ast_\theta X=S\ast X$ the subset of $S \times X$ given by\nomenclature[P]{$S\ast_\theta X=S\ast X$}{}
+\[S\ast X= \left\lbrace (s,x) \in S \times X:x \in X_{s^*} \right\rbrace.\]
+and define the following equivalence relation $\sim$ on $S\ast X$: for every $(s,x)$ and $(t,y)$ in $S\ast X$
+\begin{align*}
+(s,x) \sim (t,y)\iff x=y\text{ and }\exists u\in S\text{ such that }u \leq s,t\text{ and }x \in X_{u^*}.\ntag\label{eq:equivalencegroupoidgerms1}
+\end{align*}
+We say that the equivalence class of $(s,x)$ is the \emph{germ of $s$ at $x$}, and we denote it by $[s,x]$.\index{Germ}
+
+\begin{remarkn}\label{equivalence2groupoidofgermes}
+Notice that if $(s,x),(t,y) \in S\ast X$ then 
+\begin{align*}
+(s,x) \sim (t,y)\iff x=y,\text{ and }\exists e\in E(S)\text{ such that }x \in X_e,\text{ and }se=te.\ntag\label{eq:equivalencegroupoidgerms2}
+\end{align*}
+Indeed, if $u$ satisfies the condition in Equation (\ref{eq:equivalencegroupoidgerms1}), take $e=u^*u$. Then $x\in X_u\subseteq x_{u^*u}$ and $e$ satisfies the condition in Equation (\ref{eq:equivalencegroupoidgerms2}).
+
+On the other hand, if $e$ satisfies (\ref{eq:equivalencegroupoidgerms2}), letting $u=se=te$ yields the desired properties of (\ref{eq:equivalencegroupoidgerms1}).
+\end{remarkn}
+
+\begin{remarkn}\label{changebygreater}
+If $u\leq s$ in $S$ and $x\in X_{u^*}$, then $x\in X_{s^*}$ and $[s,x]=[u,x]$.% Indeed, $u\leq s,u$ and $x\in X_{u^*}$.
+\end{remarkn}
+
+\begin{lemma}\label{lemmasastx}
+Suppose $(s,x)\in S\ast X$. Then
+\begin{enumerate}\setlength\itemsep{1ex}
+\item[(a)] $(s^*,\theta_s(x))\in S\ast X$;
+\item[(b)] if $(t,y)\in S\ast X$ and $\theta_t(y)=x$, then $(st,y)\in S\ast X$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}\setlength\itemsep{1ex}
+\item[(a)] Since $\theta_s(x)\in X_s=X_{(s^*)^*}$ then $(s^*,\theta_s(x))\in S\ast X$.
+\item[(b)] By assumption, $y=\theta_{t^*}(x) \in \theta_{t^*}(X_t\cap X_{s^*})\subseteq X_{(st)^*}$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{lemmainvprod}
+Let $(s_1,x), (s_2,x), (t_1,y), (t_2,y) \in S\ast X$ with $[s_1,x]=[s_2,x]$, $[t_1,y]=[t_2,y]$ and $\theta_{t_1}(y)=x$. Then 
+\begin{enumerate}\setlength\itemsep{1ex}
+\item[(a)] $\theta_{s_1}(x)=\theta_{s_2}(x)$ and $\theta_{t_2}(y)=\theta_{t_1}(y)=x$;
+\item[(b)]  $[s_1t_1,y]=[s_2t_2,y]$,
+%\item[(c)]  $[s_1^*,\theta_{s_1}(x)]=[s_2^*,\theta_{s_2}(x)]$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Take $u\leq s_1,s_2$ and $v\leq t_1,t_2$ with $x\in X_{u^*}$ and $y\in X_{v^*}$.
+\begin{enumerate}\setlength\itemsep{1ex}
+\item[(a)] Since $u\leq s_1,s_2$ and $x\in X_{u^*}$ then by Remark~\ref{changebygreater},
+\[\theta_{s_1}(x)=\theta_u(x)=\theta_{s_2}(x)\]
+and similarly $\theta_{t_2}(y)=\theta_v(y)=\theta_{t_1}(y)=x$ 
+
+\item[(b)] We have $uv\leq s_1t_1,s_2t_2$, and since $\theta_v(y)=\theta_{t_1}(y)=x\in X_{u^*}$, then
+\[y=\theta_{v^*}(x)\in \theta_{v^*}(X_v\cap X_{u^*})\subseteq X_{(uv)^*},\]
+which proves that $(s_1t_1,y)\sim (s_2t_2, y)$. \qedhere
+%\item[(c)] Since $u\leq s_1,s_2$ and $x\in X_{u^*}$, then $u^* \leq s_1^*,s_2^*$, $\theta_{s_1}(x)=\theta_{u}(x)=\theta_{s_2}(x)$, and $\theta_{s_1}(x)=\theta_u(x)\in X_u$, proving that $(s_1^*,\theta_{s_1}(x))\sim(s_2^*,\theta_{s_2}(x))$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{definition}\nomenclature[P]{$S\ltimes_\theta X$}{Groupoid of germs}\index{Groupoid!of germs}
+If $\theta$ is a topological action of an inverse semigroup $S$ on a topological space $X$, we let
+\[S\ltimes_\theta X =\{[s,x]:s\in S,x\in X_{s^*}\}=(S\ast X)/\sim\]
+be the set of germs. We call $S\ltimes_\theta X$ (or $S\ltimes X$ for short) the \emph{groupoid of germs} of $\theta$.
+\end{definition}
+
+To describe the groupoid structure of $S\ltimes_\theta X$, we define the set $(S\ltimes X)^{(2)}$ of \emph{composable pairs} as
+\[(S\ltimes X)^{(2)}=\left\lbrace([s,x],[t,y]):x=\theta_t(y)\right\rbrace,\]
+(note that $\theta_t(y)$ depends only on the class $[t,y]$, by Lemma \ref{lemmainvprod}(a)). Given a composable pair $([s,x],[t,y])\in(S\ltimes X)^{(2)}$, define the product as
+\begin{align*}%\ntag\label{eq:productgroupoidgerms}
+[s,x][t,y]=[st,y],
+\end{align*}
+which is well-defined by Lemma~\ref{lemmainvprod}(b), and it is routine to check that this operation defines a groupoid structure on $S\ltimes X$. The inverse of $[s,x]\in S\ltimes_\theta X$ is
+\[[s,x]^{-1}=[s^*,\theta_s(x)]\]
+and the unit space of $S\ltimes X$ is $\left\{[e,x]:e\in E(S), x\in X_s\right\}$. We would now like to endow $S\ltimes X$ with an appropriate topology.
+
+\begin{lemma}\label{lemmatopologygroupoidgerms}\nomenclature[G]{$[s,U]$}{Basic open set in $S\ltimes X$}
+For every $s\in S$ and $U\subseteq X_{s^*}$, let
+\[[s,U]=\left\lbrace[s, x]\in S\ltimes X : x\in U\right\rbrace.\]
+The collection $\mathcal{B}_{\mathrm{germ}}$ of all sets of the form $[s,U]$, where $s\in S$ and $U$ is an open subset of $X_{s^*}$, is a basis for a topology on $S\ltimes X$%where $s \in S$ and $U \subseteq X_{s^*}$ is an open set.
+\end{lemma}
+\begin{proof}
+Using the definition of germs (Equation \ref{eq:equivalencegroupoidgerms1}), we obtain
+\[[s,U]\cap [t,V]=\bigcup_{\substack{u\leq s\\u\leq t}}[u,U\cap V\cap X_{u^*}]\]
+whenever $s,t\in S$, $U\subseteq X_{s^*}$ and $V\subseteq X_{t^*}$, hence the desired result.\qedhere
+%Let $s$ and $t$ be elements of $S$ and let $U$ and $V$ be open sets with $U \in X_{s^*},$ and $V \in  X_{t^*}$. 
+%Our task is to prove that if
+%\[[r,z]\in[s,U]\cap[t,V]\]
+%then there is an element $p \in S$ and an open set $W \subseteq X_{p^*}$ such that 
+%\[[r,z]\in[p,W]\subseteq [s,U]\cap[t,V].\]
+%By assumption $[r, z] = [s, x] = [t, y],$ for some $x \in U$ and $y \in V$. But this implies that $z=x=y,$ so $z \in U\cap V$. In addition there is $u\leq r,s$ with $z\in X_{u^*}$, and now from $[u,z]=[r,z]=[t,y]$ there is $p\leq u,t$ with $z\in X_{p^*}$.
+%
+%Letting $W=U\cap V\cap X_{p^*}$ and using the facts that $p\leq s,t$ along with Remark~\ref{changebygreater}, we obtain $[p,W]=[s,W]=[t,W]$, so
+%\[[r,z]=[p,z]\in[p,W]=[s,W]\cap[t,W]\subseteq[s,U]\cap[t,V].\qedhere\]
+\end{proof}
+
+\begin{proposition}\label{propositiongroupoidofgermsistopological}
+$S\ltimes X$ is a topological groupoid with the topology induced by the basis $\mathcal{B}_{\mathrm{germ}}$.
+%Lemma~\ref{lemmatopologygroupoidgerms}.
+\end{proposition}
+
+\begin{proof}
+Let $m:(S\ltimes X)^{(2)}\to S\ltimes X$ be the product map, and suppose $u\in S$, $U\subseteq X_{u^*}$. Let us prove that
+\[m^{-1}([u,U])=\bigcup\left\{([s,X_{s^*}]\times [t,U\cap X_{t^*}])\cap (S\ltimes X)^{(2)}:s,t\in S\text{ and }st\leq u\right\}\ntag\label{equationinverseimageproductgerms}\]
+Indeed the inclusion ``$\supseteq$'' is immediate from the definition of the product, so assume $([s,y],[t,x])\in m^{-1}([u,U])$. 
+This means that there exists $v\leq st,u$ such that $x\in X_{v^*}$ and $[st,x]=[v,x]=[u,x]$, and thus
+\[([s,y],[t,x])=([s,y],[tv^*v,x])\]
+which belongs to the set in the right-hand side of Equation (\ref{equationinverseimageproductgerms}) as $stv^*v=v\leq u$. This proves the reverse inclusion and it follows that $m$ is continuous.
+
+%We need to prove that the inversion and product operations on $S\ltimes X$ are continuous. For the product, suppose $([s,x],[t,y])\in(S\ltimes X)^{(2)}$, and let $[r,V]$ be a basic neighbourhood of $[s,x][t,y]=[st,y]$. This means that $y \in V$, and that there is some element $u\in S$ such that $u \leq st, r$ and $y \in X_{u^*}$. Setting $U=V\cap X_{u^*}\cap X_{t^*}$, we obtain $([s,x],[t,y])\in[s,X_{s^*}]\times[t,U]$ and
+%\[[s,X_{s^*}][t,U]\subseteq[st,U].\]
+%Since $u\leq st,r$ and $U\subseteq X_{u^*}$, then $[st,U]=[u,U]=[r,U]$, therefore
+%\[[s,X_{s^*}][t,U]\subseteq[r,U]\subseteq[r,V],\]
+%which proves that the product is continuous.
+
+Now, note that whenever $s\in S$ and $U\subseteq X_{s^*}$,
+\[[s,U]^{-1}=[s^*,\theta_s(U)],\]
+so continuity of the inversion follows immediately.
+\end{proof}
+
+From now on, we always consider $S\ltimes X$ with the topology induced by the basis $\mathcal{B}_{\mathrm{germ}}$ as in Lemma \ref{lemmatopologygroupoidgerms}.%In particular, $(S\ltimes X)^{(0)}=\bigcup_{e\in E(S)}[e,X_e]$ is open in $S\ltimes X$.
+
+\begin{proposition}\label{prop:bisectionhomeomorphic}
+The groupoid $S\ltimes X$ is étale, and each basic open set $[s,U]$, where $s\in S$ and $U\subseteq X_{s^*}$ is open, is a bisection of $S\ltimes X$.
+\end{proposition}
+\begin{proof}
+Given $s \in S$ and $U \subset X_{s^*}$ an open set, the source map on $[s,U]$ is given by
+\[\so:[s,U]\to[s^*s,U],\quad [s,x]\mapsto[s^*s,x]\]
+and injectivity is immediate by the definition of germs in Equation (\ref{eq:equivalencegroupoidgerms1}).
+
+In particular, $\so([s,U])=[s^*s,U]$ is open in $(S\ltimes X)^{(0)}$. Any basic open subset of $[s,U]$ is of the form $[s,V]$ where $V\subseteq U$, so $\so([s,V])=[s^*s,V]$ is open in $(S\ltimes X)^{(0)}$. Therefore the source map is a local homeomorphism and $S\ltimes X$ is étale. The verification that the range map is a homeomorphism from $[s,U]$ to its image is similar.\qedhere
+\end{proof}
+
+The unit space $(S\ltimes X)^{(0)}$ of $S\ltimes X$ can be naturally identified with $X$ under the correspondence
+\begin{align*}\ntag\label{eq:identification}
+\phi:(S\ltimes X)^{(0)}\to X,\qquad\phi([e,x])=x\qquad(e\in E(S))
+\end{align*}
+To check that this map is injective, just note that if $\phi([e,x])=\phi([f,y])$ ($e,f\in E(S)$), then $x=y$ and $x\in X_e\cap X_f\subseteq X_{ef}$, so $[e,x]=[ef,x]=[f,x]$ by the definition of germs. A basic open set of $(S\ltimes X)^{(0)}$ has the form $[e,U]$ for some $e\in E(S)$ and $U\subseteq X_e$ open, and
+\[\phi([e,U])=U\]
+so $\phi$ takes basic open sets of $(S\ltimes X)^{(0)}$ to basic open sets of $X$, and is therefore a homeomorphism.
+
+Since the source and range maps of $S\ltimes X$ are given by $\so[s, x]= [s^*s, x]$ and $\ra[s,x]=[ss^*,\theta_s(x)]$, then enforcing this identification we will write
+\[\so[s, x] = x\qquad\text{and}\qquad\ra[s, x] = \theta_s(x).\]
+
+Moreover, if $\mathscr{B}$ is a basis for the topology of $X$, then a basis for $S\ltimes X$ consists of those sets of the form $[s,U]$ with $U\in \mathscr{B}$. Hence, if $X$ is totally disconnected then the collection of sets of the form $[s,U]$ with $U$ compact-open subset of $X$, is a basis for $S\ltimes X$.
+
+\begin{corollary}
+If $X$ is a zero-dimensional, locally compact Hausdorff space then $S\ltimes X$ is an ample groupoid.
+\end{corollary}
+
+\begin{example}
+Following Paterson (\cite{MR1724106}), a \emph{localization} consists of an action $\theta$ of an inverse semigroup $S$ on a topological space $X$ such that $\left\{X_s:s\in S\right\}$ is a basis for the topology of $S$. The groupoid of germs in the sense of Paterson coincides with the definition above of groupoids of germs.
+\end{example}
+
+\begin{example}\index{Pseudogroup}
+Let $X$ be a locally compact Hausdorff space. The \emph{canonical action} of $\mathcal{I}(X)$ on $X$ is the action $\tau$ given by $\tau_\phi=\phi$ for all $\phi\in\mathcal{I}(X)$. A \emph{pseudogroup} on $X$ is a sub-inverse semigroup of $\mathcal{I}(X)$ whose elements are homeomorphisms between open subsets of $X$.
+
+Let $\mathcal{B}$ be a basis for the topology of $X$, and for each $B\in\mathcal{B}$ consider its identity function $\operatorname{id}_B:B\to B$.
+
+Given a pseudogroup $\mathcal{G}$ on $X$, let $\mathcal{G}\mathcal{B}$ be the sub-inverse semigroup of $\mathcal{I}(X)$ generated by $\mathcal{G}\cup\left\{\operatorname{id}_B:B\in\mathcal{B}\right\}$, which is again a pseudogroup on $X$, and in fact the canonical action of $\mathcal{G}\mathcal{B}$ on $X$ is a localization.
+
+The groupoid of germs of $\mathcal{G}$ in the sense of Renault (\cite{MR2460017})  coincides with the groupoid of germs $\mathcal{G}\mathcal{B}\ltimes X$ defined above.
+\end{example}
+
+The following are natural and well-known examples of constructions which are possible with groupoids of germs (and already appear in some form in \cite{MR2565546}).
+
+\begin{example}[Transformation groupoid]
+In the case that $S$ is a discrete group, the equivalence relation on $S \ast X$ is trivial and the topology is the product topology, that is, $S\ltimes X$ is the transformation groupoid, and in particular it is Hausdorff if and only if $X$ is Hausdorff.% so the resulting étale groupoid $S\ltimes X$ is Hausdorff.
+\end{example}
+
+\begin{example}[Maximal group image]
+An easy example is the case when $X$ is a singleton set on which $S$ acts trivially, that is, $\theta_s$ is simply the identity on $X$ for all $s\in S$. It is then straightforward to see that $S \ltimes X$ is the maximal group image $\mathbf{G}(S)$ of $S$ (see \cite{MR1724106} or Section~\ref{sectionassociatedactionsandisomorphicgroupoidofgerms} for the definition of $\mathbf{G}(S)$): two elements of $S\simeq S\ast X$ have the same germ if and only if they have a common lower bound, which is how we define $\mathbf{G}(S)$.
+\end{example}
+
+\begin{example}[Restricted product groupoid]
+Another example is the case $X=E(S)$ with the discrete topology, and $\theta$ is the \emph{Munn representation} of $S$ (\cite{MR0262402}): $X_s=\left\{e\in E(S):e\leq ss^*\right\}$ and $\theta_s(e)=ses^*$ for all $e\in X_{s^*}$.
+
+Now from $S$ we can construct the \emph{restricted product groupoid} $(S,\cdot)$ (\cite{MR1694900}), which is the same as $S$ but the product $s\cdot t=st$ is defined only when $s^*s=tt^*$.
+
+Then $S\ltimes E(S)$ is a discrete groupoid, and the map
+\[S\ltimes E(S)\to(S,\cdot),\qquad [s,e]\mapsto se\]
+is an isomorphism of (discrete) groupoids with inverse $s\mapsto [s,s^*s]$.% We leave the details to the interested reader.
+\end{example}
+
+The following example is based on \cite[Example 5.18]{MR2565546} (compare with Example \ref{examplebugeyed}).
+
+\begin{example}\label{nonhausdorffaction}
+Let $S=\mathbb{N}\sqcup\left\{\infty,z\right\}$ be a disjoint union of the lattice $\mathbb{N}$ and a two-set element $\left\{\infty, z\right\}$, with product given, for $m,n\in\mathbb{N}$,
+\[nm=\min(n,m),\qquad n\infty=\infty n=nz=zn=n,\]
+\[\quad z\infty=\infty z=z\qquad\text{and}\quad z^2=\infty^2=\infty.\]
+In other words, $S$ is the semigroup obtained by adjoining the lattice $\mathbb{N}$ to the group or order $2$ $\left\{z,\infty\right\}$, in a way that every element of $\mathbb{N}$ is smaller than $z$ and $\infty$.
+
+Let $X=E(S)=\mathbb{N}\cup\left\{\infty\right\}$, seen as the one-point compactification of the natural numbers, and $\theta$ the Munn representation of $S$, so that $S\ltimes X=(S,\cdot)$, however with the topology whose open sets are either cofinite or contained in $\mathbb{N}$. In particular, $S \ltimes X$ is not Hausdorff.
+\end{example}
+
+\begin{example}[{\cite[Proposition 5.4]{MR2419901}}]\label{ex:amplegermesopenbisections}
+Let $\G$ be an étale groupoid, $\tau$ the canonical action of the semigroup of open bisections $\operatorname{\mathbf{B}}(\G)$ on $\G[0]$ (Example \ref{examplecanonicalaction}), and $S$ any sub-inverse semigroup of $\operatorname{\mathbf{B}}(\G)$ which covers $\G$ (that is, $\G=\bigcup_{A\in S}A$), and which is closed under intersections.  Then the map $S\ltimes \G[0]\to\G$, $[A,x]\mapsto\so|_A^{-1}(x)$, is an isomorphism of topological groupoids.
+
+In particular, if $\G$ is an ample Hausdorff groupoid, then the groupoid of germs $\KB(\G)\ltimes \G[0]$ of the (restriction of the) canonical action on $\KB(\G)$ is isomorphic to the groupoid $\G$.
+\end{example}
+
+We will be mostly interested in Hausdorff groupoids, and in particular conditions on inverse semigroups which guarantee that groupoids of germs are Hausdorff.
+
+\begin{definition}\index{Semilattice!Weak}
+A poset $(L,\leq)$ is a ($\land$-)\emph{weak semilattice} if for all $s,t\in L$ there exists a finite subset $F\subseteq L$ such that
+\[\left\{x\in L:x\leq s\text{ and }x\leq t\right\}=\bigcup_{f\in F}\left\{x\in L:x\leq f\right\}\]
+\end{definition}
+
+\begin{example}
+ If $\G$ is an ample Hausdorff groupoid then $\KB(\G)$ is a semilattice, and $U\land V=U\cap V$.
+\end{example}
+
+The following relation between inverse semigroups which are weak semilattices and the topology of its groupoids of germs can be proven just as in \cite[Theorem~5.17]{MR2565546}.
+
+\begin{proposition}\label{prop:weaksemilattice} \cite[Theorem~5.17]{MR2565546}
+An inverse semigroup $S$ is a weak semilattice if and only if for any topological partial action $\theta:S\to\mathcal{I}(X)$ such that $X_s$ is clopen for all $s \in S$, the groupoid of germs $S\ltimes X$ is Hausdorff.
+
+In particular, if $S$ is a weak semilattice and $X$ is totally disconnected, then the groupoid of germs $S\ltimes X$ is an ample Hausdorff groupoid.
+\end{proposition}
+
+\begin{remark}
+The hypothesis that the domains of the partial action are clopen is necessary. For example, even if $\G$ is an ample non-Hausdorff groupoid then $\operatorname{\bf{B}}(\G)$ is still a semilattice, however, as in Example~\ref{ex:amplegermesopenbisections}, the groupoid of germs $\operatorname{\bf{B}}(\G)\ltimes\G[0]\simeq\G$ is not Hausdorff, 
+\end{remark}
+
+A common example of semigroups which are weak semilattices are the \emph{$E$-unitary} and $E^*$-unitary semigroups, which will be described in Section \ref{sectionassociatedactionsandisomorphicgroupoidofgerms}. See Example \ref{eunitaryisweaksemilattice}.

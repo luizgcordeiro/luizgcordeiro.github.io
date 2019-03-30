@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.3.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="rightbar">
+	<div class="reference" id="refMR3231479"></div>
+	<script>
+		$( "#refMR3231479" ).load("../0.matters/references.html #MR3231479")
+	</script>
+
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class="section">4.1. Partial morphisms and partialactions</h2>
+
+\begin{definition}\label{definitionpartialmorphism}
+A \emph{partial morphism} from an inverse semigroup $S$ to a (not necessarily inverse) semigroup $T$ is a map $\theta: S \rightarrow T$ satisfying, for all $s$ and $t$ in $S$,
+\begin{enumerate}
+\item[(PM1)] $\theta(s)\theta(s^*)\theta(s)=\theta(s)$;
+\item[(PM2)] $\theta(s)\theta(t)\theta(t^*)=\theta(st)\theta(t^*)$;
+\item[(PM3)] $\theta(s^*)\theta(s)\theta(t)=\theta(s^*)\theta(st)$.
+\end{enumerate}
+\end{definition}
+
+The following results can be found in \cite{MR3231479}, with different proofs.
+
+\begin{proposition}\label{propositioninitialpropertiesofpartialmorphisms}
+If $\theta:S\to T$ is a partial morphism from an inverse semigroup $S$ to a semigroup $T$, then
+\begin{enumerate}
+\item[(a)] For all $s,t\in S$, $\theta(s)\theta(t)=\theta(st)\theta(t^*)\theta(t)=\theta(s)\theta(s^*)\theta(st)$;
+\item[(b)] $\theta(E(S))\subseteq E(T)$;
+\item[(c)] If $e\in E(S)$ and $s\in S$, then $\theta(e)\theta(s)=\theta(es)$ and $\theta(s)\theta(e)=\theta(se)$;
+\item[(d)] $\theta$ is a morphism if and only if for all $s\in S$, $\theta(s^*s)=\theta(s^*)\theta(s)$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[(a)] We have
+\[\theta(s)\theta(t)\overset{(PM1)}{=}\theta(s)\theta(t)\theta(t^*)\theta(t)\overset{(PM2)}=\theta(st)\theta(t)^*\theta(t)\]
+and the other equality is similar
+\item[(b)]  If $e=e^2\in S$, then
+\[\theta(e)\overset{(PM1)}{=}\theta(e)\theta(e^*)\theta(e)\overset{(PM2)}{=}\theta(e)\theta(e^*e)=\theta(e)\theta(e),\]
+so $\theta(e)\in E(T)$.
+\item[(b)] If $s\in S$ and $e\in E(S)$ then
+\begin{align*}
+\theta(e)\theta(s)&\overset{(b)}{=}\theta(e)^2\theta(s)\overset{(PM3)}{=}\theta(e)\theta(es)\overset{(a)}{=}\theta(e^2 s)\theta((es)^*)\theta(es)\overset{(PM1)}{=}\theta(es)
+\end{align*}
+\item[(c)]If $\theta$ is a partial morphism satisfying the latter condition, then for all $s,t\in S$,
+\[\theta(s)\theta(t)\overset{(a)}{=}\theta(st)\theta(t^*)\theta(t)=\theta(st)\theta(t^*t)\overset{(a)}{=}\theta(st)\theta((st)^*)\theta(stt^*t)\overset{(PM1)}{=}\theta(st).\qedhere\]
+\end{enumerate}
+\end{proof}
+
+Partial morphisms between inverse semigroups can be determined in terms of the order structure (page \pageref{orderinversesemigroup}).
+
+\begin{proposition}\label{propositionequivalencepartialmorphism}
+A map $\theta:S\to T$ between inverse semigroups is a partial morphism if and only if for all $s,t\in S$,
+\begin{enumerate}
+\item[(i)] $\theta(s^*)=\theta(s)^*$;  
+\item[(ii)] $\theta(s)\theta(t) \leq\theta(st)$;
+\item[(iii)] $\theta(s)\leq\theta(t)$ whenever $s\leq t$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+First assume that $\theta$ is a partial morphism. Property (i) follows from (PM1); (ii) follows from (i) and \ref{propositioninitialpropertiesofpartialmorphisms}(a); and (iii) is a consequence of \ref{propositioninitialpropertiesofpartialmorphisms}(b) and (c).
+
+In the other direction, suppose (i), (ii) and (iii) are satisfied. Then (PM1) is immediate from (i). As for (PM2), we have
+\[\theta(s)\theta(t)\theta(t^*)\overset{(ii)}{\leq}\theta(st)\theta(t^*)\]
+and conversely
+\[\theta(st)\theta(t^*)\overset{(i)}{=}\theta(st)\theta(t^*)\theta(t)\theta(t^*)\overset{(ii)}{\leq}\theta(stt^*)\theta(t)\theta(t^*)\overset{(iii)}{\leq}\theta(s)\theta(t)\theta(t^*).\qedhere\]
+\end{proof}
+
+The easiest way to construct partial morphisms which are not morphisms is by \emph{restriction}.
+
+\begin{example}\label{examplecompressionabstract}
+Let $\theta:S\to T$ be a morphism of inverse semigroups, and let $u\in E(T)$. Define $\theta^u:S\to T$ by $\theta^u(s)=u\theta(s)u$. Then $\theta^u$ is a partial morphism, called the \emph{restriction} or \emph{compression} of $\theta$ to $u$.
+\end{example}
+
+<!-- 4.1.5 -->
+<div class="definition" id="definitionactionspartialandglobal">
+<p><span class="envidentifier">Definition 4.1.5</span>
+[<a class="makeref" data-target="refMR3231479" href="../0.matters/references.html#MR3231479">22</a>]
+A <em>partial action</em> of an inverse semigroup $S$ on a set $X$ is a partial morphism $\theta:S\to\mathcal{I}(X)$. If $\theta$ is a morphism we call it a <em>global action</em>.
+</p>
+<p>
+If we need to make the domain and codomains of each map $\theta_s$ explicit, we will write $\theta=(\theta_s:X_{s^*}\to X_s)_{s\in S}$.
+</p>
+</div>
+
+The main difference between a partial and a global action is how the product and order of the semigroup are preserved. According to Proposition \ref{propositionequivalencepartialmorphism}, an equivalent way to define a partial action $\theta$ on a set $X$ is by providing a collection $\left\{\theta_s\right\}_{s\in S}$ of partial maps on $X$ which satisfies
+\begin{itemize}
+\item If $\theta_s(x)$ is defined then $\theta_{s^*}(\theta_s(x))$ is defined and equals $x$;
+\item If $\theta_t(\theta_s(x))$ is defined, then $\theta_{ts}(x)$ is also defined and equals $\theta_t(\theta_s(x))$;
+\item If $\theta_s(x)$ is defined and $s\leq t$, then $\theta_t(x)$ is also defined and equals $\theta_s(x)$;
+\end{itemize}
+
+\begin{description}\nomenclature[P]{$\theta_s:X_{s^*}\to X_s$}{Partial action $\theta$ on $X$}
+\item[Convention:] Whenever $\theta:S\to\mathcal{I}(X)$ is a partial action of an inverse semigroup $S$ on a set $X$, we will denote $\theta(s)=\theta_s$, and by $X^\theta_{s^*}$, or simply $X_{s^*}$ when there is no risk of confusion, the domain of $\theta_s$.% This way, a partial action $\theta$ can be regarded as a tuple
+%\[\theta=\left(\left\{X_s\right\}_{s\in S},\left\{\theta_s\right\}_{s\in S}\right)\]
+%where $X_s\subseteq X$ and $\theta_s:X_{s^*}\to X_s$ is a bijection for all $s\in S$.
+\end{description}
+
+\begin{example}
+Let $\theta:S\to\mathcal{I}(X)$ be a global action (that is, a semigroup morphism). If $A\subseteq X$, we define $\theta_A:S\to\mathcal{I}(A)$ by letting $(\theta_A)_s$ be the restriction of $\theta_s$ to $A\cap\theta_s^{-1}(X_s\cap A)$. Then $\theta_A$ is a partial action of $S$ on $A$.
+
+Note that if $\id_A$ is the identity function of $A$, then $(\theta_A)_s=\id_A\theta_s\id_A$, so enforcing our identification that idempotents of $\mathcal{I}(X)$ are the subsets of $X$, $\theta_A$ is precisely the compression of $\theta$ to $A$ (Example \ref{examplecompressionabstract}).
+\end{example}
+
+There are also slightly different ways of describing partial actions of inverse semigroups (see Proposition 3.3 and 3.4 \cite{MR3231479}), but we will mostly use the description of \ref{propositionequivalencepartialmorphism}.
+
+\begin{proposition}\label{propositioncomparingdomainspartialaction}
+If $\theta:S\to\mathcal{I}(X)$ is a partial action, then for all $s,t\in S$,
+\begin{enumerate}
+\item[(a)] if $s\leq t$ then $X_s\leq X_t$;
+\item[(b)] $\theta_s(X_{s^*}\cap X_t)=X_s\cap X_{st}$;
+\item[(c)] $X_s\cap X_t=X_{tt^*s}\cap X_t$;
+\item[(d)] $X_s\subseteq X_{s^*s}$.
+\end{enumerate}
+Moreover, $\theta$ is a global action if and only if $X_{s^*}=X_{s^*s}$ for all $s$.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[(a)] If $s\leq t$ then $s^*\leq t^*$, so by Proposition \ref{propositionequivalencepartialmorphism}, $\theta_{s^*}\leq\theta_{t^*}$ and in particular the domain $X_s$ of $\theta_{s^*}$ is contained in the domain $X_t$ of $\theta_{t^*}$.
+\item[(b)] For all $s,t\in S$, the domain of $\theta_t\circ\theta_s$ is contained in $X_{s^*}$, and also $\theta_t\circ\theta_s\leq\theta_{ts}$, so comparing their domains we obtain
+\[\theta_s^{-1}(X_s\cap X_{t^*})\subseteq X_{s^*}\cap X_{(ts)^*}.\ntag\label{equationcomparingdomainspartialaction1}\]
+Using $\theta_s^{-1}=\theta_{s^*}$ and substituting $s$ by $s^*$ and $t$ by $t^*$ in Equation (\ref{equationcomparingdomainspartialaction1}) yields
+\[\theta_s(X_{s^*}\cap X_t)\subseteq X_{s}\cap X_{st}.\ntag\label{equationcomparingdomainspartialaction2}\]
+Now substituting $t$ by $(st)^*$ in Equation (\ref{equationcomparingdomainspartialaction1}), and applying $\theta_s$ on both sides yields
+\[X_s\cap X_{st}\subseteq\theta_s(X_{s^*}\cap X_{(t^*s^*s)^*}\subseteq\theta_s(X_{s^*}\cap X_t),\]
+where the second inclusion follows from item (a).
+\item[(c)] Using (b), we compute
+\[X_s\cap X_t=\theta_t(\theta_{t^*}(X_t\cap X_s))=\theta_t(X_{t^*}\cap X_{t^*s})=X_t\cap X_{tt^*s}.\]
+\item[(d)] Using (b),
+\[X_{s^*}=\theta_{s^*}(X_s\cap X_s)=X_{s^*}\cap X_{s^*s}\subseteq X_{s^*s}\]
+\end{enumerate}
+Suppose now $X_{s^*}=X_{s^*s}$. Then for all $x\in X_{s^*s}=X_{s^*}$,
+\[\theta_{s^*s}(x)=x=\theta_{s^*}\theta_s(x),\]
+that is, $\theta_{s^*s}\leq \theta_{s^*}\theta_s\leq\theta_{s^*s}$, so $\theta$ is global by \ref{propositioninitialpropertiesofpartialmorphisms}(d).\qedhere
+\end{proof}
+
+In the cases where $X$ has some extra structure (topological and/or algebraic) we will be mostly interested in partial actions that preserve this structure to some degree, which is what we will consider in subsequent sections.
+</div>
+
+</body>
+
+<script>
+	$('.makeref').hover(function() {
+		$('.rightbar div').hide();
+		var target = '#' + $(this).data('target');
+		$(target).show();
+	})
+</script>
+
+</html>

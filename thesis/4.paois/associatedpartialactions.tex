@@ -1,0 +1,262 @@
+\subsection{$E$ and $E^*$-unitary inverse semigroups}
+
+We will now describe how to construct partial actions of groups from actions of inverse semigroups and vice-versa. The class of inverse semigroups which allows us to do this in a more precise manner is that of \emph{$E$-unitary inverse semigroups}.
+
+\begin{definition}\index{Semigroup!$E$-unitary}\index{Semigroup!$E^*$-unitary}
+An inverse semigroup $S$ is
+\begin{enumerate}
+\item \emph{$E$-unitary} if whenever $s\in S$ and $e\in E(S)$, if $e\leq s$ then $s\in E(S)$;
+\item \emph{$E^*$-unitary} (sometimes called \emph{$0$-$E$-unitary})  if it has a zero and whenever $s\in S$ and $e\in E(S)\setminus\left\{0\right\}$, if $e\leq s$ then $s\in E(S)$.
+\end{enumerate}
+\end{definition}
+
+Note that an inverse semigroup $S$ with $0$ is $E$-unitary if and only if $S=E(S)$, which is a somewhat trivial case. Moreover, we can always adjoin a zero (that is, an absorbing) element $0$ to any semigroup $S$, and the semigroup $S_0$ obtained is $E^*$-unitary if and only if $S$ is $E$-unitary.
+
+\begin{example}
+Every group is $E$-unitary.
+\end{example}
+
+\begin{example}
+Every $\land$-semilattice is $E$-unitary.
+\end{example}
+
+\begin{example}\label{eunitaryisweaksemilattice}
+If $S$ is $E^*$-unitary then it is a semilattice: Indeed, given $s,t\in S$, if $\left\{s,t\right\}$ does not admit any nonzero lower bound then $s\land t=0$. If $\left\{s,t\right\}$ admits a nonzero lower bound, then $s$ and $t$ are compatible, so $s\land t=ts^*s$.
+
+As a consequence, every $E$-unitary inverse semigroup $S$ is a weak semilattice: We can embed $S$ into an $E^*$-unitary semigroup $S_0$ by adjoining a $0$. Given $s,t\in S$, let $F=\left\{s\land t\right\}\setminus\left\{0\right\}$, which is either empty or equal to $\left\{s\land t\right\}$, but in any case a finite subset of $S$, so that $\left\{x\in S:x\leq s,t\right\}=\bigcup_{f\in F}\left\{x\in S:x\leq f\right\}$.
+\end{example}
+
+Let us rewrite the $E$ and $E^*$-unitary condition in terms of the compatibility relation.
+
+\begin{lemma}\cite[Theorem~2.4.6]{MR1694900}\label{lemmacompatibilityeunitary}
+\begin{enumerate}
+\item[(a)] An inverse semigroup $S$ with $0$ is $E^*$-unitary if and only if whenever $s,t\in S$ have a non-zero common lower bound then $s$ and $t$ are compatible.
+\item[(b)] An inverse semigroup $S$ is $E$-unitary if and only if whenever $s,t\in S$ have a common lower bound then $s$ and $t$ are compatible.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item[(a)] First assume $S$ is $E^*$-unitary and $s,t\in S$ have a common nonzero lower bound $u\in S\setminus\left\{0\right\}$. Then $u^*u\leq s^*t,t^*s$ and $uu^*\neq 0$, so both $s^*t$ and $st^*$ are idempotent and $s$ and $t$ are compatible. 
+
+Conversely, suppose the latter condition is satisfied, $e\leq s$ and $e\in E(S)\setminus 0$. Then $e\leq s, s^*s$, which implies that $s$ and $s^*s$ are compatible and thus $s=s(s^*s)^*$ is an idempotent.
+\end{enumerate}
+Item (b) follows from (a) by adjoining a $0$ to $S$.\qedhere
+\end{proof}
+
+\subsection{Maximal group image}
+
+To each inverse semigroup $S$ we can naturally associate a group $\mathbf{G}(S)$ in the following manner: define a relation in $S$ by
+\[\ntag\label{relationmaximalgroupimage}
+s\sim t\iff\exists u\in S\quad\text{such that}\quad u\leq s,t.\]
+Alternatively, $s\sim t$ if and only if there exists $e\in E(S)$ such that $es=et$ (and the proof of this equivalence is similar to that in Remark \ref{equivalence2groupoidofgermes}).
+
+Using the fact that the order of $S$ is preserved under products and inverses, it is easy enough to see that $\sim$ is in fact a congruence, so we endow the quotient set $S/{\sim}$ with the quotient quotient semigroup structure. Given $s\in S$, we denote by $[s]$ the equivalence class of $s$ with respect to the relation (\ref{relationmaximalgroupimage}).
+
+\begin{proposition}[{\cite[Proposition~2.1.2]{MR1724106}}]\index{Maximal group homomorphic image}\nomenclature[S]{$\mathbf{G}(S)$}{Maximal group homomorphic image of $S$}
+Let $S$ an inverse semigroup. The quotient 
+\[\mathbf{G}(S):=S/{\sim}\]
+is a group. Furthermore, $\mathbf{G}(S)$ is the \emph{maximal group homomorphic image} of $S$ in the sense that every semigroup morphism $\theta: S \rightarrow G$ from $S$ to a group $G$ factors through $\mathbf{G}(S)$.
+\end{proposition}
+\begin{proof}
+Let $e\in E(S)$ be arbitrary and set $u=[e]$. If $f\in E(S)$ is any other element, then $ef\leq e,f$, so $[f]=[e]=u$.
+
+If $s\in S$, then
+\[[s]u=[s][s^*s]=[ss^*s]=[s]\]
+and similarly $u[s]=[s]$, so $u$ is a unit for $\mathbf{G}(S)$, and since
+\[[s][s^*]=[ss^*]=u\]
+then $[s^*]$ is the inverse of $[s]$, so $\mathbf{G}(S)$ is a group.
+
+If $G$ is a group and $\theta:S\to G$ is a morphism, then suppose $s\sim t$, that is, there is $u\in S$ with $u\leq s,t$, so $\theta(u)\leq\theta(s),\theta(t)$. But since the order on $G$ is equality, we have $\theta(s)=\theta(u)=\theta(t)$, so $\theta$ factors through a morphism $\mathbf{G}(S)\to G$.\qedhere
+\end{proof}
+
+\begin{example}
+If $G$ is a group then $\mathbf{G}(G)$ is isomorphic to $G$.
+\end{example}
+
+\begin{example}
+If $E$ is a $\land$-semilattice then $\mathbf{G}(E)=\left\{1\right\}$ is the trivial group.
+\end{example}
+
+\begin{example}
+If $S$ is an inverse semigroup with a zero, then $\mathbf{G}(S)=\left\{1\right\}$ is the trivial group.
+\end{example}
+
+We will now describe how partial actions of $E$-unitary inverse semigroups induce partial actions of their maximal group homomorphic images. The following lemma will be necessary:
+
+\begin{lemma}\label{lemmacompatibilitypartialaction}
+Suppose $\theta$ is a  partial action of an inverse semigroup $S$ on a set $X$. If $s,t\in S$ are compatible, then $\theta_s,\theta_t\in\mathcal{I}(X)$ are compatible.
+\end{lemma}
+\begin{proof}
+If $s$ and $t$ are compatible then $s^*t\in E(S)$, so $\theta_{s^*t}\in E(\mathcal{I}(X))$. Since $\theta_s^*\theta_t\leq \theta_{s^*t}$, then $\theta_s^*\theta_t$ is an idempotent, and similarly $\theta_s\theta_t^*$ is also idempotent, so $\theta_s$ and $\theta_t$ are compatible.
+\end{proof}
+
+\begin{theorem}\label{theoremfactorpartialactioneunitary}
+Let $\theta=(\theta_s:X_{s^*}\to X_s)_{s\in S}$ be a topological partial action of an $E$-unitary inverse semigroup $S$ on a topological space $X$.
+
+Then there is a unique topological partial action $\widetilde{\theta}=\left(\widetilde{\theta}_\gamma:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ of $\mathbf{G}(S)$ on $X$ such that
+\begin{enumerate}
+\item[(i)] $\widetilde{X}_\gamma=\bigcup_{[s]=\gamma}X_s$ for all $\gamma\in \mathbf{G}(S)$;
+\item[(ii)] $\widetilde{\theta}_{[s]}(x)=\theta_s(x)$ for all $s\in S$ and $x\in X_{s^*}$;
+\end{enumerate}
+(in other words, $\widetilde{\theta}_{\gamma}$ is the join of $\left\{\theta_s:[s]=\gamma\right\}$ in $\mathcal{I}(X)$). 
+\end{theorem}
+
+\begin{remark}
+If one allows degenerate partial actions, then item (i) implies that $\theta$ is non-degenerate if and only if $\widetilde{\theta}$ is non-degenerate.
+\end{remark}
+
+\begin{proof}[Proof of Theorem~\ref{theoremfactorpartialactioneunitary}]
+Given $s,t\in S$, if $[s]=[t]$ then $s$ and $t$ admit a common lower bound, and since $S$ is $E$-unitary, this implies that $s$ and $t$ are compatible (Lemma \ref{lemmacompatibilityeunitary}), so $\theta_s$ and $\theta_t$ are compatible (Lemma \ref{lemmacompatibilitypartialaction}).
+
+Thus, given $\gamma\in\mathbf{G}(S)$, the family $\left\{\theta_s:s\in\gamma\right\}$ is compatible in $\mathcal{I}(X)$, so we may define (as in Example \ref{exampleixisinfinitelydistributive}) $\widetilde{\theta}_\gamma=\bigvee_{s\in\gamma}\theta_s$. Letting $\widetilde{X}_\gamma$ be given as in item (i), note that $\widetilde{X}_{\gamma^{-1}}$ and $\widetilde{X}_\gamma$ are, respectively, the domain and range of $\widetilde{\theta}_\gamma$. By definition, we have $\widetilde{\theta}_{\gamma^{-1}}^{-1}=\widetilde{\theta}_\gamma^{-1}$ for all $\gamma\in\mathbf{G}(S)$.
+
+Using infinite distributivity of $\mathcal{I}(X)$ (Example \ref{exampleixisinfinitelydistributive}) we obtain, for all $\gamma,\delta\in \mathbf{G}(S)$,
+\[\widetilde{\theta}_\gamma\circ\widetilde{\theta}_{\delta}=\bigvee_{\substack{s\in\gamma\\t\in\delta}}\theta_s\circ\theta_t\leq\bigvee_{\substack{s\in\gamma,t\in\delta}}\theta_{st}\leq\bigvee_{z\in\gamma\delta}\theta_z=\widetilde{\theta}_{\gamma\delta}.\]
+Hence $\widetilde{\theta}=\left(\widetilde{\theta}_{\gamma}:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ is a partial action, by Proposition \ref{propositionequivalencepartialmorphism}. Note that for each $\gamma\in\mathbf{G}(S)$, $X_\gamma$ is a union of open sets, hence open, and $\widetilde{\theta}_{\gamma}$ is a join of continuous functions on open sets, hence continuous. Therefore $\widetilde{\theta}$ is a topological partial action satisfying (i) and (ii).\qedhere
+%For every $\gamma\in \mathbf{G}(S)$, set $\widetilde{X}_\gamma=\bigcup\left\{X_s:[s]=\gamma\right\}$. Given $x\in X_{\gamma^{-1}}$, define $\widetilde{\theta}_\gamma(x)=\theta_s(x)$, where $s$ is chosen so that $[s]=\gamma$ and $x\in X_{s^*}$.
+
+%Let us prove that $\widetilde{\theta}_\gamma$ is well-defined: If $[t]=[s]=\gamma$, then $t$ and $s$ admit a common lower bound, and since $S$ is $E$-unitary, this implies that $s$ and $t$ are compatible (Lemma \ref{lemmacompatibilityeunitary}), so $\theta_s$ and $\theta_t$ are compatible (Lemma \ref{lemmacompatibilitypartialaction}) and hence coincide on their common domain. Therefore $\widetilde{\theta}_\gamma$ is well-defined.
+
+%Each domain $\widetilde{X}_\gamma=\bigcup\left\{X_s:[s]=\gamma\right\}$ is a union of open sets, hence open. Moreover, $\widetilde{\theta}_\gamma$ coincides with $\theta_s$ on $X_s$, where $s\in S$ is chosen such that $[s]=\gamma$, and thus $\widetilde{\theta}_\gamma$ is continuous.
+
+%Let us prove that
+%\[\widetilde{\theta}_\gamma(\widetilde{\theta}_\delta(x))=\widetilde{\theta}_{\gamma\delta}(x)\ntag\label{equationpartialationfromeunitaryisreallypartialaction}\]
+%for all $\gamma,\delta\in\mathbf{G}(S)$ and $x\in\widetilde{\theta}_\delta^{-1}(\widetilde{X}_\delta\cap\widetilde{X}_{\gamma^{-1}})$. Choose $t$ such that $x\in X_{t^*}$ and $[t]=\delta$. Then
+%\[\theta_t(x)=\widetilde{\theta}_\delta(x)\in\widetilde{X}_{\gamma^{-1}}\]
+%so that there is $s$ such that $[s]=\gamma$ and $\theta_t(x)\in X_{s^*}$, that is,
+%\[x\in X_{s^*}\cap\alpha_s^{-1}(X_{t^*})\subseteq X_{(ts)^*}.\]
+%
+%Then $st$ is an element of $S$ such that $[st]=\gamma\delta$, and $x\in X_{(st)^*}$. It follows that $x\in\widetilde{X}_{(\gamma\delta)^{-1}}$ and that
+%\[\widetilde{\theta}_{\gamma\delta}(x)=\theta_{st}(x)=\theta_s(\theta_t(x))=\widetilde{\theta}_\gamma(\widetilde{\theta}_\delta(x))\]
+%as we wanted.
+
+%Since the unit $1=[e]\in \mathbf{G}(S)$ is the class of any idempotent $e\in \mathbf{G}(S)$, then $\widetilde{\theta}_1$ is the identity of $X$. Using Equation (\ref{equationpartialationfromeunitaryisreallypartialaction}) with $\delta=\gamma^{-1}$ and vice-versa, we see that $\widetilde{\theta}_\gamma$ is a homeomorphism with $\widetilde{\theta}_\gamma^{-1}=\widetilde{\theta}_{\gamma^{-1}}$ for all $\gamma\in\mathbf{G}(S)$. Using the same equation, we conclude that $\widetilde{\theta}$ is a topological partial action of $\mathbf{G}(S)$.\qedhere
+%\end{proof}
+\end{proof}
+
+
+\begin{proposition}\label{prop:eunitarygroupoidofgerms}
+Let $\theta$ be a topological partial action of an $E$-unitary inverse semigroup $S$ on a space $X$ and $\widetilde{\theta}$ be the induced partial action on $\mathbf{G}(S)$. Then
+\[S\ltimes_\theta X\simeq \mathbf{G}(S)\ltimes_{\widetilde{\theta}} X\]
+\end{proposition}
+\begin{proof}
+Consider the map $[s,x]\mapsto ([s],x)$. Since $S$ is $E$-unitary this map is well-defined and is clearly a morphism, and surjectivity follows since $\widetilde{\theta}_{\gamma}=\bigvee_{[s]=\gamma}\theta_s$. As for injectivity, suppose $([s],x)=([t],y)$, so $x=y$ and $[s]=[t]$. We can in fact assume $x\in X_{s^*}\cap X_{t^*}$. Then $s$ and $t$ are compatible, which implies $s\land t=st^*t$. Since
+\[x\in X_{s^*}\cap X_{t^*}\subseteq X_{s^*}\cap X_{t^*t}=\theta_{t^*t}(X_{s^*}\cap X_{t^*t})\subseteq X_{t^*ts^*}=X_{(s\land t)^*}\]
+we conclude that $[s,x]=[t,y]$.\qedhere
+\end{proof}
+
+%\begin{theorem}
+%Let $\alpha=(\alpha_s:A_{s^*}\to A_s)_{s\in S}$ be an algebraic partial action of an $E$-unitary inverse semigroup $S$ on an algebra $A$ (over a commutative unital ring $R$) such that $A$ and every ideal $A_s$ have local units.
+%
+%Then there is a unique algebraic partial action $\widetilde{\alpha}=\left(\widetilde{\alpha}_\gamma:I_{\gamma^{-1}}\toI_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ of $\mathbf{G}(S)$ on $A$ such that
+%\begin{enumerate}
+%\item[(i)] $I_\gamma=\operatorname{span}\bigcup_{[s]=\gamma}A_s$ for all $\gamma\in \mathbf{G}(S)$;
+%\item[(ii)] $\widetilde{\alpha}_{[s]}(a)=\alpha_s(a)$ for all $s\in S$ and $x\in A_{s^*}$;
+%\end{enumerate}
+%\end{theorem}
+%\begin{proof}
+%We define $I_\gamma=\operatorname{span}\bigcup_{[s]=\gamma} A_s$, and set $\widetilde{\alpha}_\gamma:I_{\gamma^{-1}}\to I_\gamma$ as the linear extension of all maps $\alpha_s$ for $[s]=\gamma$. In order to prove that $\widetilde{\alpha}$ is well-defined, we need to prove that if $s_1,\ldots,s_n\in S$ are such that
+%\[[s_1]=\cdots=[s_n]\]
+%and if $a_i\in A_{(s_i)^*}$ are such that $\sum_i a_i=0$, then $\sum_i\alpha_{s_i}(a_i)=0$. We do this by induction on $n$. If $n=1$ this is trivial, so assume this statement is valid for sums with up to $n$ elements.
+%
+%Suppose we have a sum with $n+1$ elements, $a+\sum_i a_i=0$, where $a\in A_{s^*}$ and $a_i\in A_{(s_i)^*}$ for certain $s,s_1,\ldots,s_n\in S$ with
+%\[[s]=[s_1]=\cdots=[s_n]\]
+%Choose a local unit $u\in A_{s^*}$ for $a$, and choose a local unit $v\in A$ for $\left\{a,a_1,\ldots,a_n\right\}$. Then
+%\[\sum_{i=1}^n(u-v)a_i=(v-u)a=0\]
+%so the induction hypothesis yields
+%\[\sum_{i=1}^n\alpha_{s_i}((u-v)a_i)=0,\quad\text{i.e.}\quad\sum_{i=1}^n\alpha_{s_i}(ua_i)=\sum_{i=1}^n\alpha_{s_i}(va_i)=\sum_{i=1}^n\alpha_{s_i}(a_i)\]
+%However, $[s]=[s_1]=\cdots[s_n]$, and since $S$ is $E$-unitary this implies that $\alpha_s$ and $\alpha_{s_i}$ coincide on their common domain for all $i$, so since $ua_i\cap  A_s\cap A_{(s_i)^*}$,
+%\[\sum_{i=1}^n\alpha_{s_i}(a_i)=\sum_{i=1}^n\alpha_{s_i}(ua_i)=\sum_{i=1}^n\alpha_s(ua_i)=\alpha_s\left(u\sum_{i=1}^na_i\right)=-\alpha_s(ua)=-\alpha_s(a)\]
+%so $\alpha_s(a)+\sum_{i=1}^n\alpha_{s_i}(a_i)=0$, and induction follows.
+%WE NEED TO CHECK THAT ALPHA-TILDE IS A PARTIAL ACTION, AND THAT IT IS BY ALGEBRA ISOMORPHISMS. PROBABLY NEED TO USE LOCAL UNITS EVEN MORE.
+%\end{proof}
+\subsection{Universal inverse semigroups}
+
+At this point, we have described a strong relationship between partial actions of an $E$-unitary inverse semigroup and partial actions of the associated (maximal homomorphic image) group. Here we will be interested in the other direction, that is, to a group $G$ we want to associate a semigroup $S$ with a map $G\to S$ such that every partial action of $G$ factors through a partial action of $S$. Of course, we could simply take $S=G$, so instead we will look for a semigroup $S$ such that partial action of $G$ factor through \emph{global} actions of $S$.
+
+This construction was initially done in \cite{MR1469405}, where Exel defines the \emph{universal inverse semigroup} $\mathbf{S}(G)$ of a group $G$, with the property that partial actions of $G$ correspond to global actions of $\mathbf{S}(G)$. This was further generalized in \cite{MR3231479}, where Buss and Exel extended this theory from groups to inverse semigroups. However, we will deal only with the group case, as explained above.
+
+Given a group $G$, let $\mathbf{S}(G)$ be the universal semigroup generated by symbols of the form $[t]$, $t\in G$, modulo the relations
+\begin{enumerate}
+\item[(i)] $[s^{-1}][s][t]=[s^{-1}][st]$;
+\item[(ii)] $[s][t][t^{-1}]=[st][t^{-1}]$;
+\item[(iii)] $[s][1]=[s]$;
+\item[(iv)] $[1][s]=[s]$;
+\end{enumerate}
+For every $t\in G$, denote by $\epsilon_t$ the element $\epsilon_t=[t][t^{-1}]$. We call $\mathbf{S}(G)$ the \emph{universal semigroup of $G$}. The next theorem lists all the necessary properties of $\mathbf{S}(G)$ we will need.
+
+\begin{theorem}[{\cite[Propositions 2.3, 2.5 and 3.2; Theorems 3.4 and 4.2]{MR1469405}}]
+Let $G$ be a group. Then $\mathbf{S}(G)$ is an inverse semigroup such that
+\begin{enumerate}
+\item[(a)] For all $s\in G$, $[s]^*=[s^{-1}]$;
+\item[(b)] For every $\gamma\in\mathbf{S}(G)$, there are a unique $n\geq 0$ and distinct elements $r_1,\ldots,r_n,s$ in $G$ such that
+\begin{enumerate}
+\item[(i)] $\gamma=\epsilon_{r_1}\cdots\epsilon_{r_n}[s]$;
+\item[(ii)] $r_i\neq 1$ and $r_i\neq s$ for all $i$;
+\item[(iii)] $r_i\neq r_j$ for $i\neq j$;
+\end{enumerate}
+We call such a decomposition $\gamma=\epsilon_{r_1}\cdots\epsilon_{r_n}[s]$ the \emph{standard form} of $\gamma$, which is unique up to the order of $r_1,\ldots,r_n$.
+\end{enumerate}
+\end{theorem}
+
+The description of $\mathbf{S}(G)$ with generators and relations also immediately implies the following:
+
+\begin{theorem}[{\cite[Theorem 4.2]{MR1469405}}]
+Let $G$ be a group. If $\theta$ is a topological partial action of $G$ on a topological space $X$, then there is a unique topological global action $\widetilde{\theta}$ of $\mathbf{S}(G)$ on $X$ such that $\widetilde{\theta}_{[t]}=\theta_t$ for all $t\in G$.
+\end{theorem}
+
+\begin{proposition}\label{propositionGSGigualG}
+Let $G$ be a group and $\mathbf{S}(G)$ its universal inverse semigroup. Then
+\begin{enumerate}
+\item[(a)] $\mathbf{S}(G)$ is $E$-unitary (see \cite[Remark~3.5]{MR1469405});
+\item[(b)] The map $G\to \mathbf{G}(\mathbf{S}(G))$, $g\mapsto [[g]]$, is an isomorphism.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[(a)] Suppose $\epsilon\leq\alpha$ where $\epsilon\in E(\mathbf{S}(G))$. Writing $\alpha$ and $\epsilon$ in standard form, we obtain
+\[\alpha=\epsilon_{s_1}\cdots\epsilon_{s_n}[s]\qquad\text{and}\qquad\epsilon=\epsilon_{e_1}\cdots\epsilon_{e_m}[1]\]
+Since $\epsilon\leq\alpha$ and $[1]$ is a unit of $\mathbf{S}(G)$, then
+\[\epsilon_{e_1}\cdots\epsilon_{e_m}[1]=\epsilon=\epsilon\alpha=\epsilon_{e_1}\cdots\epsilon_{e_m}\epsilon_{s_1}\cdots\epsilon_{s_n}[s]\]
+From the uniqueness of the standard form of $\epsilon$ we conclude that $s=1$ and $\alpha$ is an idempotent.
+\item[(b)] First note that for all $s,t\in G$,
+\[[s][t]=[s][t][t^{-1}][t]=[st]\epsilon_{t^*},\]
+so the map $G\to\mathbf{S}(G)$, $g\mapsto [g]$, is a partial morphism, and the map $\mathbf{S}(G)\to \mathbf{G}(\mathbf{S}(G))$, $\alpha\mapsto[\alpha]$ is a morphism. So $g\mapsto[[g]]$ is a partial morphism between groups, hence a morphism.
+
+Given $\alpha\in \mathbf{S}(G)$, since $\alpha=\epsilon_{s_1}\cdots\epsilon_{s_n}[s]$ for certain $s,s_1,\ldots,s_n\in G$, we get $[\alpha]=[[s]]$, so $g\mapsto [[g]]$ is surjective.
+
+If $[[g]]=1=[[1]]$, then there is an idempotent $\epsilon=\epsilon_{e_1}\cdots\epsilon_{e_n}[1]$ for which
+\[[g]\epsilon_{e_1}\cdots\epsilon_{e_n}=[1]\epsilon_{e_1}\cdots\epsilon_{e_n}\]
+and the uniqueness of the standard form implies $g=1$.\qedhere
+\end{enumerate}
+\end{proof}
+
+Therefore, the map $S\mapsto\mathbf{S}(G)$ is a left inverse to the map $G\mapsto\mathbf{S}(G)$, and in particular every group is the maximal group image of some $E$-unitary inverse semigroup.%The converse question remains open: Which semigroups are of the form $\mathbf{S}(G)$ for some group $G$?
+%Note that $\mathbf{S}(G)$ satisfies the \emph{ascending chain condition}: every chain $s_1\leq s_2\leq s_3\leq\cdot$ of elements $s_i\in\mathbf{S}(G)$ eventually stabilizes. The elements of the form $[g]$, $g\in G$, are maximal in $\mathbf{S}(G)$, 
+
+Suppose $\theta$ is a partial action of $G$ on a set $X$, $\widetilde{\theta}$ is the corresponding global action of $\mathbf{S}(G)$ and $\gamma$ is the induced partial action on $\mathbf{G}(\mathbf{S}(G))$. Every $s\in\mathbf{S}(G)$ is smaller than a unique element of the form $[g]$, $g\in G$, so $[s]=[[g]]$. Moreover, $[g]$ is the maximum element of $[[g]]$, which yields $\gamma_{[[g]]}=\theta_g$ for all $g\in G$.
+
+This means that the isomorphism of Proposition \ref{propositionGSGigualG} also preserves partial actions of $G$ appropriately, so we obtain as an immediate consequence:
+
+\begin{corollary}
+Let $\theta$ be a topological partial action of a group $G$ on $X$ and $\widetilde{\theta}$ be the induced global action of $\mathbf{S}(G)$. Then
+\[G\ltimes_\theta X \simeq \mathbf{S}(G)\ltimes_{\widetilde{\theta}} X.\]
+\end{corollary}
+
+The following interesting corollary shows that for these universal semigroup, partial actions always extend to global actions:
+
+\begin{corollary}
+Let $G$ be a group, $S=\mathbf{S}(G)$ and $\theta$ a topological partial action of $S$ on $X$. Then there exists a global action $\alpha$ of $S$ on $X$ such that $\theta_s\leq\alpha_s$ for all $s\in S$ and $S\ltimes_\theta X\simeq S\ltimes_\alpha X$.
+\end{corollary}
+\begin{proof}
+Let
+\begin{enumerate}
+\item $\gamma$ be the partial action of $\mathbf{G}(S)$ induced by $\theta$;
+\item $\gamma'$ be the composition of $\gamma$ with the isomorphism $G\to\mathbf{G}(\mathbf{S}(G))$, $g\mapsto [[g]]$;
+\item $\alpha$ be the action of $S=\mathbf{S}(G)$ induced by $\gamma'$.
+\end{enumerate}
+Then for all $s\in S$,
+\[\theta_{[s]}\leq\gamma_{[[s]]}=\gamma'_{s}=\alpha_{[s]}\]
+and
+\[S\ltimes_\theta X\simeq \mathbf{G}(S)\ltimes_{\gamma} X\simeq G\ltimes_{\gamma'}X\simeq \mathbf{S}(G)\ltimes_\alpha X= S\ltimes_\alpha X.\qedhere\]
+\end{proof}

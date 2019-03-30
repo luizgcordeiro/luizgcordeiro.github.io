@@ -1,0 +1,142 @@
+In this section we introduce a notion of topological freeness for partial actions of inverse semigroups which will be used later in our study of continuous orbit equivalence. We use this notion in Theorem \ref{theoremcharacterizationofeunitaryintermsofactions} to describe $E$-unitary inverse semigroups in terms of the existence of certain topologically free partial actions.
+
+\begin{definition}\index{Isotropy subgroupoid}\nomenclature[G]{$\operatorname{Iso}(\G)$}{Isotropy subgroupoid}
+The \emph{isotropy subgroupoid} of a groupoid $\G$ is the subgroupoid
+\[\operatorname{Iso}(\G)=\bigcup_{x\in\G[0]}\G_x^x=\left\{a\in\G:\so(a)=\ra(a)\right\}.\]
+\end{definition}
+
+\begin{definition}[{\cite{MR2460017}}]\label{definitioneffective}
+A topological groupoid $\G$ is \emph{effective} if the interior of $\operatorname{Iso}(\G)$ coincides with the unit space $\G[0]$.
+\end{definition}
+
+Proposition 3.6 of \cite{MR2460017} shows that every Hausdorff topologically principal étale Hausdorff groupoid (Definition \ref{definitiontopologicallyprincipal}) is effective. The converse is true when we add the assumptions that $\G$ is second countable and that its unit space $\G[0]$ has the Baire property.
+
+If $\theta$ is a partial action of an inverse semigroup $S$ on a set $X$, we will denote by $S_x$ the subset $\left\{s\in S:x\in X_{s^*}\right\}$ of $S$.\nomenclature[P]{$S_x$}{}
+
+\begin{definition}[{\cite[Definition 4.1]{MR3448414}}]\nomenclature[P]{$\Lambda(\theta)$}{Equation (\ref{equationdefinitionlambda})}
+Suppose $\theta$ is a partial action of an inverse semigroup $S$ on a topological space $X$. Given $x\in X$ and $s\in S_x$, we say that
+\begin{enumerate}
+\item $x$ is \emph{fixed} by $s$ if $\theta_s(x)=x$;
+\item $x$ is \emph{trivially fixed} by $s$ if there is $e\in E(S)$ such that $e\leq s$ and $x\in X_e$.
+\end{enumerate}
+We also define the set
+\[\Lambda(\theta)=\left\{x\in X:\text{if }s\in S_x\text{ and }x\text{ is fixed by }s\text{ then }x\text{ is trivially fixed by }s\right\}.
+\ntag\label{equationdefinitionlambda}\]%$ the set of points $x\in X$ such that, if $x$ is fixed by $s\in S_x$ then it is trivially fixed by $s$.\nomenclature[P]{$\Lambda(\theta)$}
+\end{definition}
+
+We should mention, however, that partial actions which correspond to effective groupoids of germs were defined under the name ``topologically free'' in \cite{MR3448414}, so in order to avoid confusion throughout this paper, we will therefore call the class of actions defined in \cite{MR3448414} \emph{effective}. This way, topologically free partial actions will correspond to topologically principal groupoids of germs, whereas effective partial actions will correspond to effective groupoids of germs.
+ 
+\begin{definition}[{\cite[Definition~4.1]{MR3448414}}]
+A partial action $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ of an inverse semigroup $S$ on  topological space $X$ is \emph{effective} if for all $s\in S$, the interior of the set of points fixed by $s$ coincides with the set of points trivially fixed by $s$.
+\end{definition}
+
+\begin{proposition}[{\cite[Theorem~4.7]{MR3448414}}]\label{prop:effectiveactiongroupoid}
+Given a partial action $\theta$ of an inverse semigroup $S$ on a locally compact Hausdorff space $X$, the corresponding groupoid of germs $S\ltimes X$ is effective if and only if $\theta$ is effective.
+\end{proposition}
+
+\begin{definition}\label{def:free}
+Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a partial action of an inverse semigroup $S$ on a topological space $X$. We say that $\theta$ is \emph{topologically free} if $\Lambda(\theta)$ is dense in $X$ (Equation (\ref{equationdefinitionlambda})).
+\end{definition}
+
+Topological freeness of a topological partial action $\theta$ of a discrete countable group $G$ on a locally compact, Hausdorff, and second countable topological space $X$ was first defined in \cite[Definition 2.3]{MR3694599} as follows: For every $g\in G\setminus\left\{1\right\}$, the set $\Fix(\theta_g)$ has empty interior. This condition is formally weaker than the one we adopt, but the countability hypotheses on $G$ and $X$ assure that, in this case, this is equivalent to Definition \ref{def:free}. An application of Baire's Category Theorem, as in \cite[Lemma~2.4]{MR3694599}, gives the following result:
+
+\begin{proposition}
+Let $S$ be a countable inverse semigroup and let $X$ be a locally compact, Hausdorff, and second countable topological space $X$. Then a partial action $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ of $S$ on $X$ is topologically free if and only if for all $s\in S$, the set
+\[\left\{x\in X_{s^*}:\text{if }\theta_s(x)=x\text{ then there is }e\in E(S)\text{ with }e\leq s\text{ and }x\in X_e\right\}\]
+is dense in $X_{s^*}$.
+\end{proposition}
+
+By a \emph{free} partial action we mean a topologically free partial action on a discrete space (that is, a set). It is interesting to note that freeness of a partial action implies that the associated groupoid of germs is Hausdorff, as the next proposition shows, however this is not true for topologically free partial actions, as in Example \ref{examplenonhausdorffgroupoidofgerms}.
+
+\begin{proposition}
+If $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ is a free partial action of an inverse semigroup $S$ on a locally compact Hausdorff space $X$ then $S\ltimes X$ is Hausdorff.
+\end{proposition}
+\begin{proof}
+Suppose $[s,x]\neq [t,y]$ are elements of $S\ltimes X$. If $x \neq y,$ choose disjoint neighbourhoods $U, V$ of $x$ and $y$ in $X$, respectively. Clearly, $[s,U \cap X_{s^*}]$ and $[t,V \cap X_{t^*}]$ are disjoint neighbourhoods of $[s, x]$ and $[t,y],$ respectively.
+
+Next, assume $x=y$. By freeness of $\theta$, we have that $\theta_s(x)=\theta_t(x)$ if and only if there is $u \in S$, such that $u\leq s,t$ and $x \in X_{u^*}$, or equivalently $[s,x]=[t,x]$. Hence, if $[s,x]\neq[t,x]$ then $\theta_s(x)\neq\theta_t(x)$. Since $X$ is Hausdorff, there are disjoint  neighbourhoods $U$ and $V$ of $\theta_s(x)$ and $\theta_t(x)$, respectively. It is easy see that $[s,\theta_{s^*}(U)]$ and $[t,\theta_{t^*}(V)]$ are disjoint neighbourhoods of $[s,x]$ and $[t,x]$, respectively.
+\end{proof}
+
+\begin{remark}
+The proof above is a combination of the facts that free partial actions on (discrete) sets correspond to (discrete) principal  groupoids of germs, and that every principal topological groupoid with Hausdorff unit space is itself Hausdorff.
+\end{remark}
+
+\begin{example}\label{examplenonhausdorffgroupoidofgerms}
+As in Example~\ref{nonhausdorffaction}, let $S=\mathbb{N}\cup\left\{\infty,z\right\}$ be the inverse semigroup obtained by adjoining to the lattice $\mathbb{N}$ the group $\left\{\infty,z\right\}$ of order $2$ (where $\infty$ represents the unit), such that for all $n\in\mathbb{N}$,
+\[n\infty=\infty n=nz=zn=n.\]
+
+Again, consider $\theta$ the Munn representation of $S$ on $X=E(S)=\mathbb{N}\cup\left\{\infty\right\}$, endowed with the same topology as the one-point compactification of $\mathbb{N}$. This is a topologically free partial action, since $\Lambda(\theta)=\mathbb{N}$ is dense in $X$, however the associated groupoid of germs $S\ltimes X$ is not Hausdorff (see Example \ref{nonhausdorffaction}).
+\end{example}
+
+If $G$ is a group, by Definition~\ref{def:free} a partial action of $G$ is free if for all $x\in X$ (and for all $g\in G_x$), one has that $\theta_g(x)=x$ implies $g=1$, where $1$ is the identity of $G$, which is the usual notion of freeness for partial group actions.
+
+The following proposition is a useful rewording of freeness, and the proof is similar to the argument in Remark \ref{equivalence2groupoidofgermes}
+
+\begin{proposition}
+Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a topological partial action of $S$ on $X$. The $\Lambda(\theta)$ (Equation (\ref{equationdefinitionlambda})) coincides with
+\[\left\{x\in X:\forall s,t\in S_x\left(\text{if }\theta_s(x)=\theta_t(x)\text{ then there exists }\exists u\leq s,t\text{ and }x\in X_{u^*}\right)\right\}.\]
+In particular, $\theta$ is topologically free if and only if the set above is dense in $X$.% for every $x$ in a dense subset of $X$ and $s,t\in S_x$, if $\theta_s(x)=\theta_t(x)$ then there is $u\leq s,t$ with $x\in X_{u^*}$, and in particular $\theta_s$ and $\theta_t$ coincide in the neighbourhood $X_{u^*}$ of $x$.
+\end{proposition}
+
+We will now reword topological freeness of a partial action in terms of the groupoid of germs $S\ltimes X$.
+
+\begin{proposition}\label{prop:principalfree}
+Suppose that $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ is a partial action of an inverse semigroup $S$ on a locally compact Hausdorff space $X$. Then the groupoid of germs $S\ltimes X$ is topologically principal if and only if the action $\theta$ is topologically free.
+\end{proposition}
+
+\begin{proof}
+As usual, we may assume the action $\theta$ is non-degenerate and identify $X$ with $(S\ltimes X)^{(0)}$. Then it is enough to prove that, under this identification, $\Lambda(\theta)$ consists of all $x\in X$ with trivial isotropy, that is,
+\[\Lambda(\theta)=\left\{x\in X:(S \ltimes X)_x^x=\{x\}\right\}.\]
+Let $x\in X$ be given. First suppose $x\in \Lambda(\theta)$ and $[s,x]\in(S\ltimes X)_x^x$. This means that $x=\ra[s,x]=\theta_s(x)$, so there is $e\in E(S)\cap S_x$, $e\leq s$, which implies $[s,x]=[e,x]=x$.
+
+Conversely suppose $(S\ltimes X)_x^x=\left\{x\right\}$ and let $s\in S_x$ with $\theta_s(x)=x$. This means that $[s,x]\in(S\ltimes X)_x^x$, and so $[s,x]=[e,x]$ for some idempotent $e\in S_x$. By definition of the groupoid of germs, we can find another idempotent $f\in S_x$ with $se=ef$, so in particular $ef$ is an idempotent, $ef\leq s$, and $x\in X_{ef}$. This proves $x\in \Lambda(\theta)$.
+\end{proof}
+
+We finish this section by describing how $E$-unitary inverse semigroups can be characterized in terms of their partial actions.
+
+\begin{theorem}\label{theoremfactorpartialactioneunitaryfree}
+Let $\theta=(\theta_s:X_{s^*}\to X_s)_{s\in S}$ be a topological partial action of an $E$-unitary inverse semigroup $S$ on a topological space $X$ and  $\widetilde{\theta}=\left(\widetilde{\theta}_\gamma:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ be the partial action of $\mathbf{G}(S)$ on $X$ induced by $\theta$, as in Theorem~\ref{theoremfactorpartialactioneunitary}. Then $\theta$ is topologically free if and only if $\widetilde{\theta}$ is topologically free.
+\end{theorem}
+\begin{proof}
+We just need to prove that $\Lambda(\theta)=\Lambda(\widetilde{\theta})$. Suppose $x\in\Lambda(\theta)$, and that $\gamma\in\mathbf{G}(S)$ fixes $x$. Choose $s\in S$ such that $[s]=\gamma$ and $\theta_s(x)=\widetilde{\theta}_\gamma(x)=x$. Since $x\in\Lambda(\theta)$ then there is $e\in E(S)$, $e\leq s$ with $x\in X_e$. As $S$ is $E$-unitary, we have $s\in E(S)$ and $\gamma=[s]$ is the identity of $\mathbf{G}(S)$. This proves that $\Lambda(\theta)\subseteq\Lambda(\widetilde{\theta})$.
+
+Conversely, if $x\in\Lambda(\widetilde{\theta})$ and $s\in S$ fixes $x$, then $\widetilde{\theta}_{[s]}(x)=\theta_s(x)=x$. By hypothesis, this implies that $[s]$ is the unit of $\mathbf{G}(S)$, i.e., $[s]=[s^*s]$. Since $S$ is $E$-unitary then $s\in E(S)$.\qedhere
+%Let us first assume that $\theta$ is topologically free, and suppose $x=\widetilde{\theta}_{[s]}(x)=\theta_s(x)$ for a certain $s\in S$, so in a dense subset of $X$ this implies that there is an idempotent $e\leq s$ with $x\in X_e$. In particular $se=e$, so $[s]=[e]=1$. Thus $\widetilde{\theta}$ is topologically free.
+%
+%Conversely, assume that $\widetilde{\theta}$ is topologically free and $x=\theta_s(x)=\widetilde{\theta}_{[s]}(x)$ for a certain $s\in S$, so again in a dense subset of $X$ this implies that $[s]=1=[s^*s]$, so there is an idempotent  $e\in E(S)$ with $se=s^*se$, or equivalently $s\geq s^*se$. Then $s$ itself is an idempotent as $S$ is $E$-unitary. Thus $\theta$ is topologically free.\qedhere
+\end{proof}
+
+\begin{proposition}\label{propositionesidempotents}
+Let $S$ be an $E$-unitary inverse semigroup and  $\theta$ be a topologically free partial action of $S$ on $X$ with $X_{s}\neq \varnothing$ for all $s$. Then $E(S)=\left\{s:\theta_s\text{ is idempotent}\right\}$.
+\end{proposition}
+\begin{proof}
+If $\theta_s$ is an idempotent, just choose $x\in X_{s^*}\cap\Lambda(\theta)$, so the equality $\theta_s(x)=x$ is valid and implies $e\leq s$ for some $e\in E(S)$, so $s$ is idempotent because $S$ is $E$-unitary.\qedhere
+\end{proof}
+
+In \cite{MR2221438}, a morphism $\theta:S\to T$ of inverse semigroups is called \emph{idempotent-pure} if $\theta^{-1}(E(T))=E(S)$, and in \cite{MR3231479} these were called \emph{essentially injective} morphisms. The same notion could be used for partial morphisms and actions.
+
+\begin{proposition}\label{propositionconditionsonpartialactionthatimplyeunitary}
+Let $S$ be an inverse semigroup and $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a partial action of $S$ a space $X$ such that
+\begin{enumerate}
+\item[(i)] $\theta$ factors through $\mathbf{G}(S)$ -- there is a partial action $\widetilde{\theta}=\left(\widetilde{\theta}_s:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ such that $\widetilde{\theta}_{[s]}(x)=\theta_s(x)$ for all $x\in X_{s^*}$ (in particular $X_s\subseteq\widetilde{X}_{[s]}$ for all $s\in S$);
+\item[(ii)] $\left\{s\in S:\theta_s\text{ is idempotent}\right\}=E(S)$
+\end{enumerate}
+Then $S$ is $E$-unitary.
+\end{proposition}
+\begin{proof}
+Suppose $e\in E(S)$, $e\leq s$. We need to prove that $s$, or equivalently by (ii) that $\theta_s$, is idempotent. Since $e\leq s$, we have $1=[e]=[s]$, thus for all $x\in X_{s^*}$, $\theta_s(x)=\widetilde{\theta}_{[s]}(x)=x$, so $\theta_s$ is an idempotent and $s$ is idempotent by (ii).\qedhere
+\end{proof}
+
+Given an inverse semigroup $S$, consider the canonical left action $\alpha$ of $S$ on itself (Definition \ref{definitioncanonicalleftaction}): $\alpha_s(t)=st$ whenever $t^*t\leq s^*s$ ($s,t\in S$).
+
+\begin{theorem}\label{theoremcharacterizationofeunitaryintermsofactions}
+$S$ is $E$-unitary if and only if it admits a topologically free partial action satisfying (i) and (ii) of the Proposition \ref{propositionconditionsonpartialactionthatimplyeunitary}.
+\end{theorem}
+\begin{proof}
+Proposition \ref{propositionconditionsonpartialactionthatimplyeunitary} proves one direction. Assume then that $S$ is $E$-unitary, and let us prove that the canonical left action $\alpha$ of $S$ is free: Suppose $st=t$, where $tt^*\leq s^*s$. Then $s\geq stt^*=tt^*$, which is idempotent, so $s$ is idempotent itself. This clearly implies that the action $\alpha$ is free. Condition (i) is satisfied by Theorem~\ref{theoremfactorpartialactioneunitary}, and condition (ii) by Proposition~\ref{propositionesidempotents}.\qedhere
+\end{proof}
+
+An immediate consequence of the above proof is:
+\begin{corollary}
+$S$ is $E$-unitary if and only if the canonical left action $S\to\mathcal{I}(S)$ is free.
+\end{corollary}
