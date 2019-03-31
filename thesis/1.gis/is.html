@@ -66,27 +66,31 @@ MAIN
 
 <h2 class="section">1.2. Inverse semigroups</h2>
 
-\subsection*{Nomenclature and notation}
+<h3 class="subsection">Nomenclature and notation</h3>
 
+<p>
 Before we start this section, let us fix some nomenclature that will be used throughout the text: Let $(L,\leq)$ be a poset:
-\begin{enumerate}
-\item The \emph{join}\index{Join (in a poset)} of a subset $F\subseteq L$ is its supremum, and we denote it by $\bigvee F$ if it exists. If $F=\left\{a_1,\ldots,a_n\right\}$ is finite, we also denote $\bigvee F=a_1\lor\cdots\lor a_n$.\nomenclature[O]{$\bigvee F$, $a\lor b$}{Joins in a poset}
-\item The \emph{meet}\index{Meet (in a poset)} of a subset $F\subseteq L$ is its infimum, and we denote it by $\bigwedge F$ if it exists. If $F=\left\{a_1,\ldots,a_n\right\}$ is finite, we also denote $\bigwedge F=a_1\land\cdots\land a_n$.\nomenclature[O]{$\bigwedge F$, $a\land b$}{Meets in a poset}
-\end{enumerate}
-
+<ol>
+	<li> The <em>join</em> of a subset $F\subseteq L$ is its supremum, and we denote it by $\bigvee F$ if it exists. If $F=\left\{a_1,\ldots,a_n\right\}$ is finite, we also denote $\bigvee F=a_1\lor\cdots\lor a_n$.</li>
+	<li> The <em>meet</em> of a subset $F\subseteq L$ is its infimum, and we denote it by $\bigwedge F$ if it exists. If $F=\left\{a_1,\ldots,a_n\right\}$ is finite, we also denote $\bigwedge F=a_1\land\cdots\land a_n$.
+</ol>
+</p>
+<p>
 We say that $(L,\leq)$ is a
-\begin{enumerate}
-\item[3.] \emph{$\wedge$-semilattice} (read ``meet semilattice'') if it admits arbitrary finite meets.\index{Semilattice!$\land$-semilattice (as a poset)}
-\item[4.] \emph{lattice}, if it admits arbitrary finite meets and joins.\index{Lattice}
-%\item \emph{weak $\wedge$-semilattice} if for all $s,t\in L$, there is a finite (possibly empty) subset $F\subseteq L$.\index{Semilattice!Weak $\land$-semilattice}
-\end{enumerate}
+<ol>
+	<li value="3"> <em>$\wedge$-semilattice</em> (read ``meet semilattice'') if it admits arbitrary finite meets.</li>
+	<li> <em>lattice</em>, if it admits arbitrary finite meets and joins.
+</ol>
+</p>
 
-We say that the poset $L$ has a \emph{zero} if it has a minimum, denoted by $0=\bigwedge L$.\nomenclature[O]{$0$ (in a poset)}{The minimum of a poset}\index{Zero (of a poset)}
+<p>
+We say that the poset $L$ has a <em>zero</em> if it has a minimum, denoted by $0=\bigwedge L$.
+</p>
 
-\subsection{Inverse semigroups}
+<h3 class="subsection">1.2.1. Inverse semigroups</h3>
 
 <!-- 1.2.1 -->
-<div class="definition" id="definitioninversesemigroup">
+<div class="definition"><span id="definitioninversesemigroup">
 <p><span class="envidentifier">Definition 1.2.1</span>
 A <em>semigroup</em> is a set $S$ endowed with an associative binary operation $(s,t)\mapsto st$. A semigroup is
 <ol>
@@ -95,7 +99,7 @@ A <em>semigroup</em> is a set $S$ endowed with an associative binary operation $
 	<li> a <em>monoid</em> if it has an <em>identity</em> or <em>unit</em>, that is, an element $1\in S$ (necessarily unique) satisfying $1s=s1=s$ for all $s\in S$.
 </ol>
 A <em>subsemigroup</em> of a semigroup $S$ is a subset $T\subseteq S$ which is closed under the semigroup operation. A <em>sub-inverse semigroup</em> of an inverse semigroup is a subsemigroup which is closed under inverses.</p>
-</div>
+</span></div>
 
 \begin{definition}\index{Morphism (of semigroups)}\index{Isomorphism (of semigroups)}\label{definitionmorphismofsemigroups}
 A \emph{morphism} of semigroups is a map $\theta:S\to T$ satisfying $\theta(s_1s_2)=\theta(s_1)\theta(s_2)$ for all $s_1,s_2\in S$. Moreover, $\theta$ is an \emph{isomorphism} if it is invertible and $\theta^{-1}$ is also a morphism.

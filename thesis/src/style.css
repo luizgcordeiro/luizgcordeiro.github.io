@@ -30,7 +30,7 @@ div.theorem {
 	font-type: italic;
 }
 
-div.theorem p:first-child {
+div.theorem p ol li {
 	display: inline;
 }
 
