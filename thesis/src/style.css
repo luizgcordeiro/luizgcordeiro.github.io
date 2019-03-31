@@ -4,6 +4,7 @@ body {
 
 .envidentifier {
 		font-weight: bold;
+		font-style: normal;
 }
 
 .envidentifier::after {
@@ -11,7 +12,7 @@ body {
 }
 
 div.definition {
-	font-type: normal;
+	font-style: normal;
 }
 
 div.definition p:first-child {
@@ -19,7 +20,7 @@ div.definition p:first-child {
 }
 
 div.example {
-	font-type: normal;
+	font-style: normal;
 }
 
 div.example p:first-child {
@@ -27,15 +28,15 @@ div.example p:first-child {
 }
 
 div.theorem {
-	font-type: italic;
+	font-style: italic;
 }
 
-div.theorem p ol li {
+div.theorem p:first-child {
 	display: inline;
 }
 
 div.proposition {
-	font-type: italic;
+	font-style: italic;
 }
 
 div.proposition p:first-child {
@@ -43,7 +44,7 @@ div.proposition p:first-child {
 }
 
 div.lemma {
-	font-type: italic;
+	font-style: italic;
 }
 
 div.lemma p:first-child {
@@ -51,7 +52,7 @@ div.lemma p:first-child {
 }
 
 div.corollary {
-	font-type: italic;
+	font-style: italic;
 }
 
 div.corollary p:first-child {
@@ -65,11 +66,10 @@ div.corollary p:first-child {
 div.proof {
 	display: none;
 	border-style: double;
+	padding: 5pt;
 }
 
-div.proof p {
-	margin: 5pt;
-}
+
 /*
 We now set the sidebar. It is not static, i.e. it disappears when scrolling down.
 This seems preferable since scrolling down can
@@ -165,6 +165,24 @@ ol.roman > li {
 ol.roman > li:before {
   counter-increment: roman;
   content: "(" counter(roman,lower-roman) ")";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+
+ol.arpar {
+    counter-reset: ar;
+	position:relative;
+}
+ol.arpar > li {
+    list-style: none;
+}
+ol.arpar > li:before {
+  counter-increment: ar;
+  content: "(" counter(ar) ")";
   position: absolute;
   left: 0em;
   display: inline-block;

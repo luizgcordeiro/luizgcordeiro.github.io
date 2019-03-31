@@ -1,5 +1,4 @@
-<div class="reference" id="refMR1724106">
-	<li class="book"></li>
+	<div class="reference book" id="refMR1724106">
 		<span class="author">Alan Leonard Tuke Paterson</span>,
 		<span class="title">Groupoids, inverse semigroups, and their operator algebras</span>.
 		<span class="series">Progress in Mathematics</span>
@@ -8,10 +7,9 @@
 		<span class="year">1999</span>.
 		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=1724106">1724106</a></span>,
 		<span class="doi">DOI: <a href="https://doi.org/10.1007/978-1-4612-1774-9">10.1007/978-1-4612-1774-9</a></span>.
-	</li>
-</div>
+	</div>
 
-<div class="reference" id="refexamplegraphtriangle">
+<div class="example reference" id="refexamplegraphtriangle">
 <p>
 <span class="envidentifier">Example 1.1.2</span> Let $X$ be a set and $R$ any binary relation on $X$, i.e., a subset of $X^2$. Define a directed graph $\mathcal{G}$ by letting $\mathcal{G}^{(0)}=X$, $\mathcal{G}^{(1)}=R$, $\mathfrak{s}(y,x)=x$ and $\mathfrak{r}(y,x)=y$ for all $(y,x)\in R$.
 </p>
@@ -25,7 +23,7 @@ As a sub-example, let $X=\left\{a,b,c\right\}$ and $R=\left\{(b,a),(c,b),(a,c)\r
 \]</div></p>
 </div>
 
-<div class="reference" id="refexamplegraphintegers">
+<div class="example reference" id="refexamplegraphintegers">
 <p>
 <span class="envidentifier">Example 1.1.3</span> Let $\mathcal{G}^{(0)}=\mathcal{G}^{(1)}=\mathbb{Z}$, $\mathfrak{s}(n)=n$ and $\mathfrak{r}(n)=n+1$. This directed graph can be depicted as
 <div class="equation">\[
@@ -35,7 +33,7 @@ As a sub-example, let $X=\left\{a,b,c\right\}$ and $R=\left\{(b,a),(c,b),(a,c)\r
 \]</div></p>
 </div>
 
-<div class="reference" id="refexamplegraphdynamicalsystem">
+<div class="example reference" id="refexamplegraphdynamicalsystem">
 <p>
 <span class="envidentifier">Example 1.1.4</span> Generally, a discrete-time dynamical system consists of a set $X$ and a collection $\mathcal{F}$ of partial functions of $X$, that is, functions $f:\dom(f)\to X$ where $\dom(f)\subseteq X$. Given such data, we define a directed graph $\mathcal{G}$ by letting $\mathcal{G}^{(0)}=X$, $\mathcal{G}^{(1)}=\left\{(f,x):f\in\mathcal{F},x\in\dom(f)\right\}$, $\so(f,x)=x$ and $\ra(f,x)=f(x)$.
 </p>
@@ -67,7 +65,7 @@ As a sub-example, let $X=\mathbb{Z}$, and $f_i(n)=n+i$ for $i=0,1,2$. The associ
 </div>
 
 
-<div class="reference" id="refexamplepreordersarecategories">
+<div class="example reference" id="refexamplepreordersarecategories">
 	<p><span class="envidentifier">Example 1.1.8</span>
 	Let $X$ be a set and $\leq$ be a preorder on $X$ (i.e., a reflexive and transitive relation), and $R=\left\{(y,x):x\leq y\right\}$ the associated subset of $X^2$. Let $\mathcal{G}$ be the directed graph associated with this pair $(X,R)$ as in Example <a class="makeref" data-target="refexamplegraphtriangle" href="#examplegraphtriangle">1.1.2</a>. In this case, we have $\mathcal{G}^{(2)}=\left\{((z,y),(y,x)):(y,x),(z,y)\in R\right\}$, so defining composition by $(z,y)(y,x)=(z,x)$ we obtain a category structure on $\mathcal{G}$.
 	</p>
@@ -81,7 +79,7 @@ As a sub-example, let $X=\mathbb{Z}$, and $f_i(n)=n+i$ for $i=0,1,2$. The associ
 </p>
 </div>
 
-<div class="reference" id="refexamplemonoidsarecategories">
+<div class="example reference" id="refexamplemonoidsarecategories">
 	<p><span class="envidentifier">Example 1.1.9</span>
 	Let $M$ be a monoid (see Definition <a class="makeref" data-target="refdefinitioninversesemigroup" href="1.2.is.html#definitioninversesemigroup">1.2.1</a>).
 	<script>
@@ -101,7 +99,7 @@ As a sub-example, let $X=\mathbb{Z}$, and $f_i(n)=n+i$ for $i=0,1,2$. The associ
 	</p>
 </div>
 
-<div class="reference" id="refmonoidactioncategory">
+<div class="example reference" id="refmonoidactioncategory">
 	<p><span class="envidentifier">Example 1.1.10</span>
 	Let $\theta$ be a global action (see Definition <a class="makeref" data-target="refdefinitionactionspartialandglobal" href="../4.paois/4.1.pmapa.html#definitionactionspartialandglobal">4.1.5</a>) of a monoid $M$ on a set $X$, denoted by concatenation. We define the category $M\ltimes_\theta X$ whose underlying graph is similar to the one as in Example \ref{examplegraphdynamicalsystem}.
 	</p>
@@ -115,7 +113,7 @@ As a sub-example, let $X=\mathbb{Z}$, and $f_i(n)=n+i$ for $i=0,1,2$. The associ
 	</p>
 </div>
 
-<div class="reference" id="refexampletransformationgroupoid">
+<div class="example reference" id="refexampletransformationgroupoid">
 <p><span class="envidentifier">Example 1.1.13</span>
 If $\theta$ is an action of a group $G$ on a set $X$ (as usual, denoted by concatenation), then the category $G\ltimes_\theta X$ (as in Example <a class="makeref" data-target="refmonoidactioncategory" href="#monoidactioncategory">1.1.10</a>) is a groupoid, which we call a <em>transformation groupoid</em>. The inverse of an arrow $(g,x)\in G\ltimes_\theta X$ is $(g^{-1},gx)$.
 <div class="equation">\[
@@ -129,14 +127,14 @@ When there is no risk of confusion, we will drop the index $\theta$ and denote t
 </p>
 </div>
 
-<div class="reference" id="refexampleequivalencerelationsarecategories">
+<div class="example reference" id="refexampleequivalencerelationsarecategories">
 <p><span class="envidentifier">Example 1.1.14</span>
 A preorder $R$ on a set $X$, regarded as a category as in Example <a class="makeref" data-target="refexamplepreordersarecategories" href="#examplepreordersarecategories">1.1.8</a>, is a groupoid if and only if $R$ is an equivalence relation. (See <a class="makeref" data-target="refdefinitionprincipalgroupoid" href="#definitionprincipalgroupoid">1.1.17</a> below.)
 </p>
 </div>
 
 
-<div class="reference" id="refexampleorbitgroupoid">
+<div class="example reference" id="refexampleorbitgroupoid">
 <p><span class="envidentifier">Example 1.1.15</span>
 If $\mathcal{G}$ is a groupoid, then the image of the map $(\ra,\so):\mathcal{G}\to\mathcal{G}^{(0)}\times\mathcal{G}^{(0)}$, $(\ra,\so)(a)=(\ra(a),\so(a))$, is an equivalence relation on $\mathcal{G}^{(0)}$, called the <em>orbit equivalence relation</em>, which we will denote by $\mathcal{R}(\mathcal{G})$. An $\mathcal{R}(\mathcal{G})$-equivalence class is called an <em>orbit</em>.
 </p>
@@ -146,26 +144,26 @@ If $\mathcal{G}$ is a groupoid, then the image of the map $(\ra,\so):\mathcal{G}
 </ul>
 </div>
 
-<div class="reference" id="refdefinitionisotropygroup">
+<div class="definition reference" id="refdefinitionisotropygroup">
 <p><span class="envidentifier">Definition 1.1.16</span>
 If $\mathcal{G}$ is a groupoid and $x\in\mathcal{G}^{(0)}$, we call the set $\mathcal{G}_x^x$ the <em>isotropy group</em> of $\mathcal{G}$ at $x$.
 </p>
 </div>
 
-<div class="reference" id="refdefinitionprincipalgroupoid">
+<div class="definition reference" id="refdefinitionprincipalgroupoid">
 <p><span class="envidentifier"> Definition 1.1.17</span>
 A groupoid $\mathcal{G}$ is <em>principal</em> if $\mathcal{G}_x^x$ is a trivial group for all $x\in\mathcal{G}^{(0)}$.
 </p>
 </div>
 
-<div class="reference" id="refexamplewhentransformationgroupoidisprincipal">
+<div class="example reference" id="refexamplewhentransformationgroupoidisprincipal">
 <p><span class="envidentifier">Example 1.1.18</span>
 If $\theta$ is an action of a group $G$ on a set $X$, then the transformation groupoid $G\ltimes_\theta X$ is principal if, and only if, the action $\theta$ is free: Indeed, for all $x\in X$, let $G_x=\left\{g\in G:gx=x\right\}$ be the stabilizer of $x$, so the map
 \[G_x\to (G\ltimes_\theta X)_x^x,\qquad g\mapsto (g,x)\]
 is a group isomorphism. Thus $G\ltimes_\theta X$ is principal if and only if $G_x$ is trivial for all $x\in X$, i.e., $\theta$ is free.
 </p></div>
 
-<div class="reference" id="refprincipalequalequivalencerelation">
+<div class="proposition reference" id="refprincipalequalequivalencerelation">
 <p><span class="envidentifier">Proposition 1.1.19</span>
 A groupoid $\mathcal{G}$ is principal if and only if there exists an equivalence relation $R$ on a set $X$ which is isomorphic to $\mathcal{G}$ as a groupoid.
 </p>
@@ -183,7 +181,7 @@ A groupoid $\mathcal{G}$ is principal if and only if there exists an equivalence
 	<li>For all $a\in\mathcal{G}$, there is $q\in\mathcal{G}$ such that $(a,q)\in\mathcal{G}^{(2)}$ and if $(c,a)\in\mathcal{G}^{(2)}$, then $c(aq)=c$.</li>
 </div>
 
-<div class="reference" id ="refpropositiongroupoidmorphism">
+<div class="proposition reference" id ="refpropositiongroupoidmorphism">
 <p><span class="envidentifier">Proposition 1.1.21</span>
 Let $\phi:\mathcal{G}\to\mathcal{H}$ be a groupoid morphism. Then
 <ol class="alphpar">
@@ -196,7 +194,7 @@ Let $\phi:\mathcal{G}\to\mathcal{H}$ be a groupoid morphism. Then
 </p>
 </div>
 
-<div class="reference" id="refexampleunitgroupoid">
+<div class="example reference" id="refexampleunitgroupoid">
 <p><span class="envidentifier">Example 1.1.22</span>
 Every set $X$ can be regarded as a groupoid by setting $X^{(2)}=\left\{(x,x):x\in X\right\}$ and the product $xx=x$ for all $x\in X$.
 </p>
@@ -217,13 +215,12 @@ In any case, the groupoids constructed in this manner are precisely the groupoid
 </p>
 </div>
 
-<div class="reference" id="refdefinitiongroupoidcoproduct">
+<div class="definition reference" id="refdefinitiongroupoidcoproduct">
 <p><span class="envidentifier">Definition 1.1.25</span>
 Let $\left\{\mathcal{G}_i:i\in I\right\}$ be a family of groupoids. We endow the disjoint union $\mathcal{G}=\sqcup_i \mathcal{G}_i$ with the set of composable pairs $\mathcal{G}^{(2)}=\sqcup_i \mathcal{G}_i^{(2)}$ and the operations which restrict to the initial operation in each $\mathcal{G}_i$. We call this the <em>coproduct</em> of the groupoids $\mathcal{G}_i$.
 </div>
 
-<div class="reference" id="refMR1712872">
-<li class="book">
+<div class="book reference id='refMR1712872'>
 		<span class="author">Saunders Mac Lane</span>,
 		<span class="title">Categories for the working mathematician. Second edition</span>.
 		<span class="series">Graduate Texts in Mathematics</span>
@@ -232,11 +229,9 @@ Let $\left\{\mathcal{G}_i:i\in I\right\}$ be a family of groupoids. We endow the
 		<span class="year">1998</span>.
 		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=1712872">1712872</a></span>,
 		<span class="doi">DOI: <a href="https://doi.org/10.1007/978-1-4757-4721-8">10.1007/978-1-4757-4721-8</a></span>.
-	</li>
 </div>
 
-<div class="reference" id="refMR0244443">
-<li id="MR0244443" class="article">
+<div id="refMR0244443" class="reference article">
 		<span class="author">Joel John Westman</span>,
 		<span class="title">Harmonic analysis on groupoids</span>.
 		<span class="journal">Pacific Journal of Mathematics</span>
@@ -244,5 +239,27 @@ Let $\left\{\mathcal{G}_i:i\in I\right\}$ be a family of groupoids. We endow the
 		<span class="year">1968</span>.
 		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=0244443">0244443</a></span>,
 		<span class="doi">DOI: <a href="https://doi.org/10.2140/pjm.1968.27.621">10.2140/pjm.1968.27.621</a></span>.
-	</li>
+</div>
+
+<!-- 1.2.1 -->
+<div class="definition reference" id="refdefinitioninversesemigroup">
+<p><span class="envidentifier">Definition 1.2.1</span>
+A <em>semigroup</em> is a set $S$ endowed with an associative binary operation $(s,t)\mapsto st$. A semigroup is
+<ol>
+	<li> <em>regular</em> if for every $s\in S$ there exists an element $t\in S$, called an <em>inverse</em> of $s$, satisfying $sts=s$ and $tst=t$.</li>
+	<li> an <em>inverse semigroup</em> if it is regular and every $s\in S$ admits a unique inverse. In this case we denote it as $s^*$.
+	<li> a <em>monoid</em> if it has an <em>identity</em> or <em>unit</em>, that is, an element $1\in S$ (necessarily unique) satisfying $1s=s1=s$ for all $s\in S$.
+</ol>
+A <em>subsemigroup</em> of a semigroup $S$ is a subset $T\subseteq S$ which is closed under the semigroup operation. A <em>sub-inverse semigroup</em> of an inverse semigroup is a subsemigroup which is closed under inverses.</p>
+</div>
+
+<!-- 4.1.5 -->
+<div class="definition reference" id="refdefinitionactionspartialandglobal">
+<p><span class="envidentifier">Definition 4.1.5</span>
+[<a class="makeref" data-target="refMR3231479" href="../0.matters/references.html#MR3231479">22</a>]
+A <em>partial action</em> of an inverse semigroup $S$ on a set $X$ is a partial morphism $\theta:S\to\mathcal{I}(X)$. If $\theta$ is a morphism we call it a <em>global action</em>.
+</p>
+<p>
+If we need to make the domain and codomains of each map $\theta_s$ explicit, we will write $\theta=(\theta_s:X_{s^*}\to X_s)_{s\in S}$.
+</p>
 </div>

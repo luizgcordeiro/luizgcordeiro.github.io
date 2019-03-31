@@ -4,6 +4,12 @@ The beggining should be equal for all files
 --------------------------------------------------------->
 <html>
 <head>
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
 
 	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
 
@@ -54,10 +60,18 @@ $( "#sidebar" ).load( "../src/sidebar" );
 RIGHT BAR
 -------------------------------------------------------->
 
-<div class="rightbar">
-	
-</div>
+<div class="rightbar" id="rightbar"></div>
 
+<script>
+	$.get("1.2.is.r", function(data){
+		$("#rightbar").html(data);
+	});
+	var content;
+	$.get('../0.matters/ref.r', function(data){
+		content= data;
+		$('#rightbar').prepend(content);
+	});
+</script>
 <!-------------------------------------------------------
 MAIN
 -------------------------------------------------------->
@@ -78,7 +92,7 @@ Before we start this section, let us fix some nomenclature that will be used thr
 <p>
 We say that $(L,\leq)$ is a
 <ol>
-	<li value="3"> <em>$\wedge$-semilattice</em> (read ``meet semilattice'') if it admits arbitrary finite meets.</li>
+	<li value="3"> <em>$\wedge$-semilattice</em> (read "meet semilattice") if it admits arbitrary finite meets.</li>
 	<li> <em>lattice</em>, if it admits arbitrary finite meets and joins.
 </ol>
 </p>
@@ -90,7 +104,7 @@ We say that the poset $L$ has a <em>zero</em> if it has a minimum, denoted by $0
 <h3 class="subsection">1.2.1. Inverse semigroups</h3>
 
 <!-- 1.2.1 -->
-<div class="definition"><span id="definitioninversesemigroup">
+<div class="definition" id="definitioninversesemigroup">
 <p><span class="envidentifier">Definition 1.2.1</span>
 A <em>semigroup</em> is a set $S$ endowed with an associative binary operation $(s,t)\mapsto st$. A semigroup is
 <ol>
@@ -99,230 +113,323 @@ A <em>semigroup</em> is a set $S$ endowed with an associative binary operation $
 	<li> a <em>monoid</em> if it has an <em>identity</em> or <em>unit</em>, that is, an element $1\in S$ (necessarily unique) satisfying $1s=s1=s$ for all $s\in S$.
 </ol>
 A <em>subsemigroup</em> of a semigroup $S$ is a subset $T\subseteq S$ which is closed under the semigroup operation. A <em>sub-inverse semigroup</em> of an inverse semigroup is a subsemigroup which is closed under inverses.</p>
-</span></div>
+</div>
 
-\begin{definition}\index{Morphism (of semigroups)}\index{Isomorphism (of semigroups)}\label{definitionmorphismofsemigroups}
-A \emph{morphism} of semigroups is a map $\theta:S\to T$ satisfying $\theta(s_1s_2)=\theta(s_1)\theta(s_2)$ for all $s_1,s_2\in S$. Moreover, $\theta$ is an \emph{isomorphism} if it is invertible and $\theta^{-1}$ is also a morphism.
-\end{definition}
+<!-- 1.2.2 -->
+<div class="definition" id="definitionmorphismofsemigroups">
+<p><span class="envidentifier">Definition 1.2.2</span>
+A <em>morphism</em> of semigroups is a map $\theta:S\to T$ satisfying $\theta(s_1s_2)=\theta(s_1)\theta(s_2)$ for all $s_1,s_2\in S$. Moreover, $\theta$ is an <em>isomorphism</em> if it is invertible and $\theta^{-1}$ is also a morphism.
+</div>
 
+<p>
 As usual, we extend the product notation of elements of a semigroup $S$ to subsets of $S$, namely
-\[FG=\left\{fg:(f,g)\in F\times G\right\},\quad tF=\left\{tf:f\in F\right\}\quad\text{and}\quad Ft=\left\{ft:f\in F\right\}\nomenclature[S]{$FG$}{}\nomenclature[S]{$tF$, $Ft$}{}\]
+<div class="equation">\[
+FG=\left\{fg:(f,g)\in F\times G\right\},\quad tF=\left\{tf:f\in F\right\}\quad\text{and}\quad Ft=\left\{ft:f\in F\right\}
+\]</div>
 whenever $F,G\subseteq S$ and $t\in S$. If $S$ is an inverse semigroup, we also denote
-\[F^*=\left\{f^*:f\in F\right\}.\nomenclature[S]{$F^*$}{}\]
+<div class="equation">\[
+F^*=\left\{f^*:f\in F\right\}.
+\]</div>
+</p>
 
-\begin{remark}\label{remarksubinversesemigroups}
+<div class="remark" id="remarksubinversesemigroups">
+<p><span class="envidentifier">Remark</span>
 If $S$ is an inverse semigroup and $T$ is a subsemigroup which is regular, then every element $t\in T$ admits an inverse $t'\in T$. However since inverses are unique in $S$ then $t'=t^*$. Therefore regular sub-semigroups of inverse semigroups are sub-inverse semigroups.
-\end{remark}
+</p>
+</div>
 
-\begin{example}\index{Semilattice!$\land$-semilattice (as a semigroup)}
+<!-- 1.2.3 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.3</span>
 Every $\land$-semilattice is an inverse semigroup with the meet as the operation: $xy=x\land y$. In this case, every element is its own inverse: $x^*=x$.
+</p>
 
+<p>
 We will always regard $\land$-semilattices as inverse semigroups with this operation.
-\end{example}
+</p>
+</div>
 
-\begin{example}
-	If $S$ is an inverse semigroup and $s,t\in S$, then the equation $sts=s$ might be satisfied even though $t$ is not the inverse of $s$.
+<!-- 1.2.4 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.4</span>
+If $S$ is an inverse semigroup and $s,t\in S$, then the equation $sts=s$ might be satisfied even though $t$ is not the inverse of $s$.
+</p>
 	
-	As a particular case of the previous example, let $X$ be a nonempty set and consider the power set $\mathcal{P}(X)$ of $X$, ordered by set inclusion. Then $\mathcal{P}(X)$ is a $\land$-semilattice, and hence an inverse semigroup, under set intersection: $AB=A\land B=A\cap B$ for all $A,B\in\mathcal{P}(X)$.
-	
-	However, $\varnothing X\varnothing=\varnothing$, even though $X$ is not the inverse of $\varnothing$.
-\end{example}
+<p>
+As a particular case of the previous example, let $X$ be a nonempty set and consider the power set $\mathcal{P}(X)$ of $X$, ordered by set inclusion. Then $\mathcal{P}(X)$ is a $\land$-semilattice, and hence an inverse semigroup, under set intersection: $AB=A\land B=A\cap B$ for all $A,B\in\mathcal{P}(X)$.
+</p>
 
-\begin{example}
-Not every regular semigroup is an inverse semigroup. For example, if $S$ is any set we endow it with the operation $st=s$ for all $s,t\in S$, which makes it regular but not an inverse semigroup if $|S|\geq 2$. In fact, any two elements are inverses of each other in this semigroup.
-\end{example}
+<p>
+However, $\varnothing X\varnothing=\varnothing$, even though $X$ is not the inverse of $\varnothing$.
+</p>
+</div>
 
-\begin{example}\nomenclature[S]{$\mathcal{I}(X)$}{Semigroup of partial bijections of $X$}\nomenclature[Z]{$\operatorname{dom}(f)$,$\operatorname{ran}(f)$}{Domain and range of a partial bijection $f$.}
+<!-- 1.2.5 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.5</span>
+Not every regular semigroup is an inverse semigroup. For example, if $S$ is any set we endow it with the operation $st=s$ for all $s,t\in S$, which makes it regular but not an inverse semigroup if $|S|\mathcal{G}eq 2$. In fact, any two elements are inverses of each other in this semigroup.
+</p>
+</div>
+
+<!-- 1.2.6 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.6</span>
 Let $X$ be a set. Let $\mathcal{I}(X)$ be the set of all partial bijections of $X$, i.e., the set of all bijections $f:\operatorname{dom}(f)\to\operatorname{ran}(f)$, where $\dom(f)$ and $\ran(f)$ are subsets of $X$. We make it a semigroup with the canonical partial composition of maps, namely, given $f,g\in\mathcal{I}(X)$,
-\begin{enumerate}
-\item $\dom(gf)=f^{-1}(\dom(g)\cap\ran(f))$;
-\item $\ran(gf)=g(\dom(g)\cap\ran(f))$;
-\item $(gf)(x)=g(f(x))$ for all $x\in\dom(gf)$.
-\end{enumerate}
+<ol>
+	<li> $\dom(gf)=f^{-1}(\dom(g)\cap\ran(f))$;</li>
+	<li> $\ran(gf)=g(\dom(g)\cap\ran(f))$;</li>
+	<li> $(gf)(x)=g(f(x))$ for all $x\in\dom(gf)$.</li>
+</ol>
 This makes $\mathcal{I}(X)$ an inverse semigroup. Namely, the inverse of $f\in\mathcal{I}(X)$ is the usual inverse function $f^*=f^{-1}:\ran(f)\to\dom(f)$.
+</p>
+<p>
+$\mathcal{I}(X)$ serves as an analogue to permutation groups, and in fact a version of Cayley's Theorem, called the <em>Vagner-Preston Theorem</em> (see Theorem <a class="makeref" data-target="reftheoremwagnerpreston" href="#theoremwagnerpreston">1.2.26</a>) holds: every inverse semigroup is isomorphic to a sub-inverse semigroup of some $\mathcal{I}(X)$.
+</p>
+</div>
 
-$\mathcal{I}(X)$ serves as an analogue to permutation groups, and in fact a version of Cayley's Theorem, called the \emph{Vagner-Preston Theorem} (see Theorem~\ref{theoremwagnerpreston}) holds: every inverse semigroup is isomorphic to a sub-inverse semigroup of some $\mathcal{I}(X)$.
-\end{example}
-
+<p>
 The semigroups we will be most interested in are the semigroup of bisections of a groupoid, which we now introduce.
+</p>
 
-\begin{definition}\index{Bisection}
-A \emph{bisection} in a groupoid $\G$ is a subset $A\subseteq\G$ such that the source and range maps are injective on $A$.% If $\G$ is a topological groupoid, we denote by $\mathbf{OB}(\G)$ the set of all open bisections of $\G$.
-\end{definition}
+<!-- 1.2.7 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.2.7</span>
+A <em>bisection</em> in a groupoid $\mathcal{G}$ is a subset $A\subseteq\mathcal{G}$ such that the source and range maps are injective on $A$.
+</p>
+</div>
 
-\begin{example}
+<!-- 1.2.8 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.8</span>
 A subset of a group is a bisection if and only if it is either empty or a singleton.
-\end{example}
+</p>
+</div>
 
-If $A$ and $B$ are subsets of a groupoid $\G$, we denote their product by
-\[AB=\left\{ab:(a,b)\in (A\times B)\cap\G[2]\right\}\qquad\text{and}\qquad A^{-1}=\left\{a^{-1}:a\in A\right\}\]
+<p>
+If $A$ and $B$ are subsets of a groupoid $\mathcal{G}$, we denote their product by
+<div class="equation">\[
+AB=\left\{ab:(a,b)\in (A\times B)\cap\mathcal{G}^{(2)}\right\}\qquad\text{and}\qquad A^{-1}=\left\{a^{-1}:a\in A\right\}
+\]</div>
+</p>
 
-\begin{example}\nomenclature[G]{$\operatorname{\mathbf{Bis}}(\G)$}{Semigroups of bisections of a groupoid $\G$}\nomenclature[S]{$\mathbf{Bis}(\G)$}{Semigroups of bisections of a groupoid $\G$}\index{Semigroup!of bisections}
-The collection $\operatorname{\mathbf{Bis}}(\G)$ of bisections of a groupoid $\G$ is an inverse semigroup under the product and inverse of subsets of $\G$.% The inverse of a bisection $A\in\operatorname{\mathbf{Bis}}(\G)$ is $A^*=A^{-1}$.
-\end{example}
+<!-- 1.2.9 -->
+<div class="example">
+<p><span class="example">Example 1.2.9</span>
+The collection $\operatorname{\mathbf{Bis}}(\mathcal{G})$ of bisections of a groupoid $\mathcal{G}$ is an inverse semigroup under the product and inverse of subsets of $\mathcal{G}$.
+</p>
+</div>
 
+<p>
 Let us briefly recall the notion of the graph of a function.
+</p>
 
-\begin{definition}\label{definitiongraphoffunction}\nomenclature[Z]{$\operatorname{graph}(f)$}{Graph of a function $f$}\index{Graph of a function}
-If $f:X\to Y$ is a function between sets $X$ and $Y$, the \emph{graph} of $f$ is the set
-\[\operatorname{graph}(f)=\left\{(f(x),x):x\in X\right\}.\]
-\end{definition}
+<!-- 1.2.10 -->
+<div class="definition" id="definitiongraphoffunction">
+<p><span class="envidentifier">Definition 1.2.10</span>
+If $f:X\to Y$ is a function between sets $X$ and $Y$, the <em>graph</em> of $f$ is the set
+<div class="equation">\[
+\operatorname{graph}(f)=\left\{(f(x),x):x\in X\right\}.
+\]</div>
+</p>
+</div>
 
-\begin{remark}
-Usually (see \cite[p.\ 11]{MR1940513} or \cite[Section 8]{MR0453532}), the graph of a function is instead defined as the set of pairs $(x,f(x))$ for $x\in X$. However, this convention is more consistent with the convention, adopted throughout the whole thesis, that functions ``act on the left''.
+<div class="remark">
+<p><span class="envidentifier">Remark</span>
+Usually (see [<a class="makeref" data-target="MR0453532" href="../0.matters/references.html#MR0453532">81</a>, Section 8] or [<a class="makeref" data-target="MR1940513" href="../0.matters/references.html#MR1940513">93</a>, p. 11]), the graph of a function is instead defined as the set of pairs $(x,f(x))$ for $x\in X$. However, this convention is more consistent with the convention, adopted throughout the whole thesis, that functions "act on the left".
+</p>
 
-Recall that a \emph{relation} (between sets $X$ and $Y$) is a subset $A\subseteq Y\times X$. The \emph{composition} of relations $A\subseteq Y\times X$ and $B\subseteq Z\times Y$ is the relation
-\[B\circ A=\left\{(z,x):\text{there exists }y\in Y\text{ such that }(z,y)\in B\text{ and }(y,x)\in A\right\}.\]
+<p>
+Recall that a <em>relation</em> (between sets $X$ and $Y$) is a subset $A\subseteq Y\times X$. The <em>composition</em> of relations $A\subseteq Y\times X$ and $B\subseteq Z\times Y$ is the relation
+<div class="equation">\[
+B\circ A=\left\{(z,x):\text{there exists }y\in Y\text{ such that }(z,y)\in B\text{ and }(y,x)\in A\right\}.
+\]</div>
 (Note that if $R$ is an equivalence relation, regarded as a groupoid, and $A,B\subseteq R\subseteq X\times X$, then the product $BA$ coincides with the composition $B\circ A$.)
+</p>
 
+<p>
 If $f:X\to Y$ and $g:Y\to Z$ are functions, then $\operatorname{graph}(f)\subseteq Y\times X$ and $\operatorname{graph}(g)\subseteq Z\times Y$ are relations, and
-\[\operatorname{graph}(g\circ f)=\operatorname{graph}(g)\circ\operatorname{graph}(f)\]
+<div class="equation">\[
+\operatorname{graph}(g\circ f)=\operatorname{graph}(g)\circ\operatorname{graph}(f)
+\]</div>
 i.e., graph preserves composition. In particular, the map $f\mapsto\operatorname{graph}(f)$ defines an injective semigroup morphism between the semigroup $X^X$ of functions from a set $X$ to itself (under function composition) to the semigroup $\mathcal{P}(X\times X)$ of binary relations on $X$ (under relation composition).
-\end{remark}
+</p>
+</div>
 
-\begin{example}\label{examplebisectionsofequivalencerelationarefunctions}
+<!-- 1.2.11 -->
+<div class="example" id="examplebisectionsofequivalencerelationarefunctions">
+<p><span class="envidentifier">Example 1.2.11</span>
 If $R$ is an equivalence relation on a set $X$ (seen as a principal groupoid), then $\operatorname{\bf Bis}(R)$ can be identified with the subsemigroup of $\mathcal{I}(X)$
-\[\mathcal{J}=\left\{f\in\mathcal{I}(X):\forall x\in\dom(f), (f(x),x)\in R\right\}.\]
+<div class="equation">\[
+\mathcal{J}=\left\{f\in\mathcal{I}(X):\forall x\in\dom(f), (f(x),x)\in R\right\}.
+\]</div>
 Indeed, the map $\theta:\operatorname{\bf Bis}(R)\to\mathcal{J}$, given by
-\[\theta_A=\ra\circ(\so|_A)^{-1}:\so(A)\to\ra(A)\]
+<div class="equation">\[
+\theta_A=\ra\circ(\so|_A)^{-1}:\so(A)\to\ra(A)
+\]</div>
 is a semigroup morphism with inverse $f\mapsto\operatorname{graph}(f)$. Whenever necessary, we will identify $\operatorname{\bf Bis}(R)$ with $\mathcal{J}$ in this manner.
-
+</p>
+<p>
 In particular, if $R=X\times X$ then $\mathcal{J}=\mathcal{I}(X)$, so $\operatorname{Bis}(X\times X)$ is isomorphic to $\mathcal{I}(X)$.
-\end{example}
+</p>
+</div>
 
-\begin{example}\label{exampleginsidebisectionsoftransformationgroupoid}
-If $\theta$ is an action of a group $G$ on a set $X$, then the map $g\mapsto\left\{g\right\}\times X$ is an injective morphism (Definition \ref{definitionmorphismofsemigroups}) of $G$ into $\operatorname{\bf{Bis}}(G\ltimes_\theta X)$.
-\end{example}
+<!-- 1.2.12 -->
+<div class="example" id="exampleginsidebisectionsoftransformationgroupoid">
+<p><span class="envidentifier">Example 1.2.12</span>
+If $\theta$ is an action of a group $G$ on a set $X$, then the map $g\mapsto\left\{g\right\}\times X$ is an injective morphism (Definition <a class="makeref" data-target="refdefinitionmorphismofsemigroups" href="#definitionmorphismofsemigroups">1.2.2</a>) of $G$ into $\operatorname{\bf{Bis}}(G\ltimes_\theta X)$.
+</p>
+</div>
 
-The set of idempotents in a semigroup plays several important roles in their representation theory (Chapter \ref{chapterpartialactionsofinversesemigroups}), so we introduce a notation for it.
+<p>
+The set of idempotents in a semigroup plays several important roles in their representation theory (Chapter <a href="../4.paois/4.0.intro.html">4</a>), so we introduce a notation for it.
+</p>
 
-\begin{definition}\nomenclature[S]{$E(S)$}{Idempotent lattice of $S$}\index{Idempotent semilattice}
+<!-- 1.2.13 -->
+<div class="definition">
+<p><span classs="envidentifier">Definition 1.2.13</span>
 Given a semigroup $S$, denote by $E(S)=\left\{e\in S:e^2=e\right\}$ the set of idempotents of $S$.
-\end{definition}
+</p>
+</div>
 
+<p>
 Note that if $s$ and $t$ are inverse elements in a semigroup $S$ then $st\in E(S)$, and conversely every $e\in E(S)$ is an inverse of itself. In particular, if $S$ is an inverse semigroup then $E(S)=\left\{s^*s:s\in S\right\}$. If $S$ is a monoid then $1=1^2\in E(S)$.
+</p>
 
-\begin{example}\label{exampleidempotentssets}\nomenclature[Z]{$\id_A$}{Identity function of a set $A$}
+<!-- 1.2.14 -->
+<div class="example" id="exampleidempotentssets">
+<p><span class="envidentifier">Example 1.2.14</span>
 Given a set $A$, let $\id_A:A\to A$ be the identity function of $A$. Then if $X$ is a set, the idempotent set of $\mathcal{I}(X)$ is
-\[E(\mathcal{I}(X))=\left\{\id_A:A\subseteq X\right\}.\]
+<div class="equation">\[
+E(\mathcal{I}(X))=\left\{\id_A:A\subseteq X\right\}.
+\]</div>
 Also note that $\id_{A\cap B}=\id_A\id_B$ whenever $A,B\subseteq X$, so by identifying subsets of $X$ with their respective identity functions, the semigroup operation of $\mathcal{I}(X)$ corresponds to intersection of sets. Moreover, $f^*f=\id_{\dom(f)}$ and $ff^*=\id_{\ran(f)}$, so $f^*f$ corresponds to the domain of $f$ and $ff^*$ corresponds to the range of $f$.
-\end{example}
+</p>
+</div>
 
+<p>
 We now prove that $E(S)$ is a commutative sub-inverse semigroup of an inverse semigroup $S$, and this is an important fact for calculations which will be performed throughout the next sections and chapters.
+</p>
 
-\begin{theorem}[{\cite[Theorem 5.1.2]{MR0466355}, \cite[Theorem 1.1.3]{MR1694900}}]\label{theoreminverseiffescommute}
+<!-- 1.2.15 -->
+<div class="theorem" id="theoreminverseiffescommute">
+<p><span class="envidentifier">Theorem 1.2.15 <span style="font-weight:normal;">([<a class="makeref" data-target="MR0466355" href="../0.matters/references.html#MR0466355">88</a>, Theorem 5.1.2], [<a class="makeref" data-target="MR1694900" href="../0.matters/references.html#MR1694900">108</a>, Theorem 1.1.3])</span></span>
 A regular semigroup $S$ is inverse if and only if the elements of $E(S)$ commute. In this case, $E(S)$ is a sub-inverse semigroup of $S$.
-\end{theorem}
-\begin{proof}
+</p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofoftheoreminverseiffescommute');event.preventDefault();">Proof</a>
+<div class="proof" id="proofoftheoreminverseiffescommute">
+<p>
 First assume that $S$ is inverse and let $e,f\in E(S)$. Let $x=(ef)^*$ be the unique inverse of $ef$. Then
-\[(ef)(fxe)(ef)=(ef)x(ef)=ef\quad\text{and}\quad (fxe)(ef)(fxe)=f(xefx)e=fxe\]
+<div class="equation">\[
+(ef)(fxe)(ef)=(ef)x(ef)=ef\quad\text{and}\quad (fxe)(ef)(fxe)=f(xefx)e=fxe
+\]</div>
 so $(fxe)=(ef)^*=x$. Then we obtain
-\[x^2=(fxe)(fxe)=f(xefx)e=fxe=x\]
+<div class="equation">\[
+x^2=(fxe)(fxe)=f(xefx)e=fxe=x,
+\]</div>
 so $x$ is idempotent, and therefore it is its own inverse, that is, $x=fxe=ef$ is idempotent. Similarly, $fe$ is idempotent, so
-\[fe=(fe)^2=f(ef)e=fxe=x=ef\]
+<div class="equation">\[
+fe=(fe)^2=f(ef)e=fxe=x=ef.
+\]</div>
+</p>
 
+<p>
 Conversely, assume elements of $E(S)$ commute and let $t_1$ and $t_2$ be inverses of some $s\in S$. Since $st_1$, $st_2$, $t_1s$ and $t_2s$ are idempotents, then
-\begin{align*}
-t_1&=t_1st_1=t_1(st_2)(st_1)=t_1(st_1)(st_2)=t_1st_2=(t_1s)(t_2s)t_2=(t_2s)(t_1s)t_2\\
+<div class="equation">\begin{align*}
+t_1&=t_1st_1=t_1(st_2)(st_1)\\
+&=t_1(st_1)(st_2)=t_1st_2\\
+&=(t_1s)(t_2s)t_2=(t_2s)(t_1s)t_2\\
 &=t_2st_2=t_2
-\end{align*}
+\end{align*}</div>
 so $S$ is inverse.
+</p>
 
+<p>
 If elements of $E(S)$ commute, it is easy to see $E(S)$ is closed under product, and since every element of $E(S)$ is its own inverse then $E(S)$ is a sub-inverse semigroup of $S$.\qedhere
-\end{proof}
+</p></div>
 
+<p>
 An easy application of this result allows us to conclude that inverses in inverse semigroups respect the usual laws of products.
+</p>
 
-\begin{corollary}\label{theorempropertiesofinversesinsemigroups}
+<!-- 1.2.16 -->
+<div class="corollary" id="theorempropertiesofinversesinsemigroups">
+<p><span class="envidentifier">Corollary 1.2.16</span>
 Let $S$ be an inverse semigroup. Then
-\begin{enumerate}
-\item[(a)] $(s^*)^*=s$ for all $s\in S$;
-\item[(b)] $(st)^*=t^*s^*$ for all $s\in S$;
-%\item[(c)] $E(S)$ is a commutative sub-inverse semigroup of $S$;
-\item[(c)] If $s\in S$ and $e\in E(S)$ then $ses^*\in E(S)$.
-\end{enumerate}
-\end{corollary}
+<ol class="alphpar">
+	<li> $(s^*)^*=s$ for all $s\in S$;</li>
+	<li> $(st)^*=t^*s^*$ for all $s\in S$;</li>
+	<li> If $s\in S$ and $e\in E(S)$ then $ses^*\in E(S)$.</li>
+</ol></p>
+</div>
 
-%In fact, a converse of item (c) holds for regular semigroups: If any two idempotents of a regular semigroup $S$ commute then $S$ is an inverse semigroup.
+<p>
+Inverse semigroups have several applications in the theory of $C^*$-algebras: for example, important classes of $C^*$-algebras are generated by semigroups of partial isometries, such as those of Cuntz-Krieger, graph and more generally ultragraph $C^*$-algebras. For more details, we refer to [<a class="makeref" data-target="MR3699795" href="../0.matters/references.html#MR3699795">51</a>,<a class="makeref" data-target="MR2457327" href="../0.matters/references.html#MR2457327">124</a>,<a class="makeref" data-target="MR2050134" href="../0.matters/references.html#MR2050134">170</a>]. In fact, every regular semigroup of partial isometries of a C*-algebra is an inverse semigroup, as we prove now. (Compare with [<a class="makeref" data-target="MR1724106" href="../0.matters/references.html#MR1724106">135</a>, Proposition 2.1.4].)
 
-Inverse semigroups have several applications in the theory of C*-algebras: for example, important classes of C*-algebras are generated by semigroups of partial isometries, such as those of Cuntz-Krieger, graph and more generally ultragraph C*-algebras. For more details, we refer to \cite{MR3699795,MR2457327,MR2050134}. In fact, every regular semigroup of partial isometries of a C*-algebra is an inverse semigroup, as we prove now. (Compare with \cite[Proposition 2.1.4]{MR1724106}.)
-
-\begin{proposition}
+<!-- 1.2.17 -->
+<div class="proposition">
+<p><span class="envidentifier">Proposition 1.2.17</span>
 Let $S$ be a multiplicative semigroup of partial isometries of a C*-algebra $A$. The following are equivalent:
-\begin{enumerate}
-\item[(1)] $S$ is closed under adjoints;
-\item[(2)] $S$ is regular;
-\item[(3)] $S$ is an inverse semigroup.
-\end{enumerate}
-\end{proposition}
-\begin{proof}
+<ol class="arpar">
+	<li> $S$ is closed under adjoints;</li>
+	<li> $S$ is regular;</li>
+	<li> $S$ is an inverse semigroup.</li>
+</ol>
+</p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofof1217');event.preventDefault();">Proof</a>
+<div class="proof" id="proofof1217">
+<p>
 (1)$\Rightarrow$(2) is obvious.
+</p>
 
+<p>
 (2)$\Rightarrow$(3): Let us first prove that $E(S)=\left\{p\in S:p\text{ is a projection}\right\}$. If $p\in E(S)$, then in particular $p$ is a partial isometry and $(p^*)^2=p^*$, so
-\begin{align*}
+<div class="equation">\begin{align*}
 (p-p^*)^3&=p^3-p^2p^*-pp^*p+p(p^*)^2-p^*p^2+p^*pp^*+(p^*)^2p-(p^*)^3\\
 &=p-pp^*-p+pp^*-p^*p+p^*+p^*p-p^*=0
-\end{align*}
-and since $p-p^*$ is a normal element of $A$, the functional calculus (\cite[Theorem 2.1.3]{MR1074574}) implies that $p=p^*$, that is $p$ is a projection.
+\end{align*}</div>
+and since $p-p^*$ is a normal element of $A$, the functional calculus ([<a class="makeref" data-target="MR1074574" href="../0.matters/references.html#MR1074574">133</a>, Theorem 2.1.3]) implies that $p=p^*$, that is, $p$ is a projection.
+</p>
 
+<p>
 Now let us prove that $E(S)$ is commutative: if $p,q\in E(S)$, then $pq\in S$ is a partial isometry and $p$ and $q$ are projections, so
-\[pq=(pq)(pq)^*(pq)=pqq^*p^*pq=(pq)^2\]
+<div class="equation">\[
+pq=(pq)(pq)^*(pq)=pqq^*p^*pq=(pq)^2
+\]</div>
 and similarly $(qp)^2=qp$, and thus
-\begin{align*}
+<div class="equation">\begin{align*}
 (pq-qp)^3&=(pq)^3-(pq)^2(qp)-(pq)(qp)(pq)+(pq)(qp)^2\\
 &\quad-(qp)(pq)^2+(qp)(pq)(qp)+(qp)^2(pq)-(qp)^3\\
 &=pq-pqp-pq+pqp-qpq+qp+qpq-qp=0.
-\end{align*}
-and again, because $p,q$ are projections then $pq-qp$ is normal in $A$ and the functional calculus implies $pq=qp$. Therefore elements of $E(S)$ commute and $S$ is inverse by Theorem \ref{theoreminverseiffescommute}.
+\end{align*}</div>
+and again, because $p,q$ are projections then $pq-qp$ is normal in $A$ and the functional calculus implies $pq=qp$. Therefore elements of $E(S)$ commute and $S$ is inverse by Theorem <a class="makeref" data-target="reftheoreminverseiffescommute" href="#theoreminverseiffescommute">1.2.15</a>.
+</p>
 
-(3)$\Rightarrow$(1): Let $u\in S$, $v$ be the inverse of $u$ in $S$, and $u^*$ be the adjoint of $u$ in $A$. Without loss of generality, we can assume $A$ is contained in the algebra $B(H)$ of bounded operators of some Hilbert space $H$. In this case, a map $u\in A$ is a partial isometry if and only if $u$ is isometric on $\ker(u)^\perp$, and in this case $u(\ker(u)^\perp)=u(H)=\ker(u^*)^\perp$ (\cite[Theorem 2.3.3]{MR1074574}). Then for all $x\in(\ker u)^\perp$,
-\[\Vert x\Vert=\Vert u(x)\Vert=\Vert u(v(u(x)))\Vert\leq\Vert v(u(x))\Vert\leq\Vert u(x)\Vert\leq\Vert x\Vert\ntag\label{equationpartialisometriesinversesemigroup}\]
+<p>
+(3)$\Rightarrow$(1): Let $u\in S$, $v$ be the inverse of $u$ in $S$, and $u^*$ be the adjoint of $u$ in $A$. Without loss of generality, we can assume $A$ is contained in the algebra $B(H)$ of bounded operators of some Hilbert space $H$. In this case, a map $u\in A$ is a partial isometry if and only if $u$ is isometric on $\ker(u)^\perp$, and in this case $u(\ker(u)^\perp)=u(H)=\ker(u^*)^\perp$ ([<a class="makeref" data-target="MR1074574" href="../0.matters/references.html#MR1074574">133</a>, Theorem 2.3.3]). Then for all $x\in(\ker u)^\perp$,
+<div class="equation" id="equationpartialisometriesinversesemigroup">\[
+\Vert x\Vert=\Vert u(x)\Vert=\Vert u(v(u(x)))\Vert\leq\Vert v(u(x))\Vert\leq\Vert u(x)\Vert\leq\Vert x\Vert\tag{1.2.1}
+\]</div>
 and this implies that $\Vert v(u(x))\Vert=\Vert u(x)\Vert$, so $u(x)\in(\ker v)^\perp$ because $v$ is a partial isometry. In other words, since $u$ is a partial isometry,
-\[\left(\ker u^*\right)^\perp=u\left((\ker u)^\perp\right)\subseteq\left(\ker v\right)^\perp\]
-Similarly, from $v^*u^*v^*=(vuv)^*=v^*$, we conclude that $\left(\ker v\right)^\perp\subseteq\left(\ker u^*\right)^\perp$, and therefore $\left(\ker u^*\right)^\perp=\left(\ker v\right)^\perp$. Since $u^*$ and $v$ are partial isometries, it is therefore enough to check that $u^*=v$ on $\left(\ker u^*\right)^\perp$
+<div class="equation">\[
+\left(\ker u^*\right)^\perp=u\left((\ker u)^\perp\right)\subseteq\left(\ker v\right)^\perp.
+\]</div>
+Similarly, from $v^*u^*v^*=(vuv)^*=v^*$, we conclude that $\left(\ker v\right)^\perp\subseteq\left(\ker u^*\right)^\perp$, and therefore $\left(\ker u^*\right)^\perp=\left(\ker v\right)^\perp$. Since $u^*$ and $v$ are partial isometries, it is therefore enough to check that $u^*=v$ on $\left(\ker u^*\right)^\perp$.
+</p>
 
-If $y\in\left(\ker u^*\right)^\perp$, then $x:=u^*(y)\in(\ker u)^\perp$, and equation (\ref{equationpartialisometriesinversesemigroup}) implies $\Vert v(u(x))\Vert=\Vert x\Vert$. But since $S$ is regular, the proof of (2)$\Rightarrow$(3) also applies and shows that $vu$ is a projection, and thus
-\[u^*(y)=x=v(u(x))=v(u(u^*(y))=v(y).\qedhere\]
-\end{proof}
-%\begin{proof}
-%First suppose that $p$ and $q$ are projections and $pq$ is a partial isometry. Let us show that $pq$ is in fact a projection. Note that
-%\[pq=(pq)(pq)^*(pq)=pqq^*p^*pq=(pq)^2\]
-%so it remains to show that $pq=(pq)^*=qp$. Since $pq-qp$ is normal we can apply the functional calculus, and we are done by noting that
-%\begin{align*}
-%(pq-qp)^3&=(pq)^3-(pq)^2(qp)-(pq)(qp)(pq)+(pq)(qp)^2\\
-%&\quad-(qp)(pq)^2+(qp)(pq)(qp)+(qp)^2(pq)-(qp)^3\\
-%&=pq-pqp-pq+pqp-qpq+qp+qpq-qp=0.
-%\end{align*}
-%
-%Therefore, projections in $S$ commute. However this is not enough to apply Theorem \ref{theoreminverseiffescommute} since in principle idempotents in $S$ are not necessarily projections. Instead we will continue to prove that $S$ is inverse directly (see the Remark below for an alternative).
-%
-%Now suppose $u,v\in S$ and $uvu=u$. Let us first show that $uv$ is a projection. It is clear that $uv$ and $v^*u^*$ are idempotents. We simply need to show that $uv=v^*u^*$. Using the first part with the projections $u^*u$ and $vv^*$,
-%\begin{align*}
-%(uv-v^*u^*)^3&=(uv)^3-(uv)^2(v^*u^*)-(uv)(v^*u^*)(uv)+(uv)(v^*u^*)^2\\
-%&\qquad-(v^*u^*)(uv)^2+(v^*u^*)(uv)(v^*u^*)+(v^*u^*)^2(uv)-(v^*u^*)^3\\
-%&=uv-uvv^*u^*-u(u^*u)(vv^*)v+uvv^*u^*\\
-%&\qquad-v^*u^*uv+v^*vv^*u^*uu^*+v^*u^*uv-v^*u^*\\
-%&=uv-uv-v^*u^*+v^*u^*=0,
-%\end{align*}
-%so since $uv-v^*u^*$ is normal we are done (again by the functional calculus).
-%
-%Finally, suppose $uvu=u$ and $v=vuv$. We are done if we show that $v=u^*$. Using the first and second parts (because $uv$, $uu^*$ and $v^*v$ are projections), note that
-%\[uv=uvv^*v=v^*vuv=v^*v,\quad\text{and}\quad (uv)^*=uv=uu^*uv=uvuu^*=uu^*\]
-%so
-%\[|v-u^*|^2=(v^*-u)(v-u^*)=v^*v-v^*u^*-uv+uu^*=0\]
-%so we are done.\qedhere
-%\end{proof}
+<p>
+If $y\in\left(\ker u^*\right)^\perp$, then $x:=u^*(y)\in(\ker u)^\perp$, and Equation <a class="makeref" data-target=refequationpartialisometriesinversesemigroup" href="#equationpartialisometriesinversesemigroup">(1.2.1)</a> implies $\Vert v(u(x))\Vert=\Vert x\Vert$. But since $S$ is regular, the proof of (2)$\Rightarrow$(3) also applies and shows that $vu$ is a projection, and thus
+<div class="equation">\[
+u^*(y)=x=v(u(x))=v(u(u^*(y))=v(y).\qedhere
+\]</div>
+</p>
+</div>
 
-%\begin{remark}
-%The proof above actually proves that regular semigroups of partial isometries of a C*-algebra are closed under involution and are One could also save some work in the proof above by proving that any partial isometry which is an idempotent is a projection. This can also be done with the functional calculus: If $p=p^2$ and $p$ is a partial isometry then $(p^*)^2=p^*$ as well and
-%\begin{align*}
-%(p-p^*)^3&=p^3-p^2p^*-pp^*p+p(p^*)^2-p^*p^2+p^*pp^*+(p^*)^2p-(p^*)^3\\
-%&=p-pp^*-p+pp^*-p^*p+p^*+p^*p-p^*=0
-%\end{align*}
-%and since $p-p^*$ is normal, we conclude that $p$ is in fact a projection. Therefore, after the first part of the proof above we could conclude that all idempotents of $S$ commute and therefore $S$ is an inverse semigroup by Theorem \ref{theoreminverseiffescommute}. This actually proves that 
-%\end{remark}
-
-The converse also holds: every inverse semigroup is isomorphic to a semigroup of partial isometries of some C*-algebra. See the discussion after Theorem \ref{theoremwagnerpreston}.
+<p>
+The converse also holds: every inverse semigroup is isomorphic to a semigroup of partial isometries of some C*-algebra. See the discussion after Theorem
+<a class="makeref" data-target="reftheoremwagnerpreston" href="#theoremwagnerpreston">1.2.26</a>.
+</p>
 
 We define a partial order on an inverse semigroup $S$ with any of the following equivalent statements \nomenclature[S]{$\leq$}{Order in an inverse semigroup}.\label{orderinversesemigroup}
 \begin{align*}
@@ -335,10 +442,6 @@ s\leq t&\iff\exists e\in E(S)\left(te=s\right)\iff\exists e\in E(S)(et=s)\\
 If $S$ is an inverse semigroup, the order on $E(S)$ is described by $e\leq f\iff ef=e$ for $e,f\in E(S)$, and then $E(S)$ becomes a $\wedge$-semilattice, where for any two elements $e,f\in E(S)$, $ef=e\land f$.
 \end{example}
 
-%\begin{example}\index{Semilattice!$\land$-semilattice (as a semigroup)}
-%An inverse semigroup $S$ is a $\land$-semilattice and $st=s\land t$ for all $s,t\in S$ if and only if $S=E(S)$.
-%\end{example}
-
 \begin{example}
 In $\mathcal{I}(X)$, $f\leq g$ if and only if $g$ is an extension of $f$, that is, $\operatorname{dom}(f)\subseteq\operatorname{dom}(g)$ and $g|_{\operatorname{dom}(f)}=f$.
 \end{example}
@@ -348,7 +451,7 @@ If $G$ is a group then $g\leq h$ in $G$ if and only if $g=h$.
 \end{example}
 
 \begin{example}
-If $\G$ is a groupoid and $A,B\in\operatorname{\bf Bis}(\G)$, then $A\leq B\iff A\subseteq B$.
+If $\mathcal{G}$ is a groupoid and $A,B\in\operatorname{\bf Bis}(\mathcal{G})$, then $A\leq B\iff A\subseteq B$.
 \end{example}
 
 Using the different descriptions of the order of $S$ and commutativity of $E(S)$ the following theorem can be proven without problems.
@@ -363,8 +466,6 @@ Let $S$ be an inverse semigroup. Then
 \item[(e)] If $s\leq t$ and $s^*s=t^*t$ then $s=t$.
 \end{enumerate}
 \end{theorem}
-
-%Recall that we assume a semigroup $S$ to have an absorbing element $0$. The next proposition gives a better characterization of this element in terms of the order:
 
 The next simple proposition gives a simple characterization of zeros in inverse semigroups as absorbing elements.
 
@@ -383,7 +484,7 @@ Therefore, we denote any absorbing element of an inverse semigroup $S$ by $0$ an
 In general, a zero for $E(S)$ is not necessarily a zero for $S$ when $S$ is an inverse semigroup. For example, if $G$ is a nontrivial group then $E(G)=\left\{1\right\}$, and $1$ is the minimum of $E(G)$ but not of $G$.
 \end{example}
 
-We will now prove a generalization of Cayley's Theorem in group theory, which allows us to think of $\mathcal{I}(X)$ as a sort of ``canonical'' inverse semigroup. The next proposition summarizes some basic properties of morphisms of semigroups which will be used throughout the text. 
+We will now prove a generalization of Cayley's Theorem in group theory, which allows us to think of $\mathcal{I}(X)$ as a sort of "canonical" inverse semigroup. The next proposition summarizes some basic properties of morphisms of semigroups which will be used throughout the text. 
 
 \begin{proposition}\label{propositionpropertiesofmorphismsofsemigroups}
 Let $\theta:S\to T$ be a morphism of semigroups.
@@ -514,16 +615,16 @@ Here an arrow $x\to y$ denotes $x\leq y$, and the semigroup operation is the mee
 \end{example}
 
 \begin{example}\label{bisgisinfinitelydistributive}
-The semigroup $\operatorname{\bf Bis}(\G)$ of bisections of a groupoid $\G$ is distributive. More generally, if $\mathscr{F}$ is any (possibly infinite) compatible subset of $\operatorname{\bf Bis}(\G)$, then the join of $\mathscr{F}$ exists and coincides with the union of its elements:
+The semigroup $\operatorname{\bf Bis}(\mathcal{G})$ of bisections of a groupoid $\mathcal{G}$ is distributive. More generally, if $\mathscr{F}$ is any (possibly infinite) compatible subset of $\operatorname{\bf Bis}(\mathcal{G})$, then the join of $\mathscr{F}$ exists and coincides with the union of its elements:
 \[\bigvee\mathscr{F}=\bigcup\mathscr{F}=\bigcup_{A\in\mathscr{F}}A\]
 
-Moreover, in this case we have $A(\bigvee \mathscr{F})=\bigvee(A\mathscr{F})$ for any $A\in\operatorname{\bf Bis}(\G)$. We say that $\operatorname{\bf Bis}(\G)$ is \emph{infinitely distributive} (\cite{MR2277324}). (Cf.\ Definition \ref{definitionkappadistributivesemigroup}.)
+Moreover, in this case we have $A(\bigvee \mathscr{F})=\bigvee(A\mathscr{F})$ for any $A\in\operatorname{\bf Bis}(\mathcal{G})$. We say that $\operatorname{\bf Bis}(\mathcal{G})$ is \emph{infinitely distributive} (\cite{MR2277324}). (Cf.\ Definition \ref{definitionkappadistributivesemigroup}.)
 \end{example}
 
 \begin{example}\label{exampleixisinfinitelydistributive}
 	If $X$ is a set then, by Example \ref{examplebisectionsofequivalencerelationarefunctions}, $\mathcal{I}(X)$ is isomorphic to $\operatorname{\bf Bis}(X\times X)$, and thus it is (infinitely) distributive by Example \ref{bisgisinfinitelydistributive} above. If $\mathscr{F}$ is any compatible subset of $\mathcal{I}(X)$, then the join of $\mathscr{F}$ is the function given by
 	\[\bigvee \mathscr{F}:\bigcup_{f\in F}\dom(f)\to\bigcup_{f\in F}\ran(f),\qquad \left(\bigvee \mathscr{F}\right)(x)=f(x),\]
-	where $f\in \mathscr{F}$ is chosen such that $x\in\dom(f)$ (``$\dom$'' and ``$\ran$'' stand for the domain and range of an element of $\mathcal{I}(X)$).
+	where $f\in \mathscr{F}$ is chosen such that $x\in\dom(f)$ ("$\dom$" and "$\ran$" stand for the domain and range of an element of $\mathcal{I}(X)$).
 \end{example}
 
 \begin{proposition}\label{propositionpropertiesofjoins}
@@ -593,13 +694,9 @@ Let $S$ be a distributive inverse semigroup. If $s\lor t$, $z\land s$ and $z\lan
 \[z\land(s\lor t)=(z\land s)\lor(z\land t)\]
 \end{corollary}
 
-%\begin{remark}
-%The proof above can be easily adapted to inverse semigroups which are \emph{infinitely} distributive, and in fact in general for inverse semigroups that admit joins of compatible sets up to some given cardinality. This provides a sharper version (with a significantly different proof) of the main result of \cite{MR2277324}.
-%\end{remark}
-
 We will need to deal with maps that preserve more than just semigroup operations, so we define morphisms which respect the order of semigroups in a stronger manner:
 
-\nocite{MR3715848}%additive
+\nocite{MR3715848}
 
 \begin{definition}\index{Morphism (of semigroups)!$\lor$-morphism}\index{Morphism (of semigroups)!$\land$-morphism}
 A \emph{$\lor$-morphism} of inverse semigroups is a semigroup morphism $\theta:S\to T$ such that whenever $s,t\in S$ are such that the join $s\lor t$ exists, then the join $\theta(s)\lor\theta(t)$ exists as well and $\theta(s\lor t)=\theta(s)\lor\theta(t)$. A \emph{$\land$-morphism} is defined in a similar manner.
@@ -611,7 +708,7 @@ In general, the canonical left action of a distributive inverse semigroup (which
 For example, suppose that $S$ is any distributive semigroup which admits two compatible but non-comparable elements $s$ and $t$, i.e., $s\lor t$ exists and is different from both $s$ and $t$. Let $\alpha:S\to\mathcal{I}(S)$ be the canonical left action of $S$ (Definition \ref{definitioncanonicalleftaction}). Then $(s\lor t)^*(s\lor t)$ belongs to the domain of $\alpha_{s\lor t}$, but it does not belong to the domain of $\alpha_s\lor\alpha_t$, so $\alpha_{s\lor t}$ is strictly larger than $\alpha_s\lor\alpha_t$.
 
 On the other hand, every distributive inverse semigroup $S$ admits a canonical injective $\lor$-morphism $S\to\mathcal{I}(X)$ for some set $X$. See \cite[Section 3.3]{MR3700423}.
-\end{remark} %Additive morphisms = lor morphisms
+\end{remark}
 
 \subsection{Relative complements}
 
@@ -650,7 +747,7 @@ Let $S$ be a distributive inverse semigroup and $s,t,z,a\in S$.
 \begin{enumerate}
 \item[(a)] If $(t\setminus s)$ exists, then $(zt)\setminus(zs)$ exists and is equal to $z(t\setminus s)$. Similarly, $(tz)\setminus(sz)$ exists and is equal to $(t\setminus s)z$.
 \item[(b)] If $t\land z$, $s\land z$ and $(t\setminus s)$ exist, then
-\[(t\land z)\setminus(s\land z)=(t\setminus s)\land z\]%=(t\land z)\setminus s\]
+\[(t\land z)\setminus(s\land z)=(t\setminus s)\land z\]
 in the sense that these elements exist and are equal.
 \item[(c)] If $a\leq s\lor t$, and $a\setminus s$ exists, then $a\setminus s\leq t$.
 \item[(d)] If $a\setminus s$ and $a\setminus t$ exist, and $s\leq t$, then $a\setminus t\leq a\setminus s$.
@@ -667,8 +764,7 @@ which is precisely what we need.
 \[\left[(t\setminus s)\land z\right]\land (s\land z)=0.\]
 Moreover, using the previous lemma,
 \[t\land z=((t\setminus s)\lor s))\land z=((t\setminus s)\land z)\lor(s\land z)\]
-therefore $(t\setminus s)\land z$ is the relative complement of $(s\land z)$ in $(t\land z)$.% This proves the first equality, which in turn implies the second one because
-%\[(t\land z)\setminus(s\land z)=(t\land z\land z)\setminus(s\land z)=\left((t\land z)\setminus s\right)\land z=(t\land z)\setminus s\]
+therefore $(t\setminus s)\land z$ is the relative complement of $(s\land z)$ in $(t\land z)$.
 \item[(c)] Since $a,s,t\leq s\lor t$, then $a$, $s$ and $t$ (or any smaller elements) are compatible and Proposition \ref{corollarydistributivedistributemeets} allows us to compute
 \begin{align*}
 a\setminus s&=(a\setminus s)\land a=(a\setminus s)\land(s\lor t)=((a\setminus s)\land s)\lor((a\setminus s)\land t)\\

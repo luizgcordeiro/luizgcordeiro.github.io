@@ -1,3 +1,5 @@
+<h2 class="section">4.4. Steinberg algebras</h2>
+
 \subsection{Definitions and notation}
 
 Steinberg algebras were independently introduced in \cite{MR2565546} and \cite{MR3274831}, as algebraic analogues of groupoid C*-algebras, and are generalizations of Leavitt path algebras and universal inverse semigroup algebras. We refer to \cite{MR3743184} and \cite{carlsenrout2017} for more details.
@@ -440,9 +442,12 @@ We will always identify $D_s$ with $A_R(X_s)$, by extending elements of $A_R(X_s
 
 It is routine to check that $\alpha$ is an algebraic partial action of $S$ on $A_R(X)$.
 
-\begin{definition}\label{definitiondualpartialaction}
+<!-- 4.4.29 -->
+<div class="definition" id="definitiondualpartialaction">
+<p><span class='envidentifier'>Definition 4.4.32</span>
 $\alpha$ as above is called the partial action \emph{induced} by $\theta$.
-\end{definition}
+</p>
+</div>
 
 We will prove that, as long as the groupoid of germs $S \ltimes X$ is Hausdorff, the Steinberg algebra $A_R(S\ltimes_\theta X)$ is isomorphic to the crossed product algebra $A_R(X) \rtimes_\alpha S$. In order to prove such an isomorphism, we need some preliminary lemmas. Following the notation of Subsection \ref{subsectiongroupoidofgerms}, recall that if $s\in S$ and $U\subseteq X_{s^*}$, we denote $[s,U]=\left\{[s,x]:x\in U\right\}$, and that we identify $\so([s,x])$ with $x$.
 
@@ -481,11 +486,15 @@ For $k\geq 2$, we can substitute $\left[u_k^{ij},W^{ij}_k\right]$ by $\left[u_k^
 
 We now prove another main theorem of this section. We refer to the notations of Definitions \ref{definitionLalpha}, \ref{definitionNalpha} and \ref{definitioncrossedproduct}.
 
-\begin{theorem}\label{theoremsteinbergiscrossed}
-Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a topological partial action of an inverse semigroup $S$ on a zero-dimensional, locally compact Hausdorff space $X$, and $\alpha=\left(\alpha_s:D_{s^*}\to D_s\right)_{s\in S}$ the partial action induced by $\theta$ (Definition \ref{definitiondualpartialaction}.% of $S$ on $A_R(X)$.
-
+<!-- 4.4.32 -->
+<div class='theorem' id='theoremsteinbergiscrossed'>
+<p><span class='envidentifier'>Theorem 4.4.32</span>
+Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a topological partial action of an inverse semigroup $S$ on a zero-dimensional, locally compact Hausdorff space $X$, and $\alpha=\left(\alpha_s:D_{s^*}\to D_s\right)_{s\in S}$ the partial action induced by $\theta$ (Definition <a class="makeref" data-target="refdefinitiondualpartialaction" href="#definitiondualpartialaction">4.4.29</a>).
+</p>
+<p>
 If the groupoid of germs $S \ltimes_\theta X$ is Hausdorff then the Steinberg $A_R(S \ltimes_\theta X)$ is isomorphic, as an $R$-algebra, to the crossed product $A_R(X) \rtimes_\alpha S$.
-\end{theorem}
+</p>
+</div>
 
 Note that we cannot use the universal property of crossed products described in Theorem \ref{theoremuniversalpropertyofcrossedproducts}, because the algebra $D_s$ is not unital if $X_s$ is not compact.
 

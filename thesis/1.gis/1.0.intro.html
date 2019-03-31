@@ -41,20 +41,10 @@ $( "#sidebar" ).load( "../src/sidebar" );
 RIGHT BAR
 -------------------------------------------------------->
 
-<div class="rightbar">
-	<div class="reference" id="refMR0466355"></div>
-		<script>
-			$( "#refMR0466355").load( "../0.matters/references.html #MR0466355" );
-		</script>
-
-	<div class="reference" id="refMR1724106"></div>
-		<script>
-			$( "#refMR1724106").load( "../0.matters/references.html #MR1724106" );
-		</script>
-
-
-
-</div>
+<div class="rightbar" id="rightbar"></div>
+<script>
+	$("#rightbar").load("1.0.intro.r");
+</script>
 
 <!-------------------------------------------------------
 MAIN
@@ -69,11 +59,11 @@ In this chapter we introduce all terms and notation that will be used throughout
 </p>
 
 <p>
-There are a few parts which are new to the theory, or at least not completely standardized, such as non-commutative versions of the Loomis-Sikorski Theorems (Theorems \ref{theoremncloomissikorskinontracial} and \ref{theoremtracialncloomissikorski}) and the study of quotients of distributive semigroups by $\lor$-ideals (Section \ref{sectionquotientsofsemigroups}). These abstract results will then be applied in subsequent chapters, and they will to simplify significantly some computations.
+There are a few parts which are new to the theory, or at least not completely standardized, such as non-commutative versions of the Loomis-Sikorski Theorems (Theorems <a class="makeref" data-target="reftheoremncloomissikorskinontracial" href="1.8.nclst.html#theoremncloomissikorskinontracial">1.8.17</a> and <a class="makeref" data-target="reftheoremtracialncloomissikorski" href="1.8.nclst.html#theoremtracialncloomissikorski">1.8.18</a>) and the study of quotients of distributive semigroups by $\lor$-ideals (Section <a href="1.5.qods.html">1.5</a>). These abstract results will then be applied in subsequent chapters, and they will to simplify significantly some computations.
 </p>
 
 <p>
-We start by introducing groupoids in a graph-theoretical fashion, a manner similar to how categories are described in \cite{MR1712872}. Although this is a somewhat convoluted way of defining them, it should make the overall structure and dynamical nature of groupoids clearer. However after this we will give the algebraic definition of groupoids as well which will be used more often throughout this document for its succinctness.
+We start by introducing groupoids in a graph-theoretical fashion, a manner similar to how categories are described in <a class="makeref" data-target="refMR1712872" href="../0.matters/references.html#MR1712872">120</a>. Although this is a somewhat convoluted way of defining them, it should make the overall structure and dynamical nature of groupoids clearer. However after this we will give the algebraic definition of groupoids as well which will be used more often throughout this document for its succinctness.
 </p>
 </div>
 
