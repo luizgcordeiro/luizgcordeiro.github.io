@@ -118,3 +118,11 @@ Let $\theta:S\to T$ be a morphism of semigroups.
 <p><span class="envidentifier">Example 1.2.3</span>
 Every $\land$-semilattice is an inverse semigroup with the meet as the operation: $xy=x\land y$. In this case, every element is its own inverse: $x^*=x$.
 </p>
+
+<!-- 1.2.26 -->
+<div class="reference theorem" id="reftheoremwagnerpreston">
+<p><span class="envidentifier">Theorem 1.2.26
+<span style="font-weight:normal;">(Vagner-Preston Theorem, [<a class="makeref" data-target="MR0064038", href="../0.matters/references.html#MR0064038">141</a>,<a class="makeref" data-target="MR0048425", href="../0.matters/references.html#MR0048425">171</a>])</span></span>
+Every inverse semigroup $S$ is isomorphic to a sub-inverse semigroup of $\mathcal{I}(X)$ for some set $X$.
+</p>
+</div>

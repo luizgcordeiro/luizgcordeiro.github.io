@@ -546,43 +546,75 @@ so $u=\phi(e)\in\phi(E(S))$. In particular, $E(T)$ is commutative and $T=\theta(
 </p>
 </div>
 
-\begin{theorem}[{Vagner-Preston Theorem, \cite{MR0048425,MR0064038}}]\label{theoremwagnerpreston}
+<!-- 1.2.26 -->
+<div class="theorem" id="theoremwagnerpreston">
+<p><span class="envidentifier">Theorem 1.2.26
+<span style="font-weight:normal;">(Vagner-Preston Theorem, [<a class="makeref" data-target="MR0064038", href="../0.matters/references.html#MR0064038">141</a>,<a class="makeref" data-target="MR0048425", href="../0.matters/references.html#MR0048425">171</a>])</span></span>
 Every inverse semigroup $S$ is isomorphic to a sub-inverse semigroup of $\mathcal{I}(X)$ for some set $X$.
-\end{theorem}
-\begin{proof}
+</p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofoftheoremwagnerpreston');event.preventDefault();">Proof</a>
+<div class="proof" id="proofoftheoremwagnerpreston">
+<p>
 For every $s\in S$, let $D_{s^*}=\left\{t\in S:tt^*\leq s^*s\right\}$, and define a map $\alpha_s:D_{s^*}\to D_s$ by $\alpha_s(z)=sz$. To check that $\alpha_s$ is well-defined, note that for all $z\in D_{s^*}$,
-\[\alpha_s(z)\alpha_s(z)^*=(sz)(sz)^*=szz^*s^*\leq ss^*,\]
+<div class="equation">\[
+\alpha_s(z)\alpha_s(z)^*=(sz)(sz)^*=szz^*s^*\leq ss^*,
+\]</div>
 so $\alpha_s(z)=sz\in D_s$. The verification that $\alpha_{s^*}=\alpha_s^{-1}$ follows easily from the definition of the order on $S$.
+<p>
 
+<p>
 In order to prove that $\alpha_s\circ\alpha_t=\alpha_{st}$, we first compare their domains, that is, we show that
-\[\alpha_t^{-1}(D_t\cap D_{s^*})=D_{(st)^*}\]
+<div class="equation">\[
+\alpha_t^{-1}(D_t\cap D_{s^*})=D_{(st)^*}.
+\]</div>
 If $z\in D_{(st)^*}$, then $zz^*\leq (st)^*(st)=t^*s^*st\leq t^*t$ (because $t^*s^*s\leq t^*$), so $z\in D_{t^*}$, and
-\[(\alpha_t(z))(\alpha_t(z))^*=(tz)(tz)^*=tzz^*t^*\leq t(st)^*(st)t^*=tt^*s^*stt^*\leq s^*s\]
+<div class="equation">\[
+(\alpha_t(z))(\alpha_t(z))^*=(tz)(tz)^*=tzz^*t^*\leq t(st)^*(st)t^*=tt^*s^*stt^*\leq s^*s,
+\]</div>
 that is, $z\in\alpha_t^{-1}(D_t\cap D_{s^*})$.
+</p>
 
+<p>
 Conversely, if $z\in \alpha_t^{-1}(D_t\cap D_{s^*})$, then $\alpha_t(z)\in D_{s^*}$ which implies $\alpha_t(z)=s^*s\alpha_t(z)$, so
-\[zz^*(st)^*(st)=zz^*t^*s^*st=z\alpha_t(z)^*s^*st=z\alpha_t(z)^*t=zz^*t^*t=zz^*\]
+<div class="equation">
+\[zz^*(st)^*(st)=zz^*t^*s^*st=z\alpha_t(z)^*s^*st=z\alpha_t(z)^*t=zz^*t^*t=zz^*,
+\]</div>
 and therefore $z\in D_{(st)^*}$. It is then clear that $\alpha_{st}=\alpha_s\circ\alpha_t$.
+</p>
 
-Finally, for the injectivity of $\alpha$, simply note that if $\alpha_s=\alpha_t$ then $s=\alpha_s(s^*s)=\alpha_t(s^*s)=ts^*s$ so $s\leq t$ and symmetrically, $t\leq s$, so $\alpha:S\to\mathcal{I}(S)$ is an isomorphism from $S$ to a sub-inverse semigroup of $\mathcal{I}(S)$.\qedhere
-\end{proof}
+<p>
+Finally, for the injectivity of $\alpha$, simply note that if $\alpha_s=\alpha_t$ then $s=\alpha_s(s^*s)=\alpha_t(s^*s)=ts^*s$ so $s\leq t$ and symmetrically, $t\leq s$, so $\alpha:S\to\mathcal{I}(S)$ is an isomorphism from $S$ to a sub-inverse semigroup of $\mathcal{I}(S)$.<span class="qed"></span>
+</p>
+</div>
 
+<p>
 The map $\alpha$ will be used in later chapters, so we give it a name.
+</p>
 
-\begin{definition}\index{Canonical left action of $S$ on itself}\label{definitioncanonicalleftaction}
-The map $\alpha:S\to\mathcal{I}(S)$ is called the \emph{canonical left action of $S$ on itself}.
-\end{definition}
+<!-- 1.2.27 -->
+<div class="definition" id="definitioncanonicalleftaction">
+<p><span class="envidentifier">Definition 1.2.27</span>
+The map $\alpha:S\to\mathcal{I}(S)$ is called the <em>canonical left action of $S$ on itself</em>.
+<p>
+</div>
 
-\begin{remark}
+<div class="remark">
+<p><span class="envidentifier">Remark</span>
 For inverse semigroups with zero, it is natural to ask that morphisms preserve zeros, however this is not the case for the canonical left action. Namely, if $S$ has a zero and $\alpha:S\to\mathcal{I}(S)$ is the canonical left action, then $\theta(0)=\operatorname{id}_{\left\{0\right\}}$, which is not the empty function. However, this is easily remedied by noticing that $0$ is fixed by $\alpha_s$ for all $s\in S$, and so we can restrict each $\alpha_s$ to the complement of $\left\{0\right\}$ and obtain again an injective morphism $\alpha_0:S\to\mathcal{I}(S\setminus\left\{0\right\})$, $\alpha_0(s)=\alpha_s|_{S\setminus\left\{0\right\}}$, which in this case will satisfy $\alpha_0(0)=\varnothing$.
-\end{remark}
+</p>
+</span>
 
-We can use the Vagner-Preston Theorem in order to prove that all inverse semigroups are isomorphic to some semigroup of partial isometries of some C*-algebra (this was first proved in \cite{MR785726}). Indeed, it is enough to prove this for $\mathcal{I}(X)$, where $X$ is a set. Consider the Hilbert space $H=\ell^2(X)$ with the standard basis $\left\{\delta_x:x\in X\right\}$. Given $f\in\mathcal{I}(X)$, we define $T_f\in B(H)$ by
-\[T_f(\delta_x)=\begin{cases}\delta_{f(x)},&\text{if }x\in\dom(f),\\
-0,&\text{otherwise,}\end{cases}\]
+<p>
+We can use the Vagner-Preston Theorem in order to prove that all inverse semigroups are isomorphic to some semigroup of partial isometries of some C*-algebra (this was first proved in [<a class="makeref" data-target="MR785726" href="../0.matters/references.html#MR785726">37</a>]). Indeed, it is enough to prove this for $\mathcal{I}(X)$, where $X$ is a set. Consider the Hilbert space $H=\ell^2(X)$ with the standard basis $\left\{\delta_x:x\in X\right\}$. Given $f\in\mathcal{I}(X)$, we define $T_f\in B(H)$ by
+<div class="equation">\[
+T_f(\delta_x)=\begin{cases}\delta_{f(x)},&\text{if }x\in\dom(f),\\
+0,&\text{otherwise,}\end{cases}
+\]</div>
 and the map $f\mapsto T_f$ is an injective semigroup morphism.
+</p>
 
-\subsection{Distributive semigroups}
+<h3 class="subsection">1.2.2. Distributive semigroups</div>
 
 Let $X$ be a set and $f,g$ two partial bijections of $X$. Oftentimes we are interested in considering a common upper bound of $f$ and $g$, that is, a new function which extends both $f$ and $g$. This is possible, for example, if $f$ and $g$ coincide on the intersection of their domains, and $f^*$ and $g^*$ also coincide on the intersection of their domains. We will deal with this problem in the more abstract setting of general inverse semigroups (as opposed to $\mathcal{I}(X)$).
 

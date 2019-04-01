@@ -1124,13 +1124,13 @@
 	<!-- 110 -->
 	<div id="MR2974110" class="reference article">
 		<span class="author">Mark Verus Lawson</span>,
-		<span class="title">Non-commutative Stone duality: inverse semigroups, topological groupoids and C*-algebras</span>.
+		<span class="title">Non-commutative Stone duality: inverse semigroups, topological groupoids and $C^*$-algebras</span>.
 		<span class="journal">International Journal of Algebra and Computation</span>
 		<span class="volume">22</span>(<span class="number">6</span>),
 		<span class="year">2012</span>.
 		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=2974110">2974110</a></span>,
 		<span class="doi">DOI: <a href="https://doi.org/10.1142/S0218196712500580">10.1142/S0218196712500580</a></span>,
-		<span class="arxiv">arXiv: <a href=""></a></span>.
+		<span class="arxiv">arXiv: <a href="https://arxiv.org/abs/1104.1054">1104.1054 [math.CT]</a></span>.
 	</div>
 	<!-- 111 -->
 	<div id="MR3519501" class="reference article">
@@ -1357,8 +1357,7 @@
 		<span class="volume">21</span>(<span class="number">2</span>),
 		<span class="year">1970</span>.
 		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=0262402">0262402</a></span>,
-		<span class="doi">DOI: <a href="https://doi.org/10.1093/qmath/21.2.157">10.1093/qmath/21.2.157</a></span>,
-		<span class="arxiv">arXiv: <a href=""></a></span>.
+		<span class="doi">DOI: <a href="https://doi.org/10.1093/qmath/21.2.157">10.1093/qmath/21.2.157</a></span>.
 	</div>
 	<!-- 133 -->
 	<div id="MR1074574" class="reference book">
@@ -1439,7 +1438,7 @@
 		<span class="doi">DOI: <a href="https://doi.org/10.1017/CBO9781139208574.006">10.1017/CBO9781139208574.006</a></span>.
 	</div>
 	<!-- 141 -->
-	<div id="" class="reference article">
+	<div id="MR0064038" class="reference article">
 		<span class="author">Gordon Bamford Preston</span>,
 		<span class="title">Representations of inverse semi-groups</span>.
 		<span class="journal">Journal of the London Mathematical Society</span>
@@ -1467,8 +1466,7 @@
 		<span class="volume">28</span>(<span class="number">4</span>),
 		<span class="year">1998</span>.
 		<span class="mrnumber">MR<a href="https://mathscinet.ams.org/mathscinet-getitem?mr=1681679">1681679</a></span>,
-		<span class="doi">DOI: <a href="https://doi.org/10.1216/rmjm/1181071727">10.1216/rmjm/1181071727</a></span>,
-		<span class="arxiv">arXiv: <a href=""></a></span>.
+		<span class="doi">DOI: <a href="https://doi.org/10.1216/rmjm/1181071727">10.1216/rmjm/1181071727</a></span>.
 	</div>
 	<!-- 144 -->
 	<div id="MR0281876" class="reference article">
