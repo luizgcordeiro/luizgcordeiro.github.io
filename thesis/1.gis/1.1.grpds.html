@@ -347,7 +347,7 @@ A groupoid $\mathcal{G}$ is principal if and only if there exists an equivalence
 <a class='proofbutton' href="#" onclick="toggle_visibility('proofofprincipalequalequivalencerelation');event.preventDefault();">Proof</a>
 <div class="proof" id="proofofprincipalequalequivalencerelation">
 	<p>
-	Every equivalence relation, regarded as a groupoid, is principal, and conversely if $\mathcal{G}$ is a principal groupoid then the map $(\ra,\so):\mathcal{G}\to\mathcal{R}(\mathcal{G})$ is a groupoid isomorphism.\qedhere
+	Every equivalence relation, regarded as a groupoid, is principal, and conversely if $\mathcal{G}$ is a principal groupoid then the map $(\ra,\so):\mathcal{G}\to\mathcal{R}(\mathcal{G})$ is a groupoid isomorphism.<span class="qed"></span>
 	</p>
 </div>
 
@@ -424,8 +424,8 @@ Let $\phi:\mathcal{G}\to\mathcal{H}$ be a groupoid morphism. Then
 	<li> also immediatelly follows from (a).</li>
 	<li> Suppose $\phi$ is invertible and $(\phi(a),\phi(b))\in\mathcal{H}^{(2)}$. From (c),
 \[\phi(\mathfrak{s}(a))=\mathfrak{s}(\phi(a))=\mathfrak{r}(\phi(b))=\phi(\mathfrak{r}(b))\]
-so $\mathfrak{s}(a)=\mathfrak{r}(b)$ and thus $\phi^{-1}(\phi(a)\phi(b))=\phi^{-1}(\phi(ab))=ab=\phi^{-1}(\phi(a))\phi^{-1}(\phi(b))$, therefore $\phi^{-1}$ is a morphism.\qedhere</li>
-</ol>
+so $\mathfrak{s}(a)=\mathfrak{r}(b)$ and thus $\phi^{-1}(\phi(a)\phi(b))=\phi^{-1}(\phi(ab))=ab=\phi^{-1}(\phi(a))\phi^{-1}(\phi(b))$, therefore $\phi^{-1}$ is a morphism.</li>
+</ol><span class="qed"></span>
 </div>
 
 <!-- 1.1.22 -->
@@ -468,21 +468,22 @@ Let $G=(\mathbb{Z}/2\mathbb{Z})^2=\langle a,b|a^2=b^2=[a,b]=1\rangle$ and $X=\le
 <div class="equation">\[
 \alpha(a)=(1\ 2),\quad\alpha(b)=(3\ 4),\quad\beta(a)=(1\ 2)(3\ 4)\quad\text{and}\quad\beta(b)=\operatorname{id}_X,
 \]</div>
-where $(i_1\cdots i_n)$ is denotes the cycle taking $i_j\mapsto i_{j+1}$. These actions are not conjugate, because $\alpha(a)$ is faithful but $\beta$ is not (even more strongly, there is no automorphism $\zeta$ of $G$ for which $\alpha$ is conjugate to $\beta\zeta$), but the respective transformation groupoids are isomorphic, and the isomorphism can be deduced from the usual depictions of these groupoids:
-<div class="equation">\[G\ltimes_\alpha X:\begin{tikzcd}
-\bullet\arrow[loop left,"b"]\arrow[r,bend left=15,"a"]\arrow[r,bend left=50,"ab"]
-	&\bullet\arrow[loop right,"b"]\arrow[l,bend left=15,"a"]\arrow[l,bend left=50,"ab"]
-&		&\bullet\arrow[loop left,"a"]\arrow[r,bend left=15,"b"]\arrow[r,bend left=50,"ab"]
-			&\bullet\arrow[loop right,"a"]\arrow[l,bend left=15,"b"]\arrow[l,bend left=50,"ab"]
-\end{tikzcd}
+where $(i_1\cdots i_n)$ denotes the cycle taking $i_j\mapsto i_{j+1}$. These actions are not conjugate, because $\alpha(a)$ is faithful but $\beta$ is not (even more strongly, there is no automorphism $\zeta$ of $G$ for which $\alpha$ is conjugate to $\beta\zeta$), but the respective transformation groupoids are isomorphic, and the isomorphism can be deduced from the usual depictions of these groupoids:
+<div class="equation">\[
+G\ltimes_\alpha X:\xymatrix{
+\bullet\ar@(dl,ul)[]^b\ar@/^1ex/[r]^a\ar@/^4ex/[r]^{ab}
+	&\bullet\ar@(ur,dr)[]^b\ar@/^1ex/[l]^a\ar@/^4ex/^{ab}[l]
+		&&\bullet\ar@(dl,ul)[]^a\ar@/^1ex/[r]^b\ar@/^4ex/[r]^{ab}
+			&\bullet\ar@(ur,dr)[]^a\ar@/^1ex/[l]^b\ar@/^4ex/^{ab}[l]
+}
 \]</div>
 <div class="equation">\[
-G\ltimes_\beta X:\begin{tikzcd}
-\bullet\arrow[loop left,"b"]\arrow[r,bend left=15,"a"]\arrow[r,bend left=50,"ab"]
-	&\bullet\arrow[loop right,"b"]\arrow[l,bend left=15,"a"]\arrow[l,bend left=50,"ab"]
-&		&\bullet\arrow[loop left,"b"]\arrow[r,bend left=15,"a"]\arrow[r,bend left=50,"ab"]
-			&\bullet\arrow[loop right,"b"]\arrow[l,bend left=15,"a"]\arrow[l,bend left=50,"ab"]
-\end{tikzcd}
+G\ltimes_\beta X:\xymatrix{
+\bullet\ar@(dl,ul)[]^b\ar@/^1ex/[r]^a\ar@/^4ex/[r]^{ab}
+	&\bullet\ar@(ur,dr)[]^b\ar@/^1ex/[l]^a\ar@/^4ex/^{ab}[l]
+		&&\bullet\ar@(dl,ul)[]^b\ar@/^1ex/[r]^a\ar@/^4ex/[r]^{ab}
+			&\bullet\ar@(ur,dr)[]^b\ar@/^1ex/[l]^a\ar@/^4ex/^{ab}[l]
+}
 \]</div>
 </p>
 </div>
@@ -510,14 +511,14 @@ The map $\Phi:G_1\ltimes X\to G_2\ltimes X$ given by
 \]</div>
 is an isomorphism, even though $G_1$ and $G_2$ are not isomorphic.
 <div class="equation">\[
-G_1\ltimes_\beta X:\begin{tikzcd}
-\bullet\arrow[loop left,"g^2"]\arrow[r,bend left=15,"g"]\arrow[r,bend left=50,"g^3"]
-	&\bullet\arrow[loop right,"g^2"]\arrow[l,bend left=15,"g"]\arrow[l,bend left=50,"g^3"]
-\end{tikzcd},\qquad
-G_2\ltimes_\beta X:\begin{tikzcd}
-\bullet\arrow[loop left,"b"]\arrow[r,bend left=15,"a"]\arrow[r,bend left=50,"ab"]
-	&\bullet\arrow[loop right,"b"]\arrow[l,bend left=15,"a"]\arrow[l,bend left=50,"ab"]
-\end{tikzcd}
+G_1\ltimes_{\alpha_1} X:\xymatrix{
+\bullet\ar@(dl,ul)[]^{g^2}\ar@/^1ex/[r]^g\ar@/^4ex/[r]^{g^3}
+	&\bullet\ar@(ur,dr)[]^{g^2}\ar@/^1ex/[l]^g\ar@/^4ex/^{g^3}[l]
+},\qquad
+G_2\ltimes_{\alpha_2} X:\xymatrix{
+\bullet\ar@(dl,ul)[]^{b}\ar@/^1ex/[r]^a\ar@/^4ex/[r]^{ab}
+	&\bullet\ar@(ur,dr)[]^{b}\ar@/^1ex/[l]^a\ar@/^4ex/^{ab}[l]
+}.
 \]</div></p>
 </div>
 
@@ -537,7 +538,7 @@ From the definition of the coproduct we can readily see that $\sqcup \mathcal{G}
 <!-- 1.1.26 -->
 <div class="definition">
 <p><span class="envidentifier">Definition 1.1.26</span>
-The <em>product</em> of a family $\left\{\mathcal{G}_i\right\}$ of groupoids is the usual Cartesian product $\prod_i\mathcal{G}_i$ endowed with the partial operation $(a_i)_{i\in I}(b_i)_{i\in I}=(a_ib_i)_{i\in I}$, which is defined when every term $a_ib_i$ is defined.\
+The <em>product</em> of a family $\left\{\mathcal{G}_i\right\}$ of groupoids is the usual Cartesian product $\prod_i\mathcal{G}_i$ endowed with the partial operation $(a_i)_{i\in I}(b_i)_{i\in I}=(a_ib_i)_{i\in I}$, which is defined when every term $a_ib_i$ is defined.
 </p>
 </div>
 
@@ -573,7 +574,7 @@ Every groupoid $\mathcal{G}$ is a coproduct of connected groupoids.
 <a class='proofbutton' href="#" onclick="toggle_visibility('proofpropositioneverygroupoidisacoproductofconnected');event.preventDefault();">Proof</a>
 <div class="proof" id="proofpropositioneverygroupoidisacoproductofconnected">
 <p>
-Let us denote by $\operatorname{orb}(\mathcal{G})$ the collection of orbits of elements of $\mathcal{G}^{(0)}$. If $A\in\operatorname{orb}(\mathcal{G})$ then the set $\mathcal{G}_A^A:=\so^{-1}(A)\cap\ra^{-1}(A)$ is a connected subgroupoid of $\mathcal{G}$, and it should be clear that $\mathcal{G}=\sqcup_{A\in\operatorname{orb}(\mathcal{G})}\mathcal{G}_A^A$.\qedhere
+Let us denote by $\operatorname{orb}(\mathcal{G})$ the collection of orbits of elements of $\mathcal{G}^{(0)}$. If $A\in\operatorname{orb}(\mathcal{G})$ then the set $\mathcal{G}_A^A:=\so^{-1}(A)\cap\ra^{-1}(A)$ is a connected subgroupoid of $\mathcal{G}$, and it should be clear that $\mathcal{G}=\sqcup_{A\in\operatorname{orb}(\mathcal{G})}\mathcal{G}_A^A$.<span class="qed"></span>
 </p>
 </div>
 
@@ -603,7 +604,7 @@ The next theorem shows that transformation groupoids - or groups and principal g
 	<p>
 	Then the map $(G\times X)\ltimes X\to G\times(X^2)$, $((g,x),y)\mapsto(g,(xy,y))$ is a groupoid isomorphism, and its inverse is $(g,(x,y))\mapsto\left((g,xy^{-1}),y\right).$
 	</p></li>
-	<li> follows immediately from item (b) and the previous proposition.\qedhere</li>
+	<li> follows immediately from item (b) and the previous proposition.<span class="qed"></span></li>
 </ol>
 
 </div>

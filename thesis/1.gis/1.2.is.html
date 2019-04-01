@@ -139,7 +139,7 @@ If $S$ is an inverse semigroup and $T$ is a subsemigroup which is regular, then 
 </div>
 
 <!-- 1.2.3 -->
-<div class="example">
+<div class="example" id="examplesemilatticesasinversesemigroups">
 <p><span class="envidentifier">Example 1.2.3</span>
 Every $\land$-semilattice is an inverse semigroup with the meet as the operation: $xy=x\land y$. In this case, every element is its own inverse: $x^*=x$.
 </p>
@@ -330,7 +330,7 @@ x^2=(fxe)(fxe)=f(xefx)e=fxe=x,
 so $x$ is idempotent, and therefore it is its own inverse, that is, $x=fxe=ef$ is idempotent. Similarly, $fe$ is idempotent, so
 <div class="equation">\[
 fe=(fe)^2=f(ef)e=fxe=x=ef.
-\]</div>
+\]<span class="qed"></span></div>
 </p>
 
 <p>
@@ -345,7 +345,7 @@ so $S$ is inverse.
 </p>
 
 <p>
-If elements of $E(S)$ commute, it is easy to see $E(S)$ is closed under product, and since every element of $E(S)$ is its own inverse then $E(S)$ is a sub-inverse semigroup of $S$.\qedhere
+If elements of $E(S)$ commute, it is easy to see $E(S)$ is closed under product, and since every element of $E(S)$ is its own inverse then $E(S)$ is a sub-inverse semigroup of $S$.<span class="qed"></span>
 </p></div>
 
 <p>
@@ -421,8 +421,8 @@ Similarly, from $v^*u^*v^*=(vuv)^*=v^*$, we conclude that $\left(\ker v\right)^\
 <p>
 If $y\in\left(\ker u^*\right)^\perp$, then $x:=u^*(y)\in(\ker u)^\perp$, and Equation <a class="makeref" data-target=refequationpartialisometriesinversesemigroup" href="#equationpartialisometriesinversesemigroup">(1.2.1)</a> implies $\Vert v(u(x))\Vert=\Vert x\Vert$. But since $S$ is regular, the proof of (2)$\Rightarrow$(3) also applies and shows that $vu$ is a projection, and thus
 <div class="equation">\[
-u^*(y)=x=v(u(x))=v(u(u^*(y))=v(y).\qedhere
-\]</div>
+u^*(y)=x=v(u(x))=v(u(u^*(y))=v(y).\]<span class="qed"></span>
+</div>
 </p>
 </div>
 
@@ -431,79 +431,120 @@ The converse also holds: every inverse semigroup is isomorphic to a semigroup of
 <a class="makeref" data-target="reftheoremwagnerpreston" href="#theoremwagnerpreston">1.2.26</a>.
 </p>
 
-We define a partial order on an inverse semigroup $S$ with any of the following equivalent statements \nomenclature[S]{$\leq$}{Order in an inverse semigroup}.\label{orderinversesemigroup}
-\begin{align*}
+<p id="orderinversesemigroup">
+We define a partial order on an inverse semigroup $S$ with any of the following equivalent statements
+<div class="equation">\begin{align*}
 s\leq t&\iff\exists e\in E(S)\left(te=s\right)\iff\exists e\in E(S)(et=s)\\
 &\iff s=ts^*s\iff s=ss^*t
-\end{align*}
-(the equivalence of these statements can be proven using Theorem \ref{theoreminverseiffescommute}).
+\end{align*}</div>
+(the equivalence of these statements can be proven using Theorem <a class="makeref" data-target="reftheoreminverseiffescommute"href="#theoreminverseiffescommute">1.2.15</a>).
+</p>
 
-\begin{example}
+<!-- 1.2.18 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.18</span>
 If $S$ is an inverse semigroup, the order on $E(S)$ is described by $e\leq f\iff ef=e$ for $e,f\in E(S)$, and then $E(S)$ becomes a $\wedge$-semilattice, where for any two elements $e,f\in E(S)$, $ef=e\land f$.
-\end{example}
+</p>
+</div>
 
-\begin{example}
+<!-- 1.2.19 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.19</span>
 In $\mathcal{I}(X)$, $f\leq g$ if and only if $g$ is an extension of $f$, that is, $\operatorname{dom}(f)\subseteq\operatorname{dom}(g)$ and $g|_{\operatorname{dom}(f)}=f$.
-\end{example}
+</p>
+</div>
 
-\begin{example}
+<!-- 1.2.20 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.20</span>
 If $G$ is a group then $g\leq h$ in $G$ if and only if $g=h$.
-\end{example}
+</p>
+</div>
 
-\begin{example}
+<!-- 1.2.21 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.21</span>
 If $\mathcal{G}$ is a groupoid and $A,B\in\operatorname{\bf Bis}(\mathcal{G})$, then $A\leq B\iff A\subseteq B$.
-\end{example}
+</p>
+</div>
 
+<p>
 Using the different descriptions of the order of $S$ and commutativity of $E(S)$ the following theorem can be proven without problems.
+</p>
 
-\begin{theorem}[{See \cite[Section 5.2]{MR0466355}}]\label{theoremorder}
+<!-- 1.2.22 -->
+<div class="theorem" id="theoremorder">
+<p><span class="envidentifier">Theorem 1.2.22
+<span style="font-weight:normal;">(See [<a class="makeref" data-target="MR0466355" href="../0.matters/references.html#MR0466355">88</a>, Section 5.2])</span></span>
 Let $S$ be an inverse semigroup. Then
-\begin{enumerate}
-\item[(a)] $s\leq t$ if and only if $s^*\leq t^*$;
-\item[(b)] If $s\leq t$ and $z\in S$ then  $sz\leq tz$ and $zs\leq zt$;
-\item[(c)] If $s\in S$, $e\in E(S)$ and $s\leq e$ then $s\in E(S)$.
-\item[(d)] If $s\leq t$ then $s^*s=t^*s=s^*t$ and $ss^*=st^*=ts^*$.
-\item[(e)] If $s\leq t$ and $s^*s=t^*t$ then $s=t$.
-\end{enumerate}
-\end{theorem}
+<ol class="alphpar">
+	<li> $s\leq t$ if and only if $s^*\leq t^*$;</li>
+	<li> If $s\leq t$ and $z\in S$ then  $sz\leq tz$ and $zs\leq zt$;</li>
+	<li> If $s\in S$, $e\in E(S)$ and $s\leq e$ then $s\in E(S)$;</li>
+	<li> If $s\leq t$ then $s^*s=t^*s=s^*t$ and $ss^*=st^*=ts^*$;</li>
+	<li> If $s\leq t$ and $s^*s=t^*t$ then $s=t$.</li>
+</ol></p>
+</div>
 
+<p>
 The next simple proposition gives a simple characterization of zeros in inverse semigroups as absorbing elements.
+</p>
 
-\begin{proposition}\label{propositionzerosemigroup}\index{Zero (in a semigroup)}
+<!-- 1.2.23 -->
+<div class="proposition" id="propositionzerosemigroup">
+<p><span class="envidentifier">Proposition 1.2.23</span>
 An element $p$ of an inverse semigroup $S$ is a zero (minimum) of $S$ if and only if it is absorbing (that is, $ps=p$ for all $s\in S$).
-\end{proposition}
-\begin{proof}
+</p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofofpropositionzerosemigroup');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofpropositionzerosemigroup">
+<p>
 If $p$ is absorbing, then for all $s$, $p=ps^*s$, so $p\leq s$ and $p=\bigwedge S$;
+</p>
 
-In the other direction, if $p=\bigwedge S$ then $p\leq p^*p$, which is idempotent, and so $p\in E(S)$ by Theorem \ref{theoremorder}(c) and in particular $p=p^*$. For all $s\in S$, $p=sp^*p=sp$, so $p$ is absorbing.\qedhere
-\end{proof}
+<p>
+In the other direction, if $p=\bigwedge S$ then $p\leq p^*p$, which is idempotent, and so $p\in E(S)$ by Theorem <a class="makeref" data-target="reftheoremorder" href=#theoremorder">"1.2.22</a>(c) and in particular $p=p^*$. For all $s\in S$, $p=sp^*p=sp$, so $p$ is absorbing.<span class="qed"></span>
+</p>
+</div>
 
-Therefore, we denote any absorbing element of an inverse semigroup $S$ by $0$ and call it a \emph{zero}, which agrees with the poset definition at the beginning of this section.\nomenclature[S]{$0$ (in an inverse semigroup)}{The absorbing element of an inverse semigroup}\index{Zero (of an inverse semigroup)}
+<p>
+Therefore, we denote any absorbing element of an inverse semigroup $S$ by $0$ and call it a <em>zero</em>, which agrees with the poset definition at the beginning of this section.
+</p>
 
-\begin{example}
+<!-- 1.2.24 -->
+<div class"example">
+<p><span class="envidentifier">Example 1.2.24</span>
 In general, a zero for $E(S)$ is not necessarily a zero for $S$ when $S$ is an inverse semigroup. For example, if $G$ is a nontrivial group then $E(G)=\left\{1\right\}$, and $1$ is the minimum of $E(G)$ but not of $G$.
-\end{example}
+</p>
+</div>
 
+<p>
 We will now prove a generalization of Cayley's Theorem in group theory, which allows us to think of $\mathcal{I}(X)$ as a sort of "canonical" inverse semigroup. The next proposition summarizes some basic properties of morphisms of semigroups which will be used throughout the text. 
+</p>
 
-\begin{proposition}\label{propositionpropertiesofmorphismsofsemigroups}
+<!-- 1.2.25 -->
+<div class="proposition" id="propositionpropertiesofmorphismsofsemigroups">
+<p><span class="envidentifier">Proposition 1.2.25</span>
 Let $\theta:S\to T$ be a morphism of semigroups.
-\begin{enumerate}
-\item[(a)] $\theta(S)$ is a subsemigroup of $T$;
-\item[(b)] If $\theta$ is invertible then it is immediately an isomorphism;
-\item[(c)] If $S$ is regular then $\theta(S)$ is regular;
-\item[(d)] If $S$ is regular and $T$ is an inverse semigroup then $\theta(S)$ is a sub-inverse semigroup of $T$.
-\item[(e)] If $S$ is inverse and $\theta$ is surjective, then $\theta(E(S))=E(T)$, and $T$ is an inverse semigroup;
-\item[(f)] If $S$ and $T$ are inverse semigroups then $\theta(s^*)=\theta(s)^*$ for all $s\in S$.
-\end{enumerate}
-\end{proposition}
-\begin{proof}
-(a) and (b) can be proven in the same manner as the analogous statements for groups. (c) is clear and (d) follows from Remark \ref{remarksubinversesemigroups} and the previous items, and (f) follows easily from the uniqueness of inverses in inverse semigroups. The only item we need to prove then is (e), so suppose $S$ is inverse, $\theta$ is surjective and let $u=\theta(s)\in E(T)$, where $s\in S$. Letting $e=(ss^*)(s^*s)\in E(S)$, we obtain
-\begin{align*}
+<ol class="alphpar">
+	<li> $\theta(S)$ is a subsemigroup of $T$;</li>
+	<li> If $\theta$ is invertible then it is immediately an isomorphism;</li>
+	<li> If $S$ is regular then $\theta(S)$ is regular;</li>
+	<li> If $S$ is regular and $T$ is an inverse semigroup then $\theta(S)$ is a sub-inverse semigroup of $T$;</li>
+	<li> If $S$ is inverse and $\theta$ is surjective, then $\theta(E(S))=E(T)$, and $T$ is an inverse semigroup;</li>
+	<li> If $S$ and $T$ are inverse semigroups then $\theta(s^*)=\theta(s)^*$ for all $s\in S$.</li>
+</ol>
+</p>
+</div><a class='proofbutton' href="#" onclick="toggle_visibility('proofofpropositionpropertiesofmorphismsofsemigroups');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofpropositionpropertiesofmorphismsofsemigroups">
+<p>
+(a) and (b) can be proven in the same manner as the analogous statements for groups. (c) is clear and (d) follows from the <a class="makeref" data-target= "refremarksubinversesemigroups" href="#remarksubinversesemigroups">Remark</a> before Example <a class="makeref" data-target="refexamplesemilatticesasinversesemigroups" href="#examplesemilatticesasinversesemigroups">1.2.3</a> and the previous items, and (f) follows easily from the uniqueness of inverses in inverse semigroups. The only item we need to prove then is (e), so suppose $S$ is inverse, $\theta$ is surjective and let $u=\theta(s)\in E(T)$, where $s\in S$. Letting $e=(ss^*)(s^*s)\in E(S)$, we obtain
+<div class="equation">\begin{align*}
 \phi(e)=u\phi(s^*s^*)u=u^2\phi(s^*s^*)u^2=\phi(s^2(s^*)^2s^2)=\phi(s^2)=u^2=u
-\end{align*}
-so $u=\phi(e)\in\phi(E(S))$. In particular, $E(T)$ is commutative and $T=\theta(S)$ is regular, so $T$ is an inverse semigroup by Theorem \ref{theoreminverseiffescommute}.\qedhere
-\end{proof}
+\end{align*}</div>
+so $u=\phi(e)\in\phi(E(S))$. In particular, $E(T)$ is commutative and $T=\theta(S)$ is regular, so $T$ is an inverse semigroup by Theorem <a class="makeref" data-target="reftheoreminverseiffescommute" href="#theoreminverseiffescommute">1.2.15</a>.<span class="qed"></span>
+</p>
+</div>
 
 \begin{theorem}[{Vagner-Preston Theorem, \cite{MR0048425,MR0064038}}]\label{theoremwagnerpreston}
 Every inverse semigroup $S$ is isomorphic to a sub-inverse semigroup of $\mathcal{I}(X)$ for some set $X$.

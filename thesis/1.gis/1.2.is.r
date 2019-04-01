@@ -67,3 +67,54 @@ A regular semigroup $S$ is inverse if and only if the elements of $E(S)$ commute
 <div class="reference equation" id="refequationpartialisometriesinversesemigroup">\[
 \Vert x\Vert=\Vert u(x)\Vert=\Vert u(v(u(x)))\Vert\leq\Vert v(u(x))\Vert\leq\Vert u(x)\Vert\leq\Vert x\Vert\ntag
 \]</div>
+
+<div class="reference"id="reforderinversesemigroup">
+We define a partial order on an inverse semigroup $S$ with any of the following equivalent statements
+<div class="equation">\begin{align*}
+s\leq t&\iff\exists e\in E(S)\left(te=s\right)\iff\exists e\in E(S)(et=s)\\
+&\iff s=ts^*s\iff s=ss^*t
+\end{align*}</div>
+(the equivalence of these statements can be proven using Theorem <a class="makeref" data-target="reftheoreminverseiffescommute"href="#theoreminverseiffescommute">1.2.15</a>).
+</div>
+
+<!-- 1.2.22 -->
+<div class="reference theorem" id="reftheoremorder">
+<p><span class="envidentifier">Theorem 1.2.22
+<span style="font-weight:normal;">(See [<a class="makeref" data-target="MR0466355" href="../0.matters/references.html#MR0466355">88</a>, Section 5.2])</span></span>
+Let $S$ be an inverse semigroup. Then
+<ol class="alphpar">
+	<li> $s\leq t$ if and only if $s^*\leq t^*$;</li>
+	<li> If $s\leq t$ and $z\in S$ then  $sz\leq tz$ and $zs\leq zt$;</li>
+	<li> If $s\in S$, $e\in E(S)$ and $s\leq e$ then $s\in E(S)$;</li>
+	<li> If $s\leq t$ then $s^*s=t^*s=s^*t$ and $ss^*=st^*=ts^*$;</li>
+	<li> If $s\leq t$ and $s^*s=t^*t$ then $s=t$.</li>
+</ol></p>
+</div>
+
+<!-- 1.2.23 -->
+<div class="reference proposition" id="refpropositionzerosemigroup">
+<p><span class="envidentifier">Proposition 1.2.23</span>
+An element $p$ of an inverse semigroup $S$ is a zero (minimum) of $S$ if and only if it is absorbing (that is, $ps=p$ for all $s\in S$).
+</p>
+</div>
+
+<!-- 1.2.25 -->
+<div class="reference proposition" id="refpropositionpropertiesofmorphismsofsemigroups">
+<p><span class="envidentifier">Proposition 1.2.25</span>
+Let $\theta:S\to T$ be a morphism of semigroups.
+<ol class="alphpar">
+	<li> $\theta(S)$ is a subsemigroup of $T$;</li>
+	<li> If $\theta$ is invertible then it is immediately an isomorphism;</li>
+	<li> If $S$ is regular then $\theta(S)$ is regular;</li>
+	<li> If $S$ is regular and $T$ is an inverse semigroup then $\theta(S)$ is a sub-inverse semigroup of $T$;</li>
+	<li> If $S$ is inverse and $\theta$ is surjective, then $\theta(E(S))=E(T)$, and $T$ is an inverse semigroup;</li>
+	<li> If $S$ and $T$ are inverse semigroups then $\theta(s^*)=\theta(s)^*$ for all $s\in S$.</li>
+</ol>
+</p>
+</div>
+
+<!-- 1.2.3 -->
+<div class="reference example" id="refexamplesemilatticesasinversesemigroups">
+<p><span class="envidentifier">Example 1.2.3</span>
+Every $\land$-semilattice is an inverse semigroup with the meet as the operation: $xy=x\land y$. In this case, every element is its own inverse: $x^*=x$.
+</p>

@@ -64,9 +64,22 @@ div.corollary p:first-child {
 }
 
 div.proof {
+	position:relative;
 	display: none;
 	border-style: double;
-	padding: 5pt;
+	padding: 3px;
+}
+
+span.qed{
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+	font-style: italic;
+	font-weight: normal;
+}
+
+span.qed::after{
+	content: "Q.E.D.";
 }
 
 
