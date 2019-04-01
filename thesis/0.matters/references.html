@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
 <html>
 <head>
 
@@ -17,19 +26,29 @@
 	</script>
 	
 	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
-		
-	<li><divnk rel="stylesheet" type="text/css" href="../src/style.css">
-	
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
 	<title>
 		Soficity and other dynamical aspects of groupoids and inverse semigroups
 	</title>
 </head>
 <body>
 
-<div style="display: none" id="latexcommands"></div>
+<div style="display: none" id="latexcommands" style=""></div>
 <script>
 $( "#latexcommands" ).load( "../src/latexcommands" );
-</script>
+	</script>
 
 <div id="sidebar" class="sidebar"></div>
 
@@ -41,8 +60,7 @@ $( "#sidebar" ).load( "../src/sidebar" );
 RIGHT BAR
 -------------------------------------------------------->
 
-<div class="rightbar">
-</div>
+<div class="rightbar" id="rightbar"></div>
 
 <!-------------------------------------------------------
 MAIN
