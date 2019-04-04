@@ -182,11 +182,21 @@ Ottawa, Canada, 2018.
 </body>
 
 <script>
-$('.makeref').hover(function() {
-	$('.rightbar div').hide();
-    var target = '#' + $(this).data('target');
-    $(target).show();
-})
+	$('.makeref').hover(function() {
+		$('.rightbar div').hide();
+		var target = '#' + $(this).data('target');
+		var targett = '#' + $(this).data('target') + ' div';
+		$(target).show();
+		$(targett).show();
+	})
 </script>
 
+<!--
+<div id='one' data-name='John'></div>
+<span id='two'></span>
+<script>
+var name = $( '#one').data('name');
+$('#two').text(name);
+</script>
+-->
 </html>

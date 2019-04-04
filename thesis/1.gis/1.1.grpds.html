@@ -68,6 +68,8 @@ MAIN
 
 <h2 class="section">1.1. Groupoids</h2>
 
+<a class="makeref" data-target="refexamplegraphtriangle" href="#">click here</a>
+
 <h3 class="subsection">1.1.1. Groupoids as directed graphs</h3>
 
 <!-- 1.1.1 -->
@@ -616,7 +618,9 @@ The next theorem shows that transformation groupoids - or groups and principal g
 	$('.makeref').hover(function() {
 		$('.rightbar div').hide();
 		var target = '#' + $(this).data('target');
+		var targett = '#' + $(this).data('target') + ' div';
 		$(target).show();
+		$(targett).show();
 	})
 </script>
 

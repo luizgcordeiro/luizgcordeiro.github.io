@@ -1933,11 +1933,13 @@ MAIN
 </body>
 
 <script>
-$('.makeref').hover(function() {
-	$('.rightbar div').hide();
-    var target = '#' + $(this).data('target');
-    $(target).show();
-})
+	$('.makeref').hover(function() {
+		$('.rightbar div').hide();
+		var target = '#' + $(this).data('target');
+		var targett = '#' + $(this).data('target') + ' div';
+		$(target).show();
+		$(targett).show();
+	})
 </script>
 
 </html>

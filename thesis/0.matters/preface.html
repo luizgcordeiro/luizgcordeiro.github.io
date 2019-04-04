@@ -119,11 +119,13 @@ In the last chapter, which is mostly based on joint work with Viviane Beuter, we
 </body>
 
 <script>
-$('.makeref').hover(function() {
-	$('.rightbar div').hide();
-    var target = '#' + $(this).data('target');
-    $(target).show();
-})
+	$('.makeref').hover(function() {
+		$('.rightbar div').hide();
+		var target = '#' + $(this).data('target');
+		var targett = '#' + $(this).data('target') + ' div';
+		$(target).show();
+		$(targett).show();
+	})
 </script>
 
 </html>

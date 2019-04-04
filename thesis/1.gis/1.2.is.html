@@ -312,7 +312,8 @@ We now prove that $E(S)$ is a commutative sub-inverse semigroup of an inverse se
 
 <!-- 1.2.15 -->
 <div class="theorem" id="theoreminverseiffescommute">
-<p><span class="envidentifier">Theorem 1.2.15 <span style="font-weight:normal;">([<a class="makeref" data-target="MR0466355" href="../0.matters/references.html#MR0466355">88</a>, Theorem 5.1.2], [<a class="makeref" data-target="MR1694900" href="../0.matters/references.html#MR1694900">108</a>, Theorem 1.1.3])</span></span>
+<p><span class="envidentifier">Theorem 1.2.15
+<span style="font-weight:normal;">([<a class="makeref" data-target="MR0466355" href="../0.matters/references.html#MR0466355">88</a>, Theorem 5.1.2], [<a class="makeref" data-target="MR1694900" href="../0.matters/references.html#MR1694900">108</a>, Theorem 1.1.3])</span></span>
 A regular semigroup $S$ is inverse if and only if the elements of $E(S)$ commute. In this case, $E(S)$ is a sub-inverse semigroup of $S$.
 </p>
 </div>
@@ -419,7 +420,7 @@ Similarly, from $v^*u^*v^*=(vuv)^*=v^*$, we conclude that $\left(\ker v\right)^\
 </p>
 
 <p>
-If $y\in\left(\ker u^*\right)^\perp$, then $x:=u^*(y)\in(\ker u)^\perp$, and Equation <a class="makeref" data-target=refequationpartialisometriesinversesemigroup" href="#equationpartialisometriesinversesemigroup">(1.2.1)</a> implies $\Vert v(u(x))\Vert=\Vert x\Vert$. But since $S$ is regular, the proof of (2)$\Rightarrow$(3) also applies and shows that $vu$ is a projection, and thus
+If $y\in\left(\ker u^*\right)^\perp$, then $x:=u^*(y)\in(\ker u)^\perp$, and Equation <a class="makeref" data-target="refequationpartialisometriesinversesemigroup" href="#equationpartialisometriesinversesemigroup">(1.2.1)</a> implies $\Vert v(u(x))\Vert=\Vert x\Vert$. But since $S$ is regular, the proof of (2)$\Rightarrow$(3) also applies and shows that $vu$ is a projection, and thus
 <div class="equation">\[
 u^*(y)=x=v(u(x))=v(u(u^*(y))=v(y).\]<span class="qed"></span>
 </div>
@@ -503,7 +504,7 @@ If $p$ is absorbing, then for all $s$, $p=ps^*s$, so $p\leq s$ and $p=\bigwedge 
 </p>
 
 <p>
-In the other direction, if $p=\bigwedge S$ then $p\leq p^*p$, which is idempotent, and so $p\in E(S)$ by Theorem <a class="makeref" data-target="reftheoremorder" href=#theoremorder">"1.2.22</a>(c) and in particular $p=p^*$. For all $s\in S$, $p=sp^*p=sp$, so $p$ is absorbing.<span class="qed"></span>
+In the other direction, if $p=\bigwedge S$ then $p\leq p^*p$, which is idempotent, and so $p\in E(S)$ by Theorem <a class="makeref" data-target="reftheoremorder" href="#theoremorder">1.2.22</a>(c) and in particular $p=p^*$. For all $s\in S$, $p=sp^*p=sp$, so $p$ is absorbing.<span class="qed"></span>
 </p>
 </div>
 
@@ -620,131 +621,225 @@ and the map $f\mapsto T_f$ is an injective semigroup morphism.
 Let $X$ be a set and $f,g$ two partial bijections of $X$. Oftentimes we are interested in considering a common upper bound of $f$ and $g$, that is, a new function which extends both $f$ and $g$. This is possible, for example, if $f$ and $g$ coincide on the intersection of their domains, and $f^*$ and $g^*$ also coincide on the intersection of their domains. We will deal with this problem in the more abstract setting of general inverse semigroups (as opposed to $\mathcal{I}(X)$).
 </p>
 
-\begin{proposition}
+<!-- 1.2.28 -->
+<div class="proposition" data-number="1.2.28" id="propositionifcommonupperboundthencompatible">
+<p><span class="envidentifier">Proposition 1.2.28</span>
 Suppose $S$ is an inverse semigroup and $s,t\in S$ admit a common upper bound (that is, there is some $z\in S$ with $s\leq z$ and $t\leq z$). Then $s^*t\in E(S)$ and $st^*\in E(S)$.
-\end{proposition}
-\begin{proof}
-Let $z\in S$ be a common upper bound of $s$ and $t$. Then $s^*t\leq z^*z$, which is an idempotent and thus $s^*t\in E(S)$. The same argument with $s^*$ and $t^*$ in place of $s$ and $t$ yields $st^*\in E(S)$ as well.\qedhere
-\end{proof}
+</p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofofpropositionifcommonupperboundthencompatible');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofpropositionifcommonupperboundthencompatible">
+<p>
+Let $z\in S$ be a common upper bound of $s$ and $t$. Then $s^*t\leq z^*z$, which is an idempotent and thus $s^*t\in E(S)$. The same argument with $s^*$ and $t^*$ in place of $s$ and $t$ yields $st^*\in E(S)$ as well.<span class="qed"></span>
+</p>
+</div>
 
-\begin{definition}\label{definitioncompatibility}
-Two elements $s,t\in S$ are \emph{compatible} if $s^*t$ and $st^*$ belong to $E(S)$. A subset $F\subseteq S$ is called \emph{compatible} if any two elements of $F$ are compatible.
-\end{definition}
+<!-- 1.2.29 -->
+<div class="definition" id="definitioncompatibility">
+<p><span class="envidentifier">Definition 1.2.29</span>
+Two elements $s,t\in S$ are <em>compatible</em> if $s^*t$ and $st^*$ belong to $E(S)$. A subset $F\subseteq S$ is called <em>compatible</em> if any two elements of $F$ are compatible.
+</p>
+</div>
 
-\begin{proposition}\label{propositioncompatibility}
+<!-- 1.2.30 -->
+<div class="proposition" id="propositioncompatibility">
+<p><span class="envidentifier">Proposition 1.2.30</span>
 Let $S$ be an inverse semigroup, $s,t\in S$ two compatible elements and $z\in S$. Then
-\begin{enumerate}
-\item[(a)] $s^*$ and $t^*$ are compatible;
-\item[(b)] $zs$ and $zt$ are compatible.
-\item[(c)] $s\land t$ exists, and $s\land t=st^*t=tt^*s=ts^*s=ss^*t$.
-\end{enumerate}
-\end{proposition}
-\begin{proof}
-\begin{enumerate}
-\item[(a)] should be clear enough.
-\item[(b)] We have
-\[(zs)^*(zt)=(s^*z^*z)t\leq s^*t\qquad\text{and}\qquad(zs)(zt)^*=z(st^*)z^*\]
-so $(zs)^*(zt)\in E(S)$ by Theorem \ref{theoremorder}(c), and $(zs)(zt)^*\in E(S)$ by Theorem \ref{theorempropertiesofinversesinsemigroups}(c), so $zs$ and $zt$ are compatible.
-\item[(c)] We just prove that $s\land t=st^*t$, and the other equalities are similar. Since, $st^*\in E(S)$, then $st^*t\leq t$, and also $st^*t\leq s$, so $st^*t$ is a lower bound of $s$ and $t$. If $p\leq s,t$, then
-\[p=pp^*p\leq st^*t\]
-so $st^*t$ is the largest lower bound of $s$ and $t$, that is, their meet.\qedhere
-\end{enumerate}
-\end{proof}
+<ol class="alphpar">
+	<li> $s^*$ and $t^*$ are compatible;</li>
+	<li> $zs$ and $zt$ are compatible;</li>
+	<li> $s\land t$ exists, and $s\land t=st^*t=tt^*s=ts^*s=ss^*t$.</li>
+</ol>
+</p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofofpropositioncompatibility');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofpropositioncompatibility">
+<ol class="alphpar">
+	<li> should be clear enough.</li>
+	<li> We have
+		<div class="equation">\[
+		(zs)^*(zt)=(s^*z^*z)t\leq s^*t\qquad\text{and}\qquad(zs)(zt)^*=z(st^*)z^*,
+		\]</div>
+		so $(zs)^*(zt)\in E(S)$ by Theorem <a class="makeref" data-target="reftheoremorder" href="#theoremorder">1.2.22</a>(c), and $(zs)(zt)^*\in E(S)$ by Theorem <a class="makeref" data-target="reftheorempropertiesofinversesinsemigroups" href="#theorempropertiesofinversesinsemigroups">1.2.16</a>(c), so $zs$ and $zt$ are compatible.</li>
+	<li> We just prove that $s\land t=st^*t$, and the other equalities are similar. Since, $st^*\in E(S)$, then $st^*t\leq t$, and also $st^*t\leq s$, so $st^*t$ is a lower bound of $s$ and $t$. If $p\leq s,t$, then
+	<div class="equation">\[
+	p=pp^*p\leq st^*t,
+	\]</div>
+	so $st^*t$ is the largest lower bound of $s$ and $t$, that is, their meet.<span class="qed"></span>
+</ol>
+</div>
 
-\begin{example}
+<!-- 1.2.31 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.31</span>
 If $X$ is a set and $f,g\in \mathcal{I}(X)$, then $f^*g\in E(\mathcal{I}(X))$ if and only if $f(x)=g(x)$ whenever $x\in\operatorname{dom}(f)\cap\operatorname{dom}(g)$, and similarly $fg^*\in E(\mathcal{I}(X))$ if and only if $f^{-1}(x)=g^{-1}(x)$ whenever $x\in\operatorname{ran}(f)\cap\operatorname{ran}(g)$. Thus, if $f$ and $g$ are compatible we may construct the partial bijection $f\lor g$, defined by
-\begin{itemize}
-\item $\operatorname{dom}(f\lor g)=\operatorname{dom}(f)\cup\operatorname{dom}(g)$; $\operatorname{ran}(f\lor g)=\operatorname{ran}(f)\cup\operatorname{ran}(g)$;
-\item $(f\lor g)(x)=f(x)$ if $x\in\operatorname{dom}(f)$; $(f\lor g)(x)=g(x)$ if $x\in\operatorname{ran}(g)$.
-\end{itemize}
-\end{example}
+<ul>
+	<li> $\operatorname{dom}(f\lor g)=\operatorname{dom}(f)\cup\operatorname{dom}(g)$; $\operatorname{ran}(f\lor g)=\operatorname{ran}(f)\cup\operatorname{ran}(g)$;</li>
+	<li> $(f\lor g)(x)=f(x)$ if $x\in\operatorname{dom}(f)$; $(f\lor g)(x)=g(x)$ if $x\in\operatorname{ran}(g)$.</li>
+</ul>
+</p>
+</div>
 
+<p>
 We will be interested in semigroups which satisfy a distributive property for the product with respect to joins. Actually, distributivity of the product over meets is always satisfied, but there are inverse semigroups such that the product does not distribute over joins.
+</p>
 
-\begin{proposition}
+<!-- 1.2.32 -->
+<div class="proposition" id="propositionproductalwaysdistributeovermeets">
+<p><span class="envidentifier">Proposition 1.2.32</span>
 Suppose $S$ is an inverse semigroup, $t\in S$, $F$ is a nonempty subset of $S$ and that $\bigwedge F$ exists. Then $\bigwedge(tF)$ and $\bigwedge(Ft)$ exist, and $\bigwedge(tF)=t\left(\bigwedge F\right)$ and $\bigwedge(Ft)=\left(\bigwedge F\right)t$.
-\end{proposition}
-\begin{proof}
+</p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofofpropositionproductalwaysdistributeovermeets');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofpropositionproductalwaysdistributeovermeets">
+<p>
 For all $f\in F$, $t(\bigwedge F)\leq tf$, so $t\left(\bigwedge F\right)$ is a lower bound of $tF$. To prove it is the largest one, assume $h$ is another lower bound of $tF$. Then $t^*h\leq t^*tf\leq f$ for all $f\in F$, which implies $t^*h\leq\bigwedge F$.
+</p>
 
+<p>
 Letting $p\in F$ be arbitrary, we have $h\leq tp$ and so $hh^*\leq tpp^*t^*\leq tt^*$, therefore
-\[h=hh^*h\leq tt^*h\leq t\left(\bigwedge F\right).\]
-The proof that $\bigwedge(Ft)=\left(\bigwedge F\right)t$ is similar.\qedhere
-\end{proof}
+<div class="equation">\[
+h=hh^*h\leq tt^*h\leq t\left(\bigwedge F\right).
+\]</div>
+The proof that $\bigwedge(Ft)=\left(\bigwedge F\right)t$ is similar.<span class="qed"></span>
+</p>
+</div>
 
-\begin{definition}[\cite{MR3077869}]\label{definitiondistributivesemigroup}\index{Semigroup!distributive}
+<!-- 1.2.33 -->
+<div class="definition" id="definitiondistributivesemigroup">
+<p><span class="envidentifier">Definition 1.2.33
+<span style="font-weight:normal;">([<a class="makeref" data-target="MR3077869" href="../0.matters/references.html#MR3077869">112</a>])</span></span>
 A \emph{distributive semigroup} is an inverse semigroup $S$ such that any two compatible elements $s,t\in S$ admit a join $s\lor t$, and for every $z\in S$, $z(s\lor t)=(zs)\lor (zt)$.
-\end{definition}
+</p>
+</div>
 
-Note that in the definition we assume, in principle, only left distributivity of the product over joins, however right distributivity follows as a consequence, as we will see in Proposition \ref{propositionfinitarydistributivityofdistributivesemigroups}.
+<p>
+Note that in the definition we assume, in principle, only left distributivity of the product over joins, however right distributivity follows as a
+consequence, as we will see in Proposition <a class="makeref" data-target="refpropositionfinitarydistributivityofdistributivesemigroups" href="#propositionfinitarydistributivityofdistributivesemigroups">1.2.39</a>.
+</p>
 
-\begin{example}
-The simplest non-distributive inverse semigroup is the \emph{diamond lattice} $M_3$:
-\[\begin{tikzcd}
+<!-- 1.2.34 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.34</span>
+The simplest non-distributive inverse semigroup is the <em>diamond lattice</em> $M_3$:
+<div class="equation">\[
+\begin{tikzcd}
 &1&\\
 s\arrow[ur]&z\arrow[u]&t\arrow[ul]\\
 &0\arrow[ul]\arrow[u]\arrow[ur]&
-\end{tikzcd}\]
+\end{tikzcd}
+\]</div>
 Here an arrow $x\to y$ denotes $x\leq y$, and the semigroup operation is the meet. $M_3$ admits binary joins, but
-\[z(s\lor t)=z1=z\qquad\text{however}\qquad(zs)\lor(zt)=0\lor 0=0.\]
-\end{example}
+<div class="equation">\[
+z(s\lor t)=z1=z,\qquad\text{however}\qquad(zs)\lor(zt)=0\lor 0=0.
+\]</div>
+</p>
+</div>
 
-\begin{example}\label{bisgisinfinitelydistributive}
+<!-- 1.2.35 -->
+<div class="example" id="bisgisinfinitelydistributive">
+<p><span class="envidentifier">Example 1.2.35</span>
 The semigroup $\operatorname{\bf Bis}(\mathcal{G})$ of bisections of a groupoid $\mathcal{G}$ is distributive. More generally, if $\mathscr{F}$ is any (possibly infinite) compatible subset of $\operatorname{\bf Bis}(\mathcal{G})$, then the join of $\mathscr{F}$ exists and coincides with the union of its elements:
-\[\bigvee\mathscr{F}=\bigcup\mathscr{F}=\bigcup_{A\in\mathscr{F}}A\]
+<div class="equation">\[
+\bigvee\mathscr{F}=\bigcup\mathscr{F}=\bigcup_{A\in\mathscr{F}}A.
+\]</div>
+</p>
 
-Moreover, in this case we have $A(\bigvee \mathscr{F})=\bigvee(A\mathscr{F})$ for any $A\in\operatorname{\bf Bis}(\mathcal{G})$. We say that $\operatorname{\bf Bis}(\mathcal{G})$ is \emph{infinitely distributive} (\cite{MR2277324}). (Cf.\ Definition \ref{definitionkappadistributivesemigroup}.)
-\end{example}
+<p>
+Moreover, in this case we have $A(\bigvee \mathscr{F})=\bigvee(A\mathscr{F})$ for any $A\in\operatorname{\bf Bis}(\mathcal{G})$. We say that $\operatorname{\bf Bis}(\mathcal{G})$ is <em>infinitely distributive</em> ([<a class="makeref" data-target="MR2277324" href="../0.matters/references.html#MR2277324">150</a>]). (Cf. Definition <a class="makeref" data-target="refdefinitionkappadistributivesemigroup" href="#definitionkappadistributivesemigroup">1.2.40</a>.)
+</p>
+</div>
 
-\begin{example}\label{exampleixisinfinitelydistributive}
-	If $X$ is a set then, by Example \ref{examplebisectionsofequivalencerelationarefunctions}, $\mathcal{I}(X)$ is isomorphic to $\operatorname{\bf Bis}(X\times X)$, and thus it is (infinitely) distributive by Example \ref{bisgisinfinitelydistributive} above. If $\mathscr{F}$ is any compatible subset of $\mathcal{I}(X)$, then the join of $\mathscr{F}$ is the function given by
-	\[\bigvee \mathscr{F}:\bigcup_{f\in F}\dom(f)\to\bigcup_{f\in F}\ran(f),\qquad \left(\bigvee \mathscr{F}\right)(x)=f(x),\]
+<!-- 1.2.36 -->
+<div class="example" id="exampleixisinfinitelydistributive">
+<p><span class="envidentifier">Example 1.2.36</span>
+	If $X$ is a set then, by Example <a class="makeref" data-target="refexamplebisectionsofequivalencerelationarefunctions" href="#examplebisectionsofequivalencerelationarefunctions">1.2.11</a>, $\mathcal{I}(X)$ is isomorphic to $\operatorname{\bf Bis}(X\times X)$, and thus it is (infinitely) distributive by Example <a class="makeref" data-target="refbisgisinfinitelydistributive"href="#bisgisinfinitelydistributive">1.2.35</a> above. If $\mathscr{F}$ is any compatible subset of $\mathcal{I}(X)$, then the join of $\mathscr{F}$ is the function given by
+	<div class="equation">\[
+	\bigvee \mathscr{F}:\bigcup_{f\in F}\dom(f)\to\bigcup_{f\in F}\ran(f),\qquad \left(\bigvee \mathscr{F}\right)(x)=f(x),
+	\]</div>
 	where $f\in \mathscr{F}$ is chosen such that $x\in\dom(f)$ ("$\dom$" and "$\ran$" stand for the domain and range of an element of $\mathcal{I}(X)$).
-\end{example}
+	</p>
+</div>
 
-\begin{proposition}\label{propositionpropertiesofjoins}
+<!-- 1.2.37 -->
+<div class="proposition" id="propositionpropertiesofjoins">
+<p><span class="envidentifier">Proposition 1.2.37</span>
 Let $S$ be an inverse semigroup.
-\begin{enumerate}
-\item[(a)] If $F\subseteq E(S)$ admits a join, then $\bigvee F\in E(S)$.
-\item[(b)] If $F\subseteq S$ admits a join, then $F^*$ also admits a join, namely $\bigvee(F^*)=\left(\bigvee F\right)^*$.
-\end{enumerate}
-\end{proposition}
-\begin{proof}
-\begin{enumerate}
-\item[(a)] Let $e=\bigvee F$. For every $f\in F$, $f=f^*f\leq e^*e$, so the definition of join implies $e\leq e^*e\in E(S)$, therefore $e\in E(S)$;
-\item[(b)] Should be clear from \ref{theoremorder}(a) and \ref{propositioncompatibility}(a).\qedhere
-\end{enumerate}
-\end{proof}
+<ol class="alphpar">
+	<li> If $F\subseteq E(S)$ admits a join, then $\bigvee F\in E(S)$;</li>
+	<li> If $F\subseteq S$ admits a join, then $F^*$ also admits a join, namely $\bigvee(F^*)=\left(\bigvee F\right)^*$.</li>
+</ol></p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofofpropositionpropertiesofjoins');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofpropositionpropertiesofjoins">
+<ol class="alphpar">
+	<li> Let $e=\bigvee F$. For every $f\in F$, $f=f^*f\leq e^*e$, so the definition of join implies $e\leq e^*e\in E(S)$, therefore $e\in E(S)$.</li>
+	<li> Should be clear from Theorem <a class="makeref" data-target="reftheoremorder" href="#theoremorder">1.2.22</a>(a) and <a class="makeref" data-target="refpropositioncompatibility" href="#propositioncompatibility">1.2.30</a>(a).<span class="qed"></span></li>
+</ol>
+</div>
 
-In the remainder of this subsection we will consider distributive properties for sets with more than two elements. We differentiate between finite and infinite sets for the sake of clarity and to obtain appropriate notation in Chapter \ref{chaptersoficgroupoids}, and specifically Definition \ref{definitionnormalizedcountingmeasure}.
+<p>
+In the remainder of this subsection we will consider distributive properties for sets with more than two elements. We differentiate between finite and infinite sets for the sake of clarity and to obtain appropriate notation in <a href="../2.sg/2.0.intro.html">Chapter 2</a>, and specifically Definition <a class="makeref" data-target="refdefinitionnormalizedcountingmeasure" href="../2.sg/2.2.fpmpg.html#definitionnormalizedcountingmeasure">2.2.1</a>.
+</p>
 
-\begin{definition}\nomenclature[Z]{$\# X$}{Cardinality of a finite $X$}\nomenclature[Z]{$|X|$}{Cardinality of a (arbitrary) set $X$.}
+<!-- 1.2.38 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.2.38</span>
 Given a set $X$, we denote by $|X|$ the cardinality of $X$. In the particular case that $X$ is finite, we will use instead the symbol $\#X$ to denote its cardinality (number of elements).
-\end{definition}
+</p>
+</div>
 
-\begin{proposition}\label{propositionfinitarydistributivityofdistributivesemigroups}
+<!-- 1.2.39 -->
+<div class="proposition" id="propositionfinitarydistributivityofdistributivesemigroups">
+<p><span class="envidentifier">Proposition 1.2.39</span>
 If $S$ is a distributive semigroup, then every finite nonempty compatible set $F\subseteq S$ admits a join, and for every $t\in S$,
-\[\bigvee(tF)=t\left(\bigvee F\right)\quad\text{and}\quad\bigvee (Ft)=\left(\bigvee F\right)t.\]
-\end{proposition}
-\begin{proof}
+<div class="equation">\[
+\bigvee(tF)=t\left(\bigvee F\right)\quad\text{and}\quad\bigvee (Ft)=\left(\bigvee F\right)t.
+\]</div>
+</p>
+</div>
+
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofofpropositionfinitarydistributivityofdistributivesemigroups');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofpropositionfinitarydistributivityofdistributivesemigroups">
+<p>
 This follows from induction on the cardinality $\#F$: If $\#F=1$ this is trivial, so let us just assume this holds for every compatible set with up to $n$ elements, and $\#F=n+1$. Let $z\in F$ be arbitrary. Then the distributive property implies
-\[z^*\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)=\bigvee\left\{z^*s:s\in F\setminus\left\{z\right\}\right\},\]
-a join of idempotents and hence an idempotent. Similarly, $z\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)^*\in E(S)$, so $z$ and $\bigvee\left(F\setminus\left\{z\right\}\right)$ are compatible and thus admit a join. From general order theory it should be clear that
-\[z\lor\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)=\bigvee F.\]
+<div class="equation">\[
+z^*\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)=\bigvee\left\{z^*s:s\in F\setminus\left\{z\right\}\right\},
+\]</div>
+a join of idempotents and hence an idempotent (Proposition <a class="makeref" data-target="refpropositionpropertiesofjoins" href="#propositionpropertiesofjoins">1.2.37</a>(a)). Similarly, $z\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)^*\in E(S)$, so $z$ and $\bigvee\left(F\setminus\left\{z\right\}\right)$ are compatible and thus admit a join. From general order theory it should be clear that
+<div class="equation">\[
+z\lor\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)=\bigvee F.
+\]</div>
+</p>
+
+<p>
 Given any $t\in S$, we have
-\[t\left(\bigvee F\right)=t\left(z\lor\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)\right)=tz\lor\bigvee\left(tF\setminus\left\{tz\right\}\right)=\bigvee(tF).\]
+<div class="equation">\[
+t\left(\bigvee F\right)=t\left(z\lor\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)\right)=tz\lor\bigvee\left(tF\setminus\left\{tz\right\}\right)=\bigvee(tF).
+\]</div>
 To obtain $\left(\bigvee F\right)t=\bigvee(Ft)$, we use the previous case with $t^*$ and $F^*$ and obtain
-\[t^*\left(\bigvee F^*\right)=\left(\bigvee t^* F^*\right)\]
-and taking inverses and applying Proposition \ref{propositionpropertiesofjoins}(b) yields $\left(\bigvee F\right)t=\bigvee(Ft)$.\qedhere
-\end{proof}
+<div class="equation">\[
+t^*\left(\bigvee F^*\right)=\left(\bigvee t^* F^*\right),
+\]</div>
+and taking inverses and applying Proposition <a class="makeref" data-target="refpropositionpropertiesofjoins" href="#propositionpropertiesofjoins">1.2.37</a>(b) yields $\left(\bigvee F\right)t=\bigvee(Ft)$.<span class="qed"></span>
+</p>
+</div>
 
-To finish, we prove that every distributive inverse semigroup is also distributive with respect to joins and meets. We perform this in a more general setting  by considering inverse semigroups  which are distributive with respect to a given cardinality. For more information on cardinals, see \cite[Chapter 3]{MR1940513}. We will not make assumptions about regularity of cardinals.
+<p>
+To finish, we prove that every distributive inverse semigroup is also distributive with respect to joins and meets. We perform this in a more general setting  by considering inverse semigroups  which are distributive with respect to a given cardinality. For more information on cardinals, see [<a class="makeref" data-target="MR1940513" href="../0.matters/references.html#MR1940513">93</a>, Chapter 3]. We will not make assumptions about regularity of cardinals.
+</p>
 
-\begin{definition}[{\cite[p.\ 82]{MR1940513}}]\label{definitionkappadistributivesemigroup}\index{Semigroup!$\kappa$-distributive}
-Let $\kappa$ be a cardinal. An inverse semigroup $S$ is \emph{$\kappa$-distributive} if for every compatible set $F\subseteq S$ with $|F|<\kappa$, the supremum $\bigvee F$ exists and for all $z\in S$,
-\[z\left(\bigvee F\right)=\bigvee(zF).\]
-Note that $|zF|\leq |F|$ and $zF$ is compatible by Proposition \ref{propositioncompatibility}, and that $\left(\bigvee F\right)z=\bigvee(Fz)$ also holds by Proposition \ref{propositionpropertiesofjoins}(b)
-\end{definition}
+<!-- 1.2.40 -->
+<div class="definition" id="definitionkappadistributivesemigroup">
+<p><span class="envidentifier">Definition 1.2.40
+<span style="font-weight:normal;">([<a class="makeref" data-target="MR1940513" href="../0.matters/references.html#MR1940513">93</a>, p. 82])</span></span>
+Let $\kappa$ be a cardinal. An inverse semigroup $S$ is <em>$\kappa$-distributive</em> if for every compatible set $F\subseteq S$ with $|F|<\kappa$, the supremum $\bigvee F$ exists and for all $z\in S$,
+<div class="equation"\[
+z\left(\bigvee F\right)=\bigvee(zF).
+\]</div>
+Note that $|zF|\leq |F|$ and $zF$ is compatible by Proposition <a class="makeref" data-target="refpropositioncompatibility" href="#propositioncompatibility">1.2.30</a>, and that $\left(\bigvee F\right)z=\bigvee(Fz)$ also holds by Proposition <a class="makeref" data-target="refpropositionpropertiesofjoins" href="#propositionpropertiesofjoins">1.2.37</a>(b).
+</p>
+</div>
 
 Proposition \ref{propositionfinitarydistributivityofdistributivesemigroups} states that distributive inverse semigroups (as in Definition \ref{definitiondistributivesemigroup}) are precisely the $\aleph_0$-distributive semigroups, where $\aleph_0=|\mathbb{N}|$ is the first infinite cardinal.
 
@@ -858,7 +953,9 @@ which implies $a\setminus t\leq a\setminus s$ by item (c).\qedhere
 	$('.makeref').hover(function() {
 		$('.rightbar div').hide();
 		var target = '#' + $(this).data('target');
+		var targett = '#' + $(this).data('target') + ' div';
 		$(target).show();
+		$(targett).show();
 	})
 </script>
 

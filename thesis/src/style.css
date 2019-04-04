@@ -126,7 +126,7 @@ The main part of the document is a floating block right of the sidebar
 
 div.main{
 margin-left: 20%;/* make sure this is compatible with the width of #sidebar*/
-width: 60%;
+width: 50%;
 padding: 10px;/* margin around <p>'s*/
 text-align: justify;
 }
@@ -139,12 +139,12 @@ It will consist of a bunch of divs with the necessary references.
 div.rightbar{
 position: fixed;
 right:0%;
-width: 17%;/* make sure this is compatible with the width of #sidebar*/
+width: 27%;/* make sure this is compatible with the width of #sidebar*/
 padding: 10px;/* margin around <p>'s*/
 text-align: justify;
 }
 
-div.rightbar div.reference{
+div.rightbar  div.reference{
 	display: none;
 	overflow: auto;
 }
