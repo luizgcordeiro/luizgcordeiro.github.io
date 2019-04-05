@@ -1,0 +1,21 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#examplemonoidsarecategories'>1.1.9</a>
+
+<!-- 1.1.9 -->
+<div class="toload example">
+	<p><span class="envidentifier">Example 1.1.9</span>
+	Let $M$ be a monoid (see Definition <a class='ref' data-tag='definitioninversesemigroup'></a>).
+	<script>
+		var e = $("<div></div>");
+		$( "body").append(e);
+		e.attr("id", "refdefinitioninversesemigroup");
+		(e span).removeattr("id");
+		e.attr("class", "a");
+		$("#refdefinitioninversesemigroup").load( 'is.html #definitioninversesemigroup' );
+	</script>
+	Let $M^{(0)}=\left\{\ast\right\}$ be a singleton set, $M^{(1)}=M$ and $\so(m)=\ra(m)=\ast$ for every $m\in M$. In this case $M^{(2)}=M\times M$, and define composition as the monoid operation of $M$. This allows us to see $M$ as a category.
+	</p>
+	
+	<p>
+	Conversely, if $\mathcal{C}$ is any category and $x\in\mathcal{C}^{(0)}$, then $\mathcal{C}_x^x$ is a monoid. If $\mathcal{C}^{(0)}=\left\{x\right\}$ is a singleton, then $\mathcal{C}$ is the category associated with the monoid $\mathcal{C}_x^x$ as above.
+	</p>
+</div>

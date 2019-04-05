@@ -1,0 +1,25 @@
+<!-- 1.1.4 -->
+<a class='reflink' href='../1.gis/1.1.grpds.html#examplegraphdynamicalsystem'>1.1.4</a>
+<div class="toload example">
+<p>
+<span class="envidentifier">Example 1.1.4</span> Generally, a discrete-time dynamical system consists of a set $X$ and a collection $\mathcal{F}$ of partial functions of $X$, that is, functions $f:\dom(f)\to X$ where $\dom(f)\subseteq X$. Given such data, we define a directed graph $\mathcal{G}$ by letting $\mathcal{G}^{(0)}=X$, $\mathcal{G}^{(1)}=\left\{(f,x):f\in\mathcal{F},x\in\dom(f)\right\}$, $\so(f,x)=x$ and $\ra(f,x)=f(x)$.
+</p>
+<p>	
+This directed graph $\mathcal{G}$ is depicted by drawing elements of $X$ as points and arrows from points of $X$ to their image under elements of $\mathcal{F}$, whenever defined.
+</p>
+<p>
+As a sub-example, let $X=\mathbb{Z}$, and $f_i(n)=n+i$ for $i=0,1,2$. The associated graph is depicted as
+<div class="equation">\[
+\xymatrix{
+\cdots\ar[r]\ar@/_2ex/[rr]&
+	-2\ar[r]\ar@/_2ex/[rr]\ar@(ul,ur)[]&
+		-1\ar[r]\ar@/_2ex/[rr]\ar@(ul,ur)[]&
+			0\ar[r]\ar@/_2ex/[rr]\ar@(ul,ur)[]&
+				1\ar[r]\ar@/_2ex/[rr]\ar@(ul,ur)[]&
+					2\ar[r]\ar@(ul,ur)[]&
+						\cdots\\
+						&&&&&
+}
+\]</div>
+</p>
+</div>

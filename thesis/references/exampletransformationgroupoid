@@ -1,0 +1,16 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#exampletransformationgroupoid'>1.1.13</a>
+
+<!-- 1.1.13 -->
+<div class="toload example">
+<p><span class="envidentifier">Example 1.1.13</span>
+If $\theta$ is an action of a group $G$ on a set $X$ (as usual, denoted by concatenation), then the category $G\ltimes_\theta X$ (as in Example <span class='ref' data-tag='monoidactioncategory'></span>) is a groupoid, which we call a <em>transformation groupoid</em>. The inverse of an arrow $(g,x)\in G\ltimes_\theta X$ is $(g^{-1},gx)$.
+<div class="equation">\[
+\xymatrix{
+x\ar[r]^g\ar@/_2ex/[rr]_{hg}
+	&gx\ar[r]^h
+		&(hg)x
+}
+\]</div>
+When there is no risk of confusion, we will drop the index $\theta$ and denote this groupoid simply as $G\ltimes X$.
+</p>
+</div>

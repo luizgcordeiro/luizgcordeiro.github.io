@@ -42,9 +42,6 @@ RIGHT BAR
 -------------------------------------------------------->
 
 <div class="rightbar" id="rightbar"></div>
-<script>
-	$("#rightbar").load("1.0.intro.r");
-</script>
 
 <!-------------------------------------------------------
 MAIN
@@ -55,28 +52,36 @@ MAIN
 <h1 class=chapter>Chapter 1. Groupoids and inverse semigroups</h1>
 
 <p>
-In this chapter we introduce all terms and notation that will be used throughout the thesis. For the sake of completeness, proofs are provided for most results, except those which are trivial consequences of previous ones or have essentially the same proof as in more well-known cases (for example, for groups). The introductory parts are somewhat based on [<a class="makeref" data-target="refMR0466355" href="../0.matters/references.html #MR0466355">88</a>] and [<a class="makeref" data-target="refMR1724106" href="../0.matters/references.html #MR1724106">135</a>], although the order of presentation of the topics (and consequently some proofs) is substantially different from either.
+In this chapter we introduce all terms and notation that will be used throughout the thesis. For the sake of completeness, proofs are provided for most results, except those which are trivial consequences of previous ones or have essentially the same proof as in more well-known cases (for example, for groups). The introductory parts are somewhat based on [<span class='ref' data-tag='MR0466355'></span>] and [<span class='ref' data-tag='MR1724106'></span>], although the order of presentation of the topics (and consequently some proofs) is substantially different from either.
 </p>
 
 <p>
-There are a few parts which are new to the theory, or at least not completely standardized, such as non-commutative versions of the Loomis-Sikorski Theorems (Theorems <a class="makeref" data-target="reftheoremncloomissikorskinontracial" href="1.8.nclst.html#theoremncloomissikorskinontracial">1.8.17</a> and <a class="makeref" data-target="reftheoremtracialncloomissikorski" href="1.8.nclst.html#theoremtracialncloomissikorski">1.8.18</a>) and the study of quotients of distributive semigroups by $\lor$-ideals (Section <a href="1.5.qods.html">1.5</a>). These abstract results will then be applied in subsequent chapters, and they will to simplify significantly some computations.
+There are a few parts which are new to the theory, or at least not completely standardized, such as non-commutative versions of the Loomis-Sikorski Theorems (Theorems <span class='ref' data-tag='theoremncloomissikorskinontracial'></span> and <span class='ref' data-tag='theoremtracialncloomissikorski'></span>) and the study of quotients of distributive semigroups by $\lor$-ideals (Section <a href="1.5.qods.html">1.5</a>). These abstract results will then be applied in subsequent chapters, and they will to simplify significantly some computations.
 </p>
 
 <p>
-We start by introducing groupoids in a graph-theoretical fashion, a manner similar to how categories are described in <a class="makeref" data-target="refMR1712872" href="../0.matters/references.html#MR1712872">120</a>. Although this is a somewhat convoluted way of defining them, it should make the overall structure and dynamical nature of groupoids clearer. However after this we will give the algebraic definition of groupoids as well which will be used more often throughout this document for its succinctness.
+We start by introducing groupoids in a graph-theoretical fashion, a manner similar to how categories are described in <span class='ref' data-tag='MR1712872'></span>. Although this is a somewhat convoluted way of defining them, it should make the overall structure and dynamical nature of groupoids clearer. However after this we will give the algebraic definition of groupoids as well which will be used more often throughout this document for its succinctness.
 </p>
 </div>
 
 </body>
 
 <script>
-	$('.makeref').hover(function() {
-		$('.rightbar div').hide();
-		var target = '#' + $(this).data('target');
-		var targett = '#' + $(this).data('target') + ' div';
-		$(target).show();
-		$(targett).show();
-	})
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
 </script>
 
 </html>

@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#definitionisotropygroup'>1.1.16</a>
+
+<!-- 1.1.16 -->
+<div class="toload definition">
+<p><span class="envidentifier">Definition 1.1.16</span>
+If $\mathcal{G}$ is a groupoid and $x\in\mathcal{G}^{(0)}$, we call the set $\mathcal{G}_x^x$ the <em>isotropy group</em> of $\mathcal{G}$ at $x$.
+</p>
+</div>

@@ -1,0 +1,16 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#monoidactioncategory'>1.1.10</a>
+
+<!-- 1.1.10 -->
+<div class='toload example'>
+	<p><span class="envidentifier">Example 1.1.10</span>
+	Let $\theta$ be a global action (see Definition <span class='ref' data-tag='definitionactionspartialandglobal'></span>) of a monoid $M$ on a set $X$, denoted by concatenation. We define the category $M\ltimes_\theta X$ whose underlying graph is similar to the one as in Example <span class='ref' data-tag='examplegraphdynamicalsystem'></span>.
+	</p>
+
+	<p>
+	Namely, let $(M\ltimes_\theta X)^{(0)}=X$, $(M\ltimes_\theta X)^{(1)}=M\times X$, $\mathfrak{s}(m,x)=x$, $\mathfrak{r}(m,x)=mx$. In this case, $(M\ltimes_\theta X)^{(2)}=\left\{((m,nx),(n,x)):x\in X,m,n\in M\right\}$, so we define the composition as $(m,nx)(n,x)=(mn,x)$.
+	</p>
+
+	<p>
+	Note that if $X$ is a singleton $X=\left\{*\right\}$ and $M$ acts on $X$ trivially, we recover Example <span class='ref' data-tag='examplemonoidsarecategories'></span>.
+	</p>
+</div>

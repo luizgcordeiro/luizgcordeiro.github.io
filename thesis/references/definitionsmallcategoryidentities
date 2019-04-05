@@ -1,0 +1,5 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#definitionsmallcategoryidentities'>ii</a>
+
+<div class='toload'>
+For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.
+</div>

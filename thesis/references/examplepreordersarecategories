@@ -1,0 +1,16 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#examplepreordersarecategories'>1.1.8</a>
+
+<!-- 1.1.8 -->
+<div class="toload example">
+	<p><span class="envidentifier">Example 1.1.8</span>
+	Let $X$ be a set and $\leq$ be a preorder on $X$ (i.e., a reflexive and transitive relation), and $R=\left\{(y,x):x\leq y\right\}$ the associated subset of $X^2$. Let $\mathcal{G}$ be the directed graph associated with this pair $(X,R)$ as in Example <span class='ref' data-tag='examplegraphtriangle'></span>. In this case, we have $\mathcal{G}^{(2)}=\left\{((z,y),(y,x)):(y,x),(z,y)\in R\right\}$, so defining composition by $(z,y)(y,x)=(z,x)$ we obtain a category structure on $\mathcal{G}$.
+	</p>
+
+	<p>
+	In fact, since $R$ is the set of arrows of $\mathcal{G}$ we identify $\mathcal{G}$ and $R$, and moreover, $R^{(0)}=\left\{(x,x):x\in X\right\}$ can be obviously identified with $X$ via $x\mapsto (x,x)$.
+	</p>
+
+	<p>
+	The categories $\mathcal{C}$ obtained in this manner (up to isomorphism) are precisely those such that, for every $x,y\in\mathcal{C}^{(0)}$, $\mathcal{C}_x^y$ has at most one arrow.
+</p>
+</div>

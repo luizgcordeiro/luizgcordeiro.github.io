@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#definitiongroupoidcoproduct'>1.1.25</a>
+
+<!-- 1.1.25 -->
+<div class="toload definition">
+<p><span class="envidentifier">Definition 1.1.25</span>
+Let $\left\{\mathcal{G}_i:i\in I\right\}$ be a family of groupoids. We endow the disjoint union $\mathcal{G}=\sqcup_i \mathcal{G}_i$ with the set of composable pairs $\mathcal{G}^{(2)}=\sqcup_i \mathcal{G}_i^{(2)}$ and the operations which restrict to the initial operation in each $\mathcal{G}_i$. We call this the <em>coproduct</em> of the groupoids $\mathcal{G}_i$.
+</p>
+</div>
