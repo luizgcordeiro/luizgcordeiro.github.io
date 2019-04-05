@@ -20,7 +20,7 @@
 		<span class="arxiv">arXiv: <a href="https://arxiv.org/abs/1103.1063">1103.1063 [math.DS]</a></span>.
 	</div>
 	<!-- 3 -->
-	<div id="MR2913684" class="reference article">
+	<div id="MR2913684" class="reference article" data-nom="nomnom">
 		<span class="author">Ahmed Saleh Al-Rawashdeh, Andrew Booth and Thierry Giordano</span>,
 		<span class="title">Unitary groups as a complete invariant</span>.
 		<span class="journal">Journal of Functional Analysis</span>

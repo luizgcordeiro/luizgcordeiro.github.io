@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.3.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="rightbar" id="rightbar"></div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<a id="lalala" class="ref" data-target="MR2913684" data-nom="nomnom">link</a>
+
+<script>
+	$('.ref').hover(function() {
+		var target = '../references/' + $(this).data('ref');
+		('#rightbar').load(target);
+	})
+</script>
+
+<script>
+$('.ref').each( function(){
+var tar = '../0.matters/references.html #' + $(this).data('target');
+$(this).attr('href',tar);
+var c = $('tar').data('nom');
+$(this).html(c);
+});
+</script>
+
+</html>

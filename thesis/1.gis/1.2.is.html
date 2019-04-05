@@ -947,6 +947,10 @@ which implies $a\setminus t\leq a\setminus s$ by item (c).\qedhere
 \end{proof}
 
 
+<a class="makereff" data-target="theorempropertiesofinversesinsemigroups">link</a>
+
+<a class='biglink' data-attrib='attr'></a>
+
 
 
 <script>
@@ -957,6 +961,26 @@ which implies $a\setminus t\leq a\setminus s$ by item (c).\qedhere
 		$(target).show();
 		$(targett).show();
 	})
+</script>
+
+<script>
+	$('.makereff').each(function(){
+	var tar = '#' + $(this).data('target');
+	setAttribute("href",tar);
+	});
+</script>
+
+<script>
+$('.biglink').each(function(){
+  $(this).attr('href', '#' + $(this).data('attrib'));
+  $(this).html('Link to ' + $(this).data('attrib'));
+});
+</script>
+
+<script>
+$('.biglink').hover(function(){
+  $('#rightbar').load('../0.matters/references.html #MR0048425');
+});
 </script>
 
 </html>

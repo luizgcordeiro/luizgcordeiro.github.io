@@ -145,7 +145,7 @@ text-align: justify;
 }
 
 div.rightbar  div.reference{
-	display: none;
+	/*display: none;*/
 	overflow: auto;
 }
 
