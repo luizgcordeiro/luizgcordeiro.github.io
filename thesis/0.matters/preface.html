@@ -43,6 +43,7 @@ RIGHT BAR
 -------------------------------------------------------->
 
 <div id="rightbar" class="rightbar"></div>
+<!--
 <script>
 	$.get("preface.r", function(data){
 		$("#rightbar").html(data);
@@ -56,7 +57,7 @@ RIGHT BAR
 	
 	$("#rightbar").load('preface.r');
 </script>
-
+-->
 <!-------------------------------------------------------
 MAIN
 -------------------------------------------------------->
@@ -76,7 +77,7 @@ always has a unique solution $y^u$ defined on some maximal interval around $0$. 
 </p>
 
 <p>
-Given $t\in\mathbb{R}$, the equation $\theta_t(u)=Y(u,t)=y^u(t)$ defines a diffeomorphism $\theta_t:U_t\to V_t$ between open (possibly empty) subsets of $\Omega$, and uniqueness of the solutions of <a class="makeref" data-target="refequationprefaceP1" href="#equationprefaceP1">(P1)</a> implies that
+Given $t\in\mathbb{R}$, the equation $\theta_t(u)=Y(u,t)=y^u(t)$ defines a diffeomorphism $\theta_t:U_t\to V_t$ between open (possibly empty) subsets of $\Omega$, and uniqueness of the solutions of (<span class='ref' data-tag='equationprefaceP1'></span>) implies that
 <div class="equation" id="equationP2preface">
 	\[
 	\theta_s(\theta_t(u))=\theta_{s+t}(u)\tag{P2}
@@ -119,13 +120,21 @@ In the last chapter, which is mostly based on joint work with Viviane Beuter, we
 </body>
 
 <script>
-	$('.makeref').hover(function() {
-		$('.rightbar div').hide();
-		var target = '#' + $(this).data('target');
-		var targett = '#' + $(this).data('target') + ' div';
-		$(target).show();
-		$(targett).show();
-	})
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
 </script>
 
 </html>

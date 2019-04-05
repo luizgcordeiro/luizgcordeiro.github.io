@@ -182,13 +182,21 @@ Ottawa, Canada, 2018.
 </body>
 
 <script>
-	$('.makeref').hover(function() {
-		$('.rightbar div').hide();
-		var target = '#' + $(this).data('target');
-		var targett = '#' + $(this).data('target') + ' div';
-		$(target).show();
-		$(targett).show();
-	})
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
 </script>
 
 <!--
