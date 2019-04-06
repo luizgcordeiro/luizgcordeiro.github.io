@@ -138,8 +138,8 @@ It will consist of a bunch of divs with the necessary references.
 
 div.rightbar{
 position: fixed;
-right:5px;
-width: 27%;/* make sure this is compatible with the width of #sidebar*/
+right:7px;
+width: 28%;/* make sure this is compatible with the width of #sidebar*/
 padding: 0;/* margin around <p>'s*/
 text-align: justify;
 }
