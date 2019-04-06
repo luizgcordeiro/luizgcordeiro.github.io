@@ -1,0 +1,18 @@
+<a class='reflink' href='../1.gis/1.2.is.html#examplebisectionsofequivalencerelationarefunctions'>1.2.11</a>
+<!-- 1.2.11 -->
+<div class="toload example"
+<p><span class="envidentifier">Example 1.2.11</span>
+If $R$ is an equivalence relation on a set $X$ (seen as a principal groupoid), then $\operatorname{\bf Bis}(R)$ can be identified with the subsemigroup of $\mathcal{I}(X)$
+<div class="equation">\[
+\mathcal{J}=\left\{f\in\mathcal{I}(X):\forall x\in\dom(f), (f(x),x)\in R\right\}.
+\]</div>
+Indeed, the map $\theta:\operatorname{\bf Bis}(R)\to\mathcal{J}$, given by
+<div class="equation">\[
+\theta_A=\ra\circ(\so|_A)^{-1}:\so(A)\to\ra(A)
+\]</div>
+is a semigroup morphism with inverse $f\mapsto\operatorname{graph}(f)$. Whenever necessary, we will identify $\operatorname{\bf Bis}(R)$ with $\mathcal{J}$ in this manner.
+</p>
+<p>
+In particular, if $R=X\times X$ then $\mathcal{J}=\mathcal{I}(X)$, so $\operatorname{Bis}(X\times X)$ is isomorphic to $\mathcal{I}(X)$.
+</p>
+</div>

@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.2.is.html#definitiondistributivesemigroup'>1.2.33</a>
+<!-- 1.2.33 -->
+<div class="toload definition">
+<p><span class="envidentifier">Definition 1.2.33
+<span style="font-weight:normal;">([<span class='ref' data-tag='MR3077869'></span>])</span></span>
+A <em>distributive semigroup</em> is an inverse semigroup $S$ such that any two compatible elements $s,t\in S$ admit a join $s\lor t$, and for every $z\in S$, $z(s\lor t)=(zs)\lor (zt)$.
+</p>
+</div>

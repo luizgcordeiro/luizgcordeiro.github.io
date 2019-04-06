@@ -11,23 +11,25 @@ body {
 		content: ".";
 }
 
-div.definition {
+div.definition, div.example, div.remark {
+	width:100%;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	background: #CAFAF5;
+	box-shadow: 3px 5px #7ECFB5;
+	margin-bottom:10px;
+	margin-top: 10px;
 	font-style: normal;
 }
 
-div.definition p:first-child {
-	display: inline;
-}
-
-div.example {
-	font-style: normal;
-}
-
-div.example p:first-child {
+div.definition p:first-child, div.example p:first-child, div.remark p:first-child {
 	display: inline;
 }
 
 div.theorem {
+	margin: 10px;
 	font-style: italic;
 }
 
@@ -36,6 +38,7 @@ div.theorem p:first-child {
 }
 
 div.proposition {
+	margin: 10px;
 	font-style: italic;
 }
 
@@ -44,6 +47,7 @@ div.proposition p:first-child {
 }
 
 div.lemma {
+	margin: 10px;
 	font-style: italic;
 }
 
@@ -52,6 +56,7 @@ div.lemma p:first-child {
 }
 
 div.corollary {
+	margin: 10px;
 	font-style: italic;
 }
 
@@ -127,7 +132,7 @@ The main part of the document is a floating block right of the sidebar
 div.main{
 margin-left: 20%;/* make sure this is compatible with the width of #sidebar*/
 width: 50%;
-padding: 10px;/* margin around <p>'s*/
+padding: 10px;/* distance from margin to content*/
 text-align: justify;
 }
 

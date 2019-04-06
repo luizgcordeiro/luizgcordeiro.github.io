@@ -1,0 +1,10 @@
+<a class='reflink' href='../1.gis/1.2.is.html#propositionkappadistributivedistributemeets'>1.2.41</a>
+<!-- 1.2.41 -->
+<div class='toload proposition'>
+<p><span class='envidentifier'>Proposition 1.2.41</span>
+Let $S$ be a $\kappa$-distributive inverse semigroup, and suppose $F\subseteq S$ is compatible, $|F|<\kappa$. If $z\in S$ is such that $z\land f$ exists for all $f\in F$, then $z\land\left(\bigvee F\right)$ exists and
+<div class='equation'>\[
+z\land(\bigvee F)=\bigvee(z\land F),\qquad\text{ where }z\land F=\left\{z\land f:f\in F\right\}.
+\]</div>
+</p>
+</div>

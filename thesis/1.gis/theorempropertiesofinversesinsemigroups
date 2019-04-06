@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.2.is.html#theorempropertiesofinversesinsemigroups'>1.2.16</a>
+<!-- 1.2.16 -->
+<div class="toload corollary">
+<p><span class="envidentifier">Corollary 1.2.16</span>
+Let $S$ be an inverse semigroup. Then
+<ol class="alphpar">
+	<li> $(s^*)^*=s$ for all $s\in S$;</li>
+	<li> $(st)^*=t^*s^*$ for all $s\in S$;</li>
+	<li> If $s\in S$ and $e\in E(S)$ then $ses^*\in E(S)$.</li>
+</ol></p>
+</div>

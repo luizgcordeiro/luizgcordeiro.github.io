@@ -1,0 +1,10 @@
+<a class='reflink' href='../1.gis/1.2.is.html#corollarydistributivedistributemeets'>1.2.42</a>
+<!-- 1.2.42 -->
+<div class='toload corollary'>
+<p><span class='envidentifier'>Corollary 1.2.42</span>
+Let $S$ be a distributive inverse semigroup. If $s\lor t$, $z\land s$ and $z\land t$ exist, then $z\land(s\lor t)$ exists and
+<div class='equation'>\[
+z\land(s\lor t)=(z\land s)\lor(z\land t).
+\]</div>
+</p>
+</div>

@@ -1,0 +1,10 @@
+<a class='reflink' href='../1.gis/1.2.is.html#propositionfinitarydistributivityofdistributivesemigroups'>1.2.39</a>
+<!-- 1.2.39 -->
+<div class="toload proposition">
+<p><span class="envidentifier">Proposition 1.2.39</span>
+If $S$ is a distributive semigroup, then every finite nonempty compatible set $F\subseteq S$ admits a join, and for every $t\in S$,
+<div class="equation">\[
+\bigvee(tF)=t\left(\bigvee F\right)\quad\text{and}\quad\bigvee (Ft)=\left(\bigvee F\right)t.
+\]</div>
+</p>
+</div>

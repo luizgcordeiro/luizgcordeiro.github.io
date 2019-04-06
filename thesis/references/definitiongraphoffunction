@@ -1,0 +1,10 @@
+<a class='reflink' href='../1.gis/1.2.is.html#definitiongraphoffunction'>1.2.10</a>
+<!-- 1.2.10 -->
+<div class="toload definition">
+<p><span class="envidentifier">Definition 1.2.10</span>
+If $f:X\to Y$ is a function between sets $X$ and $Y$, the <em>graph</em> of $f$ is the set
+<div class="equation">\[
+\operatorname{graph}(f)=\left\{(f(x),x):x\in X\right\}.
+\]</div>
+</p>
+</div>

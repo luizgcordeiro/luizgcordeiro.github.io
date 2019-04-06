@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.2.is.html#exampleginsidebisectionsoftransformationgroupoid'>1.2.12</a>
+<!-- 1.2.12 -->
+<div class="toload example">
+<p><span class="envidentifier">Example 1.2.12</span>
+If $\theta$ is an action of a group $G$ on a set $X$, then the map $g\mapsto\left\{g\right\}\times X$ is an injective morphism (Definition <span class='ref' data-tag="definitionmorphismofsemigroups"></span>) of $G$ into $\operatorname{\bf{Bis}}(G\ltimes_\theta X)$.
+</p>
+</div>

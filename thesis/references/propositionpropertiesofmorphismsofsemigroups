@@ -1,0 +1,15 @@
+<a class='reflink' href='../1.gis/1.2.is.html#propositionpropertiesofmorphismsofsemigroups'>1.2.25</a>
+<!-- 1.2.25 -->
+<div class="toload proposition">
+<p><span class="envidentifier">Proposition 1.2.25</span>
+Let $\theta:S\to T$ be a morphism of semigroups.
+<ol class="alphpar">
+	<li> $\theta(S)$ is a subsemigroup of $T$;</li>
+	<li> If $\theta$ is invertible then it is immediately an isomorphism;</li>
+	<li> If $S$ is regular then $\theta(S)$ is regular;</li>
+	<li> If $S$ is regular and $T$ is an inverse semigroup then $\theta(S)$ is a sub-inverse semigroup of $T$;</li>
+	<li> If $S$ is inverse and $\theta$ is surjective, then $\theta(E(S))=E(T)$, and $T$ is an inverse semigroup;</li>
+	<li> If $S$ and $T$ are inverse semigroups then $\theta(s^*)=\theta(s)^*$ for all $s\in S$.</li>
+</ol>
+</p>
+</div>

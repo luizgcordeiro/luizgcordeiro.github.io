@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.2.is.html#definitionrelativecomplementdistributive'>1.2.44</a>
+<!-- 1.2.44 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 1.2.44</span>
+Let $S$ be a distributive semigroup with zero and $s\leq t\in S$. A <em>relative complement</em> of $s$ in $t$ is an element $c\leq t$ such that $s\land c=0$ and $t=s\lor c$ (in particular, $s$ and $c$ are compatible).
+</p>
+</div>
