@@ -1,5 +1,5 @@
 body {
-	background-color: #E1F9F6;
+	background-color: #ECECEC;
 }
 
 .envidentifier {
@@ -11,72 +11,47 @@ body {
 		content: ".";
 }
 
-div.definition, div.example, div.remark {
-	padding-top: 5px;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-bottom: 5px;
-	background: #CAFAF5;
-	box-shadow: 3px 5px #7ECFB5;
-	margin-bottom:10px;
+div.definition, div.example, div.remark	 {
+	padding: 5px;
+	background: #E0FCFA;
+	box-shadow: 3px 5px #A4D3BC;
+	margin-bottom:15px;
 	margin-top: 10px;
 	font-style: normal;
 }
 
-main div.definition, main div.example, main div.remark {
+div.theorem, div.proposition, div.corollary, div.lemma {
+	padding: 5px;
+	background: #FAEBBC;
+	box-shadow: 3px 5px #FFDA63;
+	margin-bottom:15px;
+	margin-top: 10px;
+	font-style: italic;
+}
+
+div.definition p, div.example p, div.remark p, div.theorem p, div.proposition p, div.lemma p, div.corollary p {
+	margin-bottom: 0;
+}
+
+main div.definition, main div.example, main div.remark, main div.theorem, main div.proposition, main div.lemma, main div.corollary{
 	width:100%;
 }
 
-
-div.definition p:first-child, div.example p:first-child, div.remark p:first-child {
-	display: inline;
-}
-
-div.theorem {
-	margin: 10px;
-	font-style: italic;
-}
-
-div.theorem p:first-child {
-	display: inline;
-}
-
-div.proposition {
-	margin: 10px;
-	font-style: italic;
-}
-
-div.proposition p:first-child {
-	display: inline;
-}
-
-div.lemma {
-	margin: 10px;
-	font-style: italic;
-}
-
-div.lemma p:first-child {
-	display: inline;
-}
-
-div.corollary {
-	margin: 10px;
-	font-style: italic;
-}
-
-div.corollary p:first-child {
+div.definition p:first-child, div.example p:first-child, div.remark p:first-child, div.theorem p:first-child, div.proposition p:first-child, div.lemma p:first-child, div.corollary p:first-child {
 	display: inline;
 }
 
 .proofbutton {
 	display: block;
+	margin-top:0px;
 }
 
 div.proof {
 	position:relative;
 	display: none;
 	border-style: double;
-	padding: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 span.qed{
