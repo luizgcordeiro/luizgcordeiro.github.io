@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.8.nclst.html#theoremtracialncloomissikorski'>1.8.18</a>
+<!-- 1.8.18 -->
+<div class='toload corollary'>
+<p><span class='envidentifier'>Corollary 1.8.18</span>
+Suppose $S$ is a $\sigma$-complete Boolean inverse monoid satisfying (SC), endowed with an invariant mean $\mu$ which is countably additive (i.e., a probability on $E(S)$). Then there exists a $\ra$-discrete probability measure-preserving groupoid $(\mathcal{G},\mu')$ and an isomorphism from $S$ to $\MEAS(\mathcal{G},\mu')$ which is isometric with respect to the uniform metrics.
+</p>
+</div>

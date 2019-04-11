@@ -1,286 +1,417 @@
-%\input{../preamble}
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
 
-%\begin{document}
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
 
-The goal of this section is to characterize all Boolean semigroups which are measured semigroups of probability measure-preserving groupoids, or more generally quotients of Borel semigroups by ($\sigma$-)ideals of ``null sets''.
+	<script src="../../jquery-3.3.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
 
-We need to assume one additional condition on such semigroups -- namely that the corresponding groupoid under non-commutative Stone duality is $\sigma$-compact. This condition also guarantees that the Borel structure of the groupoid is sufficiently manageable , and is always satisfied by unital Boolean algebras, so we obtain a true generalization of the classical Loomis-Sikorski theorem - which we briefly recall.
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
 
-\subsection{Classical Loomis-Sikorski Theorem}
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
 
-\begin{definition}[{\cite[314A]{MR2459668}}]\index{$\sigma$-complete!Boolean algebra}
-A generalized Boolean algebra $B$ is said to be \emph{$\sigma$-complete} if it admits joins of countable subsets.
-\end{definition}
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
 
-\begin{definition}[{\cite[322A]{MR2459668}}]\index{Probability algebra}\label{definitionprobabilityalgebra}
-A \emph{probability algebra} is a pair $(B,\mu)$, where $B$ is a $\sigma$-complete unital Boolean algebra and $\mu:B\to[0,1]$ is a function, called a \emph{probability measure}, satisfying:
-\begin{enumerate}
-\item[(i)] $\mu(0)=0$;
-\item[(ii)] $\mu(e)>0$ whenever $e\neq 0$;
-\item[(iii)] $\mu(1)=1$;
-\item[(iv)] If $\left\{e_n\right\}$ is a sequence of disjoint elements of $B$, then
-\[\mu\left(\bigvee_{n\in\mathbb{N}} a_n\right)=\sum_{n\in\mathbb{N}}\mu(a_n).\]
-\end{enumerate}
-In other terms, $\mu$ is a normalized, faithful invariant mean on $B$ (regarded as an inverse semigroup) satisfying the \emph{countable additivity} described in (iv) (as opposed to only finite additivity).
-\end{definition}
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
 
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="rightbar" id="rightbar"></div>
+
+<!--
+<script>
+	$.get("1.2.is.r", function(data){
+		$("#rightbar").html(data);
+	});
+	var content;
+	$.get('../0.matters/ref.r', function(data){
+		content= data;
+		$('#rightbar').prepend(content);
+	});
+</script>
+-->
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>1.8. Non-commutative Loomis-Sikorski Theorem</h2>
+
+<p>
+The goal of this section is to characterize all Boolean semigroups which are measured semigroups of probability measure-preserving groupoids, or more generally quotients of Borel semigroups by ($\sigma$-)ideals of "null sets".
+</p>
+
+<p>
+We need to assume one additional condition on such semigroups - namely that the corresponding groupoid under non-commutative Stone duality is $\sigma$-compact. This condition also guarantees that the Borel structure of the groupoid is sufficiently manageable , and is always satisfied by unital Boolean algebras, so we obtain a true generalization of the classical Loomis-Sikorski theorem - which we briefly recall.
+</p>
+
+<h3 class='subsection'>1.8.1. Classical Loomis-Sikorski Theorem</h3>
+
+<!-- 1.8.1 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.8.1
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR2459668'></span>, 314A]</span></span>
+A generalized Boolean algebra $B$ is said to be <em>$\sigma$-complete</em> if it admits joins of countable subsets.
+</p>
+</div>
+
+<!-- 1.8.2 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.8.2
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR2459668'></span>, 322A]</span></span>\label{definitionprobabilityalgebra}
+A <em>probability algebra</em> is a pair $(B,\mu)$, where $B$ is a $\sigma$-complete unital Boolean algebra and $\mu:B\to[0,1]$ is a function, called a <em>probability measure</em>, satisfying
+<ol class='roman'>
+	<li> $\mu(0)=0$;</li>
+	<li> $\mu(e)>0$ whenever $e\neq 0$;</li>
+	<li> $\mu(1)=1$;</li>
+	<li> If $\left\{e_n\right\}$ is a sequence of disjoint elements of $B$, then
+	<div class='equation'>\[
+	\mu\left(\bigvee_{n\in\mathbb{N}} a_n\right)=\sum_{n\in\mathbb{N}}\mu(a_n).
+	\]</div></li>
+	In other terms, $\mu$ is a normalized, faithful invariant mean on $B$ (regarded as an inverse semigroup) satisfying the <em>countable additivity</em> described in (iv) (as opposed to only finite additivity).
+</p>
+</div>
+
+<p>
 Alternatively, conditions (i) and (ii) could be substituted by the single condition $\mu^{-1}(0)=\left\{0\right\}$.
+</p>
 
-\begin{example}\index{Measure algebra}
+<!-- 1.8.3 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.8.3</span>
 Let $X$ be a space endowed with a $\sigma$-algebra $\mathcal{A}$ and $\mathcal{I}$ an ideal of $\mathcal{A}$ closed under countable unions. Then $\mathcal{A}/\mathcal{I}$ is a $\sigma$-complete unital Boolean algebra.
+</p>
 
-If $\mu$ is a probability measure defined on $\mathcal{A}$ and $\mathcal{I}$ is the ideal of null sets of $\mathcal{A}$, then $\mu$ factors to a probability measure on the quotient $\mathcal{A}/\mathcal{I}$. In this case we denote $\mathcal{A}/\mathcal{I}$ endowed with the invariant mean $\mu$ by $\MAlg(X,\mu)$, and call it the \emph{measure algebra} of $(X,\mu)$.
-\end{example}
+<p>
+If $\mu$ is a probability measure defined on $\mathcal{A}$ and $\mathcal{I}$ is the ideal of null sets of $\mathcal{A}$, then $\mu$ factors to a probability measure on the quotient $\mathcal{A}/\mathcal{I}$. In this case we denote $\mathcal{A}/\mathcal{I}$ endowed with the invariant mean $\mu$ by $\MAlg(X,\mu)$, and call it the <em>measure algebra</em> of $(X,\mu)$.
+</p>
+</div>
 
-\begin{definition}
-An \emph{isomorphism} between two probability algebras $(B,\mu)$ and $(C,\nu)$ is a Boolean algebra isomorphism $\phi:B\to C$ such that $\nu(\phi(a))=\mu(a)$ for all $a\in B$.
-\end{definition}
+<!-- 1.8.4 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.8.4</span>
+An <em>isomorphism</em> between two probability algebras $(B,\mu)$ and $(C,\nu)$ is a Boolean algebra isomorphism $\phi:B\to C$ such that $\nu(\phi(a))=\mu(a)$ for all $a\in B$.
+</p>
+</div>
 
 There are two versions of interest of the classical Loomis-Sikorski theorem, which read as follow:
 
-\begin{theorem}[\cite{MR0021084}]
+<!-- 1.8.5 -->
+<div class='theorem'>
+<p><span class='envidentifier'>Theorem 1.8.5
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR0021084'></span>]</span></span>
 If $B$ is a $\sigma$-complete unital Boolean algebra, then there is a set $X$, a $\sigma$-algebra $\mathcal{A}$ on $X$ and an ideal $\mathcal{I}$ of $\mathcal{A}$ closed under countable unions such that $B$ is isomorphic to $\mathcal{A}/\mathcal{I}$.
-\end{theorem}
+</p>
+</div>
 
-\begin{theorem}[\cite{MR0017736}]
+<!-- 1.8.6 -->
+<div class='theorem'>
+<p><span class='envidentifier'>Theorem 1.8.6
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR0017736'></span>]</span></span>
 Every probability algebra $(B,\mu)$ is isomorphic to $\MAlg(X,\mu)$ for some probability space $X$.
-\end{theorem}
+</p>
+</div>
 
-In fact, the second version of the theorem follows from the first one, since if $\mu$ is a probability measure on $\mathcal{A}/\mathcal{I}$ (in the sense of Definition \ref{definitionprobabilityalgebra}), then $\mu$ induces a probability measure (in the usual sense) on $(X,\mathcal{A})$, via composition with the quotient map $\mathcal{A}\to\mathcal{A}/\mathcal{I}$, and $\mathcal{I}$ is the ideal of null sets.
+<p>
+In fact, the second version of the theorem follows from the first one, since if $\mu$ is a probability measure on $\mathcal{A}/\mathcal{I}$ (in the sense of Definition <span class='ref' data-tag='definitionprobabilityalgebra'></span>), then $\mu$ induces a probability measure (in the usual sense) on $(X,\mathcal{A})$, via composition with the quotient map $\mathcal{A}\to\mathcal{A}/\mathcal{I}$, and $\mathcal{I}$ is the ideal of null sets.
+</p>
 
-%Moreover, we can classify all probability algebras which are isomorphic to $\operatorname{MAlg}([0,1],\lambda)$, where $\lambda$ is the Lebesgue measure of $[0,1]$.
+<h3 class='subsection'>1.8.2. Non-commutative Loomis-Sikorski Theorem</h3>
 
-%\begin{definition}
-%An \emph{atom} of a Boolean algebra $B$ (or of a probability algebra $(B,\mu)$) is a minimal element of $B\setminus\left\{0\right\}$. We say that $B$ is \emph{atomless} if it does not contain any atoms.
-%\end{definition}
-%
-%\begin{lemma}
-%Let $(B,\mu)$ be an atomless probability algebra. Then for every $a\in B$, there exists a function $m:[0,1]\to B$ satisfying
-%\begin{enumerate}
-%\item[(i)] $\mu(m(t))=t$ for all $t\in[0,1]$;
-%\item[(ii)] $m(\mu(a))=a$;
-%\item[(iii)] If $s\leq t$ then $m(s)\subseteq m(t)$.
-%\end{enumerate}
-%\end{lemma}
-%\begin{proof}
-%Let $\mathscr{M}$ be the class of all partial functions $m:A\to B$, where $a\in A\subseteq[0,1]$, which satisfy conditions (i)-(iii) when $s,t\in A$. Using Zorn's lemma we can take a maximal element $m:A\to[0,1]$ of $\mathscr{M}$, so we simply need to prove that in this case $A=[0,1]$.
-%
-%First we show that $A$ is closed: If this was not the case, we could find a sequence $\left\{t_n:n\in\mathbb{N}\right\}$ which is either strictly increasing or decreasing and which converges to some element $t\not\in A$. Let us assume the first case: $t_1<t_2<\cdots$, so that $t=\operatorname{sup}\left\{t_i\right\}$. We can extend $m$ to $A\cup\left\{t\right\}$ by setting $m(t)=\bigvee_nm(t_n)$, and it is not hard to check that conditions (i)-(iii) are still satisfied. The case of a decreasing sequence is similar.
-%
-%Similarly, if $0$ or $1$ were not in $A$, we would simply set $m(0)=0$ and $m(1)=1$, so $0,1\in A$.
-%
-%So the only remaining case is to show that every $t\in(0,1)$ belongs to $A$. Again, suppose this were not the case for some $t$ and take $s_1=\sup\left\{s\in A:s\leq t\right\}$ and $s_2=\inf\left\{s\in A:s\geq t\right\}$ (that is, $(s_1,s_2)$ is an open interval containing $t$, disjoint with $A$, and $s_1,s_2\in A$).
-%
-%Since $\mu(m(s_2)-m(s_1))>0$ and $B$ is non-atomic, take any $b\in B$ with $0<b<m(s_2)-m(s_1)$, so that $0<m(b)<s_2-s_1$. Extend $m$ to $A\cup\left\{s_1+\mu(b)\right\}$ by setting $m(s_1+\mu(b))=b$. All of (i)-(iii) are still satisfied, contradicting the maximality of $m$.\qedhere
-%\end{proof}
-%
-%\begin{definition}\nomenclature[O]{$\sigma(C)$}{$\sigma$-algebra generated by $C$}
-%Let $B$ be a $\sigma$-complete unital Boolean algebra and $\mathcal{C}$ a subset of $\mathcal{B}$. The \emph{$\sigma$-algebra generated by $\mathcal{C}$} is the smallest sub-Boolean algebra (that is,$\sigma(\mathcal{C})$ of $\mathcal{B}$ containing $\mathcal{C}$ and closed under countable suprema of $\mathcal{B}$.
-%\end{definition}
-%
-%\begin{example}
-%Consider the normalized counting measure $\mu_\#$ on $\left\{0,1\right\}$, that is, $\mu_\#(A)=\#A/2$, and let $I$ be an uncountable set. Let $\mu$ be the product measure on the product space $\left\{0,1\right\}^I$ and $(\mathcal{B},\mu)$ the corresponding measure algebra.
-%
-%Let us show that $\mathcal{B}$ is not separable. If $\mathcal{C}$ is a countable subset of $\mathcal{B}$, then there exists a countable subset $I'\subseteq I$ such that for all $C\in\mathcal{C}$ and all $(x_i)_{i\in I}\in C$, if $(y_i)_{i\in I}$ is any other sequence with $y_i=x_i$ for $i\in I'$ then $(y_i)\in C$.
-%
-%Take any $j\in I\setminus I'$ and set $A=\left\{(x_i):x_j=0\right\}$. Then for all $C\in\mathcal{C}$, $\mu(A\cap C)=\mu(C)/2$, so
-%\[\mu(A\triangle C)=\mu(A)+\mu(C)-2\mu(A\cap C)=\frac{1}{2}\]
-%so $A$ is not in the closure of $\mathcal{C}$.
-%\end{example}
-%
-%\begin{lemma}
-%Let $(\mathcal{B},\mu)$ be a probability algebra. Then the following are equivalent:
-%\begin{enumerate}
-%\item The metric space $(\mathcal{B},d_\mu)$ is separable;
-%\item There exists a countable subset $\mathcal{C}\subseteq\mathcal{B}$ which generates $\mathcal{B}$ as a $\sigma$-algebra.
-%\end{enumerate}
-%\end{lemma}
-%\begin{proof}
-%(1)$\Rightarrow$(2): If $\mathcal{C}$ is any subset of $\mathcal{B}$ which is dense relatively to $d_\mu$, then $\sigma(\mathcal{C})=\mathcal{B}$. Indeed, if $\left\{A_n\right\}$ is any Cauchy sequence in $\mathcal{B}$ then $A_n$ converges to $\limsup_n A_n=\bigcap_n\bigcup_{m\geq n}A_m$. Since every element of $\mathcal{B}$ is a limit of elements of $\mathcal{C}$, it belongs to the $\sigma$-algebra generated by $\mathcal{C}$.
-%
-%(2)$\Rightarrow$(1): Suppose $\mathcal{B}$ is generated as a $\sigma$-algebra by some family $\mathcal{C}$. The sub-unital Boolean algebra generated by $\mathcal{C}$ (not necessarily $\sigma$-complete) is either finite or has the same cardinality as $\mathcal{C}$ if $\mathcal{C}$ is finite or infinite, respectively, so we can assume that $\mathcal{C}$ is a sub-unital Boolean algebra of $\mathcal{B}$. We are done if we prove that the $d_\mu$-closure of $\overline{\mathcal{C}}$ of $\mathcal{C}$ is a $\sigma$-algebra, since it contains the generating set $\mathcal{C}$.
-%
-%If $A\in\overline{\mathcal{C}}$, then for all $C\in\mathcal{C}$,
-%\[d_\mu(X\setminus A,X\setminus C)=\mu((X\setminus A)\triangle(X\setminus C))=\mu(A\triangle C)=d_\mu(A,C)\]
-%and the right-hand term can be taken as small as necessary, so $\overline{\mathcal{C}}$ is closed under complements;
-%
-%If $A_1,A_2,\ldots\in\overline{\mathcal{C}}$, then $\bigvee_{i=1}^n A_i$ converges with respect to $d_\mu$ to $\bigvee_{i=1}^\infty A_i$, so we just need to show that $\overline{\mathcal{C}}$ is closed under finite joins. If $A,B\in\overline{\mathcal{C}}$ and $C,D\in\mathcal{C}$, then $(A\lor B)\triangle (C\lor D)\subseteq (A\triangle C)\lor(B\triangle D)$, so
-%\[d_\mu(A\lor B,C\lor D)\leq d_\mu(A,C)+d_\mu(B,D)\]
-%and the right-hand side can be taken as small as necessary.\qedhere
-%\end{proof}
-%
-%\begin{theorem}
-%Any two separable atomless probability algebras $(\mathcal{B},\mu)$ and $(\mathcal{C},\nu)$ are isomorphic.
-%\end{theorem}
-%\begin{proof}
-%Since $\mathcal{B}$ is separable, we can construct a sequence of finite partitions $\mathscr{P}_n$ of $\mathcal{B}$ satisfying, %for all $n$:
-%\begin{enumerate}
-%\item for all $A\in\mathscr{P}_n$, $\mu(A)=2^{-n}$;
-%\item $\mathscr{P}_{n+1}$ is a refinement of $\mathscr{P}_n$;
-%\item The algebra generated by $\bigcup_n\mathscr{P}_n$ is dense in $\mathcal{B}$.
-%\end{enumerate}
-%
-%Similarly, consider a sequence of partitions $\mathscr{Q}_n$ of $\mathcal{C}$ satisfying the same properties. Construct a sequence of maps $\phi_n:\mathscr{P}_n\to\mathscr{Q}_n$ as follows: $\phi_1$ is any bijection between $\mathscr{P}_1$ and $\mathscr{Q}_1$ (since both have $2$ elements).
-%
-%Given $\phi_n:\mathscr{P}_n\to\mathscr{Q}_n$ and any $A\in\mathscr{P}_n$, we can write $A=A_1\cup A_2$ where $A_1,A_2\in\mathscr{P}_{n+1}$, and similarly $\phi_n(A)=B_1\cup B_2$ where $B_1,B_2\in\mathscr{Q}_{n+1}$. Simply set $\phi_{n+1}(A_i)=B_i$.
-%
-%Since $\mathscr{P}_n$ is a finite partition, the algebra generated by it can be identified with the power set of $\mathscr{P}_n$, and similarly $\mathscr{Q}_n$. Since $\phi_n$ is a bijection between $\mathscr{P}_n$ and $\mathscr{Q}_n$, it extends uniquely to an isomorphism between the algebras these sets generate. It should be clear that $\phi_n$ is trace-preserving, and that $\phi_{n+1}$ extends $\phi_n$.
-%
-%Letting $\phi$ be the unique function from the algebra generated by $\bigcup\mathscr{P}_n$ and which extends each $\phi_n$, we obtain a trace-preserving, that is to say isometric, isomorphism between dense subalgebras of $\mathcal{B}$ and $\mathcal{C}$, so it extends to an isomorphism between $\mathcal{B}$ and $\mathcal{C}$.\qedhere
-%\end{proof}
+<p>
+We are ready to prove the main theorem of this section (Theorem <span class='ref' data-tag='theoremncloomissikorskinontracial'></span>). Its proof is an adaptation of the original proof by Loomis (see <span class='ref' data-tag='MR0021084'></span>). Although all theorems and proofs could be stated in more general terms (for algebras which are complete with respect to some cardinal similarly to Definition <span class='ref' data-tag='definitionkappadistributivesemigroup'></span>), we will only consider countable joins and meets, which is the usual setting of measure theory.
+</p>
 
-%Recall that a \emph{Lebesgue space} is a probability space isomorphic (up to null sets) to a disjoint union of a interval with Lebesgue measure and a finite or infinite countable number of atoms. Since the measure algebra of a nondegenerate interval is atomless, and every probability algebra has at most countably many atoms, we obtain:
+<!-- 1.8.7 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.8.7</span>
+A Boolean inverse semigroup is <em>$\sigma$-complete</em> if every countable compatible subset admits a join.
+</p>
+</div>
 
-%\begin{corollary}
-%If $(\mathcal{B},\mu)$ is any separable probability algebra, then $\mathcal{B}$ is isomorphic to the measure algebra of a Lebesgue space.
-%\end{corollary}
+<p>
+Note that, in principle, we do not assume $\aleph_1$-distributivity in the sense of Definition <span class='ref' data-tag='definitionkappadistributivesemigroup'></span> (where $\aleph_1$ is the first uncountable cardinal), however an appropriate usage of relative complements yields this, see Proposition <span class='ref' data-tag='propositionsigmadistributivitisigmacomplete'></span>(a).
+</p>
 
-\subsection{Non-commutative Loomis-Sikorski Theorem}
+<!-- 1.8.8 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.8.8</span>
+If $\mathcal{G}$ is a Borel groupoid, then $\BOR(\mathcal{G})$ is a $\sigma$-complete Boolean inverse monoid.
+</p>
+</div>
 
-We are ready to prove the main theorem of this section. Its proof is an adaptation of the original proof by Loomis \cite{MR0021084}. Although all theorems and proofs could be stated in more general terms (for algebras which are complete with respect to some cardinal similarly to Definition \ref{definitionkappadistributivesemigroup}), we will only consider countable joins and meets, which is the usual setting of measure theory.
-
-\begin{definition}\index{Semigroup!$\sigma$-complete}%\index{Semigroup!Probability semigroup}
-A Boolean inverse semigroup is \emph{$\sigma$-complete} if every countable compatible subset admits a joint.% By a \emph{probability semigroup} we will mean a Boolean inverse semigroup $S$ endowed with an invariant mean $\mu$ which is actually a probability measure on $E(S)$.
-\end{definition}
-
-%In other words, a Boolean inverse semigroup is $\sigma$-complete if and only if it is $\aleph_1$-complete, where $\aleph_1$ is the first uncountable cardinal.
-Note that, in principle, we do not assume $\aleph_1$-distributivity in the sense of Definition \ref{definitionkappadistributivesemigroup} (where $\aleph_1$ is the first uncountable cardinal), however an appropriate usage of relative complements yields this, see Proposition \ref{propositionsigmadistributivitisigmacomplete}(a).
-
-\begin{example}
-If $\G$ is a Borel groupoid, then $\BOR(\G)$ is a $\sigma$-complete Boolean inverse monoid.
-\end{example}
-
-%Our immediate goal is to prove that $\sigma$-complete Boolean inverse semigroups are precisely the Boolean inverse semigroups which are $\aleph_1$-distributive in the sense of Definition \ref{definitionkappadistributivesemigroup}.
+<p>
 We first prove a general form of de Morgan's laws, which allows us to work with infinite meets and joins in Boolean algebras which are not necessary complete nor (infinitely) distributive. We temporarily denote the complement of an element $e$ of a unital Boolean algebra $B$ by $e^c=1\setminus e$, and if $F\subseteq B$, $F^c=\left\{e^c:e\in F\right\}$.
+</p>
 
-\begin{lemma}\label{lemmainfinitedemorganslaws}
+<!-- 1.8.9 -->
+<div class='lemma' id='lemmainfinitedemorganslaws'>
+<p><span class='envidentifier'>Lemma 1.8.9</span>
 Let $B$ be a unital Boolean algebra and $F$ a subset of $B$ for which $\bigvee F$ exists. Then $\bigwedge (F^c)$ also exists, and $\bigwedge(F^c)=\left(\bigvee F\right)^c$. Dually, $\bigwedge F$ exists if and only if $\bigvee(F^c)$ exists and $\left(\bigwedge F\right)^c=\bigvee(F^c)$.
-\end{lemma}
-\begin{proof}
-If $e\in F$, then $e\leq\bigvee F$, so $\left(\bigvee F\right)^c\leq e^c$. This shows that $\left(\bigvee F\right)^c$ is a lower bound of $F^c$. If $p$ is any other lower bound of $F^c$, then $p^c$ is an upper bound of $F$, so $\bigvee F\leq p^c$, or dually $p\leq\left(\bigvee F\right)^c$. This is the desired result.\qedhere
-\end{proof}
+</p>
+</div>
 
-\begin{lemma}\label{lemmabooleanalgebraofsmallerelements}
-Let $S$ be a weakly Boolean inverse semigroup and $g\in S$. We define $G$ to be the semigroup with underlying set
-\[G=\left\{g\right\}^{\downarrow}=\left\{s\in S:s\leq g\right\}\]
-and whose operation is the meet of $S$: $G^2\to G$, $(s,t)\mapsto s\land t$ (which is well-defined by Proposition \ref{propositioncompatibility}(c)).
+<a class='proofbutton' data-tag='lemmainfinitedemorganslaws'>Proof</a>
+<div class='proof' id='proofoflemmainfinitedemorganslaws'>
+<p>
+If $e\in F$, then $e\leq\bigvee F$, so $\left(\bigvee F\right)^c\leq e^c$. This shows that $\left(\bigvee F\right)^c$ is a lower bound of $F^c$. If $p$ is any other lower bound of $F^c$, then $p^c$ is an upper bound of $F$, so $\bigvee F\leq p^c$, or dually $p\leq\left(\bigvee F\right)^c$. This is the desired result.<span class='qed'></span>
+</p>
+</div>
 
-Then $G$ is a unital Boolean algebra. The order of $S$ restricts to the order of $G$, and arbitrary joins and meets in $S$ coincide with arbitrary joins and meets in $G$. If $S$ is $\sigma$-distributive then $G$ is $\sigma$-complete.
-\end{lemma}
-\begin{proof}
+<!-- 1.8.10 -->
+<div class='lemma' id='lemmabooleanalgebraofsmallerelements'>
+	<p><span class='envidentifier'>Lemma 1.8.10</span>
+	Let $S$ be a weakly Boolean inverse semigroup and $g\in S$. We define $G$ to be the semigroup with underlying set
+	<div class='equation'>\[
+	G=\left\{g\right\}^{\downarrow}=\left\{s\in S:s\leq g\right\}
+	\]</div>
+	and whose operation is the meet of $S$: $G^2\to G$, $(s,t)\mapsto s\land t$ (which is well-defined by Proposition <span class='ref' data-tag='propositioncompatibility'></span>(c)).
+	</p>
+
+	<p>
+	Then $G$ is a unital Boolean algebra. The order of $S$ restricts to the order of $G$, and arbitrary joins and meets in $S$ coincide with arbitrary joins and meets in $G$. If $S$ is $\sigma$-distributive then $G$ is $\sigma$-complete.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmabooleanalgebraofsmallerelements'>Proof</a>
+<div class='proof' id='proofoflemmabooleanalgebraofsmallerelements'>
+<p>
 By definition, $G$ is a $\land$-semilattice and the operation in $G$, so it is an inverse semigroup. The fact that the order and all joins and meets in $G$ coincide with the same notions in $S$ is trivial, so $G$ is a lattice with zero, and $\sigma$-completeness of $G$ will also follow immediately from $\sigma$-distributivity of $S$.
+</p>
 
-The distributivity of $G$ follows from Proposition \ref{corollarydistributivedistributemeets}, and $G$ admits relative complements of comparable elements by Proposition \ref{propositionrelativecomplementofsmallerelementinweaklybooleansemigroup}. Thus $G$ is a generalized Boolean algebra, and clearly $g$ is the unit of $G$.\qedhere
-\end{proof}
+<p>
+The distributivity of $G$ follows from Proposition <span class='ref' data-tag='corollarydistributivedistributemeets'></span>, and $G$ admits relative complements of comparable elements by Proposition <span class='ref' data-tag='propositionrelativecomplementofsmallerelementinweaklybooleansemigroup'></span>}. Thus $G$ is a generalized Boolean algebra, and clearly $g$ is the unit of $G$.<span class='qed'></span>
+</p>
+</div>
 
-We are now ready to prove that $\sigma$-complete Boolean algebras are $\aleph_1$-distributive.%The first course of work is to prove infinite distributivity of the product over joins. (Comment before final version: I think this is new. The proof is based on the same fact for Boolean algebras, which is in Jech)
+<p>
+We are now ready to prove that $\sigma$-complete Boolean algebras are $\aleph_1$-distributive.
+</p>
 
-\begin{proposition}\label{propositionsigmadistributivitisigmacomplete}
+<!-- 1.8.11 -->
+<div class='proposition' id='propositionsigmadistributivitisigmacomplete'>
+<p><span class='envidentifier'>Proposition 1.8.11</span>
 Any $\sigma$-complete Boolean inverse semigroup $S$ admits meets of countable compatible subsets $F\subseteq S$. Moreover, if $F\subseteq S$ is a countable compatible subset and $z\in S$ then
-\begin{enumerate}
-\item[(a)] $z\left(\bigvee F\right)=\bigvee(zF)$ and $\left(\bigvee F\right)z=\bigvee(Fz)$; Thus $S$ is $\aleph_1$-distributive;
-\item[(b)] $z\land\left(\bigvee F\right)=\bigvee_{f\in F}(z\land f)$;
-\item[(c)] $\left(\bigvee F\right)\setminus z=\bigvee_{f\in F}(f\setminus z)$;
-\item[(d)] $z\setminus(\bigvee F)=\bigwedge_{f\in F}(z\setminus f)$.
-\end{enumerate}
-\end{proposition}
-\begin{proof}
-First assume $F\subseteq S$ is countable subset, and take $g\in F$ arbitrary. By Lemma \ref{lemmabooleanalgebraofsmallerelements}, the set $\left\{g\right\}^{\downarrow}=\left\{t\in S:t\leq g\right\}$ is a $\sigma$-complete unital Boolean algebra with the order endowed from $S$, so the meet $\bigwedge_{f\in F}(f\land g)$ exists and is the same in both $\left\{g\right\}^{\downarrow}$ and $S$, and clearly it is the meet of $F$ in $S$.
-\begin{enumerate}
-\item[(a)] Of course, it is enough to prove just one of the equalities. On one hand, $zf\leq z\bigvee F$ whenever $f\in F$, so $\bigvee(zF)\leq z\bigvee F$.
+<ol class='alphpar'>
+	<li> $z\left(\bigvee F\right)=\bigvee(zF)$ and $\left(\bigvee F\right)z=\bigvee(Fz)$; Thus $S$ is $\aleph_1$-distributive.</li>
+	<li> $z\land\left(\bigvee F\right)=\bigvee_{f\in F}(z\land f)$.</li>
+	<li> $\left(\bigvee F\right)\setminus z=\bigvee_{f\in F}(f\setminus z)$.</li>
+	<li> $z\setminus(\bigvee F)=\bigwedge_{f\in F}(z\setminus f)$.</li>
+</ol>
+</p>
+</div>
 
-For the other inequality, let us first assume that $ff^*\leq z^*z$ for all $f\in F$, and under this assumption let us prove that $z\bigvee F$ is the smallest upper bound of $zF$. If $p$ is any upper bound of $zF$, then for all $f\in F$
-\[p\geq zf\Longrightarrow z^*p\geq z^*zf\geq ff^*f=f\]
-and so $\bigvee F\leq z^*p$ and therefore $z\bigvee F\leq zz^*p\leq p$.
+<a class='proofbutton' data-tag='propositionsigmadistributivitisigmacomplete'>Proof</a>
+<div class='proof' id='proofofpropositionsigmadistributivitisigmacomplete'>
+<p>
+First assume $F\subseteq S$ is countable subset, and take $g\in F$ arbitrary. By Lemma <span class='ref' data-tag='lemmabooleanalgebraofsmallerelements'></span>, the set $\left\{g\right\}^{\downarrow}=\left\{t\in S:t\leq g\right\}$ is a $\sigma$-complete unital Boolean algebra with the order endowed from $S$, so the meet $\bigwedge_{f\in F}(f\land g)$ exists and is the same in both $\left\{g\right\}^{\downarrow}$ and $S$, and clearly it is the meet of $F$ in $S$.
+</p>
+<ol class='alphpar'>
+	<li><p>Of course, it is enough to prove just one of the equalities. On one hand, $zf\leq z\bigvee F$ whenever $f\in F$, so $\bigvee(zF)\leq z\bigvee F$.</p>
+	
+	<p>For the other inequality, let us first assume that $ff^*\leq z^*z$ for all $f\in F$, and under this assumption let us prove that $z\bigvee F$ is the smallest upper bound of $zF$. If $p$ is any upper bound of $zF$, then for all $f\in F$
+	<div class='equation'>\[
+	p\geq zf\Longrightarrow z^*p\geq z^*zf\geq ff^*f=f,
+	\]</div>
+	and so $\bigvee F\leq z^*p$ and therefore $z\bigvee F\leq zz^*p\leq p$.</p>
+	
+	<p>In the general case, for every $f\in F$, we have
+	<div class='equation'>\[
+	f=ff^*f=\left(\left(ff^*\setminus z^*z\right)\lor(z^*zff^*)\right)f=\left(ff^*\setminus z^*z\right)f\lor(z^*zf).
+	\]</div>
+	Note, moreover, that $\bigvee_{f\in F}(ff^*\setminus z^*z)f$ and $\bigvee_{f\in F}(z^*zf)$ are both bounded by $\bigvee F$, and thus are compatible and we can conclude that
+	<div class='equation'>\[
+	\bigvee F\leq\left(\bigvee_{f\in F}\left(ff^*\setminus z^*z\right)f\right)\lor\left(\bigvee_{f\in F}(z^*zf)\right).
+	\]</div>
+	Multiplying both sides by $z$ on the left, we obtain
+	<div class='equation'>\[
+	z\left(\bigvee F\right)\leq\left[z\left(\bigvee_{f\in F}\left(ff^*\setminus z^*z\right)f\right)\right]\lor\left[z\left(\bigvee_{f\in F}(z^*zf)\right)\right].
+	\]</div>
+	Now, for all $f\in F$, $(ff^*)\setminus (z^*z)\leq\left[\left(\bigvee F\right)\left(\bigvee F\right)^*\right]\setminus(z^*z)$, so
+	<div class='equation'>\[
+	z\left(\bigvee_{f\in F}\left(ff^*\setminus z^*z\right)f\right)\leq (zz^*z)\left[\left(\bigvee F\right)\left(\bigvee F\right)^*\setminus(z^*z)\right]=z0=0,
+	\]</div>
+	where the next-to-last equality follows from the definition of relative complements and since products coincide with meets in $E(S)$. Therefore
+	<div class='equation'>\[
+	z\left(\bigvee F\right)\leq z\left(\bigvee_{f\in F}(z^*zf)\right).
+	\]</div>
+	Using the first case, we can distribute the product by $z$ over $\bigvee_{f\in F}(z^*zf)$, that is,
+	<div class='equation'>\[
+	z\left(\bigvee F\right)\leq\left(\bigvee_{f\in F}z(z^*zf)\right)=\bigvee zF.
+	\]</div></p></li>
+	
+	<li> This is a particular case of Proposition <span class='ref' data-tag='propositionkappadistributivedistributemeets'></span>.</li>
+	<li> From item (b) we obtain $\left(\bigvee_{f\in F}(f\setminus z)\right)\land z=0$, and by usual properties of the join
+	<div class='equation'>\begin{align*}
+	\bigvee F&=\bigvee_{f\in F}f=\bigvee_{f\in F}(f\setminus z)\lor(z\land f)\\
+		&\leq\bigvee_{f\in F}\left((f\setminus z)\lor (z\land\bigvee F)\right)\\
+		&=\left(\bigvee_{f\in F}(f\setminus z)\right)\lor\left(z\land\bigvee F\right)
+	\end{align*}</div>
+	so $\bigvee_{f\in F}(f\setminus z)$ satisfies the defining properties of $\left(\bigvee F\right)\setminus z$.</li>
+	<li> This follows from item (b) and Lemma <span class='ref' data-tag='lemmainfinitedemorganslaws'></span> applied on the Boolean algebra $\left\{t\in S:t\leq z\right\}$.<span class='qed'></span></li>
+</ol>
+</div>
 
-In the general case, for every $f\in F$, we have
-\[f=ff^*f=\left(\left(ff^*\setminus z^*z\right)\lor(z^*zff^*)\right)f=\left(ff^*\setminus z^*z\right)f\lor(z^*zf)\]
-Note, moreover, that $\bigvee_{f\in F}(ff^*\setminus z^*z)f$ and $\bigvee_{f\in F}(z^*zf)$ are both bounded by $\bigvee F$, and thus are compatible and we can conclude that
-\[\bigvee F\leq\left(\bigvee_{f\in F}\left(ff^*\setminus z^*z\right)f\right)\lor\left(\bigvee_{f\in F}(z^*zf)\right)\]
-Multiplying both sides by $z$ on the left, we obtain
-\[z\left(\bigvee F\right)\leq\left[z\left(\bigvee_{f\in F}\left(ff^*\setminus z^*z\right)f\right)\right]\lor\left[z\left(\bigvee_{f\in F}(z^*zf)\right)\right]\]
-Now, for all $f\in F$, $(ff^*)\setminus (z^*z)\leq\left[\left(\bigvee F\right)\left(\bigvee F\right)^*\right]\setminus(z^*z)$, so
-\[z\left(\bigvee_{f\in F}\left(ff^*\setminus z^*z\right)f\right)\leq (zz^*z)\left[\left(\bigvee F\right)\left(\bigvee F\right)^*\setminus(z^*z)\right]=z0=0\]
-where the next-to-last equality follows from the definition of relative complements and since products coincide with meets in $E(S)$. Therefore
-\[z\left(\bigvee F\right)\leq z\left(\bigvee_{f\in F}(z^*zf)\right)\]
-Using the first case, we can distribute the product by $z$ over $\bigvee_{f\in F}(z^*zf)$, that is,
-\[z\left(\bigvee F\right)\leq\left(\bigvee_{f\in F}z(z^*zf)\right)=\bigvee zF.\]
-\item[(b)] This is a particular case of Proposition \ref{propositionkappadistributivedistributemeets}.%The set $\left\{t\in S:t\leq\bigvee F\right\}$ is a unital Boolean algebra with the meet as the operation, and the order remains the same, so using item (a) on this new Boolean inverse semigroup we obtain
-%\[z\land\bigvee F=(z\land\bigvee F)\land\bigvee F=\bigvee_{f\in F}(z\land\bigvee F\land f)=\bigvee_{f\in F}(z\land f).\]
-\item[(c)] From item (b) we obtain $\left(\bigvee_{f\in F}(f\setminus z)\right)\land z=0$, and by usual properties of the join
-\begin{align*}
-\bigvee F&=\bigvee_{f\in F}f=\bigvee_{f\in F}(f\setminus z)\lor(z\land f)\leq\bigvee_{f\in F}\left((f\setminus z)\lor (z\land\bigvee F)\right)\\
-&=\left(\bigvee_{f\in F}(f\setminus z)\right)\lor\left(z\land\bigvee F\right)
-\end{align*}
-so $\bigvee_{f\in F}(f\setminus z)$ satisfies the defining properties of $\left(\bigvee F\right)\setminus z$.
-\item[(d)] This follows from item (b) and Lemma \ref{lemmainfinitedemorganslaws} applied on the Boolean algebra $\left\{t\in S:t\leq z\right\}$.\qedhere
-\end{enumerate}
-\end{proof}
+<!-- 1.8.12 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.8.12</span>
+A <em>$\sigma$-ideal</em> of a $\sigma$-complete Boolean inverse semigroup $S$ is an ideal $I$ of $S$ such that if $F\subseteq S$ is countable and compatible, then $\bigvee F\in I$.
+</p>
+</div>
 
-\begin{definition}
-A \emph{$\sigma$-ideal} of a $\sigma$-complete Boolean inverse semigroup $S$ is an ideal $I$ of $S$ such that if $F\subseteq S$ is countable and compatible, then $\bigvee F\in I$.
-\end{definition}
+<p>
+If $I$ is a $\lor$-ideal of a Boolean inverse semigroup $S$ and $s\in S$, recall from Section <span class='ref' data-tag='sectionquotientsofsemigroups'></span> that $\widetilde{s}^I$ denotes the image of $s$ under the canonical quotient map $S\to S/I$.
+</p>
 
-If $I$ is a $\lor$-ideal of a Boolean inverse semigroup $S$ and $s\in S$, recall from Section \ref{sectionquotientsofsemigroups} that $\widetilde{s}^I$ denotes the image of $s$ under the canonical quotient map $S\to S/I$.
-
-\begin{lemma}\label{lemmasigmacompatibility}
+<!-- 1.8.13 -->
+<div class='lemma' id='lemmasigmacompatibility'>
+<p><span class='envidentifier'>Lemma 1.8.13</span>
 Let $S$ be a $\sigma$-complete Boolean inverse semigroup, $I$ a $\sigma$-ideal of $S$ and $\pi:S\to S/I$ the quotient map.
-\begin{enumerate}
-\item[(a)] If $F\subseteq S$ is countable and $\tildeoveri{f}=\tildeoveri{g}$ for all $f,g\in F$, then $\tildeoveri{f}=\left(\bigwedge F\right)^{\sim I}$ for all $f\in F$;
-\item[(b)] If $\mathscr{A}\subseteq S/I$ is countable and compatible, then there is a countable compatible subset $F\subseteq S$ such that $\pi(F)=\mathscr{A}$.
-\end{enumerate}
-\end{lemma}
-\begin{proof}
-\begin{enumerate}
-\item[(a)] Under the given assumption, if $f\in F$ then $f\setminus\left(\bigwedge F\right)=\bigvee_{g\in F}(f\setminus g)\in I$, by Propositions \ref{propositionquotientrelationofbooleansemigroup} and \ref{propositionsigmadistributivitisigmacomplete}(d), which is what we want.
-\item[(b)] For every pair $(\alpha_1,\alpha_2)\in\mathscr{A}$, choose, by \ref{theoremcompatibleinquotientareimageofcompatible}, compatible elements $C_1(\alpha,\alpha_2)$ and $C_2(\alpha,\alpha_2)\in S$ such that $C_i(\alpha_1,\alpha_2)^{\sim I}=\alpha_i$, and then let $D(\alpha)=\bigwedge_{\beta\in\mathscr{A}}C_1(\alpha,\beta)\land C_2(\beta,\alpha)$. By item (a), $D(\alpha)^{\sim I}=\alpha$ for all $\alpha$.
+<ol class='alphpar'>
+	<li> If $F\subseteq S$ is countable and $\tildeoveri{f}=\tildeoveri{g}$ for all $f,g\in F$, then $\tildeoveri{f}=\left(\bigwedge F\right)^{\sim I}$ for all $f\in F$.</li>
+	<li> If $\mathscr{A}\subseteq S/I$ is countable and compatible, then there is a countable compatible subset $F\subseteq S$ such that $\pi(F)=\mathscr{A}$.</li>
+</ol>
+</p>
+</div>
 
-Given $\alpha,\beta\in\mathscr{A}$, we have $D(\alpha)\leq C_1(\alpha,\beta)$ and $D(\beta)\leq C_2(\alpha,\beta)$, so $D(\alpha)$ and $D(\beta)$ are compatible for all $\alpha,\beta\in\mathscr{A}$. Therefore $F=\left\{D(\alpha):\alpha\in A\right\}$ has the required properties.\qedhere
-\end{enumerate}
-\end{proof}
+<a class='proofbutton' data-tag='lemmasigmacompatibility'>Proof</a>
+<div class='proof' id='proofoflemmasigmacompatibility'>
+<ol class='alphpar'>
+	<li> Under the given assumption, if $f\in F$ then $f\setminus\left(\bigwedge F\right)=\bigvee_{g\in F}(f\setminus g)\in I$, by Propositions <span class='ref' data-tag='propositionquotientrelationofbooleansemigroup'></span> and <span class='ref' data-tag='propositionsigmadistributivitisigmacomplete'></span>(d), which is what we want.</li>
+	<li><p> For every pair $(\alpha_1,\alpha_2)\in\mathscr{A}$, choose, by <span class='ref' data-tag='theoremcompatibleinquotientareimageofcompatible'></span>, compatible elements $C_1(\alpha,\alpha_2)$ and $C_2(\alpha,\alpha_2)\in S$ such that $C_i(\alpha_1,\alpha_2)^{\sim I}=\alpha_i$, and then let $D(\alpha)=\bigwedge_{\beta\in\mathscr{A}}C_1(\alpha,\beta)\land C_2(\beta,\alpha)$. By item (a), $D(\alpha)^{\sim I}=\alpha$ for all $\alpha$.
+	</p>
+	<p>
+	Given $\alpha,\beta\in\mathscr{A}$, we have $D(\alpha)\leq C_1(\alpha,\beta)$ and $D(\beta)\leq C_2(\alpha,\beta)$, so $D(\alpha)$ and $D(\beta)$ are compatible for all $\alpha,\beta\in\mathscr{A}$. Therefore $F=\left\{D(\alpha):\alpha\in A\right\}$ has the required properties.<span class='qed'></span></p></li>
+	</ol>
+</div>
 
-\begin{theorem}\label{theoremquotientmapsissigma}
+<!-- 1.8.14 -->
+<div class='theorem' id='theoremquotientmapsissigma'>
+<p><span class='envidentifier'>Theorem 1.8.14</span>
 If $S$ is a $\sigma$-complete Boolean inverse semigroup and $I$ is a $\sigma$-ideal of $S$, then $S/I$ is a $\sigma$-complete Boolean inverse semigroup as well. If $\pi:S\to S/I$ is the quotient map, then for all countable compatible subsets $F\subseteq S$, $\pi(\bigvee F)=\bigvee\pi(F)$.
-\end{theorem}
-\begin{proof}
+</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremquotientmapsissigma'>Proof</a>
+<div class='proof' id='proofoftheoremquotientmapsissigma'>
+<p>
 By item (b) of the lemma above, we just need to prove the last part. Let $F\subseteq S$ be countable and compatible. Of course, $\pi(\bigvee F)=\left(\bigvee F\right)^{\sim I}$ is an upper bound for $\pi(F)$, so we need to prove it is the smallest one. Let $p\in S$ such that $\tildeoveri{p}$ is another upper bound for $\pi(F)$. Then for all $f\in F$,
-\[\tildeoveri{f}=\tildeoveri{f}\land\tildeoveri{p}=(f\land p)^{\sim I}\]
-because $\pi$ is a morphism of Boolean inverse semigroups (Theorem \ref{theoremquotientmapofsemigroupisverygood}). This means that $f\setminus p\in I$ for all $f\in F$, and so
-\[\bigvee F\setminus\left((\bigvee F)\land p\right)=(\bigvee F)\setminus p=\bigvee_{f\in F}(f\setminus p)\in I\]
+<div class='equation'>\[
+\tildeoveri{f}=\tildeoveri{f}\land\tildeoveri{p}=(f\land p)^{\sim I},
+\]</div>
+because $\pi$ is a morphism of Boolean inverse semigroups (Theorem <span class='ref' data-tag='theoremquotientmapofsemigroupisverygood'></span>). This means that $f\setminus p\in I$ for all $f\in F$, and so
+<div class='equation'>\[
+\bigvee F\setminus\left((\bigvee F)\land p\right)=(\bigvee F)\setminus p=\bigvee_{f\in F}(f\setminus p)\in I
+\]</div>
 hence
-\[(\bigvee F)^{\sim I}=(\bigvee F\land p)^{\sim I}\leq\tildeoveri{p}.\qedhere\]
-\end{proof}
+<div class='equation'>\[
+(\bigvee F)^{\sim I}=(\bigvee F\land p)^{\sim I}\leq\tildeoveri{p}.
+\]<span class='qed'></span></div>
+</div>
 
 For our version of the Loomis-Sikorski theorem, we need the semigroups to satisfy the following condition:
 
-\begin{definition}
-We say that a Boolean inverse semigroup \emph{satisfies condition (SC)} if there is a subset $C\subseteq S$ satisfying
-\begin{enumerate}
-\item[(SC1)] $C$ is countable;
-\item[(SC2)] For every $s\in S$, there is a finite subset $F\subseteq C$ such that $s=\bigvee_{f\in F}(s\land f)$.
-\end{enumerate}
-\end{definition}
+<style>
+ol.sc {
+    counter-reset: ssc;
+	position:relative;
+}
+ol.sc > li {
+    list-style: none;
+}
+ol.sc > li:before {
+  counter-increment: ssc;
+  content: "(SC" counter(ssc) ")";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+</style>
 
-\begin{remark}
+<!-- 1.8.15 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.8.15</span>
+We say that a Boolean inverse semigroup <em>satisfies condition (SC)</em> if there is a subset $C\subseteq S$ satisfying
+<ol class='sc'>
+	<li> $C$ is countable;</li>
+	<li> For every $s\in S$, there is a finite subset $F\subseteq C$ such that $s=\bigvee_{f\in F}(s\land f)$.</li>
+</ol>
+</p>
+</div>
+
+<div class='remark'>
+<p><span class='envidentifier'>Remark</span>
 Every $\sigma$-complete Boolean inverse semigroup satisfying (SC) is actually a monoid, namely if $C\subseteq S$ satisfies (SC1) and (SC2) then $U=\bigvee_{c\in C}\Fix(c)$ is the unit for $S$. Indeed, for all $e\in E(S)$,
-\[e\leq\bigvee_{c\in C}(e\land c)\leq\bigvee_{c\in C}\Fix(c)=U\]
+<div class='equation'>\[
+e\leq\bigvee_{c\in C}(e\land c)\leq\bigvee_{c\in C}\Fix(c)=U
+\]</div>
 so $U$ is the unit of $E(S)$ and thus the unit of $S$.
-\end{remark}
+</p>
+</div>
 
+<p>
 Note that every unital Boolean algebra $B$ satisfies (SC), namely $C=\left\{1\right\}$ satisfies (SC1) and (SC2).
+</p>
 
-\begin{proposition}\label{propositionamplescsigmacompact}
-If $\G$ is an ample Hausdorff groupoid and $S=\KB(\G)$, then $S$ satisfies condition (SC) if and only if $\G$ is $\sigma$-compact. More precisely, a subset $C\subseteq\KB(\G)$ satisfies (SC1)-(SC2) if and only if $\G\subseteq\bigcup C$.
-\end{proposition}
-\begin{proof}
-If $\G$ is $\sigma$-compact, then we have $\G=\bigcup_n K_n$ for some sequence of compact open sets $K_n\subseteq\G$. Since $\KB(\G)$ is an open cover of $\G$, for each $n$ there is a finite subset $C_n\subseteq\KB(\G)$ satisfying $K_n\subseteq\bigcup C_n$. Then $C=\bigcup_n C_n$ is countable, which is condition (SC1). Since elements of $\KB(\G)$ are compact and $C$ is an open cover of $\G$, condition (SC2) is satisfied by $C$.
+<!-- 1.8.16 -->
+<div class='proposition' id='propositionamplescsigmacompact'>
+<p><span class='envidentifier'>Proposition 1.8.16</span>
+If $\mathcal{G}$ is an ample Hausdorff groupoid and $S=\KB(\mathcal{G})$, then $S$ satisfies condition (SC) if and only if $\mathcal{G}$ is $\sigma$-compact. More precisely, a subset $C\subseteq\KB(\mathcal{G})$ satisfies (SC1)-(SC2) if and only if $\mathcal{G}\subseteq\bigcup C$.
+</p>
+</div>
 
-Conversely, if $C\subseteq\KB(\G)$ satisfies (SC1)-(SC2), then $C$ is a countable cover of $\G$ by compact(-open) sets, so $\G$ is $\sigma$-compact.\qedhere
-\end{proof}
+<a class='proofbutton' data-tag='propositionamplescsigmacompact'>Proof</a>
+<div class='proof' id='proofofpropositionamplescsigmacompact'>
+<p>
+If $\mathcal{G}$ is $\sigma$-compact, then we have $\mathcal{G}=\bigcup_n K_n$ for some sequence of compact open sets $K_n\subseteq\mathcal{G}$. Since $\KB(\mathcal{G})$ is an open cover of $\mathcal{G}$, for each $n$ there is a finite subset $C_n\subseteq\KB(\mathcal{G})$ satisfying $K_n\subseteq\bigcup C_n$. Then $C=\bigcup_n C_n$ is countable, which is condition (SC1). Since elements of $\KB(\mathcal{G})$ are compact and $C$ is an open cover of $\mathcal{G}$, condition (SC2) is satisfied by $C$.
+</p>
 
-%\begin{definition}\nomenclature[S]{$\sigma(F)$}{$\sigma$-Boolean inverse semigroup generated by $F$.}
-%Given a $\sigma$-complete Boolean inverse semigroup $S$ and a subset $C\subseteq S$, the \emph{$\sigma$-closed Boolean inverse semigroup generated by $F$} is the smallest sub-inverse semigroup of $S$ containing $0$, $1$, and which is closed under meets, countable joins of compatible elements, and differences, and we denote it $\sigma(F)$.
-%\end{definition}
+<p>
+Conversely, if $C\subseteq\KB(\mathcal{G})$ satisfies (SC1)-(SC2), then $C$ is a countable cover of $\mathcal{G}$ by compact(-open) sets, so $\mathcal{G}$ is $\sigma$-compact.<span class='qed'></span>
+</p>
+</div>
 
 <!-- 1.8.17 -->
 <div class="theorem" id="theoremncloomissikorskinontracial">
@@ -288,95 +419,123 @@ Conversely, if $C\subseteq\KB(\G)$ satisfies (SC1)-(SC2), then $C$ is a countabl
 Let $S$ be a $\sigma$-complete Boolean inverse semigroup satisfying (SC). Then there exists a $\ra$-discrete Borel groupoid $\mathcal{G}$ and an ideal $\mathcal{I}\subseteq\BOR(\mathcal{G})$ such that $S$ is isomorphic to $\BOR(\mathcal{G})/\mathcal{I}$.
 </p>
 </div>
-\begin{proof}
-Using non-commutative Stone duality, more precisely Proposition \ref{propositionnaturaltransformationsncsd}, we let $\G=\GP(S)$, which is an ample Hausdorff groupoid, and $\sigma$-compact since $S$ satisfies (SC) (Proposition \ref{propositionamplescsigmacompact}). Endowing $\G$ with the Baire $\sigma$-algebra (generated by $\KB(\G)$) we obtain a Borel groupoid (Example \ref{examplesigmacompactampleisborel}). Moreover, $\BOR(\G)$ coincides with the set of bisections which are Borel subsets of $\G$ (Proposition \ref{propositionwheneveryborelbisectionisborelbisection}).
 
-Note that, even though $\KB(\G)\simeq S$ is $\sigma$-complete, countable joins in $\KB(\G)$ will not be given by unions in general, and similarly for meets.
+<a class='proofbutton' data-tag='theoremncloomissikorskinontracial'>Proof</a>
+<div class='proof' id='proofoftheoremncloomissikorskinontracial'>
+<p>
+Using non-commutative Stone duality, more precisely Proposition <span class='ref' data-tag='propositionnaturaltransformationsncsd'></span>, we let $\mathcal{G}=\mathcal{G}P(S)$, which is an ample Hausdorff groupoid, and $\sigma$-compact since $S$ satisfies (SC) (Proposition <span class='ref' data-tag='propositionamplescsigmacompact'></span>). Endowing $\mathcal{G}$ with the Baire $\sigma$-algebra (generated by $\KB(\mathcal{G})$) we obtain a Borel groupoid (Example <span class='ref' data-tag='examplesigmacompactampleisborel'></span>). Moreover, $\BOR(\mathcal{G})$ coincides with the set of bisections which are Borel subsets of $\mathcal{G}$ (Proposition <span class='ref' data-tag='propositionwheneveryborelbisectionisborelbisection'></span>}).
+</p>
 
-Let $\zeta=\zeta_S:S\to\KB(\G)\subseteq\BOR(\G)$ be the canonical isomorphism (Proposition \ref{propositionnaturaltransformationsncsd}). We fix a countable family $\left\{c_n\right\}_{n\in\mathbb{N}}$ in $S$ satisfying properties (SC1) and (SC2), and let $C_n=\zeta(c_n)$, so that $\G\subseteq\bigcup_n C_n$.
+<p>
+Note that, even though $\KB(\mathcal{G})\simeq S$ is $\sigma$-complete, countable joins in $\KB(\mathcal{G})$ will not be given by unions in general, and similarly for meets.
+</p>
 
+<p>
+Let $\zeta=\zeta_S:S\to\KB(\mathcal{G})\subseteq\BOR(\mathcal{G})$ be the canonical isomorphism (Proposition <span class='ref' data-tag='propositionnaturaltransformationsncsd'></span>). We fix a countable family $\left\{c_n\right\}_{n\in\mathbb{N}}$ in $S$ satisfying properties (SC1) and (SC2), and let $C_n=\zeta(c_n)$, so that $\mathcal{G}\subseteq\bigcup_n C_n$.
+</p>
+
+<p>
 Define
-\[\mathcal{N}=\left\{\bigcap_{n=1}^\infty\zeta(s_n):s_1,s_2,\ldots\in S\text{ and }\bigwedge_{n=1}^\infty s_n=0\right\}\]
-and let $\mathcal{I}$ be the collection of those $A\in\BOR(\G)$ which are contained in some countable union $\bigcup_{m=1}^\infty N_m$, where $N_m\in\mathcal{N}$. Then $\mathcal{I}$ is clearly closed under countable unions. To check it is an ideal, first suppose $K=\bigcap_n\zeta(s_n)\in\mathcal{N}$, where $\bigwedge_n s_n=0$. For $A\in\BOR(\G)$,
-\[AK\subseteq\bigcup_{m=1}^\infty C_m\bigcap_{n=1}^\infty\zeta(s_n)=\bigcup_{m=1}^\infty\bigcap_{n=1}^\infty\zeta(c_m s_n)\]
+<div class='equation'>\[
+\mathcal{N}=\left\{\bigcap_{n=1}^\infty\zeta(s_n):s_1,s_2,\ldots\in S\text{ and }\bigwedge_{n=1}^\infty s_n=0\right\},
+\]</div>
+and let $\mathcal{I}$ be the collection of those $A\in\BOR(\mathcal{G})$ which are contained in some countable union $\bigcup_{m=1}^\infty N_m$, where $N_m\in\mathcal{N}$. Then $\mathcal{I}$ is clearly closed under countable unions. To check it is an ideal, first suppose $K=\bigcap_n\zeta(s_n)\in\mathcal{N}$, where $\bigwedge_n s_n=0$. For $A\in\BOR(\mathcal{G})$,
+<div class='equation'>\[
+AK\subseteq\bigcup_{m=1}^\infty C_m\bigcap_{n=1}^\infty\zeta(s_n)=\bigcup_{m=1}^\infty\bigcap_{n=1}^\infty\zeta(c_m s_n),
+\]</div>
 and for all $m$, $\bigwedge_n c_m s_n=c_m\bigwedge s_n=0$, which proves that $AK\in\mathcal{I}$. Similarly, $KA\in\mathcal{I}$, so $\mathcal{I}$ is a $\sigma$-ideal.
+</p>
 
-Let $\theta:S\to\BOR(\G)/\mathcal{I}$, $\theta(s)=\widetilde{\zeta(s)}^I$, the composition of $\zeta$ with the quotient map $\BOR(\G)\to\BOR(\G)/\mathcal{I}$. We will prove that $\theta$ is an isomorphism, and we do this in several steps, the first one being a weaker form of injectivity.
+<p>
+Let $\theta:S\to\BOR(\mathcal{G})/\mathcal{I}$, $\theta(s)=\widetilde{\zeta(s)}^I$, the composition of $\zeta$ with the quotient map $\BOR(\mathcal{G})\to\BOR(\mathcal{G})/\mathcal{I}$. We will prove that $\theta$ is an isomorphism, and we do this in several steps, the first one being a weaker form of injectivity.
+</p>
 
-\begin{description}
-\item[If $s\neq 0$ then $\zeta(s)\not\in\mathcal{I}$:] Indeed, suppose $N_1,N_2,\ldots\in\mathcal{N}$, where $N_n=\bigcap_m\zeta(a^n_m)$ ($a^m_n\in S$) are such that $\bigwedge_m a^n_m=0$ for each $n$ .
+<ul>
+	<li><p><u>If $s\neq 0$ then $\zeta(s)\not\in\mathcal{I}$</u>: Indeed, suppose $N_1,N_2,\ldots\in\mathcal{N}$, where $N_n=\bigcap_m\zeta(a^n_m)$ ($a^m_n\in S$) are such that $\bigwedge_m a^n_m=0$ for each $n$.
+	</p>
+	
+	<p>Since $s\neq 0$ and
+<div class='equation'>\[
+0\neq s=s\setminus 0=s\setminus\bigwedge_m a^1_m=\bigvee_m(s\setminus a^1_m),
+\]</div>
+then there exists a number $k(1)$ such that $s\setminus a^1_{k(1)}\neq 0$. By induction on $N$, we can find a sequence $k(1),k(2),\ldots$ such that $s\setminus(a^1_{k(1)}\lor\cdots\lor a^N_{k(N)})\neq 0$ for all $n$. This means that $\zeta(s)\setminus\bigcup_{n=1}^N\zeta(a^n_{k(n)})\neq\varnothing$ for all $N\in\mathbb{N}$, that is, $\zeta(s)$ is not contained in any finite union $\bigcup_{n=1}^N\zeta(a^n_{k(n)})$, $N\in\mathbb{N}$. Since $\zeta(s)$ is compact, Cantor's Intersection Theorem implies that $\zeta(s)$ is not contained in $\bigcup_{n=1}^\infty\zeta(a^n_{k(n)})$, and in particular $\zeta(s)$ is also not contained in $\bigcup_{n=1}^\infty N_n$. This proves that $\zeta(s)\not\in\mathcal{I}$ whenever $s\neq 0$.</p></li>
+	<li><u>$\theta$ is injective</u>: If $a\neq b$ in $S$, then either $a\setminus b$ or $b\setminus a\neq 0$, which implies that either $\zeta(a)\setminus\zeta(b)$ or $\zeta(b)\setminus\zeta(a)\not\in\mathcal{I}$, but in any case we obtain $\theta(a)\neq\theta(b)$, so $\theta$ is injective.
+	</li>
 
-Since $s\neq 0$ and
-\[0\neq s=s\setminus 0=s\setminus\bigwedge_m a^1_m=\bigvee_m(s\setminus a^1_m)\]
-then there exists a number $k(1)$ such that $s\setminus a^1_{k(1)}\neq 0$. By induction on $N$, we can find a sequence $k(1),k(2),\ldots$ such that $s\setminus(a^1_{k(1)}\lor\cdots\lor a^N_{k(N)})\neq 0$ for all $n$. This means that $\zeta(s)\setminus\bigcup_{n=1}^N\zeta(a^n_{k(n)})\neq\varnothing$ for all $N\in\mathbb{N}$, that is, $\zeta(s)$ is not contained in any finite union $\bigcup_{n=1}^N\zeta(a^n_{k(n)})$, $N\in\mathbb{N}$. Since $\zeta(s)$ is compact, Cantor's Intersection Theorem implies that $\zeta(s)$ is not contained in $\bigcup_{n=1}^\infty\zeta(a^n_{k(n)})$, and in particular $\zeta(s)$ is also not contained in $\bigcup_{n=1}^\infty N_n$. This proves that $\zeta(s)\not\in\mathcal{I}$ whenever $s\neq 0$.
-
-\item[$\theta$ is injective:] If $a\neq b$ in $S$, then either $a\setminus b$ or $b\setminus a\neq 0$, which implies that either $\zeta(a)\setminus\zeta(b)$ or $\zeta(b)\setminus\zeta(a)\not\in\mathcal{I}$, but in any case we obtain $\theta(a)\neq\theta(b)$, so $\theta$ is injective.
-
-\item[$\theta$ preserves countable joins:] If $s_1,s_2,\ldots\in S$ are compatible, then $\bigvee_{j=1}^\infty s_j$ is an upper bound of all $s_i$, and so $\bigcup_{i=1}^\infty\zeta(s_i)\subseteq\zeta\left(\bigvee_{j=1}^\infty s_j\right)$. Since
-\[\zeta\left(\bigvee_{j=1}^\infty s_j\right)\setminus\bigcup_{i=1}^\infty\zeta(s_i)=\bigcap_{i=1}^\infty\zeta\left(\bigvee_{j=1}^\infty s_j\setminus s_i\right)\]
+	<li><u>$\theta$ preserves countable joins</u>: If $s_1,s_2,\ldots\in S$ are compatible, then $\bigvee_{j=1}^\infty s_j$ is an upper bound of all $s_i$, and so $\bigcup_{i=1}^\infty\zeta(s_i)\subseteq\zeta\left(\bigvee_{j=1}^\infty s_j\right)$. Since
+<div class='equation'>\[
+\zeta\left(\bigvee_{j=1}^\infty s_j\right)\setminus\bigcup_{i=1}^\infty\zeta(s_i)=\bigcap_{i=1}^\infty\zeta\left(\bigvee_{j=1}^\infty s_j\setminus s_i\right),
+\]</div>
 and
-\[\bigwedge_{i=1}^\infty\left(\bigvee_{j=1}^\infty s_j\setminus s_i\right)=\left(\bigvee_{j=1}^\infty s_j\right)\setminus\left(\bigvee_{i=1}^\infty s_i\right)=0,\]
-we conclude that $\zeta\left(\bigvee_{j=1}^\infty s_j\right)\setminus\bigcup_{i=1}^\infty\zeta(s_i)\in\mathcal{I}$ and we are done.
-\end{description}
+<div class='equation'>\[
+\bigwedge_{i=1}^\infty\left(\bigvee_{j=1}^\infty s_j\setminus s_i\right)=\left(\bigvee_{j=1}^\infty s_j\right)\setminus\left(\bigvee_{i=1}^\infty s_i\right)=0,
+\]</div>
+we conclude that $\zeta\left(\bigvee_{j=1}^\infty s_j\right)\setminus\bigcup_{i=1}^\infty\zeta(s_i)\in\mathcal{I}$ and we are done.</li>
+</ul>
 
-Consider again, the fixed family of elements $C_n=\zeta(c_n)$ with $\G=\bigcup_n C_n$, and let $p\in\mathbb{N}$ be temporarily fixed. In order to prove that $\theta$ is surjective we first prove a weaker version. Recall from Section \ref{sectionquotientsofsemigroups} that $A\sim_I B$ means that $\widetilde{A}^I=\widetilde{B}^I$.
+<p>
+Consider again the fixed family of elements $C_n=\zeta(c_n)$ with $\mathcal{G}=\bigcup_n C_n$, and let $p\in\mathbb{N}$ be temporarily fixed. In order to prove that $\theta$ is surjective we first prove a weaker version. Recall from Section <span class='ref' data-tag='sectionquotientsofsemigroups'></span> that $A\sim_I B$ means that $\widetilde{A}^I=\widetilde{B}^I$.
+</p>
 
-\begin{description}
-\item[If $A\subseteq C_p$ is Borel, then $A\sim_{\mathcal{I}}\zeta(s)$ for some $s\leq c_p$:]
+<ul>
+<li><u>If $A\subseteq C_p$ is Borel, then $A\sim_{\mathcal{I}}\zeta(s)$ for some $s\leq c_p$</u>: The collection of Borel subsets of $C_p$ is generated, as a $\sigma$-algebra, by the family
+<div class='equation'>\[
+\left\{A\in\KB(\mathcal{G}):A\subseteq C_p\right\}=\left\{\zeta(a):a\leq c_p\right\},
+\]</div>
+so we need to prove that the collection $\mathcal{B}$ of those Borel $A\subseteq C_p$ which are $\mathcal{I}$-equivalent to some $\zeta(s)$, where $s\leq c_p$, forms a $\sigma$-algebra on $C_p$. If $A\sim_{\mathcal{I}}\zeta(s)$, then $C_p\setminus A\sim_{\mathcal{I}}\zeta(c_p\setminus s)$, so $\mathcal{B}$ is closed under complements (in $C_p$), If $A_1,A_2,\ldots\in\mathcal{B}$, choose $s_1,s_2,\ldots\leq c_p$ with $A_i\sim_{\mathcal{I}}\zeta(s_i)$. In particular the $s_i$ are pairwise compatible, and we have already verified that $\zeta(\bigvee_i s_i)$ is $\mathcal{I}$-equivalent to $\bigcup_i\zeta(s_i)$, and thus $\mathcal{I}$-equivalent to $\bigcup_i A_i$ as well (Theorem <span class='ref' data-tag='theoremquotientmapsissigma'></span>)
+</li>
 
-The collection of Borel subsets of $C_p$ is generated, as a $\sigma$-algebra, by the family
-\[\left\{A\in\KB(\G):A\subseteq C_p\right\}=\left\{\zeta(a):a\leq c_p\right\},\]
-so we need to prove that the collection $\mathcal{B}$ of those Borel $A\subseteq C_p$ which are $\mathcal{I}$-equivalent to some $\zeta(s)$, where $s\leq c_p$, forms a $\sigma$-algebra on $C_p$. If $A\sim_{\mathcal{I}}\zeta(s)$, then $C_p\setminus A\sim_{\mathcal{I}}\zeta(c_p\setminus s)$, so $\mathcal{B}$ is closed under complements (in $C_p$), If $A_1,A_2,\ldots\in\mathcal{B}$, choose $s_1,s_2,\ldots\leq c_p$ with $A_i\sim_{\mathcal{I}}\zeta(s_i)$. In particular the $s_i$ are pairwise compatible, and we have already verified that $\zeta(\bigvee_i s_i)$ is $\mathcal{I}$-equivalent to $\bigcup_i\zeta(s_i)$, and thus $\mathcal{I}$-equivalent to $\bigcup_i A_i$ as well (Theorem \ref{theoremquotientmapsissigma})
+<li><u>$\theta$ is surjective</u>: Let $A\in\BOR(\mathcal{G})$ be arbitrary. Again, decompose $A=\bigcup_n A_n$ where $A\subseteq C_n$. Choose $s_n\in S$ with $\zeta(s_n)\sim_{\mathcal{I}} A_n$. The $A_n$ are pairwise compatible, so $\theta(s_n)$ are also pairwise compatible. Since $\theta$ is injective, the $s_n$ are pairwise compatible. Again using the fact that $\theta$ preserves countable compatible joins, we see that $A\sim_{\mathcal{I}}\zeta(\bigvee_n s_n)$.<span class='qed'></span></li>
+</ul>
+</div>
 
-%\item[$E(\BOR(\G)/I)=\theta(E(S))$:] Every element of $E(\BOR(\G)/I)$ is the image of some $A\in E(\BOR(\G))$, so we decompose $A=\bigcup_n A_n$, where $A_n\subseteq C_n$, and then take $e_n\in S$ with $A_n\sim_{\mathcal{I}}\zeta(s_n)$. Substituting $e_n$ by $e_n^*e_n$ if necessary, we may assume $e_n\in E(S)$. This way we construct a compatible countable family $\left\{e_n\right\}_n$ in such a way that
-%\[\zeta\left(\bigvee_{n=1}^\infty e_n\right)\sim_{\mathcal{I}}\bigcup_n\zeta(e_n)\sim_{\mathcal{I}}\bigcup_n A_n=A\]
-%as we wanted.
-
-\item[$\theta$ is surjective:] Let $A\in\BOR(\G)$ be arbitrary. Again, decompose $A=\bigcup_n A_n$ where $A\subseteq C_n$. Choose $s_n\in S$ with $\zeta(s_n)\sim_{\mathcal{I}} A_n$. The $A_n$ are pairwise compatible, so $\theta(s_n)$ are also pairwise compatible. Since $\theta$ is injective%and its image contains $E(\mathcal{B}/\mathcal{I})$
-, the $s_n$ are pairwise compatible. Again using the fact that $\theta$ preserves countable compatible joins, we see that $A\sim_{\mathcal{I}}\zeta(\bigvee_n s_n)$.\qedhere
-\end{description}
-\end{proof}
-
+<p>
 We can thus obtain a version characterizing inverse Boolean monoids satisfying (SC) and endowed with countably additive invariant means.
+</p>
 
 <!-- 1.8.18 -->
-<div class="corollary" id="theoremtracialncloomissikorski">
-<p><span class="envidentifier">Corollary 1.8.18</span>
+<div class='corollary' id='theoremtracialncloomissikorski'>
+<p><span class='envidentifier'>Corollary 1.8.18</span>
 Suppose $S$ is a $\sigma$-complete Boolean inverse monoid satisfying (SC), endowed with an invariant mean $\mu$ which is countably additive (i.e., a probability on $E(S)$). Then there exists a $\ra$-discrete probability measure-preserving groupoid $(\mathcal{G},\mu')$ and an isomorphism from $S$ to $\MEAS(\mathcal{G},\mu')$ which is isometric with respect to the uniform metrics.
 </p>
 </div>
 
-\begin{remark}
-We could have defined Borel groupoids as those endowed with \emph{$\sigma$-rings} of sets, and not $\sigma$-algebras, assuming the structural maps are Borel in the appropriate sense (see Halmos, \cite{MR0033869}). Then we would obtain, essentially with the same proofs, a version of the non-commutative Loomis-Sikorski theorems for Boolean inverse semigroup not necessarily satisfying (SC).
-\end{remark}
-%\begin{theorem}[Non-commutative Loomis-Sikorski, tracial version]\label{theoremncloomissikorskitracial}
-%Suppose $(S,\tau)$ is a $\sigma$-complete tracial inverse monoid satisfying condition (SC). Then there exists a countable pmp groupoid $(G,\mu)$ such that $[[G]]_\mu=(S,\tau)$.
-%\end{theorem}
-%\begin{proof}
-%By non-commutative Stone duality, Theorem~\ref{theoremnoncommutativestoneduality}, there exists an ample Hausdorff groupoid $G$ and an isomorphism $\phi:S\to\mathbf{KB}(G)$. In particular, $\tau$ induces a pre-measure on the algebra of compact-open subsets of $\G[0]$: Indeed, suppose $\left\{E_n\right\}$ is a countable family of disjoint compact-open subsets of $G^{(0)}$ such that $E:=\bigcup_n E_n$ is also a compact-open subset of $G^{(0)}$. Choose $e_n,e\in S$ with $\phi(e_n)=E_n$, $\phi(e)=E$. Since $\phi$ is an order-isomorphism and $\phi(e)=E$ is the join of $\left\{\phi(e_n):n\in\mathbb{N}\right\}$, we conclude that $e=\bigvee e_n$. Then $\mu(E)=\tau(e)=\sum\tau(e_n)=\sum\mu(e_n)$.
-%
-%We consider $G$ as a Borel groupoid with the $\sigma$-algebra generated by $\KB(\G)$ and let $\BOR(\G)$ be the respective Borel semigroup. We first need to show that $\BOR(\G)=\sigma(\KB(\G))$.
-%
-%Let $E\in\KB(\G)$ be arbitrary, and let $\mathcal{B}_E$ be the $\sigma$-algebra on $E$ generated by $\left\{A\cap E:A\in\KB(\G)\right\}$. This is the smallest collection of subsets of $E$ containing the sets of the form $A\cap E$, $A\in\KB(\G)$, and which is closed under countable unions and complements. Since every element of $\mathcal{B}_E$ is contained in $E$ they are actually a bisections, and all elements of $\mathcal{B}_E$ are compatible. This shows that $\mathcal{B}_E$ is contained in $\sigma(\KB(\G))$.
-%
-%Now let $\alpha\in \BOR(\G)$ be arbitrary. By condition (CC), we can take countably many $E_n\in \KB(\G)$ whose union is all of $G$, so $\alpha=\bigcup_n\alpha\cap E_n$, which belongs to $\sigma(\KB(\G))$ as well.
-%
-%Let $\mathcal{I}$ be the ideal of null elements, that is, the set of those elements $\alpha\in\BOR(\G)$ such that $\mu(s(\alpha))=0$, and let $\pi:\BOR(\G)\to\BOR(\G)/\mathcal{I}=[[G]]_\mu$ be the quotient map. We simply need to prove that the composition $\Phi=\pi\phi:S\to[[G]]_\mu$ is an isomorphism.
-%
-%Let us prove that $\Phi$ is a $\sigma$-isomorphism: First suppose $\left\{s_n\right\}_n$ is a countable collection of disjoint compatible elements of $S$, which means that $s(s_n)\cap s(s_m)=r(s_n)\cap r(s_m)=\varnothing$ whenever $m\neq n$. Then $\bigcup\phi(s_n)\subseteq\phi(\bigvee s_n)$ and
-%\[\mu(s(\bigcup \phi(s_n)))=\sum\mu(s(\phi(s_n)))=\sum\tau(s_n^*s_n)=\tau((\bigvee s_n)^*(\bigvee s_n))=\mu(s(\phi(\bigvee s_n)))\]
-%so the images of $\bigcup\phi(s_n)$ and $\phi(\bigvee s_n)$ in $[[G]]_\mu$ coincide.
-%
-%If $\left\{s_n\right\}$ is a sequence of compatible, but not necessarily pairwise disjoint, elements of $S$ then 
-%\[\Phi(\bigvee s_n)=\Phi(\bigvee_n(s_n\setminus \bigvee_{1\leq j\leq n}s_j))=\bigcup(\Phi(s_n)\setminus\bigcup_{1\leq j\leq n}\Phi(s_j))=\bigcup\Phi(s_n)\]
-%
-%Since $\tau(s)=\mu(\Phi(s))$ it follows quite easily that $\Phi$ is injective. On the other hand, $[[G]]_\mu=\sigma(\Phi(S))=\Phi(S)$, so $\Phi$ is actually surjective.\qedhere
-%\end{proof}
-%
-%A similar theorem works for $\sigma$-Boolean groupoids not endowed with probability measures, and the proof is similar. In this case, we let $F$ be the collection of all those sets of the form $\bigcap\phi(s_n)$, where $\bigwedge s_n=0$, and $\mathcal{I}$ the ideal generated by $\sigma(F)$.
-%
-%
-%
-% If $(\G,\mu)$ is a probability measure-preserving groupoid, then $\MEAS(\G,\mu)$ is also a $\sigma$-complete Boolean inverse monoid.
-%
-%\end{document}
+<div class='remark'>
+<p><span class='envidentifier'>Remark</span>
+We could have defined Borel groupoids as those endowed with <em>$\sigma$-rings</em> of sets, and not $\sigma$-algebras, assuming the structural maps are Borel in the appropriate sense (see Halmos, <span class='ref' data-tag='MR0033869'></span>). Then we would obtain, essentially with the same proofs, a version of the non-commutative Loomis-Sikorski theorems for Boolean inverse semigroup not necessarily satisfying (SC).
+</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+</html>

@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.8.nclst.html#lemmainfinitedemorganslaws'>1.8.9</a>
+<!-- 1.8.9 -->
+<div class='toload lemma'>
+<p><span class='envidentifier'>Lemma 1.8.9</span>
+Let $B$ be a unital Boolean algebra and $F$ a subset of $B$ for which $\bigvee F$ exists. Then $\bigwedge (F^c)$ also exists, and $\bigwedge(F^c)=\left(\bigvee F\right)^c$. Dually, $\bigwedge F$ exists if and only if $\bigvee(F^c)$ exists and $\left(\bigwedge F\right)^c=\bigvee(F^c)$.
+</p>
+</div>

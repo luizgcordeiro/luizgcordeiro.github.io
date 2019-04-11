@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.8.nclst.html#lemmasigmacompatibility'>1.8.13</a>
+<!-- 1.8.13 -->
+<div class='toload lemma'>
+<p><span class='envidentifier'>Lemma 1.8.13</span>
+Let $S$ be a $\sigma$-complete Boolean inverse semigroup, $I$ a $\sigma$-ideal of $S$ and $\pi:S\to S/I$ the quotient map.
+<ol class='alphpar'>
+	<li> If $F\subseteq S$ is countable and $\tildeoveri{f}=\tildeoveri{g}$ for all $f,g\in F$, then $\tildeoveri{f}=\left(\bigwedge F\right)^{\sim I}$ for all $f\in F$.</li>
+	<li> If $\mathscr{A}\subseteq S/I$ is countable and compatible, then there is a countable compatible subset $F\subseteq S$ such that $\pi(F)=\mathscr{A}$.</li>
+</ol>
+</p>
+</div>

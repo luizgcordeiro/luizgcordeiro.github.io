@@ -5,27 +5,31 @@
 	<h2><a href="../0.matters/preface.html">Preface</a></h2>
 	<h2><a href="../0.matters/symbols.html">List of symbols</a></h2>
 	<h2><a href="../0.matters/references.html">References</a></h2>
+	<hr>
 <h1><a href="../1.gis/1.0.intro.html">1. Groupoids and inverse semigroups</a></h1>
 	<h2><a href="../1.gis/1.1.grpds.html">1.1. Groupoids</a></h2>
 	<h2><a href="../1.gis/1.2.is.html">1.2. Inverse semigroups</a></h2>
-	<h2>1.3. Topological groupoids</h2>
-	<h2>1.4. Stone duality for ample Hausdorff groupoids</h2>
-	<h2>1.5. Quotients of distributive semigroups</h2>
-	<h2>1.6. Probability measure-preserving groupoids</h2>
-	<h2>1.7. Invariant means</h2>
-	<h2>1.8. Non-commutative Loomis-Sikorski theorem</h2>
+	<h2><a href="../1.gis/1.3.tg.html">1.3. Topological groupoids</a></h2>
+	<h2><a href="../1.gis/1.4.sdfahg.html">1.4. Stone duality for ample Hausdorff groupoids</a></h2>
+	<h2><a href="../1.gis/1.5.qods.html">1.5. Quotients of distributive semigroups</a></h2>
+	<h2><a href="../1.gis/1.6.pmpg.html">1.6. Probability measure-preserving groupoids</a></h2>
+	<h2><a href="../1.gis/1.7.im.html">1.7. Invariant means</a></h2>
+	<h2><a href="../1.gis/1.8.nclst.html">1.8. Non-commutative Loomis-Sikorski theorem</a></h2>
+<hr>
 <h1>2. Sofic groupoids</h1>
 	<h2>2.1. Ultraproducts and continuous logic</h2>
 	<h2>2.2. Finite probability measure-preserving groupoids</h2>
 	<h2>2.3. Sofic groupoids</h2>
 	<h2>2.4. Soficity and the full group</h2>
-	<h2>2.5. Sofic group actions</h2>
+	<h2>2.5. Sofic group actions</h2
+<hr>
 <h1>3. Disjoint continuous functions</h1>
 	<h2>3.1. Disjointness, $\perp$ and $\perpp$-isomorphisms</h2>
 	<h2>3.2. $\perpp$-ideals</h2>
 	<h2>3.3. Basic $\perpp$-isomorphisms</h2>
 	<h2>3.4. Recovering known results</h2>
 	<h2>3.5. New results</h2>
+<hr>
 <h1>4. Partial actions of inverse semigroups</h1>
 	<h2>4.1. Partial morphisms and partial actions</h2>
 	<h2>4.2. Topological partial actions and groupoid of germs</h2>
@@ -35,3 +39,4 @@
 	<h2>4.6. Topologically free partial actions</h2>
 	<h2>4.7. Continuous orbit equivalence</h2>
 	<h2>4.8. Isomorphism theorems</h2>
+<hr>

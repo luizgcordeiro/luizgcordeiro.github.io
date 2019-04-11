@@ -1,5 +1,9 @@
+.proofbutton {
+	margin: 5px 0 5px 0;
+}
+
 body {
-	background-color: #ECECEC;
+	background-color: #F7F7F7;
 }
 
 .envidentifier {
@@ -22,15 +26,11 @@ div.definition, div.example, div.remark	 {
 
 div.theorem, div.proposition, div.corollary, div.lemma {
 	padding: 5px;
-	background: #FAEBBC;
+	background: #FFF5D5;
 	box-shadow: 3px 5px #FFDA63;
-	margin-bottom:15px;
+	margin-bottom: 15px;
 	margin-top: 10px;
 	font-style: italic;
-}
-
-div.definition p, div.example p, div.remark p, div.theorem p, div.proposition p, div.lemma p, div.corollary p {
-	margin-bottom: 0;
 }
 
 main div.definition, main div.example, main div.remark, main div.theorem, main div.proposition, main div.lemma, main div.corollary{
@@ -82,22 +82,24 @@ width: 20%;/* make sure this is compatible with the margin-left at div.main*/
 }
 
 div.sidebar h1.sidebar-title {
-background-color: #46CFA3;
+background-color: EAEAEA;
 display: block; /*block occupies an entire line*/
 font-size:180%;
 margin-bottom: 0px;
 margin-top: 0px;
+border-style: solid;
+border-width:2px;
 }
 
 div.sidebar h1 {
-background-color: #4BE3B2;
+background-color: #EDEDED;
 font-weight: bold;
 display: block;
 font-size: 100%;
 }
 
 div.sidebar h2 {
-background-color: #82F0CC;
+background-color: #F9F9F9;
 display: block;
 font-size:90%;
 margin-bottom: 0px;
@@ -108,7 +110,7 @@ margin-top: 0px;
 The main part of the document is a floating block right of the sidebar
 */
 
-div.main{
+div.main {
 margin-left: 20%;/* make sure this is compatible with the width of #sidebar*/
 width: 50%;
 padding: 10px;/* distance from margin to content*/
