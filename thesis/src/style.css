@@ -122,17 +122,13 @@ The right bar is to the right of the main bar, and should look like the main par
 It will consist of a bunch of divs with the necessary references.
 */
 
-div.rightbar{
+div.fullrightbar {
 position: fixed;
 margin-left:70%;
 width: 28%;/* make sure this is compatible with the width of #sidebar*/
 padding:10px;/* margin around <p>'s*/
 text-align: justify;
-}
-
-div.rightbar  {
-	/*display: none;*/
-	overflow: auto;
+overflow: auto;
 }
 
 /*

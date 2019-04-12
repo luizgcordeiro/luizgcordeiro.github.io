@@ -41,10 +41,14 @@ $( "#sidebar" ).load( "../src/sidebar" );
 RIGHT BAR
 -------------------------------------------------------->
 
-<div class="rightbar"></div>
-
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
 </div>
 
+-->
 <!-------------------------------------------------------
 MAIN
 -------------------------------------------------------->
@@ -82,6 +86,7 @@ $('.ref').each( function(){
 </script>
 <script>
 $('.ref').hover(function(){
+	$('#closerightbar').show();
 	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
 		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
 		
@@ -93,4 +98,20 @@ $('.ref').hover(function(){
 	// this does just creates links inside the right bar. Does not set the hover function for them
 </script>
 
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
 </html>

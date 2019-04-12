@@ -125,30 +125,18 @@ $( "#sidebar" ).load( "../src/sidebar" );
 
 <!-------------------------------------------------------
 RIGHT BAR
-To make a reference to "ID", use
-	<a class="makeref" data-target="refID" href="referencia">"Nome apropriado"</a>
-in the main text, and add
+-------------------------------------------------------->
 
-<div class="reference" id="refID"></div>
-	<script>
-	$( "#refID" ).load( "../0.matters/references.html #ID" );
-	</script>
-	
-(or whatever appropriate) to rightbar
-
-!!!Important: for references in the same page, instead copy the div to right bar
---------------------------------------------------------->
-
-<div class="rightbar">
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
 </div>
 
-<!--
-Upper menu to make
--->
-
 <!-------------------------------------------------------
-Now the main part starts
---------------------------------------------------------->
+MAIN
+-------------------------------------------------------->
 
 <div class="main">
 
@@ -248,13 +236,38 @@ Here is a list of issues that should be resolved:
 </body>
 
 <script>
-	$('.makeref').hover(function() {
-		$('.rightbar div').hide();
-		var target = '#' + $(this).data('target');
-		var targett = '#' + $(this).data('target') + ' div';
-		$(target).show();
-		$(targett).show();
-	})
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
 </script>
 
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
 </html>

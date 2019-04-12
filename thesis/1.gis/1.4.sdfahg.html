@@ -54,19 +54,13 @@ $( "#sidebar" ).load( "../src/sidebar" );
 RIGHT BAR
 -------------------------------------------------------->
 
-<div class="rightbar" id="rightbar"></div>
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
 
-<!--
-<script>
-	$.get("1.2.is.r", function(data){
-		$("#rightbar").html(data);
-	});
-	var content;
-	$.get('../0.matters/ref.r', function(data){
-		content= data;
-		$('#rightbar').prepend(content);
-	});
-</script>
 -->
 <!-------------------------------------------------------
 MAIN
@@ -757,6 +751,7 @@ $('.ref').each( function(){
 </script>
 <script>
 $('.ref').hover(function(){
+	$('#closerightbar').show();
 	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
 		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
 		
@@ -778,4 +773,10 @@ $('.proofbutton').each(function() {
 });
 </script>
 
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
 </html>

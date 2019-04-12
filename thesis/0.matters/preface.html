@@ -42,21 +42,13 @@ $( "#sidebar" ).load( "../src/sidebar" );
 RIGHT BAR
 -------------------------------------------------------->
 
-<div id="rightbar" class="rightbar"></div>
-<!--
-<script>
-	$.get("preface.r", function(data){
-		$("#rightbar").html(data);
-	});
-	var content;
-	$.get('../0.matters/ref.r', function(data){
-		content= data;
-		$('#rightbar').prepend(content);
-	});
-	
-	
-	$("#rightbar").load('preface.r');
-</script>
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
 -->
 <!-------------------------------------------------------
 MAIN
@@ -117,6 +109,7 @@ In the last chapter, which is mostly based on joint work with Viviane Beuter, we
 <p>
 
 </div>
+
 </body>
 
 <script>
@@ -126,6 +119,7 @@ $('.ref').each( function(){
 </script>
 <script>
 $('.ref').hover(function(){
+	$('#closerightbar').show();
 	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
 		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
 		
@@ -137,4 +131,20 @@ $('.ref').hover(function(){
 	// this does just creates links inside the right bar. Does not set the hover function for them
 </script>
 
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
 </html>
