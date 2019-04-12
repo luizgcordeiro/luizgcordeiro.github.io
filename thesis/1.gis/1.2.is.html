@@ -271,7 +271,7 @@ If $\theta$ is an action of a group $G$ on a set $X$, then the map $g\mapsto\lef
 </div>
 
 <p>
-The set of idempotents in a semigroup plays several important roles in their representation theory (Chapter <a href="../4.paois/4.0.intro.html">4</a>), so we introduce a notation for it.
+The set of idempotents in a semigroup plays several important roles in their representation theory (<a href="../4.paois/4.0.intro.html">Chapter 4</a>), so we introduce a notation for it.
 </p>
 
 <!-- 1.2.13 -->
@@ -313,7 +313,7 @@ A regular semigroup $S$ is inverse if and only if the elements of $E(S)$ commute
 <p>
 First assume that $S$ is inverse and let $e,f\in E(S)$. Let $x=(ef)^*$ be the unique inverse of $ef$. Then
 <div class="equation">\[
-(ef)(fxe)(ef)=(ef)x(ef)=ef\quad\text{and}\quad (fxe)(ef)(fxe)=f(xefx)e=fxe
+(ef)(fxe)(ef)=(ef)x(ef)=ef\quad\text{and}\quad (fxe)(ef)(fxe)=f(xefx)e=fxe,
 \]</div>
 so $(fxe)=(ef)^*=x$. Then we obtain
 <div class="equation">\[
@@ -328,10 +328,14 @@ fe=(fe)^2=f(ef)e=fxe=x=ef.
 <p>
 Conversely, assume elements of $E(S)$ commute and let $t_1$ and $t_2$ be inverses of some $s\in S$. Since $st_1$, $st_2$, $t_1s$ and $t_2s$ are idempotents, then
 <div class="equation">\begin{align*}
-t_1&=t_1st_1=t_1(st_2)(st_1)\\
-&=t_1(st_1)(st_2)=t_1st_2\\
-&=(t_1s)(t_2s)t_2=(t_2s)(t_1s)t_2\\
-&=t_2st_2=t_2
+t_1&=t_1st_1\\
+&=t_1(st_2)(st_1)\\
+&=t_1(st_1)(st_2)\\
+&=t_1st_2\\
+&=(t_1s)(t_2s)t_2\\
+&=(t_2s)(t_1s)t_2\\
+&=t_2st_2\\
+&=t_2,
 \end{align*}</div>
 so $S$ is inverse.
 </p>
@@ -377,11 +381,11 @@ Let $S$ be a multiplicative semigroup of partial isometries of a C*-algebra $A$.
 <a class='proofbutton' data-tag='1217'>Proof</a>
 <div class="proof" id="proofof1217">
 <p>
-(1)$\Rightarrow$(2) is obvious.
+<u>(1)$\Rightarrow$(2)</u> is obvious.
 </p>
 
 <p>
-(2)$\Rightarrow$(3): Let us first prove that $E(S)=\left\{p\in S:p\text{ is a projection}\right\}$. If $p\in E(S)$, then in particular $p$ is a partial isometry and $(p^*)^2=p^*$, so
+<u>(2)$\Rightarrow$(3)</u>: Let us first prove that $E(S)=\left\{p\in S:p\text{ is a projection}\right\}$. If $p\in E(S)$, then in particular $p$ is a partial isometry and $(p^*)^2=p^*$, so
 <div class="equation">\begin{align*}
 (p-p^*)^3&=p^3-p^2p^*-pp^*p+p(p^*)^2-p^*p^2+p^*pp^*+(p^*)^2p-(p^*)^3\\
 &=p-pp^*-p+pp^*-p^*p+p^*+p^*p-p^*=0
@@ -404,7 +408,7 @@ and again, because $p,q$ are projections then $pq-qp$ is normal in $A$ and the f
 </p>
 
 <p>
-(3)$\Rightarrow$(1): Let $u\in S$, $v$ be the inverse of $u$ in $S$, and $u^*$ be the adjoint of $u$ in $A$. Without loss of generality, we can assume $A$ is contained in the algebra $B(H)$ of bounded operators of some Hilbert space $H$. In this case, a map $u\in A$ is a partial isometry if and only if $u$ is isometric on $\ker(u)^\perp$, and in this case $u(\ker(u)^\perp)=u(H)=\ker(u^*)^\perp$ ([<span class='ref' data-tag='MR1074574'></span>, Theorem 2.3.3]). Then for all $x\in(\ker u)^\perp$,
+<u>(3)$\Rightarrow$(1)</u>: Let $u\in S$, $v$ be the inverse of $u$ in $S$, and $u^*$ be the adjoint of $u$ in $A$. Without loss of generality, we can assume $A$ is contained in the algebra $B(H)$ of bounded operators of some Hilbert space $H$. In this case, a map $u\in A$ is a partial isometry if and only if $u$ is isometric on $\ker(u)^\perp$, and in this case $u(\ker(u)^\perp)=u(H)=\ker(u^*)^\perp$ ([<span class='ref' data-tag='MR1074574'></span>, Theorem 2.3.3]). Then for all $x\in(\ker u)^\perp$,
 <div class="equation" id="equationpartialisometriesinversesemigroup">\[
 \Vert x\Vert=\Vert u(x)\Vert=\Vert u(v(u(x)))\Vert\leq\Vert v(u(x))\Vert\leq\Vert u(x)\Vert\leq\Vert x\Vert\tag{1.2.1}
 \]</div>
@@ -431,8 +435,10 @@ The converse also holds: every inverse semigroup is isomorphic to a semigroup of
 <p id="orderinversesemigroup">
 We define a partial order on an inverse semigroup $S$ with any of the following equivalent statements
 <div class="equation">\begin{align*}
-s\leq t&\iff\exists e\in E(S)\left(te=s\right)\iff\exists e\in E(S)(et=s)\\
-&\iff s=ts^*s\iff s=ss^*t
+s\leq t&\iff\exists e\in E(S)\left(te=s\right)\\
+&\iff\exists e\in E(S)(et=s)\\
+&\iff s=ts^*s\\
+&\iff s=ss^*t
 \end{align*}</div>
 (the equivalence of these statements can be proven using Theorem <span class='ref' data-tag='theoreminverseiffescommute'></span>).
 </p>
@@ -539,7 +545,7 @@ Let $\theta:S\to T$ be a morphism of semigroups.
 <p>
 (a) and (b) can be proven in the same manner as the analogous statements for groups. (c) is clear and (d) follows from the <span class='ref data-tag='remarksubinversesemigroups'></span> before Example <span class='ref' data-tag='examplesemilatticesasinversesemigroups'></span> and the previous items, and (f) follows easily from the uniqueness of inverses in inverse semigroups. The only item we need to prove then is (e), so suppose $S$ is inverse, $\theta$ is surjective and let $u=\theta(s)\in E(T)$, where $s\in S$. Letting $e=(ss^*)(s^*s)\in E(S)$, we obtain
 <div class="equation">\begin{align*}
-\phi(e)=u\phi(s^*s^*)u=u^2\phi(s^*s^*)u^2=\phi(s^2(s^*)^2s^2)=\phi(s^2)=u^2=u
+\phi(e)=u\phi(s^*s^*)u=u^2\phi(s^*s^*)u^2=\phi(s^2(s^*)^2s^2)=\phi(s^2)=u^2=u,
 \end{align*}</div>
 so $u=\phi(e)\in\phi(E(S))$. In particular, $E(T)$ is commutative and $T=\theta(S)$ is regular, so $T$ is an inverse semigroup by Theorem <span class='ref' data-tag='theoreminverseiffescommute'></span>.<span class="qed"></span>
 </p>
