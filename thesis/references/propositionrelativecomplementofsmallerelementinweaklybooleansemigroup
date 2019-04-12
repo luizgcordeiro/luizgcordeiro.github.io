@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#propositionrelativecomplementofsmallerelementinweaklybooleansemigroup'>1.4.11</a>
+<!-- 1.4.11 -->
+<div class='toload proposition'>
+<p><span class='envidentifier'>Proposition 1.4.11</span>
+If $S$ is a weakly Boolean inverse semigroup and $t\leq s$ in $S$, then $s\setminus t$ exists, and $s\setminus t=s(s^*s\setminus t^*t)$.
+</p>
+</div>

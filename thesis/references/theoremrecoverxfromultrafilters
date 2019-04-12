@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#theoremrecoverxfromultrafilters'>1.4.7</a>
+<!-- 1.4.7 -->
+<div class='toload theorem' id='theoremrecoverxfromultrafilters'>
+<p><span class='envidentifier'>Theorem 1.4.7</span>
+Let $\mathcal{B}$ be a basis of relatively compact subsets of a locally compact Hausdorff space $X$. Then the map $\pi:X\to\widehat{\mathcal{B}}^\Subset$ defined by
+<div class='equation'>\[
+\pi(x)=\mathcal{B}_x=\left\{U\in\mathcal{B}:x\in U\right\}
+\]</div>
+is a homeomorphism.
+</p>
+</div>

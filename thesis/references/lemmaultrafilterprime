@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#lemmaultrafilterprime'>1.4.18</a>
+<!-- 1.4.18 -->
+<div class='toload lemma'>
+<p><span class='envidentifier'>Lemma 1.4.18</span>
+A proper filter $F$ on a Boolean semigroup $S$ is an ultrafilter if and only if it is <em>prime</em>: If $s\lor t\in F$, then $s\in F$ or $t\in F$.
+</p>
+</div>

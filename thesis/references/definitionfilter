@@ -1,0 +1,14 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#definitionfilter'>1.4.3</a>
+<!-- 1.4.3 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 1.4.3</span>
+Let $P$ be a set and $\prec$ a transitive relation on $P$. A nonempty subset $F\subseteq P$ is said to be:
+<ol>
+	<li> <em>upwards</em> (respectively, <em>downwards</em>) <em>closed</em> if $x\in F$ and $x\prec y$ (respectively, $y\prec x$) imply $y\in F$ for all $x,y\in P$</li>
+	<li> <em>downwards directed</em> if for all $x,y\in F$, there is $z\in F$ with $z\prec x$ and $z\prec y$.</li>
+	<li> a <em>$\prec$-filter</em> if it is nonempty, upwards closed and downwards directed.</li>
+	<li> a <em>$\prec$-ultrafilter</em> if it is a maximal proper $\prec$-filter.</li>
+</ol>
+In the case that $(P,\leq)$ is an ordered set and there is no risk of confusion, we will call $\leq$-filters and $\leq$-ultrafilters simply filters and ultrafilters.
+</p>
+</div>

@@ -1,0 +1,15 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#proposition1417'>1.4.17</a>
+<!-- 1.4.17 -->
+<div class='toload proposition'>
+<p><span class='envidentifier' id='propositionproductofultrafilters'>Proposition 1.4.17
+<span style='font-weight:normal;'>[{Compare with [<span class='ref' data-tag='MR2827424'></span>, Proposition 2.13]}]</span></span>
+Let $S$ be a Boolean inverse semigroup.</p>
+<ol class='alphpar'>
+	<li> If $F,G$ are filters, then $F\cdot G$ is also a filter.</li>
+	<li> If $F,G,H$ are filters on $S$, then $F\cdot (G\cdot H)=(F\cdot G)\cdot H$ (and as usual we denote this common filter by $F\cdot G\cdot H$).</li>
+	<li> If $F\in\GP(S)$ then $F^{-1}\in\GP(S)$.</li>
+	<li> If $F\in\GP(S)$ and $G$ is a filter such that $fg\neq 0$ for all $f\in F$ and $g\in G$, then $F\cdot G\cdot G^{-1}=F$.</li>
+	<li> If $F\in\GP(S)$ and $G$ is a filter such that $fg\neq 0$ for all $f\in F$ and $g\in G$, then $F\cdot G\in\GP(S)$.</li>
+	<li> $\GP(S)$ is a groupoid with the product of ultrafilters restricted to $\GP(S)^{(2)}$.</li>
+</ol>
+</div>

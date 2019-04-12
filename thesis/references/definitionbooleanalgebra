@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#definitionbooleanalgebra'>1.4.9</a>
+<!-- 1.4.9 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 1.4.9</span>
+A <em>generalized Boolean algebra</em> is a lattice with zero which is distributive (as a semigroup under meets) and which admits relative complements of any two (comparable) elements. A <em>unital Boolean algebra</em> is a generalized Boolean algebra admitting a maximum (in particular, it is a monoid).
+</p>
+</div>
