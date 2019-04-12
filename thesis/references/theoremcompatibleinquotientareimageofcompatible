@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.5.qods.html#theoremcompatibleinquotientareimageofcompatible'>1.5.8</a>
+<!-- 1.5.8 -->
+<div class='toload theorem'>
+<p><span class='envidentifier'>Theorem 1.5.8</span>
+If $S$ is a weakly Boolean inverse semigroup and $I$ is a $\lor$-ideal of $S$, then for all pair of compatible elements $\alpha,\beta\in S/I$ there are compatible elements $a,b\in S$ such that $\tildeoveri{a}=\alpha$ and $\tildeoveri{b}=\beta$.
+</p>
+</div>

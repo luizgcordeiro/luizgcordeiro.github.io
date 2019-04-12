@@ -6,7 +6,7 @@ Let $S$ be a distributive inverse semigroup and $s,t,z,a\in S$.
 <ol class='alphpar'>
 	<li> If $(t\setminus s)$ exists, then $(zt)\setminus(zs)$ exists and is equal to $z(t\setminus s)$. Similarly, $(tz)\setminus(sz)$ exists and is equal to $(t\setminus s)z$.</li>
 	<li> If $t\land z$, $s\land z$ and $(t\setminus s)$ exist, then
-		<div class='equation'\[
+		<div class='equation'>\[
 		(t\land z)\setminus(s\land z)=(t\setminus s)\land z,
 		\]</div>
 		in the sense that these elements exist and are equal.</li>

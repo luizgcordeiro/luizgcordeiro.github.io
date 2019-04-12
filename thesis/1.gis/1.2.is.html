@@ -75,14 +75,14 @@ MAIN
 Before we start this section, let us fix some nomenclature that will be used throughout the text: Let $(L,\leq)$ be a poset:
 <ol>
 	<li> The <em>join</em> of a subset $F\subseteq L$ is its supremum, and we denote it by $\bigvee F$ if it exists. If $F=\left\{a_1,\ldots,a_n\right\}$ is finite, we also denote $\bigvee F=a_1\lor\cdots\lor a_n$.</li>
-	<li> The <em>meet</em> of a subset $F\subseteq L$ is its infimum, and we denote it by $\bigwedge F$ if it exists. If $F=\left\{a_1,\ldots,a_n\right\}$ is finite, we also denote $\bigwedge F=a_1\land\cdots\land a_n$.
+	<li> The <em>meet</em> of a subset $F\subseteq L$ is its infimum, and we denote it by $\bigwedge F$ if it exists. If $F=\left\{a_1,\ldots,a_n\right\}$ is finite, we also denote $\bigwedge F=a_1\land\cdots\land a_n$.</li>
 </ol>
 </p>
 <p>
 We say that $(L,\leq)$ is a
 <ol>
 	<li value="3"> <em>$\wedge$-semilattice</em> (read "meet semilattice") if it admits arbitrary finite meets.</li>
-	<li> <em>lattice</em>, if it admits arbitrary finite meets and joins.
+	<li> <em>lattice</em>, if it admits arbitrary finite meets and joins.</li>
 </ol>
 </p>
 
@@ -98,8 +98,8 @@ We say that the poset $L$ has a <em>zero</em> if it has a minimum, denoted by $0
 A <em>semigroup</em> is a set $S$ endowed with an associative binary operation $(s,t)\mapsto st$. A semigroup is
 <ol>
 	<li> <em>regular</em> if for every $s\in S$ there exists an element $t\in S$, called an <em>inverse</em> of $s$, satisfying $sts=s$ and $tst=t$.</li>
-	<li> an <em>inverse semigroup</em> if it is regular and every $s\in S$ admits a unique inverse. In this case we denote it as $s^*$.
-	<li> a <em>monoid</em> if it has an <em>identity</em> or <em>unit</em>, that is, an element $1\in S$ (necessarily unique) satisfying $1s=s1=s$ for all $s\in S$.
+	<li> an <em>inverse semigroup</em> if it is regular and every $s\in S$ admits a unique inverse. In this case we denote it as $s^*$.</li>
+	<li> a <em>monoid</em> if it has an <em>identity</em> or <em>unit</em>, that is, an element $1\in S$ (necessarily unique) satisfying $1s=s1=s$ for all $s\in S$.</li>
 </ol>
 A <em>subsemigroup</em> of a semigroup $S$ is a subset $T\subseteq S$ which is closed under the semigroup operation. A <em>sub-inverse semigroup</em> of an inverse semigroup is a subsemigroup which is closed under inverses.</p>
 </div>
@@ -108,6 +108,7 @@ A <em>subsemigroup</em> of a semigroup $S$ is a subset $T\subseteq S$ which is c
 <div class="definition" id="definitionmorphismofsemigroups">
 <p><span class="envidentifier">Definition 1.2.2</span>
 A <em>morphism</em> of semigroups is a map $\theta:S\to T$ satisfying $\theta(s_1s_2)=\theta(s_1)\theta(s_2)$ for all $s_1,s_2\in S$. Moreover, $\theta$ is an <em>isomorphism</em> if it is invertible and $\theta^{-1}$ is also a morphism.
+</p>
 </div>
 
 <p>
@@ -360,6 +361,7 @@ Inverse semigroups have several applications in the theory of $C^*$-algebras: fo
 <span class='ref' data-tag='MR2457327'></span>,
 <span class='ref' data-tag='MR2050134'></span>].
 In fact, every regular semigroup of partial isometries of a C*-algebra is an inverse semigroup, as we prove now. (Compare with [<span class='ref' data-tag='MR1724106'></span>, Proposition 2.1.4].)
+</p>
 
 <!-- 1.2.17 -->
 <div class="proposition">
@@ -560,7 +562,7 @@ For every $s\in S$, let $D_{s^*}=\left\{t\in S:tt^*\leq s^*s\right\}$, and defin
 \alpha_s(z)\alpha_s(z)^*=(sz)(sz)^*=szz^*s^*\leq ss^*,
 \]</div>
 so $\alpha_s(z)=sz\in D_s$. The verification that $\alpha_{s^*}=\alpha_s^{-1}$ follows easily from the definition of the order on $S$.
-<p>
+</p>
 
 <p>
 In order to prove that $\alpha_s\circ\alpha_t=\alpha_{st}$, we first compare their domains, that is, we show that
@@ -595,7 +597,7 @@ The map $\alpha$ will be used in later chapters, so we give it a name.
 <div class="definition" id="definitioncanonicalleftaction">
 <p><span class="envidentifier">Definition 1.2.27</span>
 The map $\alpha:S\to\mathcal{I}(S)$ is called the <em>canonical left action of $S$ on itself</em>.
-<p>
+</p>
 </div>
 
 <div class="remark">
@@ -665,7 +667,7 @@ Let $S$ be an inverse semigroup, $s,t\in S$ two compatible elements and $z\in S$
 	<div class="equation">\[
 	p=pp^*p\leq st^*t,
 	\]</div>
-	so $st^*t$ is the largest lower bound of $s$ and $t$, that is, their meet.<span class="qed"></span>
+	so $st^*t$ is the largest lower bound of $s$ and $t$, that is, their meet.<span class="qed"></span></li>
 </ol>
 </div>
 
@@ -974,7 +976,7 @@ Let $S$ be a distributive inverse semigroup and $s,t,z,a\in S$.
 <ol class='alphpar'>
 	<li> If $(t\setminus s)$ exists, then $(zt)\setminus(zs)$ exists and is equal to $z(t\setminus s)$. Similarly, $(tz)\setminus(sz)$ exists and is equal to $(t\setminus s)z$.</li>
 	<li> If $t\land z$, $s\land z$ and $(t\setminus s)$ exist, then
-		<div class='equation'\[
+		<div class='equation'>\[
 		(t\land z)\setminus(s\land z)=(t\setminus s)\land z,
 		\]</div>
 		in the sense that these elements exist and are equal.</li>
@@ -993,7 +995,7 @@ Let $S$ be a distributive inverse semigroup and $s,t,z,a\in S$.
 		<div class='equation'>\[
 		zt=z(s\lor(t\setminus s))=zs\lor z(t\setminus s),
 		\]</div>
-		which is precisely what we need.</li>
+		which is precisely what we need.</p></li>
 		
 	<li>Since $t\land z$ exists and $t\setminus s\leq t$, then, by the previous lemma (Lemma <span class='ref' data-tag='lemmaformulaformeetsbychangingbysmaller'></span>), $(t\setminus s)\land z$ exists. Let us show it satisfies the properties of the relative complement of $(s\land z)$ in $(t\land z)$: On one hand, if $p\leq (t\setminus s)\land z$ and $p\leq (s\land z)$ then $p\leq (t\setminus s)\land s=0$, so
 	<div class='equation'>\[
@@ -1003,7 +1005,7 @@ Let $S$ be a distributive inverse semigroup and $s,t,z,a\in S$.
 	<div class='equation'>\[
 	t\land z=((t\setminus s)\lor s))\land z=((t\setminus s)\land z)\lor(s\land z).
 	\]</div>
-	Therefore $(t\setminus s)\land z$ is the relative complement of $(s\land z)$ in $(t\land z)$.
+	Therefore $(t\setminus s)\land z$ is the relative complement of $(s\land z)$ in $(t\land z)$.</li>
 	
 	<li> Since $a,s,t\leq s\lor t$, then $a$, $s$ and $t$ (or any smaller elements) are compatible and Proposition <span class='ref' data-tag='corollarydistributivedistributemeets'></span> allows us to compute
 	<div class='equation'>
@@ -1018,12 +1020,13 @@ Let $S$ be a distributive inverse semigroup and $s,t,z,a\in S$.
 	<div class='equation'>\[
 	a= s\lor(a\setminus s)\leq t\lor(a\setminus s),
 	\]</div>
-	which implies $a\setminus t\leq a\setminus s$ by item (c).<span class='qed'></span>
+	which implies $a\setminus t\leq a\setminus s$ by item (c).<span class='qed'></span></li>
 </ol>
 </div>
 
 
 </div>
+
 </body>
 
 <script>

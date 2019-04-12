@@ -1,0 +1,13 @@
+<a class='reflink' href='../1.gis/1.5.qods.html#lemmaquotientinversesemigroup'>1.5.3</a>
+<!-- 1.5.3 -->
+<div class='toload lemma'>
+<p><span class='envidentifier'>Lemma 1.5.3</span>
+If $S$ is a $\lor$-ideal of a distributive inverse semigroup $S$, then</p>
+<ol class='alphpar'>
+	<li> If $S$ has a zero then $0\in I$.</li>
+	<li> $i\in I$ if and only if $i^*\in I$.</li>
+	<li> If $i\in I$ and $j\leq i$ then $j\in I$.</li>
+	<li> $a\sim_I b$ if and only if $a^*\sim_I b^*$.</li>
+	<li> If $a=b\lor i$ and $i\in I$ then $a\sim_I b$.</li>
+</ol>
+</div>

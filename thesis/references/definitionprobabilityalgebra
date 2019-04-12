@@ -1,0 +1,18 @@
+<a class='reflink' href='../1.gis/1.8.nclst.html#definitionprobabilityalgebra'>1.8.2</a>
+<!-- 1.8.2 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 1.8.2
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR2459668'></span>, 322A]</span></span>
+A <em>probability algebra</em> is a pair $(B,\mu)$, where $B$ is a $\sigma$-complete unital Boolean algebra and $\mu:B\to[0,1]$ is a function, called a <em>probability measure</em>, satisfying
+<ol class='roman'>
+	<li> $\mu(0)=0$;</li>
+	<li> $\mu(e)>0$ whenever $e\neq 0$;</li>
+	<li> $\mu(1)=1$;</li>
+	<li> If $\left\{e_n\right\}$ is a sequence of disjoint elements of $B$, then
+	<div class='equation'>\[
+	\mu\left(\bigvee_{n\in\mathbb{N}} a_n\right)=\sum_{n\in\mathbb{N}}\mu(a_n).
+	\]</div></li>
+	</ol>
+	In other terms, $\mu$ is a normalized, faithful invariant mean on $B$ (regarded as an inverse semigroup) satisfying the <em>countable additivity</em> described in (iv) (as opposed to only finite additivity).
+</p>
+</div>

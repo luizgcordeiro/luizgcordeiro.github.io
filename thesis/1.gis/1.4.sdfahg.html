@@ -144,7 +144,7 @@ The category $\mathbf{Bool}$ of unital Boolean algebras and their morphisms is d
 
 <p>
 In the rest of this section we will use these ideas in the more general setting of groupoids and inverse semigroups.
-<p>
+</p>
 
 <h3 class='subsection'>1.4.2. Recovering a locally compact Hausdorff space from its open sets</h3>
 
@@ -247,7 +247,7 @@ A <em>generalized Boolean algebra</em> is a lattice with zero which is distribut
 <!-- 1.4.10 -->
 <div class='definition' id='definitionbooleaninversesemigroup'>
 <p><span class='envidentifier'>Definition 1.4.10
-<span style='font-weight:normal;'>[<span class='ref' data-tag='MR3077869'></span>, 3.4]</span>
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR3077869'></span>, 3.4]</span></span>
 A distributive semigroup with zero $S$ is <em>weakly Boolean</em> if $E(S)$ is a generalized Boolean algebra. A weakly Boolean semigroup which is also a $\wedge$-semilattice is called a <em>Boolean</em> semigroup.
 </p>
 </div>
@@ -375,11 +375,12 @@ Let $S$ be a Boolean inverse semigroup.</p>
 <a class='proofbutton' data-tag='proposition1417'>Proof</a>
 <div class='proof' id='proofofproposition1417'>
 <ol class='alphpar'>
-	<li> As $F\cdot G$ is upwards closed,  we simply need to prove it is directed below: Suppose $u_1,u_2\in F\cdot G$, and choose $f_1,f_2\in F$, $g_1,g_2\in G$ with $f_ig_i\leq u_i$. Then
-<div class='equation'>\[
-(f_1\land f_2)(g_1\land g_2)\leq u_1\land u_2,
-\]</div>
-so $u_1\land u_2\in F\cdot G$. Therefore $F\cdot G$ is a filter.</li>
+	<li>
+		As $F\cdot G$ is upwards closed,  we simply need to prove it is directed below: Suppose $u_1,u_2\in F\cdot G$, and choose $f_1,f_2\in F$, $g_1,g_2\in G$ with $f_ig_i\leq u_i$. Then
+		<div class='equation'>\[
+			(f_1\land f_2)(g_1\land g_2)\leq u_1\land u_2,
+		\]</div>
+		so $u_1\land u_2\in F\cdot G$. Therefore $F\cdot G$ is a filter.</li>
 	<li> is clear.</li>
 	<li> is also straightforward.</li>
 	<li><p> Suppose $F$ and $G$ satisfy the given properties. If $f\in F$ and $g\in G$ then $fgg^*\leq f$, so $f\in F\cdot G\cdot G^{-1}$. This proves that $F\subseteq F\cdot G\cdot G^{-1}$. If we show that $F\cdot G\cdot G^{-1}$ is a proper filter then maximality of $F$ implies that $F=F\cdot G\cdot G^{-1}$.
@@ -387,7 +388,7 @@ so $u_1\land u_2\in F\cdot G$. Therefore $F\cdot G$ is a filter.</li>
 	
 	<p>
 	Given $u\in F\cdot G\cdot G^{-1}$, choose $f\in F$ and $g_1,g_2\in G$ with $fg_1g_2^{-1}\leq u$. Let $g=g_1\land g_2\in G$. Since $0\neq fg=fgg^{-1}g$, we have $0\neq fgg^{-1}\leq u$, thus $F\cdot G\cdot G^{-1}$ is proper.
-	</p.</li>
+	</p></li>
 	<li><p>Suppose $P$ is any proper filter containing $F\cdot G$. Let us prove that $P\cdot G^{-1}$ is proper as well: Given $p\in P$ and $g\in G$, let $f$ be any element of $F$. Choose $q\in P$ with $q\leq fg,p$, so $0\leq q=qq^*q\leq pg^*f^*q$. In particular, $pg^*\neq 0$.
 	</p>
 	
@@ -657,21 +658,27 @@ is a proper continuous covering morphism of topological groupoids.</li>
 <a class='proofbutton' data-tag='proposition1425'>Proof</a>
 <div class='proof' id='proofofproposition1425'>
 <ol class='alphpar'>
-	<li><p> If $A\in\KB(\mathcal{H})$ then $\phi^{-1}(A)$ is open, since $\phi$ is continuous, and compact, since $\phi$ is proper, so in order to prove that $\KB(\phi)$ is well-defined it remains to prove that $\phi^{-1}(A)$ is a bisection.</p>
+	<li><p>
+		If $A\in\KB(\mathcal{H})$ then $\phi^{-1}(A)$ is open, since $\phi$ is continuous, and compact, since $\phi$ is proper, so in order to prove that $\KB(\phi)$ is well-defined it remains to prove that $\phi^{-1}(A)$ is a bisection.
+		</p>
 	
-	<p>Suppose $g,h\in\phi^{-1}(A)$ with $\mathfrak{s}(g)=\mathfrak{s}(h)$. Then $\phi(g),\phi(h)\in A$, and
-<div class='equation'>\[
-\mathfrak{s}(\phi(g))=\phi(\mathfrak{s}(g))=\phi(\mathfrak{s}(h))=\mathfrak{s}(\phi(h)),
-\]</div>
-so $\phi(g)=\phi(h)$ because $A$ is a bisection, and then $g=h$ because $\phi$ is star-injective. This prove that the source map is injective on $A$, and the range map is dealt with similarly, therefore $\phi^{-1}(A)\in \KB(\mathcal{G})$.</p>
+		<p>
+		Suppose $g,h\in\phi^{-1}(A)$ with $\mathfrak{s}(g)=\mathfrak{s}(h)$. Then $\phi(g),\phi(h)\in A$, and
+		<div class='equation'>\[
+			\mathfrak{s}(\phi(g))=\phi(\mathfrak{s}(g))=\phi(\mathfrak{s}(h))=\mathfrak{s}(\phi(h)),
+		\]</div>
+		so $\phi(g)=\phi(h)$ because $A$ is a bisection, and then $g=h$ because $\phi$ is star-injective. This prove that the source map is injective on $A$, and the range map is dealt with similarly, therefore $\phi^{-1}(A)\in \KB(\mathcal{G})$.
+		</p>
 
-	<p>To prove that $\mathbf{KB}(\phi)$ is a morphism of inverse semigroups, let $A,B\in\mathbf{KB}(\mathcal{H})$. Suppose $g\in\phi^{-1}(AB)$, so $\phi(g)\in AB$ and we can write $\phi(g)=ab$ for certain $a\in A$ and $b\in B$. Since $\phi$ is star-surjective, we have $b=\phi(h)$ for some $h\in\mathcal{G}$ with $\mathfrak{s}(h)=\mathfrak{s}(g)$, and so the product $gh^{-1}$ is well-defined and $a=\phi(gh^{-1})$. This proves that $g=(gh^{-1})h$, where $gh^{-1}\in\phi^{-1}(A)$ and $h\in\phi^{-1}(B)$. We conclude that $\phi^{-1}(AB)\subseteq\phi^{-1}(A)\phi^{-1}(B)$. The converse inclusion is trivial because $\phi$ is a morphism of groupoids. Moreover, $\mathbf{KB}(\phi)$ preserves empty sets (the zeroes of the semigroups), unions and intersections and therefore it is a Boolean inverse semigroup morphism.</p>
+		<p>To prove that $\mathbf{KB}(\phi)$ is a morphism of inverse semigroups, let $A,B\in\mathbf{KB}(\mathcal{H})$. Suppose $g\in\phi^{-1}(AB)$, so $\phi(g)\in AB$ and we can write $\phi(g)=ab$ for certain $a\in A$ and $b\in B$. Since $\phi$ is star-surjective, we have $b=\phi(h)$ for some $h\in\mathcal{G}$ with $\mathfrak{s}(h)=\mathfrak{s}(g)$, and so the product $gh^{-1}$ is well-defined and $a=\phi(gh^{-1})$. This proves that $g=(gh^{-1})h$, where $gh^{-1}\in\phi^{-1}(A)$ and $h\in\phi^{-1}(B)$. We conclude that $\phi^{-1}(AB)\subseteq\phi^{-1}(A)\phi^{-1}(B)$. The converse inclusion is trivial because $\phi$ is a morphism of groupoids. Moreover, $\mathbf{KB}(\phi)$ preserves empty sets (the zeroes of the semigroups), unions and intersections and therefore it is a Boolean inverse semigroup morphism.
+		</p>
 	
-	<p>It remains only to check that $\KB(\phi)$ is proper: If $C\in\mathbf{KB}(\mathcal{G})$, then $\phi(C)$ is a compact subset of $\mathcal{H}$, so we can find finitely many $A_1,\ldots,A_n\in\mathbf{KB}(\mathcal{H})$ such that $\phi(C)\subseteq\bigcup_{i=1}^n A_i$, that is, $C\subseteq\bigcup_{i=1}^n\phi^{-1}(A_i)$. We already know that $\phi^{-1}(A_i)\in\mathbf{KB}(\mathcal{G})$, so taking $C_i=C\cap\phi^{-1}(A_i)\in\mathbf{KB}(\mathcal{G})$ we conclude that
-	<div class='equation'>\[
-	C=\bigcup_{i=1}^n C_i\qquad\text{and}\qquad C_i\subseteq\phi^{-1}(A_i)=\mathbf{KB}(\phi)(A_i)\qquad\text{ for all }i,
-	\]</div>
-	which means that $\mathbf{KB}(\phi)$ is proper.</p>/li>
+		<p>It remains only to check that $\KB(\phi)$ is proper: If $C\in\mathbf{KB}(\mathcal{G})$, then $\phi(C)$ is a compact subset of $\mathcal{H}$, so we can find finitely many $A_1,\ldots,A_n\in\mathbf{KB}(\mathcal{H})$ such that $\phi(C)\subseteq\bigcup_{i=1}^n A_i$, that is, $C\subseteq\bigcup_{i=1}^n\phi^{-1}(A_i)$. We already know that $\phi^{-1}(A_i)\in\mathbf{KB}(\mathcal{G})$, so taking $C_i=C\cap\phi^{-1}(A_i)\in\mathbf{KB}(\mathcal{G})$ we conclude that
+		<div class='equation'>\[
+		C=\bigcup_{i=1}^n C_i\qquad\text{and}\qquad C_i\subseteq\phi^{-1}(A_i)=\mathbf{KB}(\phi)(A_i)\qquad\text{ for all }i,
+		\]</div>
+		which means that $\mathbf{KB}(\phi)$ is proper.
+		</p></li>
 
 	<li><p>To prove that $\mathcal{GP}(\theta)$ is well-defined, suppose that $F$ is a prime filter in $T$. First of all, let us prove that $\theta^{-1}(F)$ is nonempty. Letting $t\in F$ be arbitrary, choose $t_1,\ldots,t_n\in T$ and $s_1,\ldots,s_n\in S$ with
 <div class='equation'>\[
@@ -713,7 +720,7 @@ Finally, it is straightforward to verify that covering groupoid morphisms are cl
 <!-- 1.4.26 -->
 <div class='theorem' id='theoremnoncommutativestoneduality'>
 <p><span class='envidentifier'>Theorem 1.4.26
-<span style='font-weight:normal;'>[<span class='ref' data-tag='MR3077869'></span>, Theorem 3.25]</span>
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR3077869'></span>, Theorem 3.25]</span></span>
 $\mathrm{\bf Amp_H}$ and $\mathrm{\bf Inv_{Bo}}$ are dually equivalent.
 </p>
 </div>
