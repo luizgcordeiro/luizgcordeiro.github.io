@@ -1,0 +1,15 @@
+<a class='reflink' href='../1.gis/1.7.im.html#definitioninvariantmean'>1.7.11</a>
+<!-- 1.7.11 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 1.7.11</span>
+	<span style='font-weight:normal;'>([<span class='ref'data-tag='MR3448402'></span>])</span></span>
+	A <em>mean</em> on a weakly Boolean inverse semigroup $S$ is a map $\mu:E(S)\to[0,\infty)$ satisfying
+	<ol>
+		<li> $\mu(e\lor f)=\mu(e)+\mu(f)$ whenever $e,f\in E(S)$, $ef=0$.
+	</ol>
+	and a mean $\mu$ is called <em>invariant</em> if
+	<ol>
+		<li value='2'> $\mu(s^*s)=\mu(ss^*)$ for all $s\in S$;
+	</ol>
+	A mean $\mu$ on $S$ will be called <em>faithful</em> if $\mu(e)=0$ implies $e=0$, and if $S$ is a monoid and $\mu(1)=1$, we say that $\mu$ is <em>normalized</em>.</p>
+</div>

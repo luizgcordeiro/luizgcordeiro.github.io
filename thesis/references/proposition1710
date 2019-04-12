@@ -1,0 +1,12 @@
+<a class='reflink' href='../1.gis/1.7.im.html#proposition1710'>1.7.10</a>
+<!-- 1.7.10 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 1.7.10</span>
+	Given a weakly Boolean inverse semigroup $S$, the following are equivalent:</p>
+	<ol class='arpar'>
+		<li> For every $s\in S$, there is a finite subset $C\subseteq\mathcal{I}_s$ which is a cover of $\mathcal{I}_s$.</li>
+		<li> For all $s\in S$, $\bigvee\mathcal{I}_s$ exists.</li>
+		<li> For all $s\in S$, $\Fix(s)$ exists.</li>
+		<li> $S$ is a Boolean inverse semigroup.</li>
+	</ol>
+</div>

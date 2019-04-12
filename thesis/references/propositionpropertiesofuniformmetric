@@ -1,0 +1,16 @@
+<a class='reflink' href='../1.gis/1.7.im.html#propositionpropertiesofuniformmetric'>1.7.17</a>
+<!-- 1.7.17 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 1.7.17</span>
+	Suppose $\mu$ is an invariant mean on a Boolean semigroup $S$. Then if $s,t,z\in S$,</p>
+	<ol class='alphpar'>
+		<li> $d_\mu(s,t)=\mu\left((s\setminus t)^*(s\setminus t)\lor(t\setminus s)^*(t\setminus s)\right)$.</li>
+		<li> $d_\mu$ is a pseudometric on $S$.</li>
+		<li> $d_\mu(s^{-1},t^{-1})=d_\mu(s,t)$.</li>
+		<li> $d_\mu(zs,zt)\leq d_\mu(s,t)$ and $d_\mu(sz,tz)\leq d_\mu(s,t)$.</li>
+		<li> $d_\mu(s_1s_2,t_1t_2)\leq d_\mu(s_1,t_2)+d_\mu(s_2,t_2)$.</li>
+		<li> If $s,t,z,w\in S$ then $d_\mu(s\land t,z\land w)\leq d_\mu(s,z)+d_\mu(t,w)$.</li>
+		<li> If $\left\{s,t\right\}$ and $\left\{z,w\right\}$ are compatible, then $d_\mu(s\lor t,z\lor w)\leq d_\mu(s,z)+d_\mu(t,w)$.</li>
+		<li> If $s,t,z,w\in S$ then $d_\mu(s\setminus t,z\setminus w)\leq d_\mu(s,z) +d_\mu(t,w)$.</li>
+	</ol>
+</div>

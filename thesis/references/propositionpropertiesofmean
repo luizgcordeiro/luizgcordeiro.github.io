@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.7.im.html#propositionpropertiesofmean'>1.7.14</a>
+<!-- 1.7.14 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 1.7.14</span>
+	Suppose $\mu$ is a mean on a weakly Boolean semigroup $S$. Then</p>
+	<ol class='alphpar'>
+		<li> $\mu(0)=0$.
+		<li> $\mu(e\lor f)=\mu(e)+\mu(f)-\mu(ef)$ for all $e,f\in E(S)$.
+		<li> If $e\leq f$ in $E(S)$ then $\mu(f)=\mu(e)+\mu(f\setminus e)$.
+	</ol>
+</div>

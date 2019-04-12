@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.7.im.html#lemmaIs1'>1.7.4</a>
+<!-- 1.7.4 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 1.7.4</span>
+	If $S$ is an inverse semigroup, then for all $s\in S$,
+	<div class='equation'>\[
+	\mathcal{I}_s=\left\{e\in E(S):e\leq s\right\}=\left\{e\in S:e\leq s\text{ and }e\leq s^*s\right\}.
+	\]</div>
+	In particular, $\mathcal{I}_s$ is downwards closed and $\mathcal{I}_{s^*}=\mathcal{I}_s$.
+	</p>
+</div>

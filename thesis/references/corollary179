@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.7.im.html#corollary179'>1.7.9</a>
+<!-- 1.7.9 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 1.7.9</span>
+	If $S$ is a Boolean inverse semigroup and $s,t\in S$ then $t\setminus s=t(t^*t\setminus\Fix(s^*t))$.
+	</p>
+</div>
