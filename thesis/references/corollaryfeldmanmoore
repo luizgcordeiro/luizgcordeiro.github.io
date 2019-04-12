@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#corollaryfeldmanmoore'>1.6.19</a>
+<!-- 1.6.19 -->
+<div class='toload corollary'>
+<p><span class='envidentifier'>Corollary 1.6.19
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR0578656'></span>, Theorem 1]</span></span>
+If $X$ is a standard Borel space and $R\subseteq X\times X$ is an $\ra$-discrete Borel equivalence relation (that is $R$ is Borel in $X\times X$), then there is a countable group $G$ and an action of $G$ on $X$ by Borel automorphisms such that $R=\left\{(gx,x):g\in G\right\}$.
+</p>
+</div>

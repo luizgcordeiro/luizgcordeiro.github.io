@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#definitionpmpgroupoid'>1.6.20</a>
+<!-- 1.6.20 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 1.6.20</span>
+	Let $\mathcal{G}$ be a Borel groupoid and $\mu$ a Borel measure on $\mathcal{G}^{(0)}$. We say that $\mu$ is <em>invariant</em> if $\mu(\mathfrak{s}(A))=\mu(\mathfrak{r}(A))$ for all $A\in\BOR(\mathcal{G})$. A <em>probability measure-preserving</em> groupoid is a Borel groupoid endowed with an invariant probability measure $\mu$ on $\mathcal{G}^{(0)}$, which we will sometimes denote as $(\mathcal{G},\mu)$ whenever $\mu$ needs to be written explicitly.
+	</p>
+</div>

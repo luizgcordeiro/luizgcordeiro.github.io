@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#theoremkechrisborelmapsofstandardaregood'>1.6.9</a>
+<!-- 1.6.9 -->
+<div class='toload theorem'>
+<p><span class='envidentifier'>Theorem 1.6.9
+<span style='font-weight:normal'>[<span class='ref' data-tag='MR1321597'></span>, Theorems 14.12 and 15.2]</span></span>
+Let $X,Y$ be standard Borel spaces and $f:X\to Y$. Then $f$ is Borel if and only if $\operatorname{graph}(f)$ is Borel in $Y\times X$, and in this case, if $A\subseteq X$ is Borel and $f|_A$ is injective then $f(A)$ is Borel.
+</p>
+</div>
