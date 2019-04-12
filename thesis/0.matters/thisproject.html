@@ -223,23 +223,23 @@ implementation allows the reader to point the mouse to a reference, whose conten
 
 Here is a messy list of lingering issues and ideas:
 <ul>
-	<li>Why sometimes there is some space between theorem/proposition/whatever statement and "proof" buttons?!</li>
+	<li>Why sometimes there is some space between theorem/proposition/whatever statement and "proof" buttons?! This seems to be a problem with the say CSS handles paragraph margins/paddings.</li>
 	<li>Make "Q.E.D." automatically be included at the end of proofs (this is probably not feasible since sometimes it
 	will be inside a list item, right after an equation, etc. the same way as "\qedhere" in latex);</li>
 	<li>Make "Q.E.D." appear on the bottom-right corner of the proof block (check!), in a manner that does not overlap text if
 	it gets to the end of the line (no check...)</li>
-	<li>Pages are too heavy to load! Is it because of xypic, jquery (in particular a few .load()s), mathJax, all of these? linear.ups.edu pages are quite
+	<li>Pages are too heavy `! Is it because of xypic, jquery (in particular a few .load()s), mathJax, all of these? linear.ups.edu pages are quite
 	large and full of (mostly simple) equations but they do load fast.</li>
 	<li>Better tag/id system. I'm using the same tags as I did in the tex files in my thesis, but an approach like Stack Project's, with simple tags (like "AB01") is probably better.</li>
-	<li>Maybe coding of proof buttons may be improved.</li>
-	<li>Maybe or maybe not add the type of reference (Theorem, Definition, Remark, paragraph...) to the reference file, separately from the number/tag. This way maybe creating a reference could automatically add "Theorem 1.2.3" instead of only "1.2.3"; But sometimes I want the latter.</li> 
+	<li>Maybe coding of proof display buttons may be simplified.</li>
+	<li>Maybe or maybe not add the type of reference (Theorem, Definition, Remark, paragraph...) to the reference file, separately from the number/tag. This way maybe creating a reference could automatically add "Theorem 1.2.3" instead of only "1.2.3"; But sometimes I want the latter...</li> 
 	<li>Is jquery really necessary? I use mostly '.load()' and '.get()'. If the files are pre-processed (not ideal) this could be avoided.</li>
-	<li>Make numbered theorems, definitions, etc. with counters. Stacks and linear.ups.edu solve this in different manners: Sections in Stacks are very short,
+	<li>Make numbered theorems, definitions, etc. with counters. Stacks and linear.ups.edu ignore this problem in different manners: Sections in Stacks are very short,
 	and linear.ups.edu does not use numbered statements at all.</li>
-	<li>Sometimes the references have a horizontal scrolling bar, I think because of the math. Solve this.</li>
+	<li>It seems the scrollbar size is not considered in the page, and sometimes it goes over content in the right bar.</li>
 	<li>What if a reference is too large vertically? Make sure a vertical scrolling bar appears.</li>
-	<li>Is <a class='loadknowl' href="https://aimath.org/knowlepedia/">knowl</a> better than the approach I have with jquery's .load()?
-	<li>Make punctuation stick to the right line when ending in math (e.g. "$G$.") Bad solution: write "$G.$" instead.</li>
+	<li>Is <a class='loadknowl' href="https://aimath.org/knowlepedia/">knowl</a> better than the approach I have for references and proof display link?
+	<li>Make punctuation stick to the right line when ending in math (e.g. "$\$G\$$.") Bad solution: write "$\$G.\$$" instead.</li>
 </ul>
 
 </div>
