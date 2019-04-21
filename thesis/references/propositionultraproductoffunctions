@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#propositionultraproductoffunctions'>2.1.16</a>
+
+<!-- 2.1.16 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 2.1.16</span>
+	Let $\left\{(M_i,d^{M_i}):i\in I\right\}$ and $\left\{(N_i,d^{N_i}):i\in I\right\}$ be two families of metric spaces of uniformly bounded diameters, over the same set $I$, and let $\mathcal{U}$ be an ultrafilter on $I$. If $\left\{f^i:M_i\to N_i:i\in I\right\}$ is a family of functions admitting a common modulus of continuity $\Delta$, then there exists a unique function $f^{\mathcal{U}}:\prod_{\mathcal{U}} M_i\to\prod_{\mathcal{U}} N_i$ satisfying $f^{\mathcal{U}}((x_i)_{\mathcal{U}})=(f^i(x_i))_{\mathcal{U}}$ for every $(x_i)_{\mathcal{U}}\in\prod_{\mathcal{U}} M_i$. Moreover, $\Delta$ is also a modulus of continuity for $f^{\mathcal{U}}$.
+	</p>
+</div>

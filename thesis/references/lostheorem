@@ -1,0 +1,11 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#lostheorem'>2.1.22</a>
+
+<!-- 2.1.22 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.1.22 (Continuous &Lstrok;o&sacute;&apos; Theorem)
+	<span style='font-weight:normal'>[<span class='ref' data-tag='MR2436146'></span>, Theorem 5.4]</span></span>
+	If $\prod_{\mathcal{U}} M_i$ is an ultraproduct of $\sigma$-structures, then for every formula $\varphi(v_1,\ldots,v_n)$, and every $(x_i^1)_i,\ldots,(x_i^n)_i\in\prod_i M_i$,</p>
+	<div class='equation'>\[
+	\varphi^{\mathcal{U}}((x_i^1)_\mathcal{U},\ldots,(x_i^n)_\mathcal{U})=\lim_\mathcal{U}\varphi^{M_i}(x_i^1,\ldots,x_i^n).
+	\]</div>
+</div>

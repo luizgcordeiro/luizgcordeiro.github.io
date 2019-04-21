@@ -1,0 +1,11 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#examplesofmetricsignatures'>2.1.9</a>
+
+<!-- 2.1.9 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 2.1.9</span></p>
+	<ol class='arpar'>
+		<li> A bounded metric space is a structure with the trivial signature (containing only the distance symbol $d$)</li>
+		<li> Every classical structure, in the sense of first order logic ([<span class='ref' data-tag='MR1221741'></span>), is a metric structure when endowed with the discrete metric: $d(x,y)=0$ if $x=y$ and $1$ otherwise. The modulus of continuity for all function and predicate symbols is taken as $\Delta(\epsilon)=0$ for all $\epsilon>0$.</li>
+		<li> A group $G$ with a bi-invariant, bounded metric $d$ is a structure for the signature containing one binary function symbol (the product) and one unary function symbol (the inverse) and appropriate moduli of continuity.</li>
+	</ol>
+</div>

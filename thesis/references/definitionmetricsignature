@@ -1,0 +1,14 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#definitionmetricsignature'>2.1.6</a>
+
+<!-- 2.1.6 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 2.1.6</span>
+	A <em>metric signature</em> is a collection $\sigma=\left(\mathscr{P},\mathscr{F},\mathscr{C}\right)$, where
+	<ul>
+		<li> $\mathscr{P}$ is a collection of triples $(P,n(P),\Delta_P)$, where $P$ is a <em>predicate symbol</em>, and $n(P)$ is a positive integer, called its <em>arity</em>, and $\Delta_P$ is a function $\Delta_P:(0,\infty)\to(0,\infty)$;</li>
+		<li> $\mathscr{F}$ is a collection of triples $(f,n(f),\Delta_f)$, where $f$ is a <em>function symbol</em>, $n(f)$ is a positive integer, called the <em>arity</em> of $f$, and $\Delta_f$ is a function $\Delta_f:(0,\infty)\to(0,\infty)$;</li>
+		<li> $\mathscr{C}$ is a collection of <em>constant symbols</em>.</li>
+	</ul>
+	We will usually identify elements of $\mathscr{P}$ and $\mathscr{F}$ with their predicate and function symbols, respectively.
+	</p>
+</div>

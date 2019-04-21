@@ -1,0 +1,19 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#proposition2117'>2.1.17</a>
+
+<!-- 2.1.17 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 2.1.17</span>{proposition}
+	If $\left\{(M_i,d^{M_i}):i\in I\right\}$ is a family of $\sigma$-structures and $\mathcal{U}$ is an ultrafilter of sets on $I$, then the ultrapower $\prod_\mathcal{U} M_i$ is also a $\sigma$-structure, where the interpretation is given by
+	<div class='equation'>\[
+	f^\mathcal{U}\left((m^1_i)_\mathcal{U},\ldots,(m^{n(f)}_i)_\mathcal{U}\right)=\left(f^{M_i}(m^i_i,\ldots,m^{n(f)}_i\right)_{\mathcal{U}},
+	\]</div>
+	<div class='equation'>\[
+	P^\mathcal{U}\left((m^1_i)_\mathcal{U},\ldots,(m^{n(P)}_i)_\mathcal{U}\right)=\lim_\mathcal{U}P^{M_i}\left(m^1_i,\ldots,m^{n(P)}_i\right),
+	\]</div>
+	and
+	<div class='equation'>\[
+	c^\mathcal{U}=(c^{M_i})_\mathcal{U},
+	</div>\]
+	for every function symbol $f$, every predicate symbol $P$ and every constant symbol $c$.
+	</p>
+</div>

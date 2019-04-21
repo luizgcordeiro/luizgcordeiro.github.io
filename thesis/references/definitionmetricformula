@@ -1,0 +1,14 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#definitionmetricformula'>2.1.19</a>
+
+<!-- 2.1.19 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 2.1.19</span>
+	An <em>atomic formula</em> of $\sigma$ is an expression (string of symbols) of the form $P(t_1,\ldots,t_n)$, where $t_1,\ldots,t_n$ are terms and $P$ is an $n$-ary predicate symbol. The collection of <em>formulas</em> of $\sigma$ is the smallest which satisfies the following properties:
+	<ol class='roman'>
+		<li> All atomic formulas are formulas;</li>
+		<li> If $u:[0,1]^n\to [0,1]$ is a continuous function and $\varphi_1,\ldots,\varphi_n$ are $L$-formulas, then $u(\varphi_1,\ldots,\varphi_n)$ is also a formula;</li>
+		<li> If $\varphi$ is a formula and $v$ is a variable then $\sup_v\varphi$ and $\inf_v\varphi$ are formulas.</li>
+	</ol>
+	<em>Free</em> and <em>bound</em> variables are defined the same way as in classical logic: A variable $v$ is <em>bound</em> if all occurrences of $v$ appear within $\sup_v$ or $\inf_v$, and $v$ is <em>free</em> otherwise. We write $\varphi(v_1,\ldots,v_n)$ to denote that $v_1,\ldots,v_n$ are the free variables of $\varphi$. A <em>sentence</em> is a formula without free variables.
+	</p>
+</div>

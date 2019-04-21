@@ -1,0 +1,17 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#theoremequivalenceembeddingintroultraproduct'>2.1.25</a>
+
+<!-- 2.1.25 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.1.25</span>
+	Let $(S,\mu)$ be a Boolean inverse monoid with an invariant mean, and let $\mathscr{T}$ be another collection of Boolean inverse semigroups endowed with invariant means. Then the following are equivalent:
+	<ol class='arpar'>
+		<li> There exists a trace-preserving (equivalently, isometric) semigroup morphism $\theta:S\to\prod_\mathcal{U}(T_i,\mu_i)$, where $(T_i,\mu_i)\in\mathscr{T}$.</li>
+		<li> For every finite subset $F$ of $S$ and every $\epsilon>0$, there exists $(T,\nu)\in\mathscr{T}$ and a map $\phi:S\to T$ satisfying
+		<div class='equation'>\[
+			\sup_{s\in F}|\tr(s)-\tr(\phi(s))|\leq\epsilon\qquad\text{and}\qquad\sup_{s,t\in S}d_\nu(\phi(st),\phi(s)\phi(t))\leq\epsilon.
+		\]</div>
+		</li>
+	</ol>
+	Moreover, a map $\theta$ as in (1) is necessarily a morphism of Boolean inverse monoids. A map $\phi$ as in (2) is called a <em>$(F,\epsilon)$-approximate morphism</em>.
+	</p>
+</div>
