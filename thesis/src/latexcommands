@@ -16,4 +16,5 @@
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\MAlg}{{\mathbf{MAlg}}}
 \newcommand{\tildeoveri}[1]{\widetilde{#1}^I}
+\newcommand{\smallerthan}{<}
 \end{equation*}
