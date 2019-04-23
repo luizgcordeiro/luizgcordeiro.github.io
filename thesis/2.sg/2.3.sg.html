@@ -72,12 +72,12 @@ MAIN
 <!-- 2.3.1 -->
 <div class='definition' id='definitionsoficgroupoid'>
 	<p><span class='envidentifier'>Definition 2.3.1</span>
-	A probability measure-preserving groupoid $\mathcal{G}$ is <em>sofic</em> if there {exists} a collection $\left\{\mathcal{G}_i:i\in I\right\}$ of finite probability measure-preserving groupoids and an isometric (equivalently, trace-preserving) semigroup morphism $\Theta:\MEAS(\mathcal{G})\to\prod_{\mathcal{U}}\MEAS(\mathcal{G}_i^2)$ for some ultrafilter $\mathcal{U}$ on $I$. We call $\theta$ a <em>sofic embedding</em> of $\mathcal{G}$.
+	A probability measure-preserving groupoid $\mathcal{G}$ is <em>sofic</em> if there exists a collection $\left\{\mathcal{G}_i:i\in I\right\}$ of finite probability measure-preserving groupoids and an isometric (equivalently, trace-preserving) semigroup morphism $\Theta:\MEAS(\mathcal{G})\to\prod_{\mathcal{U}}\MEAS(\mathcal{G}_i^2)$ for some ultrafilter $\mathcal{U}$ on $I$. We call $\theta$ a <em>sofic embedding</em> of $\mathcal{G}$.
 	</p>
 </div>
 
 <p>
-Originally (see [<span class='ref' data-tag='ozawasoficnotes'></span>] or [<span class='ref' data-tag='MR3035288'></span>]), sofic groupoids were defined as those whose measured semigroup embeds isometrically into an ultraproduct of semigroups of the form $\MEAS(X^2)$, where $X$ is a finite set, however Proposition <span class='ref' data-tag='propositionfinitegroupoidsaresofic'></span> and Theorem <span class='ref' data-tag='theoremequivalenceembeddingintroultraproduct'></span> imply that this coincides with the definition given above.
+Originally (see [<span class='ref' data-tag='MR3035288'></span>] or [<span class='ref' data-tag='ozawasoficnotes'></span>]), sofic groupoids were defined as those whose measured semigroup embeds isometrically into an ultraproduct of semigroups of the form $\MEAS(X^2)$, where $X$ is a finite set, however Proposition <span class='ref' data-tag='propositionfinitegroupoidsaresofic'></span> and Theorem <span class='ref' data-tag='theoremequivalenceembeddingintroultraproduct'></span> imply that this coincides with the definition given above.
 </p>
 
 <p>
@@ -89,7 +89,7 @@ Currently, no example of non-sofic groupoid exists.
 </p>
 
 <div class='remark'>
-	<span class='envidentifier'>Remark</span>{remark}
+	<span class='envidentifier'>Remark</span>
 	<ol>
 		<li> For every positive integer $n$, let $Y_n=\left\{0,\ldots,n-1\right\}$ be a set with $n$ elements. Suppose $p,q,n$ and $r$ are non-negative integers $p=qn+r$, where $0\leq r\smallerthan n$. Define $\phi_{p,n}:\MEAS(Y_n^2)\to\MEAS(Y_p^2)$ by
 			<div class='equation'>\[
@@ -168,7 +168,7 @@ x=y\pm\epsilon\qquad\text{whenever}\qquad|x-y|\leq\epsilon.
 \]</div>
 </p>
 
-<a class='proofbutton' data-tag='theorempermanencesofic'>Proof</a> of Theorem <span class='ref' data-tag='theorempermanencesofic'></span>
+<a class='proofbutton' data-tag='theorempermanencesofic' style='display:inline;'>Proof</a> of Theorem <span class='ref' data-tag='theorempermanencesofic'></span>
 <div class='proof' id='proofoftheorempermanencesofic'>
 	<ol class='alphpar'>
 		<li> This item is clear since soficity is an approximation property for the measure (or more precisely, by Theorem <span class='ref' data-tag='theoremequivalenceembeddingintroultraproduct'></span>).</li>
@@ -257,7 +257,7 @@ The previous theorem is more related to the question of how is soficity preserve
 <!-- 2.3.6 -->
 <div class='definition'>
 	<p><span class='envidentifier'>Definition 2.3.6</span>
-	The <em>measured full group</em> $[\mathcal{G},\mu]$, or simply $[\mathcal{G}]$, of a probability measure-preserving groupoid $(\mathcal{G},\mu)$ is the group of $A\in\MEAS(\mathcal{G},\mu)$ such that $A^*A=\mathcal{G}^{(0)}$,\ftnt{These are sometimes called the <em>invertible</em> elements of a monoid. Whenever we use this terminology we will recall this definition.} or equivalently those $A\in\MEAS(\mathcal{G},\mu)$ for which $\mu(A^*A)=1$.
+	The <em>measured full group</em> $[\mathcal{G},\mu]$, or simply $[\mathcal{G}]$, of a probability measure-preserving groupoid $(\mathcal{G},\mu)$ is the group of $A\in\MEAS(\mathcal{G},\mu)$ such that $A^*A=\mathcal{G}^{(0)}$ (<span class='ref' data-tag='footnoteinvertiblemonoidselements' id='footnoteinvertiblemonoidselements'></span>), or equivalently those $A\in\MEAS(\mathcal{G},\mu)$ for which $\mu(A^*A)=1$.
 	</p>
 </div>
 
@@ -393,7 +393,7 @@ Note that each $\sim_{\mathcal{H}}$-equivalence class is contained in $\mathcal{
 </div>
 
 <div class='remark'>
-	<p><span class='envidentifier'>Remark</span>{remark}
+	<p><span class='envidentifier'>Remark</span>
 	As a consequence of Corollary <span class='ref' data-tag='corollarykidaindex'></span>, if $\mathcal{H}$ is an ergodic finite index-subgroupoid of $\mathcal{G}$ then any two sets of left transversals of $\mathcal{H}$ in $\mathcal{G}$ have the same number of elements, which we thus call the <em>index</em> of $\mathcal{H}$ in $\mathcal{G}$ and denote by $[\mathcal{G}:\mathcal{H}]$.
 	</p>
 
@@ -499,7 +499,8 @@ With these results at hand, we can provide a few examples of sofic groupoids. Th
 
 <!-- 2.3.13 -->
 <div class='definition'>
-	<p><span class='envidentifier'>Definition 2.3.13</span>{definition}[{[<span class='ref' data-tag='MR2583950'></span>, p. 13, 18]}]
+	<p><span class='envidentifier'>Definition 2.3.13
+	<span style='font-weight:normal;'>[<span class='ref' data-tag='MR2583950'></span>, p. 13, 18]</span></span>
 	A probability measure-preserving groupoid $\mathcal{G}$ is <em>periodic</em> (<span class='ref' data-tag='footnoteperiodicorfinitegroupoid' id='footnoteperiodicorfinitegroupoid'></span>) if $\mathcal{G}_x$ is finite for a.e.\ $x\in\mathcal{G}^{(0)}$, and $\mathcal{G}$ is <em>hyperfinite</em> if it is standard and an increasing union of periodic Borel subgroupoids (as usual, up to null sets). (In particular, every hyperfinite groupoid is $\ra$-discrete.)
 	</p>
 </div>
