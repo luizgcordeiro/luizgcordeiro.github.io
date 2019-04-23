@@ -449,10 +449,10 @@ The following theorem then allows us to obtain a precise relationship between em
 <div class='proof' id='proofoftheoremequivalenceembeddingintoultraproductformetricstructures'>
 	<p><u>(1)$\Rightarrow$(2)</u>: Assume  such $\theta$ exists. Let $\pi:\prod_i M_i\to\prod_\mathcal{U} M_i$ be the quotient map and take a section $\Theta=(\Theta_i):L\to\prod_i M_i$, $\Theta(x)=(\Theta_i(x))_i$, of $\theta$ along $\pi$:
 	<div class='equation'>\[
-	\begin{tikzcd}
-	L\arrow[r,"\Theta"]\arrow[rd,"\theta"]&\prod_iM\arrow[d,"\pi"]\\
+	\xymatrix{
+	L\ar[r]^{\Theta}\ar[rd]_{\theta}&\prod_iM\ar[d]^{\pi}\\
 	&\prod_{\mathcal{U}}M_i
-	\end{tikzcd}.
+	}
 	\]</div>
 	Note that $\Theta$ is not necessarily a $\sigma$-morphism. However, if $\mathbf{P}$ is a finite set of predicate symbols and $\mathbf{A}\subseteq L$ is finite, then
 	<div class='equation'>\[
@@ -570,7 +570,7 @@ For property (iii) we need to use the fact that
 whenever we are given a collection of functions $f^i:M_i\to[0,1]$. This can be verified with the properties of ultralimits and real suprema. The case of infima is analogous.
 </p>
 
-<h3 class='subsection'>2.1.4. Ultraproducts of Boolean inverse monoids</h3>
+<h3 class='subsection' id='subsectionultraproductsofbooleaninversemonoids'>2.1.4. Ultraproducts of Boolean inverse monoids</h3>
 
 <p>
 In this subsection, we review two constructions of ultraproducts of Boolean inverse monoids endowed with invariant means.
