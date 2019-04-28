@@ -76,7 +76,7 @@ Let $X$ be a compact Hausdorff space, and $G$ be either $\mathbb{R}$ or $\mathbb
 <p>
 Note that $C(X,G)$ is isomorphic, as a topological group, to $G\oplus C(X,x_0,G)$ for any $x_0\in G$, via the map
 <div class='equation' id='equationvladimir'>\[
-	\phi_{x_0}:C(X,G)\to G\oplus C(X,x_0,G),\qquad \phi_{x_0}(f)=(f(x_0),f-f(x_0))\tag{A.1}
+	\phi_{x_0}:C(X,G)\to G\oplus C(X,x_0,G),\qquad \phi_{x_0}(f)=(f(x_0),f-f(x_0)).\tag{A.1}
 \]</div>
 
 <!-- A.1 -->
@@ -87,7 +87,7 @@ Note that $C(X,G)$ is isomorphic, as a topological group, to $G\oplus C(X,x_0,G)
 </div>
 
 <a class='proofbutton' data-tag='lemmaa1'>Proof</a>
-<div class='proof' id='proofoflemaa1'></div>
+<div class='proof' id='proofoflemaa1'>
 	<p>
 	Given $k\neq 0$, the map $t\mapsto kt$ is an isomorphism of $\mathbb{R}$. Using that and the isomorphism $\phi_{x_0}$ and this, we see that the map $\phi_k:C(X,\mathbb{R})\to C(X,\mathbb{R})$, $\phi_k(f)=f+(k-1)f(x_0)$, is a linear isomorphism.
 	</p>
@@ -110,9 +110,9 @@ Note that $C(X,G)$ is isomorphic, as a topological group, to $G\oplus C(X,x_0,G)
 	By Lemma <span class='ref' data-tag='lemmaa1'></span>, take an isomorphism $\psi:C(X,\mathbb{R})\to C(Y,\mathbb{R})$ with $\psi(1)=1$. Considering the chain of isomorphisms
 	<div class='equation'>\[
 	\xymatrix{
-	\mathbb{R}\oplus C(X,x_0,\mathbb{R})\ar[r]^{\phi_{x_0}^{-1}}
+	\mathbb{R}\oplus C(X,x_0,\mathbb{R})\ar[r]^{\hspace{20px}\phi_{x_0}^{-1}}
 		& C(X,\mathbb{R}) \ar[r]^{\psi}
-			&C(Y,\mathbb{R})\ar[r]^{\phi_{y_0}}
+			&C(Y,\mathbb{R})\ar[r]^{\phi_{y_0}\hspace{25px}}
 				& \mathbb{R}\oplus C(Y,y_0,\mathbb{R})\\
 	(t,f)\ar@{|->}[r]
 		& f+t\ar@{|->}[r]

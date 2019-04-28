@@ -1,0 +1,73 @@
+\section{Isomorphism theorems}
+
+In this short section we connect all the isomorphism theorems we have proved. But first, let us consider another semigroup associated to a groupoid.
+
+We will use the terminology of \cite{MR2876963}. For each compact-open bisection $U$ of an ample groupoid $\G$, we denote by $\tau_U$ the homeomorphism given by the canonical action of $\KB(\G)$ on $\G[0]$, namely $\tau_U=\ra\circ (\so|_U^{-1}):\so(U)\to\ra(U)$. Recall from Example~\ref{examplecanonicalaction} that $U\mapsto\tau_U$ is a morphism from $\KB(\G)$ to $\mathcal{I}(\G[0])$.
+
+\begin{definition}
+The \emph{topological full pseudogroup} of an ample groupoid is the semigroup 
+\[[[\G]]=\left\{\tau_U:U\in\KB(\G)\right\}.\]
+\end{definition}
+
+\begin{example}
+If $\theta$ is an action of an inverse semigroup $S$ on a zero-dimensional, locally compact Hausdorff space $X$, then the topological full pseudogroup $[[S\ltimes_\theta X]]$ is the set of all partial homeomorphisms $\varphi:U\to V$ for which there are $s_1,\ldots,s_n\in S$ and compact-open $U_1,\ldots,U_n$ such that
+\begin{enumerate}\setlength\itemsep{1ex}
+\item[(i)] $U=\bigcup_{i=1}^n U_i$;
+\item[(ii)] $U_i\subseteq X_{s_i^*}$ for all $i$; and
+\item[(iii)] $\varphi|_{U_i}=\theta_{s_i}|_{U_i}$.
+\end{enumerate}
+\end{example}
+
+The analogue to the theorem below was proven in \cite[Corollary~3.3]{MR2460017} when one considers open bisections instead of compact-open ones. In any case, we provide a short and direct proof of it.
+
+\begin{proposition}\label{prop:bisectionsemigroupfullsemigroup}
+Suppose $\G$ is an ample (possibly non-Hausdorff) groupoid. Then the morphism $\tau:\KB(\G)\to [[\G]]$ is an isomorphism if and only if $\G$ is effective.
+\end{proposition}
+\begin{proof}
+First assume that $\G$ is effective, that is, $\G[0]=\operatorname{int}(\operatorname{Iso}(\G))$, and assume $\tau_U=\tau_V$. Then
+\[\tau_{V^*U}=\tau_{V^*}\circ\tau_U=\id_{\so(V)},\ntag\label{equationprop:bisectionsemigroupfullsemigroupproof}\]
+which means that $V^*U\subseteq \operatorname{Iso}(\G)$. Since $V^*U$ is open then $V^*U\subseteq\G[0]$. Using this and comparing the domains in Equation (\ref{equationprop:bisectionsemigroupfullsemigroupproof}) we obtain
+\[V^*U=\so(V^*U)=\so(V),\]
+thus $V=VV^*U\subseteq U$, and symmetrically we obtain $U\subseteq V$.
+
+Conversely, suppose $\operatorname{int}(\operatorname{Iso}(\G))\neq\G[0]$. Take any nonempty compact-open bisection $U\subseteq\operatorname{int}(\operatorname{Iso}(\mathcal{G}))$ which is not contained in $\mathcal{G}^{(0)}$. Then $U\neq \so(U)$ but $\tau_U=\tau_{\so(U)}$, so $\tau$ is not injective.\qedhere
+\end{proof}
+
+We can now describe the equivalence between continuous orbit equivalence for partial actions, isomorphisms of groupoids of germs, isomorphisms of topological full pseudogroups and diagonal-preserving isomorphisms of Steinberg algebras, consequently diagonal-preserving isomorphisms of crossed products..
+
+\begin{theorem}
+Let $R$ be an indecomposable ring, $\theta$ and $\gamma$ ample, topologically free partial actions of inverse semigroups $S$ and $T$ on $X$ and $Y$, respectively, and suppose that the groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are Hausdorff. Then the following are equivalent:
+\begin{enumerate}\setlength\itemsep{1ex}
+\item[(1)] The partial actions $\theta$ and $\gamma$ are continuously orbit equivalent;
+\item[(2)] The groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are topologically isomorphic;
+\item[(3)] The inverse semigroups $\KB(S\ltimes_\theta X)$ and $\KB(T\ltimes_\gamma Y)$ are isomorphic;
+\item[(4)] The inverse semigroups $[[S\ltimes_\theta X]]$ and $[[T\ltimes_\gamma Y]]$ are isomorphic;
+\item[(5)] There exists a diagonal-preserving algebra (or ring) isomorphism between the Steinberg algebras $A_R(S\ltimes_\theta X)$ and $A_R(T\ltimes_\gamma Y)$; 
+\item[(6)] There exists a diagonal-preserving algebra (or ring) isomorphism between the crossed products $A_R(X)\rtimes S$ and $A_R(Y)\rtimes T$ (with respect to the algebraic partial actions induced by $\theta$ and $\gamma$).
+\end{enumerate}
+%In fact, the equivalence of statements (2) to (6) holds as long as the partial actions are effective.
+\end{theorem}
+
+\begin{proof}
+(1)$\iff$(2) follows from Theorems~\ref{theo:coegroupoidgermiso} and \ref{theo:groupoidgermscoe}.
+
+(2)$\iff$(3) follows from non-commutative Stone duality (Theorem \ref{theoremnoncommutativestoneduality}).
+
+(3)$\iff$(4) follows from Proposition~\ref{prop:bisectionsemigroupfullsemigroup}.
+
+(2)$\iff$(5) follows from Theorem~ \ref{theoremsteinbergalgebras}.
+
+(5)$\iff$(6) follows from Theorem~\ref{theoremsteinbergiscrossed}.\qedhere
+\end{proof} 
+
+%It is interesting to note that the theorem above can be used with the fact that any ample Hausdorff groupoid $\G$ is isomorphic to the groupoid of germs $\KB(\G)\ltimes\G[0]$ under the natural action of $\KB(\G)$ on $\G[0]$, and it alone implies the following consequence:
+%
+%\begin{corollary}\label{prop:diagonalpreserving}
+%Let $R$ be a unital commutative indecomposable ring and let $\G$ and $\H$ be Hausdorff effective ample groupoids. Then the following are equivalent.
+%\begin{enumerate}\setlength\itemsep{1ex}
+%\item[(1)] $\G$ and $\H$ are isomorphic;
+%\item[(2)] the inverse semigroups $\KB(\G)$ and $\KB(\H)$ are isomorphic;
+%\item[(3)] the inverse semigroups $[[\G]]$ and $[[\H]]$ are isomorphic;
+%\item[(4)] there exists a diagonal-preserving isomorphism between the Steinberg Algebras $A_R(\G)$ and $A_R(\H)$; 
+%\end{enumerate}
+%\end{corollary}

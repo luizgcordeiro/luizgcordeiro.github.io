@@ -24,20 +24,22 @@
 	<h2><a href='../2.sg/2.4.satfg.html'>2.4. Soficity and the full group</a></h2>
 	<h2><a href='../2.sg/2.5.sga.html'>2.5. Sofic group actions</a></h2>
 <hr>
-<h1>3. Disjoint continuous functions</h1>
-	<h2>3.1. Disjointness, $\perp$ and $\perpp$-isomorphisms</h2>
-	<h2>3.2. $\perpp$-ideals</h2>
-	<h2>3.3. Basic $\perpp$-isomorphisms</h2>
-	<h2>3.4. Recovering known results</h2>
-	<h2>3.5. New results</h2>
+<h1><a href='../3.dcf/3.0.intro.html'>3. Disjoint continuous functions</a></h1>
+	<h2><a href='../3.dcf/3.1.dpapi.html'>3.1. Disjointness, $\perp$ and $\perpp$-isomorphisms</a></h2>
+	<h2><a href='../3.dcf/3.2.pi.html'>3.2. $\perpp$-ideals</a></h2>
+	<h2><a href='../3.dcf/3.3.bpi.html'>3.3. Basic $\perpp$-isomorphisms</a></h2>
+	<h2><a href='../3.dcf/3.4.rkr.html'>3.4. Recovering known results</a></h2>
+	<h2><a href='../3.dcf/3.5.nr.html'>3.5. New results</a></h2>
 <hr>
-<h1>4. Partial actions of inverse semigroups</h1>
-	<h2>4.1. Partial morphisms and partial actions</h2>
-	<h2>4.2. Topological partial actions and groupoid of germs</h2>
-	<h2>4.3. Algebraic partial actions and crossed products</h2>
-	<h2>4.4. Steinberg algebras</h2>
-	<h2>4.5. Partial actions from associated groups and inverse semigroups</h2>
-	<h2>4.6. Topologically free partial actions</h2>
-	<h2>4.7. Continuous orbit equivalence</h2>
-	<h2>4.8. Isomorphism theorems</h2>
+<h1><a href='../4.paois/4.0.intro.html'>4. Partial actions of inverse semigroups</a></h1>
+	<h2><a href='../4.paois/4.1.pmapa'>4.1. Partial morphisms and partial actions</a></h2>
+	<h2><a href='../4.paois/4.2.tpaagog.html'>4.2. Topological partial actions and groupoid of germs</a></h2>
+	<h2><a href='../4.paois/4.3.apaacp.html'>4.3. Algebraic partial actions and crossed products</a></h2>
+	<h2><a href='../4.paois/4.4.sa.html'>4.4. Steinberg algebras</a></h2>
+	<h2><a href='../4.paois/4.5.pafagais.html'>4.5. Partial actions from associated groups and inverse semigroups</a></h2>
+	<h2><a href='../4.paois/4.6.tfpa.html'>4.6. Topologically free partial actions</a></h2>
+	<h2><a href='../4.paois/4.7.coe.html'>4.7. Continuous orbit equivalence</a></h2>
+	<h2><a href='../4.paois/4.8.it.html'>4.8. Isomorphism theorems</a></h2>
+<hr>
+<h1><a href='../0.matters/appendix.html'>Appendix. A group isomorphism between $C(X,\mathbb{S}^1)$ and $C(Y,\mathbb{S}^1)$ for non-homeomorphic $X$ and $Y$</a></h1>
 <hr>
