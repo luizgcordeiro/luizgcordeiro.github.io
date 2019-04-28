@@ -303,7 +303,7 @@ We can compare actions of countable groups by using the notion of <em>weak conta
 </div>
 
 <p>
-In other words, if an action $\alpha$ is weakly contained in $\theta$ then $\alpha$ can be modelled, in the sense of continuous logic, by $\theta$. Another important property of Bernoulli shifts, initially proved by Abért and Weiss in [<span class='ref' data-tag='MR3035287'></span>] and later extended by Seward in [<span class='ref' data-tag='arxiv1501.03367'></span>]}, is that Bernoulli shifts are weakly contained in every other free probability measure-preserving action.
+In other words, if an action $\alpha$ is weakly contained in $\theta$ then $\alpha$ can be modelled, in the sense of continuous logic, by $\theta$. Another important property of Bernoulli shifts, initially proved by Abért and Weiss in [<span class='ref' data-tag='MR3035287'></span>] and later extended by Seward in [<span class='ref' data-tag='arxiv1501.03367'></span>], is that Bernoulli shifts are weakly contained in every other free probability measure-preserving action.
 </p>
 
 <!-- 2.5.11 -->
@@ -330,10 +330,11 @@ We will now describe soficity of an action in terms of covariant morphisms.
 </div>
 
 <a class='proofbutton' data-tag='lemmaseparatesetwithdisjointimages'>Proof</a>
-	<div class='proof' id='proofoflemmaseparatesetwithdisjointimages'>
+<div class='proof' id='proofoflemmaseparatesetwithdisjointimages'>
+	<p>
 	Let $d$ be a metric on $Y$ compatible with the Borel structure and for which $(Y,d)$ is separable. Let $I_1=\left\{x\in X:d(f(x),g(x))>1\right\}$ and for $k\geq 2$, consider the Borel set
 	<div class='equation'>\[
-		I_k=\left\{x\in X:1/k<d(f(x),g(x))\leq 1/(k-1)\right\},
+		I_k=\left\{x\in X:1/k\smallerthan d(f(x),g(x))\leq 1/(k-1)\right\},
 	\]</div>
 	so $\left\{I_k\right\}_k$ is a Borel partition of $X$. Given $k$, let $\left\{B^k_n\right\}_n$ be a Borel partition of $Y$ by sets of diameter at most $1/k$, and let $A^k_n=f^{-1}(B^k_n)\cap I_k$. If $x\in A^k_n$, then $f(x)\in B^k_n$ and $d(g(x),f(x))>1/k\geq \operatorname{diam}B^k_n$, so $g(x)\not\in B^k_n$. This proves
 	<div class='equation'>\[
@@ -384,10 +385,10 @@ The next theorem formalizes the description of soficity used by Ozawa in [<span 
 </div>
 
 <p>
-Recall, from the <span class='ref' data-tag='conventionssoficactions'></span> stated previously,in page \pageref{conventionssoficactions}, that we identify $G$ and $\MAlg(X)$ with subsemigroups of the measured semigroup $\MEAS(G\ltimes_\theta X)$. The proof of this theorem is similar in parts to that of Theorem <span class='ref' data-tag='theoremfirstimportant'></span>.
+Recall, from the <span class='ref' data-tag='conventionssoficactions'></span> stated previously, that we identify $G$ and $\MAlg(X)$ with subsemigroups of the measured semigroup $\MEAS(G\ltimes_\theta X)$. The proof of this theorem is similar in parts to that of Theorem <span class='ref' data-tag='theoremfirstimportant'></span>.
 </p>
 
-<a class='proofbutton' data-tag='theoremrewriesoficactionintermsofcovariant' style='position:inline;'>Proof</a> of <span class='ref' data-tag='theoremrewriesoficactionintermsofcovariant'></span>
+<a class='proofbutton' data-tag='theoremrewriesoficactionintermsofcovariant' style='display:inline;'>Proof</a> of <span class='ref' data-tag='theoremrewriesoficactionintermsofcovariant'></span>
 <div class='proof' id='proofoftheoremrewriesoficactionintermsofcovariant'>
 	<p>
 	First, suppose $\theta$ is sofic, and let $\Phi:\MEAS(G\ltimes_\theta X)\to\prod_\mathcal{U}\MEAS(Y_{n_k}^2)$ be a sofic embedding. Restricting $\Phi$ to $G$ and to $\MAlg(X)$ we obtain the morphisms $\sigma$ and $\phi$, and $\phi$ is isometric. If $A\in\MAlg(X)$ and $g\in G$,
@@ -519,14 +520,14 @@ Therefore, if an infinite countable group $G$ admits a free sofic action then an
 	</p>
 </div>
 
-<a class='proofbutton' data-tag='proposition2519'>Proof</a> (based on [<span class='ref' data-tag='ozawasoficnotes'></span>])
+<a class='proofbutton' data-tag='proposition2519' style='display:inline;'>Proof</a> (based on [<span class='ref' data-tag='ozawasoficnotes'></span>])
 <div class='proof' id='proofofproposition2519'>
 	<p>
 	Let $(X,\mu)$ be a (standard) probability space and consider the Bernoulli shift $\beta$ of $G$ on $X^G$. If $G$ is finite, then $G\ltimes X^G$ is periodic and hence sofic (Corollary <span class='ref' data-tag='periodicequivalencerelationsaresofic'></span>). Assume then that $G$ is infinite so $\beta$ is free.
 	</p>
 
 	<p>
-	We assume $G$ is sofic. Let $\theta=(\theta_k)_\mathcal{U}:G\to\prod_\mathcal{U}\mathfrak{S}_{n_k}$ be a sofic embedding. Let $\phi=(\phi_k)_\mathcal{U}:\MAlg(X)\to\prod_\mathcal{U}\MAlg(Y_{m_k})$ be an isometric semigroup embedding (Corollary <span class='ref' data-tag='periodicequivalencerelationsaresofic'></span>). We may assume that for all $k$, $\phi_k(X)=Y_{m_k}$ and $\phi_k(\varnothing)=\varnothing$.
+	We assume $G$ is sofic. Let $\theta=(\theta_k)_\mathcal{U}:G\to\prod_\mathcal{U}\mathfrak{S}_{n_k}$ be a sofic embedding. Let $\phi=(\phi_k)_\mathcal{U}:\MAlg(X)\to\prod_\mathcal{U}\MAlg(Y_{m_k})$ be an isometric semigroup embedding (which exists by Corollary <span class='ref' data-tag='periodicequivalencerelationsaresofic'></span>). We may assume that for all $k$, $\phi_k(X)=Y_{m_k}$ and $\phi_k(\varnothing)=\varnothing$.
 	</p>
 
 	<p>
@@ -536,7 +537,7 @@ Therefore, if an infinite countable group $G$ admits a free sofic action then an
 	<p>
 	Given $A_1,\ldots,A_n\in\MAlg(X)$ and distinct $g_1,\ldots,g_n\in G$, a <em>cylinder set</em> is one which can be written as
 	<div class='equation'>\[
-		C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}=\bigcap_{j=1}^n\left\{f\in X^G: f(g_j)\in A_j)\right\}.
+		C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}=\bigcap_{j=1}^n\left\{f\in X^G: f(g_j)\in A_j\right\}.
 	\]</div>
 	This representation of a nonempty cylinder set in terms of $g_1,\ldots,g_k$ and $A_1,\ldots,A_k$ is unique up to those $A_j$ which are equal to $X$ (and their order), and such a representation describes the empty set if and only if at least one of the $A_j$ is empty. We write $\mathfrak{C}$ for the collection of cylinder sets in $X^G$. Note that $\mathfrak{C}$ is closed under intersections.
 	</p>
@@ -559,13 +560,15 @@ Therefore, if an infinite countable group $G$ admits a free sofic action then an
 		C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}\cap C_{g_1,\ldots,g_n}^{B_1,\ldots,B_n}=C_{g_1,\ldots,g_n}^{A_1\cap B_1,\ldots,A_n\cap B_n}.
 	\]</div>
 	It follows that, for all $k$,
-	<div class='equation' id='equationbernoullishiftintersection1'>\[
-		\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n})\cap\psi_k(C_{g_1,\ldots,g_n}^{B_1,\ldots,B_n})=\bigcap_{j=1}^n\left\{(i,f)\in Y_{n_k}\times Z_k:f\left(\theta_k(g_j)^{-1}(i)\right)\in\phi_k(A_j)\cap\phi_k(B_j)\right\}\tag{2.5.1}
-	\]</div>
-	and
-	<div class='equation' id='equationbernoullishiftintersection2'>\[
-		\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}\cap C_{g_1,\ldots,g_n}^{B_1,\ldots,B_n})=\bigcap_{j=1}^n\left\{(i,f)\in Y_{n_k}\times Z_k:f\left(\theta_k(g_j)^{-1}(i)\right)\in\phi_k(A_j\cap B_j)\right\}\tag{2.5.2}
-	\]</div>
+	<div class='equation' id='equationbernoullishiftintersection1'>\begin{align*}
+		&\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n})\cap\psi_k(C_{g_1,\ldots,g_n}^{B_1,\ldots,B_n})\\
+		&=\bigcap_{j=1}^n\left\{(i,f)\in Y_{n_k}\times Z_k:f\left(\theta_k(g_j)^{-1}(i)\right)\in\phi_k(A_j)\cap\phi_k(B_j)\right\},\tag{2.5.1}
+	\end{align*}</div>
+	and that
+	<div class='equation' id='equationbernoullishiftintersection2'>\begin{align*}
+		&\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}\cap C_{g_1,\ldots,g_n}^{B_1,\ldots,B_n})\\
+		&=\bigcap_{j=1}^n\left\{(i,f)\in Y_{n_k}\times Z_k:f\left(\theta_k(g_j)^{-1}(i)\right)\in\phi_k(A_j\cap B_j)\right\}.\tag{2.5.2}
+	\end{align*}</div>
 	Let $M_k=\max\left\{d_\#(\phi_k(A_j)\cap\phi_k(B_j),\phi_k(A_j\cap B_j):j=1,\ldots,n\right\}$.
 	</p>
 
@@ -586,9 +589,10 @@ Therefore, if an infinite countable group $G$ admits a free sofic action then an
 		(\phi_k(A_j)\cap\phi_k(B_k))\triangle\phi_k(A_j\cap B_j).
 	\]</div>
 	Letting $j\in\left\{1,\ldots,n\right\}$ and $i\in Y_{n_k}$ go through all possible values, we conclude that the (normalized Hamming) distance of the sets in Equations (<span class='ref' data-tag='equationbernoullishiftintersection1'></span>) and (<span class='ref' data-tag='equationbernoullishiftintersection2'></span>) is at most
-	<div class='equation'>\[
-		\frac{1}{n_km_k^{n_k}}\cdot n_k\cdot \sum_{j=1}^nm_k^{n_k-1}\#\big[(\phi_k(A_j)\cap\phi_k(B_k))\triangle\phi_k(A_j\cap B_j)\big]=\sum_{j=1}^nd_{\#}(\phi_k(A_j)\cap\phi_k(B_j),\phi_k(A_j,B_j))
-	\]</div>
+	<div class='equation'>\begin{align*}
+		&\frac{1}{n_km_k^{n_k}}\cdot n_k\cdot \sum_{j=1}^nm_k^{n_k-1}\#\big[(\phi_k(A_j)\cap\phi_k(B_k))\triangle\phi_k(A_j\cap B_j)\big]\\
+		&=\sum_{j=1}^nd_{\#}(\phi_k(A_j)\cap\phi_k(B_j),\phi_k(A_j,B_j))
+	\end{align*}</div>
 	which converges to $0$ along $\mathcal{U}$, because $\phi=(\phi_k)_\mathcal{U}$ is a sofic embedding. Therefore, $\psi$ satisfies $\psi(C_1\cap C_2)=\psi(C_1)\land\psi(C_2)$ for all cylinders $C_1$, $C_2$, and moreover $\psi(\varnothing)=0$. This allows us to extend $\psi$ to a semigroup embedding to the (Boolean) algebra of sets generated by cylinders, by setting
 	<div class='equation'>\[
 		\psi(A)=\bigvee_k\psi(C_k),
@@ -614,13 +618,11 @@ Therefore, if an infinite countable group $G$ admits a free sofic action then an
 		m_k^{n_k-n}\cdot\prod_{j=1}^n\#\left(\phi_k(A_j)\right)
 	\]</div>
 	functions $f:Y_{n_k}\to Y_{m_k}$ for which $(i,f)\in\psi_k(C)$. Therefore,
-	<div class='equation'>\[
-		\begin{array}{rcccc}
-			\mu_\#(\psi_k(C))&=&\mu_\#(\psi_k(C)\cap(I_k\times Z_k))&+&\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))\vspace{1ex}\\
-			&\leq&\displaystyle{\frac{\#(I_k)}{n_km_k^{n_k}}m_k^{n_k-n}\cdot\prod_{j=1}^n\left(\#\phi_k(A_j)\right)}&+&\displaystyle{\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))}\vspace{1ex}\\
-			&=&\displaystyle{\mu_\#(I_k)\prod_{j=1}^n\mu_\#(A_j)}&+&\displaystyle{\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))}
-		\end{array}.
-	\]</div>
+	<div class='equation'>\begin{align*}
+			\mu_\#(\psi_k(C))&=\mu_\#(\psi_k(C)\cap(I_k\times Z_k))+\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))\\
+			&\leq\displaystyle{\frac{\#(I_k)}{n_km_k^{n_k}}m_k^{n_k-n}\cdot\prod_{j=1}^n\left(\#\phi_k(A_j)\right)}+\displaystyle{\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))}\\
+			&=\displaystyle{\mu_\#(I_k)\prod_{j=1}^n\mu_\#(A_j)}+\displaystyle{\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))}
+			\end{align*}</div>
 	The first term above converges to $\prod_{j=1}^n\mu_{\#}(A_j)$, which is exactly the measure of $C$, whereas the second term is bounded by
 	<div class='equation'>\[
 		\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))\leq\mu_\#((Y_{n_k}\times Z_k)\setminus(I_k\times Z_k))=\mu_\#(Y_{n_k}\setminus I_k)=1-\mu_\#(I_k),
@@ -711,15 +713,15 @@ We will be interested in proving that the class $\mathscr{S}$ is closed under so
 <a class='proofbutton' data-tag='theorem2522'>Proof</a>
 <div class='proof' id='proofoftheorem2522'>
 	<p>
-	Suppose that every free probability-measure preserving action of $G$ is sofic. Let $\alpha$ be any probability measure-preserving action of $G$ on $(X,\mu)$. Let $\beta$ be any free probability-measure preserving action of $G$ on a space $(Y,\mu)$ (e.g. a Bernoulli shift on a non-atomic space), and define a new free probability measure-preserving action $\mathcal{G}amma$ of $G$ on $X\times Y$ by
+	Suppose that every free probability-measure preserving action of $G$ is sofic. Let $\alpha$ be any probability measure-preserving action of $G$ on $(X,\mu)$. Let $\beta$ be any free probability-measure preserving action of $G$ on a space $(Y,\mu)$ (e.g. a Bernoulli shift on a non-atomic space), and define a new free probability measure-preserving action $\Gamma$ of $G$ on $X\times Y$ by
 	<div class='equation'>\[
-		\mathcal{G}amma_g(x,y)=(\alpha_g(x),\beta_g(y)).
+		\Gamma_g(x,y)=(\alpha_g(x),\beta_g(y)).
 	\]</div>
-	By assumption, $\mathcal{G}amma$ is sofic, so there exists a sofic embedding $\Theta:\MEAS(G\ltimes_\mathcal{G}amma (X\times Y))\to\prod_\mathcal{U}\MEAS(Y_{n_k}^2)$.
+	By assumption, $\Gamma$ is sofic, so there exists a sofic embedding $\Theta:\MEAS(G\ltimes_\Gamma (X\times Y))\to\prod_\mathcal{U}\MEAS(Y_{n_k}^2)$.
 	</p>
 
 	<p>
-	We can embed $\MEAS(G\ltimes_\alpha X)$ isometrically into $\MEAS(G\ltimes_\mathcal{G}amma (X\times Y))$, via $A\mapsto A\times Y$, so composing this with $\Phi$ we obtain a sofic embedding of $G\ltimes_\alpha X$.<span class='qed'></span>
+	We can embed $\MEAS(G\ltimes_\alpha X)$ isometrically into $\MEAS(G\ltimes_\Gamma (X\times Y))$, via $A\mapsto A\times Y$, so composing this with $\Phi$ we obtain a sofic embedding of $G\ltimes_\alpha X$.<span class='qed'></span>
 	</p>
 </div>
 
@@ -836,10 +838,10 @@ We will be interested in proving that the class $\mathscr{S}$ is closed under so
 				\pi(g)\pi(h)(i,a)&\overset{\epsilon}{=}\pi(g)(\sigma((\overline{ha})^{-1}h\overline{a})(i),ha)\\
 					&\overset{\epsilon}{=}(\sigma((\overline{gha})^{-1}g\overline{ha})\sigma((\overline{ha})^{-1}h\overline{a})(i),gha)\\
 					&\overset{\epsilon}{=}(\sigma((\overline{gha})^{-1}g\overline{ha}(\overline{ha})^{-1}h\overline{a})(i),gha)\\
-					&=(\sigma((\overline{gha})^{-1}gh\overline{a})(i),gha)\
+					&=(\sigma((\overline{gha})^{-1}gh\overline{a})(i),gha)\\
 					&\overset{\epsilon}{=}\pi(gh)(i,a)
 			\end{align*}</div>
-			where the "$\overset{\epsilon}{=}$" means that this equality is valid only up to a set of measure $\epsilon$. So all these terms are equal on a set of measure $\geq1-5\epsilon$, which means that $d_\#(\pi(g)\pi(h),\pi(gh))\leq5\epsilon$. This corresponds to property (i) of an almost covariant morphism (Corollary <span class='ref' data-tag='corollaryalmostcovariant'></span>).
+			where the symbol"$\overset{\epsilon}{=}$" means that this equality is valid only up to a set of measure $\epsilon$. So all these terms are equal on a set of measure $\geq1-5\epsilon$, which means that $d_\#(\pi(g)\pi(h),\pi(gh))\leq5\epsilon$. This corresponds to property (i) of an almost covariant morphism (Corollary <span class='ref' data-tag='corollaryalmostcovariant'></span>).
 			</p>
 			
 			<p>
