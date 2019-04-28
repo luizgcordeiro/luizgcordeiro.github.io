@@ -1,0 +1,13 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#propositionactionsmeasurepreserving'>2.5.2</a>
+
+<!-- 2.5.2 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 2.5.2</span>
+	Let $\theta$ be an action of a countable group $G$ on a standard probability space $(X,\mu)$ by Borel automorphisms of $X$. Then the following are equivalent:
+	<ol class='arpar'>
+		<li> $\theta$ measure-preserving.</li>
+		<li> $\mu$ is invariant for the Borel groupoid $G\ltimes_\theta X$.</li>
+		<li> $\mu$ is invariant for the orbit equivalence relation $\mathcal{R}(\theta)$.</li>
+	</ol>
+	</p>
+</div>

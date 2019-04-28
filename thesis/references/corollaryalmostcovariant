@@ -1,0 +1,25 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#corollaryalmostcovariant'>2.5.16</a>
+
+<!-- 2.5.16 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 2.5.16</span>
+	A free probability measure-preserving action $\theta$ of $G$ on $(X,\mu)$ is sofic if and only if for every $\epsilon>0$ and for every pair of finite subsets $F\subseteq G$ and $\mathcal{A}\subseteq\MAlg(X)$, there are $n\in\mathbb{N}$ and maps $\sigma:G\to\mathfrak{S}_n$ and $\phi:\MAlg(X)\to\MAlg(Y_n)$ satisfying
+	<ol class='roman'>
+		<li>
+			$d_{\#}(\sigma(gh),\sigma(g)\sigma(h))\smallerthan\epsilon$;
+		</li>
+		
+		<li>
+			$d_{\#}(\phi(A\cap B),\phi(A)\cap\phi(B))\smallerthan\epsilon$;
+		</li>
+		
+		<li>
+			$|\mu_\#(\phi(A))-\mu(A)|\smallerthan\epsilon$;
+		</li>
+		
+		<li>
+			$d_{\#}(\phi(\theta_g(A)),\sigma(g)\cdot\phi(A))\smallerthan\epsilon$,
+		</li>
+	for all $g,h\in F$ and all $A,B\in\mathcal{A}$.
+	</p>
+</div>

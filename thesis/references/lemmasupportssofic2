@@ -1,0 +1,7 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#lemmasupportssofic2'>2.4.2</a>
+
+			<div class='toload equation'>\begin{align*}
+				d_\mu(s,t)&=\mu(\supp(s^*t))\leq\mu(\supp(s)\lor\supp(t))\\
+					&\leq \mu(\supp(s))+\mu(\supp(t))\\
+					&=d_\mu(s,1)+d_\mu(t,1).\tag{2.4.2}
+			\end{align*}</div>

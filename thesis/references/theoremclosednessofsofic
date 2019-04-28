@@ -1,0 +1,18 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#theoremclosednessofsofic'>2.5.20</a>
+
+<!-- 2.5.20 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.5.20</span>
+	The class of sofic groups is closed under:
+	<ol class='alphpar'>
+		<li> Products ([<span class='ref' data-tag='MR2220572'></span>]): If $\left\{G_i\right\}_{i\in I}$ is any family of sofic groups, then $\prod_{i\in I}G_i$ is sofic.</li>
+		<li> Subgroups ([<span class='ref' data-tag='MR2220572'></span>]): If $G$ is sofic and $H\subseteq G$ is a subgroup, then $H$ is sofic.</li>
+		<li> Direct limits ([<span class='ref' data-tag='MR2220572'></span>]): If $\left(\phi_{j,i}: G_i\to G_j\right)_{i,j}$ is a direct net of sofic groups, then the direct limit $\lim_{i\to\infty}G_i$ is sofic.</li>
+		<li> Amenable-by-sofic extensions ([<span class='ref' data-tag='MR2220572'></span>]): If $N$ is a normal subgroup of $G$, $G/N$ is amenable and $N$ is sofic, then $G$ is sofic.</li>
+		<li> Unrestricted wreath products by amenable groups ([<span class='ref' data-tag='arxiv1802.04688'></span>])): If $G$ is sofic and $A$ is amenable then $G\wr\!\wr A$ is sofic.</li>
+		<li> Free products amalgamated over an amenable subgroup ([<span class='ref' data-tag='MR2826401'></span>, <span class='ref' data-tag='MR2823074'></span>]): If $G$ and $H$ are sofic and $A$ is a common amenable subgroup of $G$ and $H$, then $G\ast_A H$ is sofic.</li>
+		<li> Wreath products ([<span class='ref' data-tag='MR3795485'></span>]): If $G$ and $H$ are sofic then $G\wr H$ is sofic.</li>
+		<li> Graph limits (see [<span class='ref' data-tag='MR2794910'></span>] for details).</li>
+	</ol>
+	</p>
+</div>

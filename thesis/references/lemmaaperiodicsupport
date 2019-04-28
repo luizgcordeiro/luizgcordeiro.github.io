@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#lemmaaperiodicsupport'>2.4.9</a>
+
+<!-- 2.4.9 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 2.4.9</span>		
+	Suppose $(\mathcal{G},\mu)$ is an aperiodic probability measure-preserving groupoid. Then for all $A\in\MAlg(\mathcal{G}^{(0)})$, there exists $\alpha\in[\mathcal{G}]$ such that $\supp(\alpha)=A$.
+	</p>
+</div>

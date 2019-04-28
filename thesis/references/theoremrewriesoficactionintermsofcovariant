@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#theoremrewriesoficactionintermsofcovariant'>2.5.14</a>
+
+<!-- 2.5.14 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.5.14</span>
+	A free probability measure-preserving action $\theta$ of $G$ on $(X,\mu)$ is sofic if and only if there are a group morphism $\sigma:G\to\prod_\mathcal{U}\mathfrak{S}_n$ and an isometric morphism $\phi:\MAlg(X)\to\prod_\mathcal{U}\MAlg(Y_{n_k})$ such that $(\sigma,\phi)$ is covariant with respect to the canonical actions.
+	</p>
+</div>

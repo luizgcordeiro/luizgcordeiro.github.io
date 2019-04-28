@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#theoremsecondimportant'>2.4.18</a>
+
+<!-- 2.4.18 -->
+<div class='toload theorem'>
+<p><span class='envidentifier'>THeorem 2.4.18</span>
+Suppose $(\mathcal{G},\mu)$ is a (standard, $\ra$-discrete) probability measure-preserving groupoid such that for all $x\in\mathcal{G}^{(0)}$, $\#\mathcal{G}_x\geq 2$. Then $(\mathcal{G},\mu)$ is sofic if and only if $[\mathcal{G}]$ is metrically sofic.
+</p>
+</div>

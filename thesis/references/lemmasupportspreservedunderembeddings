@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#lemmasupportspreservedunderembeddings'>2.4.10</a>
+
+<!-- 2.4.10 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 2.4.10</span>
+	Suppose that $(\mathcal{G},\mu)$ is an aperiodic probability measure-preserving groupoid, $\theta:[\mathcal{G}]\to\prod_{\mathcal{U}}\mathfrak{S}_n$ is an isometric embedding, and let $\alpha,\beta\in[\mathcal{G}]$. Then $\supp(\alpha)=\supp(\beta)$ if and only if $\supp(\theta(\alpha))=\supp(\theta(\beta))$.
+	</p>
+</div>

@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#theoremfirstimportant'>2.4.16</a>
+
+<!-- 2.4.16 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.4.16</span>
+	A standard, $\ra$-discrete, aperiodic probability measure-preserving groupoid $(\mathcal{G},\mu)$ is sofic if and only if its full group $[\mathcal{G}]$ is metrically sofic. Moreover, every isometric group embedding of $[\mathcal{G}]$ into an ultraproduct $\prod_\mathcal{U}\mathfrak{S}_n$ extends uniquely to a sofic embedding of $\mathcal{G}$.
+	</p>
+</div>

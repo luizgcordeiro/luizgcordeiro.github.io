@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#proposition2518'>2.5.8</a>
+
+<!-- 2.5.8 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 2.5.8</span>
+	Let $G$ be a nontrivial countable group and $(X,\mu)$ a standard probability space. Endow $X^G$ with the product measure coming from $\mu$. Then the Bernoulli shift $\beta$ of $G$ on $X$ is a probability measure-preserving action of $G$, and it is free if and only if $(X,\mu)$ is non-atomic, or if $G$ is infinite and $(X,\mu)$ is not an atom.
+	</p>
+</div>

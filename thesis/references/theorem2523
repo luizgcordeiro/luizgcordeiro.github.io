@@ -1,0 +1,14 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#theorem2523'>2.5.23</a>
+
+<!-- 2.5.23 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.5.23</span>
+	The class $\mathscr{S}$ is closed under
+	<ol class='alphpar'>
+		<li> Subgroups: If $G\in\mathscr{S}$ and $H\subseteq G$ is a subgroup, then $H\in\mathscr{S}$.</li>
+		<li> Direct limits: If $\left(\phi_{j,i}: G_i\to G_j\right)$ is a direct net of groups in $\mathscr{S}$, then $\lim_{i\to\infty}G_i\in\mathscr{S}$.</li>
+		<li> Co-amenable extensions: If $N$ is a co-amenable subgroup of $G$ (that is, the left action of $G$ on $G/N$ is amenable) and $N\in\mathscr{S}$, then $G\in\mathscr{S}$.</li>
+		<li> Free products amalgamated over an amenable subgroup ([<span class='ref' data-tag='MR2826401'></span>, Theorem 3.17]): If $G,H\in\mathscr{S}$ and $A$ is a common amenable subgroup of $G$ and $H$, then $G\ast_A H$ is sofic.</li>
+	</ol>
+	</p>
+</div>

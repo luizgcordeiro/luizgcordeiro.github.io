@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#examplesupportix'>2.4.4</a>
+
+<!-- 2.4.4 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 2.4.4</span>
+	If $S=\mathcal{I}(X)$, then $\supp(f)$ can be identified with its usual support, that is, $\left\{x\in\dom(f):f(x)\neq x\right\}$.
+	</p>
+</div>

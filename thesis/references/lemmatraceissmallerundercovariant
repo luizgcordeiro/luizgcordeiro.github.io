@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#lemmatraceissmallerundercovariant'>2.5.13</a>
+
+<!-- 2.5.13 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 2.5.13</span>
+	Let $\theta$ be a probability measure-preserving action of $G$ on $(X,\mu)$. Suppose $\sigma:G\to\prod_\mathcal{U}\mathfrak{S}_n$ and $\phi:\MAlg(X)\to\prod_\mathcal{U}\MAlg(Y_{n_k})$ are covariant semigroup morphisms, with $\phi$ isometric. Then for all $g\in G$ and $A\in\MAlg(X)$, $\tr(\sigma(g)\phi(A))\leq\tr(gA)$.
+	</p>
+</div>
