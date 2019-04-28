@@ -1,0 +1,17 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#lemmacovers'>3.1.7</a>
+
+<!-- 3.1.7 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.1.7</span>
+	Suppose $\mathcal{A}$ is weakly regular, and let $A\subseteq\mathcal{A}$ and $b\in\mathcal{A}$. The following are equivalent:
+	<ol class='arpar'>
+		<li>
+			$A$ is a cover of $b$.
+		</li>
+		
+		<li>
+			The closure of $\bigcup_{a\in A}[a\neq\theta]$ contains $\supp(b)$.
+		</li>
+	</ol>
+	</p>
+</div>

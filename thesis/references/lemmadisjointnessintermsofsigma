@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#lemmadisjointnessintermsofsigma'>3.1.4</a>
+
+<!-- 3.1.4 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.1.4</span>
+	$f\perp g$ if and only if $\sigma(f)\cap\sigma(g)=\varnothing$.
+	</p>
+</div>

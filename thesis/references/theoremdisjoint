@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#theoremdisjoint'>3.1.12</a>
+
+<!-- 3.1.12 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.1.12</span>
+	Suppose $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are weakly regular and $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ is a $\perp$-isomorphism. Let $f,g\in\mathcal{A}(X)$. Then $\sigma(f)\subseteq \sigma(g)$ if and only if $\sigma(Tf)\subseteq \sigma(Tg)$. In particular, $Z(f)=\varnothing$ if and only if $Z(Tf)=\varnothing$.
+	</p>
+</div>

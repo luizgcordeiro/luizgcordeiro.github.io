@@ -1,0 +1,7 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#footnoteregularization'>Footnote</a>
+
+<div class='toload footnote'>
+<p>
+The <em>regularization</em> of an open set $A$ in a topological space $X$ is $\operatorname{int}\overline{A}$, and it is the smallest regular open set of $X$ containing $A$.
+</p>
+</div>

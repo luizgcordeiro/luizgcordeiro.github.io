@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#lemmaregularopeninsecondcountableissigma'>3.1.21</a>
+
+<!-- 3.1.21 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.1.21</span>
+	If $X$ is a second-countable locally compact Hausdorff space and $A\in\operatorname{RO}_K(X)$, then there is $f\in C_c(X)$ such that $\sigma(f)=A$.
+	</p>
+</div>

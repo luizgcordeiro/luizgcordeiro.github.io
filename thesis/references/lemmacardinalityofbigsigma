@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#lemmacardinalityofbigsigma'>3.1.16</a>
+
+<!-- 3.1.16 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.1.16</span>
+	Let $X$ be a separable, locally compact Hausdorff space and $A\in\operatorname{RO}_K(x)$. If $A\neq\varnothing$ and the set $\Sigma_X(A)=\left\{f\in C_c(X):\sigma(f)=A\right\}$ is nonempty, then it has the cardinality of the continuum, $|\Sigma_X(A)|=2^{\aleph_0}$.
+	</p>
+</div>

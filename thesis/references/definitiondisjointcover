@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#definitiondisjointcover'>3.1.6</a>
+
+<!-- 3.1.6 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 3.1.6</span>
+	Suppose $\mathcal{A}\subseteq C_c(X)$ is weakly regular. A family $A\subseteq\mathcal{A}$ is a <em>cover</em> of an element $b\in\mathcal{A}$ if given $h\in\mathcal{A}$, $h\perp a$ for all $a\in A$ implies $h\perp b$.
+	</p>
+</div>

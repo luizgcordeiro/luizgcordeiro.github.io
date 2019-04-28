@@ -1,0 +1,22 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#theoremperpisnotenough'>3.1.17</a>
+
+<!-- 3.1.17 -->
+<div class='toload theorem''>
+	<p><span class='envidentifier'>Theorem 3.1.17</span>
+	Suppose that:
+	<ol>
+		<li>
+			$X$ and $Y$ are separable, locally compact Hausdorff spaces;
+		</li>
+		
+		<li>
+			For all nonempty $A\in\operatorname{RO}_K(X)$ and $B\in\operatorname{RO}_K(Y)$, $\Sigma_X(A)$ and $\Sigma_Y(B)$ are nonempty;
+		</li>
+		
+		<li>
+			$\varphi:\operatorname{RO}_K(X)\to\operatorname{RO}_K(Y)$ is an order isomorphism (with respect to set inclusion).
+		</li>
+	</ol>
+	Then $C_c(X)$ and $C_c(Y)$ are $\perp$-isomorphic.
+	</p>
+</div>
