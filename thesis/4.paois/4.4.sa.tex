@@ -1,8 +1,6 @@
-<h2 class="section">4.4. Steinberg algebras</h2>
-
 \subsection{Definitions and notation}
 
-Steinberg algebras were independently introduced in \cite{MR2565546} and \cite{MR3274831}, as algebraic analogues of groupoid C*-algebras, and are generalizations of Leavitt path algebras and universal inverse semigroup algebras. We refer to \cite{MR3743184} and \cite{carlsenrout2017} for more details.
+Steinberg algebras were independently introduced in \cite{MR2565546} and \cite{MR3274831}, as algebraic analogues of groupoid C*-algebras, and are generalizations of Leavitt path algebras and universal inverse semigroup algebras. We refer to \cite{MR3743184} and \cite{MR3848066} for more details.
 
 In this section, $R$ is a fixed commutative ring with unit. Given an ample Hausdorff groupoid $\G$, we denote by $R^{\G}$ the $R$-module of $R$-valued functions on $\G$. Given $A\subseteq\G$, we define $1_A$ as the characteristic function of $A$ (with values in $R$).\nomenclature[Z]{$1_A$}{Characteristic function of a set $A$}
 
@@ -133,7 +131,7 @@ whose inverse is given as follows: If $f\in A_R(\G[0])$, then $E^{-1}(f)$ is the
 
 \subsection{Diagonal-preserving isomorphisms of Steinberg Algebras}
 
-The goal of this section is to prove that the Steinberg algebra of an ample Hausdorff groupoid $\G$ together with its diagonal algebra completely characterize $\G$. Although the main theorem of this subsection (Theorem \ref{theoremsteinbergalgebras}) is partially stated and proven (for more general \emph{graded} Steinberg algebras) in \cite[Corollary 3.14]{carlsenrout2017}, we can obtain a precise classification of the diagonal-preserving isomorphisms of Steinberg algebras, as described in Theorem \ref{theoremsteinbergalgebras} and Corollary \ref{corollaryclassificationofautomorphismsofsteinbergalgebras}
+The goal of this section is to prove that the Steinberg algebra of an ample Hausdorff groupoid $\G$ together with its diagonal algebra completely characterize $\G$. Although the main theorem of this subsection (Theorem \ref{theoremsteinbergalgebras}) is partially stated and proven (for more general \emph{graded} Steinberg algebras) in \cite[Corollary 3.14]{MR3848066}, we can obtain a precise classification of the diagonal-preserving isomorphisms of Steinberg algebras, as described in Theorem \ref{theoremsteinbergalgebras} and Corollary \ref{corollaryclassificationofautomorphismsofsteinbergalgebras}
 
 We will need to recover the bisections of $\G$ from $A_R(\G)$, and in particular the compact-open subsets of $\G[0]$. The main idea is, again, to identify subsets of $\G[0]$ with their characteristic functions, and these are precisely the functions which attain only the values $0$ and $1$. We thus need to assume an extra condition on the ring $R$.
 
@@ -196,13 +194,13 @@ We will prove that $N_R(\G)$ is an inverse semigroup by proving that its idempot
 and thus $f=f^*f\in D_R(\G)$. This proves $E(N_R(\G))\subseteq D_R(\G)$, so idempotents in $N_R(\G)$ commute and $N_R(\G)$ is an inverse semigroup.\qedhere
 \end{proof}
 
-The following property was considered in \cite{arxiv1711.01903v2}, when working on the same recovery problem.
+The following property was considered in \cite{MR3873946}, when working on the same recovery problem.
 
 \begin{definition}\label{definitionlocalbisectionhypothesis}
 If $\G$ is an ample Hausdorff groupoid and $R$ is an indecomposable (commutative, unital) ring, we say that $(\G,R)$ satisfies the \emph{local bisection hypothesis} if $\supp(f)$ is a bisection for all $f\in N_R(\G)$.
 \end{definition}
 
-The following stronger condition was considered in \cite{carlsenrout2017}, and is more easily checked than the one above.% For applications of this condition, see Corollaries \ref{} and \ref{}
+The following stronger condition was considered in \cite{MR3848066}, and is more easily checked than the one above.
 
 \begin{definition}
 If $\G$ is an ample Hausdorff groupoid and $R$ is an indecomposable (commutative, unital) ring, we say that $(\G,R)$ \emph{satisfies condition (S)} if the set of all $x\in\G[0]$ such that the group ring $R\G_x^x$ has only trivial units\ftnt{If $G$ is a group and $R$ is a unital ring, a trivial unit of $RG$ is an element of the form $ug$ where $u$ is invertible in $R$ and $g\in G$.} is dense in $\G[0]$.\nocite{MR3743184}
@@ -216,9 +214,9 @@ If $G$ is indicable throughout and $R$ is an integral domain, then $RG$ has only
 
 Every free group, and every torsion-free abelian group is indicable throughout. The class of indicable throughout groups is closed under products, free products and extensions (see \cite{MR0002137}).
 
-We now prove that condition (S) implies the local bisection hypothesis, as first proved in \cite[Lemma 3.5]{carlsenrout2017}.
+We now prove that condition (S) implies the local bisection hypothesis, as first proved in \cite[Lemma 3.5]{MR3848066}.
 
-\begin{lemma}[{\cite[Lemma 3.5]{carlsenrout2017}}]\label{lemmanormalizerssteinbergalgebradiagonal2}
+\begin{lemma}[{\cite[Lemma 3.5]{MR3848066}}]\label{lemmanormalizerssteinbergalgebradiagonal2}
 Suppose $\G$ is an ample Hausdorff groupoid, $R$ is an indecomposable ring and $f\in N_R(\G)$.
 \begin{enumerate}
 \item[(a)] $ff^*=1_{\so(\supp(f^*))}=1_{\ra(\supp(f))}$, and similarly $f^*f=1_{\so(\supp(f))}=1_{\ra(\supp(f^*))}$;
@@ -397,7 +395,7 @@ It remains only to prove that $\chi$ is continuous: Let $r\in R$ be fixed, $a\in
 which means that the map $b\mapsto\chi(b)(r)$ coincides with $T(r1_U)$ on $\phi^{-1}(U)$ and thus it is continuous.\qedhere
 \end{proof}
 
-We should note that according to \cite{arxiv1711.01903v2}, the local bisection hypothesis is preserved by diagonal-preserving isomorphisms, so the same result is valid if we assume, in principle, that only $(\G,R)$ satisfies this condition.
+We should note that according to \cite{MR3873946}, the local bisection hypothesis is preserved by diagonal-preserving isomorphisms, so the same result is valid if we assume, in principle, that only $(\G,R)$ satisfies this condition.
 
 From this we can immediately classify the group of diagonal-preserving automorphisms of Steinberg algebras satisfying the local bisection hypothesis. Let $\G$ be a groupoid and $R$ a ring. Denote by $\operatorname{Coc}(\G,R)$ the set of all continuous cocycles $\chi:\G\to\operatorname{Iso}_+(R,R)$, which is a group with the canonical (pointwise) structure: $(\chi\rho)(a)=\chi(a)\circ\rho(a)$ for all $\chi,\rho\in C(\G,R)$ and $a\in\G$, where $\circ$ denotes composition.
 
@@ -442,12 +440,9 @@ We will always identify $D_s$ with $A_R(X_s)$, by extending elements of $A_R(X_s
 
 It is routine to check that $\alpha$ is an algebraic partial action of $S$ on $A_R(X)$.
 
-<!-- 4.4.29 -->
-<div class="definition" id="definitiondualpartialaction">
-<p><span class='envidentifier'>Definition 4.4.32</span>
+\begin{definition}\label{definitiondualpartialaction}
 $\alpha$ as above is called the partial action \emph{induced} by $\theta$.
-</p>
-</div>
+\end{definition}
 
 We will prove that, as long as the groupoid of germs $S \ltimes X$ is Hausdorff, the Steinberg algebra $A_R(S\ltimes_\theta X)$ is isomorphic to the crossed product algebra $A_R(X) \rtimes_\alpha S$. In order to prove such an isomorphism, we need some preliminary lemmas. Following the notation of Subsection \ref{subsectiongroupoidofgerms}, recall that if $s\in S$ and $U\subseteq X_{s^*}$, we denote $[s,U]=\left\{[s,x]:x\in U\right\}$, and that we identify $\so([s,x])$ with $x$.
 
@@ -486,15 +481,11 @@ For $k\geq 2$, we can substitute $\left[u_k^{ij},W^{ij}_k\right]$ by $\left[u_k^
 
 We now prove another main theorem of this section. We refer to the notations of Definitions \ref{definitionLalpha}, \ref{definitionNalpha} and \ref{definitioncrossedproduct}.
 
-<!-- 4.4.32 -->
-<div class='theorem' id='theoremsteinbergiscrossed'>
-<p><span class='envidentifier'>Theorem 4.4.32</span>
-Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a topological partial action of an inverse semigroup $S$ on a zero-dimensional, locally compact Hausdorff space $X$, and $\alpha=\left(\alpha_s:D_{s^*}\to D_s\right)_{s\in S}$ the partial action induced by $\theta$ (Definition <a class="makeref" data-target="refdefinitiondualpartialaction" href="#definitiondualpartialaction">4.4.29</a>).
-</p>
-<p>
+\begin{theorem}\label{theoremsteinbergiscrossed}
+Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a topological partial action of an inverse semigroup $S$ on a zero-dimensional, locally compact Hausdorff space $X$, and $\alpha=\left(\alpha_s:D_{s^*}\to D_s\right)_{s\in S}$ the partial action induced by $\theta$ (Definition \ref{definitiondualpartialaction}.% of $S$ on $A_R(X)$.
+
 If the groupoid of germs $S \ltimes_\theta X$ is Hausdorff then the Steinberg $A_R(S \ltimes_\theta X)$ is isomorphic, as an $R$-algebra, to the crossed product $A_R(X) \rtimes_\alpha S$.
-</p>
-</div>
+\end{theorem}
 
 Note that we cannot use the universal property of crossed products described in Theorem \ref{theoremuniversalpropertyofcrossedproducts}, because the algebra $D_s$ is not unital if $X_s$ is not compact.
 

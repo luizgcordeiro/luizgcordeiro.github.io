@@ -1,0 +1,8 @@
+<a class='reflink' href='../0.matters/appendix.html#lemmaa2'>A.2</a>
+
+<!-- A.2 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma A.2</span>
+	Suppose $X$ and $Y$ are compact Hausdorff and $\psi:C(X,\mathbb{R})\to C(Y,\mathbb{R})$ is a bounded linear isomorphism. Then for any $x_0\in X$ and any $y_0\in Y$, $C(X,x_0,\mathbb{R})$ and $C(Y,y_0,\mathbb{R})$ are isomorphic as topological vector spaces.
+	</p>
+</div>

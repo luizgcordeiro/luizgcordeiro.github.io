@@ -1,0 +1,8 @@
+<a class='reflink' href='../0.matters/appendix.html#lemmaa1'>A.1</a>
+
+<!-- A.1 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma A.1</span>
+	If $X$ and $Y$ are compact Hausdorff spaces and $\psi:C(Y,\mathbb{R})\to C(X,\mathbb{R})$ is a bounded linear isomorphism, then there is a bounded linear isomorphism $\phi:C(Y,G)\to C(X,G)$ such that $\phi(1)=1$ (where $1$ denotes the constant function $x\mapsto 1$ on either $X$ or $Y$).
+	</p>
+</div>
