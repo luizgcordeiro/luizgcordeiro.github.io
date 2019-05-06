@@ -1,0 +1,5 @@
+<a class='reflink' href='../3.dcf/3.2.pi.html#propertyofidealinC(X)'>3.2.1</a>
+
+	<div class='toload equation'>\[
+	f\in I\iff\exists g\in I\text{ such that }f\Subset g.\tag{3.2.1}
+	\]</div>

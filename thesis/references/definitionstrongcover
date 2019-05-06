@@ -1,0 +1,17 @@
+<a class='reflink' href='../3.dcf/3.2.pi.html#definitionstrongcover'>3.2.1</a>
+
+<!-- 3.2.1 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 3.2.1</span>
+	A finite family $B\subseteq\mathcal{A}$ is said to be a <em>strong cover</em> of an element $a\in\mathcal{A}$ if there is another finite family $\widetilde{B}\subseteq\mathcal{A}$ such that:
+	<ol class='roman'>
+		<li>
+			For all $\widetilde{b}\in\widetilde{B}$, there is some $b\in B$ with $\widetilde{b}\Subset b$;
+		</li>
+		
+		<li>
+			$\widetilde{B}$ is a cover of $a$ (Definition <span class='ref' data-tag='definitiondisjointcover'></span>).
+		</li>
+	</ol>
+	</p>
+</div>

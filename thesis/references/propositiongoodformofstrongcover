@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.2.pi.html#propositiongoodformofstrongcover'>3.2.2</a>
+
+<!-- 3.2.2 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 3.2.2</span>
+	A finite family $B\subseteq\mathcal{A}$ is a strong cover of $a\in\mathcal{A}$ if and only if $\supp(a)\subseteq\bigcup_{b\in B}\sigma(b)$.
+	</p>
+</div>
