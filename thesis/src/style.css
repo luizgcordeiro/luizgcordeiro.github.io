@@ -42,7 +42,6 @@ div.definition p:first-child, div.example p:first-child, div.remark p:first-chil
 }
 
 .proofbutton {
-	display: block;
 	margin-top:0px;
 }
 

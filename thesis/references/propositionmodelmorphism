@@ -1,0 +1,12 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#propositionmodelmorphism'>3.3.10</a>
+
+<!-- 3.3.10 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 3.3.10</span>
+	Let $X$ and $Y$ be sets. Suppose that $H_X$ and $H_Y$ are models for an algebraic signature $\eta$, and that $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are submodels of $(H_X)^X$ and $(H_Y)^Y$. Then for all $x\in X$, $\mathcal{A}(X)|_x$ is a submodel of $H_X$, and similarly $\mathcal{A}(Y)|_y$ is a submodel of $H_Y$ for all $y\in Y$. (See Equation (<span class='ref' data-tag='definitionimageofpointunderclassoffunction'></span>).)
+	</p>
+
+	<p>
+	Let $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ be a basic map with respect to a function $\phi:Y\to X$, and let $\chi$ be the $T$-transform. Then $T$ is a morphism (for $\eta$) if and only if every section $\chi(y,\cdot)$ is a morphism (from $\mathcal{A}(X)|_{\phi(y)}$ to $\mathcal{A}(Y)|_y$).
+	</p>
+</div>

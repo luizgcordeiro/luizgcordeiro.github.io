@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#theoremnonvanishing'>3.3.17</a>
+
+<!-- 3.3.17 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.3.17</span>
+	For every non-vanishing bijection $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ there is a unique homeomorphism $\phi:Y\to X$ such that $[f=\theta_X]=\phi([Tf=\theta_Y])$ for all $f\in\mathcal{A}(X)$.
+	</p>
+</div>

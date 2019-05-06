@@ -1,0 +1,15 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#definitionttransform'>3.3.1</a>
+
+<!-- 3.3.1 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 3.3.1</span>
+	Let $X$, $H_X$, $Y$ and $H_Y$ be sets, $\phi:Y\to X$ be a function, and consider a class of functions $\mathcal{A}(X)\subseteq (H_X)^X$.
+	</p>
+	
+	<p>
+	Given maps $\phi:Y\to X$ and $\chi:Y\times_{(\phi,\mathcal{A}(X))} H_X\to H_Y$, we define $T_{(\phi,\chi)}:\mathcal{A}(X)\to (H_Y)^Y$ by
+	<div class='equation'>\[
+		(T_{(\phi,\chi)}f)(y)=\chi(y,f(\phi(y)),\qquad\forall f\in\mathcal{A}(X),\quad\forall y\in Y.\tag{3.3.2}
+	\]</div>
+	</p>
+</div>

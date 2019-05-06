@@ -1,0 +1,12 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#definitionnonvanishingbijection'>3.3.15</a>
+
+<!-- 3.3.15 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 3.3.15
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR2324919'></span>])</span></span>
+	We call a bijection $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ <em>non-vanishing</em> if for every $f_1,\ldots,f_n\in\mathcal{A}(X)$,
+	<div class='equation'>\[
+		\bigcap_{i=1}^n[f_i=\theta_X]=\varnothing\iff\bigcap_{i=1}^n[Tf_i=\theta_Y]=\varnothing.
+	\]</div>
+	</p>
+</div>
