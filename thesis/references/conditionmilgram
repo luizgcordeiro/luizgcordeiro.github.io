@@ -1,0 +1,5 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#conditionmilgram'>3.4.1</a>
+
+	<div class='toload equation'>\[
+		f\perpp g\iff \exists h\in C_c(X,\mathbb{R})\text{ such that }hf=f\text{ and }hg=0\tag{3.4.1}
+	\]</div>

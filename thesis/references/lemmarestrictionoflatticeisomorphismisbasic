@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#lemmarestrictionoflatticeisomorphismisbasic'>3.4.9</a>
+
+<!-- 3.4.9 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.4.9</span>
+	Under the conditions of Theorem <span class='ref' data-tag='theoremkaplansky'></span>, let $\phi:Y\to X$ be the $T|_{\mathcal{A}(X)_{\geq f_0}}$-homeomorphism. If $f,g\in\mathcal{A}(X)_{\geq{f_0}}$ then $\phi^{-1}(\operatorname{int}([f=g]))=\operatorname{int}([Tf=Tg])$.
+	</p>
+</div>

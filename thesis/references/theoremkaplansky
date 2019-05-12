@@ -1,0 +1,9 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#theoremkaplansky'>3.4.8</a>
+
+<!-- 3.4.8 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.4.8
+	<span style='font-weight:normal'>Kaplansky [<span class='ref' data-tag='MR0020715'></span>])</span></span>
+	Suppose $R$ has no supremum nor infimum, $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are sublattices of $C_b(X,R)$ and $C_b(Y,R)$, respectively, satisfying conditions <span class='ref' data-tag='conditionnormallatticel1'></span> and <span class='ref' data-tag='conditionnormallatticel2'></span>, and $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ is a lattice isomorphism. Then for any $f_0\in\mathcal{A}$, $T$ restricts to a $\perpp$-isomorphism of the regular sublattices $\mathcal{A}(X)_{\geq f_0}$ and $\mathcal{A}(Y)_{\geq Tf_0}$. In particular, $X$ and $Y$ are homeomorphic.
+	</p>
+</div>

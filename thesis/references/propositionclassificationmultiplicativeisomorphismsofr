@@ -1,0 +1,42 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#propositionclassificationmultiplicativeisomorphismsofr'>3.4.1</a>
+
+<!-- 3.4.1 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 3.4.1</span>
+	Let $\tau:\mathbb{R}\to\mathbb{R}$ be a multiplicative isomorphism. Then
+	<ol class='alphpar'>
+		<li>
+			Given $x\in\mathbb{R}$, $x\geq 0$ if and only if $\tau(x)\geq 0$;
+		</li>
+		
+		<li>
+			$\tau(-x)=-\tau(x)$ for all $x\in\mathbb{R}$;
+		</li>
+		
+		<li>
+			The following are equivalent:
+			<ol class='arpar'>
+				<li>
+					$\tau$ is continuous.
+				</li>
+				
+				<li>
+					$\tau$ is continuous at $0$.
+				</li>
+				
+				<li>
+					If $0\smallerthan x\smallerthan 1$ then $0\smallerthan \tau(x)\smallerthan 1$.
+				</li>
+				
+				<li>
+					$\tau$ is increasing.
+				</li>
+				
+				<li>
+					$\tau$ has the form $\tau(x)=\operatorname{sgn}(x)|x|^p$ for some $p>0$.
+				</li>
+			</ol>
+		</li>
+	</ol>
+	</p>
+</div>

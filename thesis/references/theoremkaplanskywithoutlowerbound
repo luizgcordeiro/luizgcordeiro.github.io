@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#theoremkaplanskywithoutlowerbound'>3.4.10</a>
+
+<!-- 3.4.10 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.4.10</span>
+	Under the conditions of Theorem <span class='ref' data-tag='theoremkaplansky'></span>, there exists a unique homeomorphism $\phi:Y\to X$ such that $\phi(\operatorname{int}([Tf=Tg]))=\operatorname{int}([f=g])$ for all $f,g\in\mathcal{A}(X)$. (In this case we will still call $\phi$ the <em>$T$-homeomorphism</em>.)
+	</p>
+</div>

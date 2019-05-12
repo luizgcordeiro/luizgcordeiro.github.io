@@ -1,0 +1,11 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#lemmamilgram'>3.4.2</a>
+
+<!-- 3.4.2 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.4.2</span>
+	If $f,g\in C_c(X,\mathbb{R})$, then
+	<div class='equation'>\[
+		f\perpp g\iff \exists h\in C_c(X,\mathbb{R})\text{ such that }hf=f\text{ and }hg=0\tag{3.4.1}
+	\]</div>
+	</p>
+</div>

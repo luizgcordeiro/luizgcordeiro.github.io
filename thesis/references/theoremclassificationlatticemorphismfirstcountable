@@ -1,0 +1,12 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#theoremclassificationlatticemorphismfirstcountable'>3.4.11</a>
+
+<!-- 3.4.11 -->
+<div class='theorem'>
+	<p><span class='envidentifier'>Theorem 3.4.11</span>
+	Suppose that $X$ and $Y$ are first-countable (and locally compact Hausdorff), that $R=\mathbb{R}$ with the usual order, and that $T:C_c(X,0)\to C_c(Y,0)$ is a lattice isomorphism. Then there are a unique homeomorphism $\phi:Y\to X$ and a continuous function $\chi:Y\times\mathbb{R}\to\mathbb{R}$ such that
+	<div class='equation'>\[
+		Tf(y)=\chi(y,f(\phi(y)))\qquad\text{ for all }y\in Y\text{ and }f\in C_c(X,0)\tag{3.4.1}
+	\]</div>
+	and $\chi(y,\cdot):\mathbb{R}\to\mathbb{R}$ is an increasing bijection for all $y\in Y$.
+	</p>
+</div>
