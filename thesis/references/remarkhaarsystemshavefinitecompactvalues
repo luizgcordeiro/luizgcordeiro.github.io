@@ -1,0 +1,7 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#remarkhaarsystemshavefinitecompactvalues'>Remark</a>
+
+<div class='toload remark'>
+	<p><span class='envidentifier'>Remark</span>
+	It follows from condition (iii) above that if $K$ is a compact subset of $\mathcal{G}$, then $\sup_{x\in\mathcal{G}^{(0)}}\lambda^x(K)\smallerthan\infty$.
+	</p>
+</div>

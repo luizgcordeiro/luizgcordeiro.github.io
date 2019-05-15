@@ -1,0 +1,19 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#footnotediscontinuouscirclehom'>Footnote</a>
+
+<div class='toload footnote'>
+	<p>
+	To see this, let $\operatorname{arg}:\mathbb{S}^1\to(-\pi,\pi]$ be a function such that $z=e^{i\operatorname{arg}(z)}$ for all $z\in\mathbb{S}^1$. Suppose $\tau$ is a discontinuous automorphism of the circle. Then there is a neighbourhood $U$ of $1$ such that for every neighbourhood $V$ of $1$, there is a point $z\in V$ for which $\tau(z)\not\in U$.	Take an integer $k>1$ such that if $t\not\in U$ then $|\operatorname{arg}t|>\frac{\pi}{k}$. Note that $k$ depends only on $\tau$ and $U$.
+	</p>
+	
+	<p>
+	Let $V$ be any neighbourhood of $1$ and $z\in V$ such that $\tau(z)\not\in U$, so $|\operatorname{arg}(\tau(z))|>\pi/k$. Choose a positive integer $m$ such that $\frac{\pi}{m+1}\leq|\operatorname{arg}(\tau(z))|\leq\frac{\pi}{m}$, so in particular $m\smallerthan k$. Since $m\geq 1$,
+	<div class='equation'>\[
+		\frac{\pi}{2}\leq\frac{m}{(m+1)}\pi\leq m|\operatorname{arg}(\tau(z))|=|\operatorname{arg}(\tau(z^m))|\leq\pi,
+	\]</div>
+	and the equality in the middle is allowed because $m\smallerthan k$.
+	</p>
+	
+	<p>
+	Thus $z^m$ is an element of $V^m$ - which is containedd in $V^k$ - such that $\tau(z^m)$ is in the second or third quadrant. Since the sets $V^k$ form a neighbourhood basis at the identity of $\mathbb{S}^1$ (because $k$ depends solely on $\tau$ and $U$) we are done.
+	</p>
+</div>

@@ -1,0 +1,20 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#theoremmeasuredgroupoidconvolutionalgebra'>3.5.11</a>
+
+<!-- 3.5.11 !-->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.5.11</span>
+	Let $\mathcal{G}$ and $\mathcal{H}$ be locally compact Hausdorff groupoids. For each $Z\in\left\{\mathcal{G},\mathcal{H}\right\}$, let $\lambda_Z$ be a fully supported Haar system on $Z$, and $\mu_Z$ a fully supported regular Borel measure on $Z^{(0)}$.
+	</p>
+
+	<p>
+	If $T:C_c(\mathcal{G})\to C_c(\mathcal{H})$ is an algebra isomorphism which is isometric with respect to the $L^1$-norms of $(\lambda_Z\circ\mu_Z)$ ($Z\in\left\{\mathcal{G},\mathcal{H}\right\}$), then there is a (unique) topological groupoid isomorphism $\phi:\mathcal{H}\to\mathcal{G}$ and a continuous morphism $p:\mathcal{H}\to\mathbb{S}^1$ such that
+	<div class='equation'>\[
+		Tf(h)=p(h)D(\phi(h))f(\phi(h)),
+	\]</div>
+	where $D$ is a continuous instance of the Radon-Nikodym derivative
+	<div class='equation'\>\[
+		D(a)=\frac{d\lambda_{\mathcal{G}}^{\ra(a)}}{d(\phi_*\lambda_{\mathcal{H}}^{\phi^{-1}(\ra(a))})}(a),
+	\]</div>
+	and in this case, $\mu_{\mathcal{G}}=\phi_*\mu_{\mathcal{H}}$.
+	</p>
+</div>

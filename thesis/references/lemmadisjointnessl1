@@ -1,0 +1,11 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#lemmadisjointnessl1'>3.5.1</a>
+
+<!-- 3.5.1 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.5.1</span>
+	Let $X$ be a locally compact Hausdorff space and $\mu$ a fully supported Borel measure on $X$ such that every compact subset of $X$ has finite measure. If $\Vert\cdot\Vert_1$ denotes the corresponding $L^1$-norm, then for all $f,g\in C_c(X)$, $f\perp g$ if and only if
+	<div class='equation'>\[
+		\Vert Af+Bg\Vert_1=|A|\Vert f\Vert_1+|B|\Vert g\Vert_1\qquad\forall A,B\in\mathbb{K}.
+	\]</div>
+	</p>
+</div>

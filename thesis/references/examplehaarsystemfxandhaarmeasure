@@ -1,0 +1,12 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#examplehaarsystemfxandhaarmeasure'>3.5.6</a>
+
+<!-- 3.5.6 !-->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 3.5.6</span>
+	Let $G$ be a locally compact Hausdorff topological group, acting continuously on a locally compact Hausdorff topological space $X$. Let $\lambda$ be a left Haar measure for $G$, and $f:X\to[0,\infty)$ a continuous $G$-invariant function (i.e., $f(gx)=f(x)$ for all $x\in X$ and $g\in G$). We define a Haar system $(\lambda,f)$ on $G\ltimes X$ by setting
+	<div class='equation'>\[
+	(\lambda,f)^x(A)=f(x)\lambda\left(\left\{g\in G:(g,g^{-1}(x))\in A\right\}\right)
+	\]</div>
+	for all $x\in X$ (regarded as the unit space $(G\ltimes X)^{(0)}$) and $A\subseteq G\ltimes X$.
+	</p>
+</div>

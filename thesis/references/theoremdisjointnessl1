@@ -1,0 +1,12 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#theoremdisjointnessl1'>3.5.2</a>
+
+<!-- 3.5.2 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.5.2</span>
+	Let $X$ and $Y$ be locally compact Hausdorff spaces with fully supported regular Borel measures $\mu_X$ and $\mu_Y$, and let $T:C_c(X)\to C_c(Y)$ be a linear isomorphism which is isometric with respect to the $L^1$-norms. Then there exists a homeomorphism $\phi:Y\to X$ and a continuous function $p:Y\to\mathbb{S}^1$ such that
+	<div class='equation'>\[
+		Tf(y)=p(y)\frac{d\mu_X}{d(\phi_*\mu_Y)}(\phi(y))f(\phi(y))
+	\]</div>
+	for all $f\in C_c(X)$ and $y\in Y$.
+	</p>
+</div>
