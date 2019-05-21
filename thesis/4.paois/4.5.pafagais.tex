@@ -43,7 +43,7 @@ Conversely, suppose the latter condition is satisfied, $e\leq s$ and $e\in E(S)\
 Item (b) follows from (a) by adjoining a $0$ to $S$.\qedhere
 \end{proof}
 
-\subsection{Maximal group image}
+\subsection{Maximal group image}\label{subsectionmaximalgroupimage}
 
 To each inverse semigroup $S$ we can naturally associate a group $\mathbf{G}(S)$ in the following manner: define a relation in $S$ by
 \[\ntag\label{relationmaximalgroupimage}
@@ -137,7 +137,7 @@ Hence $\widetilde{\theta}=\left(\widetilde{\theta}_{\gamma}:\widetilde{X}_{\gamm
 
 \begin{proposition}\label{prop:eunitarygroupoidofgerms}
 Let $\theta$ be a topological partial action of an $E$-unitary inverse semigroup $S$ on a space $X$ and $\widetilde{\theta}$ be the induced partial action on $\mathbf{G}(S)$. Then
-\[S\ltimes_\theta X\simeq \mathbf{G}(S)\ltimes_{\widetilde{\theta}} X\]
+\[S\ltimes_\theta X\cong \mathbf{G}(S)\ltimes_{\widetilde{\theta}} X\]
 \end{proposition}
 \begin{proof}
 Consider the map $[s,x]\mapsto ([s],x)$. Since $S$ is $E$-unitary this map is well-defined and is clearly a morphism, and surjectivity follows since $\widetilde{\theta}_{\gamma}=\bigvee_{[s]=\gamma}\theta_s$. As for injectivity, suppose $([s],x)=([t],y)$, so $x=y$ and $[s]=[t]$. We can in fact assume $x\in X_{s^*}\cap X_{t^*}$. Then $s$ and $t$ are compatible, which implies $s\land t=st^*t$. Since
@@ -240,13 +240,13 @@ This means that the isomorphism of Proposition \ref{propositionGSGigualG} also p
 
 \begin{corollary}
 Let $\theta$ be a topological partial action of a group $G$ on $X$ and $\widetilde{\theta}$ be the induced global action of $\mathbf{S}(G)$. Then
-\[G\ltimes_\theta X \simeq \mathbf{S}(G)\ltimes_{\widetilde{\theta}} X.\]
+\[G\ltimes_\theta X \cong \mathbf{S}(G)\ltimes_{\widetilde{\theta}} X.\]
 \end{corollary}
 
 The following interesting corollary shows that for these universal semigroup, partial actions always extend to global actions:
 
 \begin{corollary}
-Let $G$ be a group, $S=\mathbf{S}(G)$ and $\theta$ a topological partial action of $S$ on $X$. Then there exists a global action $\alpha$ of $S$ on $X$ such that $\theta_s\leq\alpha_s$ for all $s\in S$ and $S\ltimes_\theta X\simeq S\ltimes_\alpha X$.
+Let $G$ be a group, $S=\mathbf{S}(G)$ and $\theta$ a topological partial action of $S$ on $X$. Then there exists a global action $\alpha$ of $S$ on $X$ such that $\theta_s\leq\alpha_s$ for all $s\in S$ and $S\ltimes_\theta X\cong S\ltimes_\alpha X$.
 \end{corollary}
 \begin{proof}
 Let
@@ -258,5 +258,5 @@ Let
 Then for all $s\in S$,
 \[\theta_{[s]}\leq\gamma_{[[s]]}=\gamma'_{s}=\alpha_{[s]}\]
 and
-\[S\ltimes_\theta X\simeq \mathbf{G}(S)\ltimes_{\gamma} X\simeq G\ltimes_{\gamma'}X\simeq \mathbf{S}(G)\ltimes_\alpha X= S\ltimes_\alpha X.\qedhere\]
+\[S\ltimes_\theta X\cong \mathbf{G}(S)\ltimes_{\gamma} X\cong G\ltimes_{\gamma'}X\cong \mathbf{S}(G)\ltimes_\alpha X= S\ltimes_\alpha X.\qedhere\]
 \end{proof}

@@ -1,0 +1,28 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#examplecanonicalaction'>4.2.3</a>
+
+<!-- 4.2.3 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 4.2.3</span>
+	Let $\mathcal{G}$ be an étale, locally compact Hausdorff groupoid, and denote by $\operatorname{\bf{B}}(\mathcal{G})$ the semigroup of open bisections of $\mathcal{G}$.
+	</p>
+	
+	<p>
+	The <em>canonical action</em> of $\operatorname{\bf{B}}(\mathcal{G})$ on $\mathcal{G}^{(0)}$ is defined as $\tau=\left(\tau_U:\so(U)\to\ra(U)\right)_{U\in\operatorname{\bf{B}}(\mathcal{G})}$, where $\tau_U:\so(U)\to\ra(U)$ is the homeomorphism $\tau_U=\ra\circ\so|_U^{-1}$. In simpler terms, $\tau_U(\so(a))=\ra(a)$ whenever $a$ is an arrow in $\mathcal{G}$ with $\so(a)\in\so(U)$.
+	</p>
+	
+	<p>
+	Let us prove that $\tau$ is a global action, that is, that $\tau_{UV}=\tau_U\circ\tau_V$ for any $U,V\in\operatorname{\bf{B}}(\mathcal{G})$: We have
+	<div class='equation'>\begin{align*}
+		\tau_U^{-1}(\so(V))&=\left\{x\in\so(V):\ra(\so|_V^{-1}(x))\in\so(U)\right\}\\
+			&=\left\{x\in\so(V):x\in\so|_V(\ra^{-1}(\so(U)))\right\}\\
+			&=\so(V\cap\ra^{-1}(\so(U)))=\so(UV)
+	\end{align*}</div>
+	</p>
+	
+	<p>
+	In other words, the domains of $\tau_{UV}$ and of $\tau_U\circ\tau_V$ are the same. For every $x\in\so(UV)$, take $a\in U$ and $b\in V$ such that $x=\so(ab)$. Then
+	<div class='equation'>\[
+		\tau_{UV}(x)=\ra(ab)=\ra(a)=\tau_U(\so(a))=\tau_U(\ra(b))=\tau_U(\tau_V(\so(b)))=\tau_U(\tau_V(x)).
+	\]<span class='qed'></span></div>
+	</p>
+</div>

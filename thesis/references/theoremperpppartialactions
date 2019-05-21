@@ -1,0 +1,32 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#theoremperpppartialactions'>4.2.4</a>
+
+<!-- 4.2.4 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.2.4</span>
+	Suppose $(X,\theta,\mathcal{A})$ is weakly regular (Definition <span class='ref' data-tag='definitionregularperpp'></span>) and $\alpha=(\alpha_s:I_{s^*}\to I_s)_{s\in S}$ is a partial action of an inverse semigroup $S$ on $\mathcal{A}$ such that
+	<ol class='roman'>
+		<li>
+			$I_s$ is a $\perpp$-ideal of $\mathcal{A}$;
+		</li>
+		
+		<li>
+			$\alpha_s:I_{s^*}\to I_s$ is a $\perpp$-isomorphism.
+		</li>
+	</ol>
+	Then there exists a unique collection of homeomorphisms $\theta_s:U_{s^*}\to U_s$ ($s\in S$) such that
+	<ol class='arpar'>
+		<li>
+			For all $s\in S$, $U_s$ is open in $X$ and $\theta_s:U_{s^*}\to U_s$ is a homeomorphism;
+		</li>
+		
+		<li>
+			$I_s=\mathbf{I}(U_s)=\left\{f\in\mathcal{A}:\supp(f)\subseteq U_s\right\}$;
+		</li>
+		
+		<li>
+			for all $f\in I_{s^*}$, $\theta_s(\supp(f))=\supp(\alpha_s(f))$.
+		</li>
+	</ol>
+	In this case, $\theta=\left(\theta_s\right)_{s\in S}$ is a topological partial action of $S$ on $X$. Moreover, $\alpha$ is a global action if and only if $\theta$ is global.
+	</p>
+</div>

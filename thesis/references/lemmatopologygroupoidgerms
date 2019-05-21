@@ -1,0 +1,12 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#lemmatopologygroupoidgerms'>4.2.10</a>
+
+<!-- 4.2.10 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.2.10</span>
+	For every $s\in S$ and $U\subseteq X_{s^*}$, let
+	<div class='equation'>\[
+		[s,U]=\left\lbrace[s, x]\in S\ltimes X : x\in U\right\rbrace.
+	\]</div>
+	The collection $\mathcal{B}_{\mathrm{germ}}$ of all sets of the form $[s,U]$, where $s\in S$ and $U$ is an open subset of $X_{s^*}$, is a basis for a topology on $S\ltimes X$.
+	</p>
+</div>

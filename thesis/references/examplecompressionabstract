@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.1.pmapa.html#examplecompressionabstract'>4.1.4</a>
+
+<!-- 4.1.4 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 4.1.4</span>
+	Let $\theta:S\to T$ be a morphism of inverse semigroups, and let $u\in E(T)$. Define $\theta^u:S\to T$ by $\theta^u(s)=u\theta(s)u$. Then $\theta^u$ is a partial morphism, called the <em>restriction</em> or <em>compression</em> of $\theta$ to $u$.
+	</p>
+</div>

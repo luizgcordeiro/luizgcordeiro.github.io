@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.8.it.html#propbisectionsemigroupfullsemigroup'>4.8.3</a>
+
+<!-- 4.8.3 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.8.3</span>
+	Suppose $\mathcal{G}$ is an ample (possibly non-Hausdorff) groupoid. Then the morphism $\tau:\KB(\mathcal{G})\to [[\mathcal{G}]]$ is an isomorphism if and only if $\mathcal{G}$ is effective.
+	</p>
+</div>

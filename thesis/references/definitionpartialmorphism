@@ -1,0 +1,31 @@
+<a class='reflink' href='../4.paois/4.1.pmapa.html#definitionpartialmorphism'>4.1.1</a>
+
+<!-- 4.1.1 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.1.1</span>
+	A <em>partial morphism</em> from an inverse semigroup $S$ to a (not necessarily inverse) semigroup $T$ is a map $\theta: S \rightarrow T$ satisfying, for all $s$ and $t$ in $S$,
+	<style>
+		ol.arpar.pm > li:before {
+			content: "(PM" counter(ar) ")";
+			width: 3em;
+		}
+		
+		ol.arpar.pm > li {
+			margin-left: 1em;
+		}
+	</style>
+	<ol class='arpar pm'>
+		<li>
+			$\theta(s)\theta(s^*)\theta(s)=\theta(s)$;
+		</li>
+		
+		<li>
+			$\theta(s)\theta(t)\theta(t^*)=\theta(st)\theta(t^*)$;
+		</li>
+		
+		<li>
+			$\theta(s^*)\theta(s)\theta(t)=\theta(s^*)\theta(st)$.
+		</li>
+	</ol>
+	</p>
+</div>

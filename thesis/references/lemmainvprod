@@ -1,0 +1,17 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#lemmainvprod'>4.2.8</a>
+
+<!-- 4.2.8 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.2.8</span>
+	Let $(s_1,x), (s_2,x), (t_1,y), (t_2,y) \in S\ast X$ with $[s_1,x]=[s_2,x]$, $[t_1,y]=[t_2,y]$ and $\theta_{t_1}(y)=x$. Then 
+	<ol class='alphpar'>
+		<li>
+			$\theta_{s_1}(x)=\theta_{s_2}(x)$ and $\theta_{t_2}(y)=\theta_{t_1}(y)=x$.
+		</li>
+		
+		<li>
+			$[s_1t_1,y]=[s_2t_2,y]$.
+		</li>
+	</ol>
+	</p>
+</div>

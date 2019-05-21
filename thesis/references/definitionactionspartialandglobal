@@ -1,0 +1,13 @@
+<a class='reflink' href='../4.paois/4.1.pmapa.html#definitionactionspartialandglobal'>4.1.5</a>
+
+<!-- 4.1.5 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.1.5
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR3231479'></span>])</span></span>
+	A <em>partial action</em> of an inverse semigroup $S$ on a set $X$ is a partial morphism $\theta:S\to\mathcal{I}(X)$. If $\theta$ is a morphism we call it a <em>global action</em>.
+	</p>
+	
+	<p>
+	If we need to make the domain and codomains of each map $\theta_s$ explicit, we will write $\theta=(\theta_s:X_{s^*}\to X_s)_{s\in S}$.
+	</p>
+</div>

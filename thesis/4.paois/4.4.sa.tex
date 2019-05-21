@@ -32,7 +32,7 @@ holds. In particular, $f$ is a linear combination of characteristic functions of
 Endowing $R$ with the discrete topology, $A_R(\G)$ coincides with the set of compactly supported functions from $\G$ to $R$.
 \end{remarkn}
 
-For every $f\in A_R(\G)$ ($\G$ ample Hausdorff) and every $x\in\G[0]$, $\supp(f)\cap\G_x$ is compact in the discrete space $\G_x$, and hence finite. Similarly, $\supp(f)\cap \G^x$ is finite, and so we can define the \emph{convolution product}
+For every $f\in A_R(\G)$ ($\G$ ample Hausdorff) and every $x\in\mathcal{G}^{(0)}$, $\supp(f)\cap\G_x$ is compact in the discrete space $\G_x$, and hence finite. Similarly, $\supp(f)\cap \G^x$ is finite, and so we can define the \emph{convolution product}
 \[(fg)(a)=\sum_{xy=a}f(x)g(y)=\sum_{c\in\G^{\ra(a)}}f(c)g(c^{-1}a)=\sum_{d\in\G_{\so(a)}}f(ad^{-1})g(d).\ntag\label{equationconvolutionproductsteinbergalgebra}\]
 
 With this product, $A_R(\G)$ is an associative algebra.
@@ -42,7 +42,7 @@ The $R$-module $A_R(\G)$, endowed with the convolution product of Equation \ref{
 \end{definition}
 
 From the convolution formula we obtain, for all $f,g\in A_R(\G)$.
-\[\supp(fg)\subseteq\left\{ab:(a,b)\in(\supp(f)\times\supp(g))\cap\G[2]\right\}=\supp(f)\supp(g).\]
+\[\supp(fg)\subseteq\left\{ab:(a,b)\in(\supp(f)\times\supp(g))\cap\mathcal{G}^{(2)}\right\}=\supp(f)\supp(g).\]
 
 We will now prove a universal property for Steinberg algebras, and for this we need the notion of a \emph{Boolean representation}. These are the semigroup morphisms of a Boolean inverse semigroup $S$ into the multiplicative semigroup of an algebra $B$ which respect the order structure of $S$.
 
@@ -118,28 +118,28 @@ and since $\left\{1_U:U\in\KB(\G)\right\}$ generates $A_R(\G)$ then $\Phi$ is an
 
 \begin{definition}\label{definitiondiagonalsteinbergalgebra}\index{Diagonal subalgebra}
 The \emph{diagonal subalgebra} of $A_R(\G)$ is
-\[D_R(\G)=\left\{f\in A_R(\G):\supp(f)\subseteq\G[0]\right\}.\]
+\[D_R(\G)=\left\{f\in A_R(\G):\supp(f)\subseteq\mathcal{G}^{(0)}\right\}.\]
 \end{definition}
 
-Since $\supp(fg)\subseteq\supp(f)\supp(g)$ and $\supp(f+\lambda g)\subseteq\supp(f)\cup\supp(g)$ for all $f,g\in A_R(\G)$ and $\lambda\in R$, it follows that $D_R(\G)$ is indeed a subalgebra of $A_R(\G)$. Moreover, the convolution product on $D_R(\G)$ coincides with the pointwise product: for all $f,g\in D_R(\G)$ and $x\in\G[0]$, we have $\G^x\cap\G[0]=\left\{x\right\}$, so
+Since $\supp(fg)\subseteq\supp(f)\supp(g)$ and $\supp(f+\lambda g)\subseteq\supp(f)\cup\supp(g)$ for all $f,g\in A_R(\G)$ and $\lambda\in R$, it follows that $D_R(\G)$ is indeed a subalgebra of $A_R(\G)$. Moreover, the convolution product on $D_R(\G)$ coincides with the pointwise product: for all $f,g\in D_R(\G)$ and $x\in\mathcal{G}^{(0)}$, we have $\G^x\cap\mathcal{G}^{(0)}=\left\{x\right\}$, so
 \[(fg)(x)=\sum_{a\in\G^x\cap\supp(f)}f(a)g(a^{-1}x)=f(x)g(x^{-1}x)=f(x)g(x).\]
 In particular, $D_R(\G)$ is commutative, since we assume the ring $R$ is commutative.
 
-Moreover, $D_R(\G)$ is isomorphic to $A_R(\G[0])$ via the map
-\[E:D_R(\G)\to A_R(\G[0]),\qquad f\mapsto f|_{\G[0]}.\]
-whose inverse is given as follows: If $f\in A_R(\G[0])$, then $E^{-1}(f)$ is the extension of $f$ to $\G$ by setting $E^{-1}(f)=0$ on $\G\setminus\G[0]$.
+Moreover, $D_R(\G)$ is isomorphic to $A_R(\mathcal{G}^{(0)})$ via the map
+\[E:D_R(\G)\to A_R(\mathcal{G}^{(0)}),\qquad f\mapsto f|_{\mathcal{G}^{(0)}}.\]
+whose inverse is given as follows: If $f\in A_R(\mathcal{G}^{(0)})$, then $E^{-1}(f)$ is the extension of $f$ to $\G$ by setting $E^{-1}(f)=0$ on $\G\setminus\mathcal{G}^{(0)}$.
 
 \subsection{Diagonal-preserving isomorphisms of Steinberg Algebras}
 
 The goal of this section is to prove that the Steinberg algebra of an ample Hausdorff groupoid $\G$ together with its diagonal algebra completely characterize $\G$. Although the main theorem of this subsection (Theorem \ref{theoremsteinbergalgebras}) is partially stated and proven (for more general \emph{graded} Steinberg algebras) in \cite[Corollary 3.14]{MR3848066}, we can obtain a precise classification of the diagonal-preserving isomorphisms of Steinberg algebras, as described in Theorem \ref{theoremsteinbergalgebras} and Corollary \ref{corollaryclassificationofautomorphismsofsteinbergalgebras}
 
-We will need to recover the bisections of $\G$ from $A_R(\G)$, and in particular the compact-open subsets of $\G[0]$. The main idea is, again, to identify subsets of $\G[0]$ with their characteristic functions, and these are precisely the functions which attain only the values $0$ and $1$. We thus need to assume an extra condition on the ring $R$.
+We will need to recover the bisections of $\G$ from $A_R(\G)$, and in particular the compact-open subsets of $\mathcal{G}^{(0)}$. The main idea is, again, to identify subsets of $\mathcal{G}^{(0)}$ with their characteristic functions, and these are precisely the functions which attain only the values $0$ and $1$. We thus need to assume an extra condition on the ring $R$.
 
 \begin{definition}[{\cite[X.7]{MR1878556}}]\index{Indecomposable ring}
-A (nontrivial) commutative unital ring $R$ is \emph{indecomposable} if its only idempotents are $0$ and $1$. Equivalently, $R$ is indecomposable if it cannot be written as a direct sum $R\simeq R_1\oplus R_2$, where $R_1$ and $R_2$ are nontrivial rings.
+A (nontrivial) commutative unital ring $R$ is \emph{indecomposable} if its only idempotents are $0$ and $1$. Equivalently, $R$ is indecomposable if it cannot be written as a direct sum $R\cong R_1\oplus R_2$, where $R_1$ and $R_2$ are nontrivial rings.
 \end{definition}
 
-A subset $A$ of a groupoid $\G$ is a bisection if and only if $AA^{-1}\cup A^{-1}A\subseteq \G[0]$. A similar type of condition will be used to recover an ample Hausdorff groupoid $\G$ from the pair $(A_R(\G),D_R(\G))$.
+A subset $A$ of a groupoid $\G$ is a bisection if and only if $AA^{-1}\cup A^{-1}A\subseteq \mathcal{G}^{(0)}$. A similar type of condition will be used to recover an ample Hausdorff groupoid $\G$ from the pair $(A_R(\G),D_R(\G))$.
 
 \begin{definition}\index{Normalizer (of the diagonal subalgebra)}
 A \emph{normalizer} of $D_R(\G)$ is an element $f\in A_R(\G)$ for which there exists $g\in A_R(\G)$ such that
@@ -203,7 +203,7 @@ If $\G$ is an ample Hausdorff groupoid and $R$ is an indecomposable (commutative
 The following stronger condition was considered in \cite{MR3848066}, and is more easily checked than the one above.
 
 \begin{definition}
-If $\G$ is an ample Hausdorff groupoid and $R$ is an indecomposable (commutative, unital) ring, we say that $(\G,R)$ \emph{satisfies condition (S)} if the set of all $x\in\G[0]$ such that the group ring $R\G_x^x$ has only trivial units\ftnt{If $G$ is a group and $R$ is a unital ring, a trivial unit of $RG$ is an element of the form $ug$ where $u$ is invertible in $R$ and $g\in G$.} is dense in $\G[0]$.\nocite{MR3743184}
+If $\G$ is an ample Hausdorff groupoid and $R$ is an indecomposable (commutative, unital) ring, we say that $(\G,R)$ \emph{satisfies condition (S)} if the set of all $x\in\mathcal{G}^{(0)}$ such that the group ring $R\G_x^x$ has only trivial units\ftnt{If $G$ is a group and $R$ is a unital ring, a trivial unit of $RG$ is an element of the form $ug$ where $u$ is invertible in $R$ and $g\in G$.} is dense in $\mathcal{G}^{(0)}$.\nocite{MR3743184}
 \end{definition}
 
 The property of a group-ring $RG$ (where $G$ is a group and $R$ is a ring) having only trivial units has been studied, for example, in \cite{MR0002137}. A group $G$ is \emph{indexed} if there exists a non-trivial group morphism from $G$ to $\mathbb{Z}$, and \emph{indicable throughout} if every nontrivial finitely generated subgroup of $G$ is indexed. (Note that if $G$ is indicable throughout then $G$ is torsion-free.)
@@ -226,7 +226,7 @@ Suppose $\G$ is an ample Hausdorff groupoid, $R$ is an indecomposable ring and $
 \end{lemma}
 \begin{proof}
 \begin{enumerate}
-\item[(a)] $ff^*\in D_R(\G)$ and $(ff^*)^2=ff^*$, so since $R$ has only trivial idempotents we obtain $ff^*=1_U$ for some $U\in\KB(\G[0])$. Note that
+\item[(a)] $ff^*\in D_R(\G)$ and $(ff^*)^2=ff^*$, so since $R$ has only trivial idempotents we obtain $ff^*=1_U$ for some $U\in\KB(\mathcal{G}^{(0)})$. Note that
 \[1_Uf=ff^*f=f\qquad\text{and}\qquad f^*1_U=f^*ff^*=f^*\]
 so $\ra(\supp(f))\cup \so(\supp(f^*))\subseteq U$. On the other hand,
 \[U=\supp(ff^*)=\so(\supp(ff^*))\subseteq \so(\supp(f)\supp(f^*))\subseteq \so(\supp(f^*)),\]
@@ -252,14 +252,14 @@ Given $f\in N_R(\G)$, we need to prove that $\supp(f)$ is a bisection.
 
 Let $a_0\in\supp(f)$, $x=\so(a_0)$ and $y=\ra(a_0)$. First, assume that the group ring $R\G_x^x$ has only trivial units. Let us show that $\supp(f)\cap\G_x^y=\left\{a_0\right\}$.
 
-Since $\G_x$ is discrete and $\supp(f)$ is compact then $\supp(f)\cap\G_x$ is finite, so the set $\ra\left(\supp(f)\cap\G_x\right)$ is also finite and contains $y$. Choose a compact-open subset $U\subseteq\G[0]$ such that
+Since $\G_x$ is discrete and $\supp(f)$ is compact then $\supp(f)\cap\G_x$ is finite, so the set $\ra\left(\supp(f)\cap\G_x\right)$ is also finite and contains $y$. Choose a compact-open subset $U\subseteq\mathcal{G}^{(0)}$ such that
 \[\ra\left(\supp(f)\cap\G_x\right)\cap U=\left\{y\right\}.\]
 
 Given $b\in\G_x$, we have
 \[f^*1_Uf(b)=\sum_{\substack{cd=b\\\ra(d)\in U}}f^*(c)f(d).\]
 Of course, in the sum above we just need to consider $d\in\supp(f)$, so if $\ra(d)\in U$ as well we will obtain $\ra(d)=y$. Thus we can rewrite
 \[f^*1_Uf(b)=\sum_{\substack{cd=b\\\ra(d)=y}}f^*(c)f(d).\ntag\label{equationproofconditionsimplieslocal1}\]
-Now by Lemma \ref{lemmanormalizerssteinbergalgebradiagonal2}(b), $f^*1_Uf=1_{\so(\supp(f)\cap \ra^{-1}(U))}$. But since $\so(\supp(f)\cap \ra^{-1}(U))$ is contained in $\G[0]$ and contains $\so(a)=x$, then for all $b\in \G_x^x$,
+Now by Lemma \ref{lemmanormalizerssteinbergalgebradiagonal2}(b), $f^*1_Uf=1_{\so(\supp(f)\cap \ra^{-1}(U))}$. But since $\so(\supp(f)\cap \ra^{-1}(U))$ is contained in $\mathcal{G}^{(0)}$ and contains $\so(a)=x$, then for all $b\in \G_x^x$,
 \[f^*1_Uf(b)=\begin{cases}
 1,&\text{f }b=x,\\
 0,&\text{otherwise.}
@@ -274,7 +274,7 @@ Therefore $\alpha$ is invertible in $R\G_x^x$, hence it is a trivial invertible,
 
 %Equation (\ref{equationproofconditionsimplieslocal}) also implies that $a_0^{-1}\in\supp(f^*)$ and in fact $f(a_0)$ is invertible in $R$ and $f^*(a_0^{-1})=f(a_0)^{-1}$, which deals with the second part of this item.
 
-Now we show that $\supp(f)\cap\G_x=\left\{a_0\right\}$. Suppose that $b_0\in\supp(f)\cap \G_x\setminus\left\{a_0\right\}$. The same way as above, take $V\in\KB(\G[0])$ such that $V\cap \ra(\supp(f))=\left\{y,\ra(b_0)\right\}$. We already know from above that $\left\{b_0\right\}=\supp(f)\cap\G_x^{\ra(b_0)}$ and that $f^*(b_0^{-1})=f(b_0)^{-1}$, and similarly for $a_0$, so Lemma \ref{lemmanormalizerssteinbergalgebradiagonal2}(b) yields
+Now we show that $\supp(f)\cap\G_x=\left\{a_0\right\}$. Suppose that $b_0\in\supp(f)\cap \G_x\setminus\left\{a_0\right\}$. The same way as above, take $V\in\KB(\mathcal{G}^{(0)})$ such that $V\cap \ra(\supp(f))=\left\{y,\ra(b_0)\right\}$. We already know from above that $\left\{b_0\right\}=\supp(f)\cap\G_x^{\ra(b_0)}$ and that $f^*(b_0^{-1})=f(b_0)^{-1}$, and similarly for $a_0$, so Lemma \ref{lemmanormalizerssteinbergalgebradiagonal2}(b) yields
 \begin{align*}
 1&=1_{\so(\ra^{-1}(V)\cap\supp(f))}(x)=f^*1_Vf(x)\\
 &=\sum_{\substack{cd=x\\\ra(d)\in V}}f^*(c)f(d)=\sum_{\substack{cd=x\\\ra(d)=y\text{ or }\ra(b_0)}}f^*(c)f(d)\\
@@ -288,7 +288,7 @@ Now to the general case, suppose $a,b\in\supp(f)$ with $\so(a)=\so(b)$. Take any
 An important class of groupoids consists of the \emph{topologically principal} ones, whose associated algebras have been extensively studied (see, for example, \cite{MR3189105,MR2745642,MR1681679,MR2590626}). In fact it is possible to classify C*-algebras which come from them (see \cite{MR2460017}).
 
 \begin{definition}\label{definitiontopologicallyprincipal}\index{Groupoid!Topologically principal}
-A topological groupoid $\G$ is \emph{topologically principal} if the set of all $x\in X$ whose isotropy group $\G_x^x$ is trivial is dense in $\G[0]$.
+A topological groupoid $\G$ is \emph{topologically principal} if the set of all $x\in X$ whose isotropy group $\G_x^x$ is trivial is dense in $\mathcal{G}^{(0)}$.
 \end{definition}
 
 As an immediate consequence of the previous propositions, we obtain the following:
@@ -300,10 +300,10 @@ If $\G$ is an ample Hausdorff topologically principal groupoid and $R$ is an ind
 We are ready to classify diagonal-preserving isomorphisms of Steinberg algebras of groupoids and rings satisfying the local bisection hypothesis. For this, let us first define the class of maps of interest:
 
 \begin{definition}\label{definitioncocycle}
-Let $R$ and $S$ be rings and $\G$ be a groupoid. Denote by $\operatorname{Iso}_+(R,S)$ the set of additive isomorphisms from $R$ to $S$. A map $\chi:\G\to\operatorname{Iso}_+(R,S)$ satisfying $\chi(ab)(rs)=\chi(a)(r)\chi(b)(s)$ for all $(a,b)\in\G[2]$ and $r,s\in R$ will be called a \emph{cocycle}.\nomenclature[Z]{$\operatorname{Iso}_+(R,S)$}{Set of additive isomorphisms.}
+Let $R$ and $S$ be rings and $\G$ be a groupoid. Denote by $\operatorname{Iso}_+(R,S)$ the set of additive isomorphisms from $R$ to $S$. A map $\chi:\G\to\operatorname{Iso}_+(R,S)$ satisfying $\chi(ab)(rs)=\chi(a)(r)\chi(b)(s)$ for all $(a,b)\in\mathcal{G}^{(2)}$ and $r,s\in R$ will be called a \emph{cocycle}.\nomenclature[Z]{$\operatorname{Iso}_+(R,S)$}{Set of additive isomorphisms.}
 \end{definition}
 
-%The cocycle condition above is similar to that of a ring isomorphism, but this is the case only for elements of the unit space $\G[0]$, as the next example and proposition show.
+%The cocycle condition above is similar to that of a ring isomorphism, but this is the case only for elements of the unit space $\mathcal{G}^{(0)}$, as the next example and proposition show.
 
 \begin{example}
 Consider $C_2=\left\{1,g\right\}$, the group of order 2, acting on itself by left multiplication and consider the transformation groupoid $\G=C_2\ltimes C_2$.
@@ -312,9 +312,9 @@ Let $R=S=\mathbb{Z}$. If we define $\chi:\G\to\operatorname{Iso}_+(R,S)$ by $\ch
 \end{example}
 
 \begin{example}
-Suppose $R$ is a unital ring and $\chi:\G\to\operatorname{Iso}_+(R,R)$ is a cocycle. Then $\chi$ is a morphism from the groupoid $\G$ to the group (under composition) $\operatorname{Iso}_+(R,R)$ if, and only if, $\chi(x)=\id_R$ for all $x\in \G[0]$.
+Suppose $R$ is a unital ring and $\chi:\G\to\operatorname{Iso}_+(R,R)$ is a cocycle. Then $\chi$ is a morphism from the groupoid $\G$ to the group (under composition) $\operatorname{Iso}_+(R,R)$ if, and only if, $\chi(x)=\id_R$ for all $x\in \mathcal{G}^{(0)}$.
 
-Indeed, assume $\chi(x)=\id_R$ for all $x\in\G[0]$. If $(a,b)\in\G[2]$ and $r\in R$, then the cocycle condition yields
+Indeed, assume $\chi(x)=\id_R$ for all $x\in\mathcal{G}^{(0)}$. If $(a,b)\in\mathcal{G}^{(2)}$ and $r\in R$, then the cocycle condition yields
 \[\chi(a)\left(\chi(b)(r)\right)=\chi(a\so(a))(1\chi(b)(r))=\chi(a)(1)\chi(\so(a))(\chi(b)(r)),\]
 and since $\chi(\so(a))=\id_R$,
 \[\chi(a)\left(\chi(b)(r)\right)=\chi(a)(1)\chi(b)(r)=\chi(ab)(r)\]
@@ -326,9 +326,9 @@ The converse is trivial, since groupoid morphisms map units to units, and the on
 \begin{proposition}
 Let $R$ and $S$ be commutative unital rings, $\G$ a groupoid and $\chi:\G\to\operatorname{Iso}_+(R,S)$ a cocycle. Then
 \begin{enumerate}
-\item[(a)] For all $x\in\G[0]$, $\chi(x)$ is a ring isomorphism;
+\item[(a)] For all $x\in\mathcal{G}^{(0)}$, $\chi(x)$ is a ring isomorphism;
 \item[(b)] For all $a\in\G$, if $u\in R$ is invertible then $\chi(a)(u)$ is invertible in $S$, and $\chi(a)(u)^{-1}=\chi(a^{-1})(u)$.
-\item[(c)] For all $a\in\G$, $\chi(\so(a))=\chi(\ra(a))$. In other words, the restriction of $\chi$ to $\G[0]$ is \emph{invariant}.
+\item[(c)] For all $a\in\G$, $\chi(\so(a))=\chi(\ra(a))$. In other words, the restriction of $\chi$ to $\mathcal{G}^{(0)}$ is \emph{invariant}.
 \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -356,7 +356,7 @@ If $f,g\in N_R(\G)$, then $f\subseteq g$ if and only if $f=g p$ for some $p\in D
 \begin{itemize}
 \item If $f=gp$ then $\supp(f)\subseteq\supp(g)\supp(p)\subseteq\supp(g)$;
 \item Conversely, if $\supp(f)\subseteq\supp(g)$ take $p=g^*f$. Then
-\[\supp(p)\subseteq\supp(g^*)\supp(f)\subseteq(\supp(g))^{-1}\supp(g)\subseteq\G[0]\]
+\[\supp(p)\subseteq\supp(g^*)\supp(f)\subseteq(\supp(g))^{-1}\supp(g)\subseteq\mathcal{G}^{(0)}\]
 where the last inclusion follows from $\supp(g)$ being a bisection. The equality $f=gp$ then follows from Lemma \ref{lemmanormalizerssteinbergalgebradiagonal2}(a).
 \end{itemize}
 
@@ -370,7 +370,7 @@ Conversely, we write $f=\sum_i\lambda_i1_{A_i}$, where the $A_i$ are pairwise di
 
 Therefore, $T$ is a $\perp$-isomorphism. Note that $\perpp$ and $\perp$ coincide in $A_R(\G)$, since its elements are locally constant (similarly to Example \ref{examplekaniarmoutil}). Then $T$ is a $\perpp$-isomorphism, so let $\phi:\H\to\G$ be the $T$-homeomorphism.
 
-The verification that $\phi$ is a groupoid isomorphism is similar to that of Theorem \ref{theoremmeasuredgroupoidconvolutionalgebra}: Assuming $(a,b)\in\H[2]$, but such that $\phi(ab)$ is not equal to $\phi(a)\phi(b)$ (which might not even be defined), we can use continuity of the multiplication or Lemma \ref{lemmaproduct} to find compact-open bisections $U$ and $V$ containing $a$ and $b$, respectively, such that $\phi(ab)\not\in\phi(U)\phi(V)$. Then $ab\in\supp(1_{UV})$, so
+The verification that $\phi$ is a groupoid isomorphism is similar to that of Theorem \ref{theoremmeasuredgroupoidconvolutionalgebra}: Assuming $(a,b)\in\mathcal{H}^{(2)}$, but such that $\phi(ab)$ is not equal to $\phi(a)\phi(b)$ (which might not even be defined), we can use continuity of the multiplication or Lemma \ref{lemmaproduct} to find compact-open bisections $U$ and $V$ containing $a$ and $b$, respectively, such that $\phi(ab)\not\in\phi(U)\phi(V)$. Then $ab\in\supp(1_{UV})$, so
 \[\phi(ab)\in\supp(T1_{UV})=\supp((T1_U)(T1_V)))\subseteq\supp(T1_U)\supp(T1_V)=\phi(U)\phi(V),\]
 a contradiction.
 
@@ -380,7 +380,7 @@ and therefore $T$ is basic (by additivity of $T$ and Proposition \ref{propositio
 \[Tf(a)=\chi(a)(f(\phi(a))),\qquad\text{for all}\quad f\in A_R(\G)\quad\text{and}\quad a\in\H,\]
 and we need now to verify that $\chi$ is a cocycle.
 
-If $(a,b)\in\H[2]$ and $r,s\in R$, choose compact-open bisections $U,V$ of $\G$ containing $\phi(a)$ and $\phi(b)$, respectively. Then using multiplicativity of $T$ we obtain
+If $(a,b)\in\mathcal{H}^{(2)}$ and $r,s\in R$, choose compact-open bisections $U,V$ of $\G$ containing $\phi(a)$ and $\phi(b)$, respectively. Then using multiplicativity of $T$ we obtain
 \begin{align*}
 \chi(ab)(rs)&=\chi(ab)\big((r1_U)(s1_V)(\phi(ab))\big)=T\big((r1_U)(s1_V)\big)(ab)\\
 &=\big(T(r1_U)T(s1_V)\big)(ab)=\sum_{cd=ab}T(r1_U)(c)T(s1_V)(d)\\
@@ -427,7 +427,7 @@ The map $(\chi,\phi)\mapsto T_{(\chi,\phi)}$ is a group morphism and it is surje
 
 Again, we consider a commutative ring with unit $R$. Given a zero-dimensional, locally compact Hausdorff space $X$, the Steinberg algebra of $X$, as a unit groupoid, is the algebra $A_R(X)$ of locally constant, compactly supported $R$-valued functions on $X$, with pointwise operations.
 
-In \cite{MR3743184}, Beuter and Gonçalves showed that any Steinberg algebra of a transformation groupoid, given by a partial action of a group, $A_R(G\ltimes X)$, is isomorphic to a crossed product $A_R(X)\rtimes G$ (see \cite[Theorem~3.2]{MR3743184}). In the same paper, they proved that every Steinberg Algebra, associated with an ample Hausdorff groupoid $\G$, is isomorphic to the crossed product $A_R(\G[0])\rtimes\KB(\G)$ (\cite[Theorem~5.2]{MR3743184}). Similarly, in \cite{arxiv1710.09723v1}, Demeneghi proved that any Steinberg algebra of a Hausdorff groupoid of germs associated to an ample action of an inverse semigroup $S$ is isomorphic to a crossed product $A_R(X)\rtimes S$ ring (\cite[Theorem~2.3.6]{arxiv1710.09723v1}), and as a consequence obtained the latter result presented by the previous authors (see \cite[Proposition~2.4.3]{arxiv1710.09723v1}). Note that these results are non-comparable, since \cite{MR3743184} deals with partial actions of groups whereas \cite{arxiv1710.09723v1} considers actions of semigroups.
+In \cite{MR3743184}, Beuter and Gonçalves showed that any Steinberg algebra of a transformation groupoid, given by a partial action of a group, $A_R(G\ltimes X)$, is isomorphic to a crossed product $A_R(X)\rtimes G$ (see \cite[Theorem~3.2]{MR3743184}). In the same paper, they proved that every Steinberg Algebra, associated with an ample Hausdorff groupoid $\G$, is isomorphic to the crossed product $A_R(\mathcal{G}^{(0)})\rtimes\KB(\G)$ (\cite[Theorem~5.2]{MR3743184}). Similarly, in \cite{arxiv1710.09723v1}, Demeneghi proved that any Steinberg algebra of a Hausdorff groupoid of germs associated to an ample action of an inverse semigroup $S$ is isomorphic to a crossed product $A_R(X)\rtimes S$ ring (\cite[Theorem~2.3.6]{arxiv1710.09723v1}), and as a consequence obtained the latter result presented by the previous authors (see \cite[Proposition~2.4.3]{arxiv1710.09723v1}). Note that these results are non-comparable, since \cite{MR3743184} deals with partial actions of groups whereas \cite{arxiv1710.09723v1} considers actions of semigroups.
 
 Our current objective is to generalize both results above. More precisely, let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a topological partial action of an inverse semigroup $S$ on a zero-dimensional, locally compact Hausdorff space $X$. Define, for each $s \in S$,
 \[D_s=\{f \in A_R(X):\operatorname{supp}f\subseteq X_s \}.\]
@@ -451,7 +451,7 @@ Given $s\in S$ any subset $B$ of $[s,X_{s^*}]$ is of the form $B=[s,\so(B)]$.
 \end{lemma}
 
 \begin{proof}
-Since $[s,X_{s^*}]$ is a bisection (Proposition \ref{prop:bisectionhomeomorphic}), then for any subset $B\subseteq[s,X_{s^*}]$ we have
+Since $[s,X_{s^*}]$ is a bisection (Proposition \ref{propbisectionhomeomorphic}), then for any subset $B\subseteq[s,X_{s^*}]$ we have
 \[B=\so^{-1}(\so(B))\cap[s,X_{s^*}]=[s,\so(B)].\qedhere\]
 \end{proof}
 
@@ -735,16 +735,16 @@ Note that the isomorphism $\Phi:A_R(X)\rtimes S\to A_R(S\ltimes X)$ obtained in 
 \end{remarkn}
 
 \begin{corollary}\label{cor:isosteinbergbisection}
-Let $\G$ be an ample Hausdorff groupoid. Then the Steinberg Algebra $A_R(\G)$ is isomorphic to the crossed products $A_R(\G[0])\rtimes_{\mu}\operatorname{\mathbf{B}}(\G)$ and $A_R(\G[0])\rtimes_{\eta}\KB(\G)$, where $\mu$ and $\eta$ are induced by the canonical actions of $\operatorname{\mathbf{B}}(\G)$ and $\KB(\G)$ on $\G[0]$ (Example \ref{ex:amplegermesopenbisections}).
+Let $\G$ be an ample Hausdorff groupoid. Then the Steinberg Algebra $A_R(\G)$ is isomorphic to the crossed products $A_R(\mathcal{G}^{(0)})\rtimes_{\mu}\operatorname{\mathbf{B}}(\G)$ and $A_R(\mathcal{G}^{(0)})\rtimes_{\eta}\KB(\G)$, where $\mu$ and $\eta$ are induced by the canonical actions of $\operatorname{\mathbf{B}}(\G)$ and $\KB(\G)$ on $\mathcal{G}^{(0)}$ (Example \ref{examplegermesopenbisections}).
 \end{corollary}
 
 \begin{proof}
-By Example~\ref{ex:amplegermesopenbisections}, $\G$ is isomorphic to the groupoids of germs $\operatorname{\bf{B}}(\G)\ltimes\G[0]$ and $\KB(\G)\ltimes\G[0]$, given by the respective canonical actions of $\operatorname{\bf{B}}(\G)$ and $\KB(\G)$ on $\G[0]$. Then the desired result follows from Theorem~\ref{theoremsteinbergiscrossed}.
+By Example~\ref{examplegermesopenbisections}, $\G$ is isomorphic to the groupoids of germs $\operatorname{\bf{B}}(\G)\ltimes\mathcal{G}^{(0)}$ and $\KB(\G)\ltimes\mathcal{G}^{(0)}$, given by the respective canonical actions of $\operatorname{\bf{B}}(\G)$ and $\KB(\G)$ on $\mathcal{G}^{(0)}$. Then the desired result follows from Theorem~\ref{theoremsteinbergiscrossed}.
 \end{proof}
 
-It is interesting to note that the crossed products $A_R(\G[0])\rtimes\operatorname{\mathbf{B}}(\G)$ and $A_R(\G[0])\rtimes\KB(\G)$ arise from \emph{global} actions and not simply partial actions. Further, using Theorem~\ref{theoremsteinbergiscrossed} and Corollary~\ref{cor:isosteinbergbisection} for the groupoid of germs of a partial action, we obtain
-\[A_R(X)\rtimes S\simeq A_R(S\ltimes X)\simeq A_R(X)\rtimes_\eta \KB(S\ltimes X),\]
-where $\eta$ is induced by the canonical action of $\KB(S\ltimes X)$ on $(S\ltimes X)^{(0)}\simeq X$.
+It is interesting to note that the crossed products $A_R(\mathcal{G}^{(0)})\rtimes\operatorname{\mathbf{B}}(\G)$ and $A_R(\mathcal{G}^{(0)})\rtimes\KB(\G)$ arise from \emph{global} actions and not simply partial actions. Further, using Theorem~\ref{theoremsteinbergiscrossed} and Corollary~\ref{cor:isosteinbergbisection} for the groupoid of germs of a partial action, we obtain
+\[A_R(X)\rtimes S\cong A_R(S\ltimes X)\cong A_R(X)\rtimes_\eta \KB(S\ltimes X),\]
+where $\eta$ is induced by the canonical action of $\KB(S\ltimes X)$ on $(S\ltimes X)^{(0)}\cong X$.
 
 \subsection{Constructing a Steinberg algebra from a crossed product $A_R(X)\rtimes S$}
 
@@ -752,7 +752,7 @@ In the previous section we saw that the Steinberg algebra of an ample Hausdorff 
 
 %It is well-know that for every partial action of a group $G$ on a locally compact Hausdorff topological space $X$, there is a partial action associated $\alpha=(\{D_g\}_{g\in G},\{\alpha_{g}\}_{g\in G})$ of $\G$ on the C*-algebra $C_0(X)$, and conversely, every partial action of a group $G$ on $C_0(X)$ comes from a partial action of $G$ on $X$.
 
-Some results of this nature are already known. For example, in the C*-algebraic case, if $X$ is a locally compact Hausdorff space, then every closed ideal of $C_0(X)$ is of the form $C_0(U)\simeq\left\{f\in C(X):f=0\text{ on }X\setminus U\right\}$ for some (unique) open set $U\subseteq X$ (\cite[Exercise 3.2.3(5)]{MR1646508}), and the Gelfand-Naimark Theorem (\cite[Theorem 2.1.10]{MR1074574}) implies that every $*$-isomorphism $T:C_0(U)\to C_0(V)$ between two such ideals is of the form $T(f)=f\circ\phi$ for some (unique) homeomorphism $\phi:V\to U$. This gives a one-to-one correspondence between algebraic partial actions of an inverse semigroup $S$ on $C_0(X)$ (by $*$-automorphisms of closed ideals) and topological partial actions of $S$ on $X$.
+Some results of this nature are already known. For example, in the C*-algebraic case, if $X$ is a locally compact Hausdorff space, then every closed ideal of $C_0(X)$ is of the form $C_0(U)\cong\left\{f\in C(X):f=0\text{ on }X\setminus U\right\}$ for some (unique) open set $U\subseteq X$ (\cite[Exercise 3.2.3(5)]{MR1646508}), and the Gelfand-Naimark Theorem (\cite[Theorem 2.1.10]{MR1074574}) implies that every $*$-isomorphism $T:C_0(U)\to C_0(V)$ between two such ideals is of the form $T(f)=f\circ\phi$ for some (unique) homeomorphism $\phi:V\to U$. This gives a one-to-one correspondence between algebraic partial actions of an inverse semigroup $S$ on $C_0(X)$ (by $*$-automorphisms of closed ideals) and topological partial actions of $S$ on $X$.
 
 In \cite{MR3506079}, an analogous result in the purely algebraic setting was proven. Namely, let $\mathbb{K}$ be a field, $X$ be a set, and denote by $\mathcal{F}_0(X)$ the $\mathbb{K}$-algebra of $\mathbb{K}$-valued functions on $X$ with finite support, endowed with the pointwise operations. Then ideals of $\mathcal{F}_0(X)$ and their isomorphisms correspond to subsets and partial bijections of $X$, in a manner similar to the one above. This also yields a one-to-one correspondence between the algebraic partial actions of an inverse semigroup $S$ on $X$ and the topological partial actions of $S$ on $\mathcal{F}_0(X)$. 
 
@@ -808,10 +808,10 @@ Let $R$ be an indecomposable ring, $X$ a zero-dimensional, locally compact Hausd
 The proof is similar to that of Theorem \ref{theoremperpppartialactions}.
 
 Given $\alpha$ as above, for each $s\in S$ let $X_s=\mathbf{U}(D_s)$ be the open subset of $X$ associated to $D_s$. Under the usual identification of $D_s= \mathbf{I}(X_s)$ with $A_R(X_s)$, we see each map $\alpha_s$ as an $R$-algebra isomorphism
-\[\alpha_s:D_{s^*}\simeq A_R(X_{s^*})\to A_R(X_s)\simeq D_s\]
+\[\alpha_s:D_{s^*}\cong A_R(X_{s^*})\to A_R(X_s)\cong D_s\]
 
 By Proposition~\ref{prop:isomorp}, for each isomorphism $\alpha_s:A_R(X_{s^*})\to A_R(X_s)$, there is a unique homeomorphism $\theta_{s^*}: X_s \rightarrow X_{s^*}$ such that 
-\[\alpha_s(f)=f\circ\theta_{s^*}\qquad\text{for all }f\in A_R(X_{s^*})\simeq D_{s^*}.\]
+\[\alpha_s(f)=f\circ\theta_{s^*}\qquad\text{for all }f\in A_R(X_{s^*})\cong D_{s^*}.\]
 The homeomorphisms $\theta_s$ satisfy properties (1)-(3) of Theorem \ref{theoremperpppartialactions}, so $\theta:s\mapsto \theta_s$ is a partial action of $S$ on $X$ which induces $\alpha$.\qedhere
 \end{proof}
 
@@ -873,7 +873,7 @@ Given $x\in\overline{U}$, let $V$ be any compact-open neighbourhood of $x$. By h
 The same argument as used in Equation (\ref{equationconditionalexpectationismorphism}) can be used to show that every conditional expectation $E:A\to I$ of an $R$-algebra $A$ onto an ideal $I$ with local units is actually an $R$-algebra morphism.
 \end{remark}
 
-By Lemma \ref{lemmaidealsofclopens} and Theorems \ref{prop:weaksemilattice} and \ref{theoremsteinbergiscrossed}, we conclude the following:
+By Lemma \ref{lemmaidealsofclopens} and Theorems \ref{propweaksemilattice} and \ref{theoremsteinbergiscrossed}, we conclude the following:
 
 \begin{theorem}\label{theoremcrossedproductasasteinbergalgebra}
 Let $S$ be an inverse semigroup which is a weak semilattice, $R$ be an indecomposable ring and $X$ a zero-dimensional, locally compact Hausdorff space. Let $\alpha=\left(\alpha_s:D_{s^*}\to D_s\right)_{s\in S}$ be an algebraic partial action of $S$ on $A_R(X)$ where each ideal $D_s$ has local units and satisfies any condition of Lemma \ref{lemmaidealsofclopens}.

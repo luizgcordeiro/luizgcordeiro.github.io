@@ -1,0 +1,13 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#examplegermesopenbisections'>4.2.20</a>
+
+<!-- 4.2.20 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 4.2.20
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR2419901'></span>, Proposition 5.4])</span></span>
+	Let $\mathcal{G}$ be an étale groupoid, $\tau$ the canonical action of the semigroup of open bisections $\operatorname{\mathbf{B}}(\mathcal{G})$ on $\mathcal{G}^{(0)}$ (Example <span class='ref' data-tag='examplecanonicalaction'></span>), and $S$ any sub-inverse semigroup of $\operatorname{\mathbf{B}}(\mathcal{G})$ which covers $\mathcal{G}$ (that is, $\mathcal{G}=\bigcup_{A\in S}A$), and which is closed under intersections.  Then the map $S\ltimes \mathcal{G}^{(0)}\to\mathcal{G}$, $[A,x]\mapsto\so|_A^{-1}(x)$, is an isomorphism of topological groupoids.
+	</p>
+	
+	<p>
+	In particular, if $\mathcal{G}$ is an ample Hausdorff groupoid, then the groupoid of germs $\KB(\mathcal{G})\ltimes \mathcal{G}^{(0)}$ of the (restriction of the) canonical action on $\KB(\mathcal{G})$ is isomorphic to the groupoid $\mathcal{G}$.
+	</p>
+</div>

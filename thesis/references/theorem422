@@ -1,0 +1,25 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#theorem422'>4.2.2</a>
+
+<!-- 4.2.2 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.2.2</span>
+	Let $X$ be a locally compact Hausdorff space and $\theta$ a topological partial action of an inverse semigroup $S$ on $X$. Then there exist
+	<ul>
+		<li>
+			a zero-dimensional, locally compact Hausdorff space $\mathfrak{C}$,
+		</li>
+		
+		<li>
+			a topological partial action $\alpha=(\alpha_s:\mathfrak{C}_{s^*}\to\mathfrak{C}_s)_{s\in S}$ of $S$ on $\mathfrak{C}$, and
+		</li>
+		
+		<li>
+			a continuous surjection $\pi:\mathfrak{C}\to X$,
+		</li>
+	</ul>
+	such that $\pi^{-1}(X_s)\subseteq\mathfrak{C}_s$ and for all $c\in\pi^{-1}(X_s)$
+	<div class='equation'>\[
+		\pi(\alpha_s(c))=\theta_s(\pi(c)).
+	\]</div>
+	</p>
+</div>
