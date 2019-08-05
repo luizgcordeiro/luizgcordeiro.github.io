@@ -1,0 +1,12 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#proposition435'>4.3.5</a>
+
+<!-- 4.3.5 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.3.5</span>
+	Suppose that $\alpha=\left(\alpha_s:A_{s^*}\to A_s\right)_{s\in S}$ is an algebraic partial action of an inverse semigroup $S$ on an $R$-algebra $A$, and that every ideal $A_s$ is idempotent. Then $\mathscr{L}(\alpha)$ is associative.
+	</p>
+	
+	<p>
+	In particular, if every ideal $A_s$ has local units then $\mathscr{L}(\alpha)$ is associative.
+	</p>
+</div>

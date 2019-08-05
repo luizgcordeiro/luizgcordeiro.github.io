@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#equationtheoremuniversalpropertyofcrossedproducts3'>4.3.7</a>
+
+	<div class='toload equation'>\begin{align*}
+		\theta(s)\phi(b_t)\theta(s^*)\theta(st)
+			&=\theta(s)\phi(1_{s^*}b_t)\theta(s^*)\theta(s)\theta(t)\\
+			&=\theta(s)\phi(1_{s^*}b_t)\theta(t)\\
+			&=\theta(s)\phi(b_t)\theta(t).\tag{4.3.7}
+	\end{align*}</div>
