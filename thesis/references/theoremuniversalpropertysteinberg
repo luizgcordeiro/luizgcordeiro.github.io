@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#theoremuniversalpropertysteinberg'>4.4.8</a>
+
+<!-- 4.4.8 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.4.8</span>
+	Let $R$ be a commutative ring with unit, and $\mathcal{G}$ be an ample Hausdorff groupoid. Then $A_R(\mathcal{G})$ is universal for Boolean representations of $\KB(\mathcal{G})$, i.e., if $\pi:\KB(\mathcal{G})\to B$ is a Boolean representation of $\KB(\mathcal{G})$ in an $R$-algebra $B$, then there exists a unique $R$-algebra morphism $\Phi:A_R(\mathcal{G})\to B$ such that $\Phi(1_U)=\pi(U)$ for all $U\in\KB(\mathcal{G})$.
+	</p>
+</div>

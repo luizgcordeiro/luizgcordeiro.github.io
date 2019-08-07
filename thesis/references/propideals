@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#propideals'>4.4.36</a>
+
+<!-- 4.4.36 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.4.36</span>
+	Let $R$ be an indecomposable ring and $X$ a zero-dimensional, locally compact Hausdorff space. Then the map $U\mapsto \mathbf{I}(U)$ is an order isomorphism between the lattices of open subsets of $X$ and ideals with local units of $A_R(X)$. The inverse map is given by $I\mapsto \mathbf{U}(I):=\bigcup_{f\in I}\supp(f)$.
+	</p>
+</div>

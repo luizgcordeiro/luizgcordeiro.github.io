@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#definitiontopologicallyprincipal'>4.4.21</a>
+
+<!-- 4.4.21 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.4.21</span>
+	A topological groupoid $\mathcal{G}$ is <em>topologically principal</em> if the set of all $x\in X$ whose isotropy group $\mathcal{G}_x^x$ is trivial is dense in $\mathcal{G}^{(0)}$.
+	</p>
+</div>

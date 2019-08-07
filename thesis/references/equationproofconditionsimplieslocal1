@@ -1,0 +1,6 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#equationproofconditionsimplieslocal1'>4.4.3</a>
+
+	<div class='toload equation'>\begin{align*}
+		f^*1_Uf(b)
+			&=\sum_{\substack{cd=b\\\ra(d)=y}}f^*(c)f(d).\tag{4.4.3}
+	\end{align*}</div>

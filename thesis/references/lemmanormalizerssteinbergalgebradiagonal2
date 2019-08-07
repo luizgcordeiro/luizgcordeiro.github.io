@@ -1,0 +1,21 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#lemmanormalizerssteinbergalgebradiagonal2'>4.4.19</a>
+
+<!-- 4.4.19 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.4.19</span>
+	Suppose that $\mathcal{G}$ is an ample Hausdorff groupoid, $R$ is an indecomposable ring and $f\in N_R(\mathcal{G})$.
+	<ol class='alphpar'>
+		<li>
+		$ff^*=1_{\so(\supp(f^*))}=1_{\ra(\supp(f))}$, and similarly $f^*f=1_{\so(\supp(f))}=1_{\ra(\supp(f^*))}$.
+		</li>
+		
+		<li>
+		For all $U\subseteq\so(\supp(f))$, $f1_Uf^*=1_{\ra(\supp(f)\cap\so^{-1}(U))}=1_{\so(\supp(f^*)\cap\ra^{-1}(U))}$.
+		</li>
+		
+		<li>
+		If $\supp(f)$ is a bisection, then for all $a\in\supp(f)$ we have $f^*(a^{-1})=f(a)^{-1}$.
+		</li>
+	</ol>
+	</p>
+</div>

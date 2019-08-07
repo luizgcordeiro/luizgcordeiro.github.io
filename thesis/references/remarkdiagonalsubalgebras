@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#remarkdiagonalsubalgebras'>4.4.33</a>
+
+<!-- 4.4.33 -->
+<div class='toload remark'>
+	<p><span class='envidentifier'>Remark 4.4.33</span>
+	Note that the isomorphism $\Phi:A_R(X)\rtimes S\to A_R(S\ltimes X)$ obtained in the proof of Theorem <span class='ref' data-tag='theoremsteinbergiscrossed'></span> above maps the diagonal subalgebra of $A_R(X)\rtimes S$ (as in Definition <span class='ref' data-tag='definitiondiagonalcrossedproduct'></span>) to the diagonal subalgebra of $A_R(S\ltimes X)$ (as in Definition <span class='ref' data-tag='definitiondiagonalsteinbergalgebra'></span>). Under the usual identifications of both of these diagonal subalgebras as $A_R(X)$, the isomorphism $\Phi$ restricts to the identity of $A_R(X)$.
+	</p>
+</div>

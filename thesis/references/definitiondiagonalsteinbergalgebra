@@ -1,0 +1,12 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#definitiondiagonalsteinbergalgebra'>4.4.9</a>
+
+<!-- 4.4.9 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.4.9</span>
+	The <em>diagonal subalgebra</em> of $A_R(\mathcal{G})$ is
+	<div class='equation'>\begin{align*}
+		D_R(\mathcal{G})
+			&=\left\{f\in A_R(\mathcal{G}):\supp(f)\subseteq\mathcal{G}^{(0)}\right\}.
+	\end{align*}</div>
+	</p>
+</div>

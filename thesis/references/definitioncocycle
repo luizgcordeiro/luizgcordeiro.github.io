@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#definitioncocycle'>4.4.23</a>
+
+<!-- 4.4.23 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.4.23</span>
+	Let $R$ and $S$ be rings and $\mathcal{G}$ be a groupoid. Denote by $\operatorname{Iso}_+(R,S)$ the set of additive isomorphisms from $R$ to $S$. A map $\chi:\mathcal{G}\to\operatorname{Iso}_+(R,S)$ satisfying $\chi(ab)(rs)=\chi(a)(r)\chi(b)(s)$ for all $(a,b)\in\mathcal{G}^{(2)}$ and $r,s\in R$ will be called a <em>cocycle</em>.
+	</p>
+</div>

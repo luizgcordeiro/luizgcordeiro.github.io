@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#definitionlocalbisectionhypothesis'>4.4.16</a>
+
+<!-- 4.4.16 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.4.16</span>
+	If $\mathcal{G}$ is an ample Hausdorff groupoid and $R$ is an indecomposable (commutative, unital) ring, we say that $(\mathcal{G},R)$ satisfies the <em>local bisection hypothesis</em> if $\supp(f)$ is a bisection for all $f\in N_R(\mathcal{G})$.
+	</p>
+</div>

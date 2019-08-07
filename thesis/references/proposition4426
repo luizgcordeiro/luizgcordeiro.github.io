@@ -1,0 +1,21 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#proposition4426'>4.4.26</a>
+
+<!-- 4.4.26 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.4.26</span>
+	Let $R$ and $S$ be commutative unital rings, $\mathcal{G}$ a groupoid and $\chi:\mathcal{G}\to\operatorname{Iso}_+(R,S)$ a cocycle. Then
+	<ol class='alphpar'>
+		<li>
+		For all $x\in\mathcal{G}^{(0)}$, $\chi(x)$ is a ring isomorphism.
+		</li>
+		
+		<li>
+		For all $a\in\mathcal{G}$, if $u\in R$ is invertible then $\chi(a)(u)$ is invertible in $S$, and $\chi(a)(u)^{-1}=\chi(a^{-1})(u^{-1})$.
+		</li>
+		
+		<li>
+		For all $a\in\mathcal{G}$, $\chi(\so(a))=\chi(\ra(a))$. In other words, the restriction of $\chi$ to $\mathcal{G}^{(0)}$ is <em>invariant</em>.
+		</li>
+	</ol>
+	</p>
+</div>

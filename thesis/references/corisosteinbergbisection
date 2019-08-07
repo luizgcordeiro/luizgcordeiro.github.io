@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#corisosteinbergbisection'>4.4.34</a>
+
+<!-- 4.4.34 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 4.4.34</span>
+	Let $\mathcal{G}$ be an ample Hausdorff groupoid. Then the Steinberg Algebra $A_R(\mathcal{G})$ is isomorphic to the crossed products $A_R(\mathcal{G}^{(0)})\rtimes_{\mu}\operatorname{\mathbf{B}}(\mathcal{G})$ and $A_R(\mathcal{G}^{(0)})\rtimes_{\eta}\KB(\mathcal{G})$, where $\mu$ and $\eta$ are induced by the canonical actions of $\operatorname{\mathbf{B}}(\mathcal{G})$ and $\KB(\mathcal{G})$ on $\mathcal{G}^{(0)}$ (Example <span class='ref' data-tag='examplegermesopenbisections'></span>).
+	</p>
+</div>

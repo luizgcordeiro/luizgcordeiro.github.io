@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#propactionalphatheta'>4.4.37</a>
+
+<!-- 4.4.37 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.4.37</span>
+	Let $R$ be an indecomposable ring, $X$ a zero-dimensional, locally compact Hausdorff space and $S$ an inverse semigroup. If $\alpha=\left(\alpha_s:D_{s^*}\to D_s\right)_{s\in S}$ is an algebraic partial action of $S$ on the $R$-algebra $A_R(X)$, such that each ideal $D_s$ has local units, then there is a topological partial action $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ of $S$ on $X$ which induces $\alpha$ (see Definition <span class='ref' data-tag='definitiondualpartialaction'></span>).
+	</p>
+</div>

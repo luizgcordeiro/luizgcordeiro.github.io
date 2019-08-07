@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#propisomorp'>4.4.35</a>
+
+<!-- 4.4.35 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.4.35</span>
+	Let $R$ be an indecomposable ring and let $X$ and $Y$ be zero-dimensional, locally compact Hausdorff spaces. A map $T:A_R(X) \rightarrow A_R(Y)$ is an isomorphism of $R$-algebras if and only if there exists a (necessarily unique) homeomorphism $\phi:Y\to X$ such that $T(f)=f\circ\phi$ for all $f\in A_R(X)$.
+	</p>
+</div>
