@@ -530,7 +530,7 @@ The following stronger condition was considered in [<span class='ref' data-tag='
 <!-- 4.4.17 -->
 <div class='definition'>
 	<p><span class='envidentifier'>Definition 4.4.17</span>
-	If $\mathcal{G}$ is an ample Hausdorff groupoid and $R$ is an indecomposable (commutative, unital) ring, we say that $(\mathcal{G},R)$ <em>satisfies condition (S)</em> if the set of all $x\in\mathcal{G}^{(0)}$ such that the group ring $R\mathcal{G}_x^x$ has only trivial units\ftnt{If $G$ is a group and $R$ is a unital ring, a trivial unit of $RG$ is an element of the form $ug$ where $u$ is invertible in $R$ and $g\in G$.} is dense in $\mathcal{G}^{(0)}$.
+	If $\mathcal{G}$ is an ample Hausdorff groupoid and $R$ is an indecomposable (commutative, unital) ring, we say that $(\mathcal{G},R)$ <em>satisfies condition (S)</em> if the set of all $x\in\mathcal{G}^{(0)}$ such that the group ring $R\mathcal{G}_x^x$ has only trivial units (<span class='ref' data-tag='footnote441' id='footnote441'></span>) is dense in $\mathcal{G}^{(0)}$.
 	</p>
 </div>
 
@@ -858,12 +858,12 @@ To prove this theorem we will use the theory of disjoint functions from the prev
 
 <div class='proof' id='proofoftheoremsteinbergalgebras'>
 	<p>
-	Since $T$ preserves the respective diagonal algebras, it also preserves their normalizers, i.e., $T(N_R(\mathcal{G}))=N_S(\H)$. Let us describe disjointness first for elements in $N_R(\mathcal{G})$. The local bisection hypothesis implies, by Lemma <span class='ref' data-tag='lemmanormalizerssteinbergalgebradiagonal2'></span>(c), that an element $f$ of $N_R(\mathcal{G})$ has the form
+	Since $T$ preserves the respective diagonal algebras, it also preserves their normalizers, i.e., $T(N_R(\mathcal{G}))=N_S(\mathcal{H})$. Let us describe disjointness first for elements in $N_R(\mathcal{G})$. The local bisection hypothesis implies, by Lemma <span class='ref' data-tag='lemmanormalizerssteinbergalgebradiagonal2'></span>(c), that an element $f$ of $N_R(\mathcal{G})$ has the form
 	<div class='equation'>\begin{align*}
 		f
 			&=\sum_{i=1}^n\lambda_i1_{U_i},
 	\end{align*}</div>
-	where $\lambda_1,\ldots,\lambda_n$ are invertible elements in $R$ and $U_1,\ldots,U_n$ are disjoint compact-open bisections of $\mathcal{G}$ such that $\bigcup_{i=1}^n U_i=\supp(f)$ is also a compact-open bisection. A similar statement holds for $N_S(\H)$.
+	where $\lambda_1,\ldots,\lambda_n$ are invertible elements in $R$ and $U_1,\ldots,U_n$ are disjoint compact-open bisections of $\mathcal{G}$ such that $\bigcup_{i=1}^n U_i=\supp(f)$ is also a compact-open bisection. A similar statement holds for $N_S(\mathcal{H})$.
 	</p>
 	
 	<p>
@@ -880,7 +880,7 @@ To prove this theorem we will use the theory of disjoint functions from the prev
 					&\subseteq\supp(g^*)\supp(f)\\
 					&\subseteq(\supp(g))^{-1}\supp(g)\\
 					&\subseteq\mathcal{G}^{(0)},
-			</div>
+			\end{align*}</div>
 			where the last inclusion follows from $\supp(g)$ being a bisection. The equality $f=gp$ then follows from Lemma <span class='ref' data-tag='lemmanormalizerssteinbergalgebradiagonal2'></span>(a).
 		</li>
 	</ul>
@@ -917,12 +917,12 @@ To prove this theorem we will use the theory of disjoint functions from the prev
 			&=\supp((T1_U)(T1_V)))\\
 			&\subseteq\supp(T1_U)\supp(T1_V)\\
 			&=\phi(U)\phi(V),
-	</div>
+	\end{align*}</div>
 	a contradiction.
 	</p>
 	
 	<p>
-	Since elements of $A_R(\mathcal{G})$ (and $A_S(\H)$) are locally constant, we have
+	Since elements of $A_R(\mathcal{G})$ (and of $A_S(\mathcal{H})$) are locally constant, we have
 	<div class='equation'>\begin{align*}
 		f(\phi(a))=0
 			&\iff \phi(a)\in Z(f)\\
@@ -932,7 +932,7 @@ To prove this theorem we will use the theory of disjoint functions from the prev
 	and therefore $T$ is basic (by additivity of $T$ and Proposition <span class='ref' data-tag='propositionbasicnessofgroupvalued'></span>). Let $\chi$ be the $T$-transform. Since $T$ is additive with the pointwise operations, each section $\chi(\alpha)=\chi(\alpha,\cdot)$ is additive (by Proposition <span class='ref' data-tag='propositionmodelmorphism'></span>). This yields a map $\chi:\mathcal{G}\to\operatorname{Iso}_+(R,S)$ such that
 	<div class='equation'>\begin{align*}
 	Tf(a)
-		&=\chi(a)(f(\phi(a))),\qquad\text{for all}\quad f\in A_R(\mathcal{G})\quad\text{and}\quad a\in\H.
+		&=\chi(a)(f(\phi(a))),\qquad\text{for all}\quad f\in A_R(\mathcal{G})\quad\text{and}\quad a\in\mathcal{H}.
 	\end{align*}</div>
 	</p>
 	
@@ -959,12 +959,12 @@ To prove this theorem we will use the theory of disjoint functions from the prev
 	</p>
 
 	<p>
-	It remains only to prove that $\chi$ is continuous: Let $r\in R$ be fixed, $a\in\H$ and $U$ any compact-open bisection containing $\phi(a)$. For all $b\in\phi^{-1}(U)$,
+	It remains only to prove that $\chi$ is continuous: Let $r\in R$ be fixed, $a\in\mathcal{H}$ and $U$ any compact-open bisection containing $\phi(a)$. For all $b\in\phi^{-1}(U)$,
 	<div class='equation'>\begin{align*}
 		\chi(b)(r)
 			&=\chi(b)(r1_U(\phi(b)))\\
 			&=T(r1_U)(b),
-	</div>
+	\end{align*}</div>
 	which means that the map $b\mapsto\chi(b)(r)$ coincides with $T(r1_U)$ on $\phi^{-1}(U)$ and thus it is continuous.<span class='qed'></span>
 	</p>
 </div>
