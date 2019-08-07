@@ -72,7 +72,7 @@ MAIN
 <h3 class='subsection'>4.4.1. Definitions and notation</h3>
 
 <p>
-Steinberg algebras were independently introduced in <span class='ref' data-tag='MR2565546'></span> and <span class='ref' data-tag='MR3274831'></span>, as algebraic analogues of groupoid $C^*$-algebras, and are generalizations of Leavitt path algebras and universal inverse semigroup algebras. We refer to <span class='ref' data-tag='MR3743184'></span> and <span class='ref' data-tag='MR3848066'></span> for more details.
+Steinberg algebras were independently introduced in <span class='ref' data-tag='MR2565546'></span> and <span class='ref' data-tag='MR3274831'></span>, as algebraic analogues of groupoid $C^*$-algebras, and are generalizations of Leavitt path algebras and universal inverse semigroup algebras. We refer to [<span class='ref' data-tag='MR3743184'></span>] and [<span class='ref' data-tag='MR3848066'></span>] for more details.
 </p>
 
 <p>
@@ -94,7 +94,7 @@ The <em>support</em> of $f\in R^{\mathcal{G}}$ is defined as $\supp(f)=\overline
 <!-- 4.4.2 -->
 <div class='proposition' id='proposition442'>
 	<p><span class='envidentifier'>Proposition 4.4.2
-	<span>([<span class='ref' data-tag='MR3274831'></span>, Lemma 3.3])</span></span>
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR3274831'></span>, Lemma 3.3])</span></span>
 	If $\mathcal{G}$ is an ample Hausdorff groupoid, then $A_R(\mathcal{G})$ coincides with the $R$-module of locally constant compactly supported $R$-valued functions on $\mathcal{G}$. Every $f\in A_R(\mathcal{G})$ can be written as a finite linear combination
 	<div class='equation'>\begin{align*}
 		f&=\sum_{i=1}^n r_i1_{A_i},
@@ -144,7 +144,7 @@ For every $f\in A_R(\mathcal{G})$ ($\mathcal{G}$ ample and Hausdorff) and every 
 		&=\sum_{xy=a}f(x)g(y)\\
 		&=\sum_{c\in\mathcal{G}^{\ra(a)}}f(c)g(c^{-1}a)\\
 		&=\sum_{d\in\mathcal{G}_{\so(a)}}f(ad^{-1})g(d),\tag{4.4.1}
-\]</div>
+\end{align*}</div>
 since both sums above have only a finite number of nonzero terms.
 </p>
 
@@ -524,7 +524,7 @@ The following property was considered in [<span class='ref' data-tag='MR3873946'
 </div>
 
 <p>
-The following stronger condition was considered in <span class='ref' data-tag='MR3848066'></span>, and is more easily checked than the one above.
+The following stronger condition was considered in [<span class='ref' data-tag='MR3848066'></span>], and is more easily checked than the one above.
 </p>
 
 <!-- 4.4.17 -->
@@ -535,7 +535,7 @@ The following stronger condition was considered in <span class='ref' data-tag='M
 </div>
 
 <p>
-The property of a group-ring $RG$ (where $G$ is a group and $R$ is a ring) having only trivial units has been studied, for example, in <span class='ref' data-tag='MR0002137'></span>. A group $G$ is <em>indexed</em> if there exists a non-trivial group morphism from $G$ to $\mathbb{Z}$, and <em>indicable throughout</em> if every nontrivial finitely generated subgroup of $G$ is indexed. (Note that if $G$ is indicable throughout then $G$ is torsion-free.)
+The property of a group-ring $RG$ (where $G$ is a group and $R$ is a ring) having only trivial units has been studied, for example, in [<span class='ref' data-tag='MR0002137'></span>]. A group $G$ is <em>indexed</em> if there exists a non-trivial group morphism from $G$ to $\mathbb{Z}$, and <em>indicable throughout</em> if every nontrivial finitely generated subgroup of $G$ is indexed. (Note that if $G$ is indicable throughout then $G$ is torsion-free.)
 </p>
 
 <!-- 4.4.18 -->
@@ -547,7 +547,7 @@ The property of a group-ring $RG$ (where $G$ is a group and $R$ is a ring) havin
 </div>
 
 <p>
-Every free group, and every torsion-free abelian group is indicable throughout. The class of indicable throughout groups is closed under products, free products and extensions (see <span class='ref' data-tag='MR0002137'></span>).
+Every free group, and every torsion-free abelian group is indicable throughout. The class of indicable throughout groups is closed under products, free products and extensions (see [<span class='ref' data-tag='MR0002137'></span>]).
 </p>
 
 <p>
@@ -585,7 +585,7 @@ We now prove that condition (S) implies the local bisection hypothesis, as first
 		<div class='equation'>\begin{align*}
 			1_Uf
 				&=ff^*f=f
-		\end{align}</div>
+		\end{align*}</div>
 		and
 		<div class='equation'>\begin{align*}
 			f^*1_U
@@ -673,7 +673,7 @@ We now prove that condition (S) implies the local bisection hypothesis, as first
 	<div class='equation' id='equationproofconditionsimplieslocal2'>\begin{align*}
 		f^*1_Uf(b)
 			&=\begin{cases}
-					1,&\text{f }b=x,\\
+					1,&\text{if }b=x,\\
 					0,&\text{otherwise.}
 				\end{cases}\tag{4.4.4}
 	\end{align*}</div>
@@ -688,8 +688,8 @@ We now prove that condition (S) implies the local bisection hypothesis, as first
 	Then using Equations (<span class='ref' data-tag='equationproofconditionsimplieslocal1'></span>) and (<span class='ref' data-tag='equationproofconditionsimplieslocal2'></span>),
 	<div class='equation' id='equationproofconditionsimplieslocal'>\begin{align*}
 	\beta\alpha
-		&=\sum_{b\in\mathcal{G}_x^x}\left(\sum_{\substack{cd=b\\\ra(d)=y}}f^*(c)f(d)\right)b
-		&=\sum_{\substack{cd=x\\\ra(d)=y}}f^*(c)f(d)x
+		&=\sum_{b\in\mathcal{G}_x^x}\left(\sum_{\substack{cd=b\\\ra(d)=y}}f^*(c)f(d)\right)b\\
+		&=\sum_{\substack{cd=x\\\ra(d)=y}}f^*(c)f(d)x\\
 		&=x,\tag{4.4.5}
 	\end{align*}</div>
 	and similarly $\alpha\beta=x$, by using the facts that $R$ is commutative and $cd=x$ if and only if $a_0^{-1}dca_0=x$).
@@ -856,7 +856,7 @@ To prove this theorem we will use the theory of disjoint functions from the prev
 <a class='proofbutton' data-tag='theoremsteinbergalgebras'>Proof</a> of Theorem <span class='ref' data-tag='theoremsteinbergalgebras'></span>
 </p>
 
-<div class='proof'>
+<div class='proof' id='proofoftheoremsteinbergalgebras'>
 	<p>
 	Since $T$ preserves the respective diagonal algebras, it also preserves their normalizers, i.e., $T(N_R(\mathcal{G}))=N_S(\H)$. Let us describe disjointness first for elements in $N_R(\mathcal{G})$. The local bisection hypothesis implies, by Lemma <span class='ref' data-tag='lemmanormalizerssteinbergalgebradiagonal2'></span>(c), that an element $f$ of $N_R(\mathcal{G})$ has the form
 	<div class='equation'>\begin{align*}
@@ -1003,7 +1003,7 @@ Denote by $\operatorname{Aut}(A_R(\mathcal{G}),D_R(\mathcal{G}))$ the group of d
 	T_{(\chi,\phi)}f(a)
 	&=\chi(a)f(\phi^{-1}(\alpha)),
 	\end{align*}</div>
-	for all $f\in A_R(\mathcal{G})$ and $a\in\mathca{G}$.
+	for all $f\in A_R(\mathcal{G})$ and $a\in\mathcal{G}$.
 	</p>
 	
 	<p>
@@ -1018,7 +1018,7 @@ Again, we consider a commutative ring with unit $R$. Given a zero-dimensional, l
 </p>
 
 <p>
-In <span class='ref' data-tag='MR3743184'></span>, Beuter and Gonçalves showed that any Steinberg algebra of a transformation groupoid, given by a partial action of a group, $A_R(G\ltimes X)$, is isomorphic to a crossed product $A_R(X)\rtimes G$ ([<span class='ref' data-tag='MR3743184'></span>, Theorem 3.2]). In the same paper, they proved that every Steinberg Algebra, associated with an ample Hausdorff groupoid $\mathcal{G}$, is isomorphic to the crossed product $A_R(\mathcal{G}^{(0)})\rtimes\KB(\mathcal{G})$ ([<span class='ref' data-tag='MR3743184'></span>, Theorem 5.2]). Similarly, in <span class='ref' data-tag='arxiv1710.09723v1'></span>], Demeneghi proved that any Steinberg algebra of a Hausdorff groupoid of germs associated to an ample action of an inverse semigroup $S$ is isomorphic to a crossed product $A_R(X)\rtimes S$ ring (<span class='ref' data-tag='arxiv1710.09723v1'></span>, Theorem 2.3.6]), and as a consequence obtained the latter result presented by the previous authors ([<span class='ref' data-tag='arxiv1710.09723v1'></span>, Proposition 2.4.3]). Note that these results are non-comparable, since [<span class='ref' data-tag='MR3743184'></span>] deals with partial actions of groups whereas [<span class='ref' data-tag='arxiv1710.09723v1'></span>] considers actions of semigroups.
+In [<span class='ref' data-tag='MR3743184'></span>], Beuter and Gonçalves showed that any Steinberg algebra of a transformation groupoid, given by a partial action of a group, $A_R(G\ltimes X)$, is isomorphic to a crossed product $A_R(X)\rtimes G$ ([<span class='ref' data-tag='MR3743184'></span>, Theorem 3.2]). In the same paper, they proved that every Steinberg Algebra, associated with an ample Hausdorff groupoid $\mathcal{G}$, is isomorphic to the crossed product $A_R(\mathcal{G}^{(0)})\rtimes\KB(\mathcal{G})$ ([<span class='ref' data-tag='MR3743184'></span>, Theorem 5.2]). Similarly, in <span class='ref' data-tag='arxiv1710.09723v1'></span>], Demeneghi proved that any Steinberg algebra of a Hausdorff groupoid of germs associated to an ample action of an inverse semigroup $S$ is isomorphic to a crossed product $A_R(X)\rtimes S$ ring (<span class='ref' data-tag='arxiv1710.09723v1'></span>, Theorem 2.3.6]), and as a consequence obtained the latter result presented by the previous authors ([<span class='ref' data-tag='arxiv1710.09723v1'></span>, Proposition 2.4.3]). Note that these results are non-comparable, since [<span class='ref' data-tag='MR3743184'></span>] deals with partial actions of groups whereas [<span class='ref' data-tag='arxiv1710.09723v1'></span>] considers actions of semigroups.
 </p>
 
 <p>
@@ -1142,7 +1142,7 @@ The main idea of this proof is to identify a symbol $\delta_s$, as in Definition
 <a class='proofbutton' data-tag='theoremsteinbergiscrossed'>Proof</a> of Theorem <span class='ref' data-tag='theoremsteinbergiscrossed'></span>
 </p>
 
-<div class='proof'>
+<div class='proof' id='proofoftheoremsteinbergiscrossed'>
 	<p>
 	Given a generating element $f_s\delta_s$ of $\mathscr{L}(\alpha)$, define $\phi(f_s\delta_s):S\ltimes X\to R$ as
 	<div class='equation'>\begin{align*}
@@ -1420,7 +1420,7 @@ In [<span class='ref' data-tag='MR3506079'></span>], an analogous result in the 
 </p>
 
 <p>
-In this section, we will show that the same occurs with partial actions of inverse semigroups on non-discrete spaces. In order to obtain a bijective correspondence between partial actions of $S$ on $X$ and their induced partial actions on $A_R(X)$, we need a few preliminary results. We will use the terminology and notation of Chapter <a href='../3.dcf/3.0.intro.html'>3</a>.
+In this section, we will show that the same occurs with partial actions of inverse semigroups on non-discrete spaces. In order to obtain a bijective correspondence between partial actions of $S$ on $X$ and their induced partial actions on $A_R(X)$, we need a few preliminary results. We will use the terminology and notation of <a href='../3.dcf/3.0.intro.html'>Chapter 3</a>.
 </p>
 
 <!-- 4.4.35 -->
@@ -1587,7 +1587,7 @@ First we describe the ideals associated with clopen sets algebraically. The foll
 			:a,b,c\in R\right\}
 	\end{align*}</div>
 	and
-	<div class='equation'>\begi{align*}
+	<div class='equation'>\begin{align*}
 		B
 			&=\left\{\begin{bmatrix}0&0\\a&0\end{bmatrix}:a\in R\right\}.
 	\end{align*}</div>
@@ -1606,7 +1606,7 @@ First we describe the ideals associated with clopen sets algebraically. The foll
 				\end{bmatrix}.
 	\end{align*}</div>
 	Then $E$ is a projection of $A$ onto $B$ and satisfies (ii)', because $BAB=0$. However, $E$ is not a left (nor right) $B$-module morphism, because
-	<div class='equation'>
+	<div class='equation'>\begin{align*}
 		\begin{bmatrix}
 			0&0\\
 			1&0
