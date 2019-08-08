@@ -1,0 +1,17 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#lemmacompatibilityeunitary'>4.5.5</a>
+
+<!-- 4.5.5 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.5.5
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR1694900'></span>, Theorem 2.4.6])</span></span>
+	<ol class='alphpar'>
+		<li>
+			An inverse semigroup $S$ with $0$ is $E^*$-unitary if and only if whenever $s,t\in S$ have a non-zero common lower bound then $s$ and $t$ are compatible.
+		</li>
+		
+		<li>
+			An inverse semigroup $S$ is $E$-unitary if and only if whenever $s,t\in S$ have a common lower bound then $s$ and $t$ are compatible.
+		</li>
+	</ol>
+	</p>
+</div>

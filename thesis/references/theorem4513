@@ -1,0 +1,32 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#theorem4513'>4.5.13</a>
+
+<!-- 4.5.13 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.5.13
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR1469405'></span>, Propositions 2.3, 2.5 and 3.2, and Theorems 3.4 and 4.2])</span></span>
+	Let $G$ be a group. Then $\mathbf{S}(G)$ is an inverse semigroup, and
+	<ol class='alphpar'>
+		<li>
+			For all $s\in G$, $[s]^*=[s^{-1}]$.
+		</li>
+		
+		<li>
+			For every $\gamma\in\mathbf{S}(G)$, there are a unique $n\geq 0$ and distinct elements $r_1,\ldots,r_n,s$ in $G$ such that
+			<ol class='roman'>
+				<li>
+					$\gamma=\epsilon_{r_1}\cdots\epsilon_{r_n}[s]$;
+				</li>
+				
+				<li>
+					$r_i\neq 1$ and $r_i\neq s$ for all $i$;
+				</li>
+				
+				<li>
+					$r_i\neq r_j$ for $i\neq j$.
+				</li>
+			</ol>
+		We call such a decomposition $\gamma=\epsilon_{r_1}\cdots\epsilon_{r_n}[s]$ the <em>standard form</em> of $\gamma$, which is unique up to the order of $r_1,\ldots,r_n$.
+		</li>
+	</ol>
+	</p>
+</div>

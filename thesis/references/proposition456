@@ -1,0 +1,14 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#proposition456'>4.5.6</a>
+
+<!-- 4.5.6 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.5.6</span>
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR1724106'></span>, Proposition 2.1.2])</span>
+	Let $S$ an inverse semigroup. The quotient 
+	<div class='equation'>\begin{align*}
+		\mathbf{G}(S)
+			&:=S/{\sim}
+	\end{align*}</div>
+	is a group. Furthermore, $\mathbf{G}(S)$ is the <em>maximal group homomorphic image</em> of $S$ in the sense that every semigroup morphism $\theta:S\rightarrow G$ from $S$ to a group $G$ factors through $\mathbf{G}(S)$.
+	</p>
+</div>

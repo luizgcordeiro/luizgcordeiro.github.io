@@ -1,0 +1,12 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#corollary4516'>4.5.16</a>
+
+<!-- 4.5.16 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 4.5.16</span>
+	Let $\theta$ be a topological partial action of a group $G$ on $X$ and $\widetilde{\theta}$ be the induced global action of $\mathbf{S}(G)$. Then
+	<div class='equation'>\begin{align*}
+		G\ltimes_\theta X
+			&\cong\mathbf{S}(G)\ltimes_{\widetilde{\theta}}X.
+	\end{align*}</div>
+	</p>
+</div>

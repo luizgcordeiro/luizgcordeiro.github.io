@@ -1,0 +1,17 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#propositionGSGigualG'>4.5.15</a>
+
+<!-- 4.5.15 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.5.15</span>
+	Let $G$ be a group and $\mathbf{S}(G)$ its universal inverse semigroup. Then
+	<ol class='alphpar'>
+		<li>
+			$\mathbf{S}(G)$ is $E$-unitary (see \cite[Remark 3.5]{MR1469405}).
+		</li>
+		
+		<li>
+			The map $G\to \mathbf{G}(\mathbf{S}(G))$, $g\mapsto [[g]]$, is an isomorphism.
+		</li>
+	</ol>
+	</p>
+</div>

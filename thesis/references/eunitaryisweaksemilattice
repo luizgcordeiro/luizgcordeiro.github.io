@@ -1,0 +1,12 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#eunitaryisweaksemilattice'>4.5.4</a>
+
+<!-- 4.5.4 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 4.5.4</span>
+	If $S$ is $E^*$-unitary then it is a semilattice: Indeed, given $s,t\in S$, if $\left\{s,t\right\}$ does not admit any nonzero lower bound then $s\land t=0$. If $\left\{s,t\right\}$ admits a nonzero lower bound, then $s$ and $t$ are compatible, so $s\land t=ts^*s$.
+	</p>
+	
+	<p>
+	As a consequence, every $E$-unitary inverse semigroup $S$ is a weak semilattice: We can embed $S$ into an $E^*$-unitary semigroup $S_0$ by adjoining a $0$. Given $s,t\in S$, let $F=\left\{s\land t\right\}\setminus\left\{0\right\}$, which is either empty or equal to $\left\{s\land t\right\}$, but in any case a finite subset of $S$, so that $\left\{x\in S:x\leq s,t\right\}=\bigcup_{f\in F}\left\{x\in S:x\leq f\right\}$.
+	</p>
+</div>
