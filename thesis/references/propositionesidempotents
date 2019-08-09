@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.6.tfpa.html#propositionesidempotents'>4.6.13</a>
+
+<!-- 4.6.13 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.6.13</span>
+	Let $S$ be an $E$-unitary inverse semigroup and  $\theta$ be a topologically free partial action of $S$ on $X$ with $X_{s}\neq \varnothing$ for all $s$. Then $E(S)=\left\{s:\theta_s\text{ is idempotent}\right\}$.
+	</p>
+</div>

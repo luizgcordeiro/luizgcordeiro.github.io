@@ -1,0 +1,15 @@
+<a class='reflink' href='../4.paois/4.6.tfpa.html#examplenonhausdorffgroupoidofgerms'>4.6.9</a>
+
+<!-- 4.6.9 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 4.6.9</span>
+	As in Example <span class='ref' data-tag='nonhausdorffaction'></span>, let $S=\mathbb{N}\cup\left\{\infty,z\right\}$ be the inverse semigroup obtained by adjoining to the lattice $\mathbb{N}$ the group $\left\{\infty,z\right\}$ of order $2$ (where $\infty$ represents the unit), such that for all $n\in\mathbb{N}$,
+	<div class='equation'>\begin{align*}
+		n\infty&=\infty n=nz=zn=n.
+	\end{align*}</div>
+	</p>
+	
+	<p>
+	Again, consider $\theta$ the Munn representation of $S$ on $X=E(S)=\mathbb{N}\cup\left\{\infty\right\}$, endowed with the same topology as the one-point compactification of $\mathbb{N}$. This is a topologically free partial action, since $\Lambda(\theta)=\mathbb{N}$ is dense in $X$, however the associated groupoid of germs $S\ltimes X$ is not Hausdorff (see Example <span class='ref' data-tag='nonhausdorffaction'></span>).
+	</p>
+</div>

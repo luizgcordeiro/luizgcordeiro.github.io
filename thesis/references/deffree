@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.6.tfpa.html#deffree'>4.6.6</a>
+
+<!-- 4.6.6 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.6.6</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a partial action of an inverse semigroup $S$ on a topological space $X$. We say that $\theta$ is <em>topologically free</em> if $\Lambda(\theta)$ is dense in $X$ (Equation (<span class='ref' data-tag='equationdefinitionlambda'></span>)).
+	</p>
+</div>

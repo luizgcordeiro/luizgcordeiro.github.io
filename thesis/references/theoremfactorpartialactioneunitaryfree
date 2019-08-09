@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.6.tfpa.html#theoremfactorpartialactioneunitaryfree'>4.6.12</a>
+
+<!-- 4.6.12 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.6.12</span>
+	Let $\theta=(\theta_s:X_{s^*}\to X_s)_{s\in S}$ be a topological partial action of an $E$-unitary inverse semigroup $S$ on a topological space $X$ and  $\widetilde{\theta}=\left(\widetilde{\theta}_\gamma:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ be the partial action of $\mathbf{G}(S)$ on $X$ induced by $\theta$, as in Theorem <span class='ref' data-tag='theoremfactorpartialactioneunitary'></span>. Then $\theta$ is topologically free if and only if $\widetilde{\theta}$ is topologically free.
+	</p>
+</div>

@@ -1,0 +1,18 @@
+<a class='reflink' href='../4.paois/4.6.tfpa.html#propositionconditionsonpartialactionthatimplyeunitary'>4.6.14</a>
+
+<!-- 4.6.14 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.6.14</span>
+	Let $S$ be an inverse semigroup and $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a partial action of $S$ a space $X$ such that
+	<ol class='roman'>
+		<li>
+			$\theta$ factors through $\mathbf{G}(S)$ -- there is a partial action $\widetilde{\theta}=\left(\widetilde{\theta}_s:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ such that $\widetilde{\theta}_{[s]}(x)=\theta_s(x)$ for all $x\in X_{s^*}$ (in particular $X_s\subseteq\widetilde{X}_{[s]}$ for all $s\in S$);
+		</li>
+		
+		<li>
+			$\left\{s\in S:\theta_s\text{ is idempotent}\right\}=E(S)$.
+		</li>
+	</ol>
+	Then $S$ is $E$-unitary.
+	</p>
+</div>
