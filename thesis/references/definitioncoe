@@ -1,0 +1,27 @@
+<a class='reflink' href='../4.paois/4.7.coe.html#definitioncoe'>4.7.1</a>
+
+<!-- 4.7.1 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.7.1</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ and  $\gamma=\left(\gamma_t:Y_{t^*}\to Y_t\right)_{t\in T}$ be topological partial actions on topological spaces $X$ and $Y$, respectively. We say that $\theta$ and $\gamma$ are <em>continuously orbit equivalent</em> if there exists a homeomorphism 
+	<div class='equation'>\begin{align*}
+		\varphi:
+			&X \to Y
+	\end{align*}</div>
+	and continuous maps
+	<div class='equation'>\[
+		a: S\ast X \to T\qquad\text{and}\qquad b: T\ast Y \to S
+	\]</div>
+	such that for all $x\in X$, $s\in S_x$, $y\in Y$ and $t\in T_y$,
+	<ol class='roman'>
+		<li>
+			$\varphi(\theta_s(x)) = \gamma_{a(s,x)}(\varphi(x))$;
+		</li>
+		
+		<li>
+			$\varphi^{-1}(\gamma_t(y)) = \theta_{b(t,y)}(\varphi^{-1}(y))$.
+		</li>
+	</ol>
+	Implicitly, we require that $a(g,x) \in T_{\varphi(x)}$ and $b(t,y) \in S_{\varphi^{-1}(y)}$. We will call the triple $(\varphi,a,b)$ a \emph{continuous orbit equivalence} between $\theta$ and $\gamma$.
+	</p>
+</div>

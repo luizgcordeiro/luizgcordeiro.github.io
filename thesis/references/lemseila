@@ -1,0 +1,22 @@
+<a class='reflink' href='../4.paois/4.7.coe.html#lemseila'>4.7.2</a>
+
+<!-- 4.7.2 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.7.2</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ and  $\gamma=\left(\gamma_t:Y_{t^*}\to Y_t\right)_{t\in T}$ be topologically free partial actions, and $(\varphi,a,b)$ is a continuous orbit equivalence between $\theta$ and $\gamma$. Assume that the groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are Hausdorff. Then
+	<ol class='alphpar'>
+		<li>
+			$[s_1, x]=[s_2, x]$ implies that $[a(s_1,x),\varphi(x)]=[a(s_2,x),\varphi(x)]$, for all $x\in X$ and $s_1, s_2 \in S_x$.
+		</li>
+		
+		<li>
+			$[a(s_1s_2, x),\varphi(x)]=[a(s_1, \theta_{s_2}(x))a(s_2, x),\varphi(x)]$ for all $x\in X$ and $s_2\in S_x$ and $s_1\in S_{\theta_{s_2}(x)}$.
+		</li>
+		
+		<li>
+			$[b(a(s, x), \varphi(x)),x] = [s,x],$ for all $x\in X$ and $s\in S_x$.
+		</li>
+	</ol>
+	Analogous statements hold with $(\varphi^{-1},b,a)$ in place of $(\varphi,a,b)$.
+	</p>
+</div>

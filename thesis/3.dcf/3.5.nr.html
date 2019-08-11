@@ -552,7 +552,7 @@ A natural question in $C^*$-algebra theory is whether we can extend isomorphisms
 <!-- 3.5.15 !-->
 <div class='theorem' id='theoremisomorphismgroupifcirclevaluedfunctions'>
 	<p><span class='envidentifier'>Theorem 3.5.15</span>
-	Let $X$ and $Y$ be two Stone spaces (Definition <span class='ref' data-tag='definitionstonespace'></span>). Suppose that $T:C(X,\mathbb{S}^1)\to C(Y,\mathbb{S}^1)$ is a group isomorphism such that $1\in f(X)\iff 1\in Tf(X)$. Then there exist a homeomorphism $\phi:Y\to X$, a finite subset $F\subseteq Y$ whose points are isolated (in $Y$) and a continuous function $p:Y\setminus F\to\{\pm 1\}$ satisfying $Tf(y)=f(\phi(y))^{p(y)}$ for all $y\in Y\setminus F$.
+	Let $X$ and $Y$ be two Stone spaces (Definition <span class='ref' data-tag='definitionstonespace'></span>). Suppose that $T:C(X,\mathbb{S}^1)\to C(Y,\mathbb{S}^1)$ is a group isomorphism such that $1\in f(X)\iff 1\in Tf(X)$. Then there exist a homeomorphism $\phi:Y\to X$, a finite subset $F\subseteq Y$ whose points are isolated (in $Y$) and a continuous function $p:Y\setminus F\to\left\{\pm 1\right\}$ satisfying $Tf(y)=f(\phi(y))^{p(y)}$ for all $y\in Y\setminus F$.
 	</p>
 	
 	<p>
@@ -569,7 +569,7 @@ The following lemma, based on [<span class='ref' data-tag='MR3162258'></span>], 
 	<p><span class='envidentifier'>Lemma 3.5.16</span>
 	Suppose that $X$ is a Stone space. For every pair of continuous functions $f,g:X\to\mathbb{S}^1$ and for every finite subset $F\subseteq X$ such that $f(F)\cup g(F)$ does not contain $1$, there exists $h\in C(X,\mathbb{S}^1)$ such that
 	<div class='equation'>\[
-		h(x)\not\in\left\{f(x),g(x)\right\}\text{ for all }x\text{ and }h(F)=\{1\}.
+		h(x)\not\in\left\{f(x),g(x)\right\}\text{ for all }x\text{ and }h(F)=\left\{1\right\}.
 	\]</div>
 	</p>
 </div>
@@ -632,7 +632,7 @@ The following lemma, based on [<span class='ref' data-tag='MR3162258'></span>], 
 	</p>
 	
 	<p>
-	 Let $F=\left\{y\in Y:\chi(y,\cdot)\text{ is discontinuous}\right\}$, and suppose that $F$ were infinite. By Proposition <span class='ref' data-tag='propositiondisjointopensets'></span>, there are countably infinitely many distinct points $y_n\in F$ ($n\in\mathbb{N}$), such that no $y_n$ lies in the closure of the other ones. We can choose a sequence $z_n\to 1$ such that $\chi(y_n,z_n)$ lies in the second or third quadrant (<span class='ref' data-tag='footnotediscontinuouscirclehom' id='footnotediscontinuouscirclehom'></span>). Define $f(\phi(y_n))=z_n$, $f=1$ on the boundary of $\{\phi(y_n):n\in\mathbb{N}\}$ and extend $f$ continuously to all of $X$. Let $y$ be an accumulation point of $\{y_n\}$, so that in particular $f(\phi(y))=1$. Then
+	 Let $F=\left\{y\in Y:\chi(y,\cdot)\text{ is discontinuous}\right\}$, and suppose that $F$ were infinite. By Proposition <span class='ref' data-tag='propositiondisjointopensets'></span>, there are countably infinitely many distinct points $y_n\in F$ ($n\in\mathbb{N}$), such that no $y_n$ lies in the closure of the other ones. We can choose a sequence $z_n\to 1$ such that $\chi(y_n,z_n)$ lies in the second or third quadrant (<span class='ref' data-tag='footnotediscontinuouscirclehom' id='footnotediscontinuouscirclehom'></span>). Define $f(\phi(y_n))=z_n$, $f=1$ on the boundary of $\left\{\phi(y_n):n\in\mathbb{N}\right\}$ and extend $f$ continuously to all of $X$. Let $y$ be an accumulation point of $\left\{y_n\right\}$, so that in particular $f(\phi(y))=1$. Then
 	<div class='equation'>\[
 		Tf(y)=\chi(y,1),\quad Tf(y_n)=\chi(y_n,z_n).
 	\]</div>
@@ -648,7 +648,7 @@ The following lemma, based on [<span class='ref' data-tag='MR3162258'></span>], 
 	</p>
 	
 	<p>
-	Therefore $Y'=Y\setminus F$ is also compact, and we already constructed the function $p:Y'\to\{\pm 1\}$ with the desired property. To see that $p$ is continuous, denote by $i$ the constant function $x\mapsto i$ and note that
+	Therefore $Y'=Y\setminus F$ is also compact, and we already constructed the function $p:Y'\to\left\{\pm 1\right\}$ with the desired property. To see that $p$ is continuous, denote by $i$ the constant function $x\mapsto i$ and note that
 	<div class='equation'>\[
 		p^{-1}(1)=\left\{y\in Y':\chi(y,i)=i\right\}=\left\{y\in Y':T(i)(y)=i\right\}=T(i)^{-1}(i)\cap Y',
 	\]</div>
