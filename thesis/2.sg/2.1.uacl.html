@@ -207,7 +207,7 @@ Recall the definition of a <em>modulus of</em> (<em>uniform</em>) <em>continuity
 	<p><span class='envidentifier'>Definition 2.1.5</span>
 	Let $(M,d^M)$ and $(N,d^N)$ be (pseudo-)metric spaces and $f:M\to N$ a function. A <em>modulus of</em> (<em>uniform</em>) <em>continuity</em> for a $f$ is a function $\Delta:(0,\infty)\to(0,\infty)$ which satisfies
 	<div class='equation'>\[
-		\forall \epsilon>0, \text{ if }x,y\in M\text{ and }d^M(x,y)<\Delta(\epsilon)\text{ then }d^N(f(x),f(y))\leq\epsilon.
+		\forall \epsilon>0, \text{ if }x,y\in M\text{ and }d^M(x,y)\smallerthan\Delta(\epsilon)\text{ then }d^N(f(x),f(y))\leq\epsilon.
 	\]</div>
 	</p>
 </div>
@@ -367,9 +367,9 @@ The next obvious course of work is to define a natural $\sigma$-structure on an 
 
 <div class='proof' id='proofofpropositionultraproductoffunctions'>
 	<p>
-	Let $f=\prod_i f_i:\prod_i M_i\to\prod_i N_i$ be given by $f((x_i)_i)=(f_i(x_i))_i$. Given $\epsilon>0$, suppose $d^{\mathcal{U}}((x_i)_i,(y_i)_i)<\Delta(\epsilon)$. This implies that $\left\{i\in I:d^{M_i}(x_i,y_i)<\Delta(\epsilon)\right\}\in\mathcal{U}$, and since $\Delta$ is a common modulus of continuity for all $f_i$, then
+	Let $f=\prod_i f_i:\prod_i M_i\to\prod_i N_i$ be given by $f((x_i)_i)=(f_i(x_i))_i$. Given $\epsilon>0$, suppose $d^{\mathcal{U}}((x_i)_i,(y_i)_i)\smallerthan\Delta(\epsilon)$. This implies that $\left\{i\in I:d^{M_i}(x_i,y_i)\smallerthan\Delta(\epsilon)\right\}\in\mathcal{U}$, and since $\Delta$ is a common modulus of continuity for all $f_i$, then
 	<div class='equation'>\[
-	\left\{i\in I:d^{M_i}(x_i,y_i)<\Delta(\epsilon)\right\}\subseteq\left\{i\in I:d^{N_i}(f_i(x_i),f_i(y_i))\leq\epsilon\right\}\in\mathcal{U},
+	\left\{i\in I:d^{M_i}(x_i,y_i)\smallerthan\Delta(\epsilon)\right\}\subseteq\left\{i\in I:d^{N_i}(f_i(x_i),f_i(y_i))\leq\epsilon\right\}\in\mathcal{U},
 	\]</div>
 	which implies $d^{\mathcal{U}}(f((x_i)_i),f((y_i)_i))\leq \epsilon$. In other words, $\Delta$ is a modulus of continuity for the function $f$ with respect to the respective pseudometrics $d^{\mathcal{U}}$, and in particular if $d^{\mathcal{U}}((x_i)_i,(y_i)_i)=0$  then $d^{\mathcal{U}}(f((x_i)_i),f((y_i)_i))=0$, so $f$ factors uniquely to a function $f^{\mathcal{U}}:\prod_\mathcal{U}M_i\to\prod_\mathcal{U}N_i$ with all the desired properties.<span class='qed'></span>
 	</p>
@@ -635,14 +635,18 @@ Some other properties can be proven similarly, however conditional statement usu
 <div class='proof' id='proofoflemma2124'>
 	<p>
 	For all $s,t$ in a Boolean inverse semigroup $S$ with an invariant mean $\mu$, we have
-	<div class='equation'>\[
-	s^*\setminus t=s^*\setminus(s^*s tss^*)=s^*(s\setminus sts)s^*,
-	\]</div>
+	<div class='equation'>\begin{align*}
+		s^*\setminus t
+			&=s^*\setminus(s^*s tss^*)\\
+			&=s^*(s\setminus sts)s^*,
+	\end{align*}</div>
 	and similarly for $t\setminus s^*$, and from this we can conclude that
-	<div class='equation'>\[
-	d_\mu(s^*,t)=\mu((s^*\setminus t)^*(s^*\setminus t)\lor(t\setminus s^*)^*(t\setminus s^*))\leq d_\mu(s,sts)+d_\mu(t,sts).
-	\]</div>
-	Thus the formula $d(x^*,y)$ is always smaller than the formula $du(x,xyx)+d(y,xyx)$ (divide them by $2$, if you want to guarantee all numbers are between $0$ and $1$) in each of the components $S_i$, so by &Lstrok;o&sacute;&pos; Theorem the same is valid in $\prod_\mathcal{U} S_i$ as well: For every $s,t\mathcal{U}\in\prod_\mathcal{U} S_i$,
+	<div class='equation'>\begin{align*}
+		d_\mu(s^*,t)
+			&=\mu((s^*\setminus t)^*(s^*\setminus t)\lor(t\setminus s^*)^*(t\setminus s^*))\\
+			&\leq d_\mu(s,sts)+d_\mu(t,sts).
+	\end{align*}</div>
+	Thus the formula $d(x^*,y)$ is always smaller than the formula $d(x,xyx)+d(y,xyx)$ (divide them by $2$, if you want to guarantee all numbers are between $0$ and $1$) in each of the components $S_i$, so by &Lstrok;o&sacute;&apos; Theorem the same is valid in $\prod_\mathcal{U} S_i$ as well: For every $s,t\mathcal{U}\in\prod_\mathcal{U} S_i$,
 	<div class='equation'>\[
 	d^{\mathcal{U}}(s^*,t)\leq d^\mathcal{U}(s,sts)+d^\mathcal{U}(t,tst),
 	\]</div>
