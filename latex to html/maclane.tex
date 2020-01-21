@@ -1,0 +1,706 @@
+\maketitle
+
+\chapter{Categories, Functors, and Natural Transformations}
+
+\section{Axioms for Categories}
+
+At the end of this section, it is left as an exercise to prove that the ``arrows-only'' definition of a category satisfies the ``objects-and-arrows'' definition. Let us give a few more details. Let $C$ be an ``arrows-only'' category. The object space $C^{(0)}$ of $C$ is defined to be the set of identities of $C$.
+
+First, one should prove that the left and right identities associated to a given $g\in C$ are unique: suppose that $u$ and $v$ are identities such that $ug$ and $vg$ are defined, and in particular equal to $g$.
+
+It follows, $ug=u(vg)=uvg$ - a triple product - is the defined, so in particular $uv$ is defined. As both $u$ and $v$ are identities, $u=uv=v$.
+
+So the left identity associated to an arrow $g$ is unique, and similarly the right identity associated to it is unique as well. We denote them by $\cod(g)$ and $\dom(g)$, respectively.
+
+Thus we have the metagraph structure of $C$. The identity operation (as in the ``objects-and-arrows'' definition) is the inclusion of $C^{(0)}$ into $C$. The composition is already given and associative. As to check that it is compatible with the metagraph structure, notice that, if a product $fg$ is defined, then the product $\cod(f)fg$ is also defined. Thus $\cod(fg)$, which is defined to be the only identity which may be multiplied by $fg$ on the right, is equal to $\cod(f)$. Similarly, we prove that $\dom(fg)=\dom(g)$, and that a product $fg$ is defined if and only if $\dom(f)=\cod(g)$.
+
+\section{Categories}
+
+\section{Functors}
+
+\begin{exercise}
+Show how each of the following constructions can be regarded as a functor: The field of quotients of an integral domain; the Lie algebra of a Lie group.
+\end{exercise}
+\begin{solution}
+Let $\mathbf{Dom}$ denote the category with objects all integral domains and arrows the injective ring homomorphisms, and let $\mathbf{Fld}$ be the full subcategory of $\mathbf{CRng}$ with fields as objects. The construction of the field of quotients of an integral domain can be regarded as a functor $\operatorname{quot}:\mathbf{Dom}\to\mathbf{Fld}$ with object function $R\mapsto \operatorname{quot}R$, the field of quotients of $R$, and arrow function assigning to each (ring) homomorphism $f:R\to R'$ the (ring) homomorphism $\operatorname{quot}f:\operatorname{quot}R\to\operatorname{quot}R'$, $\operatorname{quot}f(\frac{a}{b})=\frac{f(a)}{f(b)}$.
+
+Now, let $\mathbf{LGrp}$ be the category with objects the Lie groups and arrows the smooth homomorphisms, and $\mathbf{LAlg}$ be the category with objects the Lie algebras and arrows the Lie algebra homomorphisms. The construction of the Lie algebra of a Lie group can be regarded as a functor $\operatorname{L}:\mathbf{LGrp}\to\mathbf{LAlg}$, which associates to a Lie group $G$ its Lie Algebra $\operatorname{L}(G)$ (which is simply the tangent space at the unit, $T_1G$, with an adequate bracket operation), and to each morphism $f:G\to G'$, the morphism $\operatorname{L}(f)=df_1:\operatorname{L}(G)\to\operatorname{L}(G')$.
+\end{solution}
+
+\begin{exercise}
+Show that functors $\mathbf{1}\to C$, $\mathbf{2}\to C$, and $\mathbf{3}\to C$ correspond respectively to objects, arrows, and composable pairs of arrows in $C$.
+\end{exercise}
+\begin{solution}
+Remember that $\mathbf{n}$ has as set of objects $n=\left\{0,\ldots,n-1\right\}$ and arrows $i\to j$ for $i\leq j$.
+
+The correspondences $T\mapsto T(0)$, $T\mapsto T(0\to 1)$ and $T\mapsto (T(0\to 1),T(1\to 2))$, where $T$ denotes respectively functors from $\mathbf{1}$, $\mathbf{2}$ and $\mathbf{3}$ to $C$, are the ones asked for in the question.
+\end{solution}
+
+\begin{exercise}
+Interpret ``functor'' in the following special types of categories: (a) A functor between two preorders is a function $T$ which is monotonic (i.e., $p\leq p'$ implies $Tp\leq Tp'$). (b) A functor between two groups (one-object categories) is a morphism of groups. (c) If $G$ is a group, a functor $G\to\mathbf{Set}$ is a permutation representation of $G$, while $G\to\mathbf{Matr_K}$ is a matrix representation of $G$.
+\end{exercise}
+\begin{solution}
+\begin{enumerate}
+\item[(a)] Let $P_1$ and $P_2$ be two preorders. A functor $T:P_1\to P_2$ is necessarily monotonic: if $p\leq p'$ in $P_1$, then there exists an arrow $f:p\to p'$, so there exists the arrow $Tf:Tp\to Tp'$, hence $Tp\leq Tp'$. Conversely, if $T:P_1\to P_2$ is monotonic, then we can take $T$ as the object function between the categories $P_1$ and $P_2$ and, as arrow function, we associate to every arrow $p\to p'$ the unique arrow $Tp\to Tp'$, thus obtaining a functor $T:P\to P'$.
+\item[(b)] A functor between two groups is uniquely determined by its arrow function, and the axioms for functors imply that those are exactly the group homomorphisms between the sets of arrows.
+\item[(c)] Let $G$ be a group with the unique object $\ast$. The arrow function of a functor $T:G\to\mathbf{Set}$ (resp.\ $\mathbf{Matr_K}$) is a permutation (resp.\ matrix) representation of $G$ on the set $T(\ast)$ (resp.\ of dimension $T(g)$), while a permutation (resp.\ matrix) representation $\eta$ of $G$ on a set $X$ (resp.\ of dimension $n$) can be interpreted as the arrow function for a functor $N:G\to\mathbf{Set}$ (resp.\ $\mathbf{Matr_K}$) with object function $N(\ast)=X$ (resp.\ $N(\ast)=n$).
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Prove that there is no functor $\mathbf{Grp}\to\mathbf{Ab}$ sending each group $G$ to its center (consider $S_2\to S_3\to S_2$, the symmetric groups).
+\end{exercise}
+\begin{solution}
+Suppose there existed such a functor $Z:\mathbf{Grp}\to\mathbf{Ab}$. Consider the symmetric groups $S_n$ of bijections on $\left\{1,\ldots,n\right\}$. Let $f:S_2\to S_3$ be the morphism induced by the inclusion $\left\{1,2\right\}\subseteq\left\{1,2,3\right\}$, and $\operatorname{sgn}:S_3\to \mathbb{Z}_2=S_2$ be the sign function. 
+
+Then $\operatorname{sgn}\circ f=\operatorname{id}_{S_2}$, so $T(\operatorname{sgn})\circ T(f)=\operatorname{id}_{Z(S_2)}$. But $Z(S_2)=S_2$ and $Z(S_3)=\left\{1\right\}$, so $T(\operatorname{sgn})$ and $T(f)$ are trivial morphisms, while $\operatorname{id}_{Z(S_2)}$ is not, a contradiction.
+
+Therefore, there does not exist a functor $\mathbf{Grp}\to\mathbf{Ab}$ sending each group $G$ to its center.
+\end{solution}
+
+\begin{exercise}
+Find two different functors $T:\mathbf{Grp}\to\mathbf{Grp}$ with object function $T(G)=G$ the identity for every group $G$.
+\end{exercise}
+\begin{solution}[Reid Barton, \href{http://mathoverflow.net/questions/4276/two-functors-from-grp-to-grp}{mathoverflow}]
+For every group $G$, choose $\psi_G$ an automorphism of $G$ in such a way that some $\psi_{G_0}$ is not the identity (for example, choose $\psi_G(g)=g^{-1}$ if $G$ is abelian and $\operatorname{id}_G$ otherwise). Consider the functor $T:\mathbf{Grp}\to\mathbf{Grp}$ given by $T(G)=G$ and $T(f)=\psi_{\cod f}f\psi_{\dom f}^{-1}$. Then $T$ is a functor as in the question which is different from the identity functor. (However, $\psi$ defines a natural isomorphism $1_\mathbf{Grp}\dot{\to} T$, see \S 5. Every functor $T\cong 1_{\mathbf{Grp}}$ with $T(G)=G$ is of the form above.)
+\end{solution}
+
+\section{Natural Transformations}
+
+\begin{exercise}
+Let $S$ be a fixed set, and $X^S$ the set of all functions $h:S\to X$. Show that $X\mapsto X^S$ is the object function of a functor $\mathbf{Set}\to \mathbf{Set}$, and that evaluation $e_X:X^S\times S\dot{\to}X$, defined by $e_X(h,s)=h(s)$, the value of the function $h$ at $s\in S$, is a natural transformation.
+\end{exercise}
+\begin{solution}
+Define, for a function $f:X\to Y$, $R(f):X^S\to Y^S$ by $R(f)(h)=f\circ h$ for $h\in X^S$. This gives a functor $R:\mathbf{Set}\to\mathbf{Set}$ with object function as in the question.
+
+Now, consider the functor $T=R\times S\colon\mathbf{Set}\to\mathbf{Set}$, given by $T(X)=R(X)\times S$ and $T(f)=R(f)\times\operatorname{id}_S$ (here, we are identifying $S$ with the constant functor $X\mapsto S$, $f\mapsto \operatorname{id}_S$). Let's show that $e:T\to I_\mathbf{Set}$ is natural (where $I_\mathbf{Set}$ is the identity functor). For this, we need to show that for any $f:X\to Y$, $e_Y\circ T(f)=f\circ e_X$. Given $(h,s)\in X^S\times S=T(X)$, we have
+\[(e_Y\circ T(f))(h,s)=e_Y(f\circ h,s)=f(h(s))=f(e_X(h,s))=(f\circ e_X)(h,s).\]
+
+Therefore, $e:T\dot{\to}I_\mathbf{Set}$ is a natural transformation.
+\end{solution}
+
+\begin{exercise}
+If $H$ is a fixed group, show that $G\mapsto H\times G$ defines a functor $H\times -:\mathbf{Grp}\to\mathbf{Grp}$, and that each morphism $f:H\to K$ defines a natural transformation $H\times -\dot{\to}K\times -$.
+\end{exercise}
+\begin{solution}
+Define the arrow function of $H\times -$ by $(H\times -)(f)=\operatorname{id}_H\times f$ for a morphism $f:G_1\to G_2$, so that $H\times -:\mathbf{Grp}\to\mathbf{Grp}$ is a functor.
+
+Now, given a morphism $f:H\to K$ and a group $G$, let $(f\times G)=(f\times -)_G:H\times G\to K\times G$ be given by $(f\times G)(h,g)=(f(h),g)$ (again, we identify $G$ with $\operatorname{id}_G$). It is readily verified that $(f\times -):H\times -\dot{\to}K\times -$ is a natural transformation.
+\end{solution}
+
+\begin{exercise}
+If $B$ and $C$ are groups (regarded as categories with one object each) and $S,T:B\to C$ are functors (homomorphisms of groups), show that there is a natural transformation $S\dot{\to} T$ if and only if $S$ and $T$ are conjugate; i.e., if and only if there is an element $h\in C$ with $Tg=h(Sg)h^{-1}$ for all $g\in B$.
+\end{exercise}
+\begin{solution}
+Since the elements of the group $C$ are its morphisms, we can regard each $h\in C$ as a function assigning the object of $B$ to itself. The naturality of $h:T\to S$ means exactly that $hT=Sh$, that is, that $T$ and $S$ are $h$-conjugate.
+\end{solution}
+
+\begin{exercise}
+For functors $S,T:C\to P$ where $C$ is a category and $P$ a preorder, show that there is a natural transformation $S\dot{\to}T$ (which is then unique) if and only if $Sc\leq Tc$ for every object $c\in C$.
+\end{exercise}
+\begin{solution}
+If $Sc\leq Tc$ for every object $c$ of $C$, we can define $\tau_c$ as the unique arrow from $Sc\to Tc$ in $P$. The naturality of $\tau:S\to T$ is given by the uniqueness of the arrow $Sc\to Tc'$ in $P$, if there is some arrow $f:c\to c'$ in $C$.
+
+Conversely, a natural transformation $\tau:S\dot{\to}T$ gives to every object $c$ of $C$ an arrow $Sc\to Tc$ in $P$, which means that $Sc\leq Tc$.
+\end{solution}
+
+\begin{exercise}
+Show that every natural transformation $\tau:S\dot{\to} T$ defines a function (also calles $\tau$) which sends each arrow $f:c\to c'$ of $C$ to an arrow $\tau f:Sc\to Tc'$ of $B$ in such a way that $Tg\circ\tau f=\tau(gf)=\tau g\circ Sf$ for each composable pair $<g,f>$. Conversely, show that every such function $\tau$ comes from a unique natural transformation with $\tau_c=\tau(1_c)$. (This gives an ``arrows only'' description of a natural transformation.)
+\end{exercise}
+\begin{solution}
+Given $\tau:S\dot{\to} T$, define, for each arrow $f:c\to c'$ of $C$, $\tau f=\tau_{c'}\circ Sf=Tf\circ\tau_c$ (by naturaliry). Note that $\tau_c=\tau(1_c)$. Given arrows $c\overset{f}{\to}c'\overset{g}{\to}c''$ of $C$, we have
+\[Tg\circ\tau f=Tg\circ Tf\circ \tau_c=T(gf)\circ\tau_c=\tau(gf)=\tau_{c''}\circ S(gf)=\tau_{c''}\circ Sg\circ Sf=\tau g\circ Sf.\]
+
+Conversely, given such $\tau$, define $\tau_c=\tau(1_c)$ for every object $c$ of $C$. Then, given an arrow $f:c\to c'$ of $C$
+\[Tf\circ\tau_c=Tf\circ\tau 1_c=\tau(f1_c)=\tau(1_{c'}f)=\tau(1_{c'})\circ Sf=\tau_{c'}\circ Sf,\]
+so $\tau:S\to T$ is natural.
+
+Moreover, these two processes are inverses to each other: If we start with a natural transformation $\tau$ and create the associated function, then \[\tau(1_c)=T1_c\circ\tau_c=1_{Tc}\circ\tau_c=\tau_c,\]
+so $\tau$ is induced by the function. In the other direction, if we start with the function $\tau$ and induce the natural transformation, then for every arrow $f\colon c\to c'$ we have
+\[\tau_f=\tau_f\circ 1_{Sc}=\tau_f\circ S(1_c)=Tf\circ \tau(1_c)=Tf\circ\tau_c,\]
+so the function $\tau$ is induced by the associated natural transformation.
+\end{solution}
+
+\begin{exercise}
+Let $F$ be a field. Show that the category of all finite-dimensional vector spaces over $F$ (with morphisms all linear transformations) is equivalent to the category $\mathbf{Matr}_F$ as described in \S 2.
+\end{exercise}
+\begin{solution}
+Let $\mathbf{FVct}_F$ be the category of finite-dimensional vector spaces over $F$. For every vector space $V$ of $\mathbf{FVct}_F$, let $\mathscr{B}_V$ be an ordered basis of $V$.
+
+Given objects $V,W$ of $\mathbf{FVct}_F$ and a linear function $f:V\to W$, let $SV=\dim V$ and $Sf$ be the matrix of $f$ with respect to the bases $\mathscr{B}_V$ and $\mathscr{B}_{W}$. This defines a functor $S:\mathbf{FVct}_F\to\mathbf{Matr}_F$ ($S$ preserves composition because composition of linear maps corresponds to the product of matrices on given bases).
+
+Now, given natural numbers $n,m$ and $A\in M_{m\times n}(F)$, let $Tn=F^n$ and $TA$ be the linear transformation $F^n\to F^m$ such that its matrix in the basis $\mathscr{B}_{F^n}$ and $\mathscr{B}_{F^m}$ is $A$. Again, this gives us a functor $T:\mathbf{Matr}_F\to\mathbf{FVct}_F$.
+
+Obviously, $ST=1_{\mathbf{Matr}_F}$, so it remains only to show that $TS\cong 1_{\mathbf{FVct}_F}$. For every object $V\in\mathbf{FVct}_F$ of dimension $n$, let $\alpha_V:V\to F^n$ be the linear isomorphism that associates $\mathscr{B}_V$ to $\mathscr{B}_{F^n}$ (preserving the order). Given $f:V\to W$, the matrix of $f$ with respect to the bases $\mathscr{B}_V$ and $\mathscr{B}_W$ is equal to the matrix of $TS(f)$ with respect to the bases $\mathscr{B}_{F^{\dim V}}$ and $\mathscr{B}_{F^{\dim W}}$. This means that, for every $v\in\mathscr{B}_V$, if $f(v)=\sum_{w\in\mathscr{B}_W}a_w w$, then $TS(f)(\alpha_V(v))=\sum_{w\in\mathscr{B}_W}a_w\alpha_W(w)=\alpha_W(f(v))$. Thus, $TS(f)\circ\alpha_V=\alpha_W\circ f$.
+
+Therefore, $\alpha\colon I_{\mathbf{FVct}_F}\dot{\to} TS$ is a natural isomorphism, so $S$ and $T$ define a natural equivalence between $\mathbf{FVct}_F$ and $\mathbf{Matr}_F$.
+\end{solution}
+
+\section{Monics, Epis, and Zeros}
+
+\begin{exercise}
+Find a category with an arrow which is both epi and monic, but not invertible (e.g., dense subset of a topological space).
+\end{exercise}
+\begin{solution}
+Let $C$ be the category of Hausdorff topological spaces and continuous functions. Given a space $X$ of $C$ with a proper dense subspace $Y$, the inclusion $Y\to X$ is not surjective, hence not invertible. However it is injective, hence monic, and it is epi because any two continuous functions $f,g\colon X\to Z$ which coincide on $Y$ actually coincide on all of $X$ (this is where we use the Hausdorff property for $Z$).
+
+Alternatively, see exercise 4 below for an algebraic example.
+\end{solution}
+
+\begin{exercise}
+Prove that the composite of monics is monic, and likewise for epis.
+\end{exercise}
+\begin{solution}
+Let's do this only for monics, because the case for epis is very similar (actually, it is a consequence of the case for monics if by translation to the opposite category, see II\S 2).
+
+Let $c\overset{f}{\to}c'\overset{g}{\to}c''$ in a category $C$, with $f$ and $g$ monics. If $h,k:a\to c$ satisfy $fgk=fgh$, then $gh=gk$, because $f$ is monic, and then $h=k$, because $g$ is monic. Therefore, $fg$ is monic.
+\end{solution}
+
+\begin{exercise}
+If a composite $g\circ f$ is monic, so is $f$. Is this true of $g$?
+\end{exercise}
+\begin{solution}
+If $gf$ is monic, then, given $h$ and $k$ such that $fh=fk$, we have $gfh=gfk$, thus $h=k$, so $f$ is monic.
+
+This is not true for $g$: Given any functions $\left\{0\right\}\overset{f}{\to}\left\{0,1\right\}\overset{g}{\to}\left\{0\right\}$ in $\mathbf{Set}$, the composite $gf=1_{\left\{0\right\}}$ is monic but $g$ is not.
+\end{solution}
+
+\begin{exercise}
+Show that the inclusion $\mathbf{Z}\to\mathbf{Q}$ is epi in the category $\mathbf{Rng}$.
+\end{exercise}
+\begin{solution}
+Since we consider only unit-preserving ring homomorphisms in $\mathbf{Rng}$, then there is at most one ring homomorphism from $\mathbb{Q}$ to any unital ring $R$ (and such one exists if and only if $R$ contains a field of characteristic zero). In fact, this proves that \emph{any} ring homomorphism $f\colon R\to\mathbb{Q}$ is epi.
+
+Things are a little more interesting if we allow zero morphisms and ignore units. Let $f:\mathbf{Q}\to R$ be a (possibly non-unital) ring homomorphism. Since $\mathbf{Q}$ is a field then it is a simple ring, so $f$ is either $0$ or it is injective. If $f(1)=0$, then $f=0$. If $f(1)\neq 0$, then $f$ is a field isomorphism from $\mathbf{Q}$ to $f(\mathbf{Q})$. Since $\mathbf{Q}$ is generated (as a field) by $1$, then $f(1)$ determines $f$ completely. This shows that the inclusion $\mathbf{Z}\to\mathbf{Q}$ is epi.
+\end{solution}
+
+\begin{exercise}
+In $\mathbf{Grp}$ prove that every epi is surjective (Hint. If $\varphi:G\to H$ has image $M$ not $H$, use the factor group $H/M$ if $M$ has index $2$. Otherwise, let $\operatorname{Perm}H$ be the group of all permutations of the set $H$, choose three different cosets $M$, $Mu$ and $Mv$ of $M$, define $\sigma\in\operatorname{Perm}H$ by $\sigma(xu)=xv$, $\sigma(xv)=xu$ for $x\in M$, and $\sigma$ otherwise the identity. Let $\Psi:H\to\operatorname{Perm}H$ send each $h$ to left multiplication $\psi_h$ by $h$, while $\psi_h'=\sigma^{-1}\psi_h\sigma$. Then $\psi\varphi=\psi'\varphi$, but $\psi\neq\psi'$).
+\end{exercise}
+\begin{solution}
+Suppose that $M$ is a proper subgroup of a group $H$. Let's show that there exist two different morphisms $H\to K$ that coincide in $M$. This will solve the exercise, since a morphism $\varphi:G\to H$ is epi if and only if the inclusion $\varphi(G)\to H$ is epi. We are going to this in two different manners:
+\begin{enumerate}
+\item If $M$ has index 2 in $H$, then $M$ is normal in $H$, so the projection $H\to H/M$ is different from, but coincides in $M$ with the trivial morphism $0:H\to M$. If $M$ has index $>2$ in $H$, then proceeding as in the hint solves this problem (notice that $\sigma$ is well-defined, and it is a permutation).
+
+\item Let $X=(H/M)\cup\left\{\varnothing\right\}$ (notice that $\varnothing\not\in H/M$). Let $\sigma$ be the transposition $\sigma=(M\varnothing)\in\operatorname{Perm}(X)$. Let $\psi:H\to\operatorname{Perm}(X)$ be the action of left multiplication (preserving $\varnothing$). Then $\psi$ and $\sigma\psi\sigma^{-1}$ are different morphisms which coincide in $M$: if $m\in M$, then
+\[\psi(m)(A)=\sigma\psi(m)\sigma(A)=\begin{cases}
+\varnothing&\text{, if }A=\varnothing\\
+M&\text{, if }A=M\\
+mA&\text{, otherwise;}
+\end{cases}\]
+and on the other hand, if $n\not\in M$ then
+\[\psi(n)(A)=\begin{cases}
+\varnothing&\text{, if }A=\varnothing\\
+nA&\text{, if }A\neq\varnothing.
+\end{cases},\quad\text{whereas}\quad\sigma\psi(n)\sigma(A)=\begin{cases}
+nM&\text{, if }A=\varnothing\\
+M&\text{, if }A=M\\
+\varnothing&\text{, if }A=n^{-1}M\\
+nA&\text{, otherwise}.
+\end{cases}\]
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+In $\mathbf{Set}$, show that all idempotents split.
+\end{exercise}
+\begin{solution}
+An idempotent in $\mathbf{Set}$ is simply a function $f\colon X\to X$, which fixes its image. Let $g:X\to f(X)$ be given by $g(x)=f(x)$ and $h:f(X)\to X$ be the inclusion. Then $f=hg$ and $gh=g|_{f(X)}=1_{f(X)}$ (because $f$ preserves $f(X)$).
+\end{solution}
+
+\begin{exercise}
+An arrow $f:a\to b$ in a category $C$ is \emph{regular} when there exists an arrow $g:b\to a$ such that $fgf=f$. Show that $f$ is regular if it has either a left or a right inverse, and prove that every arrow in $\mathbf{Set}$ with $a\neq\varnothing$ is regular.
+\end{exercise}
+\begin{solution}
+If $f$ has either a left or right inverse $g$, then clearly $fgf=f$, so $f$ is regular.
+
+Now, let $f:a\to b$ in $\mathbf{Set}$ with $a\neq\varnothing$. Let $x_0\in a$ be fixed. For every $y\in f(a)$, choose $g(y)\in a$ such that $f(g(y))=y$, and for $y\in b\setminus f(a)$, let $g(y)=x_0$. This gives us an arrow $g:b\to a$ such that $fgf=f$, so $f$ is regular. (The statement that every arrow in $\mathbf{Set}$ with non-empty domain is regular is equivalent to the Axiom of Choice for sets.)
+\end{solution}
+
+\begin{exercise}
+Consider the category with objects $<X,e,t>$, where $X$ is a set, $e\in X$, and $t:X\to X$, and with arrow $f:\langle X,e,t\rangle\to\langle X',e',t'\rangle$ the functions $f$ on $X$ to $X'$ with $fe=e'$ and $ft=t'f$. Prove that this category has an initial object in which $X$ is the set of natural numbers, $e=0$, and $t$ is the successor function.
+\end{exercise}
+\begin{solution}
+This is simply a version of the axiom of induction for the natural numbers.
+
+Let $\mathbb{N}=\left\{0,1,2,\ldots\right\}$ the set of natural numbers and $s:\mathbb{N}\to\mathbb{N}$ the successor function, $s(n)=n+1$. Given $\langle X,e,t\rangle$ as above, define a function $f$ from $\mathbb{N}$ to $X$ inductively by $f(0)=e$ and $f(n+1)=tf(n)$ for $n\in\mathbb{N}$. That way, we obtain an arrow $f:\langle\mathbb{N},0,s\rangle\to \langle X,e,t\rangle$. Unicity of $f$ follows by induction, so $\langle\mathbb{N},0,s\rangle$ is initial.
+\end{solution}
+
+\begin{denv*}{Remark to Exercise 8}
+In the category of sets, an object $\langle N,e,s\rangle$ initial in the sense of Exercise 8 is called a ``Natural Number Object'' (abbreviated NNO). A similar notion makes sense in any category with a terminal object. What was proved is that if $\langle N,e,s\rangle$ satisfies the Peano Axioms, then it is a NNO. We can show the converse: suppose $\langle N,e,s\rangle$ is a NNO.
+\begin{enumerate}
+\item[\textbf{P1:}] $\bf e\not\in s(N)$.
+
+	Consider any two distinct objects $x\neq y$, and let $X=\left\{x,y\right\}$ and $t(x)=t(y)=y$. Since $N$ is a NNO, there exists a morphism $\tau:\langle N,e,s\rangle\to\langle X,x,t\rangle$, so that $\tau(e)=x$ but $\tau(s(n))=t(\tau(n))=y$ for every $n$. Hence, $e\not\in s(N)$.
+\item[\textbf{P2:}] $\mathbf{s}$\textbf{ is injective}.
+
+	Consider any object $y\not \in N$, and let $N'=N\cup\left\{y\right\}$. Let $s':N'\to N$ be given by $s'|_N=s$ and $s'(y)=e$, and let $\iota\colon N\to N'$ be the inclusion. Again, since $N$ is a NNO, there exists a morphism $f:\langle N,e,s\rangle\to\langle N',y,is'\rangle$.
+
+	Then $s'f:N\to N$ satisfies $s'f(e)=s'(y)=e$ and $(s'f)s=s'(fs)=s'(is'f)=(s'i)s'f=s(s'f)$, that is, $s'm$ is a morphism from $\langle N,e,s\rangle$ to itself. By uniqueness of morphisms in a NNO, $s'f=1_N$, so $fs=is'f=i$ is injective, thus $s$ is also injective.
+\item[\textbf{P3:}] \textbf{If $\mathbf{K\subseteq N}$ satisfies $\mathbf{e\in K}$ and $\mathbf{s(K)\subseteq K}$, then $\mathbf{K=N}$.}
+
+	Consider a such $K$ and let $t:K\to K$ be the restriction of $s$ to $K$. Then there exists a morphism $\tau:\langle N,e,s\rangle\to\langle K,e,t\rangle$. If $i:K\to N$ is the inclusion, then $i\tau$ is a morphism $\langle N,e,s\rangle\to\langle N,e,s\rangle$, hence $i\tau=1_N$, and this implies that $K=N$.
+\end{enumerate}
+\end{denv*}
+
+\begin{exercise}
+If the functor $T:C\to B$ is faithful and $Tf$ is monic, prove $f$ monic.
+\end{exercise}
+\begin{solution}
+Suppose $f\circ g=f\circ h$. Then $Tf\circ Tg=Tf\circ Th$, so $Tg=Th$, hence $g=h$.
+\end{solution}
+
+\section{Foundations}
+
+\begin{exercise}
+Given a universe $U$ and a function $f:I\to b$ with domain $I\in U$ and with every value $f_i$ an element of $U$, for $i\in I$, prove that the usual cartesian product $\prod_i f_i$ is an element of $U$.
+\end{exercise}
+\begin{solution}
+Consider the properties $(i)-(v)$ of $U$ as in page 22. By restricting the codomain $b$, we can assume that $f$ is surjective, that is, $b=\left\{f_i:i\in I\right\}\subseteq U$. Then $b=\cup_i f_i\subseteq U$ by $(v)$ and $\cup b\in U$ by $(iii)$. The set $\prod_i f_i$ is a subset of $\mathscr{P}(I\times \cup b)$, which is in $U$ by $(ii)$ and $(iii)$, so $\prod_i f_i\in U$, since $(i)$ and $(iii)$ imply that $U$ is closed by subsets.
+\end{solution}
+
+\begin{exercise}
+\begin{enumerate}
+\item[(a)] Given a universe $U$ and a function $f:I\to b$ with domain $I\in U$, show that the usual union $\cup_i f_i$ is a set of $U$. [Added remark: We need to assume that $f_i\in U$ for all $i$.]
+\item[(b)] Show that this one closure property of $U$ may replace condition $(v)$ and the condition $x\in U$ implies $\cup x\in U$ in the definition of a universe.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+(a) was proved in the previous exercise, so suppose that this closure property holds for $U$.
+
+Let $x\in U$. We prove that $\cup x\in U$. The identity $1_x:\left\{x\right\}\to\left\{x\right\}$ satisfies the hipothesis in (a), so $\cup x=\cup 1_x(x)$ is a set of $U$.
+
+Now, suppose that $f:a\to b$ is surjective with $a\in U$ and $b\subseteq U$. By condition (a), $\cup b\in U$, so $\mathscr{P}(\cup b)$ and $\mathscr{P}\mathscr{P}(\cup b)\in U$ by (iii), thus $b\in\mathscr{P}\mathscr{P}(\cup b)\in U$ implies $b\in U$ by (i). This proves condition (v).
+\end{solution}
+
+\section{Large Categories}
+
+\section{Hom-Sets}
+
+\chapter{Constructions on Categories}
+
+\section{Duality}
+
+\section{Contravariance and Opposites}
+
+\section{Products of Categories}
+In the last paragraph of this section, to obtain uniqueness of $F$, it is necessary to assume also that $FT_0=S$ and $FT_1=T$. Uniqueness of $F$ such that $F\mu=\tau$ (even on arrows!) only is not valid in general.
+
+\begin{denv*}{Example}
+	Let $C=\mathbf{2}=\downarrow$ and $B=\downdownarrows$. Say $f$ and $g$ are the two non-unit arrows of $B$. Consider the functors given by $S(\downarrow)=T(\downarrow)=f$, and let $\tau:S\dot{\to}T$ be the identity natural transformation: $\tau_x=1_x$.
+
+	Let $P:C\times\mathbf{2}\to C$ be the projection and $U:C\to B$ be the functor $U(\downarrow)=g$. Then $SP$ and $UP$ are distinct functors $C\times\mathbf{2}\to B$ that satisfy $SP\mu=UP\mu=\tau$ on objects.
+\end{denv*}
+
+\begin{denv*}{Example}
+	For a stronger counter-example, consider the category $\cat{Set}_*$ of small pointed sets: These are pairs $(X,\ast_X)$ where $X$ is a small set and $\ast_X$ is an element of $X$. The same construction can be made in any category with a null object.
+	
+	For any two objects, $(X,\ast_X),(Y,\ast_Y)$ of $\cat{Set}_\ast$, let $\tau\colon (X,\ast_X)\to(Y,\ast_Y)$ be the constant function, sending all of $X$ to $\ast_Y$. (We ommit the objects in the notation for $\tau$.)
+	
+	Let $S,T\colon\cat{Set}_\ast\to\cat{Set}_\ast$ be any two functors which are the same on objects (these can be constructed similarly to the ones in Exercise \exeref{I.3.5}).	We regard $\tau$ as a natural transformation from $S$ to $T$, and also from $S$ to $S$.
+	
+	Let $F_{(S,S)}$ and $F_{(S,T)}$ be the functors $\cat{Set}_\ast\times\mathbf{2}\to\cat{Set}_\ast$ constructed as in the book, by seeing $\tau$ as a natural transformation from $S$ to $S$ or from $S$ to $T$, respectively. These functors are different, but they both satisfy $F_{(S,-)}\mu=\tau$ on arrows:
+	\[F_{(S,-)}\mu(f)=F_{(S,-)}(f,\downarrow)=\tau.\]
+\end{denv*}
+
+\begin{exercise}
+Show that the product of categories includes the following known special cases: The product of monoids (categories with one object), of groups, of sets (discrete categories).
+\end{exercise}
+\begin{solution}
+Clearly, the product of two monoids has only one object, so it is a monoid as well. Similarly, an arrow $\langle f,g\rangle$ in a product category $C\times D$ is invertible or a unit iff $f$ and $g$ are invertible or units, respectively, so groups and sets are preserved by products (and, making the usual identification, we obtain the usual algebraic product of each).
+\end{solution}
+
+\begin{exercise}
+Show that the product of two preorders is a preorder.
+\end{exercise}
+\begin{solution}
+Let $P_1$ and $P_2$ be preorders. Suppose we have two arrows $f=\langle f_1,f_2\rangle$ and $g=\langle g_1, g_2\rangle:\langle p_1,p_2\rangle\to\langle q_1,q_2\rangle$. Then $f_i,g_i:p_i\to q_i$, so $f_i=g_i$, thus $f=g$. Therefore, this $P_1\times P_2$ is a preorder. (In the algebraic sense, this preorder is the usual product preorder: $\langle p_1,p_2\rangle\leq\langle q_1,q_i\rangle$ iff $p_i\leq q_i$.)
+\end{solution}
+
+\begin{exercise}
+If $\left\{C_i:i\in I\right\}$ is a family of categories indexed by a set $I$, describe the product $C=\prod_i C_i$, its projections $P_i:C\to C_i$, and establish the universal property of these projections.
+\end{exercise}
+\begin{solution}
+An object of $C$ is a thread $(c_i)_{i\in I}$, where each $c_i$ is an object of $C_i$, an arrow $(c_i)\to (c_i')$ of $C$ is a thread $(f_i)_{i\in I}$ of arrows $f_i:c_i\to c_i'$, and the composition of two such arrows $(c_i)\overset{(f_i)}{\to}(c_i')\overset{(g_i)}{\to}(c_i'')$ is simply $(g_i)\circ(f_i)=(g_i\circ f_i)$.
+
+For each $i\in I$, the projection functor $P_i:C\to C_i$ is defined in objects and arrows by $P_i((x_j)_{j\in I})=x_i$.
+
+The universal property of the projections is the following: For any category $D$ and any family of functors $\left\{T_i:D\to C_i:i\in I\right\}$, there exists a unique functor $T:D\to C$ such that $P_i T=T_i$ for every $i\in I$ (this functor is sometimes denoted by $T=\prod_i T_i$).
+\end{solution}
+
+\begin{exercise}
+Describe the opposite of the category $\mathbf{Matr}_K$ of \S I.2.
+\end{exercise}
+\begin{solution}
+$\mathbf{Matr}_K\op$ is isomorphic to $\mathbf{Matr}_K$, since the (covariant) functor $T:\mathbf{Matr}_K\to\mathbf{Matr}_K\op$, defined by $T(n)=n\op$, $T(A)=(A^T)\op$ is an isomorphism.
+
+We can understand the above in the following way: In $\mathbf{Matr}_K\op$, the arrows from $n$ to $m$ are the $n\times m$ matrices (with entries in $K$), so a $n\times m$ matrix $A$ should be a mapping $K^n\to K^m$, and we can do this by identifying $K^n$ with line vectors and letting matrices act on the right. This analysis is usually done by transposing matrices and vectors, which is precisely how $T$ is defined.
+\end{solution}
+
+\begin{exercise}
+Show that the ring of continuous real-valued functions on a topological space is the object function of a contravariant functor on $\mathbf{Top}$ to $\mathbf{Rng}$.
+\end{exercise}
+\begin{solution}
+Given a topological space $X$, let $C_\mathbb{R}(X)$ denote the ring of continuous functions $X\to \mathbb{R}$. Given a continuous function $f:X\to Y$ between two topological spaces, let $C_\mathbb{R}(f)=(-\circ f):C_\mathbb{R}(Y)\to C_\mathbb{R}(X)$ be defined by $C_\mathbb{R}(f)(g)=g\circ f$. This gives us a contravariant functor $C_\mathbb{R}:\mathbf{Top}\to\mathbf{Rng}$ with the desired object funtion.
+\end{solution}
+
+\section{Functor Categories}
+
+\begin{exercise}
+For $R$ a ring, describe $R\text{-}\mathbf{Mod}$ as a full subcategory of the functor category $\mathbf{Ab}^R$.
+\end{exercise}
+\begin{solution}
+The ring $R$ may be regarded as a $Ab$-category with only one object, that is, a monoid (more formally, $\mathbf{Rng}$ is equivalent to the  category whose objects are all such (small) categories and whose arrows are the additive functors).
+
+Since $\mathbf{Ab}$ is itself an $Ab$-category, let $C$ be the full subcategory of $\mathbf{Ab}^R$ consisting of all additive functors. An object (functor) $F$ of $C$ provides us an abelian group $M$ (which is the image of the only object of $R$) and a multiplication $r\cdot m=F(r)(m)$ for every $r\in R$ and $m\in M$, which makes $M$ a left $R$-module. Conversely, these data provide an object of $C$. Also, a natural transformation $\tau:F\dot{\to} G$, between objects of $C$, is precisely a module homomorphism from the respective $R$-modules.
+
+To conclude, these identifications define an isomorphism $R\text{-}\mathbf{Mod}\to C$.
+\end{solution}
+
+\begin{exercise}
+Describe $B^X$, for $X$ a finite set (a finite discrete category).
+\end{exercise}
+\begin{solution}
+Since functors $F:X\to B$ are defined by their object functions, then the objects of $B^X$ can be regarded as threads $(F(x))_{x\in X}$. Also, since all morphisms of $X$ are units, then any thread $(\tau_x:F(x)\to G(x))_{x\in X}$ of morphisms in $B$ provides a natural transformation $\tau:F\dot{\to}G$ (and the converse is clear).
+
+Therefore, $B^X$ is isomorphic to $\prod_{x\in X} B$, the product of $B$ by itself indexed by elements of $X$. In particular, if $X$ is finite, then $\prod_{x\in X} B=B\times\cdots\times B$ ($|X|$ times).
+\end{solution}
+
+\begin{exercise}
+Let $\mathbf{N}$ be the discrete category of natural numbers. Describe the functor category $\mathbf{Ab}^\mathbf{N}$ (commonly known as the category of graded abelian groups).
+\end{exercise}
+\begin{solution}
+This is a particular case of the previous exercise: $\mathbf{Ab}^\mathbf{N}=\prod_{n=1}^\infty\mathbf{Ab}$ (notice that the objects of $\mathbf{Ab}^\mathbf{N}$ are simply sequences of groups).
+\end{solution}
+
+\begin{exercise}
+If $P$ and $Q$ are preorders, describe the functor category $Q^P$ and show that it is a preorder.
+\end{exercise}
+\begin{solution}
+In exercise 4 of \S I.4, it was shown that there can exist at most one natural transformation between two functors $S,T:P\to Q$, which means that $Q^P$ is a preorder. (This independed on $P$ being a preorder.)
+\end{solution}
+
+\begin{exercise}
+If $\mathbf{Fin}$ is the category of all finite sets and $G$ is a finite group, describe $\mathbf{Fin}^G$ (the category of all permutation representations of $G$).
+\end{exercise}
+\begin{solution}
+Each functor $T:G\to\mathbf{Fin}$ is determined by a (finite) set $X_T$ (the image of the single object of $G$) and a representation of $G$ by permutations of $X$. A natural transformation $\tau:S\dot{\to}T$ is determined by a function $\tau:X_S\to X_T$ satisfying $\tau S_g=T_g\tau$ for every $g\in G$ (such a $\tau$ is called a morphism between the representations (induced by) $S$ and $T$)
+\end{solution}
+
+\begin{exercise}
+Let $\mathbf{M}$ be the infinite cyclic monoid (elements $1,m,m^2,\ldots$). In the functor categories $(\mathbf{Matr}_K)^\mathbf{2}$ and $(\mathbf{Matr}_K)^\mathbf{M}$ show that objects are matrices and isomorphic objects (matrices) are exactly equivalent and similar matrices, respectively, in the usual sense of linear algebra. For $\mathbf{Matr}$, see \S I.2.
+\end{exercise}
+\begin{solution}
+Let $a:0\to 1$ be the unique non-unital arrow in $\mathbf{2}$. By exercise 2 of \S I.4, each functor $T:\mathbf{2}\to\mathbf{Matr}_K$ is given by the matrix $T(a)$, so objects of $(\mathbf{Matr}_K)^\mathbf{2}$ are matrices.
+
+If $T,S:\mathbf{2}\to\mathbf{Matr}_K$ are isomorphic, then there exists a natural isomorphism $\tau:T\dot{\to}S$, so $S(a)\tau_0=\tau_1T(a)$, that is, $S(a)=\tau_1 T(a)\tau_0^{-1}$, and hence the respective matrices are equivalent. Conversely, if $S(a)=\tau_1 T(b)\tau_0^{-1}$ for invertible $\tau_i$, then $\tau$ defines a natural isomorphism $T\dot{\to} S$.
+
+Let $x$ be the only object of $\mathbf{M}$. A functor $S:\mathbf{M}\to\mathbf{Matr}_K$ satisfies $S(m^k)=S(m)^k$ for every $k$, so $S$ is defined by the square matrix $S(m)$. Conversely, if $A$ is any square $n\times n$ matrix, the map $x\mapsto n$, $m^k\mapsto A^k$ defines a functor $\mathbf{M}\to\mathbf{Matr}_K$. Thus, objects of $(\mathbf{Matr}_K)^\mathbf{M}$ are square matrices.
+
+If $\tau:T\dot{\to} S$ is a natural isomorphism of the functors $T,S:\mathbf{M}\to\mathbf{Matr}_K$, then $\tau_xT(m)=S(m)\tau_x$, so $T(m)=\tau_x^{-1}S(m)\tau_x^{-1}$, hence $T(m)$ is similar to $S(m)$. Conversely, any invertible matrix $\tau_x$ satisfying that condition defines a natural isomorphism $\tau:T\dot{\to}S$, so isomorphic objects in $(\mathbf{Matr}_K)^\mathbf{M}$ are similar matrices.
+\end{solution}
+
+\begin{exercise}
+Given categories $B$, $C$, and the functor category $B^\mathbf{2}$, show that each functor $H:C\to B^\mathbf{2}$ determines two functors $S,T:C\to B$ and a natural transformation $\tau:S\dot{\to} T$, and show that this assignment $H\mapsto\langle S,T,\tau\rangle$ is a bijection.
+\end{exercise}
+\begin{solution}
+Let $c$, $c'$, $c''$, $f$ and $g$ denote objects and arrows of $C$ forming the diagram $c\overset{f}{\to}c'\overset{g}{\to}c''$, and let $\downarrow$ be the unique non-unit arrow of $\mathbf{2}$.
+
+Suppose we are given a functor $H:C\to B^\mathbf{2}$. Then each $H(c)$ is a functor $\mathbf{2}\to B$, so $H(c)(0)$ and $H(c)(1)$ are objects of $B$ and $H(c)(\downarrow)$ is an arrow $H(c)(0)\to H(c)(1)$, and each $H(f)$ is a natural transformation $H(c)\to H(c')$, so $H(f)_i$ is an arrow $H(c)(i)\to H(c')(i)$. The following equations hold:
+\begin{gather*}
+H(1_c)_i=1_{H(c)(i)},\quad H(g\circ f)_i=H(g)_i\circ H(f)_i\qquad i=0,1\tag{1}\\
+H(f)_1\circ H(c)(\downarrow)=H(c')(\downarrow)\circ H(f)_0.\tag{2}
+\end{gather*}
+Equation (1) means that $H$ is a functor, and equation (2) means that $H(f)$ is an arrow (in $B^\mathbf{2}$, that is, a natural transformation) $H(c)\to H(c')$.
+
+Now, let
+\begin{gather*}
+S(c)=H(c)(0),\quad S(f)=H(f)_0\\
+T(c)=H(c)(1),\quad T(f)=H(f)_1\tag{$*$}\\
+\tau_c=H(c)(\downarrow).
+\end{gather*}
+
+With this, equations (1) and (2) may be rewritten as
+\begin{gather*}
+S(1_c)=1_{Sc},\quad S(g\circ f)=Sg\circ Sf,\quad T(1_c)=1_{Tc},\quad T(g\circ f)=Tg\circ Tf\tag{1'}\\
+Tf\circ\tau c=\tau_{c'} Sf.\tag{2'}
+\end{gather*}
+
+Equation (1') means that $S$ and $T$ are functors $C\to B$, and equation (2') means that $\tau$ is a natural transformation $\tau:S\to T$.
+
+If we had such a triple $\langle S,T,\tau\rangle$, then using equations ($*$) as the definition of $H$, and defining $H(c)(1_i)=1_{H(c)(i)}$, which is the only possibility for $H(c)$ to be a functor $\mathbf{2}\to B$, equations (1') and (2') become equations (1) and (2), and those mean that $H$ is a functor $C\to B^\mathbf{2}$. This shows that the mapping $H\mapsto\langle S,T,\tau\rangle$ is surjective, while injectivity if clear from equations ($*$), so this assignment is a bijection
+\end{solution}
+
+\begin{exercise}
+Relate the functor $H$ of Exercise 7 to the functor $F$ of (3.6).
+\end{exercise}
+\begin{solution}
+Given $H$ as in exercise 7 with the associated triple $\langle S,T,\tau\rangle$, and considering $F$ as given in (3.6), then we have that $F(f,0)=H(f)_0$, $F(f,1)=H(f)_1$ and $F(f,\downarrow)=H(f)_1\circ H(c)(\downarrow)=H(c')(\downarrow)\circ H(f)_0$ for every arrow $f:c\to c'$ in $C$. To put it more plainly, we have $F(f,g)=H(f)_{a'}\circ H(c)g=H(c')g\circ H(f)_a$ for every arrow $(c,a)\overset{(f,g)}{\to}(c',a')$ in $C\times\mathbf{2}$.
+
+This is a particular case of the following more general result: Given categories $A$, $B$ and $C$, there exists a canonical isomorphism $\Phi:(B^A)^C\to B^(C\times A)$ (which is given by the formula above with $F=\Phi(H)$). In the particular case that $A=\mathbf{2}$, we obtain $F=\Phi(H)$.
+\end{solution}
+
+\section{The Category of All Categories}
+
+\begin{exercise}
+For all small categories $A$, $B$, and $C$ establish a bijection
+\[\mathbf{Cat}(A\times B,C)\cong\mathbf{Cat}(A,C^B),\]
+and show it natural in $A$, $B$, and $C$. Hence show that $-\times B:\mathbf{Cat}\to\mathbf{Cat}$ has a right adjoint (see Chapter IX).
+\end{exercise}
+\begin{solution}
+We are going to omit some details in this exercise. Let $\Phi=\Phi_{A,B,C}:\mathbf{Cat}(A\times B,C)\to\mathbf{Cat}(A,C^B)$ be the function which sends each functor $F:A\times B\to C$ to the functor $\Phi(F):A\to C^B$, defined on objects $a\in A$ as $\Phi(F)(a)=F(a,-)$, and on arrows $f:a\to a'$ as $\Phi(F)f:\Phi(F)(a)\dot{\to}\Phi(F)(a')$, the natural transformation which sends each $b\in B$ to the arrow $\phi(F)f_b=F(f,b)$.
+
+The function $\Phi$ is well-defined and invertible, and its inverse is given in the following manner: If $X:A\to C^B$ is a functor, then $\Phi^{-1}(X)$ is the functor $A\times B\to C$ which sends objects $(a,b)$ to objects $\Phi^{-1}(X)(a,b)=X(a)(b)$ and  arrows $(a,b)\overset{(f,g)}{\to}(a',b')$ to the arrows $\Phi^{-1}(X)(f,g)=X(a')g\circ X(f)_b=X(f)_{b'}\circ X(a)g:\Phi^{-1}(X)(a,b)\to\Phi^{-1}(X)(a',b')$.
+
+The bijections $\Phi_{A,B,C}$ are natural in $A$, $B$ and $C$ in the following sense: Let $P:\mathbf{Cat}\op\times\mathbf{Cat}\op\to\mathbf{Cat}\op$ be the opposite of the "product functor", sending a pair of categories $\langle A,B\rangle$ to the product category $A\times B$, and let $E:\mathbf{Cat}\op\times\mathbf{Cat}\to\mathbf{Cat}$ be the functor sending a pair of categories $\langle A,B\rangle$ to the functor category $B^A$. Also, consider the $\hom$-functor $\hom:\mathbf{Cat}\op\times\mathbf{Cat}\to\mathbf{Set}$. Then $S=\hom\circ (P\times 1_{\mathbf{Cat}})$ and $T=\hom\circ(1_{\mathbf{Cat}\op}\times E)$ are functors $\mathbf{Cat}\op\times\mathbf{Cat}\op\times\mathbf{Cat}\to\mathbf{Set}$, the object functions are $S(A,B,C)=\mathbf{Cat}(A\times B,C)$, $T(A,B,C)=\mathbf{Cat}(A,C^B)$ and $\Phi:S\dot{\to} T$ is a natural isomorphism.
+
+Finally, the bijection we have obtained can be rewritten as
+\[\hom_{\mathbf{Cat}}((-\times B)(A),C)\cong\hom_{\mathbf{Cat}}(A,(- ^B)(C)),\]
+and it is natural in $A$ and $C$. Hence, $-^B=E(B,-)$ is a right adjoint of $-\times B$.
+\end{solution}
+
+\begin{exercise}
+For categories $A$, $B$, and $C$ establish natural isomorphisms
+\[(A\times B)^C\cong A^C\times B^C,\qquad C^{A\times B}\cong (C^B)^A.\]
+Compare the second isomorphism with the bijection of Exercise 1.
+\end{exercise}
+\begin{solution}
+Let $P:A\times B\to A$ and $Q:A\times B\to B$ be the projection. The functor $\phi=\phi_{A,B,C}:(A\times B)^C\to A^C\times B^C$, defined in objects $F\in (A\times B)^C$ by $\phi(F)=(PF,QF)$ and in arrows $\tau:F\dot{\to}F'$ by $\phi\tau=(P\tau,Q\tau)$ is an isomorphism, and $\phi_{A,B,C}$ is natural in $A$, $B$ and $C$.
+
+Define $\psi=\psi_{A,B,C}:C^{A\times B}\to (C^B)^A$ in the following manner: Given an object $F\in C^{A\times B}$, let $\psi(F)$ be the functor $A\to C^B$, defined in objects $a\in A$ by $\psi(F)(a)=F(a,-)$ and in arrows $a\overset{f}{\to}a'$ by $(\psi(F)f)_b=F(f,b)$ for every $b\in B$. Given $\tau:F\dot{\to}G$ an arrow in $C^{A\times B}$, let $\psi(\tau):\psi(F)\dot{\to}\psi(G)$ be defined by $(\psi(\tau)_a)_b=\tau_{(a,b)}$ for every $a\in A$ and $b\in B$, which makes $\psi(\tau)$ a natural transformation. With this, $\psi$ is a functor.
+
+Also, $\psi$ is invertible. Given an object $X\in (C^B)^A$, $\psi^{-1}(X)$ is a functor $A\times B\to C$, defined in objects by $\psi^{-1}(X)(a,b)=X(a)(b)$, and in arrows $(a,b)\overset{(f,g)}(a',b')$ by $\psi^{-1}(X)(f,g)=(Xf)_{b'}\circ X(a)g=X(a')g\circ(Xf)_b$. Given a natural transformation $\eta:X\dot{\to}Y$, $\psi^{-1}(\eta)_{(a,b)}=(\eta_{a})_b$ for every $(a,b)\in A\times B$. Thus, $\psi$ is an isomorphism, and $\psi_{A,B,C}$ is natural in $A$, $B$ and $C$.
+
+Notice that the object function of $\psi$ is precisely the function $\Phi$ in the previous exercise.
+\end{solution}
+
+\begin{exercise}
+Use Theorem 1 to show that horizontal composition is a functor
+\[\circ: A^B\times B^C\to A^C.\]
+\end{exercise}
+\begin{solution}
+The interchange law, $(\tau'\cdot\sigma')\circ(\tau\cdot\sigma)=(\tau'\circ\tau)\cdot(\sigma'\circ\sigma')$, shows that $\circ$ preserves (vertical) composition, so it is a functor.
+\end{solution}
+
+\begin{exercise}
+Let $G$ be a topological group with identity element $e$, while $\sigma$, $\sigma'$, $\tau$, $\tau'$, are continuous paths in $G$ starting and ending at $e$ (thus, if $I$ is the unit interval, $\sigma:I\to G$ is continuous with $\sigma(0)=e=\sigma(1)$). Define $\tau\circ\sigma$ to be the path $\sigma$ followed by the path $\tau$, as in (1.5.1). Define $\tau\cdot\sigma$ to be the pointwise product of $\tau$ and $\sigma$, so that $(\tau\cdot\sigma)t=(\tau t)(\sigma t)$ for $0\leq t\leq 1$. Prove that the interchange law (5) holds.
+\end{exercise}
+\begin{solution}
+For $t\in [0,1]$,
+\begin{align*}
+(\tau'\cdot\sigma')\circ(\tau\cdot\sigma)(t)&=\begin{cases}(\tau\cdot\sigma)(2t)&,0\leq t\leq 1/2\\(\tau'\cdot\sigma')(2t-1)&,1/2\leq t\leq 1\end{cases}\\
+&=\begin{cases}\tau(2t)\sigma(2t)&,1/2\leq t\leq 1\\\tau(2t-1)\sigma(2t-1)&,1/2\leq t\leq 1\end{cases}\\
+&=(\tau'\circ\tau)(t)(\sigma'\circ\sigma)(t)=(\tau'\circ\tau)\cdot(\sigma'\circ\sigma)(t),
+\end{align*}
+hence $(\tau'\cdot\sigma')\circ(\tau\cdot\sigma)=(\tau'\circ\tau)\cdot(\sigma'\circ\sigma)$.
+\end{solution}
+
+\begin{exercise}[Hilton-Eckmann]
+Let $S$ be a set with two (everywhere defined) binary operations $\cdot:S\times S\to S$, $\circ:S\times S\to S$ which both have the same (two-sided) unit element $e$ and which satisfy the interchange identity (5). Prove that $\cdot$ and $\circ$ are equal, and that each is commutative.
+\end{exercise}
+\begin{solution}
+For every elements $a,b\in S$,
+\[a\cdot b=(a\circ e)\cdot (e\circ b)=(a\cdot e)\circ(e\cdot b)=a\circ b=(e\cdot a)\circ (b\cdot e)=(e\circ b)\cdot (a\circ e)=b\cdot a.\]
+\end{solution}
+
+\begin{exercise}
+Combine Exercises 4 and 5 to prove that the fundamental group of a topological group is abelian.
+\end{exercise}
+\begin{solution}
+Let $[\sigma]$ denote the homotopy class of a path $\sigma:I\to G$. Notice that the product of homotopies is a homotopy of the product paths, so if $[\sigma]=[\sigma']$ and $[\tau]=[\tau']$, then $[\tau\cdot\sigma]=[\tau'\cdot\sigma']$. That way, we can define $[\tau]\cdot[\sigma]=[\tau\cdot\sigma]$. Also, let $\circ$ denote the usual product (concatenation, as in (1.5.1)), so we also have a product $[\tau]\circ[\sigma]=[\tau\circ\sigma]$.
+
+The binary operations $\cdot$ and $\circ$ in $\pi_1(G)=\pi_1(G,e)$ satisfy the interchange identity, by Exercise 4, and the homotopy class $[e]$ of the constant path is a unit for both operations. By Exercise 5, $\cdot$ and $\circ$ are equal and commutative, so $\pi_1(G)$ is abelian.
+\end{solution}
+
+\begin{exercise}
+If $T:A\to D$ is a functor, show that its arrow functions $T_{a,b}:A(a,b)\to D(Ta,Tb)$ define a natural transformation between functors $A^{\op}\times A\to \mathbf{Set}$.
+\end{exercise}
+\begin{solution}
+Let $X=\hom_A$ and $Y=\hom_D \circ (T^{\op}\times T)$. Then for any arrow $(a,b)\overset{(f,g)}{\to}(a',b')$ in $A^{\op}\times A$, we have that, for any $k\in A(a,b)$,
+\begin{align*}
+Y(f,g)\circ T_{a,b}(k)&=\hom_D(Tf,Tg)\circ Tk=Tg\circ Tk\circ Tf=T(kgf)\\
+&=T(\hom_A(f,g)f)=T_{a',b'}\circ X(f,g)(k),
+\end{align*}
+which shows that the $T:X\dot{\to}Y$ is natural.
+\end{solution}
+
+\begin{exercise}
+For the identity functor $I_C$ of any category, the natural transformations $\alpha:I_C\dot{\to} I_C$ form a commutative monoid. Find this monoid in the cases $C=\mathbf{Grp}$, $\mathbf{Ab}$, and $\mathbf{Set}$.
+\end{exercise}
+\begin{solution}[Hurkyl, \href{http://math.stackexchange.com/questions/818624/center-of-the-categories-mathbfgrp-and-mathbfab}{math.stackexchange.com}]
+The key idea here is to use generators (\S V.7), which simplify the analysis of the morphisms.
+
+Let $Z(C)$ denote the (not necessarily small) set of natural transformations $\alpha:I_C\dot{\to}I_C$. All these transformations may be composed horizontally and vertically. By Exercise 5, these compositions coincide in $Z(C)$ and are commutative, so $Z(C)$ is indeed a commutative monoid.
+
+Let $\left\{*\right\}$ be any one-point set. Given a set $X$ and a point $x\in X$, let $x:\left\{*\right\}\to X$ denote the function $x(*)=x$. Given $\alpha:I_\mathbf{Set}\dot{\to}I_\mathbf{Set}$ natural, the following diagrams commute for all sets $X$ and $g\in G$:
+\vspace{-5pt}\[\begin{tikzcd}
+\left\{*\right\}\arrow[r,"\alpha_{\left\{*\right\}}"]\arrow[d,"x",swap] & \left\{*\right\}\arrow[d,"x"]\\
+X\arrow[r,"\alpha_X"] &X
+\end{tikzcd}\vspace{-5pt}\]
+so $\alpha_Xx=x$, and hence $\alpha_X=\id_X$ for all $X$. This shows that $Z(\mathbf{Set})=\left\{1_{I_C}\right\}$ is the trivial monoid.
+
+Given a group (abelian or not) $G$ and an element $g\in G$, let $g:\mathbf{Z}\to G$ denote the morphism $n\mapsto g^n$. If $C=\mathbf{Grp}$ or $\mathbf{Ab}$, and $\alpha:I_C\dot{\to}I_C$ is natural, then the diagrams commute for all groups $G\in C$ and all $g\in G$:
+\vspace{-5pt}\[\begin{tikzcd}
+\mathbf{Z}\arrow[r,"\alpha_\mathbf{Z}"]\arrow[d,"g",swap] & \mathbf{Z}\arrow[d,"g"]\\
+G\arrow[r,"\alpha_G"] &G
+\end{tikzcd}\vspace{-5pt}\]
+thus $\alpha_G(g)=g^{\alpha_\mathbf{Z}(1)}$. Since each $\alpha_G$ has to be a morphism, then $\alpha_\mathbf{Z}(1)=1$ if $C=\mathbf{Grp}$ and each $\alpha_G=\id_G$, thus $Z(\mathbf{Grp})$ is trivial as well.
+
+In $\mathbf{Ab}$, each $n\in \mathbf{Z}$ induces morphisms $\alpha^n_G(g)=g^n$ for every abelian group $G$, and $\alpha^n:I_\mathbf{Ab}\dot{\to}I_\mathbf{Ab}$ is natural. Hence, we obtain a bijection $n\in\mathbf{Z}\mapsto \alpha^n\in Z(\mathbf{Ab})$ which preserves multiplication, thus $Z(\mathbf{Ab})=\mathbf{Z}$ with the usual multiplication.
+\end{solution}
+
+\section{Comma Categories}
+
+\begin{exercise}
+If $K$ is a commutative ring, show that the comma category $(K\downarrow\mathbf{CRng})$ is the (usual) category of all small commutative $K$-algebras.
+\end{exercise}
+\begin{solution}
+An object of $(K\downarrow\mathbf{CRng})$ is a commutative ring $A$ with a ring homomorphism $m:K\to A$, which makes $A$ a $K$-algebra $A$ with scalar multiplication $k\cdot a=m(k)a$. Conversely, every (unital, commutative) $K$-algebra induces such a morphism by $m(k)=k\cdot 1_A$. The condition that a morphism $A\overset{h}{\to} A'$ in $(K\downarrow\mathbf{CRng})$ satisfies $hm=m'$ means precisely that $h$ preserves scalar multiplication, so it is a $K$-algebra homomorphism.
+\end{solution}
+
+\begin{exercise}
+If $t$ is a terminal object in $C$, prove that $(C\downarrow t)$ is isomorphic to $C$.
+\end{exercise}
+\begin{solution}
+Since there is exactly one arrow $f_a:a\to t$ for every $a\in C$, the map $a\mapsto \langle a,f_a\rangle$ is a bijection between the objects of $C$ and $(C\downarrow t)$. Also, every arrow $f$ in $C$ is an arrow in $(C\downarrow t)$ (again since $t$ is terminal), so these data give an isomorphism $C\to (C\downarrow t)$.
+\end{solution}
+
+\begin{exercise}
+Complete (6) by defining $P$, $Q$, and $R$ on arrows.
+\end{exercise}
+\begin{solution}
+\vspace{-5pt}\[\begin{tikzcd}
+&&\langle k,h\rangle\arrow[dll,mapsto]\arrow[d,mapsto]\arrow[drr,mapsto]&&\\
+k\arrow[r,mapsto]&Tk&\tau_{k,h}\arrow[l,mapsto]\arrow[r,mapsto]&Sh&h\arrow[l,mapsto]
+\end{tikzcd}\vspace{-5pt}\]
+where $(\tau_{k,h})_0=Tk$ and $(\tau_{k,h})_1=Sh$. Alternatively, an arrow $\tau:f\dot{\to} f'$ in $C^{\mathbf{2}}$, where $f:a\to b$ and $f':a'\to b'$, can be viewed as a pair $\langle g,g'\rangle$ of arrows $g:a\to a'$, $g':b\to b'$ in $C$ satisfying $g'f=f'g$, so we could take $\langle Tk, Sh\rangle$ in place of $\tau_{k,h}$.
+\end{solution}
+
+\begin{exercise}[S. A. Huq]
+Given functors $T,S:D\to C$, show that a natural transformation $\tau:T\dot{\to} S$ is the same thing as a functor $D\to (T\downarrow S)$ such that $P\tau=Q\tau=\id_D$, with $P$ and $Q$ the projections of (5).
+\end{exercise}
+\begin{solution}
+Given $\tau:T\dot{\to} S$, let $\tau:D\to(T\downarrow S)$ be the functor given in objects by $\tau(d)=\langle d,d,\tau_d\rangle$ and in arrows by $\tau f=\langle f,f\rangle$. It is clear that $P\tau=Q\tau=\id_D$.
+
+Conversely, given such a functor $\tau$, the condition $P\tau=Q\tau=\id_D$ implies that for objects $d\in D$, $\tau(d)=\langle d, d, \tau_d\rangle$ for some $\tau_d:Td\to Sd$, and that for arrows $f$ in $D$, $\tau f=\langle f,f\rangle$. If follows from $\tau$ being a functor that the transformation $\tau:T\dot{\to}S$ is natural.
+
+Obviously, these correspondences of functors and natural transformations are inverses.
+\end{solution}
+
+\begin{exercise}
+Given any commutative diagram of categories and functors
+\vspace{-5pt}\[\begin{tikzcd}
+&&X \arrow[lld, "P'", swap] \arrow[d,"R'"] \arrow[rrd,"Q'"]\\
+E \arrow[r]
+&C
+&C^\mathbf{2} \arrow[l]\arrow[r]
+&C
+&D \arrow[l]
+\end{tikzcd}\vspace{-5pt}\]
+(bottom arrow as in (5)), prove that there is a unique functor $L:X\to(T\downarrow S)$ for which $P'=PL$, $Q'=QL$, and $R'=RL$. (This describes $(T\downarrow S)$ as a ``pullback'', cf. \S III.4.)
+\end{exercise}
+\begin{solution}
+Let's identify $C^\mathbf{2}=(C\downarrow C)$. If $L:X\to(T\downarrow S)$ is a functor that satisfies $P'=PL$, $Q'=QL$ and $R'=RL$, then for every object $x\in X$ and every arrow $f$ in $X$,
+\begin{equation*}
+Lx=\langle PLx,QLx,RLx\rangle=\langle P'x,Q'x,R'x\rangle\qquad\text{and}\qquad Lf=RLf=R'f,\tag{$*$}
+\end{equation*}
+so $L$ is unique. Also, the functor $L$ defined in equation ($*$) satisfies the required conditions, which proves existence.
+\end{solution}
+
+\begin{exercise}
+\begin{enumerate}
+\item[(a)] For fixed small $C$, $D$, and $E$, show that $\langle T,S\rangle\mapsto(T\downarrow S)$ is the object function of a functor $(C^E)^{op}\times (C^D)\to\mathbf{Cat}$.
+\item[(b)] Describe a similar functor for variable $C$, $D$, and $E$.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\begin{enumerate}
+\item[(a)] Given natural transformations $\tau:T'\dot{\to}T$ and $\eta:S\to S'$, where $T,T:E\to C$ and $S,S':D\to C$, let $(\tau\downarrow\eta):(T\downarrow S)\to(T'\downarrow S')$ be the functor given in objects by
+\vspace{-5pt}\[(\tau\downarrow\eta)\langle e,d,f:Te\to Sd\rangle\mapsto\langle e,d,\eta_d f\tau_e:T'e\to S'd\rangle,\vspace{-5pt}\]
+and in arrows by
+\vspace{-5pt}\[(\tau\downarrow\eta)\langle h:e\to e',k:d\to d'\rangle=\langle h:e\to e',k:d\to d'\rangle.\vspace{-5pt}\]
+
+It follows from $\tau$ and $\eta$ being natural and $\langle h,k\rangle$ being a morphism in $(T\downarrow S)$ that $\langle h,k\rangle$ is a morphism in $(T'\downarrow S')$, so $(\tau\downarrow\eta)$ is well-defined and is obviously a functor.
+
+With this, we obtain a functor $(C^E)^{\op}\times (C^D)\to\mathbf{Cat}$.
+\item[(b)] From a pair of functors $E\overset{T}{\to}C\overset{S}{\leftarrow}D$ we obtain the comma category $(T\downarrow S)$. We can consider a category whose objects are exaclty those pairs in the following way:
+
+Let $\rightarrow\leftarrow$ denote the category described by the graph $\bullet\to\bullet\leftarrow\bullet$, and consider the functor category $\mathbf{Cat}^{\rightarrow\leftarrow}$. We can see objects and arrows of $\mathbf{Cat}^{\rightarrow\leftarrow}$ as the following:
+\[\text{objects }\langle E,T,C,S,D\rangle:\quad
+\begin{tikzcd}E\arrow[d,"T"]\\C\\D\arrow[u,"S",swap]\end{tikzcd};
+\qquad\text{arrows }\langle{\tau_u,\tau_c,\tau_d}\rangle:\quad
+\begin{tikzcd}E\arrow[d,"T",swap] \arrow[r,"\tau_u"] &E'\arrow[d,"T'"]\\C\arrow[r,"\tau_c"]&C'\\D\arrow[u,"S"]\arrow[r,"\tau_d"]&D'\arrow[u,"S'",swap]\end{tikzcd}\]
+Now, consider the functor $(\cdot\downarrow\cdot):\mathbf{Cat}^{\rightarrow\leftarrow}\to\mathbf{Cat}$. Each object $E\overset{T}{\to}C\overset{S}{\leftarrow}D$ is mapped to $(T\downarrow S)$. Each arrow $\tau=\langle \tau_u,\tau_c,\tau_d\rangle$ as above is mapped to the functor $\overline{\tau}:(T\downarrow S)\to(T'\downarrow S')$, which is given in objects by $\overline{\tau}\langle e,d,f:Te\to Sd\rangle=\langle \tau_u e,\tau_d d,\tau_c f\rangle$ and in arrows by $\overline{\tau}\langle h,k\rangle=\langle\tau_uh,\tau_dk\rangle$. It's easy to check that these data indeed define the functor $(\cdot\downarrow\cdot)$ as we wanted.
+\end{enumerate}
+\end{solution}
+
+\section{Graphs and Free Categories}
+
+\begin{exercise}
+Define ``opposite graph'' and ``product of two graphs'' to agree with the corresponding definitions for categories (i.e., so that the functor $U$ will preserve opposites and products).
+\end{exercise}
+\begin{solution}
+Given a graph $G=\langle O,A,\partial_0,\partial_1\rangle$, the \emph{opposite graph} $G^{\op}=\langle O, A,\partial_0^{\op},\partial_1^{\op}\rangle$ has the same vertices $O$ and edges $A$ of $G$, but the direction of the arrows is swapped: $\partial_0^{\op}=\partial_1$ and $\partial_1^{\op}=\partial_0$.
+
+Given a family $\left\{G_i=\langle O_i,A_i,\partial_0^i,\partial_1^i\rangle:i\in I\right\}$ of graphs, the \emph{product} of this family of graphs is simply $\prod_i G_i=\langle \prod_i O_i,\prod_i A_i,\prod_i\partial_0^i,\prod_1^i\rangle$, where we $\prod_i\partial^i_j:(f_i)_{i}\in\prod_i A_i\mapsto (\partial^i_j(f_i))_{i}\in\prod_i O_i$ is the usual product function for $j\in\left\{0,1\right\}$. The special case $I=\left\{1,2\right\}$ gives the product of two graphs.
+\end{solution}
+
+\begin{exercise}
+Show that every finite ordinal number is a free category.
+\end{exercise}
+\begin{solution}
+Let $n=\left\{0,1,\ldots,n-1\right\}$ be a finite ordinal. Then the graph
+\[G:\begin{tikzcd}
+0\arrow[r,"(0\text{$,$}1)"]&1\arrow[r,"(1\text{$,$}2)"]&\cdots\arrow[r,"(n-2\text{$,$}n-1)"]&n-1
+\end{tikzcd}\]
+generates the usual ordinal (category) $\mathbf{n}$. Indeed, the arrows of the category generated by $G$ are products $(k,k+1)(k+1,k+2)\cdot(l-1,l)$, which mean that $k\leq l$, which gives the arrows of $\mathbf{n}$.
+\end{solution}
+
+\begin{exercise}
+Show that each graph $G$ generates a free groupoid $F$ (i.e., one which satisfies Theorem 1 with ``category $C$'' replaced by ``groupoid $F$'' and ``category $B$'' by ``groupoid $E$''). Deduce as a corolary that every set $X$ generates a free group.
+\end{exercise}
+\begin{solution}
+Let $G=\langle O,A,\partial_0,\partial_1\rangle$ be a graph, and let $A^*=\left\{f^*:f\in A\right\}$ be a ``copy'' of the set $A$ of arrows of $G$. Consider the graph $G*=\langle O,A\cup A^*,\partial_0,\partial_1\rangle$, with $\partial_0(f^*)=\partial_1(f)$ and $\partial_1(a^*)=\partial_0(a)$.
+
+Let $C_{G^*}$ be the category generated by $G^*$. Consider the relations $ff^*\sim1_{\partial_1 f}$ and $f^*f \sim1_{\partial_0 f}$ for $f\in A$ and let $F$ be the quotient category $C_{G^*}/\sim$ (see Proposition 1 of section 8). Since arrows of $F$ are products of elements of $A\cup A^*$, which are invertible, then $F$ is a groupoid. Also, the universal properties of Theorem 1 and Proposition 1 of section 8 (and the fact that functors between groupoids are precisely the groupoid morphisms) imply that $F$ is the universal groupoid generated by $G$.
+
+In particular, if $X$ is a set, then $X$ is the set of arrows of a graph $G$ with only one object. The free groupoid $F$ generated by $G$ as above has only one object, so it is a group, and it is readily verified to be universal for $X$.
+\end{solution}
+
+\section{Quotient Categories}
+
+\begin{exercise}
+Show that the category generated by the graph
+\vspace{-5pt}\[\begin{tikzcd}
+\bullet\arrow[r,"g"]\arrow[d,"f"]&\bullet\arrow[d,"f'"]\\
+\bullet\arrow[r,"g'"]&\bullet
+\end{tikzcd}\vspace{-5pt}\]
+with the one relation $g'f=f'g$ has four identity arrows and exactly five non-identity arrows $f$, $g$, $f'$, $g'$, and $g'f=f'g$.
+\end{exercise}
+\begin{solution}
+It is clear that the category generated by the graph above has the six non-identity arrows as in the graph
+\vspace{-5pt}\[\begin{tikzcd}[column sep=huge,row sep=huge]
+\bullet\arrow[r,"g"]\arrow[d,"f"]\arrow[rd,bend left=15,"f'g"]\arrow[rd,"g'f",bend right=15,swap]&\bullet\arrow[d,"f'"]\\
+\bullet\arrow[r,"g'",swap]&\bullet
+\end{tikzcd}\vspace{-5pt}\]
+In a more precise analysis, the arrows of the category generated by a graph are all the paths in the graph, so we can actually count the number of arrows.
+
+Let $C$ be the quotient category specified in the question.
+
+It is also clear that the commutative diagram
+\vspace{-5pt}\[\begin{tikzcd}[column sep=huge,row sep=huge]
+\bullet\arrow[r,"\widetilde{g}"]\arrow[d,"\widetilde{f}"]\arrow[rd,"\widetilde{f'}\widetilde{g}=\widetilde{g'}\widetilde{f}"]&\bullet\arrow[d,"\widetilde{f'}"]\\
+\bullet\arrow[r,"\widetilde{g'}",swap]&\bullet
+\end{tikzcd}\vspace{-5pt}\]
+specifies the non-identity arrows of a category $D$ which, by the universal property, must be image of a full functor $T:C\to D$. The relation given shows that this functor is a bijection on objects and arrows, so $C$ has exactly five non-identity arrows.
+\end{solution}
+
+\begin{exercise}
+If $C$ is a group $G$ (regarded as a category with one object) show that to each congruence $R$ on $C$ there is a normal subgroup $N$ of $G$ with $fRg$ if and only if $g^{-1}f\in N$.
+\end{exercise}
+\begin{solution}
+Let's consider the set $G$ of arrows of $C$ and $1$ the identity (arrow) of $G$ ($C$), and let $R$ be a congruence on $C$. Let $N=\left\{f\in G:fR1\right\}$. Then $1\in N\neq\varnothing$.
+
+If $f,g\in N$ then by symmetry and transitivity, $fRg$, so, since $R$ is a congruence, $g^{-1}fR1$, that is $g^{-1}f\in N$. Thus $N$ is a subgroup of $G$. The fact that $R$ is a congruence also implies that $N$ is normal and that $fRg$ if and only if $g^{-1}f\in N$. (Notice that the converse also holds: if $N$ is a normal subgroup of $G$, then the relation $R$ defined by $fRg$ if and only if $g^{-1}f\in N$ is a congruence on $C$.)
+\end{solution}
+\end{document}

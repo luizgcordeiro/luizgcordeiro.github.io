@@ -1,0 +1,47 @@
+<h1 class="sidebar-title">Table of contents<h1>
+	<h2><a href="../0.matters/thesis.html">Cover and copyright</a></h2>
+	<h2><a href="../0.matters/abstract.html">Abstract</a></h2>
+	<h2><a href="../0.matters/acknowledgements.html">Acknowledgements</a></h2>
+	<h2><a href="../0.matters/preface.html">Preface</a></h2>
+	<!--
+	<h2><a href="../0.matters/symbols.html">List of symbols</a></h2>
+	-->
+	<h2><a href="../0.matters/references.html">References</a></h2>
+	<h2><a href='../0.matters/thisproject.html'>This project</a></h2>
+	<hr>
+<h1><a href="../1.gis/1.0.intro.html">1. Groupoids and inverse semigroups</a></h1>
+	<h2><a href="../1.gis/1.1.grpds.html">1.1. Groupoids</a></h2>
+	<h2><a href="../1.gis/1.2.is.html">1.2. Inverse semigroups</a></h2>
+	<h2><a href="../1.gis/1.3.tg.html">1.3. Topological groupoids</a></h2>
+	<h2><a href="../1.gis/1.4.sdfahg.html">1.4. Stone duality for ample Hausdorff groupoids</a></h2>
+	<h2><a href="../1.gis/1.5.qods.html">1.5. Quotients of distributive semigroups</a></h2>
+	<h2><a href="../1.gis/1.6.pmpg.html">1.6. Probability measure-preserving groupoids</a></h2>
+	<h2><a href="../1.gis/1.7.im.html">1.7. Invariant means</a></h2>
+	<h2><a href="../1.gis/1.8.nclst.html">1.8. Non-commutative Loomis-Sikorski theorem</a></h2>
+<hr>
+<h1><a href='../2.sg/2.0.intro.html'>2. Sofic groupoids</a></h1>
+	<h2><a href='../2.sg/2.1.uacl.html'>2.1. Ultraproducts and continuous logic</a></h2>
+	<h2><a href='../2.sg/2.2.fpmpg.html'>2.2. Finite probability measure-preserving groupoids</a></h2>
+	<h2><a href='../2.sg/2.3.sg.html'>2.3. Sofic groupoids</a></h2>
+	<h2><a href='../2.sg/2.4.satfg.html'>2.4. Soficity and the full group</a></h2>
+	<h2><a href='../2.sg/2.5.sga.html'>2.5. Sofic group actions</a></h2>
+<hr>
+<h1><a href='../3.dcf/3.0.intro.html'>3. Disjoint continuous functions</a></h1>
+	<h2><a href='../3.dcf/3.1.dpapi.html'>3.1. Disjointness, $\perp$ and $\perpp$-isomorphisms</a></h2>
+	<h2><a href='../3.dcf/3.2.pi.html'>3.2. $\perpp$-ideals</a></h2>
+	<h2><a href='../3.dcf/3.3.bpi.html'>3.3. Basic $\perpp$-isomorphisms</a></h2>
+	<h2><a href='../3.dcf/3.4.rkr.html'>3.4. Recovering known results</a></h2>
+	<h2><a href='../3.dcf/3.5.nr.html'>3.5. New results</a></h2>
+<hr>
+<h1><a href='../4.paois/4.0.intro.html'>4. Partial actions of inverse semigroups</a></h1>
+	<h2><a href='../4.paois/4.1.pmapa.html'>4.1. Partial morphisms and partial actions</a></h2>
+	<h2><a href='../4.paois/4.2.tpaagog.html'>4.2. Topological partial actions and groupoid of germs</a></h2>
+	<h2><a href='../4.paois/4.3.apaacp.html'>4.3. Algebraic partial actions and crossed products</a></h2>
+	<h2><a href='../4.paois/4.4.sa.html'>4.4. Steinberg algebras</a></h2>
+	<h2><a href='../4.paois/4.5.pafagais.html'>4.5. Partial actions from associated groups and inverse semigroups</a></h2>
+	<h2><a href='../4.paois/4.6.tfpa.html'>4.6. Topologically free partial actions</a></h2>
+	<h2><a href='../4.paois/4.7.coe.html'>4.7. Continuous orbit equivalence</a></h2>
+	<h2><a href='../4.paois/4.8.it.html'>4.8. Isomorphism theorems</a></h2>
+<hr>
+<h1><a href='../0.matters/appendix.html'>Appendix. A group isomorphism between $C(X,\mathbb{S}^1)$ and $C(Y,\mathbb{S}^1)$ for non-homeomorphic $X$ and $Y$</a></h1>
+<hr>
