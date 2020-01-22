@@ -55,9 +55,9 @@ function latextohtml(latex_file_input)
   sec_num = 0;
   subsec_num = 0;
   
-  %list items might have different label types. This will be dealt with by css class styles later, loaded right before the list. Just to ensure the classes are unique, let's use a counter for their classes
+  %there are some unnembered elements which will need ids and/or classes, such as lists with custom label types and unnembered sections. Just to ensure they have unique classes or ids, let's use an alternative counter
   
-  alt_list_counter=0;
+  alt_counter=0;
   
   %we go char by char
   
@@ -464,12 +464,13 @@ function latextohtml(latex_file_input)
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
       if strcmp(file(char_to_verify+length(exp_to_verify)),'*');
+        alt_counter=alt_counter+1;
         str_sec_num='';
-        label='';
+        label=[' id=' sprintf('''') 'sec' int2str(alt_counter) sprintf('''')];
       else
         sec_num = sec_num+1;
         str_sec_num = [int2str(sec_num) '. '];
-        %reset subsection
+        %reset subsection and counter
         subsec_num = 0;
         counter=0;
         label=[' id=' sprintf('''') 'sec' int2str(sec_num) sprintf('''')];
@@ -499,8 +500,10 @@ function latextohtml(latex_file_input)
       %update sidebar
       sidebar=[sidebar sprintf('\n') ...
               '<hr>' sprintf('\n')' ...
-              '<h1 class=' sprintf('''') 'sidebar-ssection' sprintf('''') '>' ...
-              str_sec_num section_title '</h1>'];
+              '<h1 class=' sprintf('''') 'sidebar-section' sprintf('''') '>' ...
+              '<a href=' sprintf('''') '#' label(1+length([' id=' sprintf('''')]):length(label)-1) sprintf('''') '>' ...
+              str_sec_num section_title ...
+              '</a></h1>'];
               
       file = [file(1:char_to_verify-1) ...
               '<h2 class=' sprintf('''') 'section' sprintf('''') label '>' ...
@@ -520,7 +523,9 @@ function latextohtml(latex_file_input)
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
       if strcmp(file(char_to_verify+length(exp_to_verify)),'*');
+        alt_counter=alt_counter+1;
         str_subsec_num='';
+        label=[' id=' sprintf('''') 'subsec' int2str(alt_counter) sprintf('''')];
       else
         subsec_num = subsec_num+1;
         str_subsec_num = [int2str(sec_num) '.' int2str(subsec_num) '. '];
@@ -551,7 +556,9 @@ function latextohtml(latex_file_input)
       %update sidebar
       sidebar=[sidebar sprintf('\n') ...
               '<h2 class=' sprintf('''') 'sidebar-subsection' sprintf('''') '>' ...
-              str_subsec_num subsection_title '</h2>'];
+              '<a href=' sprintf('''') '#' label(1+length(['id=' sprintf('''')]):length(label)-1) sprintf('''') '>' ...
+              str_subsec_num subsection_title ...
+              '</a></h2>'];
               
       file = [file(1:char_to_verify-1) ...
               '<h3 class=' sprintf('''') 'subsection' sprintf('''') label '>' ...
@@ -856,8 +863,8 @@ function latextohtml(latex_file_input)
       
       if strcmp(file(char_to_verify+length(exp_to_verify):char_to_verify+length(exp_to_verify)+length('[label=')-1),'[label=')
         
-        alt_list_counter=alt_list_counter+1;
-        list_class=[' class=' sprintf('''') 'alt altlist' int2str(alt_list_counter) sprintf('''')];
+        alt_counter=alt_counter+1;
+        list_class=[' class=' sprintf('''') 'alt altlist' int2str(alt_counter) sprintf('''')];
         
         label_open = char_to_verify+length(exp_to_verify);
         label_close = findclosingbrac(file,label_open);
@@ -877,7 +884,7 @@ function latextohtml(latex_file_input)
         endfor
         
         list_css = ['<style>' ...
-        'ol.altlist' int2str(alt_list_counter) '{' sprintf('\n') ...
+        'ol.altlist' int2str(alt_counter) '{' sprintf('\n') ...
           'content: ' list_css ';' sprintf('\n') ...
         '}' sprintf('\n') ...
         '</style>' sprintf('\n')];

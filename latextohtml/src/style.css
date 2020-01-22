@@ -92,6 +92,12 @@ sections (given by h2's)
 */
 
 div.sidebar {
+position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+z-index: 1; /* Stay on top */
+top: 10px;
+bottom: 10px;
+overflow-y: scroll;
+overflow-x: hidden;  
 float: left;
 width: 20%;/* make sure this is compatible with the margin-left at div.main*/
 }
