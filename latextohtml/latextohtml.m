@@ -540,7 +540,7 @@ function latextohtml(latex_file_input)
       
       subsection_title=file(open_brac+1:clos_brac-1);
       
-      label=[' id=' sprintf('''') 'subsec' int2str(sec_num) '.' int2str(subsec_num)];
+      label=[' id=' sprintf('''') 'subsec' int2str(sec_num) '.' int2str(subsec_num) sprintf('''')];
       label_clos_brac=clos_brac;
       
       %let us look for a section label
@@ -556,7 +556,7 @@ function latextohtml(latex_file_input)
       %update sidebar
       sidebar=[sidebar sprintf('\n') ...
               '<h2 class=' sprintf('''') 'sidebar-subsection' sprintf('''') '>' ...
-              '<a href=' sprintf('''') '#' label(1+length(['id=' sprintf('''')]):length(label)-1) sprintf('''') '>' ...
+              '<a href=' sprintf('''') '#' label(strfind(label,sprintf(''''))(1)+1:strfind(label,sprintf(''''))(2)-1) sprintf('''') '>' ...
               str_subsec_num subsection_title ...
               '</a></h2>'];
               
