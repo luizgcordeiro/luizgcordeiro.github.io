@@ -540,7 +540,7 @@ function latextohtml(latex_file_input)
       
       subsection_title=file(open_brac+1:clos_brac-1);
       
-      label=['subsec' int2str(sec_num) '.' int2str(subsec_num)];
+      label=[' id=' sprintf('''') 'subsec' int2str(sec_num) '.' int2str(subsec_num)];
       label_clos_brac=clos_brac;
       
       %let us look for a section label
