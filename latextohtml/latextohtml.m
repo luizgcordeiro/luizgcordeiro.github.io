@@ -573,6 +573,32 @@ function latextohtml(latex_file_input)
     
     
     
+    %let us check if we are at a '\subsubsection*{'
+    exp_to_verify = '\subsubsection*{';
+    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
+      
+      open_brac = char_to_verify+length(exp_to_verify)-1;
+      clos_brac = findclosingbrac(file,open_brac);
+      
+      subsubsection_title=file(open_brac+1:clos_brac-1);
+      
+      alt_counter=alt_counter+1;
+      
+      label=[' id=' sprintf('''') 'subsubsec' int2str(alt_counter) sprintf('''')];
+
+      file = [file(1:char_to_verify-1) ...
+              '<h4 class=' sprintf('''') 'subsubsection' sprintf('''') label '>' ...
+              subsubsection_title ...
+              '</h4>' ...
+              file(clos_brac+1:length(file))];
+        
+      char_to_verify = char_to_verify + length(['<h4 class=' sprintf('''') 'subsubsection' sprintf('''') label '>']) - 1;
+    endif
+    %
+    
+    
+    
+    
     %let us check if we are at a '\[...\]'. 
     exp_to_verify = '\[';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
