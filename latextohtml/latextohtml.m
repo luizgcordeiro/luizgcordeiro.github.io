@@ -3,25 +3,65 @@
 %
 %STYLE MANUAL
 %
+%--- General practices ---
+%
 %Avoid too many latex macros.
 %
-%The LaTeX class should be article, amsart, or similar.
+%The LaTeX class should be article, amsart, or similar, to ensure compatibility.
 %
-%The different sections will be broken up into different HTML files. Subsections will be kept in the same HTML file. Chapters are not supported and will probably break the program or output a bad file. Adapt this function as necessary.
+%The text can be separated into numbered or unnembered sections and subsections. Unnembered (starred) subsubsections are supported. Chapters and parts are not supported.
 %
-%Environment labels are supported. If an environment has no label, it will be given a standard one.
+%Sections will be broken up into different HTML files. A sidebar will have links to sections and to subsections.
 %
-%'Enumerate' items also support labels.
+%Avoid comments in-text.
 %
-%Equations support labels.
+%--- Counters and numbering ---
 %
-%IMPORTANT: You may use the starred (unnumbered) equation commands '\[.\]', '\begin{equation*}...\end{equation*}', '\begin{align*}...\end{align*}', but not the unstarred (numbered) ones. To number an equation, use \ntag.
+%Sections and subsections support counter. subsubsections do not.
 %
-%All environments and equations use the same counter. To number an equation, use the '\ntag' command
+%The section counter will be a single number. The subsection counter will have the form '<section>.<subsection>', where <section> and <subsection> are the corresponding counters for the section and subsection.
 %
-%Unnumbered environments should use the starred/*-ed version; \begin{theorem*}, \begin{definition*}, etc.
+%The subsection counter will be reset at every new section.
 %
-%Two additional types of environments are used: 'denv' and 'penv'. These are short for 'definition-style' and 'plain-style'. These environments need an additional argument to give them a custom name. In LaTeX, these are formatted with '\theoremstyle{definition}' and '\theoremstyle{plain}'. Starred versions are available as well. For example, '\begin{denv*}{Remark}...\end{denv*}' creates an unnumbered 'Remark' environment, which is formatted as a 'Definition'. These environments should be used for blocks of text which are to be only slightly pronounced, such as 'Remark', 'Terminology', 'Convention', etc. The corresponding HTML environments will be named and numbered accordingly, but their formatting will be different than that from Definitions, Proposition, etc.; Namely, it the blocks will be less pronounced.
+%Content will be numbered with a single counter.
+%
+%Content which can be numbered consists of environments and equations.
+%
+%Equations should be numbered using the '\ntag' command.
+%
+%--- Environments ---
+%
+%Most environments are supported, both in starred and unstarred versions.
+%
+%Labels are also allowed. Usually, optional arguments will also be supported.
+%
+%The latex code for the environment should match the desired type. E.g. the LaTeX code for 'Theorem 3.2' should be '\begin{theorem}...\end{theorem}'. Code such as '\begin{theo}...\end{theo}' will create 'Theo 3.2' instead.
+%
+%Unnumbered environments should use the starred-ed version; \begin{theorem*}, \begin{definition*}, etc.
+%
+%Two additional types of environments are used: 'denv' and 'penv'. These are short for 'definition-style' and 'plain-style'. These environments need an additional argument to give them a custom name. In LaTeX, these are formatted with '\theoremstyle{definition}' and '\theoremstyle{plain}'. Starred versions are available as well. For example, '\begin{denv*}{Remark}...\end{denv*}' creates an unnumbered 'Remark' environment, which is formatted as a 'Definition'. These environments should be used for blocks of text which are to be only slightly pronounced, such as 'Remark', 'Terminology', 'Convention', etc. The corresponding HTML environments will be named and numbered accordingly, but their formatting will be different than that from Definitions, Proposition, etc.; Namely, these blocks will be less pronounced.
+%
+%--- Mathematical text---
+%
+%Use the starred (unnumbered) equation commands '\[...\]', '\begin{equation*}...\end{equation*}', '\begin{align*}...\end{align*}', but not the unstarred (numbered) ones. To number an equation, use \ntag.
+%
+%All environments and equations use the same counter. To number an equation, use the '\ntag' command.
+%
+%IMPORTANT: Use at most '\ntag' per equation environment. If you have a sequence of equalities and you need to refer to two or more of them, use explicit text such as 'the second inequality of (3.5)' instead.
+%
+%Mathematical environments allow labels.
+%
+%In mathematical text, the 'greater-than' and 'smaller-than' symbols ('>' and '<') will be substituted by the codes '\greaterthan' and '\smallerthan', to avoid compatibility issues with HTML.
+%
+%Most of text in mathematical mode will be completely ignored.
+%
+%new command, math operators, etc. should be defined in file 'src/latexcommands'. These may need to be slightly adapted.
+%
+%text inside math mode does not work very well.
+%
+%packages (as long as supported) can be loaded either by being added to 'src/html_head', under TeX: {extensions: [... , ... ,]} (preferred), or by using '\requirepackage{...}' inside a math environment (e.g. 'src/latexcommands')
+%
+%tikz is relatively supported. Whenever used, a tikzpicture should be the only element in its mathematical environment. Image Magick is required.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,6 +78,7 @@
 %3. Every '\uline{...}' and $\underline{}$ is converted into '<u>...</u>'
 %4. Every '\textbf{...}' is converted into '<b>...</b>'
 %All '\[...\]' is converted into '\begin{equation*}\end{equation*}
+
 function latextohtml(latex_file_input)
   
   original_filename = ['   ' latex_file_input];
@@ -90,19 +131,9 @@ function latextohtml(latex_file_input)
   char_to_verify = 1;
   
   %erase everything before '\begin{document}', and erase '\end{document}'
-  while 1-strcmp(file(1:length('\begin{document}')),'\begin{document}')
-    file=file(2:length(file));
-  endwhile
-  
-  file=file(1+length('\begin{document}'):length(file));
-  %Let's find the abstract
-  
-  while 1-strcmp(file(length(file)-length('\end{document}')+1:length(file)),'\end{document}')
-    file=file(1:length(file)-1);
-  endwhile
-  
-  file=file(1:length(file)-length('\end{document}'));
-  
+  file = file(strfind(file,'\begin{document}')+length('\begin{document}'): strfind(file,'\end{document}')-1);
+ 
+ %Let's find the abstract
   while char_to_verify<length(file) && (1-strcmp(file(char_to_verify:char_to_verify+length('\begin{abstract}')-1),'\begin{abstract}'))
     char_to_verify=char_to_verify+1;
   endwhile
@@ -146,10 +177,33 @@ function latextohtml(latex_file_input)
   
   disp(['There are ' int2str(length(file)) ' characters.'])
   
+  %now we remove comments
+  disp('Removing comments.')
+  
+  comments=strfind(file,'%');
+  
+  while length(comments)>0
+    j=comments(length(comments))+1;
+    while 1-strcmp(file(j),sprintf('\n'))
+      j=j+1;
+    endwhile
+    file=[file(1:comments(length(comments))-1) file(j+1:length(file))];
+    comments(length(comments))=[];
+  endwhile
+  
+  
   char_to_verify=1;
   announce=1;
   inparagraph=0;
+  in_list_item=0;
   
+  %a technical detail: lists should be separated from paragraphs
+  file=strrep(file,'\begin{enumerate}',[sprintf('\n\n') '\begin{enumerate}']);
+  file=strrep(file,'\end{enumerate}',['\end{enumerate}' sprintf('\n\n')]);
+  file=strrep(file,'\begin{itemize}',[sprintf('\n\n') '\begin{itemize}']);
+  file=strrep(file,'\end{itemize}',['\end{itemize}' sprintf('\n\n')]);
+  file=strrep(file,'\item',[sprintf('\n\n') '\item' sprintf('\n\n')]);
+  file=strrep(file,'\end',[sprintf('\n\n') '\end']);
   while char_to_verify < length(file)
     
     %-----------------------------------------------------------------
@@ -283,6 +337,16 @@ function latextohtml(latex_file_input)
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       file=[file(1:char_to_verify-1) '&#8210;' file(char_to_verify+length(exp_to_verify):length(file))];
       char_to_verify=char_to_verify+length('&#8210;')-1;
+    endif
+    %
+    
+    
+    
+    
+    %check if we have a '\ ' in-text
+    exp_to_verify = '\ ';
+    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
+      file(char_to_verify)=[];
     endif
     %
     
@@ -895,22 +959,31 @@ function latextohtml(latex_file_input)
         label_open = char_to_verify+length(exp_to_verify);
         label_close = findclosingbrac(file,label_open);
         
-        for j=label_open+length('[label='):label_close-1
+        j=label_open+length('[label=');
+        while j<label_close
           if strcmp(file(j:j+length('\alph*')-1),'\alph*')
             list_css=[list_css ' counter(listcounter,lower-alpha)' ];
+            j=j+length('\alph*');
           elseif strcmp(file(j:j+length('\Alph*')-1),'\Alph*')
             list_css=[list_css ' counter(listcounter,upper-alpha)' ];
+            j=j+length('\Alph*');
           elseif strcmp(file(j:j+length('\roman*')-1),'\roman*')
             list_css=[list_css ' counter(listcounter,lower-roman)' ];
+            j=j+length('\roman*');
           elseif strcmp(file(j:j+length('\Roman*')-1),'\Roman*')
             list_css=[list_css ' counter(listcounter,upper-roman)' ];
+            j=j+length('\Roman*');
           elseif strcmp(file(j:j+length('\arabic*')-1),'\arabic*')
             list_css=[list_css ' counter(listcounter)' ];
+            j=j+length('\arabic*');
+          else
+            list_css=[list_css ' ' sprintf('''') file(j) sprintf('''')];
+            j=j+1;
           endif
-        endfor
+        endwhile
         
         list_css = ['<style>' ...
-        'ol.altlist' int2str(alt_counter) '{' sprintf('\n') ...
+        'ol.altlist' int2str(alt_counter) ' > li:before {' sprintf('\n') ...
           'content: ' list_css ';' sprintf('\n') ...
         '}' sprintf('\n') ...
         '</style>' sprintf('\n')];
@@ -927,12 +1000,80 @@ function latextohtml(latex_file_input)
     
     
     
-    %let us check if we are at a '\end{enumerate}'
+    %check '\begin{itemize}'
+    exp_to_verify = '\begin{itemize}';
+    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
+      file=[file(1:char_to_verify-1) '<ul>' file(char_to_verify+length(exp_to_verify):length(file))];
+      
+      char_to_verify=char_to_verify+length('<ul>')-1;
+    endif
+    
+    
+    
+    
+    %check if we are at a '\item'. Note that we need to add a bunch of newlines to deal with paragraphs in items.    
+    exp_to_verify = '\item';
+    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
+      %look for label
+      label_clos_brac=char_to_verify+length(exp_to_verify)-1;
+      
+      %remember: we added two newlines after \item
+      if strcmp(file(char_to_verify+length(exp_to_verify)+2:char_to_verify+length(exp_to_verify)+length('\label{')-1+2),'\label{')
+        label_open_brac=char_to_verify+length(exp_to_verify)+length('\label{')-1+2;
+        label_clos_brac=findclosingbrac(file,label_open_brac);
+        
+        label=[' id=' sprintf('''') ...
+          file(label_open_brac+1:label_clos_brac-1) ...
+          sprintf('''')];
+      else
+        label='';
+      endif
+      
+      if in_list_item
+        file=[file(1:char_to_verify-1) ...
+          '</li>' sprintf('\n\n') ...
+          '<li' label '>' sprintf('\n\n') ...
+          file(label_clos_brac+1:length(file))];
+          
+        char_to_verify=char_to_verify+length(['</li>' sprintf('\n\n') '<li' label '>'])-1;
+        
+      else
+        in_list_item=1;
+        file=[file(1:char_to_verify-1) ...
+          '<li' label '>' sprintf('\n\n') ...
+          file(label_clos_brac+1:length(file))];
+        
+        char_to_verify=char_to_verify+length(['<li' label '>'])-1;
+      endif
+      
+    endif
+    %
+    
+    
+    
+    
+    %check if we are at a '\end{enumerate}'
     exp_to_verify = '\end{enumerate}';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
-      file=[file(1:char_to_verify-1) '</ol>' file(char_to_verify+length('\end{enumerate}'):length(file))];
+      in_list_item=0;
+      
+      file=[file(1:char_to_verify-1) '</li>' sprintf('\n') '</ol>' file(char_to_verify+length('\end{enumerate}'):length(file))];
       
       char_to_verify=char_to_verify+length('</ol>')-1;
+    endif
+    %
+    
+    
+    
+    
+    %check if we are at a '\end{itemize}'
+    exp_to_verify = '\end{itemize}';
+    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
+      in_list_item=0;
+      
+      file=[file(1:char_to_verify-1) '</li>' sprintf('\n') '</ul>' file(char_to_verify+length('\end{itemize}'):length(file))];
+      
+      char_to_verify=char_to_verify+length('</ul>')-1;
     endif
     %
     
@@ -983,18 +1124,19 @@ function latextohtml(latex_file_input)
       endif
       
       %Now the corresponding HTML code
-      htmlenv= ['<div class=' sprintf('''') envtype sprintf('''') label sprintf('>\n') ...
-      '<span class=' sprintf('''') 'envidentifier' sprintf('''') '>' envidentifier '</span>' strcounter];
+      htmlenv= [...
+        '<div class=' sprintf('''') envtype sprintf('''') label sprintf('>\n') ...
+        '<span class=' sprintf('''') 'envidentifier' sprintf('''') '>' envidentifier '</span>' strcounter];
       
       if numbered_env
         htmlenv=['<!-- ' int2str(sec_num) '.' int2str(counter) ' -->' ...
                 sprintf('\n') htmlenv ];
       endif
       
-      %let us simply keep the parts before the i-th position, the rewritten environment, and whatever's after the environment has ended
+      %let us simply keep the parts before the i-th position, the rewritten environment, and whatever's after the environment has ended. Add newlines for paragraph
       
       file = [file(1:char_to_verify-1) ...
-              htmlenv ...
+              htmlenv sprintf('\n\n') ...
               file(label_clos_brac+1:length(file))];
       
       %let us skip the characters we added; notice that we add 1 at the end of the 'while'
@@ -1073,9 +1215,9 @@ function latextohtml(latex_file_input)
                 sprintf('\n') htmlenv ];
       endif
       
-      %let us simply keep the parts before the i-th position, the rewritten environment, and whatever's after the environment has ended
+      %let us simply keep the parts before the i-th position, the rewritten environment, and whatever's after the environment has ended. New lines for paragraph
       
-      file=[file(1:char_to_verify-1) htmlenv file(label_clos_brac+1:length(file))];
+      file=[file(1:char_to_verify-1) htmlenv sprintf('\n\n') file(label_clos_brac+1:length(file))];
       
       %let us skip the characters we added; notice that we add 1 at the end of the 'while'
       char_to_verify=char_to_verify+length(htmlenv)-1;
@@ -1088,7 +1230,7 @@ function latextohtml(latex_file_input)
     %let us check if we are at a '\end{envtype}'
     exp_to_verify='\end{';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
-
+      
       file=[file(1:char_to_verify-1) '</div>' file(findclosingbrac(file,char_to_verify+length('\end{')-1)+1:length(file))];
     endif
     %
@@ -1202,6 +1344,8 @@ function latextohtml(latex_file_input)
       clos_eq=clos_eq+1;
     endwhile
     
+    %build tikz as dvi and convert to png
+    
     temp_tikz_filename=[original_filename(1:length(original_filename)-4) '_tikz_' int2str(length(k))];
     temp_tikz_file = fopen([ temp_tikz_filename '.tex'],'w');
     temp_tikz_str = [ ...
@@ -1237,6 +1381,7 @@ function latextohtml(latex_file_input)
     k(length(k))=[];
   endwhile
   
+  %delete temporary tex files
   system('del *.aux');
   system('del *.log');
   system('del *.dvi');

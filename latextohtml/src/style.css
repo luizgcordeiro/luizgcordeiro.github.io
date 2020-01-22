@@ -171,52 +171,15 @@ ol,ul {
 	margin-top: 1ex;
 	margin-bottom: 1ex;
 }
-ol.roman {
-    counter-reset: roman;
+ol.alt {
+    counter-reset: listcounter;
 	position:relative;
 }
-ol.roman > li {
+ol.alt > li {
     list-style: none;
 }
-ol.roman > li:before {
-  counter-increment: roman;
-  content: "(" counter(roman,lower-roman) ")";
-  position: absolute;
-  left: 0em;
-  display: inline-block;
-  text-align: right;
-  width: 2em;
-  font-style: normal;
-}
-
-ol.arpar {
-    counter-reset: ar;
-	position:relative;
-}
-ol.arpar > li {
-    list-style: none;
-}
-ol.arpar > li:before {
-  counter-increment: ar;
-  content: "(" counter(ar) ")";
-  position: absolute;
-  left: 0em;
-  display: inline-block;
-  text-align: right;
-  width: 2em;
-  font-style: normal;
-}
-
-ol.alphpar {
-    counter-reset: alphpar;
-	position:relative;
-}
-ol.alphpar > li {
-    list-style: none;
-}
-ol.alphpar > li:before {
-  counter-increment: alphpar;
-  content: "(" counter(alphpar,lower-alpha) ")";
+ol.alt > li:before {
+  counter-increment: listcounter;
   position: absolute;
   left: 0em;
   display: inline-block;
