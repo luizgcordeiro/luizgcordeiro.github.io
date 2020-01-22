@@ -267,7 +267,29 @@ function latextohtml(latex_file_input)
     
     
     
-    %let us check if we are at a '\emph{'
+    %check if we are at a '---'
+    exp_to_verify = '---';
+    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
+      file=[file(1:char_to_verify-1) '&#8212;' file(char_to_verify+length(exp_to_verify):length(file))];
+      char_to_verify=char_to_verify+length('&#8212;')-1;
+    endif
+    %
+    
+    
+    
+    
+    %check if we are at a '--'
+    exp_to_verify = '--';
+    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
+      file=[file(1:char_to_verify-1) '&#8210;' file(char_to_verify+length(exp_to_verify):length(file))];
+      char_to_verify=char_to_verify+length('&#8210;')-1;
+    endif
+    %
+    
+    
+    
+    
+    %check if we are at a '\emph{'
     exp_to_verify = '\emph{';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
@@ -437,25 +459,31 @@ function latextohtml(latex_file_input)
     
     
     
-    %let us check if we are at a '\section{'
-    exp_to_verify = '\section{';
+    %let us check if we are at a '\section'
+    exp_to_verify = '\section';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
-      sec_num = sec_num+1;
-      %reset subsection
-      subsec_num = 0;
-      counter=0;
+      if strcmp(file(char_to_verify+length(exp_to_verify)),'*');
+        str_sec_num='';
+        label='';
+      else
+        sec_num = sec_num+1;
+        str_sec_num = [int2str(sec_num) '. '];
+        %reset subsection
+        subsec_num = 0;
+        counter=0;
+        label=[' id=' sprintf('''') 'sec' int2str(sec_num) sprintf('''')];
+      endif
       
-      open_brac = char_to_verify+length(exp_to_verify)-1;
+      open_brac = char_to_verify+length(exp_to_verify);
+      while 1-strcmp(file(open_brac),'{')
+        open_brac=open_brac+1;
+      endwhile
+      
       clos_brac = findclosingbrac(file,open_brac);
       
       section_title=file(open_brac+1:clos_brac-1);
       
-      sidebar = [sidebar sprintf('\n') '<hr>' sprintf('\n') ...
-              '<h1 class=' sprintf('''') 'sidebar-section' sprintf('''') '>' ...
-              int2str(sec_num) '. ' section_title '</h1>'];
-      
-      label='';
       label_clos_brac=clos_brac;
       
       %let us look for a section label
@@ -468,31 +496,46 @@ function latextohtml(latex_file_input)
                 sprintf('''')];
       endif
       
+      %update sidebar
+      sidebar=[sidebar sprintf('\n') ...
+              '<hr>' sprintf('\n')' ...
+              '<h1 class=' sprintf('''') 'sidebar-ssection' sprintf('''') '>' ...
+              str_sec_num section_title '</h1>'];
+              
       file = [file(1:char_to_verify-1) ...
               '<h2 class=' sprintf('''') 'section' sprintf('''') label '>' ...
-              int2str(sec_num) '. ' section_title ...
+              str_sec_num section_title ...
               '</h2>' ...
               file(label_clos_brac+1:length(file))];
         
-      char_to_verify = char_to_verify + length(['<h2 class=' sprintf('''') 'section' sprintf('''') label '>' int2str(sec_num) '. ']) - 1;
+      char_to_verify = char_to_verify + length(['<h2 class=' sprintf('''') 'section' sprintf('''') label '>' str_sec_num]) - 1;
     endif
     %
     
     
     
     
-    %let us check if we are at a '\subsection{'
-    exp_to_verify = '\subsection{';
+    %let us check if we are at a '\subsection'
+    exp_to_verify = '\subsection';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
-      subsec_num = subsec_num+1;
+      if strcmp(file(char_to_verify+length(exp_to_verify)),'*');
+        str_subsec_num='';
+      else
+        subsec_num = subsec_num+1;
+        str_subsec_num = [int2str(sec_num) '.' int2str(subsec_num) '. '];
+      endif
       
-      open_brac = char_to_verify+length(exp_to_verify)-1;
+      open_brac = char_to_verify+length(exp_to_verify);
+      while 1-strcmp(file(open_brac),'{')
+        open_brac=open_brac+1;
+      endwhile
+      
       clos_brac = findclosingbrac(file,open_brac);
       
       subsection_title=file(open_brac+1:clos_brac-1);
       
-      label='';
+      label=['subsec' int2str(sec_num) '.' int2str(subsec_num)];
       label_clos_brac=clos_brac;
       
       %let us look for a section label
@@ -508,15 +551,15 @@ function latextohtml(latex_file_input)
       %update sidebar
       sidebar=[sidebar sprintf('\n') ...
               '<h2 class=' sprintf('''') 'sidebar-subsection' sprintf('''') '>' ...
-              int2str(sec_num) '.' int2str(subsec_num) '. ' subsection_title '</h2>'];
+              str_subsec_num subsection_title '</h2>'];
               
       file = [file(1:char_to_verify-1) ...
               '<h3 class=' sprintf('''') 'subsection' sprintf('''') label '>' ...
-              int2str(sec_num) '.' int2str(subsec_num) '. ' subsection_title ...
-              '</h2>' ...
+              str_subsec_num subsection_title ...
+              '</h3>' ...
               file(label_clos_brac+1:length(file))];
         
-      char_to_verify = char_to_verify + length(['<h3 class=' sprintf('''') 'subsection' sprintf('''') label '>' int2str(sec_num) '.' int2str(subsec_num) '. ']) - 1;
+      char_to_verify = char_to_verify + length(['<h3 class=' sprintf('''') 'subsection' sprintf('''') label '>' str_subsec_num]) - 1;
     endif
     %
     
@@ -942,6 +985,14 @@ function latextohtml(latex_file_input)
       if strcmp(file(envtype_clos_brac+1),'[')
         oparg_open_brac=envtype_clos_brac+1;
         oparg_clos_brac=findclosingbrac(file,oparg_open_brac);
+        
+        %erase braces right inside te optional argument
+        if strcmp(file(oparg_open_brac+1),'{') && strcmp(file(oparg_clos_brac-1),'}')
+          file(oparg_clos_brac-1)=[];
+          file(oparg_open_brac+1)=[];
+          oparg_clos_brac=oparg_clos_brac-2;
+        endif
+        
         %save optional argument
         oparg=[' <span class=' sprintf('''') 'envop' sprintf('''') '>(' file(oparg_open_brac+1:oparg_clos_brac-1) ')</span>'];
       else
@@ -1059,14 +1110,53 @@ function latextohtml(latex_file_input)
   
   
   
-  %make tikzpictures
+  %clear up '\tensor'
+  disp('Clearing up \tensor');
+  exp_to_verify='\tensor';
+  pos=strfind(file,'\tensor'); %position of '\tensor'
+  while length(pos)>0
+    if strcmp(file(pos(1)+length('\tensor')),'[')
+      bef_open=pos(1)+length('\tensor');
+      bef_clos=findclosingbrac(file,bef_open);
+      bef=[file(bef_open+1:bef_clos-1) '\!\!'];
+    else
+      bef_open=pos(1)+length('\tensor')-1;
+      bef_clos=pos(1)+length('\tensor')-1;
+      bef='';
+    endif
+    
+    tensor_open=bef_clos+1;
+    tensor_clos=findclosingbrac(file,tensor_open);
+    tensor=file(tensor_open+1:tensor_clos-1);
+    
+    aft_open=tensor_clos+1;
+    aft_clos=findclosingbrac(file,aft_open);
+    
+    aft=file(aft_open+1:aft_clos-1);
+    
+    file=[file(1:pos(1)-1) '\left.\right.' bef tensor aft file(aft_clos+1:length(file))];
+    
+    pos=strfind(file,'\tensor');
+  endwhile
+  
+  
+  
+  
+  
+  %make tikzpictures. Requires ImageMagick; https://imagemagick.org/
   k=strfind(file,'\begin{tikzpicture}');
   p=strfind(file,'\end{tikzpicture}');
   
   while length(k)>0
     
-    tikz=file(k(length(k)):p(length(k))+length('\end{tikzpicture}')-1);
+    disp([int2str(length(k)) ' tikz to go.'])
     
+    tikz=file(k(length(k)):p(length(k))+length('\end{tikzpicture}')-1);
+    latexcommands=fileread('src\latex_commands');
+    latexcommands=latexcommands(strfind(latexcommands,'\begin{equation*}')(1)+length('\begin{equation*}'):strfind(latexcommands,'\end{equation*}')(1)-1);
+    
+    tikz=strrep(tikz,'\greaterthan ','>');
+    tikz=strrep(tikz,'\smallerthan ','<');
     %now we will find the enclosing equation* environments
     
     open_eq=k(length(k))-length('\begin{equation*}');
@@ -1079,16 +1169,44 @@ function latextohtml(latex_file_input)
       clos_eq=clos_eq+1;
     endwhile
     
+    temp_tikz_filename=[original_filename(1:length(original_filename)-4) '_tikz_' int2str(length(k))];
+    temp_tikz_file = fopen([ temp_tikz_filename '.tex'],'w');
+    temp_tikz_str = [ ...
+      '\documentclass{standalone}' sprintf('\n') ...
+      '\usepackage{amsmath}' sprintf('\n') ...
+      '\usepackage{amssymb}' sprintf('\n') ...
+      '\usepackage{tikz}' sprintf('\n') ...
+      '\usepackage{mathrsfs}' sprintf('\n') ...
+      '\usepackage{ifthen}' sprintf('\n') ...
+      latexcommands sprintf('\n') ...
+      '\begin{document}' sprintf('\n') ...
+      tikz ...
+      '\end{document}' ...
+      ];
+      
+    temp_tikz_str=strrep(temp_tikz_str,'\','\\'); %technical details
+    temp_tikz_str=strrep(temp_tikz_str,'%','%%'); %technical details
+    
+    fprintf(temp_tikz_file,temp_tikz_str);
+    fclose(temp_tikz_file);
+    
+    system(['latex ' temp_tikz_filename ' > NUL']);
+    system([ ...
+    'convert -density 300 ' temp_tikz_filename '.dvi -flatten -quality 90 PNG24:' temp_tikz_filename '.png > NUL']);
+    temp_tikz_im=imread([temp_tikz_filename '.png']);
+    
     file=[file(1:open_eq-1) ...
-    '<script type=' sprintf('''') 'text/tikz' sprintf('''') '>' ...
-    tikz ...
-    '</script>' ...
+    '<img src=' sprintf('''') temp_tikz_filename '.png' sprintf('''') ' class=' sprintf('''') 'tikzpicture' sprintf('''') ...
+    ' style=' sprintf('''') 'width:' int2str(size(temp_tikz_im,2)/2) 'px' sprintf('''') '>' ...
     file(clos_eq+length('\end{equation*}'):length(file))];
     
     p(length(p))=[];
     k(length(k))=[];
   endwhile
   
+  system('del *.aux');
+  system('del *.log');
+  system('del *.dvi');
   
   
   

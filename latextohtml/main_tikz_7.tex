@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{ifthen}
+
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+
+\begin{document}
+\begin{tikzpicture}
+    \node (S1) at (0,0) {$\mathcal{S}$};
+    \node (S2) at ([shift={+(2,0)}]S1) {$\mathcal{S}$};
+    \node (T1) at ([shift={+(0,-1)}]S1) {$\mathcal{T}$};
+    \node (T2) at ([shift={+(2,0)}]T1) {$\mathcal{T}$};
+    \draw[->] (S1)--(S2) node[midway,above] {$(\ )^*$};
+    \draw[->] (S1)--(T1) node[midway,left] {$\pi$};
+    \draw[->] (S2)--(T2) node[midway,right] {$\pi$};
+    \draw[->] (T1)--(T2) node[midway,above] {$(\ )^*$};
+    \end{tikzpicture}\end{document}
