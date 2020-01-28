@@ -1,4 +1,4 @@
-.proofbutton {
+{
 	margin: 5px 0 5px 0;
 }
 
@@ -209,6 +209,7 @@ ol.alt {
 
 ol.alt > li {
     list-style: none;
+	margin-left: 1em;
 }
 ol.alt > li:before {
   counter-increment: listcounter;
@@ -216,7 +217,7 @@ ol.alt > li:before {
   left: 0em;
   display: inline-block;
   text-align: right;
-  width: 2em;
+  width: 3em; 
   font-style: normal;
 }
 
