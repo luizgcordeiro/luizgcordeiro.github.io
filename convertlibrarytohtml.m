@@ -1,5 +1,5 @@
 %this program converts the entries of library.bib to html. This works only with .bib files created by Mendeley Desktop
-system(['del HTML citations/*'])
+system(['del ' sprintf('"') 'HTML citations\*.html' sprintf('"')])
 
 clear all
 
