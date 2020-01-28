@@ -253,6 +253,7 @@ function latextohtml(latex_file_input)
   file=strrep(file,'\end',[sprintf('\n\n') '\end']);
   file=strrep(file,'\begin{abstract}',['\beginabstract' sprintf('\n\n')]);
   file=strrep(file,'\end{abstract}',[sprintf('\n\n') '\endabstract']);
+  file=strrep(file,'$\Sigma$','&Sigma;');
   %remove '\qedhere's
   file=strrep(file,'\qedhere','');
   
@@ -1507,8 +1508,12 @@ function latextohtml(latex_file_input)
   
   k=strfind(file,'\begin{tikzpicture}');
   p=strfind(file,'\end{tikzpicture}');
+  numberoftikz=length(k);
+  tikzbar=waitbar(0,'Creating tikzpictures...');
   
   while length(k)>0
+    
+    waitbar((numberoftikz-length(k))/numberoftikz);
     
     disp([int2str(length(k)) ' tikz to go.'])
     
@@ -1569,7 +1574,7 @@ function latextohtml(latex_file_input)
     system(['del ' sprintf('"') temp_tikz_filename '.tex' sprintf('"') ' > NUL']);
   endwhile
   
-  
+  close(tikzbar);
   %delete temporary tex files
   system('del *.aux');
   system('del *.log');
