@@ -1045,14 +1045,13 @@ function latextohtml(latex_file_input)
         label_open = char_to_verify+length(exp_to_verify);
         label_close = findclosingbrac(file,label_open);
         
-        j=label_open+length('[label=');
         while j<label_close
           if strcmp(file(j:j+length('\alph*')-1),'\alph*')
             list_css=[list_css ' counter(listcounter,lower-alpha)' ];
             j=j+length('\alph*');
-          elseif strcmp(file(j:j+length('&Sigma;')-1),'\Alph*')
-            list_css=[list_css ' &Sigma;' ];
-            j=j+length('$\Sigma$');
+          elseif strcmp(file(j:j+length('&Sigma;')-1),'&Sigma;')
+            list_css=[list_css ' ' sprintf('''') '\03A3' sprintf('''') ];
+            j=j+length('&Sigma;');
           elseif strcmp(file(j:j+length('\Alph*')-1),'\Alph*')
             list_css=[list_css ' counter(listcounter,upper-alpha)' ];
             j=j+length('\Alph*');
