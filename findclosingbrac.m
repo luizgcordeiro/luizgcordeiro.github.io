@@ -1,3 +1,4 @@
+@@ -1,25 +0,0 @@
 %this function finds the closing bracket in 'text', which has an open bracket in entry 'entry'
 %this is a supplemental function for 'latex to html'
 
