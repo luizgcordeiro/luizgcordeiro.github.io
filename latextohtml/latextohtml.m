@@ -9,15 +9,15 @@
 %
 %The LaTeX class should be article, amsart, or similar, to ensure compatibility.
 %
-%The text can be separated into numbered or unnembered sections and subsections. Unnembered (starred) subsubsections are supported. Chapters and parts are not supported.
+%The text can be separated into numbered or unnumbered sections and subsections. unnumbered (starred) subsubsections are supported. Chapters and parts are not supported.
 %
 %Sections will be broken up into different HTML files. A sidebar will have links to sections and to subsections.
 %
-%Avoid comments in-text.
+%Avoid pos in-text.
 %
 %--- Counters and numbering ---
 %
-%Sections and subsections support counter. subsubsections do not.
+%Sections and subsections support counters. subsubsections do not.
 %
 %The section counter will be a single number. The subsection counter will have the form '<section>.<subsection>', where <section> and <subsection> are the corresponding counters for the section and subsection.
 %
@@ -84,81 +84,25 @@ function latextohtml(latex_file_input)
   original_filename = ['   ' latex_file_input];
   
   if strcmp(original_filename(length(original_filename)-3:length(original_filename)),'.tex')
-    
-    original_filename = latex_file_input;
+    original_filename = latex_file_input(1:length(latex_file_input)-4);
   else
-    original_filename = [latex_file_input '.tex'];
+    original_filename = latex_file_input;
   endif
   
-  file = fileread(original_filename);
+  file = fileread([original_filename '.tex']);
   
-  counter = 0;
-  sec_num = 0;
-  subsec_num = 0;
-  
-  %there are some unnembered elements which will need ids and/or classes, such as lists with custom label types and unnembered sections. Just to ensure they have unique classes or ids, let's use an alternative counter
-  
-  alt_counter=0;
-  
-  %we go char by char
-  
-  char_to_verify = 1;
-  exp_to_verify = '';
-  
-  %find the title
-  title='';
-  exp_to_verify = '\title{';
-  disp('Finding title')
-  
-  while char_to_verify < length(file)
-    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
-      
-      open_brac = char_to_verify + length(exp_to_verify)-1;
-      clos_brac = findclosingbrac(file,open_brac);
-      
-      title = file(open_brac+1:clos_brac-1);
-      title=strrep(title,'\\','<br>');
-      char_to_verify=length(file);
-    endif
-    char_to_verify=char_to_verify+1;
-  endwhile
-  
-  disp(['The title is ' sprintf('''') title sprintf('''') '.'])
-  
-  sidebar = ['<h1 class=' sprintf('''') 'sidebar-title' sprintf('''') '>' ...
-            title ...
-            '</h1>'];
-  char_to_verify = 1;
-  
-  %erase everything before '\begin{document}', and erase '\end{document}'
-  file = file(strfind(file,'\begin{document}')+length('\begin{document}'): strfind(file,'\end{document}')-1);
- 
- %Let's find the abstract
-  while char_to_verify<length(file) && (1-strcmp(file(char_to_verify:char_to_verify+length('\begin{abstract}')-1),'\begin{abstract}'))
-    char_to_verify=char_to_verify+1;
-  endwhile
-  
-  if char_to_verify<length(file)
-    abs_close=char_to_verify;
-    while 1-strcmp(file(abs_close:abs_close+length('\end{abstract}')-1),'\end{abstract}')
-      abs_close=abs_close+1;
-    endwhile
-    
-    abstract_text=file(char_to_verify+length('\begin{abstract}'):abs_close-1);
-    
-    file=file(abs_close+length('\end{abstract}'):length(file));
-  endif
-
-  file=[sprintf('\n\n') file];
-  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %first we input all files
-  exp_to_verify = '\input{';
-  input_pos=strfind(file,exp_to_verify);
+  %IMPORTANT: There should be no commented-out '\input's
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
-  while length(input_pos)>0
-    disp(['There are ' int2str(length(file)) ' characters and ' int2str(length(input_pos)) ' files to be input.'])
+  exp_to_verify = '\input{';
+  pos=strfind(file,exp_to_verify);
+  
+  while length(pos)>0
+    disp(['There are ' int2str(length(file)) ' characters and ' int2str(length(pos)) ' files to be input.'])
     
-    open_brac = input_pos(1)+ length(exp_to_verify)-1;
+    open_brac = pos(1)+ length(exp_to_verify)-1;
     clos_brac = findclosingbrac(file,open_brac);
     file_to_input_name = ['   ' file(open_brac+1:clos_brac-1)];
     
@@ -168,30 +112,133 @@ function latextohtml(latex_file_input)
       file_to_input = fileread([file(open_brac+1:clos_brac-1) '.tex']);
     endif
     
-    file = [file(1:input_pos(1)-1) ...
+    file = [file(1:pos(1)-1) ...
               file_to_input ...
               file(clos_brac+1:length(file))];
       
-    input_pos=strfind(file,exp_to_verify);
+    pos=strfind(file,exp_to_verify);
   endwhile
   
   disp(['There are ' int2str(length(file)) ' characters.'])
   
-  %now we remove comments
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %remove comments
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   disp('Removing comments.')
   
-  comments=strfind(file,'%');
+  pos=strfind(file,'%');
   
-  while length(comments)>0
-    j=comments(length(comments))+1;
+  while length(pos)>0
+      j=pos(1)+1;
     while 1-strcmp(file(j),sprintf('\n'))
       j=j+1;
     endwhile
-    file=[file(1:comments(length(comments))-1) file(j+1:length(file))];
-    comments(length(comments))=[];
+    file=[file(1:pos(1)-1) file(j:length(file))];
+    pos=strfind(file,'%');
   endwhile
   
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %remove '\maketitle'
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  file=strrep(file,'\maketitle','');
   
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %find the title
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  title='';
+  exp_to_verify = '\title{';
+  disp(['-----' sprintf('\n') 'Finding title'])
+  
+  pos=strfind(file,exp_to_verify);
+  if length(pos)>0
+    open_brac = pos(1) + length(exp_to_verify)-1;
+    clos_brac = findclosingbrac(file,open_brac);
+      
+    title = file(open_brac+1:clos_brac-1);
+    title=strrep(title,'\\','<br>');
+  endif
+  
+  if length(title)>0
+    disp(['The title is ' sprintf('''') title sprintf('''') '.'])
+  else
+    disp(['No title found.'])
+  endif
+  
+  sidebar = ['<h1 class=' sprintf('''') 'sidebar-title' sprintf('''') '>' ...
+            title ...
+            '</h1>' sprintf('\n') ...
+            '<h1 class=' sprintf('''') 'sidebar-section' sprintf('''') '><a href=' sprintf('''') original_filename '_front.html' sprintf('''') '>Front page</a></h1>'];
+  char_to_verify = 1;
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %author information should be given in src/authors. Adapt that file and the code below as necessary
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  disp(['-----' sprintf('\n') 'Finding authors'])
+  author_file=fileread('src/authors');
+  authors='';
+  k=strfind(author_file,'<author>');
+  p=strfind(author_file,'</author>');
+  if length(k)>0
+    disp('The authors are');
+  else
+    disp('No authors found.');
+  endif
+  
+  while length(k)>0;
+    
+    name_start = strfind(author_file,'<name>')+length('<name>');
+    name_end = strfind(author_file,'</name>')-1;
+    name = author_file(name_start:name_end);
+    
+    email_start = strfind(author_file,'<e-mail>')+length('<e-mail>');
+    email_end = strfind(author_file,'</e-mail>')-1;
+    email = author_file(email_start:email_end);
+    %below is to safeguard the e-mail from spam
+    email = strrep(email,'@', ['<span style=' sprintf('''') 'display:none' sprintf('''') '>rand</span>&#64;']);
+    
+    institution_start = strfind(author_file,'<institution>')+length('<institution>');
+    institution_end = strfind(author_file,'</institution>')-1;
+    institution = author_file(institution_start:institution_end);
+    
+    support_start = strfind(author_file,'<support>')+length('<support>');
+    support_end = strfind(author_file,'</support>')-1;
+    support = author_file(support_start:support_end);
+    
+    authors=[authors ...
+      sprintf('\n\n') ...
+      '<div class=' sprintf('''') 'author' sprintf('''') '>' sprintf('\n') ...
+      '<span class=' sprintf('''') 'authorname' sprintf('''') '>' name '</span> ' ...
+      '(<span class=' sprintf('''') 'authoremail' sprintf('''') '>' email '</span>)<br>' ...
+      '<span class=' sprintf('''') 'authorinstitution' sprintf('''') '>' institution '</span><br>' sprintf('\n') ...
+      '<span class=' sprintf('''') 'authorsupport' sprintf('''') '>' support '</span></div>'];
+    k(1)=[];
+    disp([sprintf('\n') name ',' sprintf('\n') 'from' sprintf('\n') institution])
+  endwhile
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %if the paper is published, add information to file 'src/published'
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  counter = 0;
+  sec_num = 0;
+  subsec_num = 0;
+  
+  %We will use a second counter to id all elements which are referenciable. This includes lists and unnumbered sections, which will be referenced to in HTML. The old ids (given by '\label{...' in LaTeX) will be stored in a cell array 'old_label'. Another cell array, 'new_label', will have the corresponding new id's at the same position. So whenever we have \ref{<label>} in LaTeX, the corresponding new label may be found via 'new_label(find(strcmp(old_label,<label>)))'.
+  
+  old_label={};
+  new_label=[];
+  alt_counter=0;
+  
+  
+  %we also need to remember section names. All referenciable content will have the id given by alt_counter. We need to remember the name of the file where they are at. Just keep them in order. Similarly, we need to save how they will be referenced to
+  
+  sec_file={};
+  ref_name ={};
+  sec_filenames = {}; %not to confuse with sec_filename (w.o. s)
+  %erase everything before '\begin{document}', and erase '\end{document}'
+  file = file(strfind(file,'\begin{document}')+length('\begin{document}'): strfind(file,'\end{document}')-1);
+   
   char_to_verify=1;
   announce=1;
   inparagraph=0;
@@ -204,54 +251,62 @@ function latextohtml(latex_file_input)
   file=strrep(file,'\end{itemize}',['\end{itemize}' sprintf('\n\n')]);
   file=strrep(file,'\item',[sprintf('\n\n') '\item' sprintf('\n\n')]);
   file=strrep(file,'\end',[sprintf('\n\n') '\end']);
-  while char_to_verify < length(file)
+  file=strrep(file,'\begin{abstract}',['\beginabstract' sprintf('\n\n')]);
+  file=strrep(file,'\end{abstract}',[sprintf('\n\n') '\endabstract']);
+  %remove '\qedhere's
+  file=strrep(file,'\qedhere','');
+  
+  disp(sprintf('-----\n'))
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %trim unnecessary whitespaces before and after newlines, which can be useful when typing latex code.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  disp(['Trimming unnecessary whitespaces at beggining and endings of lines.']);
+  trimbar=waitbar(0,'Trimming whitespace...');
+  
+  while char_to_verify<length(file)
+    if strcmp(file(char_to_verify),sprintf('\n')) && isstrprop(file(char_to_verify+1),'wspace') && (1-strcmp(file(char_to_verify+1),sprintf('\n')))
+      file(char_to_verify+1)='';
+    elseif char_to_verify>1 && strcmp(file(char_to_verify),sprintf('\n')) && isstrprop(file(char_to_verify-1),'wspace') && (1-strcmp(file(char_to_verify-1),sprintf('\n')))
+      file(char_to_verify-1)='';
+      char_to_verify=char_to_verify-1;
+    else
+      char_to_verify=char_to_verify+1;
+    endif
     
+    if char_to_verify/length(file)>announce/100
+      waitbar(char_to_verify/length(file));
+      announce=announce+1;
+    endif
+  endwhile
+  close(trimbar);
+  
+  disp(['-----' sprintf('\n') 'Trimming complete.'])
+  char_to_verify=1;
+  announce=1;
+  
+  convertbar=waitbar(0,'Converting LaTeX to HTML...');
+  disp(['-----' sprintf('\n') 'Converting LaTeX to HTML.'])
+  
+  while char_to_verify < length(file)
+      
     %-----------------------------------------------------------------
     %First we check the in-text commands inside braces
     %-----------------------------------------------------------------
     
-    %let us check if we are at a '\input{'
-    exp_to_verify = '\input{';
-    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
-      
-      open_brac = char_to_verify + length(exp_to_verify)-1;
-      clos_brac = findclosingbrac(file,open_brac);
-      file_to_input_name = ['   ' file(open_brac+1:clos_brac-1)];
-      
-      if strcmp(file_to_input_name(length(file_to_input_name)-3:length(file_to_input_name)),'.tex')
-        file_to_input = fileread(file(open_brac+1:clos_brac-1));
-      else
-        file_to_input = fileread([file(open_brac+1:clos_brac-1) '.tex']);
-      endif
-      
-      file = [file(1:char_to_verify-1) ...
-                file_to_input ...
-                file(clos_brac+1:length(file))];
-      
-      char_to_verify = char_to_verify -1;
-    endif
-    %
-    
-    
-    
-    
-    %check for paragraph
+    %check for paragraph.
     exp_to_verify = sprintf('\n\n');
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
       %delete all white spaces after these two new lines
       while (length(file)>char_to_verify+1) && (isstrprop(file(char_to_verify+length(exp_to_verify)),'wspace'))
-        if length(file)==char_to_verify+2
-          file=file(1:char_to_verify+1);
-        else
-          file=[file(1:char_to_verify+1) file(char_to_verify+3:length(file))];
-        endif
+            file(char_to_verify+2)='';
       endwhile
       
       if inparagraph
         file=[file(1:char_to_verify) '</p>' sprintf('\n') file(char_to_verify+1:length(file))];
         inparagraph=0;
-        char_to_verify=char_to_verify+length('</p>');
+        char_to_verify=char_to_verify+length('</p>')-1;
       elseif (1-inparagraph) && length(file)>char_to_verify+1 && ...
         (isstrprop(file(char_to_verify+2),'alphanum') || ...
           strcmp(file(char_to_verify+2),'$') || ...
@@ -268,38 +323,26 @@ function latextohtml(latex_file_input)
       
     endif
     %
+        
     
     
     
-    
-    %check if we are at a '\maketitle'
-    exp_to_verify = '\maketitle';
-    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
-      file=[file(1:char_to_verify-1) file(char_to_verify+length('\maketitle'):length(file))];
-    endif
-    %
-    
-    
-    
-    
-    %let us check if we are at a '$$'
+    %check if we are at a '$$'
     exp_to_verify = '$$';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
-      char_to_verify=char_to_verify+2;
+      eq_close=char_to_verify+1+strfind(file(char_to_verify+2:length(file)),'$$')(1);
       
-      while 1-strcmp(file(char_to_verify:char_to_verify+1),'$$')
-        char_to_verify=char_to_verify+1;
-      endwhile
+      file=[file(1:char_to_verify-1) '\[' file(char_to_verify+2:eq_close-1) '\]' file(eq_close+1:length(file))];
       
-      char_to_verify=char_to_verify+2;
+      char_to_verify=char_to_verify-1;
     endif
     %
     
     
     
     
-    %let us check if we are at a '$'
+    %check if we are at a '$'
     exp_to_verify = '$';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
@@ -346,7 +389,7 @@ function latextohtml(latex_file_input)
     %check if we have a '\ ' in-text
     exp_to_verify = '\ ';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
-      file(char_to_verify)=[];
+      file(char_to_verify)='';
     endif
     %
     
@@ -433,7 +476,7 @@ function latextohtml(latex_file_input)
     
     
     
-    %let us check if we are at a '\underline{'
+    %let us check if we are at a '\uline{'
     exp_to_verify = '\uline{';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
@@ -523,28 +566,27 @@ function latextohtml(latex_file_input)
     
     
     
-    %let us check if we are at a '\section'
+    %check if we are at a '\section'
     exp_to_verify = '\section';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
+      %this is a referenciable element
+      alt_counter=alt_counter+1;
+      str_id = [' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      
+      %verify if it has a counter or not
       if strcmp(file(char_to_verify+length(exp_to_verify)),'*');
-        alt_counter=alt_counter+1;
         str_sec_num='';
-        label=[' id=' sprintf('''') 'sec' int2str(alt_counter) sprintf('''')];
+        open_brac=char_to_verify+length('\section*{')-1;
       else
         sec_num = sec_num+1;
         str_sec_num = [int2str(sec_num) '. '];
         %reset subsection and counter
         subsec_num = 0;
         counter=0;
-        label=[' id=' sprintf('''') 'sec' int2str(sec_num) sprintf('''')];
+        open_brac=char_to_verify+length('\section{')-1;
       endif
-      
-      open_brac = char_to_verify+length(exp_to_verify);
-      while 1-strcmp(file(open_brac),'{')
-        open_brac=open_brac+1;
-      endwhile
-      
+            
       clos_brac = findclosingbrac(file,open_brac);
       
       section_title=file(open_brac+1:clos_brac-1);
@@ -556,26 +598,49 @@ function latextohtml(latex_file_input)
         
         label_open_brac = clos_brac+length('\label{');
         label_clos_brac = findclosingbrac(file,label_open_brac);
-        label=[' id=' sprintf('''') ...
-                file(label_open_brac+1:label_clos_brac-1) ...
-                sprintf('''')];
+        
+        label=file(label_open_brac+1:label_clos_brac-1);
+        
+        old_label{length(old_label)+1}= label;
+        new_label(length(new_label)+1)= alt_counter;
       endif
+      
+      %this section now has a unique label.
+      sec_filename=[original_filename '_' int2str(sec_num)];
+      if strcmp(file(char_to_verify+length('\section*')-1),'*')
+        sec_filename = [sec_filename '_' int2str(alt_counter)];
+      endif
+      
+      sec_filenames{length(sec_filenames)+1}=sec_filename;
+      
+      %save this section name
+      sec_file{alt_counter}=sec_filename;
       
       %update sidebar
       sidebar=[sidebar sprintf('\n') ...
               '<hr>' sprintf('\n')' ...
               '<h1 class=' sprintf('''') 'sidebar-section' sprintf('''') '>' ...
-              '<a href=' sprintf('''') '#' label(1+length([' id=' sprintf('''')]):length(label)-1) sprintf('''') '>' ...
+              '<a href=' sprintf('''') sec_filename '.html' sprintf('''') '>' ...
               str_sec_num section_title ...
               '</a></h1>'];
               
       file = [file(1:char_to_verify-1) ...
-              '<h2 class=' sprintf('''') 'section' sprintf('''') label '>' ...
+              '<h2 class=' sprintf('''') 'section' sprintf('''') str_id '>' ...
               str_sec_num section_title ...
               '</h2>' ...
               file(label_clos_brac+1:length(file))];
         
-      char_to_verify = char_to_verify + length(['<h2 class=' sprintf('''') 'section' sprintf('''') label '>' str_sec_num]) - 1;
+      char_to_verify = char_to_verify + length(['<h2 class=' sprintf('''') 'section' sprintf('''') str_id '>' str_sec_num]) - 1;
+      
+      %if we have a reference to this section, we will have a link to the div. Not a problem, necessarily, but slightly different from what happens when we click the link in the sidebar
+      sec_file{alt_counter}= sec_filename;
+      %the ref_name will be the section number, if it is numbered, or the section title followed by '(unnumbered)' if not.
+      if length(str_sec_num)==0
+        ref_name{alt_counter}=[sprintf('''') section_title sprintf('''') ' (unnumbered)'];
+      else
+        ref_name{alt_counter}=int2str(sec_num);
+      endif
+      
     endif
     %
     
@@ -586,51 +651,58 @@ function latextohtml(latex_file_input)
     exp_to_verify = '\subsection';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
+      %this is a referenciable element
+      alt_counter=alt_counter+1;
+      str_id = [' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      sec_file{alt_counter}=sec_filename;
+      %verify if it has a counter or not
       if strcmp(file(char_to_verify+length(exp_to_verify)),'*');
-        alt_counter=alt_counter+1;
         str_subsec_num='';
-        label=[' id=' sprintf('''') 'subsec' int2str(alt_counter) sprintf('''')];
+        open_brac=char_to_verify+length('\subsection*{')-1;
       else
         subsec_num = subsec_num+1;
         str_subsec_num = [int2str(sec_num) '.' int2str(subsec_num) '. '];
+        
+        open_brac=char_to_verify+length('\subsection{')-1;
       endif
-      
-      open_brac = char_to_verify+length(exp_to_verify);
-      while 1-strcmp(file(open_brac),'{')
-        open_brac=open_brac+1;
-      endwhile
-      
+            
       clos_brac = findclosingbrac(file,open_brac);
       
       subsection_title=file(open_brac+1:clos_brac-1);
       
-      label=[' id=' sprintf('''') 'subsec' int2str(sec_num) '.' int2str(subsec_num) sprintf('''')];
       label_clos_brac=clos_brac;
       
-      %let us look for a section label
+      %let us look for a subsection label
       if strcmp(file(clos_brac+1:clos_brac+length('\label{')),'\label{')
         
         label_open_brac = clos_brac+length('\label{');
         label_clos_brac = findclosingbrac(file,label_open_brac);
-        label = [' id=' sprintf('''') ...
-                file(label_open_brac+1:label_clos_brac-1)...
-                sprintf('''')];
+        
+        old_label{length(old_label)+1} = file(label_open_brac+1:label_clos_brac-1);
+        new_label(length(new_label)+1) = alt_counter;
       endif
       
       %update sidebar
       sidebar=[sidebar sprintf('\n') ...
               '<h2 class=' sprintf('''') 'sidebar-subsection' sprintf('''') '>' ...
-              '<a href=' sprintf('''') '#' label(strfind(label,sprintf(''''))(1)+1:strfind(label,sprintf(''''))(2)-1) sprintf('''') '>' ...
+              '<a href=' sprintf('''') sec_filename '.html#' int2str(alt_counter) sprintf('''') '>' ...
               str_subsec_num subsection_title ...
               '</a></h2>'];
               
       file = [file(1:char_to_verify-1) ...
-              '<h3 class=' sprintf('''') 'subsection' sprintf('''') label '>' ...
+              '<h3 class=' sprintf('''') 'subsection' sprintf('''') str_id '>' ...
               str_subsec_num subsection_title ...
               '</h3>' ...
               file(label_clos_brac+1:length(file))];
         
-      char_to_verify = char_to_verify + length(['<h3 class=' sprintf('''') 'subsection' sprintf('''') label '>' str_subsec_num]) - 1;
+      char_to_verify = char_to_verify + length(['<h3 class=' sprintf('''') 'subsection' sprintf('''') str_id '>' str_subsec_num]) - 1;
+      
+      %ref_name as section
+      if length(str_subsec_num)==0
+        ref_name{alt_counter}=[sprintf('''') subsection_title sprintf('''') ' (unnumbered)'];
+      else
+        ref_name{alt_counter}=[int2str(sec_num) '.' int2str(subsec_num)];
+      endif
     endif
     %
     
@@ -641,22 +713,27 @@ function latextohtml(latex_file_input)
     exp_to_verify = '\subsubsection*{';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
+      %this is a referenciable element
+      alt_counter=alt_counter+1;
+      str_id = [' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      sec_file{alt_counter}=sec_filename;
+      
       open_brac = char_to_verify+length(exp_to_verify)-1;
       clos_brac = findclosingbrac(file,open_brac);
       
       subsubsection_title=file(open_brac+1:clos_brac-1);
       
-      alt_counter=alt_counter+1;
-      
-      label=[' id=' sprintf('''') 'subsubsec' int2str(alt_counter) sprintf('''')];
-
       file = [file(1:char_to_verify-1) ...
-              '<h4 class=' sprintf('''') 'subsubsection' sprintf('''') label '>' ...
+              '<h4 class=' sprintf('''') 'subsubsection' sprintf('''') str_id '>' ...
               subsubsection_title ...
               '</h4>' ...
               file(clos_brac+1:length(file))];
         
-      char_to_verify = char_to_verify + length(['<h4 class=' sprintf('''') 'subsubsection' sprintf('''') label '>']) - 1;
+      char_to_verify = char_to_verify + length(['<h4 class=' sprintf('''') 'subsubsection' sprintf('''') str_id '>']) - 1;
+      
+      %ref_name as unnumbered section
+        ref_name{alt_counter}=[sprintf('''') subsubsection_title sprintf('''') ' (unnumbered)'];
+      
     endif
     %
     
@@ -667,62 +744,56 @@ function latextohtml(latex_file_input)
     exp_to_verify = '\[';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
+      %this is a referenciable element
+      alt_counter=alt_counter+1;
+      str_id = [' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      sec_file{alt_counter}=sec_filename;
+      
       %We need to find the closing part of the equation
-      close_eq=char_to_verify+length('\[');
-      while 1-strcmp(file(close_eq:close_eq+1),'\]')
+      close_eq=char_to_verify+length(exp_to_verify);
+      while 1-strcmp(file(close_eq:close_eq+length('\]')-1),'\]')
         close_eq=close_eq+1;
       endwhile
       
       %check if there is an ntag.
-      j=char_to_verify+length('\[');
-      while j<close_eq-length('\ntag')+1
-        
-        if strcmp(file(j:j+length('\ntag')-1),'\ntag')
-          counter=counter+1;
-          ntag_start=j;
-          %rewrite this ntag as tag
-          file = [file(1:ntag_start-1) ...
+      ntag_start=strfind(file(char_to_verify+length(exp_to_verify):close_eq-1),'\ntag');
+      if length(ntag_start)>0
+        ntag_start=ntag_start+char_to_verify+length(exp_to_verify)-1;
+        counter=counter+1;
+        %rewrite this ntag as tag
+        file = [file(1:ntag_start-1) ...
                   '\tag{' int2str(sec_num) '.' int2str(counter) '}' ...
                   file(ntag_start+length('\ntag'):length(file))];
           
-          %since we rewrote the math environment, we need to update close_eq. The new one will be larger, so we can just continue from the current position
-          while 1-strcmp(file(close_eq:close_eq+1),'\]')
-            close_eq=close_eq+1;
-          endwhile
-          j=close_eq;
-        endif
-        j=j+1;
-      endwhile
-      
-      label='';
+        %since we rewrote the math environment, we need to update close_eq. The new one will be larger, so we can just continue from the current position
+        while 1-strcmp(file(close_eq:close_eq+length('\]')-1),'\]')
+          close_eq=close_eq+1;
+        endwhile
+      endif
       
       %look for an equation label
-      j=char_to_verify+length('\[');
-      while j<close_eq-length('\label{')+2
+      label_open_brac=strfind(file(char_to_verify+length(exp_to_verify):close_eq-1),'\label{');
+      if length(label_open_brac)>0
+        label_open_brac=label_open_brac+char_to_verify+length(exp_to_verify)-1+length('\label{')-1;
+        label_clos_brac = findclosingbrac(file,label_open_brac);
         
-        if strcmp(file(j:j+length('\label{')-1),'\label{')
-          label_open_brac = j+length('\label{')-1;
-          label_clos_brac = findclosingbrac(file,label_open_brac);
-          label=[' id=' sprintf('''') file(label_open_brac+1:label_clos_brac-1)...
-          sprintf('''')];
+        old_label{length(old_label)+1}=file(label_open_brac+1:label_clos_brac-1);
+        new_label(length(new_label)+1)=alt_counter;
           
-          %remove the label
-          file=[file(1:j-1) file(label_clos_brac+1:length(file))];
+        %remove the label
+        file=[file(1:label_open_brac-length('\label{')) file(label_clos_brac+1:length(file))];
           
-          %update close_eq
-          close_eq=char_to_verify+2;
-          while 1-strcmp(file(close_eq:close_eq+1),'\]')
-            close_eq=close_eq+1;
-          endwhile
-          j=close_eq;
-        endif
-        j=j+1;
-      endwhile
+        %update close_eq
+        close_eq=char_to_verify+length(exp_to_verify);
+        while 1-strcmp(file(close_eq:close_eq+length('\]')-1),'\]')
+          close_eq=close_eq+1;
+        endwhile
+      endif
       
       %We need to remove possible empty lines after \[ and before \]. For this, we simply erase all newlines and space (whitespaces) in those positions.
       
-      while isstrprop(file(char_to_verify+length('\[')),'wspace')
-        file=[file(1:char_to_verify+1) file(char_to_verify+3:length(file))];
+      while isstrprop(file(char_to_verify+length(exp_to_verify)),'wspace')
+        file=[file(1:char_to_verify+length(exp_to_verify)-1) file(char_to_verify+length(exp_to_verify)+1:length(file))];
         close_eq=close_eq-1;
       endwhile
       
@@ -731,25 +802,32 @@ function latextohtml(latex_file_input)
         close_eq=close_eq-1;
       endwhile
       
-      math=file(char_to_verify+2:close_eq-1);
+      math=file(char_to_verify+length(exp_to_verify):close_eq-1);
       math=strrep(math,'<','\smallerthan ');
       math=strrep(math,'>','\greaterthan ');
       
       file = [file(1:char_to_verify-1) ...
-        '<div class=' sprintf('''') 'equation' sprintf('''') label '>' sprintf('\n')...
+        '<div class=' sprintf('''') 'equation' sprintf('''') str_id '>' sprintf('\n')...
         '\begin{equation*}' sprintf('\n') ...
         math ...
         sprintf('\n') '\end{equation*}' sprintf('\n') ...
         '</div>' ...
-        file(close_eq+2:length(file))];
+        file(close_eq+length('\]'):length(file))];
       
       %skip the whole math to keep it unchanged; the easist way is simply to see where the div above is closed. Even if 'file' was changes, we just care about lengths, so it doesn't matter.
       char_to_verify = length([file(1:char_to_verify-1) ...
-        '<div class=' sprintf('''') 'equation' sprintf('''') label '>' sprintf('\n')...
+        '<div class=' sprintf('''') 'equation' sprintf('''') str_id '>' sprintf('\n')...
         '\begin{equation*}' sprintf('\n') ...
         math ...
         sprintf('\n') '\end{equation*}' sprintf('\n') ...
         '</div>']);
+        
+      %ref_name
+      if length(ntag_start)==0
+        ref_name{alt_counter}='(unnumbered equation)';
+      else
+        ref_name{alt_counter}=[int2str(sec_num) '.' int2str(counter)];
+      endif
     endif
     %
     
@@ -760,63 +838,58 @@ function latextohtml(latex_file_input)
     exp_to_verify = '\begin{equation*}';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
-      %find the closing part of the equation
-      close_eq=char_to_verify+length('\begin{equation*}');
+      %this is a referenciable element
+      alt_counter=alt_counter+1;
+      str_id = [' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      sec_file{alt_counter}=sec_filename;
+      
+      %We need to find the closing part of the equation
+      close_eq=char_to_verify+length(exp_to_verify);
       while 1-strcmp(file(close_eq:close_eq+length('\end{equation*}')-1),'\end{equation*}')
         close_eq=close_eq+1;
       endwhile
       
       %check if there is an ntag.
-      j=char_to_verify+length('\begin{equation*}');
-      while j<close_eq-length('\ntag')+1
-        
-        if strcmp(file(j:j+length('\ntag')-1),'\ntag')
-          counter=counter+1;
-          ntag_start=j;
-          %rewrite this ntag as tag
-          file = [file(1:ntag_start-1) ...
+      ntag_start=strfind(file(char_to_verify+length(exp_to_verify):close_eq-1),'\ntag');
+      if length(ntag_start)>0
+        ntag_start=ntag_start+char_to_verify+length(exp_to_verify)-1;
+        counter=counter+1;
+        %rewrite this ntag as tag
+        file = [file(1:ntag_start-1) ...
                   '\tag{' int2str(sec_num) '.' int2str(counter) '}' ...
                   file(ntag_start+length('\ntag'):length(file))];
           
-          %since we rewrote the math environment, we need to update close_eq. The new one will be larger, so we can just continue from the current position
-          while 1-strcmp(file(close_eq:close_eq+length('\end{equation*}')-1,'\end{equation*}'))
-            close_eq=close_eq+1;
-          endwhile
-          j=close_eq;
-        endif
-        j=j+1;
-      endwhile
-      
+        %since we rewrote the math environment, we need to update close_eq. The new one will be larger, so we can just continue from the current position
+        while 1-strcmp(file(close_eq:close_eq+length('\end{equation*}')-1),'\end{equation*}')
+          close_eq=close_eq+1;
+        endwhile
+      endif
       
       label='';
       
       %look for an equation label
-      j=char_to_verify+length('\begin{equation*}');
-      while j<close_eq-length('\label{')+2
+      label_open_brac=strfind(file(char_to_verify+length(exp_to_verify):close_eq-1),'\label');
+      if length(label_open_brac)>0
+        label_open_brac=label_open_brac+char_to_verify+length(exp_to_verify)-1+length('\label{')-1;
+        label_clos_brac = findclosingbrac(file,label_open_brac);
         
-        if strcmp(file(j:j+length('\label{')-1),'\label{')
-          label_open_brac = j+length('\label{')-1;
-          label_clos_brac = findclosingbrac(file,label_open_brac);
-          label=[' id=' sprintf('''') file(label_open_brac+1:label_clos_brac-1)...
-          sprintf('''')];
+        old_label{length(old_label)+1}=file(label_open_brac+1:label_clos_brac-1);
+        new_label(length(new_label)+1)=alt_counter;
           
-          %remove the label
-          file=[file(1:j-1) file(label_clos_brac+1:length(file))];
+        %remove the label
+        file=[file(1:label_open_brac-length('\label{')) file(label_clos_brac+1:length(file))];
           
-          %update close_eq
-          close_eq=char_to_verify+2;
-          while 1-strcmp(file(close_eq:close_eq+1),'\end{equation*}')
-            close_eq=close_eq+1;
-          endwhile
-          j=close_eq;
-        endif
-        j=j+1;
-      endwhile
+        %update close_eq
+        close_eq=char_to_verify+length(exp_to_verify);
+        while 1-strcmp(file(close_eq:close_eq+length('\end{equation*}')-1),'\end{equation*}')
+          close_eq=close_eq+1;
+        endwhile
+      endif
       
-      %We need to remove possible empty lines after \begin{equation*} and before \end{equation*}. For this, we simply erase all newlines in those positions.
+      %We need to remove possible empty lines after \[ and before \]. For this, we simply erase all newlines and space (whitespaces) in those positions.
       
-      while isstrprop(file(char_to_verify+length('\begin{equation*}')),'wspace')
-        file=[file(1:char_to_verify+length('\begin{equation*}')-1) file(char_to_verify+length('\begin{equation*}')+1:length(file))];
+      while isstrprop(file(char_to_verify+length(exp_to_verify)),'wspace')
+        file=[file(1:char_to_verify+length(exp_to_verify)-1) file(char_to_verify+length(exp_to_verify)+1:length(file))];
         close_eq=close_eq-1;
       endwhile
       
@@ -825,24 +898,32 @@ function latextohtml(latex_file_input)
         close_eq=close_eq-1;
       endwhile
       
-      math=file(char_to_verify+length('\begin{equation*}'):close_eq-1);
+      math=file(char_to_verify+length(exp_to_verify):close_eq-1);
       math=strrep(math,'<','\smallerthan ');
       math=strrep(math,'>','\greaterthan ');
       
       file = [file(1:char_to_verify-1) ...
-        '<div class=' sprintf('''') 'equation' sprintf('''') label '>' sprintf('\n')...
+        '<div class=' sprintf('''') 'equation' sprintf('''') str_id '>' sprintf('\n')...
         '\begin{equation*}' sprintf('\n') ...
         math ...
         sprintf('\n') '\end{equation*}' sprintf('\n') ...
         '</div>' ...
         file(close_eq+length('\end{equation*}'):length(file))];
-        
+      
+      %skip the whole math to keep it unchanged; the easist way is simply to see where the div above is closed. Even if 'file' was changes, we just care about lengths, so it doesn't matter.
       char_to_verify = length([file(1:char_to_verify-1) ...
-        '<div class=' sprintf('''') 'equation' sprintf('''') label '>' sprintf('\n')...
+        '<div class=' sprintf('''') 'equation' sprintf('''') str_id '>' sprintf('\n')...
         '\begin{equation*}' sprintf('\n') ...
         math ...
         sprintf('\n') '\end{equation*}' sprintf('\n') ...
-        '</div>'])
+        '</div>']);
+      
+      %ref_name
+      if length(ntag_start)==0
+        ref_name{alt_counter}='(unnumbered equation)';
+      else
+        ref_name{alt_counter}=[int2str(sec_num) '.' int2str(counter)];
+      endif
     endif
     %
     
@@ -853,63 +934,58 @@ function latextohtml(latex_file_input)
     exp_to_verify = '\begin{align*}';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
-      %find the closing part of the equation
-      close_eq=char_to_verify+length('\begin{align*}');
+      %this is a referenciable element
+      alt_counter=alt_counter+1;
+      str_id = [' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      sec_file{alt_counter}=sec_filename;
+      
+      %We need to find the closing part of the equation
+      close_eq=char_to_verify+length(exp_to_verify);
       while 1-strcmp(file(close_eq:close_eq+length('\end{align*}')-1),'\end{align*}')
         close_eq=close_eq+1;
       endwhile
       
       %check if there is an ntag.
-      j=char_to_verify+length('\begin{align*}');
-      while j<close_eq-length('\ntag')+1
-        
-        if strcmp(file(j:j+length('\ntag')-1),'\ntag')
-          counter=counter+1;
-          ntag_start=j;
-          %rewrite this ntag as tag
-          file = [file(1:ntag_start-1) ...
+      ntag_start=strfind(file(char_to_verify+length(exp_to_verify):close_eq-1),'\ntag');
+      if length(ntag_start)>0
+        ntag_start=ntag_start+char_to_verify+length(exp_to_verify)-1;
+        counter=counter+1;
+        %rewrite this ntag as tag
+        file = [file(1:ntag_start-1) ...
                   '\tag{' int2str(sec_num) '.' int2str(counter) '}' ...
                   file(ntag_start+length('\ntag'):length(file))];
           
-          %since we rewrote the math environment, we need to update close_eq. The new one will be larger, so we can just continue from the current position
-          while 1-strcmp(file(close_eq:close_eq+length('\end{align*}')-1,'\end{align*}'))
-            close_eq=close_eq+1;
-          endwhile
-          j=close_eq;
-        endif
-        j=j+1;
-      endwhile
-      
+        %since we rewrote the math environment, we need to update close_eq. The new one will be larger, so we can just continue from the current position
+        while 1-strcmp(file(close_eq:close_eq+length('\end{align*}')-1),'\end{align*}')
+          close_eq=close_eq+1;
+        endwhile
+      endif
       
       label='';
       
       %look for an equation label
-      j=char_to_verify+length('\begin{align*}');
-      while j<close_eq-length('\label{')+2
+      label_open_brac=strfind(file(char_to_verify+length(exp_to_verify):close_eq-1),'\label');
+      if length(label_open_brac)>0
+        label_open_brac=label_open_brac+char_to_verify+length(exp_to_verify)-1+length('\label{')-1;
+        label_clos_brac = findclosingbrac(file,label_open_brac);
         
-        if strcmp(file(j:j+length('\label{')-1),'\label{')
-          label_open_brac = j+length('\label{')-1;
-          label_clos_brac = findclosingbrac(file,label_open_brac);
-          label=[' id=' sprintf('''') file(label_open_brac+1:label_clos_brac-1)...
-          sprintf('''')];
+        old_label{length(old_label)+1}=file(label_open_brac+1:label_clos_brac-1);
+        new_label(length(new_label)+1)=alt_counter;
           
-          %remove the label
-          file=[file(1:j-1) file(label_clos_brac+1:length(file))];
+        %remove the label
+        file=[file(1:label_open_brac-length('\label{')) file(label_clos_brac+1:length(file))];
           
-          %update close_eq
-          close_eq=char_to_verify+2;
-          while 1-strcmp(file(close_eq:close_eq+1),'\end{align*}')
-            close_eq=close_eq+1;
-          endwhile
-          j=close_eq;
-        endif
-        j=j+1;
-      endwhile
+        %update close_eq
+        close_eq=char_to_verify+length(exp_to_verify);
+        while 1-strcmp(file(close_eq:close_eq+length('\end{align*}')-1),'\end{align*}')
+          close_eq=close_eq+1;
+        endwhile
+      endif
       
-      %We need to remove possible empty lines after \begin{align*} and before \end{align*}. For this, we simply erase all newlines in those positions.
+      %We need to remove possible empty lines after \[ and before \]. For this, we simply erase all newlines and space (whitespaces) in those positions.
       
-      while isstrprop(file(char_to_verify+length('\begin{align*}')),'wspace')
-        file=[file(1:char_to_verify+length('\begin{align*}')-1) file(char_to_verify+length('\begin{align*}')+1:length(file))];
+      while isstrprop(file(char_to_verify+length(exp_to_verify)),'wspace')
+        file=[file(1:char_to_verify+length(exp_to_verify)-1) file(char_to_verify+length(exp_to_verify)+1:length(file))];
         close_eq=close_eq-1;
       endwhile
       
@@ -918,24 +994,32 @@ function latextohtml(latex_file_input)
         close_eq=close_eq-1;
       endwhile
       
-      math=file(char_to_verify+length('\begin{align*}'):close_eq-1);
+      math=file(char_to_verify+length(exp_to_verify):close_eq-1);
       math=strrep(math,'<','\smallerthan ');
       math=strrep(math,'>','\greaterthan ');
       
       file = [file(1:char_to_verify-1) ...
-        '<div class=' sprintf('''') 'equation' sprintf('''') label '>' sprintf('\n')...
+        '<div class=' sprintf('''') 'equation' sprintf('''') str_id '>' sprintf('\n')...
         '\begin{align*}' sprintf('\n') ...
         math ...
         sprintf('\n') '\end{align*}' sprintf('\n') ...
         '</div>' ...
         file(close_eq+length('\end{align*}'):length(file))];
-        
+      
+      %skip the whole math to keep it unchanged; the easist way is simply to see where the div above is closed. Even if 'file' was changes, we just care about lengths, so it doesn't matter.
       char_to_verify = length([file(1:char_to_verify-1) ...
-        '<div class=' sprintf('''') 'equation' sprintf('''') label '>' sprintf('\n')...
+        '<div class=' sprintf('''') 'equation' sprintf('''') str_id '>' sprintf('\n')...
         '\begin{align*}' sprintf('\n') ...
         math ...
         sprintf('\n') '\end{align*}' sprintf('\n') ...
         '</div>']);
+      
+      %ref_name
+      if length(ntag_start)==0
+        ref_name{alt_counter}='(unnumbered equation)';
+      else
+        ref_name{alt_counter}=[int2str(sec_num) '.' int2str(counter)];
+      endif
     endif
     %
     
@@ -946,13 +1030,14 @@ function latextohtml(latex_file_input)
     exp_to_verify = '\begin{enumerate}';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       
-      %let us check if there is any label. The labels should be of the form (\alph*), \roman*., etc.
+      %let us check if there are custom labels. The labels should be of the form '(\alph*)', which yields '(a),(b),(c)',...;  '\Roman*.', which yields I., II., ..., or even something like 'P-\roman*' which yields 'P-i, P-ii, P-iii',...
       list_class='';
       list_css='';
       label_close=char_to_verify+length('\begin{enumerate}')-1;
       
       if strcmp(file(char_to_verify+length(exp_to_verify):char_to_verify+length(exp_to_verify)+length('[label=')-1),'[label=')
         
+        %custom lists will use our 'alt-counter' for a custom class
         alt_counter=alt_counter+1;
         list_class=[' class=' sprintf('''') 'alt altlist' int2str(alt_counter) sprintf('''')];
         
@@ -976,6 +1061,9 @@ function latextohtml(latex_file_input)
           elseif strcmp(file(j:j+length('\arabic*')-1),'\arabic*')
             list_css=[list_css ' counter(listcounter)' ];
             j=j+length('\arabic*');
+          elseif strcmp(file(j),'\')
+            disp(['WARNING: A list close to id ' int2str(alt_counter) ' has a LaTeX macro inside its label with ' sprintf('''') '\' sprintf('''') '. This is not supported.'])
+            j=j+1;            
           else
             list_css=[list_css ' ' sprintf('''') file(j) sprintf('''')];
             j=j+1;
@@ -983,10 +1071,10 @@ function latextohtml(latex_file_input)
         endwhile
         
         list_css = ['<style>' ...
-        'ol.altlist' int2str(alt_counter) ' > li:before {' sprintf('\n') ...
-          'content: ' list_css ';' sprintf('\n') ...
-        '}' sprintf('\n') ...
-        '</style>' sprintf('\n')];
+              'ol.altlist' int2str(alt_counter) ' > li:before {' sprintf('\n') ...
+                'content: ' list_css ';' sprintf('\n') ...
+              '}' sprintf('\n') ...
+              '</style>' sprintf('\n')];
       endif
       
       file=[file(1:char_to_verify-1) ...
@@ -1014,38 +1102,47 @@ function latextohtml(latex_file_input)
     %check if we are at a '\item'. Note that we need to add a bunch of newlines to deal with paragraphs in items.    
     exp_to_verify = '\item';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
+      
+      %referenciable element
+      alt_counter=alt_counter+1;
+      str_id = [' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      sec_file{alt_counter}=sec_filename;
+      
       %look for label
       label_clos_brac=char_to_verify+length(exp_to_verify)-1;
       
-      %remember: we added two newlines after \item
+      %remember: we added two newlines after \item, so we skip those by adding a +2 below
       if strcmp(file(char_to_verify+length(exp_to_verify)+2:char_to_verify+length(exp_to_verify)+length('\label{')-1+2),'\label{')
         label_open_brac=char_to_verify+length(exp_to_verify)+length('\label{')-1+2;
         label_clos_brac=findclosingbrac(file,label_open_brac);
         
-        label=[' id=' sprintf('''') ...
-          file(label_open_brac+1:label_clos_brac-1) ...
-          sprintf('''')];
-      else
-        label='';
+        old_label{length(old_label)+1} = file(label_open_brac+1:label_clos_brac-1);
+        new_label(length(new_label)+1) = alt_counter;
       endif
       
       if in_list_item
         file=[file(1:char_to_verify-1) ...
           '</li>' sprintf('\n\n') ...
-          '<li' label '>' sprintf('\n\n') ...
+          '<li' str_id '>' sprintf('\n\n') ...
           file(label_clos_brac+1:length(file))];
           
-        char_to_verify=char_to_verify+length(['</li>' sprintf('\n\n') '<li' label '>'])-1;
+        char_to_verify=char_to_verify+length(['</li>' sprintf('\n\n') '<li' str_id '>'])-1;
         
       else
         in_list_item=1;
         file=[file(1:char_to_verify-1) ...
-          '<li' label '>' sprintf('\n\n') ...
+          '<li' str_id '>' sprintf('\n\n') ...
           file(label_clos_brac+1:length(file))];
         
-        char_to_verify=char_to_verify+length(['<li' label '>'])-1;
+        char_to_verify=char_to_verify+length(['<li' str_id '>'])-1;
       endif
       
+      %ref_name
+      if label_clos_brac==char_to_verify+length(exp_to_verify)-1 %unlabelled
+        ref_name{alt_counter}='unlabelled (item)';
+      else
+        ref_name{alt_counter}='(item)';
+      endif
     endif
     %
     
@@ -1057,7 +1154,8 @@ function latextohtml(latex_file_input)
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify)
       in_list_item=0;
       
-      file=[file(1:char_to_verify-1) '</li>' sprintf('\n') '</ol>' file(char_to_verify+length('\end{enumerate}'):length(file))];
+      file=[file(1:char_to_verify-1) '</li>' sprintf('\n') ...
+      '</ol>' file(char_to_verify+length('\end{enumerate}'):length(file))];
       
       char_to_verify=char_to_verify+length('</ol>')-1;
     endif
@@ -1084,6 +1182,11 @@ function latextohtml(latex_file_input)
     exp_to_verify = '\begin{denv';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify) 
       
+      %referenciable element
+      alt_counter=alt_counter+1;
+      str_id = [' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      sec_file{alt_counter}=sec_filename;
+      
       envtype='alt';
       
       denv_open_brac = char_to_verify+length('\begin{')-1;
@@ -1098,36 +1201,33 @@ function latextohtml(latex_file_input)
       %check if the environment is numbered or not, and update the counter and create the correct string for the counter if appropriate
       if strcmp(file(denv_clos_brac-1),'*')
         numbered_env=0;
-        strcounter='';
+        str_counter='';
       else
         numbered_env=1;
         counter=counter+1;
-        strcounter=[' <span class=' sprintf('''') 'counter' sprintf('''') '>'  ...
+        str_counter=[' <span class=' sprintf('''') 'envcounter' sprintf('''') '>'  ...
         int2str(sec_num) '.' int2str(counter) '</span>'];
       endif
       
       %look for the label
+      label_clos_brac=envtype_clos_brac;
+      
       if length(file)>envtype_clos_brac+length('\label{')-1 && ...
         strcmp(file(envtype_clos_brac+1:envtype_clos_brac+length('\label{')),'\label{')
         
         label_open_brac=envtype_clos_brac+length('\label{');
         label_clos_brac=findclosingbrac(file,label_open_brac);
-        label=[' id=' sprintf('''') ...
-                file(label_open_brac+1:label_clos_brac-1) ...
-                sprintf('''')];
-      elseif numbered_env
-        label_clos_brac=envtype_clos_brac;
-        label = [' id=' sprintf('''') envtype int2str(counter) sprintf('''')];
-      else
-        label_clos_brac=envtype_clos_brac;
-        label='';
+        
+        old_label{length(old_label)+1}=file(label_open_brac+1:label_clos_brac-1);
+        new_label(length(new_label)+1)=alt_counter;
       endif
       
       %Now the corresponding HTML code
       htmlenv= [...
-        '<div class=' sprintf('''') envtype sprintf('''') label sprintf('>\n') ...
-        '<span class=' sprintf('''') 'envidentifier' sprintf('''') '>' envidentifier '</span>' strcounter];
+        '<div class=' sprintf('''') envtype sprintf('''') str_id sprintf('>\n') ...
+        '<span class=' sprintf('''') 'envidentifier' sprintf('''') '>' envidentifier '</span>' str_counter];
       
+      %it is nice to add the number which appears in the page as a comment
       if numbered_env
         htmlenv=['<!-- ' int2str(sec_num) '.' int2str(counter) ' -->' ...
                 sprintf('\n') htmlenv ];
@@ -1141,19 +1241,97 @@ function latextohtml(latex_file_input)
       
       %let us skip the characters we added; notice that we add 1 at the end of the 'while'
       char_to_verify=char_to_verify+length(htmlenv)-1;
+      
+      %ref_name
+      if length(str_counter)==0
+        ref_name{alt_counter}=['unnumbered ' envidentifier];
+      else
+        ref_name{alt_counter}=[int2str(sec_num) '.' int2str(counter)];
+      endif
+
     endif
     %
     
     
     
-    %let us check if we are at any other environment
-    exp_to_verify = '\begin{';
+    %let us check if we are at a '\begin{proof}'
+    exp_to_verify = '\begin{proof}';
     if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify) 
+      
+      %referenciable
+      alt_counter=alt_counter+1;
+      str_id=[' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      sec_file{alt_counter}=sec_filename;
       
       envtype_open_brac=char_to_verify+length('\begin{')-1;
       envtype_clos_brac=findclosingbrac(file,envtype_open_brac);
       
-      %anything between those two is the environment type
+      envtype='proof';
+    
+      %check if there is an optional argument.
+      if strcmp(file(envtype_clos_brac+1),'[')
+        oparg_open_brac=envtype_clos_brac+1;
+        oparg_clos_brac=findclosingbrac(file,oparg_open_brac);
+        
+        %erase braces right inside the optional argument, which appear sometimes (e.g. when making citations with optional arguments);
+        while strcmp(file(oparg_open_brac+1),'{') && strcmp(file(oparg_clos_brac-1),'}')
+          file(oparg_clos_brac-1)=[];
+          file(oparg_open_brac+1)=[];
+          oparg_clos_brac=oparg_clos_brac-2;
+        endwhile
+        
+        %the optional argument will be the new envidentifier
+        envidentifier=file(oparg_open_brac+1:oparg_clos_brac-1);
+      else
+        oparg_clos_brac=envtype_clos_brac;
+        envidentifier='Proof';
+      endif
+      
+            %look for the label
+      if length(file)>oparg_clos_brac+length('\label{')-1 && ...
+        strcmp(file(oparg_clos_brac+1:oparg_clos_brac+length('\label{')),'\label{')
+        
+        label_open_brac=oparg_clos_brac+length('\label{');
+        label_clos_brac=findclosingbrac(file,label_open_brac);
+        
+        old_label{length(old_label)+1}=file(label_open_brac+1:label_clos_brac-1);
+        new_label(length(new_label)+1)=alt_counter;
+      else
+        label_clos_brac=oparg_clos_brac;
+      endif
+      
+      %Now the corresponding HTML code
+      
+      htmlenv= ['<div class=' sprintf('''') envtype sprintf('''') str_id sprintf('>\n') ...
+      '<span class=' sprintf('''') 'envidentifier' sprintf('''') '>' envidentifier '</span>.'];
+      
+      %let us simply keep the parts before the i-th position, the rewritten environment, and whatever's after the environment has ended. New lines for paragraph
+      
+      file=[file(1:char_to_verify-1) htmlenv sprintf('\n\n') file(label_clos_brac+1:length(file))];
+      
+      %let us skip the characters we added;
+      char_to_verify=char_to_verify+length(htmlenv)-1;
+      
+      %ref_name
+
+      ref_name{alt_counter}=['unnumbered' envidentifier];
+      
+    endif
+    %
+    
+    %let us check if we are at any other environment
+    exp_to_verify = '\begin{';
+    if char_to_verify < length(file)-length(exp_to_verify) +2 && strcmp(file(char_to_verify:char_to_verify+length(exp_to_verify)-1),exp_to_verify) 
+      
+      %referenciable
+      alt_counter=alt_counter+1;
+      str_id=[' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
+      sec_file{alt_counter}=sec_filename;
+      
+      envtype_open_brac=char_to_verify+length('\begin{')-1;
+      envtype_clos_brac=findclosingbrac(file,envtype_open_brac);
+      
+      %anything between those two is the environment type. This might have a star.
       envtype=file(envtype_open_brac+1:envtype_clos_brac-1);
     
       %check if there is an optional argument.
@@ -1161,12 +1339,12 @@ function latextohtml(latex_file_input)
         oparg_open_brac=envtype_clos_brac+1;
         oparg_clos_brac=findclosingbrac(file,oparg_open_brac);
         
-        %erase braces right inside te optional argument
-        if strcmp(file(oparg_open_brac+1),'{') && strcmp(file(oparg_clos_brac-1),'}')
+        %erase braces right inside the optional argument, which appear sometimes (e.g. when making citations with optional arguments);
+        while strcmp(file(oparg_open_brac+1),'{') && strcmp(file(oparg_clos_brac-1),'}')
           file(oparg_clos_brac-1)=[];
           file(oparg_open_brac+1)=[];
           oparg_clos_brac=oparg_clos_brac-2;
-        endif
+        endwhile
         
         %save optional argument
         oparg=[' <span class=' sprintf('''') 'envop' sprintf('''') '>(' file(oparg_open_brac+1:oparg_clos_brac-1) ')</span>'];
@@ -1179,12 +1357,12 @@ function latextohtml(latex_file_input)
       if strcmp(envtype(length(envtype)),'*')
         numbered_env=0;
         envtype=envtype(1:length(envtype)-1);
-        strcounter='';
+        str_counter='';
       else
         numbered_env=1;
         counter=counter+1;
-        strcounter=[' <span class=' sprintf('''') 'envcounter' sprintf('''') '>'  ...
-        int2str(sec_num) '.' int2str(counter) '</span>'];
+        str_counter=[' <span class=' sprintf('''') 'envcounter' sprintf('''') '>'  ...
+          int2str(sec_num) '.' int2str(counter) '</span>'];
       endif
       
       %look for the label
@@ -1193,22 +1371,18 @@ function latextohtml(latex_file_input)
         
         label_open_brac=oparg_clos_brac+length('\label{');
         label_clos_brac=findclosingbrac(file,label_open_brac);
-        label=[' id=' sprintf('''') ...
-                file(label_open_brac+1:label_clos_brac-1) ...
-                sprintf('''')];
-      elseif numbered_env
-        label_clos_brac=oparg_clos_brac;
-        label = [' id=' sprintf('''') envtype int2str(counter) sprintf('''')];
+        
+        old_label{length(old_label)+1}=file(label_open_brac+1:label_clos_brac-1);
+        new_label(length(new_label)+1)=alt_counter;
       else
         label_clos_brac=oparg_clos_brac;
-        label='';
       endif
       
       %Now the corresponding HTML code
       envidentifier=[upper(envtype(1)) envtype(2:length(envtype))];
       
-      htmlenv= ['<div class=' sprintf('''') envtype sprintf('''') label sprintf('>\n') ...
-      '<span class=' sprintf('''') 'envidentifier' sprintf('''') '>' envidentifier '</span>' strcounter oparg '.'];
+      htmlenv= ['<div class=' sprintf('''') envtype sprintf('''') str_id sprintf('>\n') ...
+      '<span class=' sprintf('''') 'envidentifier' sprintf('''') '>' envidentifier '</span>' str_counter oparg '.'];
       
       if numbered_env
         htmlenv=['<!-- ' int2str(sec_num) '.' int2str(counter) ' -->' ...
@@ -1219,8 +1393,16 @@ function latextohtml(latex_file_input)
       
       file=[file(1:char_to_verify-1) htmlenv sprintf('\n\n') file(label_clos_brac+1:length(file))];
       
-      %let us skip the characters we added; notice that we add 1 at the end of the 'while'
+      %let us skip the characters we added;
       char_to_verify=char_to_verify+length(htmlenv)-1;
+      
+      %ref_name
+      if length(str_counter)==0
+        ref_name{alt_counter}=['unnumbered' envidentifier];
+      else
+        ref_name{alt_counter}=[int2str(sec_num) '.' int2str(counter)];
+      endif
+      
     endif
     %
     
@@ -1240,17 +1422,19 @@ function latextohtml(latex_file_input)
     
     char_to_verify = char_to_verify+1;
     
-    if 1000*announce < char_to_verify +1
+    if char_to_verify/length(file)>announce/100
       announce=announce+1;
-      disp(['Analysing character ' int2str(char_to_verify) ' of approximately ' int2str(length(file))]);
+      %disp(['Analysing character ' int2str(char_to_verify) ' of approximately ' int2str(length(file))]);
+      waitbar(char_to_verify/length(file));
     endif
   endwhile
+  close(convertbar)
+  disp(sprintf('\n'))
   
   
   
   
-  
-  disp(['Cleaning up ' sprintf('''') 'texorpdfstring' sprintf('''') '...']);
+  disp(['Cleaning up ' sprintf('''') '\texorpdfstring' sprintf('''') '...' sprintf('\n')]);
   char_to_verify=1;
   exp_to_verify='\texorpdfstring{';
   pos=strfind(file,exp_to_verify);
@@ -1286,7 +1470,7 @@ function latextohtml(latex_file_input)
   
   
   %clear up '\tensor'
-  disp('Clearing up \tensor');
+  disp(['Cleaning up ' sprintf('''') '\tensor' sprintf('''') '...' sprintf('\n')]);
   exp_to_verify='\tensor';
   pos=strfind(file,'\tensor'); %position of '\tensor'
   while length(pos)>0
@@ -1317,8 +1501,10 @@ function latextohtml(latex_file_input)
   
   
   
-  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %make tikzpictures. Requires ImageMagick; https://imagemagick.org/
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
   k=strfind(file,'\begin{tikzpicture}');
   p=strfind(file,'\end{tikzpicture}');
   
@@ -1327,7 +1513,7 @@ function latextohtml(latex_file_input)
     disp([int2str(length(k)) ' tikz to go.'])
     
     tikz=file(k(length(k)):p(length(k))+length('\end{tikzpicture}')-1);
-    latexcommands=fileread('src\latex_commands');
+    latexcommands=fileread('src/latex_commands');
     latexcommands=latexcommands(strfind(latexcommands,'\begin{equation*}')(1)+length('\begin{equation*}'):strfind(latexcommands,'\end{equation*}')(1)-1);
     
     tikz=strrep(tikz,'\greaterthan ','>');
@@ -1346,7 +1532,7 @@ function latextohtml(latex_file_input)
     
     %build tikz as dvi and convert to png
     
-    temp_tikz_filename=[original_filename(1:length(original_filename)-4) '_tikz_' int2str(length(k))];
+    temp_tikz_filename=[original_filename '_tikz_' int2str(length(k))];
     temp_tikz_file = fopen([ temp_tikz_filename '.tex'],'w');
     temp_tikz_str = [ ...
       '\documentclass{standalone}' sprintf('\n') ...
@@ -1379,7 +1565,10 @@ function latextohtml(latex_file_input)
     
     p(length(p))=[];
     k(length(k))=[];
+    
+    system(['del ' sprintf('"') temp_tikz_filename '.tex' sprintf('"') ' > NUL']);
   endwhile
+  
   
   %delete temporary tex files
   system('del *.aux');
@@ -1387,26 +1576,203 @@ function latextohtml(latex_file_input)
   system('del *.dvi');
   
   
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %Create references
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
+  disp('Creating references.')
+  k=strfind(file,'\ref{');
+  number_of_references=length(k);
+  refbar=waitbar(0,'Creating references...');
+  announce=1;
+  while length(k)>0
+    open_brac=k(length(k))+length('\ref{')-1;
+    
+    clos_brac=findclosingbrac(file,open_brac);
+    
+    label=file(open_brac+1:clos_brac-1);
+    
+    ref_id=new_label(find(strcmp(old_label,label)));
+    
+    file=[file(1:k(length(k))-1) ...
+            '<a class=' sprintf('''') 'reference' sprintf('''') ' href=' sprintf('''') sec_file{ref_id} '.html#' int2str(ref_id) sprintf('''') '>' ...
+            ref_name{ref_id} '</a>' ...
+            file(clos_brac+1:length(file))];
+    
+    k(length(k))=[];
+    
+    if (number_of_references-length(k))/number_of_references>announce/100
+      waitbar((number_of_references-length(k))/number_of_references);
+      announce=announce+1;
+    endif
+    
+  endwhile
   
-  %now we build the html the file
-  disp('Building HTML')
+  close(refbar);
+  
+  disp('Creating equation references.')
+  k=strfind(file,'\eqref{');
+  number_of_references=length(k);
+  refbar=waitbar(0,'Creating equation references...');
+  announce=1;
+  while length(k)>0
+    open_brac=k(length(k))+length('\eqref{')-1;
+    
+    clos_brac=findclosingbrac(file,open_brac);
+    
+    label=file(open_brac+1:clos_brac-1);
+    
+    ref_id=new_label(find(strcmp(old_label,label)));
+    
+    file=[file(1:k(length(k))-1) ...
+            '<a class=' sprintf('''') 'reference' sprintf('''') ' href=' sprintf('''') sec_file{ref_id} '.html#' int2str(ref_id) sprintf('''') '>' ...
+            '(' ref_name{ref_id} ')' '</a>' ...
+            file(clos_brac+1:length(file))];
+    
+    k(length(k))=[];
+    
+    if (number_of_references-length(k))/number_of_references>announce/100
+      waitbar((number_of_references-length(k))/number_of_references);
+      announce=announce+1;
+    endif
+    
+  endwhile
+  
+  close(refbar);
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %Create citations
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  disp('Creating citations.')
+  k=strfind(file,'\cite');
+  number_of_references=length(k);
+  refbar=waitbar(0,'Creating citations...');
+  announce=1;
+  while length(k)>0
+    char_to_verify=k(length(k));
+    k(length(k))=[];
+    
+    if strcmp(file(char_to_verify+length('\cite')),'\[')
+      oparg_open_brac=char_to_verify+length('\cite');
+      oparg_clos_brac=findclosingbrac(file,oparg_open_brac);
+      oparg=[', ' file(oparg_open_brac+1:oparg_clos_brac-1)];
+    else
+      oparg_clos_brac=char_to_verify+length('\cite')-1;
+      oparg='';
+    endif
+    
+    open_brac=oparg_clos_brac+1;
+    clos_brac=findclosingbrac(file,open_brac);
+    
+    citt=[',' file(open_brac+1:clos_brac-1) ','];
+    commas=findstr(citt,',');
+    citation_keys={};
+    %let's make a cell array with all citation keys which appear
+    for i=1:length(commas)-1
+      citation_keys{i}=citt(commas(i)+1:commas(i+1)-1);
+    endfor
+    
+    
+    open_brac=k(length(k))+length('\ref{')-1;
+    
+    clos_brac=findclosingbrac(file,open_brac);
+    
+    label=file(open_brac+1:clos_brac-1);
+    
+    ref_id=new_label(find(strcmp(old_label,label)));
+    
+    file=[file(1:k(length(k))-1) ...
+            '<a class=' sprintf('''') 'reference' sprintf('''') ' href=' sprintf('''') sec_file{ref_id} '.html#' int2str(ref_id) sprintf('''') '>' ...
+            ref_name{ref_id} '</a>' ...
+            file(clos_brac+1:length(file))];
+    
+    k(length(k))=[];
+    
+    if (number_of_references-length(k))/number_of_references>announce/100
+      waitbar((number_of_references-length(k))/number_of_references);
+      announce=announce+1;
+    endif
+    
+  endwhile
+  
+  close(refbar);
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %The following html code is standard for every page to be created
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
   htmlload = [fileread('src/html_head') ...
-              sprintf('\n\n') '<title>' title '</title>' sprintf('\n\n') ...
-              '</head>' sprintf('\n') '<body>' sprintf('\n\n') ...
-              fileread('src/latex_commands') sprintf('\n\n') ...
-              '<div id=' sprintf('''') 'sidebar' sprintf('''') 'class=' sprintf('''') 'sidebar' sprintf('''') '>' ...
-              sidebar sprintf('\n') ...
-              '</div>' sprintf('\n\n') ...
-              fileread('src/html_main')];
+            sprintf('\n\n') '<title>' title '</title>' sprintf('\n\n') ...
+            '</head>' sprintf('\n') '<body>' sprintf('\n\n') ...
+            fileread('src/latex_commands') sprintf('\n\n') ...
+            '<div id=' sprintf('''') 'sidebar' sprintf('''') 'class=' sprintf('''') 'sidebar' sprintf('''') '>' ...
+            sidebar sprintf('\n') ...
+            '</div>' sprintf('\n\n') ...
+            fileread('src/html_main')];
+            
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %Create title page with abstract
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
-  file = [htmlload sprintf('\n\n') file sprintf('\n\n') '</body>' sprintf('\n') '</html>'];
-  new_file=fopen([original_filename(1:length(original_filename)-4) '_converted.html'],'w'); %create empty html file
-  file=strrep(file,'\','\\'); %technical details
-  file=strrep(file,'%','%%'); %technical details
-  fprintf(new_file,file);
-  fclose(new_file);
+  disp('Building front page.')
+  
+  curr_file = [  ...
+    '<h1 class=' sprintf('''') 'maintitle' sprintf('''') '>' ...
+    title ...
+    '</h1>' sprintf('\n\n') ...
+    authors ...
+    ];
+  
+  published_text=fileread('src/published');
+  if length(published_text)>0
+    curr_file = [ curr_file sprintf('\n\n') ...
+    '<div class=' sprintf('''') 'published' sprintf('''') '>' ...
+    published_text ...
+    '</div>'];
+  endif
+  
+  %Let's find the abstract
+  k=strfind(file,'\beginabstract');
+  p=strfind(file,'\endabstract');
+  if length(k)>0
+    abstract_text=file(k+length('\beginabstract'):p-1);
+    
+    file=[file(1:k-1) file(p+length('\endabstract'):length(file))];
+  else
+    abstract_text='';
+  endif
+  
+  if length(abstract_text)>0
+    curr_file = [ curr_file ...
+      sprintf('\n\n') ...
+      '<div class=' sprintf('''') 'abstract' sprintf('''') '>' sprintf('\n') ...
+      '<b>Abstract.</b> ' ...
+      abstract_text sprintf('\n\n') ...
+      '</div>'];
+  endif
+  curr_file = [htmlload sprintf('\n\n') curr_file sprintf('\n\n') '</body>' sprintf('\n') '</html>'];
+  
+  curr_file = strrep(curr_file,'\','\\');
+  
+  curr_page = fopen([original_filename '_front.html'],'w');
+  
+  fprintf(curr_page,curr_file);
+  fclose(curr_page);
+  
+  %Now we separate the different sections and build the html file
+  
+  sec_starts=strfind(file,['<h2 class=' sprintf('''') 'section']);
+  sec_starts(length(sec_starts)+1)=length(file)+1;
+  
+  for i=1:(length(sec_starts)-1)
+    curr_page=[htmlload sprintf('\n\n') file(sec_starts(i):sec_starts(i+1)-1) '</body>' sprintf('\n') '</html>'];
+    curr_page=strrep(curr_page,'\','\\'); %technical details
+    curr_file=fopen([sec_filenames{i} '.html'],'w');
+    fprintf(curr_file,curr_page);
+    fclose(curr_file);
+  endfor
   
   disp('Done.')
+  
 endfunction

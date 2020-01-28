@@ -6,6 +6,36 @@ body {
 	background-color: #F7F7F7;
 }
 
+h1.maintitle {
+	margin:auto;
+	margin-bottom:30px;
+	margin-top: 20px;
+	text-align:center;
+	max-width: 70%;
+}
+
+.published {
+	text-align: center;
+	padding:20px;
+}
+
+div.author {
+	text-align:left;
+	padding: 10px;
+}
+
+.authorname {
+	font-weight:normal;
+}
+
+.authoremail  {
+	font-family: monospace;
+}
+
+.authorinstitution {
+	font-style: italic;
+}
+
 .envidentifier, .envcounter {
 		font-weight: bold;
 		font-style: normal;
@@ -15,6 +45,7 @@ body {
 		font-weight: bold;
 		font-style: normal;
 }
+
 
 div.definition, div.example, div.remark, div.theorem, div.proposition, div.corollary, div.lemma, div.alt {
 	padding: 5px;
@@ -53,7 +84,7 @@ div.definition p:first-child, div.example p:first-child, div.remark p:first-chil
 	display: block;
 	margin: auto;
 	border: 2px solid;
-	max-width: 90%;
+	max-width: 80%;
 	height: auto;
 }
 
@@ -63,7 +94,7 @@ div.definition p:first-child, div.example p:first-child, div.remark p:first-chil
 
 div.proof {
 	position:relative;
-	display: none;
+	
 	border-style: double;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -92,14 +123,14 @@ sections (given by h2's)
 */
 
 div.sidebar {
-position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-z-index: 1; /* Stay on top */
-top: 10px;
-bottom: 10px;
-overflow-y: scroll;
-overflow-x: hidden;  
 float: left;
 width: 20%;/* make sure this is compatible with the margin-left at div.main*/
+bottom: 10px;
+top: 10px;
+position: fixed;
+overflow-x:hidden;
+overflow-y:scroll;
+padding-bottom:40px;
 }
 
 div.sidebar h1.sidebar-title {
@@ -175,6 +206,7 @@ ol.alt {
     counter-reset: listcounter;
 	position:relative;
 }
+
 ol.alt > li {
     list-style: none;
 }
