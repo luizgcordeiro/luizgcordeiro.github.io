@@ -252,7 +252,7 @@ function latextohtml(latex_file_input)
   file=strrep(file,'\item',[sprintf('\n\n') '\item' sprintf('\n\n')]);
   file=strrep(file,'\end',[sprintf('\n\n') '\end']);
   file=strrep(file,'\begin{abstract}',['\beginabstract' sprintf('\n\n')]);
-  file=strrep(file,'\end{abstract}',[sprintf('\n\n') '\endabstract']);
+  file=strrep(file,'\end{abstract}',[sprintf('\n\') '\endabstract']);
   file=strrep(file,'$\Sigma$','&Sigma;');
   %remove '\qedhere's
   file=strrep(file,'\qedhere','');
@@ -1050,6 +1050,9 @@ function latextohtml(latex_file_input)
           if strcmp(file(j:j+length('\alph*')-1),'\alph*')
             list_css=[list_css ' counter(listcounter,lower-alpha)' ];
             j=j+length('\alph*');
+          elseif strcmp(file(j:j+length('&Sigma;')-1),'\Alph*')
+            list_css=[list_css ' &Sigma;' ];
+            j=j+length('$\Sigma$');
           elseif strcmp(file(j:j+length('\Alph*')-1),'\Alph*')
             list_css=[list_css ' counter(listcounter,upper-alpha)' ];
             j=j+length('\Alph*');

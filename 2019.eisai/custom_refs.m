@@ -80,7 +80,7 @@ ref_name{new_label(find(strcmp(old_label,'def:compatibleorder1')))}='(i)';
   ref_name{new_label(find(strcmp(old_label,'lem:description.of.ultrafilters.by.nonzero.products.1')))}='(1)';
   ref_name{new_label(find(strcmp(old_label,'lem:description.of.ultrafilters.by.nonzero.products.2')))}='(2)';
   
-  ref_name{new_label(find(strcmp(old_label,'def:morphismofsigmaordered.zero')))}='(i';
+  ref_name{new_label(find(strcmp(old_label,'def:morphismofsigmaordered.zero')))}='(i)';
   ref_name{new_label(find(strcmp(old_label,'def:morphismofsigmaordered.monotone')))}='(ii)';
   ref_name{new_label(find(strcmp(old_label,'def:morphismofsigmaordered.cup')))}='(iii)';
   ref_name{new_label(find(strcmp(old_label,'def:morphismofsigmaordered.weaklymeet')))}='(iv)';
