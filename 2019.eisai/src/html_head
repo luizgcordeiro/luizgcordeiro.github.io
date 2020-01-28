@@ -5,7 +5,7 @@ The beggining should be equal for all files
 <html>
 <head>
 
-	<script src="src/jquery-3.3.1.min.js"></script> 
+	<script src="src/jquery-3.4.1.min.js"></script> 
 	<script type="text/x-mathjax-config">
 		MathJax.Hub.Config({
 			extensions: ["tex2jax.js"],
