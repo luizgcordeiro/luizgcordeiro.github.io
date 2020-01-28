@@ -1585,6 +1585,13 @@ function latextohtml(latex_file_input)
   number_of_references=length(k);
   refbar=waitbar(0,'Creating references...');
   announce=1;
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %CUSTOM REFERENCE NAMES
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  custom_refs
+  
   while length(k)>0
     open_brac=k(length(k))+length('\ref{')-1;
     
@@ -1653,7 +1660,7 @@ function latextohtml(latex_file_input)
     char_to_verify=k(length(k));
     k(length(k))=[];
     
-    if strcmp(file(char_to_verify+length('\cite')),'\[')
+    if strcmp(file(char_to_verify+length('\cite')),'[')
       oparg_open_brac=char_to_verify+length('\cite');
       oparg_clos_brac=findclosingbrac(file,oparg_open_brac);
       oparg=[', ' file(oparg_open_brac+1:oparg_clos_brac-1)];
@@ -1666,28 +1673,27 @@ function latextohtml(latex_file_input)
     clos_brac=findclosingbrac(file,open_brac);
     
     citt=[',' file(open_brac+1:clos_brac-1) ','];
-    commas=findstr(citt,',');
+    commas=strfind(citt,',');
     citation_keys={};
     %let's make a cell array with all citation keys which appear
     for i=1:length(commas)-1
       citation_keys{i}=citt(commas(i)+1:commas(i+1)-1);
     endfor
     
+    str_citation='[';
+    for i=1:length(citation_keys);
+      if i==1;
+        str_citation=[str_citation '<a class=' sprintf('''') 'reference' sprintf('''') ' href=' sprintf('''') '../HTML citations/' citation_keys{i} '.html' sprintf('''') ' target=' sprintf('''') '_blank' sprintf('''') '>' citation_keys{i} '</a>'];
+      else
+        str_citation=[str_citation ', <a class=' sprintf('''') 'reference' sprintf('''') ' href=' sprintf('''') '../HTML citations/' citation_keys{i} '.html' sprintf('''') ' target=' sprintf('''') '_blank' sprintf('''') '>' citation_keys{i} '</a>'];
+      endif
+      str_citation=[str_citation ']'];
+    endfor
     
-    open_brac=k(length(k))+length('\ref{')-1;
     
-    clos_brac=findclosingbrac(file,open_brac);
-    
-    label=file(open_brac+1:clos_brac-1);
-    
-    ref_id=new_label(find(strcmp(old_label,label)));
-    
-    file=[file(1:k(length(k))-1) ...
-            '<a class=' sprintf('''') 'reference' sprintf('''') ' href=' sprintf('''') sec_file{ref_id} '.html#' int2str(ref_id) sprintf('''') '>' ...
-            ref_name{ref_id} '</a>' ...
+    file=[file(1:char_to_verify-1) ...
+            str_citation ...
             file(clos_brac+1:length(file))];
-    
-    k(length(k))=[];
     
     if (number_of_references-length(k))/number_of_references>announce/100
       waitbar((number_of_references-length(k))/number_of_references);

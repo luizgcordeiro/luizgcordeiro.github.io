@@ -12,11 +12,11 @@ Following the approach in classical Stone duality, as well as in the initial ver
     Suppose that $\mathcal{S}$ is a topological inverse semigroupoid.
     \begin{enumerate}[label=(\alph*)]
         \item\label{lem:ES.Hausdorff.and.S0.Hausdorff1} If $E(\mathcal{S})$ is Hausdorff and , then $\mathcal{S}^{(0)}$ is Hausdorff as well.
-        \item\label{lem:ES.Hausdorff.and.S0.Hausdorff2} If $\mathcal{S}^{(0)}$ is Hausdorff. then the product of compact subsets of $\mathcal{S}$ is compact.
+        \item\label{lem:ES.Hausdorff.and.S0.Hausdorff2} If $\mathcal{S}^{(0)}$ is Hausdorff, then the product of compact subsets of $\mathcal{S}$ is compact.
     \end{enumerate}
 \end{lemma}
 \begin{proof}
-    \begin{enumerate}[label={\ref{lem:ES.Hausdorff.and.S0.Hausdorff\theenumi}}]
+    \begin{enumerate}[label=(\alph*)]
     \item Suppose $E(\mathcal{S})$ is Hausdorff. Given $x_1\neq x_2$ in $\mathcal{S}^{(0)}$, choose $e_1,e_2\in E(\mathcal{S})$ with $\so(e_i)=x_i$, so $e_1\neq e_2$. Take any two open bisections $U_1,U_2$ with $e_i\in U_i$. 
     \item We have $\mathcal{S}^{(2)}=\left\{(a,b)\in\mathcal{S}\colon \so(a)=\ra(b)\right\}$, which is closed in $\mathcal{S}\times\mathcal{S}$ as $\so$ and $\ra$ are continuous and $\mathcal{S}^{(0)}$ is Hausdorff.
     
@@ -81,7 +81,7 @@ We now axiomatize set inclusion for $\mathbf{KB}(\mathcal{S})$. For a preorder $
 
 \begin{definition}\label{def:sigmaorder}
 A \emph{$\Sigma$-ordered} inverse semigroup is an inverse semigroup with zero $S$ equipped with a compatible order $\subseteq$ satisfying
-\begin{enumerate}[label=({$\Sigma$-}\roman*)]
+\begin{enumerate}[label=(Σ-\roman*)]
     \item\label{def:sigmaorder.0minimum} $0\subseteq a$ for all $a\in S$.
     \item\label{def:sigmaorder.conditionaljoins} $(S,\subseteq)$ admits \emph{conditional joins}: If $a_1,a_2\subseteq c$, then the join $a_1\cup a_2=\sup_{\subseteq}\left\{a_1,a_2\right\}$ exists.
     \item\label{def:sigmaorder.distributivity} $(S,\subseteq)$ is (finitely) \emph{distributive}: If a join $c_1\cup c_2$ exists and $a\in S$, then $a(c_1\cup c_2)=(ac_1)\cup (ac_2)$ (the latter term exists by the previous item).
@@ -120,7 +120,7 @@ Suppose that $(S,\subseteq)$ is a $\Sigma$-ordered inverse semigroup.
     \end{enumerate}
 \end{lemma}
 \begin{proof}
-    \begin{enumerate}[label={\ref{lem:technicalpropertiesofsigmaorder\arabic*}}]
+    \begin{enumerate}[label=(\alph*)]
         \item As $x\subseteq z$, we multiply both sides by $y^*y$ to obtain $x=xy^*y\subseteq zy^*y=y$, because $x\leq y\leq z$.
         \item On one hand, $(a\cap b)c^*c\subseteq (a\cap b)b^*b=a\cap b\subseteq a$, and $(a\cap b)c^*c\subseteq bc^*c=c$, so $(a\cap b)c^*c$ is a $\subseteq$-lower bound of $\left\{a,c\right\}$. Simple computations prove that it is the greatest lower bound.
         \item This was already proven in Lemma \ref{lem:relation.of.germs.is.a.graphed.congruence}.

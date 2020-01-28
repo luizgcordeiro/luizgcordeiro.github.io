@@ -113,14 +113,14 @@ MAIN
 <h2 class='section' id='19'>2. Inverse semigroupoids</h2>
 
 <h3 class='subsection' id='20'>2.1. Exel and graphed semigroupoids</h3>
-We will now define semigroupoids, which are generalizations of both semigroups and categories. Every category $\mathcal{C}$ comes with an underlying graph structure, where vertices and arrows correspond respectively to objects and morphisms of $\mathcal{C}$. However, the vertex set of $\mathcal{C}$ can always be recovered from the arrow set, by identifying each object to its corresponding identity morphism, and so categories may be defined purely in terms of their arrow space. This becomes an issue in the case of semigroupoids, where we do not have identity elements (or something similar) anymore. We have two working definitions of semigroupoids: One purely algebraic, introduced by Exel in \cite{MR2754831}, and one where we assume an underlying graph structure, introduced by Tilson in \cite{MR915990}. It should be noted that every semigroupoid in the sense of Tilson is a semigroupoid in the sense of Exel (Proposition <a class='reference' href='main_2.html#38'>2.11</a>).
+We will now define semigroupoids, which are generalizations of both semigroups and categories. Every category $\mathcal{C}$ comes with an underlying graph structure, where vertices and arrows correspond respectively to objects and morphisms of $\mathcal{C}$. However, the vertex set of $\mathcal{C}$ can always be recovered from the arrow set, by identifying each object to its corresponding identity morphism, and so categories may be defined purely in terms of their arrow space. This becomes an issue in the case of semigroupoids, where we do not have identity elements (or something similar) anymore. We have two working definitions of semigroupoids: One purely algebraic, introduced by Exel in [<a class='reference' href='../HTML citations/MR2754831.html' target='_blank'>MR2754831</a>], and one where we assume an underlying graph structure, introduced by Tilson in [<a class='reference' href='../HTML citations/MR915990.html' target='_blank'>MR915990</a>]. It should be noted that every semigroupoid in the sense of Tilson is a semigroupoid in the sense of Exel (Proposition <a class='reference' href='main_2.html#38'>2.11</a>).
 <p>
 To avoid any confusion, we will use capital greek letters $\Lambda,\Gamma,\ldots$ to denote semigroupoids in the sense of Exel, without a priori underlying graph structures. These are called simply <em>semigroupoids</em>, or <em>Exel semigroupoids</em> whenever such precision is warranted. Capital caligraphic latin letters $\mathcal{S},\mathcal{T},\ldots$ will be used to denote semigroupoids in the sense of Tilson, with an underlying graph structure, and these will always be called <em>graphed semigroupoids</em>.
 </p>
 
 <!-- 2.1 -->
 <div class='definition' id='21'>
-<span class='envidentifier'>Definition</span> <span class='envcounter'>2.1</span> <span class='envop'>(\cite[Definition 2.1]{MR2754831})</span>.
+<span class='envidentifier'>Definition</span> <span class='envcounter'>2.1</span> <span class='envop'>([<a class='reference' href='../HTML citations/MR2754831.html' target='_blank'>MR2754831</a>])</span>.
 <p>
 An <em>Exel semigroupoid</em> or simply <em>semigroupoid</em> is a set $\Lambda$ equipped with a subset $\Lambda^{[2]}\subseteq\Lambda\times\Lambda$ and a <em>product</em> map $\mu\colon\Lambda^{[2]}\to\Lambda$, denoted by concatenation, $\mu(f,g)=fg$, which is associative in the following sense: For all $f,g,h\in\Lambda$, the statements
 </p>
@@ -179,7 +179,7 @@ This is an alternative to the more useful construction of a <em>transformation g
 
 </div>
 <p>
-Let us look at some counter-examples for the associativity condition, where some of items <a class='reference' href='main_2.html#23'>(item)</a>-<a class='reference' href='main_2.html#25'>(item)</a> are valid but the others are not.
+Let us look at some counter-examples for the associativity condition, where some of items <a class='reference' href='main_2.html#23'>(i)</a>-<a class='reference' href='main_2.html#25'>(iii)</a> are valid but the others are not.
 </p>
 
 <!-- 2.3 -->
@@ -213,7 +213,7 @@ Let $\Lambda=\left\{f,g,h\right\}$ with product $fg=hh=h$. Then $(fg)h$ is defin
 <div class='example' id='30'>
 <span class='envidentifier'>Example</span> <span class='envcounter'>2.6</span>.
 <p>
-If $\Lambda$ is any set endowed with a non-associative binary operation, then <a class='reference' href='main_2.html#23'>(item)</a>-<a class='reference' href='main_2.html#25'>(item)</a> of Definition <a class='reference' href='main_2.html#21'>2.1</a> are always valid, and in particular equivalent, but $\Lambda$ is not a semigroupoid. For example, take $\Lambda=\left\{a,b\right\}$, $aa=ab=b$, $bb=ba=a$. Then $(aa)a=a$ but $a(aa)=b$.
+If $\Lambda$ is any set endowed with a non-associative binary operation, then <a class='reference' href='main_2.html#23'>(i)</a>-<a class='reference' href='main_2.html#25'>(iii)</a> of Definition <a class='reference' href='main_2.html#21'>2.1</a> are always valid, and in particular equivalent, but $\Lambda$ is not a semigroupoid. For example, take $\Lambda=\left\{a,b\right\}$, $aa=ab=b$, $bb=ba=a$. Then $(aa)a=a$ but $a(aa)=b$.
 </p>
 
 </div>
@@ -256,7 +256,7 @@ We will now consider semigroupoids in the sense of Tilson.
 
 <!-- 2.10 -->
 <div class='definition' id='34'>
-<span class='envidentifier'>Definition</span> <span class='envcounter'>2.10</span> <span class='envop'>(\cite[p.\ 194]{MR915990})</span>.
+<span class='envidentifier'>Definition</span> <span class='envcounter'>2.10</span> <span class='envop'>([<a class='reference' href='../HTML citations/MR915990.html' target='_blank'>MR915990</a>])</span>.
 <p>
 A <em>graphed semigroupoid</em> is a tuple $(\mathcal{S}^{(0)},\mathcal{S},\so,\ra,\mu)$, where $(\mathcal{S}^{(0)},\mathcal{S},\so,\ra)$ is a graph and $\mu\colon\mathcal{S}^{(2)}\to\mathcal{S}$ is a <em>product map</em>, denoted by concatenation, $\mu(a,b)=ab$, satisfying:
 </p>
@@ -325,32 +325,32 @@ for all $(a,b)\in \mathcal{S}^{(2)}$, $\so(ab)=\so(b)$ and $\ra(ab)=\ra(b)$.
 </li>
 </ol>
 <p>
-Then <a class='reference' href='main_2.html#40'>(item)</a> is equivalent to <a class='reference' href='main_2.html#41'>(item)</a>+<a class='reference' href='main_2.html#42'>(item)</a> (that is, their logical conjunction).
+Then <a class='reference' href='main_2.html#40'>(1)</a> is equivalent to <a class='reference' href='main_2.html#41'>(2)</a>+<a class='reference' href='main_2.html#42'>(3)</a> (that is, their logical conjunction).
 </p>
 <p>
-If $\mathcal{S}$ has no sources nor sinks, then <a class='reference' href='main_2.html#41'>(item)</a> implies <a class='reference' href='main_2.html#42'>(item)</a>. (Thus <a class='reference' href='main_2.html#40'>(item)</a> is equivalent to <a class='reference' href='main_2.html#41'>(item)</a> in this case.)
+If $\mathcal{S}$ has no sources nor sinks, then <a class='reference' href='main_2.html#41'>(2)</a> implies <a class='reference' href='main_2.html#42'>(3)</a>. (Thus <a class='reference' href='main_2.html#40'>(1)</a> is equivalent to <a class='reference' href='main_2.html#41'>(2)</a> in this case.)
 </p>
 
 </div>
 <div class='proof' id='43'>
 <span class='envidentifier'>Proof</span>.
 <p>
-The implication <a class='reference' href='main_2.html#41'>(item)</a>+<a class='reference' href='main_2.html#42'>(item)</a>$\Rightarrow$<a class='reference' href='main_2.html#40'>(item)</a> is trivial.
+The implication <a class='reference' href='main_2.html#41'>(2)</a>+<a class='reference' href='main_2.html#42'>(3)</a>$\Rightarrow$<a class='reference' href='main_2.html#40'>(1)</a> is trivial.
 </p>
 <p>
-The only nontrivial part of the implication <a class='reference' href='main_2.html#40'>(item)</a>$\Rightarrow$<a class='reference' href='main_2.html#41'>(item)</a>+<a class='reference' href='main_2.html#42'>(item)</a> is the verification that items <a class='reference' href='main_2.html#23'>(item)</a>-<a class='reference' href='main_2.html#25'>(item)</a> of Definition <a class='reference' href='main_2.html#21'>2.1</a> are equivalent: In other words, to compare when products $ab$, $bc$, $a(bc)$ and $(ab)c$ are defined.
+The only nontrivial part of the implication <a class='reference' href='main_2.html#40'>(1)</a>$\Rightarrow$<a class='reference' href='main_2.html#41'>(2)</a>+<a class='reference' href='main_2.html#42'>(3)</a> is the verification that items <a class='reference' href='main_2.html#23'>(i)</a>-<a class='reference' href='main_2.html#25'>(iii)</a> of Definition <a class='reference' href='main_2.html#21'>2.1</a> are equivalent: In other words, to compare when products $ab$, $bc$, $a(bc)$ and $(ab)c$ are defined.
 </p>
 <p>
-For example, assume that <a class='reference' href='main_2.html#21'>2.1</a><a class='reference' href='main_2.html#23'>(item)</a> is valid, i.e., $(a,b)\in\mathcal{S
+For example, assume that <a class='reference' href='main_2.html#21'>2.1</a><a class='reference' href='main_2.html#23'>(i)</a> is valid, i.e., $(a,b)\in\mathcal{S
 }^{(2)}$ and $(b,c)\in\mathcal{S
 }^{(2)}$. Then $\so(ab)=\so(b)=\ra(c)$, so $(ab,c)\in\mathcal{S
-}^{(2)}$, which means that <a class='reference' href='main_2.html#21'>2.1</a><a class='reference' href='main_2.html#24'>(item)</a> is valid. The other implications are proven similarly. Therefore <a class='reference' href='main_2.html#40'>(item)</a> implies <a class='reference' href='main_2.html#41'>(item)</a>+<a class='reference' href='main_2.html#42'>(item)</a>.
+}^{(2)}$, which means that <a class='reference' href='main_2.html#21'>2.1</a><a class='reference' href='main_2.html#24'>(ii)</a> is valid. The other implications are proven similarly. Therefore <a class='reference' href='main_2.html#40'>(1)</a> implies <a class='reference' href='main_2.html#41'>(2)</a>+<a class='reference' href='main_2.html#42'>(3)</a>.
 </p>
 <p>
 For the last part, assume that $(\mathcal{S
 },\mathcal{S
 }^{(2)},\mu)$ is an Exel semigroupoid and that the graph $\mathcal{S
-}$ has no sources nor sinks, and let us verify <a class='reference' href='main_2.html#42'>(item)</a>. Let $(a,b)\in\mathcal{S
+}$ has no sources nor sinks, and let us verify <a class='reference' href='main_2.html#42'>(3)</a>. Let $(a,b)\in\mathcal{S
 }^{(2)}$. As the vertex $\so(b)$ is not a source of $\mathcal{S
 }$, choose $z\in\mathcal{S
 }$ such that $(b,z)\in\mathcal{S
@@ -358,7 +358,7 @@ For the last part, assume that $(\mathcal{S
 }^{(2)}$, because $(\mathcal{S
 },\mathcal{S
 }^{(2)},\mu)$ is an Exel semigroupoid, which means that $\so(ab)=\ra(z)=\so(b)$. Similarly, $\mathcal{S
-}$ not having sinks implies that $\ra(ab)=\ra(a)$. This is precisely property <a class='reference' href='main_2.html#42'>(item)</a>.\qedhere
+}$ not having sinks implies that $\ra(ab)=\ra(a)$. This is precisely property <a class='reference' href='main_2.html#42'>(3)</a>.
 </p>
 
 </div>
@@ -372,12 +372,12 @@ Every semigroup $S$ may be regarded as a graphed semigroupoid with a singleton v
 
 </div>
 <p>
-We will now characterize Exel semigroupoids which admit a compatible graph structure (Proposition <a class='reference' href='main_2.html#52'>2.15</a>). These were already considered in \cite{MR2419901}. We will moreover classify all compatible graph structures to such an Exel semigroupoid (Proposition <a class='reference' href='main_2.html#60'>2.17</a>).
+We will now characterize Exel semigroupoids which admit a compatible graph structure (Proposition <a class='reference' href='main_2.html#52'>2.15</a>). These were already considered in [<a class='reference' href='../HTML citations/MR2419901.html' target='_blank'>MR2419901</a>]. We will moreover classify all compatible graph structures to such an Exel semigroupoid (Proposition <a class='reference' href='main_2.html#60'>2.17</a>).
 </p>
 
 <!-- 2.13 -->
 <div class='definition' id='45'>
-<span class='envidentifier'>Definition</span> <span class='envcounter'>2.13</span> <span class='envop'>(\cite[Definition 19.1]{MR2419901})</span>.
+<span class='envidentifier'>Definition</span> <span class='envcounter'>2.13</span> <span class='envop'>([<a class='reference' href='../HTML citations/MR2419901.html' target='_blank'>MR2419901</a>])</span>.
 <p>
 Let $\Lambda$ be an Exel semigroupoid. For every $a\in\Lambda$, we define
 <div class='equation' id='46'>
@@ -428,10 +428,10 @@ For all $a,b\in\Lambda$, $\Lambda_a$ and $\Lambda_b$ are either disjoint or equa
 Assume that $\Lambda$ is categorical and let $a,b\in\Lambda$. We need to prove that if $\Lambda_a$ and $\Lambda_b$ are not disjoint, then they are equal. Suppose $p\in\Lambda_a\cap\Lambda_b$. By symmetry, it is sufficient to prove that $\Lambda_a\subseteq\Lambda_b$.
 </p>
 <p>
-Given $r\in\Lambda_a$, we have $a\in\Lambda^p\cap\Lambda^r$. Therefore, $\Lambda^p=\Lambda^r$, as $\Lambda$ is categorical. As $b\in\Lambda^p=\Lambda^r$, then $r\in\Lambda_b$. Therefore <a class='reference' href='main_2.html#50'>(item)</a> is valid.
+Given $r\in\Lambda_a$, we have $a\in\Lambda^p\cap\Lambda^r$. Therefore, $\Lambda^p=\Lambda^r$, as $\Lambda$ is categorical. As $b\in\Lambda^p=\Lambda^r$, then $r\in\Lambda_b$. Therefore <a class='reference' href='main_2.html#50'>(2)</a> is valid.
 </p>
 <p>
-The implication <a class='reference' href='main_2.html#50'>(item)</a>$\Rightarrow$<a class='reference' href='main_2.html#49'>(item)</a> is completely analogous.\qedhere
+The implication <a class='reference' href='main_2.html#50'>(2)</a>$\Rightarrow$<a class='reference' href='main_2.html#49'>(1)</a> is completely analogous.
 </p>
 
 </div>
@@ -530,7 +530,7 @@ a\in\Lambda_z=\so(a)=\ra(b)=\Lambda_b,
 which means that $(a,b)\in\Lambda^{[2]}$.
 </p>
 <p>
-Finally, since $\Lambda^{ab}=\Lambda^b$ and $\Lambda_{ab}=\Lambda_a$ for all $(a,b)\in\Lambda^{(2)}$, we obtain $\ra(ab)=\ra(a)$ and $\so(ab)=\so(b)$ (this is where Equation <a class='reference' href='main_2.html#56'>(2.16)</a> is necessary). By Proposition <a class='reference' href='main_2.html#38'>2.11</a>, $(\Lambda_{R_0,R_1}^{(0)},\Lambda,\so,\ra,\mu)$ is a graphed semigroupoid.\qedhere
+Finally, since $\Lambda^{ab}=\Lambda^b$ and $\Lambda_{ab}=\Lambda_a$ for all $(a,b)\in\Lambda^{(2)}$, we obtain $\ra(ab)=\ra(a)$ and $\so(ab)=\so(b)$ (this is where Equation <a class='reference' href='main_2.html#56'>(2.16)</a> is necessary). By Proposition <a class='reference' href='main_2.html#38'>2.11</a>, $(\Lambda_{R_0,R_1}^{(0)},\Lambda,\so,\ra,\mu)$ is a graphed semigroupoid.
 </p>
 
 </div>
@@ -572,7 +572,7 @@ for all $a,b\in\Lambda$ such that $\Lambda^a=\Lambda_b=\varnothing$. Note that t
 R_i=\left\{(v_i(a),v_i(b)):F_i(v_i(a))=F_i(v_i(b))\right\}.
 \end{equation*}
 </div>
-Then Equation <a class='reference' href='main_2.html#56'>(2.16)</a> is clearly satisfied, by the definition of $F_0$ and $F_1$ and because $\so$ and $\ra$ are compatible with the semigroupoid structure of $\Lambda$ (see Definition <a class='reference' href='main_2.html#34'>2.10</a><a class='reference' href='main_2.html#36'>(item)</a>).
+Then Equation <a class='reference' href='main_2.html#56'>(2.16)</a> is clearly satisfied, by the definition of $F_0$ and $F_1$ and because $\so$ and $\ra$ are compatible with the semigroupoid structure of $\Lambda$ (see Definition <a class='reference' href='main_2.html#34'>2.10</a><a class='reference' href='main_2.html#36'>(ii)</a>).
 </p>
 <p>
 Therefore the maps $F_i$ factor through the quotient to bijections $V_i/R_i\to W_i$. This gives us a bijection
@@ -662,7 +662,7 @@ v_0(a)R_0'v_0(b)&\iff&[v_0(a)]'=[v_0(b)]'&\iff& J([v_0(a)]')=J([v_0(b)]')\\
 \end{array}
 \end{equation*}
 </div>
-where we use the facts that $J$ is injective, the definition of the source map $\so_{R_0',R_1'}$, the fact that $(J,\id_{\Lambda})$ is a graph isomorphism, and the definitions of $F_0$ and of $R_0=\ker F_0$. Therefore $R_0'=R_0$. Similarly, $R_1'=R_1$.\qedhere
+where we use the facts that $J$ is injective, the definition of the source map $\so_{R_0',R_1'}$, the fact that $(J,\id_{\Lambda})$ is a graph isomorphism, and the definitions of $F_0$ and of $R_0=\ker F_0$. Therefore $R_0'=R_0$. Similarly, $R_1'=R_1$.
 </p>
 
 </div>
@@ -705,7 +705,7 @@ Uniqueness of such $\phi^{(0)}$ is immediate, since we require that $\so_H\circ\
 \so_H(\phi(a))=\ra_H(\phi(z))=\so_H(\phi(b)).
 \end{equation*}
 </div>
-Therefore, we obtain a unique function $\phi^{(0)}\colon G^{(0)}\to H^{(0)}$ satisfying $\so_H\circ\phi=\phi^{(0)}\circ\so_G$. The proof that $\ra_H\circ\phi=\phi^{(0)}\circ\ra_G$ follows a similar argument as in the paragraph above, but using instead the fact that $G$ has no sinks.\qedhere
+Therefore, we obtain a unique function $\phi^{(0)}\colon G^{(0)}\to H^{(0)}$ satisfying $\so_H\circ\phi=\phi^{(0)}\circ\so_G$. The proof that $\ra_H\circ\phi=\phi^{(0)}\circ\ra_G$ follows a similar argument as in the paragraph above, but using instead the fact that $G$ has no sinks.
 </p>
 
 </div>
@@ -809,9 +809,9 @@ For all $e,f\in E(\Lambda)$, if $ef$ is defined, then $fe$ is also defined and $
 <div class='proof' id='89'>
 <span class='envidentifier'>Proof</span>.
 
-<a class='reference' href='main_2.html#87'>(item)</a>$\Rightarrow$<a class='reference' href='main_2.html#88'>(item)</a>: Suppose that $\Lambda$ is categorical, and that $ef$ is defined, where $e,f\in E(\Lambda)$. We consider any compatible graph structure on $\Lambda$. Then $\so(f)=\ra(f)=\so(e)=\ra(e)$, so $fe$ is defined. Let $x=\so(e)$. Then $e$ and $f$ belong to the isotropy semigroup $\Lambda_x^x$ and are idempotents, therefore $ef=fe$ (\cite[Theorem 5.1.1]{MR1455373}).
+<a class='reference' href='main_2.html#87'>(1)</a>$\Rightarrow$<a class='reference' href='main_2.html#88'>(2)</a>: Suppose that $\Lambda$ is categorical, and that $ef$ is defined, where $e,f\in E(\Lambda)$. We consider any compatible graph structure on $\Lambda$. Then $\so(f)=\ra(f)=\so(e)=\ra(e)$, so $fe$ is defined. Let $x=\so(e)$. Then $e$ and $f$ belong to the isotropy semigroup $\Lambda_x^x$ and are idempotents, therefore $ef=fe$ ([<a class='reference' href='../HTML citations/MR1455373.html' target='_blank'>MR1455373</a>]).
 
-<a class='reference' href='main_2.html#88'>(item)</a>$\Rightarrow$<a class='reference' href='main_2.html#87'>(item)</a>: Assume <a class='reference' href='main_2.html#88'>(item)</a> holds. We will construct an explicit compatible graph structure on $\Lambda$, although similar arguments may be used to prove directly that $\Lambda$ is categorical. We define the following equivalence relation $\sim$ on $E(\Lambda)$:
+<a class='reference' href='main_2.html#88'>(2)</a>$\Rightarrow$<a class='reference' href='main_2.html#87'>(1)</a>: Assume <a class='reference' href='main_2.html#88'>(2)</a> holds. We will construct an explicit compatible graph structure on $\Lambda$, although similar arguments may be used to prove directly that $\Lambda$ is categorical. We define the following equivalence relation $\sim$ on $E(\Lambda)$:
 <div class='equation' id='90'>
 \begin{equation*}
 e\sim f\iff ef\text{ is defined}.
@@ -831,7 +831,7 @@ Since a product $ab$ is defined if and only if $a^*abb^*$ is defined, i.e., if a
 (ab)(ab)^*=(aa^*a)b(ab)^*=(aa^*)(ab)(ab)^*,
 \end{equation*}
 </div>
-so $\ra(ab)=\ra(a)$. Similarly, $\so(ab)=\so(b)$. By Proposition <a class='reference' href='main_2.html#38'>2.11</a>, $(\Lambda^{(0)},\Lambda,\so,\ra,\mu)$ is a graphed semigroupoid.\qedhere
+so $\ra(ab)=\ra(a)$. Similarly, $\so(ab)=\so(b)$. By Proposition <a class='reference' href='main_2.html#38'>2.11</a>, $(\Lambda^{(0)},\Lambda,\so,\ra,\mu)$ is a graphed semigroupoid.
 </p>
 
 </div>
@@ -850,7 +850,7 @@ Every inverse semigroupoid $\Lambda$ is categorical. Equivalently, if $e,f\in E(
 <div class='proof' id='94'>
 <span class='envidentifier'>Proof</span>.
 <p>
-We will prove that $\Lambda$ satisfies condition <a class='reference' href='main_2.html#88'>(item)</a> of Lemma <a class='reference' href='main_2.html#85'>2.24</a>, which follows the same arguments as in the case of inverse semigroups (see \cite[Proposition 5.1.1]{MR1455373}), as long as we make sure that all products involved are defined. We include the details for completeness. Suppose that $e,f\in E(\Lambda)$, and that $(e,f)\in \Lambda^{[2]}$. Let $x=(ef)^*$. Then
+We will prove that $\Lambda$ satisfies condition <a class='reference' href='main_2.html#88'>(2)</a> of Lemma <a class='reference' href='main_2.html#85'>2.24</a>, which follows the same arguments as in the case of inverse semigroups (see [<a class='reference' href='../HTML citations/MR1455373.html' target='_blank'>MR1455373</a>]), as long as we make sure that all products involved are defined. We include the details for completeness. Suppose that $e,f\in E(\Lambda)$, and that $(e,f)\in \Lambda^{[2]}$. Let $x=(ef)^*$. Then
 <div class='equation' id='95'>
 \begin{equation*}
 (ef)x(ef)=ef\qquad\text{and}\qquad x(ef)x=x
@@ -874,7 +874,7 @@ so $x\in E(\Lambda)$, and in particular $x=x^*=ef$ is idempotent.
 Since $fx=f(ef)$ is defined, then $fe$ is defined, and the same argument as above (changing the roles of $e$ and $f$) proves that $fe\in E(\Lambda)$. To finish, we use the equalities $x=fxe=ef$ to obtain
 <div class='equation' id='98'>
 \begin{equation*}
-fe=fefe=fxe=x=ef.\qedhere
+fe=fefe=fxe=x=ef.
 \end{equation*}
 </div>
 </p>
@@ -917,7 +917,7 @@ a\leq b\iff a=ba^*a.
 Note that inverse semigroupoid homomorphisms preserve the order.
 </p>
 <p>
-If a product $ab$ is defined in the inverse semigroupoid $\mathcal{S}$, then $\ra(a^*)=\so(a)=\ra(b)=\so(b^*)$, so $b^*a^*$ is also defined. Using this and the commutativity of $E(\mathcal{S})$, the properties below can be proven by the same computations as in the case of inverse semigroups. See \cite[Chapter 5]{MR1455373} for details.
+If a product $ab$ is defined in the inverse semigroupoid $\mathcal{S}$, then $\ra(a^*)=\so(a)=\ra(b)=\so(b^*)$, so $b^*a^*$ is also defined. Using this and the commutativity of $E(\mathcal{S})$, the properties below can be proven by the same computations as in the case of inverse semigroups. See [<a class='reference' href='../HTML citations/MR1455373.html' target='_blank'>MR1455373</a>] for details.
 </p>
 
 <!-- 2.29 -->
@@ -953,7 +953,7 @@ the following are equivalent:
 </p>
 
 <style>ol.altlist107 > li:before {
-content:  '(' 'a' 'l' 'p' 'h' '{' 'e' 'n' 'u' 'm' 'i' '}' '.' counter(listcounter,lower-roman) ')';
+content:  '(' 'c' '.' counter(listcounter,lower-roman) ')';
 }
 </style>
 <ol class='alt altlist107'>
@@ -1036,7 +1036,7 @@ We may determine subclasses of the class of semigroupoids algebraically as follo
 <h3 class='subsection' id='117'>2.3. A representation theorem</h3>
 Cayley's theorem states that every group can be represented as a permutation group on some set. More generally, the Vagner-Preston theorem states that every inverse semigroup can be represented as a semigroup of partial bijections on some set. In this subsection, we will further generalize this to represent semigroupoids as certain semigroupoids of partial bijections.
 <p>
-Representation results have been obtained in the context of <em>inverse categories</em>, i.e., (possibly large) categories which behave as inverse semigroupoids. Namely, it is proven that every (locally small) inverse category may be faithfully embedded into the category $\cat{PInj}$ of sets and partial bijections. For more details, see \cite[p. 87]{MR0506554}, \cite[Theorem 3.8]{MR1871071}, \cite[Proposition 3.11]{MR3093088}. However we adopt a fundamentally different perspective from those works, by considering inverse semigroupoids as innate to bundles. This approach has the advantage of making the dynamical nature of inverse semigroupoids more explicit, and in particular to naturally motivating a natural notion of <em>action</em> for inverse semigroupoids.
+Representation results have been obtained in the context of <em>inverse categories</em>, i.e., (possibly large) categories which behave as inverse semigroupoids. Namely, it is proven that every (locally small) inverse category may be faithfully embedded into the category $\cat{PInj}$ of sets and partial bijections. For more details, see [<a class='reference' href='../HTML citations/MR0506554.html' target='_blank'>MR0506554</a>], [<a class='reference' href='../HTML citations/MR1871071.html' target='_blank'>MR1871071</a>], [<a class='reference' href='../HTML citations/MR3093088.html' target='_blank'>MR3093088</a>]. However we adopt a fundamentally different perspective from those works, by considering inverse semigroupoids as innate to bundles. This approach has the advantage of making the dynamical nature of inverse semigroupoids more explicit, and in particular to naturally motivating a natural notion of <em>action</em> for inverse semigroupoids.
 </p>
 <p>
 Let $\pi\colon X\to X^{(0)}$ be a bundle. A <em>partial bijection between fibers</em> of $\pi$ is a triple $(y,f,x)$, where $x,y\in X^{(0)}$ and $f\colon\dom(f)\to\ran(f)$ is a bijection with $\dom(f)\subseteq\pi^{-1}(x)$ and $\ran(f)\subseteq\pi^{-1}(y)$ (in other words, $f$ is a <em>partial bijection</em> from $\pi^{-1}(x)$ to $\pi^{-1}(y)$). We denote by $\mathcal{I}(\pi)$ the set of all partial bijections between fibers of $\pi$.
@@ -1138,7 +1138,7 @@ Notice that, for $a,b\in\mathcal{S}$,
 ab\text{ is defined}\iff\so(a)=\ra(b)\iff\so(\alpha(a))=\ra(\alpha(b))\iff\alpha(a)\alpha(b)\text{ is defined}.\tag{2.33}
 \end{equation*}
 </div>
-Using the equivalence above and the same arguments as in the proof of the Vagner-Preston theorem (see \cite[Proposition 2.1.3]{MR1724106}, for example), it follows that $\alpha$ is an injective semigroupoid homomorphism. In fact, the right-to-left implications of <a class='reference' href='main_2.html#129'>2.33</a> imply that the image of $\alpha$ is a sub-semigroupoid of $\mathcal{I}(\ra)$, onto which $\alpha$ is an isomorphism.\qedhere
+Using the equivalence above and the same arguments as in the proof of the Vagner-Preston theorem (see [<a class='reference' href='../HTML citations/MR1724106.html' target='_blank'>MR1724106</a>], for example), it follows that $\alpha$ is an injective semigroupoid homomorphism. In fact, the right-to-left implications of <a class='reference' href='main_2.html#129'>2.33</a> imply that the image of $\alpha$ is a sub-semigroupoid of $\mathcal{I}(\ra)$, onto which $\alpha$ is an isomorphism.
 </p>
 
 </div>
@@ -1185,22 +1185,22 @@ However, as stated in the introduction, we will be interested in more general no
 
 <h3 class='subsection' id='134'>2.4. $\land$-prehomomorphisms, partial homomorphisms, and actions</h3>
 <p>
-Generalizations of homomorphisms, initially called $\lor$ and $\land$-<em>prehomomorphisms</em>, were respectively introduced in \cite[Definition 1.1]{MR0424979} and \cite[Definition 4.1]{MR0470123} by McAlister and Reilly on their study of $E$-unitary inverse semigroups. We will focus on $\land$-prehomomorphisms, which are appropriate for the constructions of semidirect products.
+Generalizations of homomorphisms, initially called $\lor$ and $\land$-<em>prehomomorphisms</em>, were respectively introduced in [<a class='reference' href='../HTML citations/MR0424979.html' target='_blank'>MR0424979</a>] and [<a class='reference' href='../HTML citations/MR0470123.html' target='_blank'>MR0470123</a>] by McAlister and Reilly on their study of $E$-unitary inverse semigroups. We will focus on $\land$-prehomomorphisms, which are appropriate for the constructions of semidirect products.
 </p>
 
 <!-- 2.35 -->
 <div class='remark' id='135'>
 <span class='envidentifier'>Remark</span> <span class='envcounter'>2.35</span>.
 <p>
-The terminology <span>&#8220;</span>prehomomorphism<span>&#8221;</span> has been used to describe  $\lor$-prehomomorphisms in \cite[p. 80]{MR1694900}, but used to describe $\land$-prehomomorphisms in \cite[VI.7.2]{MR752899} and \cite{Mikola2017}. In order to avoid confusion, we will use the original terminology of <span>&#8220;</span>$\land$-prehomomorphism<span>&#8221;</span>.
+The terminology <span>&#8220;</span>prehomomorphism<span>&#8221;</span> has been used to describe  $\lor$-prehomomorphisms in [<a class='reference' href='../HTML citations/MR1694900.html' target='_blank'>MR1694900</a>], but used to describe $\land$-prehomomorphisms in [<a class='reference' href='../HTML citations/MR752899.html' target='_blank'>MR752899</a>] and [<a class='reference' href='../HTML citations/Mikola2017.html' target='_blank'>Mikola2017</a>]. In order to avoid confusion, we will use the original terminology of <span>&#8220;</span>$\land$-prehomomorphism<span>&#8221;</span>.
 </p>
 
 </div>
 <p>
-A more specific case of $\land$-prehomomorphisms are <em>partial homomorphisms</em>, whose study was initiated by Exel in \cite{MR1276163}, in order to describe the structure of C*-algebras endowed with an action of the circle. This turned out to be a rich area of research, with several applications in the theory of topological dynamical systems and C*-algebras (see \cite{MR2799098,MR3699795}). Let us mention that partial homomorphisms of general inverse semigroups were first defined in \cite{MR3231479}, while partial actions of groupoids (on rings) were defined in \cite{MR2982887}.
+A more specific case of $\land$-prehomomorphisms are <em>partial homomorphisms</em>, whose study was initiated by Exel in [<a class='reference' href='../HTML citations/MR1276163.html' target='_blank'>MR1276163</a>], in order to describe the structure of C*-algebras endowed with an action of the circle. This turned out to be a rich area of research, with several applications in the theory of topological dynamical systems and C*-algebras (see [<a class='reference' href='../HTML citations/MR2799098.html' target='_blank'>MR2799098</a>], <a class='reference' href='../HTML citations/MR3699795.html' target='_blank'>MR3699795</a>]). Let us mention that partial homomorphisms of general inverse semigroups were first defined in [<a class='reference' href='../HTML citations/MR3231479.html' target='_blank'>MR3231479</a>], while partial actions of groupoids (on rings) were defined in [<a class='reference' href='../HTML citations/MR2982887.html' target='_blank'>MR2982887</a>].
 </p>
 <p>
-We will now define $\land$-prehomomorphisms and partial homomorphisms in the context of semigroupoids, connecting in a precise manner all the notions described above. From them, we will construct semidirect products in a manner which generalizes semidirect products of groupoids (\cite[Exercise 11.5.1]{MR2273730}), transformation groupoids of partial group actions (\cite{MR2045419}), semidirect products of inverse semigroups acting on semilattices (see \cite[Lemma 1.1]{MR0357660.1} and \cite[VI.7.6-7]{MR752899}). Similarly, groupoids of germs of (partial) inverse semigroup actions are simply the underlying groupoids of the associated semidirect product (see Section <a class='reference' href='main_4.html#267'>4</a>).
+We will now define $\land$-prehomomorphisms and partial homomorphisms in the context of semigroupoids, connecting in a precise manner all the notions described above. From them, we will construct semidirect products in a manner which generalizes semidirect products of groupoids ([<a class='reference' href='../HTML citations/MR2273730.html' target='_blank'>MR2273730</a>]), transformation groupoids of partial group actions ([<a class='reference' href='../HTML citations/MR2045419.html' target='_blank'>MR2045419</a>]), semidirect products of inverse semigroups acting on semilattices (see [<a class='reference' href='../HTML citations/MR0357660.1.html' target='_blank'>MR0357660.1</a>] and [<a class='reference' href='../HTML citations/MR752899.html' target='_blank'>MR752899</a>]). Similarly, groupoids of germs of (partial) inverse semigroup actions are simply the underlying groupoids of the associated semidirect product (see Section <a class='reference' href='main_4.html#267'>4</a>).
 </p>
 
 <!-- 2.36 -->
@@ -1238,10 +1238,10 @@ If $a\leq b$ in $\mathcal{S}$, then $\theta(a)\leq\theta(b)$ in $\mathcal{T}$.
 </li>
 </ol>
 <p>
-If $\theta$ satisfies <a class='reference' href='main_2.html#138'>(item)</a>-<a class='reference' href='main_2.html#139'>(item)</a>, then $\theta$ is called a <em>$\land$-prehomomorphism</em>. If $\theta$ satisfies all of <a class='reference' href='main_2.html#138'>(item)</a>-<a class='reference' href='main_2.html#140'>(item)</a>, then $\theta$ is called a <em>partial homomorphism</em>.
+If $\theta$ satisfies <a class='reference' href='main_2.html#138'>(i)</a>-<a class='reference' href='main_2.html#139'>(ii)</a>, then $\theta$ is called a <em>$\land$-prehomomorphism</em>. If $\theta$ satisfies all of <a class='reference' href='main_2.html#138'>(i)</a>-<a class='reference' href='main_2.html#140'>(iii)</a>, then $\theta$ is called a <em>partial homomorphism</em>.
 </p>
 
-</div>.
+</div>
 
 <!-- 2.37 -->
 <div class='example' id='141'>
@@ -1258,10 +1258,10 @@ If $X$ has sufficiently large cardinality (e.g. $|X|\geq|\mathcal{S}|$), then th
 If $\theta\colon\mathcal{S}\to\mathcal{T}$ is a $\land$-prehomomorphism, then $\theta$ takes idempotents to idempotents. Indeed, if $e\in E(\mathcal{S})$, then $\theta(e)^*\theta(e)=\theta(e^*)\theta(e)\leq\theta(e^*e)=\theta(e)$. Applying the definition of the order of $\mathcal{T}$ implies $\theta(e)=\theta(e)^*\theta(e)$, which is idempotent.
 </p>
 <p>
-Following \cite[p. 12]{MR1694900}, two elements $a,b\in\mathcal{S}$ are <em>compatible</em> if $a^*b$ and $ab^*$ are idempotent. Any $\land$-prehomomorphism $\theta\colon\mathcal{S}\to\mathcal{T}$ takes compatible elements to compatible elements, if $a,b\in\mathcal{S}$ are compatible, then $\theta(a)^*\theta(b)\leq\theta(a^*b)$, which is idempotent. Similarly, $\theta(a)\theta(b)^*$ is idempotent.
+Following [<a class='reference' href='../HTML citations/MR1694900.html' target='_blank'>MR1694900</a>], two elements $a,b\in\mathcal{S}$ are <em>compatible</em> if $a^*b$ and $ab^*$ are idempotent. Any $\land$-prehomomorphism $\theta\colon\mathcal{S}\to\mathcal{T}$ takes compatible elements to compatible elements, if $a,b\in\mathcal{S}$ are compatible, then $\theta(a)^*\theta(b)\leq\theta(a^*b)$, which is idempotent. Similarly, $\theta(a)\theta(b)^*$ is idempotent.
 </p>
 <p>
-The statements <a class='reference' href='main_2.html#136'>2.36</a>.<a class='reference' href='main_2.html#138'>(item)</a>-<a class='reference' href='main_2.html#140'>(item)</a> are independent, that is, there exist maps $\theta\colon\mathcal{S}\to\mathcal{T}$ between inverse semigroupoids which satisfy any two of them but not the third one. In fact, we can obtain such examples for inverse semigroups, which we present for the sake of reference.
+The statements <a class='reference' href='main_2.html#136'>2.36</a>.<a class='reference' href='main_2.html#138'>(i)</a>-<a class='reference' href='main_2.html#140'>(iii)</a> are independent, that is, there exist maps $\theta\colon\mathcal{S}\to\mathcal{T}$ between inverse semigroupoids which satisfy any two of them but not the third one. In fact, we can obtain such examples for inverse semigroups, which we present for the sake of reference.
 </p>
 
 <!-- 2.38 -->
@@ -1273,7 +1273,7 @@ Let $G=\left\{1,g\right\}$ be the cyclic group of order $2$ and $X=\left\{a,b\ri
 \theta_g\colon\left\{a\right\}\to\left\{b\right\},\qquad\theta_g(a)=b.
 \end{equation*}
 </div>
-Then $\theta$ satisfies <a class='reference' href='main_2.html#136'>2.36</a><a class='reference' href='main_2.html#139'>(item)</a> and <a class='reference' href='main_2.html#140'>(item)</a>, but not <a class='reference' href='main_2.html#138'>(item)</a>.
+Then $\theta$ satisfies <a class='reference' href='main_2.html#136'>2.36</a><a class='reference' href='main_2.html#139'>(ii)</a> and <a class='reference' href='main_2.html#140'>(iii)</a>, but not <a class='reference' href='main_2.html#138'>(i)</a>.
 </p>
 
 </div>
@@ -1282,7 +1282,7 @@ Then $\theta$ satisfies <a class='reference' href='main_2.html#136'>2.36</a><a c
 <div class='example' id='144'>
 <span class='envidentifier'>Example</span> <span class='envcounter'>2.39</span>.
 <p>
-Let $G=\left\{1\right\}$ be the trivial group, and $H=\left\{1,g\right\}$ the cyclic group of order $2$. The map $\theta\colon G\to H$, $1\mapsto g$ satisfies  <a class='reference' href='main_2.html#136'>2.36</a><a class='reference' href='main_2.html#138'>(item)</a> and <a class='reference' href='main_2.html#140'>(item)</a>, but not <a class='reference' href='main_2.html#139'>(item)</a>.
+Let $G=\left\{1\right\}$ be the trivial group, and $H=\left\{1,g\right\}$ the cyclic group of order $2$. The map $\theta\colon G\to H$, $1\mapsto g$ satisfies  <a class='reference' href='main_2.html#136'>2.36</a><a class='reference' href='main_2.html#138'>(i)</a> and <a class='reference' href='main_2.html#140'>(iii)</a>, but not <a class='reference' href='main_2.html#139'>(ii)</a>.
 </p>
 
 </div>
@@ -1291,7 +1291,7 @@ Let $G=\left\{1\right\}$ be the trivial group, and $H=\left\{1,g\right\}$ the cy
 <div class='example' id='145'>
 <span class='envidentifier'>Example</span> <span class='envcounter'>2.40</span>.
 <p>
-Let $L_2=\left\{0,1\right\}$ be the lattice with two elements, $0\smallerthan 1$, and define $\theta\colon L_2\to L_2$ as $\theta(a)=b$ and $\theta(b)=\theta(a)$. Then <a class='reference' href='main_2.html#136'>2.36</a><a class='reference' href='main_2.html#138'>(item)</a> and <a class='reference' href='main_2.html#139'>(item)</a> are satisfied, but <a class='reference' href='main_2.html#140'>(item)</a> is not (i.e., $\theta$ is a $\land$-prehomomorphisms but not a partial homomorphism).
+Let $L_2=\left\{0,1\right\}$ be the lattice with two elements, $0\smallerthan 1$, and define $\theta\colon L_2\to L_2$ as $\theta(a)=b$ and $\theta(b)=\theta(a)$. Then <a class='reference' href='main_2.html#136'>2.36</a><a class='reference' href='main_2.html#138'>(i)</a> and <a class='reference' href='main_2.html#139'>(ii)</a> are satisfied, but <a class='reference' href='main_2.html#140'>(iii)</a> is not (i.e., $\theta$ is a $\land$-prehomomorphisms but not a partial homomorphism).
 </p>
 
 </div>
@@ -1316,7 +1316,7 @@ Let $S=\left\{a,b\right\}$ and $\theta$ be as in Example <a class='reference' hr
 On the other hand, it is easy to verify that if $\eta$ is a $\land$-prehomomorphism and $\theta$ is a partial homomorphism, then $\theta\circ\eta$ is a $\land$-prehomomorphism, and also that the composition of two partial homomorphisms is a partial homomorphism.
 </p>
 <p>
-We may now define $\land$-preactions and partial actions. In particular from property <a class='reference' href='main_2.html#136'>2.36</a><a class='reference' href='main_2.html#139'>(item)</a>, we may apply Proposition <a class='reference' href='main_2.html#75'>2.19</a> to obtain a unique map $\phi^{(0)}\colon\mathcal{S}^{(0)}\to\mathcal{T}^{(0)}$ such that $(\phi^{(0)},\phi)$ is a graph homomorphism.
+We may now define $\land$-preactions and partial actions. In particular from property <a class='reference' href='main_2.html#136'>2.36</a><a class='reference' href='main_2.html#139'>(ii)</a>, we may apply Proposition <a class='reference' href='main_2.html#75'>2.19</a> to obtain a unique map $\phi^{(0)}\colon\mathcal{S}^{(0)}\to\mathcal{T}^{(0)}$ such that $(\phi^{(0)},\phi)$ is a graph homomorphism.
 </p>
 
 <!-- 2.42 -->
@@ -1356,7 +1356,7 @@ These notions extend, simultaneously, those of (global) actions and partial acti
 <div class='example' id='151'>
 <span class='envidentifier'>Example</span> <span class='envcounter'>2.44</span>.
 <p>
-Let $S$ be an inverse semigroup, so $S^{(0)}=\left\{\ast\right\}$ is a singleton. Given any set $X$, there is a unique map $\pi\colon X\to S^{(0)}$. Therefore, partial and global actions of $S$ on $X$, as an inverse semigroupoid, are the same as partial and global actions of $S$ on $X$ in the usual sense of inverse semigroups (see e.g. \cite[Definition 5.1]{MR2565546} and \cite[Definition 3.3]{MR3231479}).
+Let $S$ be an inverse semigroup, so $S^{(0)}=\left\{\ast\right\}$ is a singleton. Given any set $X$, there is a unique map $\pi\colon X\to S^{(0)}$. Therefore, partial and global actions of $S$ on $X$, as an inverse semigroupoid, are the same as partial and global actions of $S$ on $X$ in the usual sense of inverse semigroups (see e.g. [<a class='reference' href='../HTML citations/MR2565546.html' target='_blank'>MR2565546</a>] and [<a class='reference' href='../HTML citations/MR3231479.html' target='_blank'>MR3231479</a>]).
 </p>
 
 </div>
@@ -1365,7 +1365,7 @@ Let $S$ be an inverse semigroup, so $S^{(0)}=\left\{\ast\right\}$ is a singleton
 <div class='example' id='152'>
 <span class='envidentifier'>Example</span> <span class='envcounter'>2.45</span>.
 <p>
-If $\mathcal{G}$ is a groupoid, then a non-degenerate global action $(\pi,\theta)\colon\mathcal{G}\curvearrowright X$ is the same as a groupoid action as in \cite[Definition 3.6]{MR2969047} or \cite[Exercise 11.2.1]{MR2273730}, i.e., it satisfies $\dom(\theta_a)=\pi^{-1}(a)$ for all $a\in\mathcal{S}$.
+If $\mathcal{G}$ is a groupoid, then a non-degenerate global action $(\pi,\theta)\colon\mathcal{G}\curvearrowright X$ is the same as a groupoid action as in [<a class='reference' href='../HTML citations/MR2969047.html' target='_blank'>MR2969047</a>] or [<a class='reference' href='../HTML citations/MR2273730.html' target='_blank'>MR2273730</a>], i.e., it satisfies $\dom(\theta_a)=\pi^{-1}(a)$ for all $a\in\mathcal{S}$.
 </p>
 <p>
 Indeed, as $\theta$ is a global action then $\dom(\theta_a)=\dom(\theta_{a^*a})=\dom(\theta_{\so(a)})$ for all $a\in\mathcal{S}$. That is, $\dom(\theta_a)$ depends only on $\so(a)$, so if $\so(a)=\so(b)$ then $\dom(\theta_a)=\dom(\theta_b)$. Non-degeneracy of $(\pi,\theta)$ means precisely that for all $a\in A$, $\pi^{-1}(\so(a))=\bigcup_{b\in\so^{-1}(\so(a))}\dom(\theta_b)=\dom(\theta_a)$, as we wanted.
@@ -1400,7 +1400,7 @@ Every set $X$ is regarded as a groupoid in the trivial manner: $X^{(0)}=X$, and 
 If $\Lambda$ is an Exel semigroupoid, a homomorphism $\phi\colon\Lambda\to X$ is a function such that, if $(a,b)\in\Lambda^{[2]}$, then $\phi(a)=\phi(b)$. In particular, functions between sets are the same as their (semi)groupoid homomorphisms.
 </p>
 <p>
-In the definition below, we regard the vertex set $\mathcal{S}^{(0)}$ as a unit groupoid. This is an adaptation of \cite[p. 3660]{MR2982887}
+In the definition below, we regard the vertex set $\mathcal{S}^{(0)}$ as a unit groupoid. This is an adaptation of [<a class='reference' href='../HTML citations/MR2982887.html' target='_blank'>MR2982887</a>]
 </p>
 
 <!-- 2.48 -->
@@ -1455,7 +1455,7 @@ For every $a\in\mathcal{S}$, $\theta_a$ is a semigroupoid isomorphism from $\dom
 
 <li id='162'>
 <p>
-Alternatively to <a class='reference' href='main_2.html#158'>(item)</a> and <a class='reference' href='main_2.html#159'>(item)</a>, we could adopt the simpler (and slightly stronger) assumption that $\dom(\theta_a)$ is an ideal of $\Lambda$ for all $a\in\mathcal{S}$. This is the case, for example, when all such ideals $\dom(\theta_a)$ are <em>idempotent</em> (see Definition <a class='reference' href='main_2.html#198'>2.62</a>).
+Alternatively to <a class='reference' href='main_2.html#158'>(ii)</a> and <a class='reference' href='main_2.html#159'>(iii)</a>, we could adopt the simpler (and slightly stronger) assumption that $\dom(\theta_a)$ is an ideal of $\Lambda$ for all $a\in\mathcal{S}$. This is the case, for example, when all such ideals $\dom(\theta_a)$ are <em>idempotent</em> (see Definition <a class='reference' href='main_2.html#198'>2.62</a>).
 </p>
 
 </li>
@@ -1493,7 +1493,7 @@ As the only (possible) problem with is that $\theta$ does not necessarily satisf
 More precisely: Let $a\in\mathcal{S}$. If $b_1,b_2\leq a$. Then $b_1$ and $b_2$ are compatible, so $\theta_{b_1}$ and $\theta_{b_2}$ are compatible (see the paragraphs after Definition <a class='reference' href='main_2.html#136'>2.36</a>), which means that $\theta_{b_1}$ and $\theta_{b_2}$ coincide on the intersection of their domains, as do $\theta_{b_1}^{-1}$ and $\theta_{b_2}^{-1}$.
 </p>
 <p>
-Thus we set $\overline{\theta}_a=\bigvee_{b\leq a}\theta_b$, the join taken in $\mathcal{I}(\Lambda)$ i.e., $\overline{\theta}_a(x)$ is defined if and only if $\theta_b(x)$ is defined for some $b\leq a$, in which case $\overline{\theta}_a(x)=\theta_b(x)$. This defines an isomorphism between the ideals $\bigcup_{b\leq a}\dom(\theta_b)$ of $\pi^{-1}(\so(a))$ and $\bigcup_{b\leq a}\ran(\theta_b)$ of $\pi^{-1}(\ra(a))$. It is clear that $\overline{\theta}_{a^*}=\overline{\theta}_a^{-1}$, and that $\overline{\theta}$ is order preserving, and the verification that it is a $\land$-preaction, and thus a partial action, is straightforward.\qedhere
+Thus we set $\overline{\theta}_a=\bigvee_{b\leq a}\theta_b$, the join taken in $\mathcal{I}(\Lambda)$ i.e., $\overline{\theta}_a(x)$ is defined if and only if $\theta_b(x)$ is defined for some $b\leq a$, in which case $\overline{\theta}_a(x)=\theta_b(x)$. This defines an isomorphism between the ideals $\bigcup_{b\leq a}\dom(\theta_b)$ of $\pi^{-1}(\so(a))$ and $\bigcup_{b\leq a}\ran(\theta_b)$ of $\pi^{-1}(\ra(a))$. It is clear that $\overline{\theta}_{a^*}=\overline{\theta}_a^{-1}$, and that $\overline{\theta}$ is order preserving, and the verification that it is a $\land$-preaction, and thus a partial action, is straightforward.
 </p>
 
 </div>
@@ -1515,7 +1515,7 @@ We will endow $\mathcal{S}\ltimes\Lambda$ with a product, and call the resulting
 (a,x)(b,y)=(ab,\theta_{b^*}(x\theta_b(y))).\tag{2.51}
 \end{equation*}
 </div>
-(Compare this formula with the product on partial crossed product algebras; see \cite{arxiv1804.00396,MR1456588,MR1331978}.)
+(Compare this formula with the product on partial crossed product algebras; see [<a class='reference' href='../HTML citations/arxiv1804.00396.html' target='_blank'>arxiv1804.00396</a>], <a class='reference' href='../HTML citations/MR1456588.html' target='_blank'>MR1456588</a>], <a class='reference' href='../HTML citations/MR1331978.html' target='_blank'>MR1331978</a>].)
 </p>
 <p>
 To check that the right-hand side of <a class='reference' href='main_2.html#168'>(2.51)</a> is a well-defined element of $\mathcal{S}\ltimes\Lambda$, first note that $\theta_b(y)$ belongs to the ideal $\dom(\theta_{b^*})$ of $\Lambda$, so $\theta_{b^*}(x\theta_b(y))$ is an element of $\dom(\theta_b)$. We have
@@ -1527,7 +1527,7 @@ To check that the right-hand side of <a class='reference' href='main_2.html#168'
 Since $x$ belongs to the ideal $\dom(\theta_a)$, then $\theta_{b^*}(x\theta_b(y))$ belongs to $\dom(\theta_a\circ\theta_b)$, which is contained in $\dom(\theta_{ab})$ because $\theta$ is a $\land$-prehomomorphism. Therefore $(ab,\theta_{b^*}(x\theta_b(y)))\in\mathcal{S}\ltimes\Lambda$.
 </p>
 <p>
-However, the product <a class='reference' href='main_2.html#168'>(2.51)</a> is not associative in general, even when considering global actions of inverse semigroups on semigroups. The example below is a slight modification of \cite[Example 3.5]{MR2115083}.
+However, the product <a class='reference' href='main_2.html#168'>(2.51)</a> is not associative in general, even when considering global actions of inverse semigroups on semigroups. The example below is a slight modification of [<a class='reference' href='../HTML citations/MR2115083.html' target='_blank'>MR2115083</a>].
 </p>
 
 <!-- 2.52 -->
@@ -1565,7 +1565,7 @@ We call $\mathcal{S}\ltimes\Lambda$ with the product <a class='reference' href='
 
 </div>
 <p>
-We will therefore need to consider conditions on the $\land$-preaction $\theta\colon\mathcal{S}\curvearrowright\Lambda$ which make the product in <a class='reference' href='main_2.html#168'>(2.51)</a> associative, so that we obtain a semigroupoid structure on $\mathcal{S}\ltimes\Lambda$. The same ideas as in \cite[Section 3]{MR2115083}, which lie in the context of partial actions of groups on algebras, may be easily adapted to the context of semigroupoid actions and show that the product <a class='reference' href='main_2.html#168'>(2.51)</a> is in fact associative for a large class of inverse semigroupoid actions. See the paragraph after Proposition <a class='reference' href='main_2.html#199'>2.63</a>
+We will therefore need to consider conditions on the $\land$-preaction $\theta\colon\mathcal{S}\curvearrowright\Lambda$ which make the product in <a class='reference' href='main_2.html#168'>(2.51)</a> associative, so that we obtain a semigroupoid structure on $\mathcal{S}\ltimes\Lambda$. The same ideas as in [<a class='reference' href='../HTML citations/MR2115083.html' target='_blank'>MR2115083</a>], which lie in the context of partial actions of groups on algebras, may be easily adapted to the context of semigroupoid actions and show that the product <a class='reference' href='main_2.html#168'>(2.51)</a> is in fact associative for a large class of inverse semigroupoid actions. See the paragraph after Proposition <a class='reference' href='main_2.html#199'>2.63</a>
 </p>
 
 <!-- 2.54 -->
@@ -1715,7 +1715,7 @@ R_{w}\circ \theta_{b}^{-1}\circ L_{r}\circ\theta_{b}=\theta_{b}^{-1}\circ L_{r}\
 on $\dom(\theta_{b})$. Here we regard $L_r$ as a left multiplier of $\ran(\theta_b)$, as in Example <a class='reference' href='main_2.html#180'>2.55</a>, thus $\theta_{b}^{-1}\circ L_{r}\circ\theta_{b}$ is a left multiplier of $\dom(\theta_{b})$. Similarly, we regard $R_w$ as a right multiplier of $\dom(\theta_{b})$. As we assume that $\dom(\theta_{b})$ is $(L,R)$-associative, then Equation <a class='reference' href='main_2.html#193'>(2.61)</a> holds.
 </p>
 <p>
-In particular, this also proves that $((a,r)(b,s))(c,t)$ is defined if and only if $(a,r)((b,s)(c,t))$ is defined, which is equivalence <a class='reference' href='main_2.html#24'>(item)</a>$\iff$<a class='reference' href='main_2.html#25'>(item)</a> of Definition <a class='reference' href='main_2.html#21'>2.1</a>. We still need to prove that these terms are defined when both $(a,r)(b,s)$ and $(b,s)(c,t)$ are defined..
+In particular, this also proves that $((a,r)(b,s))(c,t)$ is defined if and only if $(a,r)((b,s)(c,t))$ is defined, which is equivalence <a class='reference' href='main_2.html#24'>(ii)</a>$\iff$<a class='reference' href='main_2.html#25'>(iii)</a> of Definition <a class='reference' href='main_2.html#21'>2.1</a>. We still need to prove that these terms are defined when both $(a,r)(b,s)$ and $(b,s)(c,t)$ are defined..
 </p>
 <p>
 Indeed, in this case, $\theta_b^{-1}(r\theta_b(s))$ and $s\theta_c(t)$ are defined, which means that
@@ -1730,7 +1730,7 @@ because $\theta_b^{-1}\circ L_r\circ\theta_b$ and $R_{\theta_c(t)}$ are left and
 \theta_b^{-1}(r\theta_b(s))\theta_c(t)
 \end{equation*}
 </div>
-is defined, thus $((a,r)(b,s))(c,t)$ is also defined.\qedhere
+is defined, thus $((a,r)(b,s))(c,t)$ is also defined.
 </p>
 
 </div>
@@ -1747,7 +1747,7 @@ First assume that <a class='reference' href='main_2.html#191'>(2.59)</a> holds. 
 where the last equality follows from the fact that $cc^*b^*\leq b^*$ and $r\theta_b(sw)$ belongs to $\dom(\theta_{cc^*b^*})\cap\dom(\theta_b^*)$. This is precisely <a class='reference' href='main_2.html#192'>(2.60)</a>.
 </p>
 <p>
-In the other direction, note that the left-hand side of <a class='reference' href='main_2.html#192'>(2.60)</a> is $\theta_b^{-1}(r\theta_b(s))w$, and $w\in\ran(\theta_c)=\dom(\theta_{c^*})$. Thus we may apply $\theta_c^{-1}$ on both sides and use $\theta_c^{-1}\circ\theta_b^{-1}\leq\theta_{bc}^{-1}$ to obtain <a class='reference' href='main_2.html#191'>(2.59)</a>.\qedhere
+In the other direction, note that the left-hand side of <a class='reference' href='main_2.html#192'>(2.60)</a> is $\theta_b^{-1}(r\theta_b(s))w$, and $w\in\ran(\theta_c)=\dom(\theta_{c^*})$. Thus we may apply $\theta_c^{-1}$ on both sides and use $\theta_c^{-1}\circ\theta_b^{-1}\leq\theta_{bc}^{-1}$ to obtain <a class='reference' href='main_2.html#191'>(2.59)</a>.
 </p>
 
 </div>
@@ -1830,7 +1830,7 @@ bL(R'(a))=R(b)R'(a)=R'(R(b)a)=R'(bL(a))=bR'(L(a)),
 in the sense that, in each of these chains of equalities, one of the terms is defined if and only if the other ones are, in which case they coincide. If $\Lambda$ is non-degenerate, this implies that $L(R'(a))=R'(L(a))$ for all $a\in\Lambda$, i.e., $L\circ R'=R'\circ L$.
 </p>
 <p>
-It remains only to prove that, under either of the hypotheses <a class='reference' href='main_2.html#201'>(item)</a> or <a class='reference' href='main_2.html#202'>(item)</a> above, we have $\dom(L)\cap\dom(R')\subseteq\dom(L\circ R')$. Fix $a\in\dom(L)\cap\dom(R')$.
+It remains only to prove that, under either of the hypotheses <a class='reference' href='main_2.html#201'>(i)</a> or <a class='reference' href='main_2.html#202'>(ii)</a> above, we have $\dom(L)\cap\dom(R')\subseteq\dom(L\circ R')$. Fix $a\in\dom(L)\cap\dom(R')$.
 </p>
 <p>
 First assume that $\Lambda$ is idempotent, and write $a=a_1a_2$. Then we may compute
@@ -1848,18 +1848,18 @@ L(a_1R'(a_2))=L(R'(a_1a_2))=L(R'(a)),
 and so $a\in\dom(L\circ R')$.
 </p>
 <p>
-Now assume that condition <a class='reference' href='main_2.html#202'>(item)</a> holds, and take $x\in\Lambda_{L(a)}$, so $xL(a)=R(x)a$ is defined. Since $a$ belongs to the left ideal $\dom(R')$, we may compute
+Now assume that condition <a class='reference' href='main_2.html#202'>(ii)</a> holds, and take $x\in\Lambda_{L(a)}$, so $xL(a)=R(x)a$ is defined. Since $a$ belongs to the left ideal $\dom(R')$, we may compute
 <div class='equation' id='210'>
 \begin{equation*}
 R'(R(x)a)=R(x)R'(a)=xL(R'(a)),
 \end{equation*}
 </div>
-and in particular $a\in\dom(L\circ R')$. The proof that condition <a class='reference' href='main_2.html#203'>(item)</a> implies $(L,R)$-associativity is similar.\qedhere
+and in particular $a\in\dom(L\circ R')$. The proof that condition <a class='reference' href='main_2.html#203'>(iii)</a> implies $(L,R)$-associativity is similar.
 </p>
 
 </div>
 <p>
-We could also adapt the terminology <span>&#8220;</span>$s$-unital<span>&#8221;</span> from ring theory (see \cite{MR0419511}) to the setting of semigroupoids: A semigroupoid $\Lambda$ is <em>left $s$-unital</em> if for every $t\in\Lambda$ there exists $u\in\Lambda_t$ such that $ut=t$. Of course every left $s$-unital semigroupoid is idempotent (and also non-degenerate). Examples of left $s$-unital semigroupoids include regular semigroupoids and categories &#8210; in particular sets, groupoids, regular semigroups, multiplicative semigroups of $s$-unital rings, monoids, lattices etc\ldots
+We could also adapt the terminology <span>&#8220;</span>$s$-unital<span>&#8221;</span> from ring theory (see [<a class='reference' href='../HTML citations/MR0419511.html' target='_blank'>MR0419511</a>]) to the setting of semigroupoids: A semigroupoid $\Lambda$ is <em>left $s$-unital</em> if for every $t\in\Lambda$ there exists $u\in\Lambda_t$ such that $ut=t$. Of course every left $s$-unital semigroupoid is idempotent (and also non-degenerate). Examples of left $s$-unital semigroupoids include regular semigroupoids and categories &#8210; in particular sets, groupoids, regular semigroups, multiplicative semigroups of $s$-unital rings, monoids, lattices etc\ldots
 </p>
 <p>
 Note that if $\Lambda$ is a regular semigroupoid, $I$ is an ideal of $\Lambda$, $x\in I$ and $y$ is an inverse of $x$ in $\Lambda$, then $y=yxy\in I$. It follows that $I$ itself is a regular semigroupoid. In particular, a $\land$-preaction $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$ of an inverse semigroupoid $\mathcal{S}$ on a regular semigroupoid $\Lambda$ will always have the product <a class='reference' href='main_2.html#168'>(2.51)</a> associative. In this case, $\mathcal{S}\ltimes\Lambda$ is also a regular semigroupoid, and in fact the converse implication is also true.
@@ -1900,7 +1900,7 @@ The second equation above implies that
 \theta_{a^*}(z)=\theta_{a^*}(z\theta_a(x)z)=\theta_{a^*}(z)x\theta_{a^*}(z).
 \end{equation*}
 </div>
-Together with the first equation of <a class='reference' href='main_2.html#214'>(2.65)</a>, this means that the element $y=\theta_{a^*}(z)$ is an inverse of $x$ in $\Lambda$, and $z=\theta_a(y)$.\qedhere
+Together with the first equation of <a class='reference' href='main_2.html#214'>(2.65)</a>, this means that the element $y=\theta_{a^*}(z)$ is an inverse of $x$ in $\Lambda$, and $z=\theta_a(y)$.
 </p>
 
 </div>
