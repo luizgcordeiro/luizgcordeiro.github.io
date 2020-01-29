@@ -1,0 +1,23 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: osg.aux
+The style file: abbrv.bst
+Database file #1: biblio.bib
+I was expecting an "="---line 174 of file biblio.bib
+ : @book 
+ :       {MR0264581,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 651 of file biblio.bib
+ :   
+ :   note = {Accessed: 2016-05-18}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 792 of file biblio.bib
+ : 
+ : %   MRCLASS = {},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1188 of file biblio.bib
+ : 
+ : @article {MR3229595,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+(There were 4 error messages)

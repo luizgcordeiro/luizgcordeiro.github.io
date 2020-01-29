@@ -1,0 +1,16 @@
+I agree with all of the comments made by the referee, and they have all been addressed. Below are the changes I made:
+
+(1) Stated instead that they are "injections and thus Borel isomorphisms onto their images", with appropriate reference.
+(2) Added as a footnote.
+(3) Added a small paragraph after Definition 3.1, as an example ($G$ sofic implies $[G]$ metrically sofic). Added a paragraph at the beggining of the proof of 3.5 referring to it.
+(4) Added to Definition 3.1.
+(5) substituted by "the distance between $\phi_k(r(\alpha A))$ and $\theta_k(\alpha)(\phi(A))$ converges to zero". Also restated that $(\theta,\phi)$ is "asymptotically covariant" (instead of "invariant").
+(6) Corrected.
+
+I was not aware of [1] (mentioned by the referee), and I thank the referee for pointing this out. A remark was added after Definition 2.2, and the abstract was modified accordingly (removed the parts stating we introduce this notion).
+
+I also corrected the name in reference [16], and re-referenced the Lusin-Novikov theorem to Kechris' book ("Classical descriptive set theory", https://mathscinet.ams.org/mathscinet-getitem?mr=1321597) , since the proof from Srivastava's book ("A course on Borel sets", https://mathscinet.ams.org/mathscinet-getitem?mr=1619545) comes from Kechris.
+
+Finally, I added a paragraph with "Acknowledgements" at the end, and moved the reference of my supervisors there intstead of the footnote in the first page.
+
+[1] Y. Kida. Invariants of orbit equivalence relations and Baumslag-Solitar groups. Tohoku Math. J. (2), 66(2):205-258, 2014.

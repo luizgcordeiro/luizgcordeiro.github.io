@@ -135,7 +135,7 @@ function latextohtml(latex_file_input)
       j=j+1;
     endwhile
     file=[file(1:pos(1)-1) file(j:length(file))];
-    pos(1)=strfind(file,[sprintf('\n') '%']);
+    pos=strfind(file,[sprintf('\n') '%']);
   endwhile
 	
   pos=strfind(file,'%');
@@ -145,7 +145,7 @@ function latextohtml(latex_file_input)
       j=j+1;
     endwhile
     file=[file(1:pos(1)-1) file(j:length(file))];
-	pos(1)=strfind(file,[sprintf('\n') '%']);
+	pos=strfind(file,'%');
   endwhile
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -666,7 +666,6 @@ function latextohtml(latex_file_input)
       %this is a referenciable element
       alt_counter=alt_counter+1;
       str_id = [' id=' sprintf('''') int2str(alt_counter) sprintf('''')];
-      file(char_to_verify:char_to_verify+100)
       sec_file{alt_counter}=sec_filename;
       %verify if it has a counter or not
       if strcmp(file(char_to_verify+length(exp_to_verify)),'*');

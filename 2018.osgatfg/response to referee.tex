@@ -1,0 +1,97 @@
+\documentclass[11pt]{amsart}
+
+\setlength{\textwidth}{125mm}
+\setlength{\textheight}{195 mm}
+%\usepackage{anyfontsize}		%mais tamanhos de fonte
+\usepackage{fullpage}			%margens menores
+%\usepackage{wrapfig}			%poder pôr figuras no meio do texto
+%\usepackage{graphicx}			%poder inserir figuras
+%\usepackage[portuges]{babel}		%hifenização em português
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}		%poder escrever acentos no código
+\usepackage[T1]{fontenc}		%uma fonte mais completa ao compilar (e.g. acentos sem isso são símbolos isolados)
+						%http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
+\usepackage{amsmath}			%símbolos matemáticos
+\usepackage{amssymb}			%mais símbolos matemáticos
+\usepackage{amsthm}			%poder usar 'theoremstyle'
+\usepackage{mathrsfs}			%\mathscr
+%\usepackage[pdftex]{hyperref}		%transformar \ref em links
+\usepackage[pdftex,bookmarksnumbered]{hyperref}	%números no índice do leitor de PDF
+%\usepackage{nicefrac}			%frações legais - \nicefrac[<fontcmd>]{<num>}{<den>}
+\usepackage{eucal}
+\usepackage{amsfonts}
+\usepackage{multicol}
+
+%\everymath{\displaystyle}		%todo texto matematico em displaystyle
+\usepackage{tikz-cd}			%diagramas
+%\usepackage[vcentermath]{youngtab}			%Young diagrams and tableaux
+
+%\usepackage[initials]{amsrefs}
+\usepackage[numbers]{natbib}
+
+\hyphenation{fe-cha-do res-tri-ta e-xis-tem con-ver-gen-tes con-ver-gen-te e-qui-va-len-tes li-mi-ta-do li-mi-ta-da sub-es-pa-ço sub-es-pa-ços de-mons-tra-ção de-mons-tra-ções ba-lan-ce-a-da ba-lan-ce-a-do de-mons-tra-do te-nha-mos to-po-ló-gi-co re-pa-ra-me-tri-za-ções re-pa-ra-me-tri-za-ção pa-ra-me-tri-za-das to-po-ló-gi-cos to-po-ló-gi-ca fun-çõe fun-ção so-lu-ções}
+
+\newcounter{generalnumbering} \numberwithin{generalnumbering}{section}
+
+\theoremstyle{plain}		\newtheorem{theorem}[generalnumbering]{Theorem}
+\theoremstyle{plain}		\newtheorem{corollary}[generalnumbering]{Corollary}
+\theoremstyle{definition}		\newtheorem{definition}[generalnumbering]{Definition}
+\theoremstyle{definition}		\newtheorem{example}[generalnumbering]{Example}
+\theoremstyle{plain}		\newtheorem{proposition}[generalnumbering]{Proposition}
+\theoremstyle{plain}		\newtheorem{lemma}[generalnumbering]{Lemma}
+
+\newenvironment{remark}
+{\vspace{\topsep}\noindent\textbf{Remark.}}
+{\vspace{\topsep}}
+
+\author{Luiz Cordeiro}
+%\thanks{$\hspace{0pt}^\dagger$Supported by CAPES/Ciência Sem Fronteiras PhD scholarship 012035/2013-00.}
+\email{lcord081@uottawa.ca}
+\address{University of Ottawa, Canada}
+
+\title{Response to referee\\On sofic groupoids and their full groups\\Sur les groupoïdes sofiques et leur groupes pleins}
+
+\begin{document}
+
+\maketitle
+
+I agree with all of the comments made by the referee, and they have all been addressed. Below are the changes I made:
+\begin{enumerate}
+\item[(1)] Stated instead that they are "injections and thus Borel isomorphisms onto their images", with appropriate reference.
+\item[(2)] Added the definition of strong limit of measures as a footnote.
+\item[(3)] Added a small paragraph after Definition 3.1, as an example ($G$ sofic implies $[G]$ metrically sofic). Added a paragraph at the beggining of the proof of 3.5 referring to it.
+\item[(4)] Added ``sofic approximation'' to Definition 3.1.
+\item[(5)] substituted by "the distance between $\phi_k(r(\alpha A))$ and $\theta_k(\alpha)(\phi(A))$ converges to zero". Also restated that $(\theta,\phi)$ is "asymptotically covariant" (instead of "invariant").
+\item[(6)] Corrected.
+\end{enumerate}
+
+I was not aware of \cite{MR3229595}, and I thank the referee for pointing this out. A remark was added after Definition 2.2, and the abstract was modified accordingly (removed the parts stating we introduce this notion).
+
+I also corrected the name in reference \cite{MR2826401}, and re-referenced the Lusin-Novikov theorem to Kechris' book \cite{MR1321597}), since the proof from Srivastava's book (\cite{MR1619545}) comes from Kechris'. I also corrected a typo in Example 1.2 (The inverse graph should be $\left\{(f(x),x):{\underline{x}}\in X\right\}$ and not $\left\{(f(x),x):{\underline{f}}\in X\right\}$).
+
+Finally, I added a paragraph with "Acknowledgements" at the end, and moved the reference of my supervisors there instead of the footnote in the first page.
+
+Below is the list of comments sent by the referee, for simplicity:
+
+\begin{enumerate}
+\item[(1)] p. 1, line 50: in the definition of the Borel full semigroup, it
+would be more clear to say that $s|_A$ and $r|_A$ are both injections (as
+opposed to bijections), since only the domains of these functions are
+specified, but not the codomains.
+\item[(2)] p. 3, line 15: It would be helpful if the definition of "strong
+limit" of measures was given.
+\item[(3)] p. 7, Theorem 3.5: Only one of the implications in the statement
+of Theorem 3.5 is acknowledged in the proof sketch.
+\item[(4)] p. 7, line 14: "sofic approximation for $[G]$" was never defined.
+Presumably this means "a sequence of maps as in Definition 3.1," but
+this should be made explicit
+\item[(5)] p. 7, lines 18-19: "as close as necessary" is an awkward phrase
+to use here and should be rephrased.
+\item[(6)] p. 7, line 20: "sofic approximation of $[[G]]$" should be "sofic
+approximation of G"
+\end{enumerate}
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+\end{document}
