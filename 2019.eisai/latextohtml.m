@@ -252,7 +252,7 @@ function latextohtml(latex_file_input)
   file=strrep(file,'\item',[sprintf('\n\n') '\item' sprintf('\n\n')]);
   file=strrep(file,'\end',[sprintf('\n\n') '\end']);
   file=strrep(file,'\begin{abstract}',['\beginabstract' sprintf('\n\n')]);
-  file=strrep(file,'\end{abstract}',[sprintf('\n\') '\endabstract']);
+  file=strrep(file,'\end{abstract}',[sprintf('\n') '\endabstract']);
   file=strrep(file,'$\Sigma$','&Sigma;');
   %remove '\qedhere's
   file=strrep(file,'\qedhere','');
@@ -1045,6 +1045,7 @@ function latextohtml(latex_file_input)
         label_open = char_to_verify+length(exp_to_verify);
         label_close = findclosingbrac(file,label_open);
         
+        j=label_open+1;
         while j<label_close
           if strcmp(file(j:j+length('\alph*')-1),'\alph*')
             list_css=[list_css ' counter(listcounter,lower-alpha)' ];
