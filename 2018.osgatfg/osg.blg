@@ -1,23 +1,66 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: osg.aux
+This is BibTeX, Version 0.99d (TeX Live 2019/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: osg.aux
 The style file: abbrv.bst
 Database file #1: biblio.bib
-I was expecting an "="---line 174 of file biblio.bib
+I was expecting an "="---line 347 of file biblio.bib
  : @book 
  :       {MR0264581,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 651 of file biblio.bib
+I was expecting a `,' or a `}'---line 1301 of file biblio.bib
  :   
  :   note = {Accessed: 2016-05-18}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 792 of file biblio.bib
+You're missing a field name---line 1583 of file biblio.bib
  : 
  : %   MRCLASS = {},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1188 of file biblio.bib
+I was expecting a `,' or a `}'---line 2375 of file biblio.bib
  : 
  : @article {MR3229595,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+You've used 18 entries,
+            2118 wiz_defined-function locations,
+            628 strings with 6236 characters,
+and the built_in function-call counts, 5412 in all, are:
+= -- 553
+> -- 183
+< -- 3
++ -- 75
+- -- 56
+* -- 392
+:= -- 909
+add.period$ -- 55
+call.type$ -- 18
+change.case$ -- 79
+chr.to.int$ -- 0
+cite$ -- 18
+duplicate$ -- 199
+empty$ -- 466
+format.name$ -- 56
+if$ -- 1108
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 20
+newline$ -- 94
+num.names$ -- 36
+pop$ -- 68
+preamble$ -- 1
+purify$ -- 64
+quote$ -- 0
+skip$ -- 126
+stack$ -- 0
+substring$ -- 440
+swap$ -- 24
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 66
+warning$ -- 0
+while$ -- 62
+width$ -- 20
+write$ -- 200
 (There were 4 error messages)

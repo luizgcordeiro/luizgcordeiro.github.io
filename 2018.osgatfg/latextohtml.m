@@ -268,6 +268,24 @@ function latextohtml(latex_file_input)
   %remove '\qedhere's
   file=strrep(file,'\qedhere','');
   
+  %we also remove the bibliography at the end
+  pos=strfind(file,'\bibliographystyle{');
+  while length(pos)>0
+    open_brac=pos(1)+length('\bibliographystyle{')-1;
+    clos_brac=findclosingbrac(file,open_brac);
+    file=[file(1:pos(1)-1) file(clos_brac+1:length(file))];
+    pos=strfind(file,'\bibliographystyle{');
+  endwhile
+  
+  %we also remove the bibliography at the end
+  pos=strfind(file,'\bibliography{');
+  while length(pos)>0
+    open_brac=pos(1)+length('\bibliography{')-1;
+    clos_brac=findclosingbrac(file,open_brac);
+    file=[file(1:pos(1)-1) file(clos_brac+1:length(file))];
+    pos=strfind(file,'\bibliography{');
+  endwhile
+  
   disp(sprintf('-----\n'))
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -322,11 +340,11 @@ function latextohtml(latex_file_input)
       elseif (1-inparagraph) && length(file)>char_to_verify+1 && ...
         (isstrprop(file(char_to_verify+2),'alphanum') || ...
           strcmp(file(char_to_verify+2),'$') || ...
-          strcmp(file(char_to_verify+2:char_to_verify+2+length('\text')-1),'\text') || ...
-          strcmp(file(char_to_verify+2:char_to_verify+2+length('\emph')-1),'\emph') || ...
-          strcmp(file(char_to_verify+2:char_to_verify+2+length('\underline')-1),'\underline') || ...
-          strcmp(file(char_to_verify+2:char_to_verify+2+length('\uline')-1),'\uline') || ...
-          strcmp(file(char_to_verify+2:char_to_verify+2+length('\input')-1),'\input') ...
+          strcmp(file(char_to_verify+2:min(length(file),char_to_verify+2+length('\text')-1)),'\text') || ...
+          strcmp(file(char_to_verify+2:min(length(file),char_to_verify+2+length('\emph')-1)),'\emph') || ...
+          strcmp(file(char_to_verify+2:min(length(file),char_to_verify+2+length('\underline')-1)),'\underline') || ...
+          strcmp(file(char_to_verify+2:min(length(file),char_to_verify+2+length('\uline')-1)),'\uline') || ...
+          strcmp(file(char_to_verify+2:min(length(file),char_to_verify+2+length('\input')-1)),'\input') ...
           )
         file=[ file(1:char_to_verify) '<p>' sprintf('\n') file(char_to_verify+2:length(file))];
         inparagraph=1;
@@ -1056,7 +1074,7 @@ function latextohtml(latex_file_input)
         label_open = char_to_verify+length(exp_to_verify);
         label_close = findclosingbrac(file,label_open);
         
-        j=label_open+1;
+        j=label_open+length('[label=');
         while j<label_close
           if strcmp(file(j:j+length('\alph*')-1),'\alph*')
             list_css=[list_css ' counter(listcounter,lower-alpha)' ];
@@ -1757,25 +1775,32 @@ function latextohtml(latex_file_input)
     '</div>'];
   endif
   
-  %Let's find the abstract
+  %Let's find the abstract. SPECIFIC FOR THIS FILE
   k=strfind(file,'\beginabstract');
   p=strfind(file,'\endabstract');
+  
   if length(k)>0
-    abstract_text=file(k+length('\beginabstract'):p-1);
+    abstract_text_english=file(k(1)+length('\beginabstract'):p(1)-1);
+    abstract_text_french=file(k(2)+length('\beginabstract'):p(2)-1);
     
-    file=[file(1:k-1) file(p+length('\endabstract'):length(file))];
+    file=[file(1:k(1)-1) file(p(1)+length('\endabstract'):k(2)-1) file(p(2)+length('\endabstract'):length(file))];
   else
     abstract_text='';
   endif
   
-  if length(abstract_text)>0
+  if length(abstract_text_english)>0
     curr_file = [ curr_file ...
       sprintf('\n\n') ...
       '<div class=' sprintf('''') 'abstract' sprintf('''') '>' sprintf('\n') ...
       '<b>Abstract.</b> ' ...
-      abstract_text sprintf('\n\n') ...
+      abstract_text_english sprintf('\n\n') ...
+      '</div>' ...
+      '<div class=' sprintf('''') 'abstract' sprintf('''') '>' sprintf('\n') ...
+      '<b>Résumé.</b> ' ...
+      abstract_text_french sprintf('\n\n') ...
       '</div>'];
   endif
+  
   curr_file = [htmlload sprintf('\n\n') curr_file sprintf('\n\n') '</body>' sprintf('\n') '</html>'];
   
   curr_file = strrep(curr_file,'\','\\');

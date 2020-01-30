@@ -31,7 +31,7 @@ The beggining should be equal for all files
 	
 	<link rel="stylesheet" type="text/css" href="src/style.css">
 
-<title>On sofic groupoids and their full groups<br>Sur les groupoïdes sofiques et leur groupes pleins</title>
+<title>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</title>
 
 </head>
 <body>
@@ -58,7 +58,7 @@ The beggining should be equal for all files
 \end{equation*}
 </div>
 
-<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>On sofic groupoids and their full groups<br>Sur les groupoïdes sofiques et leur groupes pleins</h1>
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</h1>
 <h1 class='sidebar-section'><a href='osg_front.html'>Front page</a></h1>
 <hr>
 <h1 class='sidebar-section'><a href='osg_1.html'>1. Introduction</a></h1>
@@ -67,7 +67,8 @@ The beggining should be equal for all files
 <h1 class='sidebar-section'><a href='osg_2.html'>2. Permanence Properties</a></h1>
 <hr>
 <h1 class='sidebar-section'><a href='osg_3.html'>3. Soficity and the full group</a></h1>
-<h2 class='sidebar-subsection'><a href='osg_3.html#51'>Acknowledgements</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='osg_3_54.html'>Acknowledgements</a></h1>
 </div>
 
 <!-------------------------------------------------------
@@ -87,7 +88,7 @@ MAIN
 
 <div class="main">
 
-<h2 class='section' id='42'>3. Soficity and the full group</h2>
+<h2 class='section' id='44'>3. Soficity and the full group</h2>
 <p>
 Given a pmp groupoid $G$, the unit space $G^{(0)}$ is a subgroupoid, and the full semigroup $[[G^{(0)}]]$ coincides with the measure algebra $\operatorname{MAlg}(G^{(0)})$, with product given by intersection. In fact, $\operatorname{MAlg}(G^{(0)})$ coincides with the set of idempotents of $[[G]]$, and every $\alpha\in[[G]]$ can be decomposed as $\alpha=\widetilde{\alpha}A$, where $\widetilde{\alpha}\in[G]$ and $A\in\operatorname{MAlg}(G^{(0)})$ (which corresponds to the fact that every partial isometry in a finite von Neumann algebra can be extended to a unitary). Given $\alpha\in[[G]]$, define $\operatorname{supp}(\alpha)=s(\alpha\setminus G^{(0)})$.
 </p>
@@ -96,23 +97,29 @@ A well-known theorem of Dye [<a class='reference' href='../HTML citations/MR0158
 </p>
 
 <!-- 3.1 -->
-<div class='definition' id='43'>
+<div class='definition' id='45'>
 <span class='envidentifier'>Definition</span> <span class='envcounter'>3.1</span>.
 <p>
 A separable group $\Gamma$ with an bi-invariant metric $d$ is <em>metrically sofic</em> if it admits a sequence of maps $\pi=\left\{\pi_k:\Gamma \to[[Y_k^2]]\right\}$, called a <em>sofic approximation</em> of $\Gamma$, satisfying, for all $\alpha,\beta\in\Gamma$,
 </p>
 
-<ol>
+<style>ol.altlist46 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist46'>
 
-<li id='44'>
-
-[(i)] $\lim_{k\to\infty}d(\pi_k(\alpha),\pi_k(\beta))=d(\alpha,\beta)$;
+<li id='47'>
+<p>
+$\lim_{k\to\infty}d(\pi_k(\alpha),\pi_k(\beta))=d(\alpha,\beta)$;
+</p>
 
 </li>
 
-<li id='45'>
-
-[(ii)] $\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+<li id='48'>
+<p>
+$\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+</p>
 
 </li>
 </ol>
@@ -126,7 +133,7 @@ One of the main points of Dye's proof is to recover $\operatorname{MAlg}(G^{(0)}
 </p>
 
 <!-- 3.2 -->
-<div class='lemma' id='46'>
+<div class='lemma' id='49'>
 <span class='envidentifier'>Lemma</span> <span class='envcounter'>3.2</span>.
 <p>
 Let $(G,\mu)$ be a pmp groupoid and $\alpha,\beta\in[G]$ then $\operatorname{supp}\alpha\cap\operatorname{supp}\beta=\varnothing$ if and only if $d_\mu(\alpha,\beta)=d_\mu(1,\alpha)+d_\mu(1,\beta)$.
@@ -135,7 +142,7 @@ Let $(G,\mu)$ be a pmp groupoid and $\alpha,\beta\in[G]$ then $\operatorname{sup
 </div>
 
 <!-- 3.3 -->
-<div class='definition' id='47'>
+<div class='definition' id='50'>
 <span class='envidentifier'>Definition</span> <span class='envcounter'>3.3</span>.
 <p>
 A pmp groupoid $G$ is <em>aperiodic</em> if $|s^{-1}(x)|=\infty$ for a.e. $x\in G^{(0)}$.
@@ -147,7 +154,7 @@ Just as in the case of equivalence relations, if $G$ is aperiodic then there are
 </p>
 
 <!-- 3.4 -->
-<div class='lemma' id='48'>
+<div class='lemma' id='51'>
 <span class='envidentifier'>Lemma</span> <span class='envcounter'>3.4</span>.
 <p>
 Suppose $G$ is an aperiodic pmp groupoid. Then for all $A\in\operatorname{MAlg}(G^{(0)})$, there exists $\alpha\in[G]$ such that $\operatorname{supp}\alpha=A$.
@@ -156,32 +163,26 @@ Suppose $G$ is an aperiodic pmp groupoid. Then for all $A\in\operatorname{MAlg}(
 </div>
 
 <!-- 3.5 -->
-<div class='theorem' id='49'>
+<div class='theorem' id='52'>
 <span class='envidentifier'>Theorem</span> <span class='envcounter'>3.5</span>.
 <p>
 An aperiodic pmp groupoid $G$ is sofic if and only if the full group $[G]$ is metrically sofic.
 </p>
 
 </div>
-<div class='proof' id='50'>
-<span class='envidentifier'>Sketch of proof.</span>.
+<div class='proof' id='53'>
+<span class='envidentifier'>Sketch of proof</span>.
 <p>
-If $G$ is sofic then $[G]$ is metrically sofic by the comment after Definition <a class='reference' href='osg_3.html#43'>3.1</a>.
+If $G$ is sofic then $[G]$ is metrically sofic by the comment after Definition <a class='reference' href='osg_3.html#45'>3.1</a>.
 </p>
 <p>
-Conversely, let $\theta=\left\{\theta_k:[G]\to[[Y_k^2]]\right\}$ be a sofic approximation of $[G]$. Lemma <a class='reference' href='osg_3.html#48'>3.4</a> allows us to define a sequence of maps $\phi=\left\{\phi_k:\operatorname{MAlg}(G^{(0)})\to\operatorname{MAlg}(Y_k)\right\}$ by $\phi_k(A)=\operatorname{supp}\theta_k(\alpha)$, where $\alpha\in[G]$ is any element with $\operatorname{supp}\alpha=A$. This way, $\phi(A)$ is independent of the choice of $\alpha$ up to null sets, which are disconsidered in sofic approximations. The pair $(\theta,\phi)$ is asymptotically covariant, in the sense that for all $\alpha\in[G]$ and $A\in\operatorname{MAlg}(X)$, the distance between $\phi_k(r(\alpha A))$ and $\theta_k(\alpha)(\phi(A))$ converges to zero. After verifying that $\phi$ is moreover asymptotically order and measure-preserving, we simply define a sofic approximation $\pi=\left\{\pi_k\right\}$ of $G$ by $\pi(\alpha)=\theta(\widetilde{\alpha})\theta(s(\alpha))$, where $\widetilde{\alpha}\in[G]$ is chosen so that $\alpha\subseteq\widetilde{\alpha}$.
+Conversely, let $\theta=\left\{\theta_k:[G]\to[[Y_k^2]]\right\}$ be a sofic approximation of $[G]$. Lemma <a class='reference' href='osg_3.html#51'>3.4</a> allows us to define a sequence of maps $\phi=\left\{\phi_k:\operatorname{MAlg}(G^{(0)})\to\operatorname{MAlg}(Y_k)\right\}$ by $\phi_k(A)=\operatorname{supp}\theta_k(\alpha)$, where $\alpha\in[G]$ is any element with $\operatorname{supp}\alpha=A$. This way, $\phi(A)$ is independent of the choice of $\alpha$ up to null sets, which are disconsidered in sofic approximations. The pair $(\theta,\phi)$ is asymptotically covariant, in the sense that for all $\alpha\in[G]$ and $A\in\operatorname{MAlg}(X)$, the distance between $\phi_k(r(\alpha A))$ and $\theta_k(\alpha)(\phi(A))$ converges to zero. After verifying that $\phi$ is moreover asymptotically order and measure-preserving, we simply define a sofic approximation $\pi=\left\{\pi_k\right\}$ of $G$ by $\pi(\alpha)=\theta(\widetilde{\alpha})\theta(s(\alpha))$, where $\widetilde{\alpha}\in[G]$ is chosen so that $\alpha\subseteq\widetilde{\alpha}$.
 </p>
 
 </div>
 <p>
-By using similar techniques, Theorem <a class='reference' href='osg_3.html#49'>3.5</a> can be extended to all pmp groupoids $G$ such that $|s^{-1}(x)|\geq 2$ for a.e. $x\in G^{(0)}$.
+By using similar techniques, Theorem <a class='reference' href='osg_3.html#52'>3.5</a> can be extended to all pmp groupoids $G$ such that $|s^{-1}(x)|\geq 2$ for a.e. $x\in G^{(0)}$.
 </p>
-
-<h3 class='subsection' id='51'>Acknowledgements</h3>
-The results in this note are part of the author's Ph.D. thesis at the University of Ottawa, written under supervision of Thierry Giordano and Vladimir Pestov. The author also thanks the referee for the valuable comments.
-
-\bibliographystyle{abbrv}
-\bibliography{biblio}
 
 </body>
 </html>

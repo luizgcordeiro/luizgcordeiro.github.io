@@ -1,59 +1,110 @@
 \documentclass[11pt]{amsart}
 
-\setlength{\textwidth}{125mm}
-\setlength{\textheight}{195 mm}
-%\usepackage{anyfontsize}		%mais tamanhos de fonte
-\usepackage{fullpage}			%margens menores
-%\usepackage{wrapfig}			%poder pôr figuras no meio do texto
-%\usepackage{graphicx}			%poder inserir figuras
-%\usepackage[portuges]{babel}		%hifenização em português
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage[utf8]{inputenc}		%poder escrever acentos no código
-\usepackage[T1]{fontenc}		%uma fonte mais completa ao compilar (e.g. acentos sem isso são símbolos isolados)
-						%http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
-\usepackage{amsmath}			%símbolos matemáticos
-\usepackage{amssymb}			%mais símbolos matemáticos
-\usepackage{amsthm}			%poder usar 'theoremstyle'
-\usepackage{mathrsfs}			%\mathscr
-%\usepackage[pdftex]{hyperref}		%transformar \ref em links
-\usepackage[pdftex,bookmarksnumbered]{hyperref}	%números no índice do leitor de PDF
-%\usepackage{nicefrac}			%frações legais - \nicefrac[<fontcmd>]{<num>}{<den>}
-\usepackage{eucal}
-\usepackage{amsfonts}
-\usepackage{multicol}
+%\usepackage[brazil]{babel}		%portuguese hyphenation
+\usepackage[includeheadfoot, margin=1in]{geometry}
+\usepackage{ifthen}
 
-%\everymath{\displaystyle}		%todo texto matematico em displaystyle
-\usepackage{tikz-cd}			%diagramas
+\usepackage[bookmarksnumbered]{hyperref}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{eucal}			%\CMcal for original cal
+%\usepackage{nicefrac}  %nice fractions: \nicefrak[<fontcmd>]{<num>}{<den>}
+\usepackage{tensor}
+
+%\usepackage{wrapfig}			%figures surrounded by text
+%\usepackage{graphicx}			%figures
+%\usepackage{multicol}		%Multicolumn environment, \begin{multicols}{# of columns}\end{multicols}
+
+\usepackage{amsthm}
+\usepackage{enumitem}  %Options for enumerate environment
+\usepackage[normalem]{ulem} %Better underlines
+
+%\everymath{\displaystyle}
+%\usepackage{tikz-cd}			%\usetikzlibrary{matrix}	%diagramas
+\usepackage{tikz}  \usetikzlibrary{arrows,positioning}
 %\usepackage[vcentermath]{youngtab}			%Young diagrams and tableaux
 
-%\usepackage[initials]{amsrefs}
 \usepackage[numbers]{natbib}
+\usepackage{doi}
 
-\hyphenation{fe-cha-do res-tri-ta e-xis-tem con-ver-gen-tes con-ver-gen-te e-qui-va-len-tes li-mi-ta-do li-mi-ta-da sub-es-pa-ço sub-es-pa-ços de-mons-tra-ção de-mons-tra-ções ba-lan-ce-a-da ba-lan-ce-a-do de-mons-tra-do te-nha-mos to-po-ló-gi-co re-pa-ra-me-tri-za-ções re-pa-ra-me-tri-za-ção pa-ra-me-tri-za-das to-po-ló-gi-cos to-po-ló-gi-ca fun-çõe fun-ção so-lu-ções}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcounter{generalnumbering} \numberwithin{generalnumbering}{section}
+\newcounter{generalnumbering}   \numberwithin{generalnumbering}{section}
 
-\theoremstyle{plain}		\newtheorem{theorem}[generalnumbering]{Theorem}
-\theoremstyle{plain}		\newtheorem{corollary}[generalnumbering]{Corollary}
-\theoremstyle{definition}		\newtheorem{definition}[generalnumbering]{Definition}
-\theoremstyle{definition}		\newtheorem{example}[generalnumbering]{Example}
-\theoremstyle{plain}		\newtheorem{proposition}[generalnumbering]{Proposition}
-\theoremstyle{plain}		\newtheorem{lemma}[generalnumbering]{Lemma}
+\theoremstyle{plain}    \newtheorem{theorem}[generalnumbering]{Theorem}
+\theoremstyle{plain}    \newtheorem{corollary}[generalnumbering]{Corollary}
+\theoremstyle{definition}   \newtheorem{definition}[generalnumbering]{Definition}
+\theoremstyle{definition}   \newtheorem{example}[generalnumbering]{Example}
+\theoremstyle{plain}    \newtheorem{proposition}[generalnumbering]{Proposition}
+\theoremstyle{plain}    \newtheorem{lemma}[generalnumbering]{Lemma}
 
-\newenvironment{remark}
-{\vspace{\topsep}\noindent\textbf{Remark.}}
-{\vspace{\topsep}}
+\newcommand{\namefordifferentenvironment}{}
 
+\theoremstyle{plain}    \newtheorem{plainstyle}[generalnumbering]{\namefordifferentenvironment}
+\theoremstyle{plain}    \newtheorem*{plainstyle*}{\namefordifferentenvironment}
+\theoremstyle{definition}    \newtheorem{definitionstyle}[generalnumbering]{\namefordifferentenvironment}
+\theoremstyle{definition}    \newtheorem*{definitionstyle*}{\namefordifferentenvironment}
+
+\newenvironment{penv}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{plainstyle}}{\end{plainstyle}}
+\newenvironment{penv*}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{plainstyle*}}{\end{plainstyle*}}
+\newenvironment{denv}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{definitionstyle}}{\end{definitionstyle}}
+\newenvironment{denv*}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{definitionstyle*}}{\end{definitionstyle*}}
+
+\newenvironment{remark}{\begin{denv*}{Remark}}{\end{denv*}}
+
+\newcommand{\ntag}{\tag{\thegeneralnumbering}\stepcounter{generalnumbering}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%New commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt\hbox{\scriptsize.}\hbox{\scriptsize.}}}=}
+\newcommand*{\eqdef}{=\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt\hbox{\scriptsize.}\hbox{\scriptsize.}}}}
+
+\makeatletter
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareMathAlphabet{\mathfancy}{LS1}{stixscr}{m}{n}
+\makeatother
+
+\newcommand{\cat}[1]{\normalfont{\textsc{\textbf{#1}}}}
+\DeclareMathOperator{\IG}{\mathfancy{I\mkern-2mu G}\mkern-1mu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%AUTHOR INFO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{On sofic groupoids and their full groups\\\ \\Sur les groupoïdes sofiques et leur groupes pleins}
 \author{Luiz Cordeiro$\hspace{0pt}^\dagger$}
+
+%Thanks should be given separately for AMSART
 \thanks{$\hspace{0pt}^\dagger$Supported by CAPES/Ciência Sem Fronteiras PhD scholarship 012035/2013-00.}
-\email{lcord081@uottawa.ca}
+%\thanks{Thanks 2}
+
 \address{University of Ottawa, Canada}
-
-\title{On sofic groupoids and their full groups\\Sur les groupoïdes sofiques et leur groupes pleins}
-
-\usepackage{geometry}
-
-\geometry{left=.8in, right=.8in, top=1in, bottom=1in}
+\email{lcord081@uottawa.ca}				%AMSART
 
 \subjclass[2010]%		%AMSART
 {Primary 37A15;
@@ -64,20 +115,17 @@ Secondary 28D15
 
 \begin{document}
 
-\maketitle
-
 \begin{abstract}
-We prove that the class of sofic groupoids is stable under several measure-theoretic constructions; In particular, we show that virtually sofic groupoids are sofic. We answer a question of Conley, Kechris and Tucker-Drob by proving that an aperiodic pmp groupoid is sofic if and only if its full group is metrically sofic.
+	We prove that the class of sofic groupoids is stable under several measure-theoretic constructions; In particular, we show that virtually sofic groupoids are sofic. We answer a question of Conley, Kechris and Tucker-Drob by proving that an aperiodic pmp groupoid is sofic if and only if its full group is metrically sofic.
 \end{abstract}
 
 \renewcommand{\abstractname}{Résumé}
 
 \begin{abstract}
-Dans cette note nous démontrons que plusieurs constructions de théorie de la mesure préservent la classe des groupoïdes sofiques. En particulier, nous montrons qu'un souis-groupoïde virtuellement sofique est sofique. Nous répondons aussi à une question de Conley, Kechris et Tucker-Drob en démontrant que pour qu'un groupoïde apériodique munie d'une mesure de probabilité invariante soit sofique il est nécessaire et suffisant que son groupe plein soit métriquement sofique.
+	Dans cette note nous démontrons que plusieurs constructions de théorie de la mesure préservent la classe des groupoïdes sofiques. En particulier, nous montrons qu'un souis-groupoïde virtuellement sofique est sofique. Nous répondons aussi à une question de Conley, Kechris et Tucker-Drob en démontrant que pour qu'un groupoïde apériodique munie d'une mesure de probabilité invariante soit sofique il est nécessaire et suffisant que son groupe plein soit métriquement sofique.
 \end{abstract}
 
-%\subsection*{Acknowledgements}
-%This work was supported by CAPES/Ciência Sem Fronteiras PhD scholarship 012035/2013-00, under supervision of Thierry Giordano and Vladimir Pestov.
+\maketitle
 
 \section{Introduction}
 
@@ -124,9 +172,9 @@ Note that if $Y$ and $Z$ are finite sets, then the map $[[Y^2]]\ni\alpha\mapsto 
 
 \begin{definition}\label{definitionsoficapproximation}
 A \emph{sofic approximation} of a pmp groupoid $G$ is a sequence of maps $\pi=\left\{\pi_k:[[G]]\to[[Y_k^2]]\right\}$, where $Y_k$ are finite sets, such that for all $\alpha,\beta\in[[G]]$,
-\begin{enumerate}
-\item[(i)] $\lim_{k\to\infty}\operatorname{tr}(\pi_k(\alpha))=\operatorname{tr}(\alpha)$;
-\item[(ii)] $\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+\begin{enumerate}[label=(\roman*)]
+\item $\lim_{k\to\infty}\operatorname{tr}(\pi_k(\alpha))=\operatorname{tr}(\alpha)$;
+\item $\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
 \end{enumerate}
 A pmp groupoid $G$ is \emph{sofic} if it admits a sofic approximation.
 \end{definition}
@@ -142,9 +190,9 @@ Two pmp groupoids $(G,\mu)$ and $(H,\nu)$ are sofic if and only if $(G\times H,\
 \end{theorem}
 \begin{proof}[Sketch of proof]
 The main point of the proof is to show that the subsemigroup $M$ of $[[G\times H]]$ containing elements which can be written as $\bigcup_{i=1}^n\alpha_i\times\beta_i$, such that $\alpha_i\in[[G]]$, $\beta_i\in[[H]]$
-\begin{enumerate}
-\item[(i)] if $s(\alpha_i)\cap s(\alpha_j)$ and $s(\beta_i)\cap s(\beta_j)$ are both nonempty then $i=j$;
-\item[(ii)] if $r(\alpha_i)\cap r(\alpha_j)$ and $r(\beta_i)\cap r(\beta_j)$ are both nonempty then $i=j$.
+\begin{enumerate}[label=(\roman*)]
+\item if $s(\alpha_i)\cap s(\alpha_j)$ and $s(\beta_i)\cap s(\beta_j)$ are both nonempty then $i=j$;
+\item if $r(\alpha_i)\cap r(\alpha_j)$ and $r(\beta_i)\cap r(\beta_j)$ are both nonempty then $i=j$.
 \end{enumerate}
 is dense in $[[G\times H]]$. Common measure-theoretic arguments allow us to approximate any $\phi\in[[G\times H]]$ by subsets of the form $\bigcup_{i=1}^n\alpha_i\times\beta_i$, $\alpha_i\in[[G]]$, $\beta_i\in[[H]]$, and $\alpha_i\times\beta_i$ pairwise disjoint, however (i) and (ii) are not necessarily satisfied, so to deal with this one substitutes $\alpha_i\times\beta_i$ by $\alpha_i\times\beta_i\setminus\left(\bigcup_{j\neq i}\alpha_is(\alpha_j)\times\beta_is(\beta_j)\right)$, which deals with (i), and do a similar procedure for (ii).
 
@@ -156,9 +204,9 @@ Now we deal with extensions of groupoids, and for this we need to use a notion o
 A subgroupoid $H\subseteq G$ has \emph{finite index} in $G$ if there exist $\psi_1,\ldots,\psi_n\in[G]$ such that $\left\{\psi_iH:i=1\ldots n\right\}$ is a partition of $G$ (up to null sets). We call $\psi_1,\ldots,\psi_n$ \emph{left transversals} of $H$ in $G$. Note that if $H$ has finite index in $G$ then $H^{(0)}=G^{(0)}$ (up to null sets).
 \end{definition}
 
-\begin{remark}
+\begin{denv*}{Remark}
 In \cite{MR3229595}, Kida introduced and studied the \emph{index map} of a subgroupoid $H$ of a pmp groupoid $G$ with $H^{(0)}=G^{(0)}$ as follows: For all $x\in G{(0)}$, define an equivalence relation $\sim_x$ on $r^{-1}(x)$ by setting $g\!\sim_x\! h\!\iff\! g^{-1}h\in H$ for all $g,h\in r^{-1}(x)$. The index $I(x)$ at $x$ is defined as the number of $\sim_x$-equivalence classes. If $H$ is ergodic, then $H$ has finite index in $G$ if an only if the index map is finite a.e. In this case the index map is a.e.\ equal to the cardinality of any set of left transversals of $H$ in $G$ (this follows from Theorem \ref{theoremindexgroupoidisotropyrelations} below).
-\end{remark}\medskip
+\end{denv*}
 
 If $G$ is a groupoid and $x\in G^{(0)}$, define the \emph{isotropy group} $G_x^x=s^{-1}(x)\cap r^{-1}(x)$, which is in fact a group with the operation inherited from $G$, and the the \emph{orbit relation} $(r,s)(G)=\left\{(r(g),s(g)):g\in G\right\}$ on the unit space $G^{(0)}$.
 
@@ -174,7 +222,7 @@ We prove only the harder implication: If the latter condition is satisfied, take
 \begin{theorem}\label{theoremfiniteindexgroupoids}
 Suppose $(G,\mu)$ is a pmp groupoid and $H\subseteq G$ is a subgroupoid of finite index (in particular, $H^{(0)}=G^{(0)}$). If $(H,\mu)$ is sofic, so is $(G,\mu)$.
 \end{theorem}
-\begin{proof}[Sketch of proof.]
+\begin{proof}[Sketch of proof]
 Suppose that $\psi_1,\ldots,\psi_N$ are left transversals for $H\subseteq G$. For each $\alpha\in [[G]]$, let $\alpha_{i,j}=\psi_i^{-1}\alpha\psi_j\cap H$, and note that $\alpha_{i,j}\in[[H]]$. Let $\pi=\left\{\pi_k:[[H]\to[[Y_k^2]]\right\}$ be a sofic approximation of $H$. Define $\phi_k(\alpha)=\bigcup_{i,j}\pi(\alpha_{i,j})\times\left\{(i,j)\right\}$ so that up to modifications on small sets (as in the proof of \ref{theoremproducts}), we can assume assume $\phi_k(\alpha)\in[[Y_k^2\times\left\{1,\ldots,N\right\}^2]]$. This gives us a sequence of maps $\phi=\left\{\phi_k:[[G]]\to[[Y_k^2\times\left\{1,\ldots,N\right\}^2]]\right\}$.
 
 To check that $\Xi=\left\{\Xi_k\right\}$ is a sofic approximation, use its definition and the fact that $\bigcup_j\alpha_{i,j}\beta_{j,l}=(\alpha\beta)_{i,l}$ to show it asymptotically preserves products, and to show that $\Xi$ is asymptotically trace-preserving note that $\operatorname{tr}\Xi(\alpha)=\frac{1}{N}\sum_{i=1}^N\operatorname{tr}(\alpha_{i,i})$. Since $\alpha_{i,i}\cap G^{(0)}=\psi_i^{-1}\alpha\psi_i\cap G^{(0)}$, $\psi_i\in[G]$ and $G$ is pmp, one obtains $\operatorname{tr}(\alpha_{i,i})=\operatorname{tr}(\alpha)$ and we are done.\qedhere
@@ -222,7 +270,7 @@ Let us make a small detour on the structure of finite groupoids in order to obta
 \begin{proposition}\label{propositionfinitegroupoids}
 Every finite pmp groupoid $(G,\mu)$ is a convex combination of groupoids of the form $Y^2\times\Gamma$, where $Y$ is a finite set and $\Gamma$ is a finite group. (In particular every finite groupoid is a coproduct of those of the form $Y^2\times\Gamma$.)
 \end{proposition}
-\begin{proof}[Sketch of proof.]
+\begin{proof}[Sketch of proof]
 Letting $Y_1,\ldots,Y_n$ be the equivalence classes of the orbit relation $(r,s)(G)$, we obtain $G=\sum\mu(Y_i)(Y_iGY_i)$, where each $Y_iGY_i$ is endowed with the normalized counting measure on $(Y_iGY_i)^{(0)}\simeq Y_i$. For a fixed $i$, choose an arbitrary point $x\in Y_i$, and for each $y\in Y_i$ choose $h(y)\in G$ with $s(h(y))=x$, $r(h(y))=y$. The map
 \[Y_i^2\times G_x^x\to Y_iGY_i,\qquad (y_1,y_2,\gamma)\mapsto h(y_1)\gamma h(y_2)^{-1}\]
 is a measure-preserving groupoid isomorphism.\qedhere
@@ -242,9 +290,9 @@ A well-known theorem of Dye \cite{MR0158048} states that an aperiodic equivalenc
 
 \begin{definition}\label{definitionmetricallysofic}
 A separable group $\Gamma$ with an bi-invariant metric $d$ is \emph{metrically sofic} if it admits a sequence of maps $\pi=\left\{\pi_k:\Gamma \to[[Y_k^2]]\right\}$, called a \emph{sofic approximation} of $\Gamma$, satisfying, for all $\alpha,\beta\in\Gamma$,
-\begin{enumerate}
-\item[(i)] $\lim_{k\to\infty}d(\pi_k(\alpha),\pi_k(\beta))=d(\alpha,\beta)$;
-\item[(ii)] $\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+\begin{enumerate}[label=(\roman*)]
+\item $\lim_{k\to\infty}d(\pi_k(\alpha),\pi_k(\beta))=d(\alpha,\beta)$;
+\item $\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
 \end{enumerate}
 \end{definition}
 
@@ -269,7 +317,7 @@ Suppose $G$ is an aperiodic pmp groupoid. Then for all $A\in\operatorname{MAlg}(
 \begin{theorem}\label{theoremfirstimportant}
 An aperiodic pmp groupoid $G$ is sofic if and only if the full group $[G]$ is metrically sofic.
 \end{theorem}
-\begin{proof}[Sketch of proof.]
+\begin{proof}[Sketch of proof]
 If $G$ is sofic then $[G]$ is metrically sofic by the comment after Definition \ref{definitionmetricallysofic}.
 
 Conversely, let $\theta=\left\{\theta_k:[G]\to[[Y_k^2]]\right\}$ be a sofic approximation of $[G]$. Lemma \ref{lemmaaperiodicsupport} allows us to define a sequence of maps $\phi=\left\{\phi_k:\operatorname{MAlg}(G^{(0)})\to\operatorname{MAlg}(Y_k)\right\}$ by $\phi_k(A)=\operatorname{supp}\theta_k(\alpha)$, where $\alpha\in[G]$ is any element with $\operatorname{supp}\alpha=A$. This way, $\phi(A)$ is independent of the choice of $\alpha$ up to null sets, which are disconsidered in sofic approximations. The pair $(\theta,\phi)$ is asymptotically covariant, in the sense that for all $\alpha\in[G]$ and $A\in\operatorname{MAlg}(X)$, the distance between $\phi_k(r(\alpha A))$ and $\theta_k(\alpha)(\phi(A))$ converges to zero. After verifying that $\phi$ is moreover asymptotically order and measure-preserving, we simply define a sofic approximation $\pi=\left\{\pi_k\right\}$ of $G$ by $\pi(\alpha)=\theta(\widetilde{\alpha})\theta(s(\alpha))$, where $\widetilde{\alpha}\in[G]$ is chosen so that $\alpha\subseteq\widetilde{\alpha}$.\qedhere
@@ -277,7 +325,7 @@ Conversely, let $\theta=\left\{\theta_k:[G]\to[[Y_k^2]]\right\}$ be a sofic appr
 
 By using similar techniques, Theorem \ref{theoremfirstimportant} can be extended to all pmp groupoids $G$ such that $|s^{-1}(x)|\geq 2$ for a.e.\ $x\in G^{(0)}$.
 
-\subsection*{Acknowledgements}
+\section*{Acknowledgements}
 The results in this note are part of the author's Ph.D.\ thesis at the University of Ottawa, written under supervision of Thierry Giordano and Vladimir Pestov. The author also thanks the referee for the valuable comments.
 
 \bibliographystyle{abbrv}

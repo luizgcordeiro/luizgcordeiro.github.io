@@ -31,7 +31,7 @@ The beggining should be equal for all files
 	
 	<link rel="stylesheet" type="text/css" href="src/style.css">
 
-<title>On sofic groupoids and their full groups<br>Sur les groupoïdes sofiques et leur groupes pleins</title>
+<title>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</title>
 
 </head>
 <body>
@@ -58,7 +58,7 @@ The beggining should be equal for all files
 \end{equation*}
 </div>
 
-<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>On sofic groupoids and their full groups<br>Sur les groupoïdes sofiques et leur groupes pleins</h1>
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</h1>
 <h1 class='sidebar-section'><a href='osg_front.html'>Front page</a></h1>
 <hr>
 <h1 class='sidebar-section'><a href='osg_1.html'>1. Introduction</a></h1>
@@ -67,7 +67,8 @@ The beggining should be equal for all files
 <h1 class='sidebar-section'><a href='osg_2.html'>2. Permanence Properties</a></h1>
 <hr>
 <h1 class='sidebar-section'><a href='osg_3.html'>3. Soficity and the full group</a></h1>
-<h2 class='sidebar-subsection'><a href='osg_3.html#51'>Acknowledgements</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='osg_3_54.html'>Acknowledgements</a></h1>
 </div>
 
 <!-------------------------------------------------------
@@ -176,17 +177,23 @@ Note that if $Y$ and $Z$ are finite sets, then the map $[[Y^2]]\ni\alpha\mapsto 
 A <em>sofic approximation</em> of a pmp groupoid $G$ is a sequence of maps $\pi=\left\{\pi_k:[[G]]\to[[Y_k^2]]\right\}$, where $Y_k$ are finite sets, such that for all $\alpha,\beta\in[[G]]$,
 </p>
 
-<ol>
+<style>ol.altlist10 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist10'>
 
-<li id='10'>
-
-[(i)] $\lim_{k\to\infty}\operatorname{tr}(\pi_k(\alpha))=\operatorname{tr}(\alpha)$;
+<li id='11'>
+<p>
+$\lim_{k\to\infty}\operatorname{tr}(\pi_k(\alpha))=\operatorname{tr}(\alpha)$;
+</p>
 
 </li>
 
-<li id='11'>
-
-[(ii)] $\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+<li id='12'>
+<p>
+$\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+</p>
 
 </li>
 </ol>
