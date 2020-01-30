@@ -1,0 +1,1 @@
+%ref_name{new_label(find(strcmp(old_label,'def:compatibleorder1')))}='(i)';
