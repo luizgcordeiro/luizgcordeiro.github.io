@@ -1,0 +1,6 @@
+<a class='reflink' href='../0.matters/preface.html#equationprefaceP1'>P1</a>
+<div class="toload equation">
+	\[
+	y'(t)=F(y(t)),\quad y(0)=u,\qquad(u\in\Omega)\tag{P1}
+	\]
+</div>

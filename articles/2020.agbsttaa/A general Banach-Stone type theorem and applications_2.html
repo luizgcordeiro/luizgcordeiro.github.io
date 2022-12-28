@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<script src="../../src/jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="../../src/style.css">
+
+<title>A general Banach&#8212;Stone type theorem and applications</title>
+
+</head>
+<body>
+
+<div style='display: none' id='latexcommands'>
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+
+\DeclareMathOperator{\KB}{\mathbf{KB}}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+\end{equation*}
+</div>
+
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>A general Banach&#8212;Stone type theorem and applications</h1>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_front.html'>Front page</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_0_2.html'>Introduction</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_1.html'>1. Disjointness and $\perpp$-isomorphisms</a></h1>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_1.html#5'>1.1. Disjointness relations</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_1.html#50'>1.2. $\perpp$-ideals</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_1.html#70'>1.3. The main theorems</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_2.html'>2. Basic maps</a></h1>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#124'>2.1. Algebraic signatures and basic maps</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#127'>2.2. Group-valued maps</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#130'>2.3. Continuity</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#154'>2.4. Non-vanishing bijections</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_3.html'>3. Consequences</a></h1>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#175'>3.1. Milgram's Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#195'>3.2. Group-Valued functions; the Hernández&#8210;Ródenas Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#203'>3.3. Kaplansky's Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#234'>3.4. Li&#8210;Wong Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#243'>3.5. Jarosz' Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#246'>3.6. Banach&#8210;Stone Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#250'>3.7. $L^1$-spaces</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#260'>3.8. Measured groupoid convolution algebras</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#292'>3.9. $(I,\ra)$-Groupoid convolution algebras</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#306'>3.10. Steinberg Algebras</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#342'>3.11. Groups of circle-valued functions</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_3_361.html'>Acknowledgements</a></h1>
+</div>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section' id='97'>2. Basic maps</h2>
+<p>
+In this section we will develop techniques to classify isomorphisms for spaces of functions with different algebraic structures. As in the preceding sections, we will be interested mostly in spaces of continuous functions between topological spaces, however the initial notions we will deal with can be defined in purely set-theoretical terms.
+</p>
+<p>
+Let $X$ and $H_X$ be sets, and consider a class $\mathcal{A}(X)\subseteq(H_X)^X$ of $H_X$-valued functions on $X$. Given a point $x\in X$, denote by $\mathcal{A}(X)|_x$ the set of images of $x$ under elements of $\mathcal{A}(X)$, i.e.
+<div class='equation' id='98'>
+\begin{equation*}
+\mathcal{A}(X)|_x=\left\{f(x):f\in\mathcal{A}(X)\right\}.\tag{2.1}
+\end{equation*}
+</div>
+</p>
+<p>
+If $Y$ is another set and $\phi\colon Y\to X$ is a map, denote by
+<div class='equation' id='99'>
+\begin{equation*}
+Y\times_{(\phi,\mathcal{A}(X))} H_X=\bigcup_{y\in Y}\left\{y\right\}\times\mathcal{A}(X)|_{\phi(y)}=\left\{(y,f(\phi(y))):y\in Y,f\in\mathcal{A}(X)\right\}.
+\end{equation*}
+</div>
+</p>
+<p>
+Note that $Y\times_{(\phi,\mathcal{A}(X))} H_X$ is equal to $Y\times H_X$ if and only if the following property is satisfied: For every $y\in Y$ and every $c\in H_X$, there exists $f\in\mathcal{A}(X)$ such that $f(\phi(y))=c$.
+</p>
+
+<!-- 2.1 -->
+<div class='definition' id='100'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>2.1</span>.
+<p>
+Let $X$, $H_X$, $Y$ and $H_Y$ be sets, $\phi\colon Y\to X$ be a function, and consider a class of functions $\mathcal{A}(X)\subseteq (H_X)^X$.
+</p>
+<p>
+Given maps $\phi\colon Y\to X$ and $\chi\colon Y\times_{(\phi,\mathcal{A}(X))} H_X\to H_Y$, we define $T_{(\phi,\chi)}\colon\mathcal{A}(X)\to (H_Y)^Y$ by
+<div class='equation' id='101'>
+\begin{equation*}
+(T_{(\phi,\chi)}f)(y)=\chi(y,f(\phi(y)),\qquad\forall f\in\mathcal{A}(X),\quad\forall y\in Y.\tag{2.2}
+\end{equation*}
+</div>
+</p>
+
+</div>
+
+<!-- 2.2 -->
+<div class='definition' id='102'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>2.2</span>.
+<p>
+Let $X$, $H_X$, $Y$ and $H_Y$ be sets, $\phi\colon Y\to X$ be a function, and consider classes of functions $\mathcal{A}(X)\subseteq (H_X)^X$ and $\mathcal{A}(Y)\subseteq (H_Y)^Y$. A map $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$ is called <em>$\phi$-basic</em> if there exists $\chi\colon Y\times_{(\phi,\mathcal{A}(X))} H_X\to H_Y$ such that $T=T_{(\phi,\chi)}$. We call such $\chi$ a <em>$(\phi,T)$-transform</em>.
+</p>
+<p>
+We denote <em>sections</em> of $\chi$ by $\chi(\cdot,y)\colon \mathcal{A}(X)|_{\phi(y)}\to H_Y$ (where $y\in Y$).
+</p>
+
+</div>
+
+(In the definition above, we ignore the fact that the codomain of $T$ is $\mathcal{A}(Y)$, while the codomain of $T_{(\phi,\chi)}$ is $(H_Y)^Y$.)
+<p>
+In simpler terms, a basic map is one that is induced naturally by the transformation $\phi\colon Y\to X$, and the field $\left\{\chi(y,\cdot):y\in Y\right\}$ of partial functions on $H_X$.
+</p>
+
+<!-- 2.3 -->
+<div class='example' id='103'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>2.3</span>.
+<p>
+Let $\phi\colon Y\to X$ and $\psi\colon H_X\to H_Y$ be functions. Then the map
+<div class='equation' id='104'>
+\begin{equation*}
+T\colon(H_X)^X\to (H_Y)^Y,\qquad Tf=\psi\circ f\circ \phi
+\end{equation*}
+</div>
+is $\phi$-basic, and the $(\phi,T)$-transform $\chi$ is given by $\chi(y,z)=\psi(z)$.
+</p>
+
+</div>
+<p>
+The next example will appear, in some form, in most applications in Section <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#166'>3</a>.
+</p>
+
+<!-- 2.4 -->
+<div class='example' id='105'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>2.4</span>.
+<p>
+Suppose that $X$ is a locally compact Hausdorff space, $H_X$ is a Hausdorff space, $\theta_X\in C(X,H_X)$ and $\mathcal{A}(X)\subseteq C_c(X,\theta_X)$. Let $Y$ and $H_Y$ be topological spaces, $\phi\colon Y\to X$ be a homeomorphism, and $\chi\colon Y\times H_X\to H_Y$ be a continuous map such that for every $y\in Y$, the section $\chi(y,\cdot)\colon H_X\to H_Y$ is a bijection.
+</p>
+<p>
+For every $f\in\mathcal{A}(X)$, define $Tf\in C(Y,H_Y)$ as
+<div class='equation' id='106'>
+\begin{equation*}
+Tf\colon Y\to H_Y,\qquad Tf(y)=\chi(y,f(\phi(y))),
+\end{equation*}
+</div>
+and let $\mathcal{A}(Y)=\left\{Tf\colon f\in\mathcal{A}(X)\right\}$. Also define $\theta_Y=T\theta_X$. Then
+</p>
+
+<style>ol.altlist107 > li:before {
+content:  counter(listcounter) '.';
+}
+</style>
+<ol class='alt altlist107'>
+
+<li id='108'>
+<p>
+$T$ is $\phi$-basic, and the $(\phi,T)$-transform is the restriction of $\chi$ to $Y\times_{(\phi,\mathcal{A}(X))} H_X$;
+</p>
+
+</li>
+
+<li id='109'>
+<p>
+$(X,\theta_X,\mathcal{A}(X))$ is (weakly) regular if and only if $(Y,\theta_Y,\mathcal{A}(Y))$ is (weakly) regular. In this case, $T$ is a $\perpp$-isomorphism and $\phi$ is the $T$-homeomorphism.
+</p>
+
+</li>
+</ol>
+
+</div>
+<p>
+Note that not every $\perpp$-isomorphism is given as in the previous example.
+</p>
+
+<!-- 2.5 -->
+<div class='example' id='110'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>2.5</span>.
+<p>
+Suppose that $X=Y$ is compact Hausdorff, $H_X=H_Y=\mathbb{R}$ and $\theta_X=\theta_Y=0$, so we simply write $C(X)=C(X,\mathbb{R})$. Let $T\colon C(X)\to C(X)$ be any bijection satisfying $[f\neq 0]=[Tf\neq 0]$ for all $f\in C(X)$. Then $T$ is a $\perpp$-isomorphism, and the $T$-homeomorphism is the identity $\id_X\colon X\to X$. Let us look at two particular cases:
+</p>
+
+<ul>
+
+<li id='111'>
+<p>
+Suppose that $X$ is not a singleton, $T(1)=2$, $T(2)=1$, and $Tf=f$ for every $f\neq 1,2$. Then $T$ is non-basic (see Proposition <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#113'>2.6</a><a class='reference' href='A general Banach-Stone type theorem and applications_2.html#115'>(a)</a>) and discontinuous with respect to either the topology of uniform convergence, or the topology of pointwise convergence.
+</p>
+
+</li>
+
+<li id='112'>
+<p>
+If $X=\{\ast\}$ is a singleton, we identify $C(X)$ with $\mathbb{R}$, so any self-bijection $T\colon\mathbb{R}\to\mathbb{R}$ preserving $0$ is a basic $\perpp$-automorphism. In this case, the $T$-transform $\chi$ coincides with $T$ (or more precisely $\chi(\ast,z)=T(z)$ for all $z\in\mathbb{R}$), and most (cardinality-wise) of these are discontinuous: indeed, there are $2^{2^\aleph_0}\mathfrak{c}$ self-bijections of $\mathbb{R}\setminus\left\{0\right\}$, but only $2^{\aleph_0}$ of these are continuous.
+</p>
+
+</li>
+</ul>
+
+</div>
+<p>
+In the next proposition, we again consider only sets (without topologies).
+</p>
+
+<!-- 2.6 -->
+<div class='proposition' id='113'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>2.6</span>.
+<p>
+Let $\mathcal{A}(X)\subseteq (H_X)^X$ and $\mathcal{A}(Y)\subseteq (H_Y)^Y$, and consider maps $\phi\colon Y\to X$ and $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$. Then
+</p>
+
+<style>ol.altlist114 > li:before {
+content:  '(' counter(listcounter,lower-alpha) ')';
+}
+</style>
+<ol class='alt altlist114'>
+
+<li id='115'>
+<p>
+$T$ is $\phi$-basic if and only if for all $y\in Y$, the following implication holds:
+<div class='equation' id='116'>
+\begin{equation*}
+f(\phi(y))=g(\phi(y))\Longrightarrow Tf(y)=Tg(y),\qquad\forall f,g\in\mathcal{A}(X).\tag{2.3}
+\end{equation*}
+</div>
+</p>
+
+</li>
+</ol>
+<p>
+In this case,
+</p>
+
+<style>ol.altlist117 {counter-reset: listcounter 1;}</style><style>ol.altlist117 > li:before {
+content:  '(' counter(listcounter,lower-alpha) ')';
+}
+</style>
+<ol class='alt altlist117'>
+
+<li id='118'>
+<p>
+the $(\phi,T)$-transform $\chi$ is unique.
+</p>
+
+</li>
+
+<li id='119'>
+<p>
+A section $\chi(y,\cdot)$ is injective if and only if
+<div class='equation' id='120'>
+\begin{equation*}
+Tf(y)=Tg(y)\Longrightarrow f(\phi(y))=g(\phi(y)),\qquad\forall f,g\in\mathcal{A}(X).\tag{2.4}
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li id='121'>
+<p>
+A section $\chi(y,\cdot)$ is surjective if and only if $H_Y=\left\{Tf(y):f\in\mathcal{A}(X)\right\}$.
+</p>
+
+</li>
+</ol>
+
+</div>
+<div class='proof' id='122'>
+<span class='envidentifier'>Proof</span>.
+<p>
+For one direction of <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#115'>(a)</a>, if $T$ satisfies <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#116'>(2.3)</a>, define $\chi$ by
+<div class='equation' id='123'>
+\begin{equation*}
+\chi(y,t)=Tf(y),
+\end{equation*}
+</div>
+whenever $f\in\mathcal{A}(X)$ is any function satisfying $f(\phi(y))=t$. Then $\chi(y,t)$ does not depend on the choice of $f$ by implication <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#116'>(2.3)</a>, and hence $T$ is $\phi$-basic.
+</p>
+<p>
+The converse direction of <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#115'>(a)</a>, as well as items <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#118'>(b)</a>, <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#119'>(c)</a> and <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#121'>(d)</a> are immediate from the formula $Tf(y)=\chi(y,f(\phi(y)))$, which holds for all $f\in\mathcal{A}(X)$ and $y\in Y$.
+</p>
+
+</div>
+<p>
+In our applications, we will use item <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#115'>(a)</a> above several times, by proving that a given $\perpp$-isomorphism $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$, between regular classes of functions, is basic with respect to the associated homeomorphism $\phi\colon Y\to X$ given by Theorem <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#75'>1.17</a>. This is, in fact, the only possibility: If $\psi\colon Y\to X$ is any map such that $T$ is $\psi$-basic, then $\psi$ is the $T$-homeomorphism! Since this fact will not be used later in the article we refer its proof to [<a class='reference' href='../../HTML citations/cordeirothesis.html' target='_blank'>cordeirothesis</a>, Proposition 3.3.7].
+</p>
+
+<h3 class='subsection' id='124'>2.1. Algebraic signatures and basic maps</h3>
+<p>
+In the <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#166'>next section</a> we will consider different algebraic structures on spaces of continuous functions. To this end, recall (see [<a class='reference' href='../../HTML citations/MR1221741.html' target='_blank'>MR1221741</a>]) that an <em>algebraic signature</em> is a collection $\eta$ of pairs $(*,n)$, where $*$  is a (function) symbol and $n$ is a non-negative integer, called the <em>arity</em> of $*$. A <em>model</em> of $\eta$ consists of a set $H$ and a map associating to each $(*,n)\in\eta$ a function $*\colon H^n\to H$, $(c_1,\ldots,c_n)\mapsto c_1*\cdots*c_n$. (We use the convention that $H^0$ is a singleton set, so that a $0$-ary function symbol is the same as a constant.)
+</p>
+<p>
+For example, the usual signature of groups consists of one binary symbol $\cdot$ (for the product), one unary symbol $(\ )^{-1}$ (the inversion) and one constant/0-ary symbol $1$ (the unit).
+</p>
+<p>
+If $H$ is a model of $\eta$ and $X$ is a set then the function space $H^X$ can also be regarded as a model of $\eta$ with the pointwise structure: $(f_1*\cdots*f_n)(x)=f_1(x)*\cdots*f_n(x)$ for all $f_1,\ldots,f_n\in H^X$, all $x\in X$, and all $n$-ary function symbols $\ast$.
+</p>
+<p>
+A <em>morphism</em> of two models $H_1$ and $H_2$ of a given signature $\eta$ is a map $m\colon H_1\to H_2$ such that for any $n$-ary function symbol $*$ of $\eta$ and any $x_1,\ldots,x_n\in H_1$, we have $m(x_1*\cdots*x_n)=m(x_1)*\cdots*m(x_n)$.
+</p>
+<p>
+Finally, a <em>submodel</em> of a model $H$ of a signature $\eta$ is a subset $K\subseteq H$ such that for all $n$-ary symbols $*$ of $\eta$ and any $d_1,\ldots,d_n\in K$, $d_1*\cdots*d_n\in K$, so that $K$ can be naturally regarded as a model of $\eta$.
+</p>
+<p>
+In the topological setting, a <em>continuous model</em> $H$ of a signature $\eta$ is defined in the same manner, but we assume that all maps are continuous. In this case, if $X$ is a topological space then $C(X,H)$ is a submodel of $H^X$.
+</p>
+
+<!-- 2.7 -->
+<div class='proposition' id='125'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>2.7</span>.
+<p>
+Let $X$ and $Y$ be sets. Suppose that $H_X$ and $H_Y$ are models for an algebraic signature $\eta$, and that $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are submodels of $(H_X)^X$ and $(H_Y)^Y$. Then for all $x\in X$, $\mathcal{A}(X)|_x$ is a submodel of $H_X$, and similarly $\mathcal{A}(Y)|_y$ is a submodel of $H_Y$ for all $y\in Y$. (See Equation <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#98'>(2.1)</a>.)
+</p>
+<p>
+Let $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$ be a basic map with respect to a function $\phi\colon Y\to X$, and let $\chi$ be the $T$-transform. Then $T$ is a morphism (for $\eta$) if and only if every section $\chi(y,\cdot)$ is a morphism (from $\mathcal{A}(X)|_{\phi(y)}$ to $\mathcal{A}(Y)|_y$).
+</p>
+
+</div>
+<div class='proof' id='126'>
+<span class='envidentifier'>Proof</span>.
+<p>
+Given $x\in X$, the evaluation map $\pi_x\colon(H_X)^X\to H_X$, $\pi_x(f)=f(x)$, is a morphism, and it follows that $\mathcal{A}(X)|_x=\pi_x(\mathcal{A}(X))$ is a submodel of $H_X$.
+</p>
+<p>
+Note that for all $y\in Y$, $\chi(y,\cdot)\circ\pi|_{\phi(y)}=\pi_y\circ T$. On one hand, $T$ is a morphism if and only if $\pi_y\circ T$ is a morphism for all $y$. On the other, $\pi|_{\phi(y)}$ is a surjective morphism from $\mathcal{A}(X)$ to $\mathcal{A}(X)|_{\phi(y)}$. It follows that $T$ is a morphism if and only if $\chi(y,\cdot)$ is a morphism for all $y\in Y$.
+</p>
+
+</div>
+
+<h3 class='subsection' id='127'>2.2. Group-valued maps</h3>
+<p>
+In several applications, we will consider groups of functions, and in this case a slight, but nevertheless important, simplification of Proposition <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#113'>2.6</a><a class='reference' href='A general Banach-Stone type theorem and applications_2.html#115'>(a)</a> will be used.
+</p>
+
+<!-- 2.8 -->
+<div class='proposition' id='128'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>2.8</span>.
+<p>
+Suppose that $H_X$ and $H_Y$ are groups, $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are subgroups of $(H_X)^X$ and $(H_Y)^Y$, respectively, $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$ is a group isomorphism and $\phi\colon Y\to X$ is a function. Then $T$ is $\phi$-basic if and only if for all $y\in Y$,
+<div class='equation' id='129'>
+\begin{equation*}
+f(\phi(y))=1\Longrightarrow Tf(y)=1,\qquad\forall f\in\mathcal{A}(X).
+\end{equation*}
+</div>
+</p>
+
+</div>
+<p>
+Assume that $H$ is a topological group and $X$ is a locally compact Hausdorff space. Any subgroup $\mathcal{A}$ of $C(X,H)$ contains the constant function $1$, and if $\theta\in\mathcal{A}$, then the map $f\mapsto f\theta^{-1}$ is a $\perpp$-isomorphism between $(X,\theta,\mathcal{A})$ and $(X,1,\mathcal{A})$. In this case, since we will be mostly interested in group isomorphisms between subgroups of $C(X,H)$, we may always assume that $\theta=1$. In the case that $H=\mathbb{R}$ or $\mathbb{C}$, as additive groups, we recover the usual notion of support.
+</p>
+
+<h3 class='subsection' id='130'>2.3. Continuity</h3>
+<p>
+Now, we study continuity of basic $\perpp$-isomorphisms and relate it to the continuity of its transform. For this, it is necessary to construct functions which attain predetermined values on infinitely many points (e.g. the points of some converging net). One procedure for this is by <span>&#8220;</span>cutting and pasting<span>&#8221;</span> continuous functions, although this sometimes requires some first countability or connectedness hypotheses in order to maintain control of the final function. This technique is somewhat elementary, although one needs to take some care in order to guarantee continuity, so we refer the most cumbersome details to [<a class='reference' href='../../HTML citations/cordeirothesis.html' target='_blank'>cordeirothesis</a>, Section 3.3.3], and sketch the main points of the proofs. The next proposition can be proven by elementary Topology.
+</p>
+
+<!-- 2.9 -->
+<div class='proposition' id='131'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>2.9</span>.
+<p>
+If $F$ is an infinite subset of a regular Hausdorff space $X$, then there exists a countable infinite subset $\left\{y_1,y_2,\ldots\right\}\subseteq F$ and pairwise disjoint open sets $U_n$ such that $y_n\in U_n$ for all $n$.
+</p>
+
+</div>
+<p>
+For the next proposition, recall ([<a class='reference' href='../../HTML citations/MR0264581.html' target='_blank'>MR0264581</a>, 27.4]) that a topological space $H$ is <em>locally path-connected</em> if every point $t\in H$ admits a neighbourhood basis consisting of path-connected subsets.
+</p>
+
+<!-- 2.10 -->
+<div class='proposition' id='132'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>2.10</span>.
+<p>
+Let $X$ be a locally compact Hausdorff space, $\left\{x_n\right\}_n$ be a sequence of elements of $X$, $\left\{U_n\right\}_n$ a sequence of pairwise disjoint open subsets of $X$ with $x_n\in U_n$ for all $n$.
+</p>
+<p>
+Let $H$ be a Hausdorff first-countable locally path-connected topological space and consider a family $\left\{g_n\colon U_n\to H\right\}_n$ of continuous functions such that $g_n(x_n)$ converges to some $t\in H$. Then
+</p>
+
+<style>ol.altlist133 > li:before {
+content:  '(' counter(listcounter,lower-alpha) ')';
+}
+</style>
+<ol class='alt altlist133'>
+
+<li id='134'>
+<p>
+there exists a continuous function $f\colon X\to H$ such that $f(x_n)=g_n(x_n)$ for all sufficiently large $n$, and $f(x)=t$ for all $x\not\in\bigcup_n U_n$.
+</p>
+
+</li>
+
+<li id='135'>
+<p>
+if $H=\mathbb{R}$, there is a continuous function $f\colon X\to\mathbb{R}$ such that $f=g_n$ on a neighbourhood of $x_n$ and $f(x)=t$ for all $x\not\in\bigcup_n U_n$.
+</p>
+
+</li>
+</ol>
+
+</div>
+<div class='proof' id='136'>
+<span class='envidentifier'>Proof</span>.
+<p>
+Item <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#135'>(b)</a> is an easy application of Tietze's Extension Theorem, so we concentrate on item <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#134'>(a)</a>. Let $\left\{W_n\right\}_n$ be a decreasing basis of path-connected neighbourhoods of $t$. Disregarding any $n$ such that $g_n(x_n)$ does not belong to $W_1$, and repeating the sets $W_k$ if necessary (i.e., considering a new sequence of neighbourhoods of $t$ of the form
+<div class='equation' id='137'>
+\begin{equation*}
+W_1,W_1,\ldots,W_1,W_2,W_2,\ldots,W_2,\ldots,
+\end{equation*}
+</div>
+where each $W_k$ is repeated finitely many times) we may assume that $t_n:=g_n(x_n)\in W_n$.
+</p>
+<p>
+For each $n$, take a continuous path $\alpha_n\colon [0,1]\to W_n$ such that $\alpha_n(0)=t_n$ and $\alpha_n(1)=t$. Now take continuous functions $b_n\colon X\to[0,1]$ such that $b_n(x_n)=0$ and $b_n=1$ outside $U_n$. Define $f$ as $\alpha_n\circ b_n$ on each $U_n$, and as $t$ on $X\setminus\bigcup_n U_n$.
+</p>
+<p>
+The only non-trivial part about continuity of $f$ is proving that $f$ is continuous on the boundary $\partial\left(\bigcup_n U_n\right)$. If $x$ belongs to this set then $f(x)=t$. Given a basic neighbourhood $W_N$ of $t$, we have that $\bigcap_{n=1}^N(\alpha_n\circ b_n)^{-1}(W_N)$ is a neighbourhood of $x$ contained in $f^{-1}(W_N)$, and thus $f$ is continuous. Item <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#135'>(b)</a> uses similar arguments.
+</p>
+
+</div>
+
+<!-- 2.11 -->
+<div class='theorem' id='138'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>2.11</span>.
+<p>
+Let $X$ and $Y$ be locally compact Hausdorff and for $Z\in\left\{X,Y\right\}$, $H_Z$ a Hausdorff space and $\theta_Z\in C(Z,H_Z)$ be given such that $(Z,\theta_Z,C_c(Z,\theta_Z))$ is regular.
+</p>
+<p>
+Suppose that $T\colon C_c(X,\theta_X)\to C_c(Y,\theta_Y)$ is a $\perpp$-isomorphism, that $\phi\colon Y\to X$ is the $T$-homeomorphism $\phi$, and that that $T$ is $\phi$-basic. Let $\chi\colon Y\times H_X\to H_Y$ be the corresponding $(\phi,T)$-transform. Consider the following statements:
+</p>
+
+<style>ol.altlist139 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist139'>
+
+<li id='140'>
+<p>
+$\chi$ is continuous.
+</p>
+
+</li>
+
+<li id='141'>
+<p>
+Each section $\chi(y,\cdot)$ is a continuous;
+</p>
+
+</li>
+
+<li id='142'>
+<p>
+$T$ is continuous with respect to the topologies of pointwise convergence.
+</p>
+
+</li>
+</ol>
+<p>
+Then the implications <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#140'>(i)</a>$\Rightarrow$<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#141'>(ii)</a>$\iff$<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#142'>(iii)</a> always hold.
+</p>
+<p>
+If $X$, $Y$ and $H_X$ are first countable, $H_X$ is locally path-connected and $\theta_X$ is constant, then <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#141'>(ii)</a>$\Rightarrow$<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#140'>(i)</a>.
+</p>
+
+</div>
+
+<div class='alt' id='143'>
+<span class='envidentifier'>Remarks</span>
+
+<style>ol.altlist144 > li:before {
+content:  '(' counter(listcounter) ')';
+}
+</style>
+<ol class='alt altlist144'>
+
+<li id='145'>
+<p>
+In the last part of the theorem, if $H_X$ admits any structure of topological group then the condition that $\theta_X$ is constant can be dropped, since we may simply compose $T$ with the $\perpp$-isomorphism $f\mapsto f\theta^{-1}$.
+</p>
+
+</li>
+
+<li id='146'>
+<p>
+The domain of the $(\phi,T)$-transform $\chi$ is $Y\times H_X$ because we assume that $C_c(X,\theta_X)$ is regular.
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<div class='proof' id='147'>
+<span class='envidentifier'>Proof</span>.
+<p>
+The implication <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#140'>(i)</a>$\Rightarrow$<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#141'>(ii)</a> is trivial.
+</p>
+
+<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#141'>(ii)</a>$\Rightarrow$<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#142'>(iii)</a>:
+
+
+<div class='quote'>
+Suppose $f_i\to f$ pointwise. Then for all $y$, the section $\chi(y,\cdot)$ is continuous, thus
+<div class='equation' id='148'>
+\begin{equation*}
+Tf_i(y)=\chi(y,f_i(\phi(y)))\to\chi(y,f(\phi(y)))=Tf(y).
+\end{equation*}
+</div>
+This proves that $Tf_i\to Tf$ pointwise.
+
+</div>
+
+<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#142'>(iii)</a>$\Rightarrow$<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#141'>(ii)</a>:
+
+
+<div class='quote'>
+Assume that $T$ is continuous with respect to pointwise convergence. Let $y\in Y$ be fixed. Suppose that $t_i\to t$ in $H_X$, and let us prove that $\chi(y,t_i)\to\chi(y,t)$. Choose any function $f\in C_c(X,\theta_X)$ such that $f(\phi(y))=t$.
+<p>
+Let $\operatorname{Fin}(X)$ be the collection of finite subsets of $X$, ordered by inclusion. For every $F\in\operatorname{Fin}(X)$ and every $i\in I$, regularity of $C_c(X,\theta_X)$ allows us to construct $f_{(F,i)}\in C_c(X,\theta_X)$ such that
+</p>
+
+<style>ol.altlist149 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist149'>
+
+<li id='150'>
+<p>
+$f_{(F,i)}(x)=f(x)$ pointwise if $x\in F$ and $x\neq \phi(y)$; and
+</p>
+
+</li>
+
+<li id='151'>
+<p>
+$f_{(F,i)}(\phi(y))=t_i$.
+</p>
+
+</li>
+</ol>
+<p>
+Ordering $\operatorname{Fin}(X)$ by set inclusion, we have that $f_{(F,i)}\to f$ pointwise as $(F,i)\to\infty$, so $Tf_{(F,i)}\to Tf$ pointwise as well. For each $F\in\operatorname{Fin}(X)$ and $i\in I$, we have
+<div class='equation' id='152'>
+\begin{equation*}
+\chi(y,t_i)=\chi(y,f_{(F,i)}(\phi(y)))=Tf_{(F,i)}(y)
+\end{equation*}
+</div>
+so by considering $i$ and $F$ sufficiently large we see that $\chi(y,t_i)\to Tf(y)=\chi(y,t)$ as $i\to\infty$.
+</p>
+
+</div>
+We now assume further that $X$, $Y$ and $H_X$ are first countable, $H_X$ is locally path-connected and $\theta_X$ is constant. Let $c\in H_X$ such that $\theta_X(x)=c$ for all $x\in X$.
+
+<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#141'>(ii)</a>$\Rightarrow$<a class='reference' href='A general Banach-Stone type theorem and applications_2.html#140'>(i)</a>:
+
+
+
+<div class='quote'>
+Assume that each section $\chi(y,\cdot)$ is continuous. In order to prove that $\chi$ is continuous, we simply need to prove that for any converging sequence $(y_n,t_n)\to (y,t)$ in $Y\times H_X$, we can take a subsequence $(y_{n'},t_{n'})$ such that $\chi(y_{n'},t_{n'})\to \chi(y,t)$ as $n'\to\infty$.
+<p>
+Given a converging sequence $(y_n,t_n)\to(y,t)$, consider an open $Y'\subseteq Y$ with compact closure such that $y,y_n\in Y'$ for all $n$.
+</p>
+<p>
+We have two cases: If for a given $z\in Y$ the set $N(z)=\left\{n\in\mathbb{N}:y_n=z\right\}$ is infinite, then we necessarily have $z=y$. Restricting the sequence $(y_n,t_n)$ to $N(y)$ and using continuity of the section $\chi(y,\cdot)$, we obtain $\chi(y_n,t_n)=\chi(y,t_n)\to \chi(y,t)$ as $n\to\infty$, $n\in N(y)$.
+</p>
+<p>
+Now assume that none of the sets $N(z)=\left\{n\in\mathbb{N}: y_n=z\right\}$ ($z\in Y$) is infinite. We may then take a subsequence and assume that all the elements $y_n$ are distinct, and actually never equal to $y$. Using Propositions <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#131'>2.9</a> and <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#132'>2.10</a><a class='reference' href='A general Banach-Stone type theorem and applications_2.html#134'>(a)</a>, and taking another subsequence if necessary, we find a continuous function $f\colon\overline{\phi(Y')}\to H_X$ such that $f(\phi(y_n))=t_n$ and $f=t$ on $X\setminus \bigcup_n U_n$. In particular, $f=t$ on the boundary $\partial(\phi(Y'))$.
+</p>
+<p>
+We now need to extend $f$ to an element of $C_c(X,\theta_X)$ (this is where we use that $\theta_X=c$ is constant). We have two cases:
+</p>
+<p>
+<u>Case 1</u>: $t$ is in the path-connected component of $c$:
+
+</p>
+
+<div class='quote'>
+Since $H_X$ is locally path-connected, there is a continuous path $\beta\colon[0,1]\to H_X$ with $\beta(0)=t$ and $\beta(1)=c$. Let $g\colon X\to[0,1]$ be a function with $g=0$ on $\phi(Y')$ and $g=1$ outside of a compact containing $\phi(Y')$. By defining $f=\beta\circ g$ outside of $\phi(Y')$, we obtain $f\in C_c(X,\theta_X)$. ($f$ is continuous because $f=t=\beta\circ g$ on $\partial(\phi(Y')$.)
+
+</div>
+<p>
+<u>Case 2</u>: $t$ is not in the path-connected component of $c$:
+
+</p>
+
+<div class='quote'>
+Since $H_X$ is locally path-connected, its path-connected components are clopen, and regularity of $C_c(X,\theta_X)$ then implies that $X$ (and thus also $Y=\phi(X)$) is zero-dimensional. In particular, we could have assumed at the beginning that $Y'$ is clopen, so simply set $f=c$ outside of $\phi(Y')$.
+
+</div>
+<p>
+In any case, we obtain $f\in C_c(X,\theta_X)$ with $f(\phi(y))=t$ and $f(\phi(y_n))=t_n$, so
+<div class='equation' id='153'>
+\begin{equation*}
+\chi(y_n,t_n)=Tf(y_n)\to Tf(y)=\chi(y,t).
+\end{equation*}
+</div>
+</p>
+
+</div>
+
+</div>
+
+<h3 class='subsection' id='154'>2.4. Non-vanishing bijections</h3>
+<p>
+Let $X$ and $Y$ be compact Hausdorff spaces, $H_X$ and $H_Y$ Hausdorff spaces, $\theta_X\in C(X,H_X)$, $\theta_Y\in C(Y,\theta_Y)$ and $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ regular subsets of $C_c(X,\theta_X)$ and $C_c(Y,\theta_Y)$, respectively.
+</p>
+
+<!-- 2.12 -->
+<div class='definition' id='155'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>2.12</span> <span class='envop'>([<a class='reference' href='../../HTML citations/MR2324919.html' target='_blank'>MR2324919</a>])</span>.
+<p>
+We call a bijection $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$ <em>non-vanishing</em> if for every $f_1,\ldots,f_n\in\mathcal{A}(X)$,
+<div class='equation' id='156'>
+\begin{equation*}
+\bigcap_{i=1}^n[f_i=\theta_X]=\varnothing\iff\bigcap_{i=1}^n[Tf_i=\theta_Y]=\varnothing.
+\end{equation*}
+</div>
+</p>
+
+</div>
+
+<!-- 2.13 -->
+<div class='proposition' id='157'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>2.13</span>.
+<p>
+If $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$ is a non-vanishing bijection, then $T$ is a $\perpp$-isomorphism.
+</p>
+
+</div>
+<div class='proof' id='158'>
+<span class='envidentifier'>Proof</span>.
+<p>
+First note that $f\perp g$ if and only if $[f=\theta_X]\cup[g=\theta_X]=X$, or equivalently if every closed subset of $X$ intersects $[f=\theta_X]$ or $[g=\theta_X]$.
+</p>
+<p>
+As the sets $[h=\theta_X]$ ($h\in\mathcal{A}(X)$) form a closed basis, Cantor's Intersection Theorem implies that $f\perp g$ is equivalent to the following statement:
+
+</p>
+
+<div class='quote'>
+<span>&#8220;</span>For all $h_1,\ldots,h_n\in\mathcal{A}(X)$, if $\bigcap_{i=1}^n[h_i=\theta_X]\cap[f=\theta_X]$ and $\bigcap_{i=1}^n[h_i=\theta_X]\cap[g=\theta_X]A$ are both empty, then $\bigcap_{i=1}^n[h_i=\theta_X]=\varnothing$.<span>&#8221;</span>
+
+</div>
+This condition is preserved under non-vanishing bijections, and so $T$ is a $\perp$-isomorphism.
+<p>
+that $f\perpp g$ is equivalent to the following statement: <span>&#8220;</span>There are finite families $\left\{a_i\right\}$, $\left\{b_j\right\}$ and $\left\{c_k\right\}$ in $\mathcal{A}(X)$ such that
+</p>
+
+<style>ol.altlist159 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist159'>
+
+<li id='160'>
+<p>
+$\bigcap_{i,j,k}[a_i=\theta_X]\cap[b_j=\theta_X]\cap[c_k=\theta_X]=\varnothing$;
+</p>
+
+</li>
+
+<li id='161'>
+<p>
+$a_i\perp b_j$ for all $i$ and $j$;
+</p>
+
+</li>
+
+<li id='162'>
+<p>
+$f\perp b_j$, $f\perp c_k$, $g\perp a_i$, and $g\perp c_k$ for all $i$, $j$ and $k$.<span>&#8221;</span>
+</p>
+
+</li>
+</ol>
+<p>
+These statements should be interpreted as follows: Let $A=\bigcup_i[a_i\neq\theta_X]$, $B=\bigcup_j[b_j\neq\theta_X]$ and $C=\bigcup_k[c_k\neq\theta_X]$. Item <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#160'>(i)</a> states that $A\cup B\cup C=X$, item <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#161'>(ii)</a> states that $A\cap B=\varnothing$, and item <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#162'>(iii)</a> states that $\supp(f)\cap B=\supp(f)\cap C=\supp(g)\cap A=\supp(g)\cap C=\varnothing$.
+In other words, $A$ and $B$ are two disjoint open sets used to separate $\supp(f)$ and $\supp(g)$, respectively, and the set $C$ covers the remainder of $X$ (while not intersecting $\supp(f)$ nor $\supp(g)$). The existence of such $A,B,C$ clearly implies $f\perpp g$, and the converse follows from regularity of $\mathcal{A}(X)$ and compactness arguments.
+</p>
+<p>
+Similar statements hold with $Y$ in place of $X$, and all of these properties are preserved by non-vanishing bijections. Therefore $T$ is a $\perpp$-isomorphism.
+</p>
+
+</div>
+
+<!-- 2.14 -->
+<div class='theorem' id='163'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>2.14</span>.
+<p>
+For every non-vanishing bijection $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$ there is a unique homeomorphism $\phi\colon Y\to X$ such that $[f=\theta_X]=\phi([Tf=\theta_Y])$ for all $f\in\mathcal{A}(X)$.
+</p>
+
+</div>
+<div class='proof' id='164'>
+<span class='envidentifier'>Proof</span>.
+<p>
+By Proposition <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#157'>2.13</a>, we already know that $T$ is a $\perpp$-isomorphism, so let $\phi$ be the $T$-homeomorphism. Recall (Definition <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#6'>1.1</a>) that $\sigma^{\theta_X}(f)=\operatorname{int}(\overline{[f\neq\theta_X]})$ and $Z^{\theta_X}(f)=\operatorname{int}([f=\theta_X])$ for all $f\in\mathcal{A}(X)$. Let us prove that
+<div class='equation' id='165'>
+\begin{align*}
+f(x)=\theta_X(x)\iff&\forall h_1\ldots,h_n\in\mathcal{A}(X),\\
+&\text{if }x\not\in\bigcup_{i=1}^n\sigma^{\theta_X}(h_i)\text{ then }\bigcap_{i=1}^n[h_i=\theta_X]\cap[f=\theta_X]\neq\varnothing,\tag{2.5}
+\end{align*}
+</div>
+Intuitively, the functions $h_i$ above should be thought of in such a way that $\bigcup_{i=1}n[h_i\neq\theta_X]$ is a <span>&#8220;</span>large subset<span>&#8221;</span> of $[f=\theta_X]\setminus\left\{x\right\}$.
+</p>
+<p>
+Formally, for the direction <span>&#8220;</span>$\Rightarrow$<span>&#8221;</span>, assume that $f(x)=\theta_X(x)$ and $h_1,\ldots,h_n$ are such that $x\not\in\bigcup_i\sigma^{\theta_X}(h_i)$. Then $x\in\bigcap_i[h_i=\theta_X]\cap[f=\theta_X]$, and this set is nonempty.
+</p>
+<p>
+For the converse we prove the contrapositive. Assume that $f(x)\neq\theta_X(x)$. Regularity of $\mathcal{A}(X)$ and compactness of $[f=\theta_X]$ give us $h_1,\ldots,h_n\in\mathcal{A}(X)$ such that $h_i(x)\neq\theta_X(x)$ for all $i$, and $[f=\theta_X]\subseteq\bigcup_i[h_i\neq\theta_X]$, which negates the right-hand side of <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#165'>(2.5)</a>.
+</p>
+<p>
+Since $\phi(\sigma^{\theta_Y}(Th))=\sigma^{\theta_X}(h)$ for all $h\in\mathcal{A}(X)$ and $T$ is non-vanishing, the condition of  <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#165'>(2.5)</a> is preserved by $T$ and therefore, $\phi$ has the desired property.
+</p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#theoremisomorphismgroupifcirclevaluedfunctions'>3.5.15</a>
+
+<!-- 3.5.15 !-->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.5.15</span>
+	Let $X$ and $Y$ be two Stone spaces (Definition <span class='ref' data-tag='definitionstonespace'></span>). Suppose that $T:C(X,\mathbb{S}^1)\to C(Y,\mathbb{S}^1)$ is a group isomorphism such that $1\in f(X)\iff 1\in Tf(X)$. Then there exist a homeomorphism $\phi:Y\to X$, a finite subset $F\subseteq Y$ whose points are isolated (in $Y$) and a continuous function $p:Y\setminus F\to\left\{\pm 1\right\}$ satisfying $Tf(y)=f(\phi(y))^{p(y)}$ for all $y\in Y\setminus F$.
+	</p>
+	
+	<p>
+	In particular, if $X$ (and/or $Y$) do not have isolated points then $F=\varnothing$.
+	</p>
+</div>

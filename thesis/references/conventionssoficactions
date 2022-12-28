@@ -1,0 +1,26 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#conventionssoficactions'>Conventions</a>
+
+<div class='toload remark'>
+	<span class='envidentifier'>Conventions</span>
+
+	<ul>
+		<li>
+			If $X$ is a set and $f\in\mathcal{I}(X)$, we regard $\Fix(f)$ and $\supp(f)$ as in Examples <span class='ref' data-tag='examplefixedidempotentsinix'></span> and <span class='ref' data-tag='examplesupportix'></span>, i.e.,
+			<div class='equation'>\[
+				\Fix(f)=\left\{x\in\dom(f):f(x)=x\right\},\qquad\supp(f)=\left\{x\in\dom(f):f(x)\neq x\right\}.
+			\]</div>
+		</li>
+		
+		<li>
+			We will consider only countable groups, standard probability spaces and measure-preserving actions.
+		</li>
+		
+		<li>
+			We again consider finite sets $Y_n$ with $n$ elements, endowed with their normalized counting measures $\mu_\#$, the permutation group $\mathfrak{S}_n$ of $Y_n$, the measure algebra $\MAlg(Y_n)$ and the measured semigroups $\MEAS(Y_n^2)=\mathcal{I}(Y_n)$ endowed with their normalized Hamming distances $d_\#$ and traces $\tr_\#$. We will also use the symbols $\mu_\#$, $d_\#$ and $\tr_\#$ for corresponding functions on ultraproducts.
+		</li>
+		
+		<li>
+			$\mathcal{U}$ will always denote a ultrafilter of sets on $\mathbb{N}$.
+		</li>
+	</ul>
+</div>

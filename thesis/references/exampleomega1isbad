@@ -1,0 +1,32 @@
+<a class='reflink' href='../4.paois/4.7.coe.html#exampleomega1isbad'>4.7.8</a>
+
+<!-- 4.7.8 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Exampel 4.7.8</span>
+	Let $\omega_1$ be the first uncountable ordinal endowed with the order topology, making it zero-dimensional, locally compact and Hausdorff (see 1.19 and 17.2(c) of [<span class='ref' data-tag='MR0264581'></span>]). Let $S=\left\{1\right\}$ be the trivial group, acting trivially on $\omega_1$.
+	</p>
+	
+	<p>
+	Consider $T=\omega_1$ as a lattice, and the action $\gamma$ of $T$ on $\omega_1$ in which $\gamma_t$ is the identity function of $\left\{\alpha\in\omega_1:\alpha<t\right\}$ for all $t\in T$.
+	</p>
+	
+	<p>
+	The transformation groupoids $S\ltimes\omega_1$ and $T\ltimes\omega_1$ are both unit groupoids and isomorphic to $\omega_1$. However, there is no continuous orbit equivalence between the trivial action of $S$ and $\gamma$.
+	</p>
+	
+	<p>
+	Indeed, first we identify $S\ast\omega_1=\left\{1\right\}\times\omega_1$ with $\omega_1$ in the obvious manner. Let $\varphi:\omega_1\to\omega_1$ be a homeomorphism and $a:\omega_1\to T$ a continuous function. The condition in Definition <span class='ref' data-tag='definitioncoe'></span> is that $\varphi(\alpha)$ belongs to the domain of $\gamma_{a(\alpha)}$ for all $\alpha$, that is,
+	<div class='equation' id='equationomega1isbad'>\begin{align*}
+		\[\varphi(\alpha)<a(\alpha)
+			&\qquad\text{for all }\alpha\in\omega_1.\tag{4.7.2}
+	\end{align*}</div>
+	In other words, the continuous function $f:\omega_1\to\omega_1$, $f(\alpha)=a(\varphi^{-1}(\alpha))$ satisfies $\alpha<f(\alpha)$ for all $\alpha\in\omega_1$, so let us prove that this leads to a contradiction (the argument is similar to that of [<span class='ref' data-tag='MR0264581'></span>, Example 20.11]): Let $\alpha_0\in\omega_1$ be arbitrary and for all $n\geq 0$ set $\alpha_{n+1}=f(\alpha_n)$. Then $\beta=\sup_n\alpha_n$ satisfies $\beta=\lim_n\alpha_n$, and since $f$ is continuous then
+	<div class='equation'>\begin{align*}
+		f(\beta)
+			&=\lim_n f(\alpha_n)\\
+			&=\lim_n\alpha_{n+1}\\
+			&=\beta,
+	\end{align*}</div>
+	a contradiction.
+	</p>
+</div>

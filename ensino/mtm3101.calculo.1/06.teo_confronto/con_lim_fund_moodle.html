@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+<p>
+Os três <span>&#8220;</span>limites fundamentais<span>&#8221;</span> são
+</p>
+
+<ul>
+
+<li>
+<p>
+\(\displaystyle\lim_{x\to 0}\frac{\sin x}{x}=1\);
+</p>
+
+</li>
+
+<li>
+<p>
+\(\displaystyle\lim_{x\to \pm\infty}\left(1+\frac{a}{x}\right)^x=e^a\);
+</p>
+
+</li>
+
+<li>
+<p>
+\(\displaystyle\lim_{x\to 0}\frac{a^x-1}{x}=\ln(a)\).
+</p>
+
+</li>
+</ul>
+
+<hr/>
+<p>
+Vamos verificar de fato que estes limites são válidos.
+</p>
+
+<ul>
+
+<li>
+<p>
+Para o primeiro, devemos utilizar o Teorema do Confronto. Vamos tentar aproximar o valor de \(\frac{\sin x}{x}\) utilizando funções trigonométricas.
+</p>
+<p>
+Para isso, devemos relembrar como ângulos em radianos são medidos, o que pode ser feito utilizando o círculo trigonométrico: Primeiro, consideramos um círculo de raio \(1\) e um ângulo \(x\) traçado sobre seu centro, conforme a figura abaixo:
+<div>
+<img src='con_lim_fund_tikz_1.png' style='width:40%;margin:auto;display:block'>
+
+
+</div>
+</p>
+<p>
+Nesta figura, temos que
+</p>
+
+<ul>
+
+</li>
+
+<li>
+<p>
+O comprimento do segmento \(\overline{OI}\) é igual a \(1\).
+</p>
+
+</li>
+
+<li>
+<p>
+A medida em radianos do ângulo \(x\) coincide com o comprimento do arco em vermelho (entre os pontos \(I\) e \(F\)).
+</p>
+
+</li>
+
+<li>
+<p>
+O seno do ângulo \(x\) é o comprimento do segmento em laranja.
+</p>
+
+</li>
+
+<li>
+<p>
+A tangente do ângulo \(x\) é o comprimento do segmento em verde.
+</p>
+
+</li>
+</ul>
+<p>
+Podemos agora verificar que \(\sin(x)\leq x\leq \tan(x)\), analizando áreas de partes da figura acima:
+</p>
+
+<ul>
+
+<li>
+<p>
+O triângulo \(\triangle IOF\) possui área dada pela metade do produto de sua base e sua altura, ou seja,
+<div>
+\begin{equation*}
+\operatorname{area}(\triangle IOF)=\frac{\sin x}{2}.
+\end{equation*}
+</div>
+<div>
+<img src='con_lim_fund_tikz_2.png' style='width:40%;margin:auto;display:block'>
+
+
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+A área total do círculo é igual a \(2\pi\), e o setor \(\angle IOF\) compreende uma fração de \(\frac{x}{2\pi}\) de <span>&#8220;</span>uma volta inteira<span>&#8221;</span> pelo círculo. Portanto, este setor possui área
+<div>
+\begin{equation*}
+\operatorname{area}(\triangle IOF)=\frac{x}{2\pi}\cdot {\pi}=\frac{x}{2}.
+\end{equation*}
+</div>
+<div>
+<img src='con_lim_fund_tikz_3.png' style='width:40%;margin:auto;display:block'>
+
+
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+O triâgulo \(\triangle IOT\) possui área dada pela metade do produto de sua base e sua altura, ou seja,
+<div>
+\begin{equation*}
+\operatorname{area}(\triangle IOT)=\frac{\tan(x)}{2}.
+\end{equation*}
+</div>
+<div>
+<img src='con_lim_fund_tikz_4.png' style='width:40%;margin:auto;display:block'>
+
+
+</div>
+</p>
+
+</li>
+</ul>
+<p>
+Como \(\triangle IOF\subseteq\angle IOF\subseteq\triangle IOT\) e a área de figuras menores é menor do que a área de figuras maiores, obtemos
+<div>
+\begin{equation*}
+\frac{\sin(x)}{2}\leq\frac{x}{2}\leq\frac{\tan(x)}{2},
+\end{equation*}
+</div>
+ou seja,
+<div>
+\begin{equation*}
+\sin(x)\leq x\leq\tan(x).
+\end{equation*}
+</div>
+</p>
+<p>
+Daí, obtemos que
+<div>
+\begin{equation*}
+\frac{\sin(x)}{\tan(x)}\leq \frac{sin(x)}{x}\leq \frac{x}{x},
+\end{equation*}
+</div>
+ou seja,
+<div>
+\begin{equation*}
+\cos(x)\leq \frac{\sin(x)}{x}\leq 1.
+\end{equation*}
+</div>
+Tomando \(x\to 0\), temos que \(\cos(x)\to 1\), e pelo <a href='teo_do_confronto_moodle.html'>Teorema do Confronto</a> obtemos que \(\frac{\sin(x)}{x}\to 1\). Isto mostra que
+<div>
+\begin{equation*}
+\lim_{x\to 0}\frac{\sin(x)}{x}=1.
+\end{equation*}
+</div>
+</p>
+
+<li>
+<p>
+Nós já sabemos que
+<div>
+\begin{equation*}
+e=\lim_{y\to\infty}\left(1+\frac{1}{y}\right)^y
+\end{equation*}
+</div>
+(na verdade, esta é uma das definições que usamos). Vamos mostrar que o mesmo limite, porém no \(-\infty\), também é válido.
+</p>
+<p>
+Por um lado, temos que
+<div>
+\begin{align*}
+e
+&=\lim_{y\to\infty}\left(1+\frac{1}{y}\right)^y\\
+&=\lim_{y\to\infty}\left(\frac{y+1}{y}\right)^y,\tag{E2.1}
+\end{align*}
+</div>
+e por outro, que
+<div>
+\begin{align*}
+e
+&=\lim_{y\to\infty}\left(1+\frac{1}{y}\right)^y\\
+&=\lim_{z\to-\infty}\left(1-\frac{1}{z}\right)^{-z}\\
+&=\lim_{z\to-\infty}\left(\frac{z-1}{z}\right)^{-z}\\
+&=\lim_{z\to-\infty}\left(\frac{z}{z-1}\right)^z\tag{E2.2},
+\end{align*}
+</div>
+onde realizamos a substituição \(z=-y\) na segunda igualdade.	As expressões que aparecem em (E2.1) e em (E2.2) não são tão diferentes: são o quociente de dois monômios de grau \(1\) elevado à variável dos monômios. Vamos tentar transformar uma destas expressões na outra. Para isso, vamos procurar uma nova variável \(w\) de forma que
+<div>
+\begin{equation*}
+\frac{w+1}{w}=\frac{z}{z-1}.
+\end{equation*}
+</div>
+A resolução desta equação nos dá \(w=z+1\). Note que \(w\to-\infty\) se, e somente se, \(z\to-\infty\). Substituindo em (E2.2), obtemos
+<div>
+\begin{align*}
+e
+&=\lim_{w\to-\infty}\left(\frac{w+1}{w}\right)^{w+1}\\
+&=\lim_{w\to-\infty}\left(\frac{w+1}{w}\right)^w\cdot \left(\frac{w+1}{w}\right).\tag{E2.3}
+\end{align*}
+</div>
+Estamos quase terminados, exceto que temos um fato <span>&#8220;</span>\(\frac{w+1}{w}\)<span>&#8221;</span> sobrando. Vamos aplicar a regra do produto para limites. Note que
+<div>
+\begin{align*}
+\lim_{w\to-\infty}\left(\frac{w+1}{w}\right)
+&=\lim_{w\to-\infty}1+\frac{1}{w}\\
+&=1
+\end{align*}
+</div>
+e aplicando inversos, obtemos
+<div>
+\begin{align*}
+1
+&=1^{-1}\\
+&=\lim_{w\to-\infty}\left(\frac{w+1}{w}\right)^{-1}\tag{E2.4}.
+\end{align*}
+</div>
+Assim, concluímos que
+<div>
+\begin{align*}
+e
+&=e\cdot 1\\
+&=\left(\lim_{w\to-\infty}\left(\frac{w+1}{w}\right)^w\cdot\left(\frac{w+1}{w}\right)\right)\cdot\left(\lim_{w\to-\infty}\left(\frac{w+1}{w}\right)^{-1}\right)\\
+&\qquad\text{(por (E2.3) e (E2.4)}\\
+&=\lim_{w\to-\infty}\left(\frac{w+1}{w}\right)^w\cdot\left(\frac{w+1}{w}\right)\cdot\left(\frac{w+1}{w}\right)^{-1}\\
+&\qquad\text{(pela Regra do Produto)}\\
+&=\lim_{w\to-\infty}\left(\frac{w+1}{w}\right)^w.\tag{E2.5}
+\end{align*}
+</div>
+</p>
+<p>
+Juntando (E2.1) e (E2.5), concluímos que
+<div>
+\begin{equation*}
+e=\lim_{y\to\pm\infty}\left(1+\frac{1}{y}\right)^{y}.
+\end{equation*}
+</div>
+</p>
+<p>
+Agora no caso geral, considere \(a\in\mathbb{R}\). Se \(a=0\), então claramente temos que
+<div>
+\begin{align*}
+\lim_{x\to\pm\infty}\left(1+\frac{0}{x}\right)^x
+&=\lim_{x\to\pm\infty}1^x\\
+&=1\\
+&=e^0.
+\end{align*}
+</div>
+</p>
+<p>
+Suponha então que \(a\neq 0\). Vamos calcular
+<div>
+\begin{align*}
+\lim_{x\to\pm\infty}\left(1+\frac{a}{x}\right)^x
+&=\lim_{x\to\pm\infty}\left(\left(1+\frac{1}{(x/a)}\right)^{x/a}\right)^a.
+\end{align*}
+</div>
+Fazendo a substituição \(y=x/a\), temos que \(x\to\pm\infty\) se, e somente, \(y\to\pm\infty\). Assim,
+<div>
+\begin{align*}
+\lim_{x\to\pm\infty}\left(1+\frac{a}{x}\right)^x
+&=\lim_{y\to\pm\infty}\left(\left(1+\frac{1}{y}\right)^y\right)^a
+\end{align*}
+</div>
+Como a função <span>&#8220;</span>Potência em expoente \(a\)<span>&#8221;</span> (que leva \(x\) em \(x^a\)) é elementar, podemos passar o limite para dentro e obter
+<div>
+\begin{align*}
+\lim_{x\to\pm\infty}\left(1+\frac{a}{x}\right)^x
+&=\left(\lim_{y\to\infty}\left(1+\frac{1}{y}\right)^y\right)^a\\
+&=e^a.
+\end{align*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Vamos calcular \(\lim_{x\to 0}\frac{a^x-1}{x}\). Seja \(z=a^x-1\). Então \(x=\log_a(z+1)\), e \(x\to 0\) se, e somente se, \(z\to 0\). Assim,
+<div>
+\begin{align*}
+\lim_{x\to 0}\frac{a^x-1}{x}
+&=\lim_{z\to 0}\frac{z}{\log_a(z+1)}\\
+&=\lim_{z\to 0}\frac{1}{((\log_a(z+1))/z)}\\
+&=\lim_{z\to 0}\frac{1}{\log_a((z+1)^{1/z})}
+\end{align*}
+</div>
+Lembre-se da regra de troca de bases para logaritmos: \(\log_\alpha(\beta)=\frac{\log_c(\beta)}{\log_c(\alpha)}\). Logo,
+<div>
+\begin{align*}
+\lim_{x\to 0}\frac{a^x-1}{x}
+&=\lim_{z\to 0}\ln(a)\frac{1}{\ln((z+1)^{1/z})}\\
+&=\ln(a)\frac{1}{\left(\displaystyle\lim_{z\to 0}\ln((z+1)^{1/z})\right)}.
+\end{align*}
+</div>
+</p>
+<p>
+Agora fazemos a substituição \(t=\frac{1}{z}\). Temos que \(z\to 0\) se, e somente se, \(t\to\pm\infty\). Portanto,
+<div>
+\begin{align*}
+\lim_{x\to 0}\frac{a^x-1}{x}
+&=\ln(a)\frac{1}{\left(\displaystyle\lim_{t\to\pm\infty}\ln\left(\left(\frac{1}{t}+1\right)^{t}\right)\right)}
+\end{align*}
+</div>
+Como a função \(\ln\) é elementar, podemos passar o limite para dentro e obter
+<div>
+\begin{align*}
+\lim_{x\to 0}\frac{a^x-1}{x}
+&=\ln(a)\frac{1}{\displaystyle\ln\left(\lim_{t\to\pm\infty}\left(\frac{1}{t}+1\right)^{t}\right)}\\
+&=\ln(a)\frac{1}{\ln(e)}\\
+&=\ln(a).
+\end{align*}
+</div>
+</p>
+
+</li>
+</ul>
+
+</body>
+</html>

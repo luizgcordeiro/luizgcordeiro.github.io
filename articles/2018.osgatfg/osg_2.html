@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<script src="../../src/jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="src/style.css">
+
+<title>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</title>
+
+</head>
+<body>
+
+<div style='display: none' id='latexcommands'>
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+\end{equation*}
+</div>
+
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</h1>
+<h1 class='sidebar-section'><a href='osg_front.html'>Front page</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='osg_1.html'>1. Introduction</a></h1>
+<h2 class='sidebar-subsection'><a href='osg_1.html#2'>1.1. Probability measure-preserving groupoids and full semigroups</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='osg_2.html'>2. Permanence Properties</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='osg_3.html'>3. Soficity and the full group</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='osg_3_54.html'>Acknowledgements</a></h1>
+</div>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section' id='13'>2. Permanence Properties</h2>
+<p>
+Our first permanence result deals with products of pmp groupoids:
+</p>
+
+<!-- 2.1 -->
+<div class='theorem' id='14'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>2.1</span>.
+<p>
+Two pmp groupoids $(G,\mu)$ and $(H,\nu)$ are sofic if and only if $(G\times H,\mu\times\nu)$ is sofic.
+</p>
+
+</div>
+<div class='proof' id='15'>
+<span class='envidentifier'>Sketch of proof</span>.
+<p>
+The main point of the proof is to show that the subsemigroup $M$ of $[[G\times H]]$ containing elements which can be written as $\bigcup_{i=1}^n\alpha_i\times\beta_i$, such that $\alpha_i\in[[G]]$, $\beta_i\in[[H]]$
+
+</p>
+
+<style>ol.altlist16 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist16'>
+
+<li id='17'>
+<p>
+if $s(\alpha_i)\cap s(\alpha_j)$ and $s(\beta_i)\cap s(\beta_j)$ are both nonempty then $i=j$;
+</p>
+
+</li>
+
+<li id='18'>
+<p>
+if $r(\alpha_i)\cap r(\alpha_j)$ and $r(\beta_i)\cap r(\beta_j)$ are both nonempty then $i=j$.
+</p>
+
+</li>
+</ol>
+<p>
+is dense in $[[G\times H]]$. Common measure-theoretic arguments allow us to approximate any $\phi\in[[G\times H]]$ by subsets of the form $\bigcup_{i=1}^n\alpha_i\times\beta_i$, $\alpha_i\in[[G]]$, $\beta_i\in[[H]]$, and $\alpha_i\times\beta_i$ pairwise disjoint, however (i) and (ii) are not necessarily satisfied, so to deal with this one substitutes $\alpha_i\times\beta_i$ by $\alpha_i\times\beta_i\setminus\left(\bigcup_{j\neq i}\alpha_is(\alpha_j)\times\beta_is(\beta_j)\right)$, which deals with (i), and do a similar procedure for (ii).
+</p>
+<p>
+After that, take sofic approximations $\pi=\left\{\pi_k:[[G]]\to[[Y_k^2]]\right\}$ and $\theta=\left\{\theta_k:[[H]]\to[[Z_k^2]]\right\}$ and define $\pi\otimes\theta=\left\{(\pi\otimes\theta)_k\right\}$ as $(\pi\otimes\theta)_k(\bigcup\alpha_i\times\beta_i)=\bigcup\pi_k(\alpha_i)\times\theta_k(\beta_i)$. This is a subset of $Y_k^2\times Z_k^2$, but not necessarily an element of its full semigroup since $\pi_k$ and $\theta_k$ do not necessarily preserve properties (i) and (ii). However, these are preserved in the limit, so we can modify $(\pi\otimes\theta)_k$ appropriately on small sets and assume $(\phi\otimes\theta)_k(\alpha)\in[[Y_k^2\times Z_k^2]]\simeq[[(Y_k\times Z_k)^2]]$ for all $\alpha\in M$. Since $M$ is dense in $[[G\times H]]$ we can extend $\pi\otimes\theta$ to a sofic approximation of $G\times H$.
+</p>
+
+</div>
+<p>
+Now we deal with extensions of groupoids, and for this we need to use a notion of <em>finite index</em>.
+<!-- 2.2 -->
+<div class='definition' id='19'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>2.2</span>.
+</p>
+<p>
+A subgroupoid $H\subseteq G$ has <em>finite index</em> in $G$ if there exist $\psi_1,\ldots,\psi_n\in[G]$ such that $\left\{\psi_iH:i=1\ldots n\right\}$ is a partition of $G$ (up to null sets). We call $\psi_1,\ldots,\psi_n$ <em>left transversals</em> of $H$ in $G$. Note that if $H$ has finite index in $G$ then $H^{(0)}=G^{(0)}$ (up to null sets).
+</p>
+
+</div>
+
+<div class='alt' id='20'>
+<span class='envidentifier'>Remark</span>
+<p>
+In [<a class='reference' href='../../HTML citations/MR3229595.html' target='_blank'>MR3229595</a>], Kida introduced and studied the <em>index map</em> of a subgroupoid $H$ of a pmp groupoid $G$ with $H^{(0)}=G^{(0)}$ as follows: For all $x\in G{(0)}$, define an equivalence relation $\sim_x$ on $r^{-1}(x)$ by setting $g\!\sim_x\! h\!\iff\! g^{-1}h\in H$ for all $g,h\in r^{-1}(x)$. The index $I(x)$ at $x$ is defined as the number of $\sim_x$-equivalence classes. If $H$ is ergodic, then $H$ has finite index in $G$ if an only if the index map is finite a.e. In this case the index map is a.e. equal to the cardinality of any set of left transversals of $H$ in $G$ (this follows from Theorem <a class='reference' href='osg_2.html#21'>2.3</a> below).
+</p>
+
+</div>
+<p>
+If $G$ is a groupoid and $x\in G^{(0)}$, define the <em>isotropy group</em> $G_x^x=s^{-1}(x)\cap r^{-1}(x)$, which is in fact a group with the operation inherited from $G$, and the the <em>orbit relation</em> $(r,s)(G)=\left\{(r(g),s(g)):g\in G\right\}$ on the unit space $G^{(0)}$.
+</p>
+<p>
+A common question is how much of the structure of a pmp groupoid $G$ can be described by the structures of $(r,s)(G)$ and the isotropy groups $G_x^x$; for example, $G$ is amenable if and only if $(r,s)(G)$ is amenable and a.e. isotropy group $G_x^x$ is amenable (see [<a class='reference' href='../../HTML citations/MR1799683.html' target='_blank'>MR1799683</a>]). This naturally leads to the question: If $H$ is a subgroupoid of a pmp group $G$ with $H^{(0)}=G^{(0)}$, how does finite index of $H\subseteq G$ relates to the index of the relations $(r,s)(H)\subseteq (r,s)(G)$, as defined in [<a class='reference' href='../../HTML citations/MR1007409.html' target='_blank'>MR1007409</a>], and the index of the isotropy groups $H_x^x\subseteq G_x^x$?
+</p>
+
+<!-- 2.3 -->
+<div class='theorem' id='21'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>2.3</span>.
+<p>
+Suppose $H$ is an ergodic subgroupoid of a pmp groupoid $G$ with $H^{(0)}=G^{(0)}$. Then $H$ has finite index in $G$ if and only if $(r,s)(H)$ has finite index in $(r,s)(G)$ and $H_x^x$ has finite index in $G_x^x$ for $\mu$-a.e. $x\in G^{(0)}$.
+</p>
+
+</div>
+<div class='proof' id='22'>
+<span class='envidentifier'>Proof</span>.
+<p>
+We prove only the harder implication: If the latter condition is satisfied, take invertible choice functions $\psi_1,\ldots,\psi_n$ for $(r,s)(H)\subseteq(r,s)(G)$ [<a class='reference' href='../../HTML citations/MR1007409.html' target='_blank'>MR1007409</a>], and an application of the Lusin-Novikov Theorem [<a class='reference' href='../../HTML citations/MR1321597.html' target='_blank'>MR1321597</a>] yields $\phi_1,\ldots,\phi_n\in[G]$ such that $(r,s)(\phi_i)=\left\{(x,\psi_i(x)):x\in G^{(0)}\right\}$. The index $[G_x^x:H_x^x]$ is $(r,s)(H)$-invariant, so it is equal a.e. to a number $m$. Using the selection theorem for periodic relations [<a class='reference' href='../../HTML citations/MR1321597.html' target='_blank'>MR1321597</a>], one can take elements $\theta_1,\ldots,\theta_m\in[G]$ such that $s(g)=r(g)$ for all $g\in\theta_j$, and such that for a.e. $x\in G^{(0)}$, $\left\{\theta_j H_x^x\right\}$ is a partition of $G_x^x$. Then $\phi_i\theta_j$ are left transversal for $H$ in $G$.
+</p>
+
+</div>
+
+<!-- 2.4 -->
+<div class='theorem' id='23'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>2.4</span>.
+<p>
+Suppose $(G,\mu)$ is a pmp groupoid and $H\subseteq G$ is a subgroupoid of finite index (in particular, $H^{(0)}=G^{(0)}$). If $(H,\mu)$ is sofic, so is $(G,\mu)$.
+</p>
+
+</div>
+<div class='proof' id='24'>
+<span class='envidentifier'>Sketch of proof</span>.
+<p>
+Suppose that $\psi_1,\ldots,\psi_N$ are left transversals for $H\subseteq G$. For each $\alpha\in [[G]]$, let $\alpha_{i,j}=\psi_i^{-1}\alpha\psi_j\cap H$, and note that $\alpha_{i,j}\in[[H]]$. Let $\pi=\left\{\pi_k:[[H]\to[[Y_k^2]]\right\}$ be a sofic approximation of $H$. Define $\phi_k(\alpha)=\bigcup_{i,j}\pi(\alpha_{i,j})\times\left\{(i,j)\right\}$ so that up to modifications on small sets (as in the proof of <a class='reference' href='osg_2.html#14'>2.1</a>), we can assume assume $\phi_k(\alpha)\in[[Y_k^2\times\left\{1,\ldots,N\right\}^2]]$. This gives us a sequence of maps $\phi=\left\{\phi_k:[[G]]\to[[Y_k^2\times\left\{1,\ldots,N\right\}^2]]\right\}$.
+</p>
+<p>
+To check that $\Xi=\left\{\Xi_k\right\}$ is a sofic approximation, use its definition and the fact that $\bigcup_j\alpha_{i,j}\beta_{j,l}=(\alpha\beta)_{i,l}$ to show it asymptotically preserves products, and to show that $\Xi$ is asymptotically trace-preserving note that $\operatorname{tr}\Xi(\alpha)=\frac{1}{N}\sum_{i=1}^N\operatorname{tr}(\alpha_{i,i})$. Since $\alpha_{i,i}\cap G^{(0)}=\psi_i^{-1}\alpha\psi_i\cap G^{(0)}$, $\psi_i\in[G]$ and $G$ is pmp, one obtains $\operatorname{tr}(\alpha_{i,i})=\operatorname{tr}(\alpha)$ and we are done.
+</p>
+
+</div>
+<p>
+In the next theorem we will deal mostly with distinct measures on a given discrete measurable groupoid, and how soficity is preserved under some measure-theoretic constructions. We will simply say that a measure $\mu$ on a discrete measurable groupoid $G$ is sofic if $(G,\mu)$ is sofic.
+</p>
+<p>
+If $H$ is a non-null subgroupoid of a pmp groupoid $G$, denote by $\mu_H$ the normalized measure on $H^{(0)}$, $\mu_H(A)=\mu(A)/\mu(H^{(0)})$ for $A\subseteq H^{(0)}$, which makes $H$ a pmp groupoid in its own right.
+</p>
+
+<!-- 2.5 -->
+<div class='theorem' id='25'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>2.5</span>.
+<p>
+Let $G$ be a discrete measurable groupoid.
+</p>
+
+<ol>
+
+<li id='26'>
+<p>
+A strong limit\footnote{Recall that a net $\left\{\mu_i\right\}_i$ of probability measures on a measurable space $(X,\mathcal{A})$ <em>converges strongly</em> to a measure $\mu$ on $(X,\mathcal{A})$ if $\mu_i(A)\to\mu(A)$ for all $A\in\mathcal{A}$.} of sofic measures is sofic as well.
+</p>
+
+</li>
+
+<li id='27'>
+<p>
+A convex combination of sofic measures is sofic.
+</p>
+
+</li>
+
+<li id='28'>
+<p>
+If $\mu$ has a disintegration $\mu=\int_{G^{(0)}} p_xd\nu(x)$, where $\nu$-a.e. $p_x$ is a sofic measure, then $(G,\mu)$ is sofic.
+</p>
+
+</li>
+
+<li id='29'>
+<p>
+If $(G,\mu)$ is sofic and $H$ is a non-null subgroupoid of $G$ then $(H,\mu_H)$ is sofic.
+</p>
+
+</li>
+
+<li id='30'>
+<p>
+If $\nu\ll\mu$, where $(G,\nu)$ is pmp, and $\mu$ is sofic, then $\nu$ is sofic.
+</p>
+
+</li>
+
+<li id='31'>
+<p>
+If $\left\{H_n\right\}$ is a countable Borel partition of $G$ by non-null subgroupoids, then $G$ is sofic if and only if each $H_n$ is sofic.
+</p>
+
+</li>
+</ol>
+
+</div>
+Hence, by (4) and Theorem <a class='reference' href='osg_2.html#23'>2.4</a>, a pmp groupoid is virtually sofic (i.e., it contains a finite index sofic subgroupoid) if and only if it is sofic. As a particular case of (3), if a.e. ergodic component of $(G,\mu)$ is sofic, so is $(G,\mu)$, but at present we do not know if the converse statement is true.
+<p>
+Let's introduce some notation which will be useful in the proof of the theorem above:
+</p>
+
+<!-- 2.6 -->
+<div class='definition' id='32'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>2.6</span>.
+<p>
+If $\left\{(G_i,\mu_i)\right\}_i$ is a sequence (finite or infinite) of pmp groupoids and $\left\{t_i\right\}_i$ is a sequence of nonnegative numbers with $\sum_i t_i=1$, we define the <em>convex combination groupoid</em> $(G,\mu)$ as follows: As a measurable groupoid, $G$ is the coproduct $G=\coprod G_i$, i.e., $G$ is the disjoint union of all $G_i$, the operation on $G$ is the smallest one extending those of each $G_i$, and the Borel structure of $G$ is generated by those of each $G_i$. Each measure $\mu_i$ can be regarded as a measure on $G^{(0)}$ by the formula $\mu_i(A)=\mu_i(A\cap G_i^{(0)})$, $A\subseteq G^{(0)}$, and so we endow $G$ with the convex combination of those measures: $\mu=\sum_i t_i\mu_i$. We will use the notation $G=\sum_i t_iG_i$ in this case.
+</p>
+
+</div>
+
+<div class='proof' id='33'>
+<span class='envidentifier'>Proof of <a class='reference' href='osg_2.html#25'>2.5</a></span>.
+
+<ol>
+
+<li id='34'>
+<p>
+is clear since soficity is an approximation property for the measure.
+</p>
+
+</li>
+
+<li id='35'>
+<p>
+The technique is similar to that employed in [<a class='reference' href='../../HTML citations/MR3227158.html' target='_blank'>MR3227158</a>]: Suppose first $\nu,\rho$ are sofic measures and $\mu=t\nu+(1-t)\rho$, where $t=p/q$ is rational, $p,q\in\mathbb{Z}$, $0\smallerthan p\smallerthan q$. We can take sofic approximations $\pi=\left\{\pi_k:[[G]]_\nu\to[[Y_k^2]]\right\}$ and $\theta=\left\{\theta_k:[[G]]_\rho\to[[Y_k^2]]\right\}$ of $(G,\mu)$ and $(G,\nu)$, <b>on the same sets</b> $Y_k$ (see Example <a class='reference' href='osg_1.html#8'>1.3</a>), and define a sofic approximation $t\pi\oplus(1-t)\rho=\left\{\xi_k:[[G]]_\mu\to[[Y_k^2\times\left\{1,\ldots,q\right\}^2]]\right\}$ by $\xi_k(\alpha)=\pi_k(\alpha)\times\left\{1,\ldots,p\right\}\cup\theta_k(\alpha)\times\left\{p+1,\ldots,q\right\}$. The general case follows from (1).
+</p>
+
+</li>
+
+<li id='36'>
+<p>
+This follows from the previous items, since standard arguments show that in this case $\mu$ is a strong limit of convex combinations of sofic $p_x$.
+</p>
+
+</li>
+
+<li id='37'>
+<p>
+This is trivial if $H^{(0)}=G^{(0)}$, since any sofic approximation of $G$ restricts to a sofic approximation of $H$. On the other hand, if $G$ is a convex combination $G=tH+(1-t)K$ then $H^{(0)}$ and $K^{(0)}$ are disjoint idempotents whose sum of traces is $1$. Sofic approximations preserve this information (in the limit), which allows us to decompose, up to negligible errors, a sofic approximation $\xi$ of $G$ as a convex combination of sofic approximations of $H$ and $K$, similarly to how $\xi$ was constructed in item (1). In the general case one uses that the convex combination groupoid ${\mu(H)H+(1-\mu(H))(G^{(0)}\setminus H^{(0)})G(G^{(0)}\setminus H^{(0)})}$ is contained in $G$ and has full unit space.
+</p>
+
+</li>
+
+<li id='38'>
+<p>
+By doing appropriate approximations one may assume that the derivative $f=d\nu/d\mu$ is simple, say $f=\sum_i f_i 1_{X_i}$ where $1_X$ denotes the characteristic function of $X\subseteq G^{(0)}$. In this case, $\nu=\sum_i\left(\frac{f_i}{\sum_j f_j}\right)\mu_i$ where $\mu_i(A)=\mu(A\cap X_i)/\mu(X_i)$. The result then follows from (1), (2) and (4).
+</p>
+
+</li>
+
+<li id='39'>
+<p>
+Apply items (4) and (2) with the fact that $G=\sum_j \mu(H_j^{(0)})H_j$.
+</p>
+
+</li>
+</ol>
+
+</div>
+<p>
+Let us make a small detour on the structure of finite groupoids in order to obtain a new description of soficity.
+</p>
+
+<!-- 2.7 -->
+<div class='proposition' id='40'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>2.7</span>.
+<p>
+Every finite pmp groupoid $(G,\mu)$ is a convex combination of groupoids of the form $Y^2\times\Gamma$, where $Y$ is a finite set and $\Gamma$ is a finite group. (In particular every finite groupoid is a coproduct of those of the form $Y^2\times\Gamma$.)
+</p>
+
+</div>
+<div class='proof' id='41'>
+<span class='envidentifier'>Sketch of proof</span>.
+<p>
+Letting $Y_1,\ldots,Y_n$ be the equivalence classes of the orbit relation $(r,s)(G)$, we obtain $G=\sum\mu(Y_i)(Y_iGY_i)$, where each $Y_iGY_i$ is endowed with the normalized counting measure on $(Y_iGY_i)^{(0)}\simeq Y_i$. For a fixed $i$, choose an arbitrary point $x\in Y_i$, and for each $y\in Y_i$ choose $h(y)\in G$ with $s(h(y))=x$, $r(h(y))=y$. The map
+<div class='equation' id='42'>
+\begin{equation*}
+Y_i^2\times G_x^x\to Y_iGY_i,\qquad (y_1,y_2,\gamma)\mapsto h(y_1)\gamma h(y_2)^{-1}
+\end{equation*}
+</div>
+is a measure-preserving groupoid isomorphism.
+</p>
+
+</div>
+<p>
+We can apply the previous results in order to show that finite groupoids are sofic: By Proposition <a class='reference' href='osg_2.html#40'>2.7</a> and Theorem <a class='reference' href='osg_2.html#25'>2.5</a>(6), it suffices to show that groupoids of the form $Y^2\times\Gamma$, where $Y$ is a finite set and $\Gamma$ is a finite group, are sofic. Of course $Y^2$ is sofic, and either Theorem <a class='reference' href='osg_2.html#23'>2.4</a> or <a class='reference' href='osg_2.html#14'>2.1</a> imply that $Y^2\times\Gamma$ is sofic as well, so we obtain:
+</p>
+
+<!-- 2.8 -->
+<div class='corollary' id='43'>
+<span class='envidentifier'>Corollary</span> <span class='envcounter'>2.8</span>.
+<p>
+Every finite groupoid is sofic. Therefore we may modify the definition of sofic approximation <a class='reference' href='osg_1.html#9'>1.4</a> by considering arbitrary finite pmp groupoids instead of those of the form $Y^2$, and obtain the same notion.
+</p>
+
+</div>
+
+</body>
+</html>

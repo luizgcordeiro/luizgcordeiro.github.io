@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.5.qods.html#theoremquotientofbooleanisboolean'>1.5.9</a>
+<!-- 1.5.9 -->
+<div class='toload theorem'>
+<p><span class='envidentifier'>Theorem 1.5.9</span>
+If $S$ is a weakly Boolean inverse semigroup and $I$ is a $\lor$-ideal of $S$, then $S/I$ is weakly Boolean, and the quotient map $\pi_I:S\to S/I$ is a $\lor$-morphism. If $S$ is Boolean then $S/I$ is Boolean and the quotient map $\pi_I:S\to S/I$ is a morphism of Boolean inverse semigroups.
+</p>
+</div>

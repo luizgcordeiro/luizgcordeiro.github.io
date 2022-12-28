@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>2.3. Sofic groupoids</h2>
+
+<!-- 2.3.1 -->
+<div class='definition' id='definitionsoficgroupoid'>
+	<p><span class='envidentifier'>Definition 2.3.1</span>
+	A probability measure-preserving groupoid $\mathcal{G}$ is <em>sofic</em> if there exists a collection $\left\{\mathcal{G}_i:i\in I\right\}$ of finite probability measure-preserving groupoids and an isometric (equivalently, trace-preserving) semigroup morphism $\Theta:\MEAS(\mathcal{G})\to\prod_{\mathcal{U}}\MEAS(\mathcal{G}_i^2)$ for some ultrafilter $\mathcal{U}$ on $I$. We call $\theta$ a <em>sofic embedding</em> of $\mathcal{G}$.
+	</p>
+</div>
+
+<p>
+Originally (see [<span class='ref' data-tag='MR3035288'></span>] or [<span class='ref' data-tag='ozawasoficnotes'></span>]), sofic groupoids were defined as those whose measured semigroup embeds isometrically into an ultraproduct of semigroups of the form $\MEAS(X^2)$, where $X$ is a finite set, however Proposition <span class='ref' data-tag='propositionfinitegroupoidsaresofic'></span> and Theorem <span class='ref' data-tag='theoremequivalenceembeddingintroultraproduct'></span> imply that this coincides with the definition given above.
+</p>
+
+<p>
+The definition we use also allows us to make constructions with finite groupoids more freely, whereas if we restricted ourselves to those of the form $\MEAS(X^2)$ we would have to perform arguments as in the proof of Proposition <span class='ref' data-tag='propositionfinitegroupoidsaresofic'></span> repeatedly.
+</p>
+
+<p>
+Currently, no example of non-sofic groupoid exists.
+</p>
+
+<div class='remark'>
+	<span class='envidentifier'>Remark</span>
+	<ol>
+		<li> For every positive integer $n$, let $Y_n=\left\{0,\ldots,n-1\right\}$ be a set with $n$ elements. Suppose $p,q,n$ and $r$ are non-negative integers $p=qn+r$, where $0\leq r\smallerthan n$. Define $\phi_{p,n}:\MEAS(Y_n^2)\to\MEAS(Y_p^2)$ by
+			<div class='equation'>\[
+				\phi_{p,n}(A)=\left\{(tn+j,tn+i):0\leq t\leq q-1,\quad (j,i)\in A\right\}.
+			\]</div>
+			Then $\phi_{p,n}$ is a semigroup embedding, and for all $A,B\in\MEAS(Y_n^2)$,
+			<div class='equation'>\[
+			\left|d_\#(\phi_{p,n}(A),\phi_{p,n}(B))-d_\#(A,B)\right|=\left(\frac{nq}{nq+r}-1\right)d_\#(A,B)\smallerthan \frac{1}{p},
+			\]</div>
+		which converges to $0$ as $p\to\infty$.</li>
+		
+		<li> If $(\mathcal{G},\mu)$ is a standard $\ra$-discrete probability measure-preserving groupoid, then $\MEAS(\mathcal{G},\mu)$ is separable. Indeed, we can define a measure on $\mathcal{G}$ by
+			<div class='equation'>\[
+				\nu(A)=\int_{\mathcal{G}^{(0)}}\#(\mathcal{G}_x\cap A)d\mu(x),
+			\]</div>
+			which is $\sigma$-finite because $\mathcal{G}$ can be covered by countably many Borel bisections, all of which have measure at most $1$. The associated pseudometric $d_\nu(A,B)=\nu(A\triangle B)$ on the collection $\mathcal{B}$ of Borel subsets of $\mathcal{G}$ is then separable, because $\mathcal{G}$ is standard (see [<span class='ref' data-tag='MR1321597'></span>, Exercise 17.43]), and any $d_\nu$-dense countable subset of $\BOR(\mathcal{G})$ will also be dense in $\MEAS(\mathcal{G},\mu)$ with respect to $d_\mu$.</li>
+	</ol>
+</div>
+
+<p>
+Using facts 1. and 2. above, a simple adaptation of the proof of Theorem <span class='ref' data-tag='theoremequivalenceembeddingintroultraproduct'></span> gives us the following:
+</p>
+
+<!-- 2.3.2 -->
+<div class='proposition'>
+	<p><span class='envidentifier'>Proposition 2.3.2</span>
+	If $(\mathcal{G},\mu)$ is a standard $\ra$-discrete probability measure-preserving groupoid, then the following are equivalent:
+	<ol class='arpar'>
+		<li> $(\mathcal{G},\mu)$ is sofic.</li>
+		<li> For any sequence of finite sets $Y_n$ such that $\#Y_n\to\infty$ and for any free ultrafilter $\mathcal{U}$ on $\mathbb{N}$, $\mathcal{G}$ admits an isometric semigroup embedding into $\prod_{\mathcal{U}}\MEAS(Y_n^2)$.</li>
+		<li> For any sequence of finite sets $Y_k$ such that $\#Y_n\to\infty$, there exists a sequence of maps $\theta_n:\MEAS(\mathcal{G})\to\MEAS(Y_n^2)$ such that for any $A,B\in\MEAS(\mathcal{G})$,
+			<div class='equation'>\[
+				\lim_{n\to\infty}d_\#(\theta_n(A)\theta_n(B),\theta_n(AB))=0\quad\text{and}\quad\lim_{n\to\infty}\tr_\#(\theta_n(A))=\tr_\mu(A).
+			\]</div></li>
+	</ol>
+	(The third item above is a variation of the notion of <em>sofic approximation</em> given in [<span class='ref' data-tag='MR3286052'></span>].)</p>
+</div>
+
+<!-- 2.3.3 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 2.3.3</span>
+	Let $G$ be a countable group, seen as a probability measure-preserving groupoid endowed with the point-mass measure at $1$ and the discrete Borel structure. Then $G$ is sofic as a groupoid, if and only if it is sofic as a group in the sense of Gromov [<span class='ref' data-tag='MR1694588'></span>]. See also [<span class='ref' data-tag='MR2089244'></span>, <span class='ref' data-tag='MR2220572'></span>, <span class='ref' data-tag='MR2460675'></span>, <span class='ref' data-tag='MR1803462'></span>] and Lemma <span class='ref' data-tag='lemmainvertibleinultraproduct'></span>.
+	</p>
+
+	<p>
+	We will analyze this particular case further in <a href='../2.sg/2.5.sga.html'>Section 2.5</a>.
+	</p>
+</div>
+
+<p>
+We now study permanence properties of the class of sofic groupoids. We will simply say that an invariant measure $\mu$ on a Borel groupoid $\mathcal{G}$ is sofic if $(\mathcal{G},\mu)$ is a sofic (probability measure-preserving) groupoid. Given a non-null Borel subgroupoid $\mathcal{H}$ of $\mathcal{G}$ (that is, $\mu(\mathcal{H}^{(0)})\neq 0$), denote by $\mu_{\mathcal{H}}$ the normalized measure on $\mathcal{H}^{(0)}$, i.e., $\mu_{\mathcal{H}}(A)=\mu(A)/\mu(\mathcal{H}^{(0)})$ for all Borel $A\subseteq\mathcal{H}^{(0)}$, and by $\tr_{\mathcal{H}}$ for the corresponding trace on $\MEAS(\mathcal{H},\mu_{\mathcal{H}})$.
+</p>
+
+<p>
+A similar class of results for sofic <em>groups</em> is given in Theorem <span class='ref' data-tag='theoremclosednessofsofic'></span>.
+</p>
+
+<!-- 2.3.4 -->
+<div class='theorem' id='theorempermanencesofic'>
+	<p><span class='envidentifier'>Theorem 2.3.4</span>
+	Let $(\mathcal{G},\mu)$ be a probability measure-preserving groupoid.</p>
+	<ol class='alphpar'>
+		<li> If $\mu$ is a strong limit (<span class='ref' data-tag='footnotestronglimitofmeasures' id='footnotestronglimitofmeasures'></span>) of sofic measures on $\mathcal{G}$, then $\mu$ is sofic as well.</li>
+		<li> Any convex combination (finite or countably infinite) of sofic measures is sofic.</li>
+		<li> If $\mu$ has a disintegration of the form $\mu=\int_X p_xd\nu(x)$, where $(X,\nu)$ is a probability space and $\nu$-a.e.\ $p_x$ is a probability measure on $\mathcal{G}^{(0)}$ such that $(\mathcal{G},p_x)$ is sofic, then $(\mathcal{G},\mu)$ is also sofic.</li>
+		<li> If $(\mathcal{G},\mu)$ is sofic and $\mathcal{H}$ is a non-null subgroupoid of $\mathcal{G}$ then $(\mathcal{H},\mu_{\mathcal{H}})$ is sofic.</li>
+		<li> If $\left\{\mathcal{H}_n\right\}_n$ is a countable Borel partition of $\mathcal{G}$ in non-null subgroupoids, then $\mathcal{G}$ is sofic if and only if each $\mathcal{H}_n$ is sofic.</li>
+		<li> If $\nu\ll\mu$, both $\nu$ and $\mu$ being invariant probability measures on $\mathcal{G}^{(0)}$, and $\mu$ is sofic, then $\nu$ is sofic as well.</li>
+	</ol>
+</div>
+
+<p>
+Recall that we are identifying $\MEAS(\mathcal{G})$ with $\BOR(\mathcal{G})$ whenever necessary. Moreover, we will use the following notation: If $x$ and $y$ are (complex) numbers and $\epsilon>0$, we write
+<div class='equation'>\[
+x=y\pm\epsilon\qquad\text{whenever}\qquad|x-y|\leq\epsilon.
+\]</div>
+</p>
+
+<a class='proofbutton' data-tag='theorempermanencesofic' style='display:inline;'>Proof</a> of Theorem <span class='ref' data-tag='theorempermanencesofic'></span>
+<div class='proof' id='proofoftheorempermanencesofic'>
+	<ol class='alphpar'>
+		<li> This item is clear since soficity is an approximation property for the measure (or more precisely, by Theorem <span class='ref' data-tag='theoremequivalenceembeddingintroultraproduct'></span>).</li>
+		<li><p> Suppose $\nu,\rho$ are sofic measures and $\mu=t\nu+(1-t)\rho$, $0\smallerthan t\smallerthan 1$. Take sofic embeddings $\phi:\MEAS(\mathcal{G},\nu)\to\prod_{\mathcal{U}}\MEAS(\mathcal{G}_i)$ and $\psi:\MEAS(\mathcal{G},\rho)\to\prod_{\mathcal{V}}\MEAS(\mathcal{H}_j)$, where $\mathcal{U}$ and $\mathcal{V}$ are ultrafilters on index sets $I$ and $J$, respectively.</p>
+
+			<p>Given $i$ and $j$, $\MEAS(\mathcal{G}_i)$ naturally embeds into $\MEAS(t\mathcal{G}_i+(1-t)\mathcal{H}_j)$ as a semigroup (via the map induced by the inclusion $\mathcal{G}_i\subseteq t\mathcal{G}_i+(1-t)\mathcal{H}_j$), however the trace is modified by a multiplicative factor of $t$. Similarly, $\MEAS(\mathcal{H}_j)$ also embeds into $\MEAS(t\mathcal{G}_i+(1-t)\mathcal{H}_j)$ as a semigroup, and the images of both $\MEAS(\mathcal{G}_i)$ and $\MEAS(\mathcal{H}_j)$ have disjoint ranges and sources, so their elements are pairwise compatible.</p>
+			
+			<p>Let $\mathcal{W}$ be any ultrafilter on $I\times J$ containing all $F\times G$, where $F\in\mathcal{U}$ and $G\in\mathcal{V}$. Using the argument above, we can embed $\prod_\mathcal{U}\MEAS(\mathcal{G}_i)$ and $\prod_\mathcal{U}\MEAS(\mathcal{H}_j)$ into $\prod_\mathcal{W}\MEAS(t\mathcal{G}_i+(1-t)\mathcal{H}_j)$ as subsemigroups, in a way that modifies the traces by multiplicative factors of $t$ and $(1-t)$, respectively. Let $\Phi$ and $\Psi$ be the compositions of $\phi$ and $\psi$, respectively, with respect to these embeddings.</p>
+			
+			<p>Define $\Theta:\MEAS(\mathcal{G},\mu)\to\prod_\mathcal{W}\MEAS(t\mathcal{G}_i+(1-t)\mathcal{H}_j)$ by
+			<div class='equation'>\[
+				\Theta(A)=\Phi(A)\lor \Psi(A),\qquad\text{ for all }A\in\MEAS(\mathcal{G},\mu).
+			\]</div>
+			Then $\Theta$ is a trace-preserving semigroup morphism, that is, a sofic embedding. The finite case follows by iteration, and the countable infinite case follows from (a).</p></li>
+
+		<li> From the previous items it suffices to check that $\mu$ is a limit of convex combinations of sofic $p_x$. Let $\mathbf{K}$ be a finite collection of Borel subsets of $\mathcal{G}^{(0)}$ and $\epsilon>0$. For each $A\in\mathbf{K}$, consider the Borel map
+			<div class='equation'>\[
+				p^A:X\to [0,1],\qquad p^A(x)=p_x(A).
+			\]</div>
+			Partitioning $[0,1]$ into intervals of diameter at most $\epsilon$ and taking preimages under $p^A$ for each $A\in\mathbf{K}$, we can find a finite partition $\left\{X_j\right\}_{j=1}^N$ of $X$ for which $|p_x(A)-p_y(A)|\smallerthan\epsilon$ for all $A\in\mathbf{K}$ whenever $x$ and $y$ belong to the same set $X_j$. We can moreover assume all $X_j$ are non-null, so choose $x(j)\in X_j$ with $p_{x(j)}$ sofic. Then for $A\in\mathbf{K}$,
+			<div class='equation'>\begin{align*}
+				\mu(A)&=\int_Xp_x(A)d\nu(x)=\sum_j\left(\int_{X_j}p_{x(j)}(A)\pm\epsilon d\nu(x)\right)\\
+				&=\sum_j\left(\int_{X_j}p_{x(j)}(A)d\nu(x)\pm\nu(X_j)\epsilon\right)\\
+				&=\sum_j\left(\int_{X_j}p_{x(j)}(A)d\nu(x)\right)\pm\epsilon\\
+				&=\left(\sum_j\nu(X_j)p_{x(j)}\right)(A)\pm\epsilon.
+			\end{align*}</div>
+			as we expected.</li>
+
+		<li><p> Let $\mathbf{K}\subseteq \MEAS(\mathcal{H},\mu_{\mathcal{H}})$ be a finite subset and $\epsilon>0$. Let $\theta:\MEAS(\mathcal{G},\mu)\to \prod_\mathcal{U}\MEAS(\mathcal{G}_i,\mu_i)$ be a sofic embedding of $\mathcal{G}$.</p>
+
+			<p>Consider maps $\Theta_i:\MEAS(\mathcal{G},\mu)\to\MEAS(\mathcal{G}_i,\mu_i)$ such that $\theta(A)=(\Theta_i(A))_{\mathcal{U}}$ for all $A\in\MEAS(\mathcal{G},\mu)$, and let $\Theta=(\Theta_i)_i:\MEAS(\mathcal{G},\mu)\to\prod_i\MEAS(\mathcal{G},\mu_i)$.</p>
+
+			<p>Even though $\Theta$ is not necessarily a semigroup morphism, we can assume that $\Theta(E(\MEAS(\mathcal{G},\mu)))\subseteq \prod_iE(\MEAS(\mathcal{G}_i,\mu_i))$ (Proposition <span class='ref' data-tag='propositionpropertiesofmorphismsofsemigroups'></span>(e)).</p>
+
+			<p>Note that $\MEAS(\mathcal{H},\mu_{\mathcal{H}})$ is contained in $\MEAS(\mathcal{G},\mu)$ as a semigroup, but with a different metric. Moreover, for every $A\in\MEAS(\mathcal{H},\mu_{\mathcal{H}})$, $A=\mathcal{H}^{(0)}A\mathcal{H}^{(0)}$, so substituting $\Theta(A)$ by $\Theta(\mathcal{H}^{(0)})\Theta(A)\Theta(\mathcal{H}^{(0)})$ if necessary, we still have a section $\Theta$ of $\theta$, but now we have, for all $i$,
+			<div class='equation'>\[
+				\Theta_i(A)\subseteq \Theta_i(\mathcal{H}^{(0)})\mathcal{G}_i\Theta_i(\mathcal{H}^{(0)}).
+			\]</div></p>
+
+			<p>Consider then $\mathcal{H}_i=\Theta_i(\mathcal{H}^{(0)})\mathcal{G}_i\Theta_i(\mathcal{H}^{(0)})$, which is a subgroupoid of $\mathcal{G}_i$, and endow it with the subgroupoid measure. The distance in $\MEAS(\mathcal{H}_i)$ is the same as the distance in $\MEAS(\mathcal{G}_i,\mu_i)$, up to a multiplicative factor of
+			<div class='equation'>\[
+				\mu_i(\mathcal{H}_i)^{-1}=\tr_{\mu_i}(\Theta_i(\mathcal{H}^{(0)}))^{-1},
+			\]</div>
+			which converges to $\tr_{\mu}(\mathcal{H}^{(0)})^{-1}$ along $\mathcal{U}$. This is the same multiplicative factor which relates the metrics in $\MEAS(\mathcal{H},\mu_{\mathcal{H}})$ and $\MEAS(\mathcal{G},\mu)$, so we obtain a sofic embedding
+			<div class='equation'>\[
+				\MEAS(\mathcal{H},\mu_{\mathcal{H}})\to\prod_{\mathcal{U}}\MEAS(\mathcal{H}_i),\qquad A\mapsto (\Theta_i(A))_{\mathcal{U}}.
+			\]</div></p></li>
+		<li> Apply items (d) and (b) with the fact that $G=\sum_j \mu(H_j)H_j$.</li>
+		<li><p> Let $f=d\nu/d\mu$. Since both $\mu$ and $\nu$ are invariant measures then $f$ is an invariant function, in the sense that there is a $\mu$-co-null subset $Y$ of $\mathcal{G}^{(0)}$ such that $f(\so(a))=f(\ra(a))$ whenever $\so(a)\in Y$. By modifying $f$ on a null set, we may assume it is indeed invariant (i.e., $Y=\mathcal{G}^{(0)}$).</p>
+
+			<p>Let $\epsilon>0$. Partitioning $[0,\infty)$ into countably many intervals of diameter at most $\epsilon$ and taking their preimages under $f$ and obtain a partition $X_1,X_2,\ldots$ of $\mathcal{G}^{(0)}$ by invariant subsets (that is, $\ra(\so^{-1}(X_j))=X_j$ for all $j$; See Definition <span class='ref' data-tag='definitionergodic'></span> below) such that $|f(x)-f(y)|\smallerthan \epsilon$ whenever $x$ and $y$ belong to the same $X_j$. Fix points $x(j)\in X_j$. Then for all $A\subseteq X$,
+			<div class='equation'>\[
+				\nu(A)=\sum_j\int_{X_j\cap A}f(x(j))d\mu(x)\pm\epsilon=\sum_jf(x(j))\mu(X_j)\mu_j(A)\pm\epsilon,
+			\]</div>
+			where $\mu_j$ is the normalized measure on $X_j$: $\mu_j(A)=\mu(A\cap X_j)/\mu(X_j)$ (as usual, we can assume all $X_j$ to be non-null). Since $1=\nu(X)=\sum_j f(x_j)\mu(X_j)\pm\epsilon$, we can obtain
+			<div class='equation'>\[
+				\nu(A)=\sum_j\left(\frac{f(x(j))\mu(X_j)}{\sum_i f(x(i))\mu(X_i)}\right)\mu_j(A)\pm2\frac{\epsilon}{1\pm\epsilon}.
+			\]</div>
+			Each $\mu_j$ is sofic by item (d), since it is the normalized measure of the subgroupoid $X_j\mathcal{G} X_j$, and since $\mathcal{G}=\bigsqcup_j X_j\mathcal{G} X_j$, then items (a), (b) and (e) imply that $\nu$ is sofic.<span class='qed'></span></p></li>
+	</ol>
+</div>
+
+<!-- 2.3.5 -->
+<div class='definition' id='definitionergodic'>
+	<p><span class='envidentifier'>Definition 2.3.5</span>
+	If $\mathcal{G}$ is a probability measure-preserving groupoid and $A\subseteq\mathcal{G}^{(0)}$, we say that $A$ is <em>invariant</em> if $\ra(\so^{-1}(A))=A$. We say that $\mathcal{G}$ is <em>ergodic</em> if its only invariant Borel subsets are either null or conull.
+	</p>
+</div>
+
+<p>
+If $\mathcal{G}$ is a standard $\ra$-discrete probability measure-preserving groupoid, then there exists a standard probability space $(Y,\nu)$ and a family $\left\{p_y:y\in Y\right\}$ of invariant probability measures on $\mathcal{G}^{(0)}$ such that
+<ol class='roman'>
+	<li> Each measure $p_y$ is <em>ergodic</em>: If $A\subseteq\mathcal{G}^{(0)}$ is a Borel subset satisfying $\so(\ra^{-1}(A))=A$ (we say that such $A$ is <em>invariant</em>), then $A$ is either $p_y$-null or $p_y$-conull;</li>
+	<li> For every Borel $B\subseteq\mathcal{G}^{(0)}$, the map $y\mapsto p_y(B)$ is Borel on $Y$ and
+		<div class='equation'>\[
+			\mu(B)=\int_Y p_y(B)d\nu(y).
+		\]</div></li>
+</ol>
+(This follows from Proposition <span class='ref' data-tag='propositionmeasureinvariancefororbitrelation'></span>, the Feldman-Moore Theorem - Corollary <span class='ref' data-tag='corollaryfeldmanmoore'></span> - and [<span class='ref' data-tag=''MR1784210></span>, Theorem 1.1].) This is called an <em>ergodic decomposition</em> of $(\mathcal{G},\mu)$, and each probability measure-preserving groupoid $(\mathcal{G},p_y)$ is called an <em>ergodic component</em> of $(\mathcal{G},\mu)$. Item (b) of the theorem above then implies that if every ergodic component of $\mathcal{G}$ is sofic, so is $\mathcal{G}$. In particular, the question of whether every (probability measure-preserving) groupoid is sofic is equivalent to the question of whether every <em>ergodic</em> groupoid is sofic.
+</p>
+
+<p>
+The previous theorem is more related to the question of how is soficity preserved under taking subgroupoids. We will now deal with the opposite direction, and to this end we introduce a notion of <em>finite index</em>. The index for probability measure preserving groupoids was initially introduced and studied by Kida in [<span class='ref' data-tag='MR3229595'></span>]. We will use a slight variation of his notion, using Dye's <em>full group</em> ([<span class='ref' data-tag='MR0131516'></span>]).
+</p>
+
+<!-- 2.3.6 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.3.6</span>
+	The <em>measured full group</em> $[\mathcal{G},\mu]$, or simply $[\mathcal{G}]$, of a probability measure-preserving groupoid $(\mathcal{G},\mu)$ is the group of $A\in\MEAS(\mathcal{G},\mu)$ such that $A^*A=\mathcal{G}^{(0)}$ (<span class='ref' data-tag='footnoteinvertiblemonoidselements' id='footnoteinvertiblemonoidselements'></span>), or equivalently those $A\in\MEAS(\mathcal{G},\mu)$ for which $\mu(A^*A)=1$.
+	</p>
+</div>
+
+<!-- 2.3.7 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 2.3.7</span>
+	If $G$ is a discrete group, endowed with the point-mass measure at $1$, the Borel (and the measured) semigroup of $G$ is $\left\{\left\{g\right\}:g\in G\right\}\cup\left\{\varnothing\right\}$, that is, $G$ and a zero. The full group of $G$ is isomorphic to $G$.
+	</p>
+</div>
+
+<!-- 2.3.8 -->
+<div class='example' id='examplefullgroupofequivalencerelation'>
+	<p><span class='envidentifier'>Example 2.3.8</span>
+	If $R$ is a $\ra$-discrete, probability measure-preserving Borel equivalence relation on a a standard probability space $(X,\mu)$, and we identify $\MEAS(R)$ with the semigroup of partial Borel automorphisms of $X$ (modulo functions which differ on null sets) which preserve $R$-equivalence classes, then the full group $[R]$ consists of the elements of $\MEAS(R)$ with conull domain.
+	</p>
+</div>
+
+<!-- 2.3.9 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.3.9</span>
+	A subgroupoid $\mathcal{H}$ of a probability measure-preserving groupoid $\mathcal{G}$ has <em>finite index</em> in $\mathcal{G}$ if there exist $\psi_1,\ldots,\psi_k\in[\mathcal{G}]$ such that $\left\{\psi_iH:i=1\ldots k\right\}$ is a partition of $\mathcal{G}$ up to null sets, that is,
+	<ol class='roman'>
+		<li> $\psi_i\mathcal{H}\cap\psi_j\mathcal{H}=\varnothing$ whenever $i\neq j$;</li>
+		<li> $\so(\mathcal{G}\setminus\bigcup_{i=1}^k\psi_iH)$ is null in $\mathcal{G}^{(0)}$.</li>
+	</ol>
+	We call $\psi_1,\ldots,\psi_k$ <em>left transversals</em> of $\mathcal{H}$ in $\mathcal{G}$.</p>
+</div>
+
+<p>
+Note that if $\mathcal{H}$ has finite index in $\mathcal{G}$ then $\mathcal{H}^{(0)}=\mathcal{G}^{(0)}$ (again, up to null sets).
+</p>
+
+<p>
+A general question is how much of the structure of a probability measure-pre\-ser\-ving groupoid $\mathcal{G}$ can be described by the structures of the orbit equivalence relation $\mathcal{R}(\mathcal{G})$ and the isotropy groups $\mathcal{G}_x^x$, $x\in\mathcal{G}^{(0)}$; for example, $\mathcal{G}$ is amenable if and only if $\mathcal{R}(\mathcal{G})$  is amenable and a.e.\ isotropy group $\mathcal{G}_x^x$ is amenable (see [<span class='ref' data-tag='MR1799683'></span>, Theorem 4.2.7]). This naturally leads to the question: ``If $\mathcal{H}$ is a subgroupoid of a probability measure-preserving groupoid $\mathcal{G}$ with $\mathcal{H}^{(0)}=\mathcal{G}^{(0)}$, how does finite index of $\mathcal{H}\subseteq\mathcal{G}$ relates to the index of the relations $\mathcal{R}(\mathcal{H})$ (in the sense of Feldman-Sutherland-Zimmer, [<span class='ref' data-tag='MR1007409'></span>]), and the index of the isotropy groups $\mathcal{H}_x^x\subseteq\mathcal{G}_x^x$?'' We answer this question in the ergodic case.
+</p>
+
+<!-- 2.3.10 -->
+<div class='theorem' id='theoremindexgroupoidisotropyrelation'>
+	<p><span class='envidentifier'>Theorem 2.3.10</span>
+	Suppose $\mathcal{H}$ is an ergodic subgroupoid of a standard $\ra$-discrete probability measure-preserving groupoid $(\mathcal{G},\mu)$ with $\mathcal{H}^{(0)}=\mathcal{G}^{(0)}$ (up to null sets). Then $\mathcal{H}$ has finite index in $\mathcal{G}$ if and only if $\mathcal{R}(\mathcal{H})$ has finite index in $\mathcal{R}(\mathcal{G})$ and $\mathcal{H}_x^x$ has finite index in $\mathcal{G}_x^x$ for $\mu$-a.e.\ $x\in \mathcal{G}^{(0)}$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremindexgroupoidisotropyrelation'>Proof</a>
+<div class='proof' id='proofoftheoremindexgroupoidisotropyrelation'>
+	<p>
+	First suppose $\mathcal{H}$ has finite index in $\mathcal{G}$, and let $x\in\mathcal{H}^{(0)}$. Let $\psi_1,\ldots,\psi_k$ be left transversals for $\mathcal{H}\subseteq\mathcal{G}$. Given $x\in X$, let us prove that every $\mathcal{R}(\mathcal{G})$-class is a finite union of $\mathcal{R}(\mathcal{H})$-classes. For each $i$, choose, if possible, $p_i\in \psi_i$ with $\ra(p_i)=x$, which is in fact unique with this property. If $(x,y)\in\mathcal{R}(G)$, then using $\mathcal{G}=\bigcup_{i=1}^k\psi_i \mathcal{H}$, we can choose $i\in\left\{1,\ldots,k\right\}$ and $h\in \mathcal{H}$ such that $x=\ra(p_i h)=\ra(p_i)$, and $\so(p_i h)=y$. In particular, $(\so(p_i),y)\in\mathcal{R}(\mathcal{H})$, so the $\mathcal{R}(\mathcal{G})$-class of $x$ is the union of the finitely many $\mathcal{R}(\mathcal{H})$-classes of $\so(p_i)$, $i=1,\ldots,k$.
+	</p>
+
+	<p>
+	To prove that $\mathcal{H}_x^x$ has finite index in $\mathcal{G}_x^x$, consider, for each $i$, $p_i\in\psi_i$ with $\ra(p_i)=x$ and, whenever possible, choose $h_i\in\mathcal{H}$ such that $\so(h_i)=x$ and $\ra(h_i)=\so(p_i)$. Let $a\in\mathcal{G}^x_x$. We can write $a=p_ih$ for some $i$ and some $h\in\mathcal{H}$, and in particular $h_i$ is defined and $a=p_ih_i(h_i^{-1}h)$, where $h_i^{-1}h\in\mathcal{H}^x_x$, so the elements $p_ih_i$ form a complete set of representatives of $\mathcal{H}^x_x$ in $\mathcal{G}^x_x$.
+	</p>
+
+	<p>
+	Conversely, suppose the latter condition is satisfied, and take invertible choice functions $f_1,\ldots,f_k$ for $\mathcal{R}(\mathcal{H})\subseteq\mathcal{R}(\mathcal{G})$ [<span class='ref' data-tag='MR1007409'></span>, Lemma 1.3]: These are a.e.-defined Borel automorphisms of $\mathcal{G}^{(0)}$ such that for a.e.\ $x\in\mathcal{G}^{(0)}$, the $\mathcal{R}(\mathcal{G})$-class of $x$ is partitioned by the $\mathcal{R}(\mathcal{H})$-classes of $f_i(x)$, $i=1,\ldots,k$.
+	</p>
+
+	<p>
+	Using Theorem <span class='ref' data-tag='theoremquotientfrommeasuredgroupoidtoorbitrelation'></span>, consider elements $\phi_1,\ldots,\phi_k\in[\mathcal{G}]$ satisfying $(\ra,\so)(\phi_i)=\left\{(f_i(x),x):x\in\mathcal{G}^{(0)}\right\}$.
+	</p>
+
+	<p>
+	The index map $x\mapsto [\mathcal{G}_x^x:\mathcal{H}_x^x]$ is Borel and $\mathcal{H}$-invariant, so it is equal a.e.\ to a number $m$. Consider the isotropy subgroupoids
+	<div class='equation' id='equationisotropygroupoidsindex'>\[
+		\operatorname{Iso}(\mathcal{G})=\left\{g\in \mathcal{G}:\so(g)=\ra(g)\right\},\qquad\operatorname{Iso}(\mathcal{H})=\left\{h\in\mathcal{H}:\so(h)=\ra(h)\right\}.\tag{2.3.1}
+	\]</div>
+	Let $\theta_1=\mathcal{H}^{(0)}$. If $\theta_1,\ldots,\theta_k$ are defined and $k\smallerthan m$, let $\theta_{k+1}$ be a subset of $\operatorname{Iso}(\mathcal{G})\setminus\bigcup_{i=1}^k\theta_i\operatorname{Iso}(\mathcal{H})$ such that the source map restricts to a Borel isomorphism of $\theta_{k+1}$ onto $\mathcal{H}^{(0)}$ (again, up to null sets). Such $\theta_{k+1}$ exists by the last part of Corollary <span class='ref' data-tag='corollarysurjectiveborelmapshavesections'></span>.
+	</p>
+
+	<p>
+	Thus we obtain elements $\theta_1,\ldots,\theta_m\in[\mathcal{G}]$ such that $\so(a)=\ra(a)$ for all $a\in\theta_j$, and such that for a.e.\ $x\in\mathcal{G}^{(0)}$, $\left\{\theta_j\mathcal{H}_x^x\right\}$ is a partition of $\mathcal{G}_x^x$. We can now check that the elements $\phi_i^{-1}\theta_j$ are left transversal for $\mathcal{H}$ in $\mathcal{G}$:</p>
+	<ul>
+		<li> If $a\in\mathcal{G}$, there is some $i$ such that $\so(a)$ belongs to the same $\mathcal{R}(\mathcal{H})$-class as $f_i(\ra(a))$, so there is $h\in\mathcal{H}$ such that $(\ra(h),\so(h))=(\so(a),f_i(\ra(a)))$. Let $p_i\in\phi_i$ such that $(\ra(p_i),\so(p_i))=(f_i(\ra(a)),\ra(a))$.
+			<div class='equation'>\[
+				\begin{tikzcd}
+				\so(a)\arrow[r,"a"]&\ra(a)\arrow[dl,"p_i"]\arrow[loop right,looseness=5, out=30, in=330,"t_j"]\\
+				f_i(\ra(a))\arrow[u,"h"]&\end{tikzcd}.
+			\]</div>
+			Then $p_iah\in\mathcal{G}_{\ra(a)}^{\ra(a)}$. Up to $\ra(a)$ belonging to a null set, we can find $j$ and $t_j\in\theta_j$ such that $p_iah\in t_j\mathcal{H}_{\ra(a)}^{\ra(a)}$, so $a\in p_i^{-1}t_j\mathcal{H}\subseteq \phi_i^{-1}\theta_j\mathcal{H}$.</li>
+
+		<li> To check that the sets $\phi_i^{-1}\theta_j\mathcal{H}$ are pairwise disjoint, suppose
+			<div class='equation'>\[
+				p_1^{-1}t_1h_1=p_2^{-1}t_2h_2,
+			\]</div>
+			where $p_k\in\phi_{i_k}$, $t_k\in\theta_{j_k}$, for certain indices $i_1,i_2,j_1,j_2$, and $h_k\in\mathcal{H}$. Let $x=\so(h_1)=\so(h_2)$ and $y=\so(p_1)=\so(p_2)$
+			<div class='equation'>\[
+				\begin{tikzcd}[row sep=tiny]
+				\hspace{0pt}&f_{i_1}(y)\arrow[loop above,out=120,in=60,looseness=3,"t_1"]&\hspace{0pt}\\
+				x\arrow[ur,"h_1"]\arrow[rd,"h_2",swap]&\hspace{0pt}&y\arrow[ul,"p_1",swap]\arrow[dl,"p_2"]\\
+				\hspace{0pt}&f_{i_2}(y)\arrow[loop below,out=240,in=300,looseness=3,"t_2",swap]&\hspace{0pt}
+				\end{tikzcd}.
+			\]</div>
+			Then $\ra(p_1)=\so(p_1^{-1})=\ra(t_1)=\so(t_1)=\ra(h_1)$, so
+			<div class='equation'>\[
+				(f_{i_1}(y),x)=(\ra(\so|_{\phi_1}^{-1}(y)),\so(h_1))=(\ra(p_1),\so(h_1))=(\ra,\so)(h_1)\in\mathcal{R}(\mathcal{H}),
+			\]</div>
+			and similarly $(f_{i_2}(y),x)\in\mathcal{R}(\mathcal{H})$. Since $\left\{f_i\right\}_i$ are choice functions, we obtain $i_1=i_2$. Then $\phi_{i_1}=\phi_{i_2}$ is a bisection containing $p_1,p_2$, and $\so(p_1)=y=\so(p_2)$, so $p_1=p_2$. Therefore
+			<div class='equation'>\[
+				t_1h_1=t_2h_2,
+			\]</div>
+			that is, $t_1=t_2h_2h_1^{-1}\in\theta_{j_2}\mathcal{H}_z^z$, where $z=f_{i_1}(y)$, and this implies $j_1=j_2$ by our choice of $\theta_j$.<span class='qed'></span></li>
+	</ul>
+</div>
+
+<p>
+We now relate the notion of finite index introduced above with Kida's original definition ([<span class='ref' data-tag='MR3229595'></span>]). If $\mathcal{H}$ is a subgroupoid of a groupoid $\mathcal{G}$, we define an equivalence relation $\sim_{\mathcal{H}}$ by
+<div class='equation'>\[
+g\sim_{\mathcal{H}} h\iff \ra(g)=\ra(h)\quad\text{and}\quad g^{-1}h\in\mathcal{H}.
+\]</div>
+Note that each $\sim_{\mathcal{H}}$-equivalence class is contained in $\mathcal{G}^x$ for some $x\in\mathcal{G}^{(0)}$. For every $x\in\mathcal{G}^{(0)}$, let $I(x)$ be the number (possibly infinite) of $\sim_{\mathcal{H}}$-equivalence classes contained in $\mathcal{G}^x$. We call $I:\mathcal{G}^{(0)}\to\mathbb{N}\cup\left\{\infty\right\}$ the <em>index map</em>, and $I(x)$ is the <em>index of $\mathcal{H}$ in $\mathcal{G}$ at $x$</em>.
+</p>
+
+<!-- 2.3.11 -->
+<div class='corollary' id='corollarykidaindex'>
+	<p><span class='envidentifier'>Corollary 2.3.11</span>
+	Suppose $\mathcal{H}$ is an ergodic subgroupoid of a standard $\ra$-discrete probability measure-preserving groupoid $(\mathcal{G},\mu)$ with $\mathcal{H}^{(0)}=\mathcal{G}^{(0)}$ (up to null sets). Then $\mathcal{H}$ has finite index in $\mathcal{G}$ if and only if the equivalence relation $\sim_{\mathcal{H}}$ on $\mathcal{G}$ is periodic (i.e., a.e.\ equivalence class is finite). Moreover, if $\psi_1,\ldots,\psi_k$ are left transversals of $\mathcal{H}$ in $\mathcal{G}$, then the index map $I:\mathcal{G}^{(0)}\to\mathbb{N}\cup\left\{\infty\right\}$ is a.e.-constant and equal to $k$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='corollarykidaindex'>Proof</a>
+<div class='proof' id='proofofcorollarykidaindex'>
+	<p>
+	First assume $\sim_{\mathcal{H}}$ is periodic. Given $x\in\mathcal{G}^{(0)}$, let $\left\{g_1,\ldots,g_k\right\}$ be representatives of all the $\sim_{\mathcal{H}}$-equivalence classes contained in $\mathcal{G}^x$. If $(\so(g_i),x)\in\mathcal{R}(\mathcal{H})$, choose $h_i\in\mathcal{H}$ with $\so(h_i)=\so(g_i)$ and $\ra(h_i)=x$. First we will prove that the set
+	<div class='equation'>\[
+		\left\{h_ig_i^{-1}:h_i\text{ is defined}\right\}
+	\]</div>
+	is a full set of representatives of $\mathcal{H}_x^x$ in $\mathcal{G}_x^x$. Indeed, if $g\in\mathcal{G}_x^x$, then there is $i$ such that $g_i^{-1}g\in\mathcal{H}$, so $(\so(g_i),x)=(\ra,\so)(g_i^{-1}g)\in\mathcal{R}(\mathcal{H})$ and thus $h_i$ is defined and we have $h_ig_i^{-1}g\in\mathcal{H}$. Therefore $\mathcal{H}_x^x$ has finite index in $\mathcal{G}_x^x$. A similar argument proves that the $\mathcal{R}(\mathcal{G})$-equivalence class of $x$ is the union of the $\mathcal{R}(\mathcal{H})$-equivalence classes of $\so(g_1),\ldots,\so(g_n)$, so $\mathcal{R}(\mathcal{H})$ has finite index in $\mathcal{R}(\mathcal{G})$. By Theorem <span class='ref' data-tag='theoremindexgroupoidisotropyrelation'></span>, $\mathcal{H}$ has finite index in $\mathcal{G}$.
+	</p>
+
+	<p>
+	Now we assume $\psi_1,\ldots,\psi_k\in[\mathcal{G}]$ are left transversals of $\mathcal{H}$ in $\mathcal{G}$, i.e., the collection $\left\{\psi_i\mathcal{H}:i=1,\ldots,k\right\}$ is a partition of $\mathcal{G}$ (up to null sets). It immediately follows that for a.e.\ $x\in\mathcal{G}^{(0)}$, we can choose $p_i\in\psi_i$ such that $\ra(p_i)=x$ ($i=1,\ldots,k$) and $\left\{p_1,\ldots,p_k\right\}$ is a complete set of representatives of the $\sim_{\mathcal{H}}$-classes contained in $\mathcal{G}^x$. This proves that $\sim_{\mathcal{H}}$ is periodic and the index map $I$ is a.e. equal to $k$.
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	As a consequence of Corollary <span class='ref' data-tag='corollarykidaindex'></span>, if $\mathcal{H}$ is an ergodic finite index-subgroupoid of $\mathcal{G}$ then any two sets of left transversals of $\mathcal{H}$ in $\mathcal{G}$ have the same number of elements, which we thus call the <em>index</em> of $\mathcal{H}$ in $\mathcal{G}$ and denote by $[\mathcal{G}:\mathcal{H}]$.
+	</p>
+
+	<p>
+	Following the proof of Theorem <span class='ref' data-tag='theoremindexgroupoidisotropyrelation'></span>, the map $x\mapsto[\mathcal{G}_x^x:\mathcal{H}_x^x]$ is a.e.-constant to the index $[\operatorname{Iso}(\mathcal{G}):\operatorname{Iso}(\mathcal{H})]$ of the respective isotropy subgroupoids (Equation (<span class='ref' data-tag='equationisotropygroupoidsindex'></span>)), and moreover $[\mathcal{G}:\mathcal{H}]=[\operatorname{Iso}(\mathcal{G}):\operatorname{Iso}(\mathcal{H})][\mathcal{R}(\mathcal{G}):\mathcal{R}(\mathcal{H})]$.
+	</p>
+</div>
+
+<p>
+We now prove that finite index extensions of sofic groupoids preserve soficity. This can be compared with the similar fact that sofic-by-amenable extensions of groups are also sofic (see [<span class='ref' data-tag='MR2220572'></span>, Theorem 1] or Theorem <span class='ref' data-tag='theoremclosednessofsofic'></span>(d)).</p>
+
+<!-- 2.3.12 -->
+<div class='theorem' id='theoremfiniteindexgroupoids'>
+	<p><span class='envidentifier'>Theorem 2.3.12</span>
+	Suppose $\mathcal{H}\subseteq\mathcal{G}$ is of finite index. If $\mathcal{H}$ is sofic, so is $\mathcal{G}$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremfiniteindexgroupoids'>Proof</a>
+<div class='proof' id='proofoftheoremfiniteindexgroupoids'>
+	<p>
+	Suppose that $\psi_1,\ldots,\psi_N$ are left transversals for $\mathcal{H}\subseteq\mathcal{G}$. For each $A\in\MEAS(\mathcal{G})$, let $A_{i,j}=\psi_i^{-1}A\psi_j\cap H$. Note that $A_{i,j}\in\MEAS(\mathcal{H})$ and that $A_{i,j}^{-1}=A_{j,i}$. Moreover, $A_{i,j}A_{k,l}=\varnothing$ whenever $j\neq l$. Let $Y$ be a set with $N$ elements. Given $(i,j)\in Y^2$, let $E_{i,j}=\left\{(i,j)\right\}\in\MEAS(Y^2)$. (As a partial transformation on $Y$, $E_{i,j}$ is simply defined by $E_{i,j}(j)=i$.)
+	</p>
+
+	<p>
+	Let $\Phi:\MEAS(\mathcal{G})\to\prod_\mathcal{U}\MEAS(\mathcal{G}_n)$ be a sofic embedding of $\mathcal{G}$.
+	</p>
+
+	<p>
+	Recall that $Y$ is identified with $(Y^2)^{(0)}$, the unit of $\MEAS(Y^2)$. For each $n$, the map $I_n:\MEAS(\mathcal{G}_n)\to\MEAS(\mathcal{G}_n\times Y^2)$, $C\mapsto C\times Y$, is an isometric semigroup morphism, so Proposition <span class='ref' data-tag='propositionultraproductoffunctions'></span> allows us to induce a map $I:\prod_\mathcal{U}\MEAS(\mathcal{G}_n)\to\prod_\mathcal{U}\MEAS(\mathcal{G}_n\times Y^2)$. Let $J:\MEAS(Y^2)\to\prod_{\mathcal{U}}\MEAS(\mathcal{G}_n\times Y^2)$ be given by $J(E)=(\mathcal{G}_n^{(0)}\times E)_\mathcal{U}$, which is also an isometric semigroup embedding.
+	</p>
+
+	<p>
+	Given $U=(U_n)_\mathcal{U}\in\prod_\mathcal{U}\MEAS(\mathcal{G}_n)$ and $E\in\MEAS(Y^2)$, we denote
+	<div class='equation'>\[
+	U\times E=I(U)J(E)=(U_n\times E)_\mathcal{U}\in\prod_\mathcal{U}\MEAS(\mathcal{G}_n\times Y^2).
+	\]</div></p>
+
+	<p>
+	Define $\Xi:\MEAS(\mathcal{G})\to\prod_{\mathcal{U}}\MEAS(\mathcal{G}_n\times Y^2)$ by
+	<div class='equation'>\[
+	\Xi(A)=\bigvee_{i,j=1}^N\Phi(A_{i,j})\times E_{i,j}.
+	\]</div>
+	</p>
+
+	<p>
+	First we prove that $\Xi$ is well-defined, or more precisely that the terms in the right-hand side have disjoint sources and ranges: Let $(i,j)$ and $(k,l)$ be given. Then
+	<div class='equation'>\[
+	\left(\Phi(A_{i,j})\times E_{i,j}\right)\left(\Phi(A_{k,l})\times E_{k,l}\right)^{-1}=\Phi(A_{i,j}A_{l,k})\times(E_{i,j}E_{l,k}).
+	\]</div>
+	If $j\neq l$ the right-hand side is empty, so assume $j=l$. Then
+	<div class='equation' id='equationduringsoficfiniteindex'>\[
+	A_{i,j}A_{j,k}=(\psi_i^{-1}A\psi_j\cap H)(\psi_j^{-1}A\psi_k\cap H).\tag{2.3.2}
+	\]</div>
+	If this product is nonempty, then we have $p_i\in\psi_i$, $p_j,q_j\in\psi_j$, $q_k\in\psi_k$ and $g,h\in A$ such that the product $(p_i^{-1}gp_j)(q_j^{-1}hq_k)$ is defined, and both terms belong to $\mathcal{H}$. But in particular $\so(p_j)=\ra(q_j^{-1})=\so(q_j)$, so $p_j=q_j$. Similarly $g=h$, and so $p_i^{-1}q_k\in\mathcal{H}$, thus $q_k\in\psi_i\mathcal{H}\cap\psi_k\mathcal{H}$, which implies $i=k$.
+	</p>
+
+	<p>
+	This proves that the ranges of the terms in the definition of $\Xi(A)$ are disjoint. The sources are dealt with similarly, and so $\Xi$ is well-defined.
+	</p>
+
+	<p>
+	Now we need to show that $\Xi$ is a morphism. Suppose $A,B\in\MEAS(\mathcal{G})$. We have
+	<div class='equation'>\[
+	\Xi(A)\Xi(B)=\bigvee_{i,j,k,l}\Phi(A_{i,j}B_{k,l})\times (E_{i,j}E_{k,l})=\bigvee_{i,j,l}\Phi(A_{i,j}B_{j,l})\times E_{i,l}.
+	\]</div>
+	On the other hand $\Xi(AB)=\bigvee_{i,l}\Phi((AB)_{i,l})\times E_{i,l}$, so we are done if we show that for given $i,l$,
+	<div class='equation'>\[
+	\bigcup_jA_{i,j}B_{j,l}=(AB)_{i,l}.
+	\]</div>
+	</p>
+
+	<p>
+	The inclusion $\subseteq$ is quite straightforward, using a similar argument to the one right after Equation (<span class='ref' data-tag='equationduringsoficfiniteindex'></span>) above. For the converse, suppose $p_i^{-1}abp_l\in(AB)_{i,l}$, where $p_i\in\psi_i$, $p_l\in\psi_l$, $a\in A$ and $b\in B$. Choose $j$ such that $bp_l\in\psi_j H$, so there is a unique $p_j\in\psi_j$ such that the product $p_j^{-1}bp_l$ is defined and in $\mathcal{H}$. Therefore 
+	<div class='equation'>\[
+	p_i^{-1}abp_l=(p_i^{-1}a p_j)(p_j^{-1}bp_l)\in A_{i,j}B_{j,l}.
+	\]</div>
+	</p>
+
+	<p>
+	We need to show that $\Xi$ is trace-preserving. Note that
+	<div class='equation'>\[
+	\tr\Xi(A)=\frac{1}{N}\sum_{i=1}^N\tr(A_{i,i}),
+	\]</div>
+	so we are done if we prove that $\tr(A_{i,i})=\tr(A)$. To this end, let us prove that
+	\[A_{i,i}\cap\mathcal{G}^{(0)}=\so\left\{g\in\psi_i:\ra(g)\in A\cap\mathcal{G}^{(0)}\right\}\]
+	An element of $A_{i,i}\cap \mathcal{G}^{(0)}$ has the form $x=p_i^{-1}ap_i$ for $a\in A$ and $p_i\in\psi_i$. It follows that $x=\so(p_i)$, so $\ra(p_i)=a\in A\cap \mathcal{G}^{(0)}$. Conversely, if $x=\so(g)$, where $g\in\psi_i$ and $\ra(g)\in A\cap \mathcal{G}^{(0)}$, then $x=g^{-1}\ra(g)g\in\psi_i^{-1}A\psi_i\cap \mathcal{G}^{(0)}$.
+	</p>
+
+	<p>
+	Finally, we obtain
+	<div class='equation'>\begin{align*}
+	\tr(A_{i,i})&=\mu(\psi_i^{-1}A\psi_i\cap \mathcal{G}^{(0)})=\mu(\so(\psi_i\cap \ra^{-1}(A\cap \mathcal{G}^{(0)})))=\mu(\ra(\psi_i\cap \ra^{-1}(A\cap \mathcal{G}^{(0)})))\\
+	&=\mu(A\cap \mathcal{G}^{(0)})=\tr(A),
+	\end{align*}</div>
+	because $\ra|_{\psi_i}:\psi_i\to \mathcal{G}^{(0)}$ is surjective (up to null sets).<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+With these results at hand, we can provide a few examples of sofic groupoids. The following definition is a natural generalization from the case of equivalence relations.
+</p>
+
+<!-- 2.3.13 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.3.13
+	<span style='font-weight:normal;'>[<span class='ref' data-tag='MR2583950'></span>, p. 13, 18]</span></span>
+	A probability measure-preserving groupoid $\mathcal{G}$ is <em>periodic</em> (<span class='ref' data-tag='footnoteperiodicorfinitegroupoid' id='footnoteperiodicorfinitegroupoid'></span>) if $\mathcal{G}_x$ is finite for a.e.\ $x\in\mathcal{G}^{(0)}$, and $\mathcal{G}$ is <em>hyperfinite</em> if it is standard and an increasing union of periodic Borel subgroupoids (as usual, up to null sets). (In particular, every hyperfinite groupoid is $\ra$-discrete.)
+	</p>
+</div>
+
+<p>
+Hyperfinite groupoids are the measured analogues of the AF groupoids introduced in [<span class='ref' data-tag='MR584266'></span>]). The Borel case has also been studied, at least in the case of equivalence relations, in [<span class='ref' data-tag='MR1900547'></span>].
+</p>
+
+<!-- 2.3.14 -->
+<div class='corollary' id='periodicequivalencerelationsaresofic'>
+<p><span class='envidentifier'>Corollary 2.3.14</span>
+Every (standard) hyperfinite groupoid is sofic.
+</p>
+</div>
+
+<a class='proofbutton' data-tag='periodicequivalencerelationsaresofic'>Proof</a>
+<div class='proof' id='proofofperiodicequivalencerelationsaresofic'>
+	<p>
+	First note that every measure space $(X,\mu)$, seen as a unit groupoid (i.e., $X=X^{(0)}$), is sofic. Indeed, $\mu=\int\delta_xd\mu(x)$, where $\delta_x$ is the point-mass measure on $x$, and $(X,\delta_x)$, as a probability measure-preserving groupoid, is isomorphic to a singleton (unit groupoid), hence finite and sofic.
+	</p>
+
+	<p>
+	Suppose $\mathcal{G}$ is periodic. Let $\mathcal{G}_n=\left\{a\in\mathcal{G}:\#(\mathcal{G}_{\so(a)})=n\right\}$. Then the $\mathcal{G}_n$ form a Borel partition by subgroupoids of $\mathcal{G}$, so it suffices to show that each $\mathcal{G}_n$ is sofic. Of course, every isotropy group $(\mathcal{G}_n)_x^x$ is finite, as is every equivalence class of $\mathcal{R}(\mathcal{G}_n)$, so the subgroupoid $(\mathcal{G}_n)^{(0)}$ has finite index in $\mathcal{G}_n$, which is therefore sofic.
+	</p>
+
+	<p>
+	For a general hyperfinite groupoid $(\mathcal{G},\mu)$, write $\mathcal{G}$ as an increasing union of periodic subgroupoids, say $\mathcal{G}=\bigcup_{n=1}^\infty \mathcal{H}_n$, where $\mathcal{H}_1\subseteq\mathcal{H}_2\subseteq\cdots$ are periodic. Denoting by $\mu_n$ the normalized measure on $\mathcal{H}_n$, regarded as a measure on $\mathcal{G}$, then $\MEAS(\mathcal{G},\mu_n)$ is obviously isometrically isomorphic to $\MEAS(\mathcal{H}_n,\mu_n)$ and so $(\mathcal{G},\mu_n)$ is sofic. Since $\mu$ is the strong limit of $\mu_n$, then $(\mathcal{G},\mu)$ is sofic.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+To finish this section, we prove that soficity is preserved under products. Given probability spaces $(X,\mu)$ and $(Y,\nu)$, we denote by $\mu\times\nu$ the product probability measure on the product $\sigma$-algebra of $X\times Y$.
+</p>
+
+<!-- 2.3.15 -->
+<div class='theorem' id='theorem2315'>
+	<p><span class='envidentifier'>Theorem 2.3.15</span>
+	Two standard, $\ra$-discrete probability measure-preserving groupoids $(\mathcal{G},\mu)$ and $(\mathcal{H},\nu)$ are sofic if and only if $(\mathcal{G}\times \mathcal{H},\mu\times\nu)$ is sofic.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theorem2315'>Proof</a>
+<div class='proof' id='proofoftheorem2315'>
+	<p>
+	One direction is clear, since $\MEAS(\mathcal{G})$ embeds isometrically into $\MEAS(\mathcal{G}\times\mathcal{H})$ via $A\mapsto A\times\mathcal{H}^{(0)}$, and similarly for $\MEAS(\mathcal{H})$.
+	</p>
+
+	<p>
+	Let $\mathfrak{M}$ be the submonoid of $\MEAS(\mathcal{G}\times\mathcal{H})$ of elements of the form $\bigcup_{i=1}^nA_i\times B_i$, where
+	<ul>
+		<li> $A_i\in\MEAS(\mathcal{G})$, $B_i\in\MEAS(\mathcal{H})$;</li>
+		<li> for all $i\neq j$, $\so(A_i)\cap \so(A_j)=\varnothing$ or $\so(B_i)\cap \so(B_j)=\varnothing$; and</li>
+		<li> for all $i\neq j$, $\ra(A_i)\cap \ra(A_j)=\varnothing$ or $\ra(B_i)\cap \ra(B_j)=\varnothing$.</li>
+	</ul>
+	Let us show that $\mathfrak{M}$ is dense in $\MEAS(\mathcal{G}\times\mathcal{H})$.
+	</p>
+
+	<p>
+	Let $\phi\in\MEAS(\mathcal{G}\times\mathcal{H})$ and $\epsilon>0$. From usual measure theory, we can take $A_i\in\MEAS(\mathcal{G})$ and $B_i\in\MEAS(\mathcal{H})$ such that
+	<div class='equation'>\[
+	(\mu\times\nu)\left(\phi\triangle\left(\bigcup_{ij} A_i\times B_i\right)\right)\smallerthan \epsilon,\
+	\]</div>
+	and with the sets $A_i\times B_i$ pairwise disjoint. For $i\neq j$, let 
+	<div class='equation'>\[
+	h_{i,j}=\so|_{A_i\times B_i}^{-1}(\so(A_j\times B_j))=A_i\so(A_j)\times B_i\so(B_j)\qquad\text{and}\qquad h_i=\bigcup_{j\neq i}h_{i,j}.
+	\]</div>
+	</p>
+
+	<p>
+	Let $x\in h_{i,j}\cap\phi$, so $\so(x)=\so(a_j,b_j)$ for some $(a_j,b_j)\in A_j\times B_j$. If $(a_j,b_j)\in\phi$, we would obtain $(a_j,b_j)=x\in A_i\times A_i$, which happens only if $i=j$. This proves that
+	<div class='equation'>\[
+	\so\left(\bigcup_i\left(h_i\cap\phi\right)\right)\subseteq\so\left(\bigcup_j(A_j\times B_j)\setminus\phi\right).
+	\]</div>
+	In particular, $d(\phi,\phi\setminus\bigcup_ih_i)\smallerthan \epsilon$, from which follows that
+	<div class='equation'>\[
+	d\left(\bigcup_i(A_i\times B_i\setminus h_i),\phi\right)=d\left(\left(\bigcup_i A_i\times B_i\right)\setminus(\bigcup_i h_i),\phi\right)\smallerthan 2\epsilon.
+	\]</div>
+	</p>
+
+	<p>
+	Since each $h_i$ is a rectangle, we can rewrite $\bigcup_i(A_i\times B_i\setminus h_i)$ as a union of disjoint rectangles with the desired property for the source map. To deal with the range map one can apply the same argument to $\phi^{-1}$ and take intersections. 
+	</p>
+
+	<p>
+	So given sofic embeddings $\Phi:\MEAS(\mathcal{G})\to\prod_\mathcal{U}\MEAS(\mathcal{G}_n)$ and $\Psi:\MEAS(\mathcal{H})\to\prod_\mathcal{U}\MEAS(\mathcal{H}_n)$ (which can be taken under the same ultrafilter on $\mathbb{N}$) set $\Phi\times\Psi:\mathfrak{M}\to\MEAS(\mathcal{G}_n\times\mathcal{H}_n)$ by
+	<div class='equation'>\[
+	(\Phi\times\Psi)(\bigcup_{ij}A_i\times B_i)=\bigcup_{ij}\Phi(A_i)\times\Psi(B_i),
+	\]</div>
+	where the $A_i$ and $B_i$ satisfy the condition in the definition of $\mathfrak{M}$.
+	</p>
+
+	<p>
+	The element in the right-hand side is well-defined and does not depend on the choice of $A_i$ and $B_i$ since sofic embeddings preserve sources, ranges, and intersections. $\Phi\times\Psi$ is then an trace-preserving embedding of $\mathfrak{M}$, and hence extends uniquely to an isometric embeddings of $\MEAS(\mathcal{G}\times\mathcal{H})$.<span class='qed'></span>
+	</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

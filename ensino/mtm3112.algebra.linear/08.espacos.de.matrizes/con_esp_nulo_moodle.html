@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Definição</b>.
+<p>
+Dada uma matriz \(A\in M_{m\times n}(\mathbb{R})\), o <b>espaço nulo</b> ou <b>kernel</b> de \(A\) é o subespaço vetorial de \(\mathbb{R}^n\) definido por
+<div>
+\begin{equation*}
+\operatorname{Nul}(A)=\left\{(x_1,\ldots,x_n)\in\mathbb{R}^n:A\begin{bmatrix}x_1\\\vdots\\x_n
+
+\end{bmatrix}=0_{m\times 1}\right\}.
+\end{equation*}
+</div>
+Em termos mais familiares, \(\operatorname{Nul}(A)\) é o conjunto solução do sistema linear homogêneo <span>&#8220;</span>\(Ax=0\)<span>&#8221;</span>.
+</p>
+<p>
+Se identificarmos \(\mathbb{R}^n\) com os espaço \(M_{n\times 1}(\mathbb{R})\) das matrizes coluna \(n\times 1\), o espaço nulo de \(A\) também pode ser identificado como
+<div>
+\begin{equation*}
+\operatorname{Nul}(A)=\left\{x\in M_{n\times 1}(\mathbb{R}):Ax=0_{m\times 1}\right\}.
+\end{equation*}
+</div>
+</p>
+
+<hr/>
+<p>
+<i>Importante</i>: Na definição de \(\operatorname{Nul}(A)\), tomamos os vetores que quando multiplicados à esquerda por \(A\) criam o vetor nulo. Caso invertêssemos a ordem do produto, obteríamos o <b>espaço conulo</b> ou <b>cokernel</b> de \(A\):
+<div>
+\begin{equation*}
+\operatorname{CoNul}(A)=\left\{x\in\mathbb{R}^m:xA=0_{1\times n}\right\}.
+\end{equation*}
+</div>
+</p>
+<p>
+Note que \(\operatorname{CoNul}(A)=\operatorname{Nul}(A^T)\). Os espaços nulo e conulo de uma matriz são geralmente diferentes.
+</p>
+
+<hr/>
+<p>
+<i>Observação</i>: O espaço nulo de uma matriz \(A\) também é denotado por \(\operatorname{ker}(A)\). Por enquanto, vamos evitar o uso desta notação para evitar confusões com o kernel de transformações lineares, que serão estudadas a seguir.
+</p>
+
+</div></body>
+</html>

@@ -1,0 +1,22 @@
+<a class='reflink' href='../3.dcf/3.2.pi.html#theoremperppideals'>3.2.6</a>
+
+<!-- 3.2.6 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.2.6</span>
+	Suppose $(X,\theta,\mathcal{A})$ is weakly regular.
+	</p>
+	
+	<ol class='alphpar'>
+		<li>
+			For every $\perpp$-ideal $I$ of $\mathcal{A}$, $I=\mathbf{I}(\mathbf{U}(I))$.
+		</li>
+		
+		<li>
+			For every open subset $U\subseteq X$, $U=\mathbf{U}(\mathbf{I}(U))$.
+		</li>
+		
+		<li>
+			The map $U\mapsto\mathbf{I}(U)$ is an order isomorphism between the lattices of open sets of $X$ and $\perpp$-ideals of $\mathcal{A}$.
+		</li>
+	</ol>
+</div>

@@ -1,0 +1,39 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#propositionbasicisomorphisms'>3.3.6</a>
+
+<!-- 3.3.6 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 3.3.6</span>
+	Let $\mathcal{A}(X)\subseteq (H_X)^X$ and $\mathcal{A}(Y)\subseteq (H_Y)^Y$, and consider maps $\phi:Y\to X$ and $T:\mathcal{A}(X)\to\mathcal{A}(Y)$. Then
+	<ol class='alphpar'>
+		<li>
+			$T$ is $\phi$-basic if and only if for all $y\in Y$,
+			<div class='equation'>\[
+				f(\phi(y))=g(\phi(y))\Longrightarrow Tf(y)=Tg(y),\qquad\forall f,g\in\mathcal{A}(X).\tag{3.3.3}
+			\]</div>
+		</li>
+	</ol>
+	In this case,
+	<style>
+	.alphparat2 {counter-reset: alphpar 1;}
+	</style>
+	<ol class='alphpar'><span class='alphparat2'></span>
+		<li>
+			the $(\phi,T)$-transform $\chi$ is unique.
+		</li>
+		
+		<li>
+			A section $\chi(y,\cdot)$ is injective if and only if
+			<div class='equation'>\[
+				Tf(y)=Tg(y)\Longrightarrow f(\phi(y))=g(\phi(y)),\qquad\forall f,g\in\mathcal{A}(X).\tag{3.3.4}
+			\]</div>
+		</li>
+		
+		<li>
+			A section $\chi(y,\cdot)$ is surjective if and only if
+			<div class='equation'>\[
+				H_Y=\left\{Tf(y):f\in\mathcal{A}(X)\right\}.
+			\]</div>
+		</li>
+	</ol>
+	</p>
+</div>

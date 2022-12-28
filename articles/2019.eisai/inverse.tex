@@ -1,0 +1,104 @@
+The main goal of this subsection if to define inverse semigroupoids and to extend the basic elements of the theory of inverse semigroups to this more general setting.
+
+\begin{definition}\label{def:inversesemigroupoid}
+An Exel semigroupoid $\Lambda$ is \emph{regular} if for every $a\in\Lambda$ there exists $b\in\Lambda$ such that $(a,b),(b,a)\in\Lambda^{[2]}$ and
+\[aba=a\qquad\text{and}\qquad bab=b.\label{eq:inversesemigroupoid}\]
+Such an element $b$ is called an \emph{inverse} of $a$.
+
+If every element $a\in\Lambda$ admits a unique inverse, then $\Lambda$ is called an \emph{inverse semigroupoid}. In this case, the unique inverse of $a$ is denoted $a^*$.
+\end{definition}
+
+All groupoids and all inverse semigroups are inverse semigroupoids.
+
+Just as in the case of semigroups, the condition for regular semigroupoids can be weakened to the following: For every $a\in\Lambda$, there exists $b\in\Lambda$ such that $aba=a$. Such an element $b$ is called a \emph{pseudoinverse} of $a$. It follows that $bab$ is an inverse of $a$, and therefore $\Lambda$ is regular.
+
+\begin{example}
+Suppose that $\Lambda$ is an inverse graphed semigroupoid, endowed with some compatible graph structure. Then for every $x\in\Lambda^{(0)}$, the \emph{isotropy semigroup} $\Lambda_x^x=\ra^{-1}(x)\cap\so^{-1}(x)$ is in fact an inverse semigroup, with the product induced by $\Lambda$.
+\end{example}
+
+Given an Exel semigroupoid $\Lambda$, denote by $E(\Lambda)=\left\{e\in \Lambda:(e,e)\in\Lambda^{[2]}\text{ and }ee=e\right\}$ the set of \emph{idempotents} of $\Lambda$. Note that if $t$ is an inverse of $s$, then $st$ and $ts$ are idempotents.
+
+We will now proceed to prove that every inverse semigroupoid admits a unique compatible graph structure (Corollary \ref{cor:inversesemigroupoidhasauniquegraphstructure}).
+
+\begin{lemma}\label{lem:exelinverseiscategorical}
+Let $\Lambda$ be an inverse semigroupoid. The following are equivalent:
+\begin{enumerate}[label=(\arabic*)]
+\item\label{lem:exelinverseiscategorical1} $\Lambda$ is categorical;
+\item\label{lem:exelinverseiscategorical2} For all $e,f\in E(\Lambda)$, if $ef$ is defined, then $fe$ is also defined and $ef=fe$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+  \ref{lem:exelinverseiscategorical1}$\Rightarrow$\ref{lem:exelinverseiscategorical2}: Suppose that $\Lambda$ is categorical, and that $ef$ is defined, where $e,f\in E(\Lambda)$. We consider any compatible graph structure on $\Lambda$. Then $\so(f)=\ra(f)=\so(e)=\ra(e)$, so $fe$ is defined. Let $x=\so(e)$. Then $e$ and $f$ belong to the isotropy semigroup $\Lambda_x^x$ and are idempotents, therefore $ef=fe$ (\cite[Theorem 5.1.1]{MR1455373}).
+  
+  \ref{lem:exelinverseiscategorical2}$\Rightarrow$\ref{lem:exelinverseiscategorical1}: Assume \ref{lem:exelinverseiscategorical2} holds. We will construct an explicit compatible graph structure on $\Lambda$, although similar arguments may be used to prove directly that $\Lambda$ is categorical. We define the following equivalence relation $\sim$ on $E(\Lambda)$:
+  \[e\sim f\iff ef\text{ is defined}.\]
+  The only nontrivial part about $\sim$ being an equivalence relation is transitivity. If $ef$ and $fg$ are defined ($e,f,g\in E(\Lambda)$), then $efg=(ef)(fg)=(fe)(gf)$, and in particular $eg$ is defined. Thus $\sim$ is transitive.
+  
+  Denote the $\sim$-class of $e\in E(\Lambda)$ by $[e]$. Let $\Lambda^{(0)}=E(\Lambda)/\!\!\sim$, and define a graph structure on $\Lambda$ by setting
+  \[\so(a)=[a^*a],\qquad \ra(a)=[aa^*].\]
+  Since a product $ab$ is defined if and only if $a^*abb^*$ is defined, i.e., if and only if $\so(a)=\ra(b)$, we have $\Lambda^{[2]}=\Lambda^{(2)}$, as necessary. We may also compute, for all $(a,b)\in\Lambda^{(2)}$,
+  \[(ab)(ab)^*=(aa^*a)b(ab)^*=(aa^*)(ab)(ab)^*,\]
+  so $\ra(ab)=\ra(a)$. Similarly, $\so(ab)=\so(b)$. By Proposition \ref{prop:graphedsemigroupoidsaresemigroupoids}, $(\Lambda^{(0)},\Lambda,\so,\ra,\mu)$ is a graphed semigroupoid.\qedhere
+  \end{proof}
+
+The set $\Lambda^{(0)}$ constructed above is the \emph{space of germs} of $E(\Lambda)$ with its canonical order. This construction will be further developed in Subsection \ref{subsec:groupoidofgerms}.
+
+\begin{theorem}\label{theo:everyinversesemigroupoidiscategorical}
+Every inverse semigroupoid $\Lambda$ is categorical. Equivalently, if $e,f\in E(\Lambda)$ and $ef$ is defined, then $fe$ is also defined and $ef=fe$.
+\end{theorem}
+\begin{proof}
+  We will prove that $\Lambda$ satisfies condition \ref{lem:exelinverseiscategorical2} of Lemma \ref{lem:exelinverseiscategorical}, which follows the same arguments as in the case of inverse semigroups (see \cite[Proposition 5.1.1]{MR1455373}), as long as we make sure that all products involved are defined. We include the details for completeness. Suppose that $e,f\in E(\Lambda)$, and that $(e,f)\in \Lambda^{[2]}$. Let $x=(ef)^*$. Then
+  \[(ef)x(ef)=ef\qquad\text{and}\qquad x(ef)x=x\]
+  In particular, the products $fx$ and $xe$ are defined, so $fxe$ is defined. Let us prove that $fxe=x$, by proving that $fxe$ is an inverse of $ef$: Since $ff=f$ and $ee=e$ are defined, then we may compute
+  \[(fxe)(ef)(fxe)=fx(e^2)(f^2)xe=fxefxe=fxe\ntag\label{eq:exelinverseiscategorical}\]
+  and similarly $(ef)(fxe)(ef)=ef$. Thus $fxe$ is the inverse of $ef$, i.e., $fxe=x$. Moreover, it follows from the last equality of \eqref{eq:exelinverseiscategorical} that
+  \[x=fxe=fxefxe=x^2\]
+  so $x\in E(\Lambda)$, and in particular $x=x^*=ef$ is idempotent.
+  
+  Since $fx=f(ef)$ is defined, then $fe$ is defined, and the same argument as above (changing the roles of $e$ and $f$) proves that $fe\in E(\Lambda)$. To finish, we use the equalities $x=fxe=ef$ to obtain
+  \[fe=fefe=fxe=x=ef.\qedhere\]
+\end{proof}
+
+Therefore, every inverse semigroupoid admits a compatible graph structure. Suppose $\mathcal{S}$ is a graphed inverse semigroupoid. Recall that we assume that $\mathcal{S}^{(0)}=\so(\mathcal{S})\cup\ra(\mathcal{S})$. Given $a\in \mathcal{S}$, $a^*a$ and $aa^*$ are defined, so $\so(a)=\ra(a^*)$ and $\ra(a)=\so(a^*)$. It follows that $\mathcal{S}$ has no sources nor sinks. From Corollary \ref{cor:graphedhomomorphisminducesvertexmap} we may conclude that the compatible graph structure is unique.
+
+\begin{corollary}\label{cor:inversesemigroupoidhasauniquegraphstructure}
+If $\Lambda$ is an inverse semigroupoid, then there exists a unique compatible graph structure on $\Lambda$.
+\end{corollary}
+
+We will thus always regard inverse semigroupoids as graphed semigroupoids, with their unique compatible graph structure, and for every inverse semigroupoid homomorphism $\phi\colon\mathcal{S}\to\mathcal{T}$, we denote $\phi^{(0)}\colon\mathcal{S}^{(0)}\to\mathcal{T}^{(0)}$ the unique map for which $(\phi^{(0)},\phi)$ is a graph homomorphism, as in Corollary \ref{cor:graphedhomomorphisminducesvertexmap}.
+
+Let $\mathcal{S}$ be an inverse semigroupoid. We will now list the remaining algebraic properties of $\mathcal{S}$ which will be used in the remainder of this article.
+
+\begin{definition}
+The \emph{canonical order} of an inverse semigroup $\mathcal{S}$ is the relation $\leq$ defined as
+\[a\leq b\iff a=ba^*a.\]
+(In particular, we require that $\so(a)=\so(b)$ and $\ra(a)=\ra(b)$.)
+\end{definition}
+
+Note that inverse semigroupoid homomorphisms preserve the order. 
+
+If a product $ab$ is defined in the inverse semigroupoid $\mathcal{S}$, then $\ra(a^*)=\so(a)=\ra(b)=\so(b^*)$, so $b^*a^*$ is also defined. Using this and the commutativity of $E(\mathcal{S})$, the properties below can be proven by the same computations as in the case of inverse semigroups. See \cite[Chapter 5]{MR1455373} for details.
+
+\begin{proposition}\label{prop:propertiesoperationsofinversesemigroupoid}
+Let $\mathcal{S}$ be an inverse semigroupoid. Then
+\begin{enumerate}[label=(\alph*)]
+    \item\label{prop:propertiesoperationsofinversesemigroupoid1} $(ab)^*=b^*a^*$, for all $(a,b)\in\mathcal{S}^{(2)}$.
+    \item\label{prop:propertiesoperationsofinversesemigroupoid2} If $e\in E(\mathcal{S})$ and $(b,e)\in \mathcal{S}^{(2)}$. then $beb^*\in E(\mathcal{S})$.
+    \item\label{prop:propertiesoperationsofinversesemigroupoid3} the following are equivalent:
+    \begin{enumerate}[label=(c.\roman*)]
+        \item\label{prop:propertiesoperationsofinversesemigroupoid31} $a\leq b$;
+        \item\label{prop:propertiesoperationsofinversesemigroupoid32} there exists $e\in E(\mathcal{S})$ such that $a=be$;
+        \item\label{prop:propertiesoperationsofinversesemigroupoid33} there exists $f\in E(\mathcal{S})$ such that $a=fb$;
+        \item\label{prop:propertiesoperationsofinversesemigroupoid34} $a^*\leq b^*$.
+    \end{enumerate}
+    \item\label{prop:propertiesoperationsofinversesemigroupoid4} $\leq$ is a partial order on $\mathcal{S}$;
+    \item\label{prop:propertiesoperationsofinversesemigroupoid5} If $a\leq b$, $c\leq d$ and $(a,c)\in \mathcal{S}^{(2)}$, then $ac\leq bd$.
+\end{enumerate}
+\end{proposition}
+
+We may determine subclasses of the class of semigroupoids algebraically as follows: An inverse semigroupoid $\mathcal{S}$ is a
+\begin{itemize}
+    \item \emph{semigroup} if and only if any two idempotents may be multiplied (and in this case it is an inverse semigroup).
+    \item \emph{groupoid} if the product of two idempotents is defined if and only if they are equal; Alternatively, $\mathcal{S}$ is a groupoid if and only if the canonical order is equality.
+    \item \emph{group} if it is both a semigroup and a groupoid, or equivalently if it has a unique idempotent.
+\end{itemize}

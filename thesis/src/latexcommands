@@ -1,0 +1,20 @@
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\KB}{{\mathbf{KB}}}
+\newcommand{\GP}{\mathscr{G}_P}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Lc}{\mathcal{L}_c}
+\newcommand{\Skew}{A \rtimes_\alpha S}
+\DeclareMathOperator{\supp}{\operatorname{supp}}
+\DeclareMathOperator{\BOR}{{\mathbf{Bor}}}
+\DeclareMathOperator{\MEAS}{{\mathbf{Meas}}}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\MAlg}{{\mathbf{MAlg}}}
+\newcommand{\tildeoveri}[1]{\widetilde{#1}^I}
+\newcommand{\smallerthan}{<}
+\end{equation*}

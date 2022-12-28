@@ -1,0 +1,36 @@
+\begin{definition}
+	Um \textbf{produto interno} em um espaço vetorial real $V$ é uma função
+	\[\begin{array}{r c c c}
+		\langle\cdot,\cdot\rangle\colon
+			&V\times V
+				&\longrightarrow
+					&\mathbb{R}\\
+			&(v,w)
+				&\longmapsto
+					&\langle v,w\rangle
+		\end{array}\]
+	satisfazendo às seguintes condições:
+	\begin{enumerate}
+		\item \uline{Linearidade na primeira coordenada}: Para todos $u,v,b\in V$ e todo $\lambda\in\mathbb{R}$, vale que
+			\[\langle u+\lambda v,b\rangle=\langle u,b\rangle+\lambda\langle v,b\rangle.\]
+			Isto é, para cada $b\in V$ fixo, a função
+			\[\langle\cdot,b\rangle\colon v\mapsto\langle v,b\rangle\]
+			é linear.
+			
+		\item \uline{Simetria}: Para todos $u,v\in V$, vale que
+			\[\langle u,v\rangle=\langle v,u\rangle.\]
+		\item \uline{Positividade} (\uline{estrita}): Se $v\neq 0_V$, então $\langle v,v\rangle>0$.
+	\end{enumerate}
+	
+	\hrule
+	
+
+	Dos axiomas de produto interno, seguem imediatamente as seguintes propriedades:
+	\begin{enumerate}
+		\item \uline{Linearidade na segunda coordenada}: Para cada $a\in V$ fixo, a função
+			\[\langle a,\cdot\rangle\colon v\mapsto\langle a,v\rangle\]
+			é linear.
+		\item \uline{Não-degenerecência}: $\langle v,v\rangle=0$ se, e somente se, $v=0_V$.
+		\item \uline{Absorvência do zero}: $\langle u,0_V\rangle=\langle 0_V,u\rangle=0$ para todo vetor $u\in V$.
+	\end{enumerate}
+\end{definition}

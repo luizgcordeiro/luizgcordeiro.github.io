@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b> (Regras de Sinal).
+<p>
+Seja \(V\) um espaço vetorial. Então as seguintes igualdades são válidas para quaisquer escalares \(\alpha\) e \(\beta\) e quaisquer vetores \(v\) e \(w\):
+</p>
+
+<ol>
+
+<li>
+<p>
+\(\alpha 0_V=0_V\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(0v=0_V\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(-(-v)=v\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\alpha(-v)=(-\alpha)v=-(\alpha v)\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\alpha(v-w)=(\alpha v)-(\alpha w)\).
+</p>
+
+</li>
+
+<li>
+<p>
+\((\alpha-\beta)v=(\alpha v)-(\beta v)\).
+</p>
+
+</li>
+</ol>
+
+</div>
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+
+<ol>
+
+<li>
+<p>
+Consideremos \(0_V\) o vetor nulo. Por um lado, a definição de vetor nulo e a propriedade distributiva implicam que
+<div>
+\begin{equation*}
+\alpha 0_V=\alpha(0_V+0_V)=(\alpha 0_V)+(\alpha 0_V).
+\end{equation*}
+</div>
+Por outro lado, a definição de vetor nulo implica que
+<div>
+\begin{equation*}
+\alpha 0_V=(\alpha 0_V)+0_V.
+\end{equation*}
+</div>
+Os lados esquerdos das igualdades acima são iguais, logo os lados direitos também são iguais. Isto é,
+<div>
+\begin{equation*}
+(\alpha 0_V)+(\alpha 0_V)=(\alpha 0_V)+0_V.
+\end{equation*}
+</div>
+Pela Lei do Cancelamento, \(\alpha 0_V=0_V\).
+</p>
+
+</li>
+
+<li>
+<p>
+Este item é provado de forma similar ao anterior. Sucintamente, as propriedades do escalar \(0\) e a distributividade implicam que
+<div>
+\begin{equation*}
+0v+0v=(0+0)v=0v=0v+0.
+\end{equation*}
+</div>
+Pela Lei do Cancelamento, \(0v=0_V\).
+</p>
+
+</li>
+
+<li>
+<p>
+Como \(-v\) é o oposto de \(v\), então
+<div>
+\begin{equation*}
+v+(-v)=(-v)+v=0_V.
+\end{equation*}
+</div>
+Agora lembre-se da definição do oposto de \(-v\): é o único vetor que somado a \(-v\) resulta em \(0_V\). Ora, as igualdades acima significam precisamente que \(v\) satisfaz a esta definição. Portanto \(v\) é o oposto de \(-v\): \(v=-(-v)\).
+</p>
+
+</li>
+
+<li>
+<p>
+Vamos utilizar o primeiro item. Por distributividade,
+<div>
+\begin{align*}
+(\alpha v)+(\alpha(-v))&=\alpha(v-v)\tag{distributividade}\\
+&=\alpha 0_V\tag{oposto}\\
+&=0_V.\tag{item 1}
+\end{align*}
+</div>
+Portanto \(\alpha(-v)\) satisfaz à propriedade que define o oposto de \(\alpha v\). Isto significa que \(\alpha(-v)=-(\alpha v)\). A igualdade \((-\alpha)v=-(\alpha v)\) é provada de modo totalmente análogo.
+</p>
+
+</li>
+
+<li>
+<p>
+Temos que
+<div>
+\begin{align*}
+\alpha(v-w)&=(\alpha v)+(\alpha(-w))\tag{distributividade}\\
+&=\alpha v-\alpha w.\tag{item 4}
+\end{align*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Este item é provado de modo inteiramente análogo ao item anterior.
+</p>
+
+</li>
+</ol>
+
+</div></body>
+</html>

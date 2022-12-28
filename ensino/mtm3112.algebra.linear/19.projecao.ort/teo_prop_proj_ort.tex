@@ -1,0 +1,75 @@
+\begin{theorem}
+	Sejam $V$ um espaço com produto interno e $W$ um subespaço de $V$ que admite uma projeção ortogonal $\operatorname{proj}_W\colon V\to W$ (e.g.\ se $\dim(W)<\infty$).Então
+	\begin{enumerate}
+		\item Para todos $v\in V$ e $w\in W$, temos que $\langle v,w\rangle=\langle\operatorname{proj}_W(v),w\rangle$.
+		\item $W^\perp=\ker(\operatorname{proj}_{W})$.
+		\item $V$ se decompõe como a soma direta $V=W\oplus W^\perp$.
+		\item $\operatorname{proj}_{W^\perp}=\operatorname{id}_V-\operatorname{proj}_W$.
+		\item $\left(W^\perp\right)^\perp=W$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Dado $v\in V$, uma das propriedades de projeção ortogonal nos dizem que $v-\operatorname{proj}_W(v)$ é ortogonal a $W$. Isto significa que para todo $w\in W$, temos que
+		\[\langle v-\operatorname{proj}_W(v),w\rangle=0,\]
+		ou equivalentemente, utilizando a linearidade na primeira entrada do produto interno,
+		\[\langle v,w\rangle=\langle\operatorname{proj}_W(v),w\rangle.\]
+		
+		\item Temos duas inclusões de conjunto a verificar:
+		
+		\uline{$W^\perp\subseteq\ker(\operatorname{proj}_W)$}.
+		\begin{quote}
+			Se $u\in W^\perp$, então
+			\begin{align*}
+				\Vert \operatorname{proj}_W(u)\Vert^2
+					&=\langle\operatorname{proj}_W(u),\operatorname{proj}_W(u)\rangle\\
+					&=\langle u,\operatorname{proj}_W(u)\rangle\\
+					&=0,
+			\end{align*}
+			onde a segunda igualdade é obtida pelo item 1., e a terceita igualdade decorre do fato de que $u\in W^\perp$ e $\operatorname{proj}_W(u)\in W$. Isto significa que $\operatorname{proj}_W(u)=0$, ou seja, $u\in\ker(\operatorname{proj}_W)$.
+		\end{quote}
+		
+		\uline{$\ker(\operatorname{proj}_W)\subseteq W^\perp$}.
+		\begin{quote}
+			Suponha que $u\in\ker(\operatorname{proj}_W)$. Então
+			\[u=u-\operatorname{proj}_W(u).\]
+			O lado direito da equação pertence a $W^\perp$ (conforme uma das propriedades de projeção ortogonal nos diz). Portanto $u\in W^\perp$.
+		\end{quote}
+		
+		\item Para mostrar que $V=W\oplus W^\perp$, temos dois fatos a verificar:
+		
+		\uline{$W$ e $W^\perp$ são suplementares, i.e., $W\cap W^\perp=\left\{0_V\right\}$}.
+		\begin{quote}
+			De fato, se $w\in W\cap W^\perp$, então $\langle w,w\rangle=0$, de onde segue que $w=0$.
+		\end{quote}
+	
+		\uline{$V$ é a soma de $W$ e $W^\perp$: $V=W+W^\perp$}.
+	
+		\begin{quote}
+			Dado $v\in V$, sejam $w=\operatorname{proj}_W(v)$ e $p=v-\operatorname{proj}_W(v)$. Então $v=w+p$, e pela definição de projeção ortogonal, temos tanto que $w\in W$ quanto que $p\in W^\perp$. Portanto $V=W+W^\perp$.
+		\end{quote}
+		
+		Isto significa que $V=W\oplus W^\perp$.
+		
+		\item Agora, vamos mostrar que a transformação $Q=\operatorname{id}_V-\operatorname{proj}_W$ é a projeção ortogonal de $V$ sobre $W^\perp$. Primeiro note que, do mesmo modo que já mencionamos acima, $v-\operatorname{proj}_W(v)$ é um elemento de $W^\perp$ para todo $v\in V$, e portanto $Q$ define uma transformação linear $Q\colon V\to W^\perp$.
+		
+		\uline{Para todo $u\in W^\perp$, temos que $Q(u)=u$}.
+		\begin{quote}
+			Seja $u\in W^\perp$. Então $u-Q(u)=\operatorname{proj}_W(u)=0$, pelo item 2, ou seja, $Q(u)=u$.
+		\end{quote}
+		
+		\uline{Para todo $v\in V$, $v-Q(v)\in \left(W^\perp\right)^\perp$}.
+		\begin{quote}
+			Dado $v\in V$, temos que $v-Q(v)=\operatorname{proj}_W(v)$, que é um elemento de $W$. Claramente, $W\subseteq\left(W^\perp\right)^\perp$, e portanto $v-Q(v)$ é ortogonal a $W^\perp$.
+		\end{quote}
+		
+		Isto significa que $Q=\operatorname{id}_V-\operatorname{proj}_W$ é, de fato, a projeção ortogonal de $V$ sobre $W^\perp$.
+		
+		\item Conforme já mencionamos acima, é claro que $W\subseteq\left(W^\perp\right)^\perp$, e portanto somente a inclusão oposta de conjuntos precisa ser verificada. Utilizando o item 2. com $W^\perp$ no lugar de $u$, temos que
+		\[\left(W^\perp\right)^\perp=\ker(\operatorname{proj}_{W^\perp}).\]
+		Mas pelo item 4., $\operatorname{proj}_{W^\perp}=\operatorname{id}_V-\operatorname{proj}_W$. Assim, segue que $v\in\ker(\operatorname{proj}_{W^\perp})$ se, e somente se, $v=\operatorname{proj}_W(v)$, ou seja, se, e somente se, $v\in W$.
+		
+		Portanto, $\left(W^\perp\right)^\perp=\ker(\operatorname{proj}_{W^\perp})=W$.
+	\end{enumerate}
+\end{proof}

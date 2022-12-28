@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.3.tg.html#propositionetalehasbasisofbisections'>1.3.10</a>
+<!-- 1.3.10 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 1.3.10</span>
+	If $\mathcal{G}$ is an étale groupoid, then the open bisections of $\mathcal{G}$ form a basis for its topology. Moreover, if $A$ is any open bisection of an étale groupoid $\mathcal{G}$ then the source map restricts to a homeomorphism $\mathfrak{s}|_A:A\to \mathfrak{s}(A)$ (and similarly for the range map). In particular, $\mathfrak{s}^{-1}(x)$ is discrete for all $x\in\mathcal{G}^{(0)}$.
+	</p>
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Seja \(V\) um espaço vetorial com produto interno e \(A\) um subconjunto de vetores não-nulos de \(V\). Se \(A\) é ortogonal, então \(A\) é linearmente independente.
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Considere uma combinação linear nula de elementos de \(A\):
+<div>
+\begin{equation*}
+\sum_{i=1}^n\lambda_i a_i=0_V,\tag{$*$}
+\end{equation*}
+</div>
+onde \(a_1,\ldots,a_n\) são elementos distintos de \(A\) e \(\lambda_1,\ldots,\lambda_n\) são escalares. Dado \(j\in\left\{1,\ldots,n\right\}\), devemos provar que \(\lambda_j=0\). Tomamos o produto interno à direita em (\(*\)) com \(a_j\), e obtemos, por linearidade na primeira entrada,
+<div>
+\begin{equation*}
+\sum_{i=1}^n\lambda_i\langle a_i,a_j\rangle=0.\tag{$**$}
+\end{equation*}
+</div>
+Como \(A\) é ortogonal, \(\langle a_i,a_j\rangle=0\) se \(i\neq j\). Assim, (\(**\)) se reescreve como
+<div>
+\begin{equation*}
+\lambda_j\langle a_j,a_j\rangle=0.
+\end{equation*}
+</div>
+Por hipótese, \(a_j\neq 0\), e portanto \(\lambda_j=0\), como queríamos.
+</p>
+
+</div></body>
+</html>

@@ -1,0 +1,13 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#proposition442'>4.4.2</a>
+
+<!-- 4.4.2 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.4.2
+	<span>([<span class='ref' data-tag='MR3274831'></span>, Lemma 3.3])</span></span>
+	If $\mathcal{G}$ is an ample Hausdorff groupoid, then $A_R(\mathcal{G})$ coincides with the $R$-module of locally constant compactly supported $R$-valued functions on $\mathcal{G}$. Every $f\in A_R(\mathcal{G})$ can be written as a finite linear combination
+	<div class='equation'>\begin{align*}
+		f&=\sum_{i=1}^n r_i1_{A_i},
+	\end{align*}</div>
+	where $r_i\in R$ and $\left\{A_i:i=1,\ldots,n\right\}$ is a family of pairwise disjoint compact-open bisections of $\mathcal{G}$, and $\supp(f)=\left\{a\in G:f(a)\neq 0\right\}$.
+	</p>
+</div>

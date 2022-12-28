@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>1.5. Quotients of distributive semigroups</h2>
+
+<p>
+Our goal in this section is to define quotients of Boolean inverse monoids. In general, an <em>ideal</em> of an inverse semigroup $S$ is a subset $I\subseteq S$ which satisfies $SI\cup IS\subseteq I$. The quotient $S/I$ could be defined as the quotient semigroup of $S$ by the smallest congruence which makes all elements of $I$ equivalent, in which case we obtain the <em>Rees factor</em> of $S$ by $I$ ([<span class='ref' data-tag='MR0002893'></span>]) and the congruence is given by collapsing all elements of $I$ into a zero element, and nothing else:
+<div class='equation'>\[
+s\sim t\iff s=t\text{ or }\left\{s,t\right\}\subseteq I.
+\]</div>
+However, the Rees factor does not preserve the order-theoretic operations of inverse semigroups.
+</p>
+
+<!-- 1.5.1 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.5.1</span>
+Let $X=\left\{a,b\right\}$ be a set with two elements and $S=\mathcal{P}(X)$ the lattice of subsets of $X$. Consider the ideal $I=\left\{\left\{a\right\},\varnothing\right\}$, and let $T$ be the Rees factor of $S$ by $I$ and $\pi:S\to T$ the quotient map.
+</p>
+
+<p>
+Then $\left\{a\right\}\lor\left\{b\right\}=X$, however $\pi(\left\{a\right\})\lor\pi(\left\{b\right\})=\pi(\left\{b\right\})$, which is not $\pi(X)$.
+</p>
+</div>
+
+<p>
+Therefore we need to consider more specific classes of ideals and a more suitable congruence. We will be interested in <em>$\lor$-ideals</em>, as defined in [<span class='ref' data-tag='MR3448402'></span>]. (These are called <em>$\lor$-closed</em> ideals in [<span class='ref' data-tag='MR3628219'></span>, <span class='ref' data-tag='MR3519501'></span>, <span class='ref' data-tag='MR3715848'></span>], <em>tightly closed</em> in [<span class='ref' data-tag='MR2974110'></span>] and <em>additive</em> in [<span class='ref' data-tag='MR3700423'></span>]).
+</p>
+
+<!-- 1.5.2 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.5.2</span>
+A <em>$\lor$-ideal</em> (read <em>join ideal</em>) of a distributive inverse semigroup $S$ is a nonempty subset $I\subseteq S$ satisfying</p>
+<ol class='roman'>
+	<li> For all $s\in S$ and $i\in I$, $si\in I$ and $is\in I$ (i.e., $I$ is <em>absorbing</em>);</li>
+	<li> For any two compatible elements $i,j\in I$, we have $i\lor j\in I$.</li>
+</ol>
+</div>
+
+<p>
+Quotients of (weakly) Boolean inverse semigroups, under "additive congruences", are described in [<span class='ref' data-tag='MR3700423'></span>, Section 3.4], and in particular their quotients by $\lor$-ideals in [<span class='ref' data-tag='MR3700423'></span>, Proposition 3.4.6]. Although this is the case of most interest, and in which most proofs can be significantly simplified, we initially consider the larger class of distributive inverse semigroups.
+</p>
+
+<p>
+Given a $\lor$-ideal $I$ in $S$, define the relation $\sim_I$ on $S$ by
+<div class='equation'>\[
+a\sim_I b\iff\exists s\in S,\exists i,j\in I\left(a=s\lor i\text{ and }b=s\lor j\right).
+\]</div>
+</p>
+
+<!-- 1.5.3 -->
+<div class='lemma' id='lemmaquotientinversesemigroup'>
+<p><span class='envidentifier'>Lemma 1.5.3</span>
+If $S$ is a $\lor$-ideal of a distributive inverse semigroup $S$, then</p>
+<ol class='alphpar'>
+	<li> If $S$ has a zero then $0\in I$.</li>
+	<li> $i\in I$ if and only if $i^*\in I$.</li>
+	<li> If $i\in I$ and $j\leq i$ then $j\in I$.</li>
+	<li> $a\sim_I b$ if and only if $a^*\sim_I b^*$.</li>
+	<li> If $a=b\lor i$ and $i\in I$ then $a\sim_I b$.</li>
+</ol>
+</div>
+
+<a class='proofbutton' data-tag='lemmaquotientinversesemigroup'>Proof</a>
+<div class='proof' id='proofoflemmaquotientinversesemigroup'>
+<ol class='alphpar'>
+	<li> Letting $i\in I$ be arbitrary (because $I\neq\varnothing$), we have $0=0i\in I$.</li>
+	<li> If $i\in I$ then $i^*=i^*ii^*\in I$.</li>
+	<li> If $i\in I$ and $j\leq i$ then $j=ij^*j\in I$, because $I$ is absorbing.</li>
+	<li> If $a\sim_I b$, choose $s\in S$ and $i,j\in I$ with $a=s\lor i$, $b=s\lor j$, so that $a^*=s^*\lor i^*$ and $b^*=s^*\lor j^*$, and thus $a^*\sim_Ib^*$ by item (b).</li>
+	<li> If $a=b\lor i$ with $i\in I$, then since $b=b\lor bi^*i$ and $bi^*i\in I$ we conclude that $a\sim_I b$.<span class='qed'></span></li>
+</ol>
+</div>
+
+<!-- 1.5.4 -->
+<div class='theorem' id='theorem154'>
+<p><span class='envidentifier'>Theorem 1.5.4</span>
+If $I$ is a $\lor$-ideal of a distributive inverse semigroup $S$, then $\sim_I$ is a congruence.
+</p>
+</div>
+
+<a class='proofbutton' data-tag='theorem154'>Proof</a>
+<div class='proof'id='proofoftheorem154'>
+	<p>
+	To see that the relation $\sim_I$ is reflexive, take $i\in I$ an arbitrary element, so that for any $a\in S$ we have $a=a\lor ai^*i$ and $ai^*i\in I$, therefore $a\sim_I a$. Moreover $\sim_I$ is immediately symmetric from its definition, so in order to check that it is an equivalence relation, suppose $a\sim_I b$ and $b\sim_I c$, so there are $s,t\in S$ and $i,j,k,l\in I$ with
+	<div class='equation'>\[
+	a=s\lor i,\quad b=s\lor j=t\lor k,\quad c=t\lor l.
+	\]</div>
+	In particular, $s,t\leq b$ so $s$ and $t$ are compatible and $s\land t=st^*t$. Also, $i,sk^*k\leq a$, so $i$ and $sk^*k$ are compatible and belong to $I$ (since it is an ideal) and hence $i\lor sk^*k\in I$.
+	</p>
+
+	<p>
+	Using distributivity, we obtain
+	<div class='equation'>\[
+	a=s\lor i=sb^*b\lor i=s(t^*t\lor k^*k)\lor i=st^*t\lor(sk^*k\lor i)=(s\land t)\lor(sk^*k\lor i),
+	\]</div>
+	and similarly, $l\lor tj^*j\in I$ and $c=(s\land t)\lor(l\lor tj^*j)$, which proves $a\sim_I c$ and so $\sim_I$ is an equivalence relation.
+	</p>
+
+	<p>
+	To check that $\sim_I$ is a congruence, first note that if $a\sim_I b$ and $c\in S$, then we can write
+	<div class='equation'>\[
+	a=s\lor i,\quad b=s\lor j
+	\]</div>
+	for certain $s\in S$, $i,j\in I$, so by distributivity,
+	<div class='equation'>\[
+	ac=sc\lor ic\quad\text{and}\quad bc=sc\lor jc,
+	\]</div>
+	and therefore $ac\sim_I bc$, and similarly $ca\sim_I ba$. This fact and transitivity of $\sim_I$ imply that if $a\sim_I b$ and $c\sim_I d$, then $ac\sim_I bc\sim_I bd$, so $\sim_I$ is a congruence.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 1.5.5 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 1.5.5</span>
+	If $I$ is a $\lor$-ideal of a distributive inverse semigroup $S$, we denote by $S/I$ the <em>quotient semigroup</em> of $S$ by $\sim_I$. The $\sim_I$-class of an element $s\in S$ will be denoted $\tildeoveri{s}$. We denote by $\pi_I:S\to S/I$ the quotient map.
+	</p>
+</div>
+
+<!-- 1.5.6 -->
+<div class='theorem' id='theoremquotientmapofsemigroupisverygood'>
+	<p><span class='envidentifier'>Theorem 1.5.6</span>
+	Let $I$ be a $\lor$-ideal of a distributive inverse semigroup $S$. Then $S/I$ is as inverse semigroup and $(\tildeoveri{a})^*=(a^*)^{\sim I}$ for all $a\in S$. The quotient map $\pi_I:S\to S/I$ is a $\lor$ and a $\land$-morphism. Moreover, $S/I$ has a zero if and only if $I$ is downwards directed, in which case $I=\pi_I^{-1}(0)$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremquotientmapofsemigroupisverygood'>Proof</a>
+<div class='proof' id='proofoftheoremquotientmapofsemigroupisverygood'>
+	<p>
+	Since $\pi_I$ is a surjective semigroup morphism, then Proposition <span class='ref' data-tag='propositionpropertiesofmorphismsofsemigroups'></span> (e) and (f) imply that $S/I$ is an inverse semigroup and $(\tildeoveri{a})^*=(a^*)^{\sim I}$.
+	</p>
+
+	<p>
+	Suppose $a,b\in S$ are compatible. Then $\left(a\lor b\right)^{\sim I}$ is an upper bound of both $\tildeoveri{a}$ and $\tildeoveri{b}$, so let us prove it is the smallest one. If $\tildeoveri{p}\geq\tildeoveri{a},\tildeoveri{b}$, where $p\in S$, then we can find $e\in E(S)$, $s\in S$, and $i_1,i_2\in I$ satisfying
+	<div class='equation'>\[
+	pe=s\lor i_1,\quad a=s\lor i_2,
+	\]</div>
+	and in particular $s\leq p$. Similarly, we can find $t\in S$ and $j_2\in I$ with $t\leq p$ and $b=t\lor j_2$. Thus $s$ and $t$ are compatible and $s\lor t\leq p$, so
+	<div class='equation'>\[
+	a\lor b=s\lor i_2\lor t\lor j_2=(s\lor t)\lor(i_2\lor j_2),
+	\]</div>
+	which proves $\left(a\lor b\right)^{\sim I}=\left(s\lor t\right)^{\sim I}\leq \tildeoveri{p}$.
+	</p>
+
+	<p>
+	If $a\land b$ exists, then $\left(a\land b\right)^{\sim I}$ is a lower bound of both $\tildeoveri{a}$ and $\tildeoveri{b}$, so to prove it is the largest one suppose $\tildeoveri{p}\leq \tildeoveri{a},\tildeoveri{b}$. There are idempotents $e,f\in E(S)$, elements $s,t\in S$ and $i_1,i_2,j_1,j_2\in I$ with
+	<div class='equation'>\[
+	ae=s\lor i_1,\quad p=s\lor i_2,\quad bf=t\lor j_1,\quad p=t\lor j_2.
+	\]</div>
+	Moreover, all of $s,t,i_2,j_2$ are bounded by $p$ and are thus compatible and admit pairwise meets and joins, and combinations thereof, so we can apply Proposition <span class='ref' data-tag='corollarydistributivedistributemeets'></span> to distribute meets over joins and obtain
+	<div class='equation'>\[
+	p=(s\lor i_2)\land(t\lor j_2)=(s\land t)\lor k
+	\]</div>
+	for an appropriate $k\in I$. This implies $\tildeoveri{p}=(s\land t)^{\sim I}\leq(a\land b)^{\sim I}$.
+	</p>
+
+	<p>
+	If $I$ is downwards directed, then any two elements of $I$ are $\sim_I$-equivalent (to any common lower bound), and since $I$ is an ideal this implies that the class $\tildeoveri{i}$ of any $i\in I$ is the zero of $S/I$. This in fact proves that, in this case, $I\subseteq\pi_I^{-1}(0)$.
+	</p>
+
+	<p>
+	Conversely, suppose $\tildeoveri{o}$ is a zero in $S/I$, where we may assume $o\in E(S)$, and let $a,b\in I$. Since $(ao)^{\sim I}=\tildeoveri{o}=(bo)^{\sim I}$, there are $s,t\in S$ and $i_1,i_2,j_1,j_2\in I$ with
+	<div class='equation'>\[
+	ao=s\lor i_1,\quad o=s\lor i_2,\quad bo=t\lor j_1,\quad\text{and } o=t\lor j_2.
+	\]</div>
+	In particular, $s\leq ao$ so $s\in I$. From $s,t\leq o$ we see that $s$ and $t$ are compatible, $s\land t=st^*t\in I$ and $s\land t$ is a lower bound of both $a$ and $b$, and so $I$ is downwards directed. Moreover, $o=s\lor i_2\in I$, which proves $\pi_I^{-1}(0)\subseteq I$ in this case.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 1.5.7 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 1.5.7</span>
+	$S/I$ is not necessarily a distributive inverse semigroup. Let $X=\left\{1,2,3,4,5,6,7\right\}$, $a,b\in\mathcal{I}(X)$ be the partial bijections of $X$ defined as
+	<div class='equation'>\[
+	a(1)=2,\quad a(4)=5,\qquad b(1)=3,\quad b(6)=7
+	\]</div>
+	<div class='equation'>\[
+	\xymatrix{
+		&2&4\ar[r]^{a}&5\\
+		1\ar[ur]^{a}\ar[dr]_{b}&&&\\
+		&3&6\ar[r]^{b}&7
+	}
+	\]</div>
+	and then consider the subsemigroup $S\subseteq\mathcal{I}(X)$ of partial bijections $f:\dom(f)\to\ran(f)$ such that
+	<ul>
+		<li> if $4\in\operatorname{dom}(f)$ then $a\leq f$ or $a^*a\leq f$;</li>
+		<li> if $5\in\operatorname{dom}(f)$ then $a^*\leq f$ or $aa^*\leq f$;</li>
+		<li> if $6\in\operatorname{dom}(f)$ then $b\leq f$ or $b^*b\leq f$;</li>
+		<li> if $7\in\operatorname{dom}(f)$ then $b^*\leq f$ or $bb^*\leq f$.</li>
+	</ul>
+	Let us prove that this is a sub-inverse semigroup of $\mathcal{I}(X)$: Suppose $f,g\in S$, and that $4\in\operatorname{dom}(fg)$. Then $4\in\operatorname{dom}(g)$. There are two possibilities:
+	<ul>
+		<li> If $a\leq g$, then $g(4)=a(4)=5\in\operatorname{dom}(f)$, and there are two sub-possibilities:
+		<ul>
+			<li> if $a^*\leq f$, then $a^*a\leq fg$.</li>
+			<li> if $aa^*\leq f$, then $a=aa^*a\leq fg$.</li>
+		</ul></li>
+		<li> If $a^*a\leq g$, then $g(4)=4\in\operatorname{dom}(f)$, and there are two sub-possibilities:
+		<ul>
+			<li> If $a\leq f$, then $a=aa^*a\leq fg$.</li>
+			<li> If $a^*a\leq f$, then $a^*a=a^*aa^*a\leq fg$.</li>
+		</ul></li>
+	</ul>
+	In any case, either $a\leq fg$ or $a^*a\leq fg$ whenever $4\in\operatorname{dom}(fg)$. The other cases are dealt with similarly. Also, note that $S$ is closed under inverses of $\mathcal{I}(X)$.
+	</p>
+
+	<p>
+	Now we can prove that $S$ is closed under joins of $\mathcal{I}(X)$. Suppose that $f,g\in S$ are compatible, so the join $f\lor g$ exists in $\mathcal{I}(X)$. Again, suppose that $4\in\operatorname{dom}(f\lor g)$, so without loss of generality let us assume further that $4\in\operatorname{dom}(f)$. Then either $a\leq f\leq f\lor g$ or $a^*a\leq f\leq f\lor g$. The other cases are dealt with similarly.
+	</p>
+
+	<p>
+	Let $I=\left\{f\in S:\operatorname{dom}(f)\subseteq\left\{1,2,3\right\}\right\}$. The restriction map $\theta:S\to\mathcal{I}(\left\{4,5,6,7\right\})$, $\theta(f)=f|_{\operatorname{dom}(f)\cap\left\{4,5,6,7\right\}}$, is a morphism and $\theta(f)=\theta(g)\iff f\sim_I g$, so $\theta$ factors through an injective morphism of $S/I$ into $\mathcal{I}(\left\{4,5,6,7\right\})$. 
+	</p>
+
+	<p>
+	However $\theta(a)$ and $\theta(b)$ are compatible but do not have a common join in $\theta(S)$. Indeed, suppose that $\theta(f)=\theta(a)\lor\theta(b)$, where $f\in S$. Then $f(4)=a(4)=5$, which implies, by the definition of $S$, that $a\leq f$. However similarly, $f(6)=b(6)=7$ which implies $b\leq f$, but $a$ and $b$ are not compatible in $S$, a contradiction.
+	</p>
+
+	<p>
+	This proves that $\theta(S)$ - and therefore $S/I$ - is not a distributive inverse semigroup.
+	</p>
+</div>
+
+<p>
+On the other hand, if $S$ is (weakly) Boolean then $S/I$ is also (weakly) Boolean. In the previous example, note that the restriction $a|_{\left\{1\right\}}$ does not admit a relative complement in $a$.
+</p>
+
+<!-- 1.5.8 -->
+<div class='theorem' id='theoremcompatibleinquotientareimageofcompatible'>
+	<p><span class='envidentifier'>Theorem 1.5.8</span>
+	If $S$ is a weakly Boolean inverse semigroup and $I$ is a $\lor$-ideal of $S$, then for all pair of compatible elements $\alpha,\beta\in S/I$ there are compatible elements $a,b\in S$ such that $\tildeoveri{a}=\alpha$ and $\tildeoveri{b}=\beta$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremcompatibleinquotientareimageofcompatible'>Proof</a>
+<div class='proof' id='proofoftheoremcompatibleinquotientareimageofcompatible'>
+	<p>
+	Suppose $\alpha=\tildeoveri{a}$ and $\beta=\tildeoveri{b}$ are compatible in $S/I$. By Proposition <span class='ref' data-tag='propositionpropertiesofmorphismsofsemigroups'></span>(e), we can find $e\in E(S)$ and $i\in I$ such that $b^*a=e\lor i$. Note that $bi\leq bb^*a\leq a$, so using Proposition <span class='ref' data-tag='propositionrelativecomplementofsmallerelementinweaklybooleansemigroup'></span>, we can consider the element $a_0=a\setminus bi$.
+	</p>
+
+	<p>
+	Similarly, there are $f\in E(S)$ and $j\in I$ such that $ba^*=f\lor j$, and we can consider the element $b_0=b\setminus ja$. Let us prove that $a_0$ and $b_0$ are compatible:
+	<div class='equation'>\[
+	b_0^*a_0\leq b^*(a\setminus bi)=(b^*a)\setminus(b^*b i),
+	\]</div>
+	but since $i\leq b^*a$ then $b^*bi=i$. Applying Proposition <span class='ref' data-tag='propositionrelativecomplementsandoperations'></span>(c),
+	<div class='equation'>\[
+	b_0^*a_0\leq b^*a\setminus i\leq e,
+	\]</div>
+	so $b_0^*a_0\in E(S)$. Similarly, $b_0 a_0^*\in E(S)$, so $a_0$ and $b_0$ are compatible. Moreover, $a=a_0\lor bi$ and $b=b_0\lor ja$, so from <span class='ref' data-tag='lemmaquotientinversesemigroup'></span>(e) we have
+	<div class='equation'>\[
+	\alpha=\tildeoveri{a}=\tildeoveri{a_0}\qquad\text{and}\qquad\beta=\tildeoveri{b}=\tildeoveri{b_0}
+	\]<span class='qed'></span></div>
+	</p>
+</div>
+
+<p>
+An immediate consequence of this and Theorem <span class='ref' data-tag='theoremquotientmapofsemigroupisverygood'></span> follows.
+</p>
+
+<!-- 1.5.9 -->
+<div class='theorem' id='theoremquotientofbooleanisboolean'>
+	<p><span class='envidentifier'>Theorem 1.5.9</span>
+	If $S$ is a weakly Boolean inverse semigroup and $I$ is a $\lor$-ideal of $S$, then $S/I$ is weakly Boolean, and the quotient map $\pi_I:S\to S/I$ is a $\lor$-morphism. If $S$ is Boolean then $S/I$ is Boolean and the quotient map $\pi_I:S\to S/I$ is a morphism of Boolean inverse semigroups.
+	</p>
+</div>
+
+<!-- 1.5.10 -->
+<div class='proposition' id='propositionquotientrelationofbooleansemigroup'>
+	<p><span class='envidentifier'>Proposition 1.5.10</span>
+	If $S$ is a Boolean inverse semigroup and $I\subseteq S$ is a $\lor$-ideal, then $a\sim_I b$ if and only if $a\setminus b$ and $b\setminus a$ belong to $I$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionquotientrelationofbooleansemigroup'>Proof</a>
+<div class='proof' id='proofofpropositionquotientrelationofbooleansemigroup'>
+	<p>
+	On one hand, if $a\sim_I b$ then take $s\in S$ and $i,j\in I$ with $a=s\lor i$, $b=s\lor j$. Then by Proposition <span class='ref' data-tag='propositionrelativecomplementsandoperations'></span>(c) and (d),
+	<div class='equation'>\[
+	a\setminus b\leq a\setminus s\leq i
+	\]</div>
+	so $a\setminus b\in I$ by Lemma <span class='ref' data-tag='lemmaquotientinversesemigroup'></span>(c), and similarly $b\setminus a\in I$.
+	</p>
+
+	<p>
+	Conversely, if $a\setminus b,b\setminus a\in I$ then $a=(a\land b)\lor(a\setminus b)$ and $b=(a\land b)\lor(b\setminus a)$ implies $a\sim_I b$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+To finish this section, we describe $\lor$-ideals of distributive inverse semigroups as the zero sets of semigroup morphisms, and prove an Isomorphism Theorem for $\lor$-ideals of Boolean inverse semigroups. The simpler direction of the following proposition was already noticed in [<span class='ref' data-tag='MR3519501'></span>, Proposition 2.10], without proof.
+</p>
+
+<!-- 1.5.11 -->
+<div class='proposition' id='proposition1511'>
+	<p><span class='envidentifier'>Proposition 1.5.11</span>
+	A nonempty subset $I$ of a distributive inverse semigroup $S$ with zero is a $\lor$-ideal if and only if there is an inverse semigroup $T$ with $0$ and a $\lor$-morphism $\theta:S\to T$ with $I=\theta^{-1}(0)$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='proposition1511'>Proof</a>
+<div class='proof' id='proofofproposition1511'>
+	<p>
+	It is easy enough to verify that $\theta^{-1}(0)$ is a $\lor$-ideal, under the assumptions above, and the converse direction follows using the canonical morphism $S\to S/I$ and Theorem <span class='ref' data-tag='theoremquotientmapofsemigroupisverygood'></span>.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 1.5.12 -->
+<div class='theorem' id='theorem1512'>
+	<p><span class='envidentifier'>Theorem 1.5.12
+	<span style='font-weight:normal;'>(Isomorphism Theorem for Boolean inverse semigroups)</span></span>
+	Let $\theta:S\to T$ be a morphism of Boolean inverse semigroups (as in Definition <span class='ref' data-tag='definitionmorphismofbooleaninversesemigroups'></span>) and $I\subseteq\theta^{-1}(0)$ a $\lor$-ideal. Then</p>
+	<ol class='alphpar'>
+		<li> $\theta$ factors uniquely to a Boolean inverse semigroup morphism $\theta_I:S/I\to T$.</li>
+		<li> $I=\theta^{-1}(0)$ if and only if $\theta_I$ is injective.</li>
+	</ol>
+</div>
+
+<a class='proofbutton' data-tag='theorem1512'>Proof</a>
+<div class='proof' id='proofoftheorem1512'>
+	<p>
+	First note that if $I\subseteq\theta^{-1}(0)$ then $\theta(0)=0$ because $0\in I$.
+	</p>
+
+	<ol class='alphpar'>
+		<li> We just need to prove that $a\sim_I b$ implies $\theta(a)=\theta(b)$. If $a\sim_I b$ then choose $s\in S$ and $i,j\in I$ with
+	<div class='equation'>\[
+	a=s\lor i\qquad\text{and}\qquad b=s\lor j,
+	\]</div>
+	so
+	<div class='equation'>\[
+	\theta(a)=\theta(s)\lor\theta(i)=\theta(s)\lor 0=\theta(s)\lor\theta(j)=\theta(b),
+	\]</div>
+	so $\theta$ factors through a map $\theta_I:S/I\to T$, and the factor map is unique because the quotient map $S\to S/I$ is surjective. To see that $\theta_I$ is a morphism of Boolean inverse semigroups, apply Theorem <span class='ref' data-tag='theoremquotientmapofsemigroupisverygood'></span> and the fact that compatible elements in $S/I$ are images of compatible elements in $S$ (by Theorem <span class='ref' data-tag='theoremcompatibleinquotientareimageofcompatible'></span>).</li>
+		<li><p> Let us prove that if $I=\theta^{-1}(0)$ then $\theta_I$ is injective. If $\theta(a)=\theta(b)$, then
+	<div class='equation'>\[
+	\theta(a\setminus b)=\theta(a)\setminus\theta(b)=\theta(a)\setminus\theta(a)=0,
+	\]</div>
+	so $a\setminus b\in\theta^{-1}(0)=I$, and similarly $b\setminus a\in I$, which means by <span class='ref' data-tag='propositionquotientrelationofbooleansemigroup'></span> that $a\sim_I b$. This means that $\theta_I$ is injective.
+	</p>
+
+	<p>
+	Conversely, if $\theta_I$ is injective and $a\in\theta^{-1}(0)$ then
+	<div class='equation'>\[
+	\theta_I(\tildeoveri{a})=\theta(a)=0=\theta_I(\tildeoveri{0}),
+	\]</div>
+	so $a\sim_I 0$, which means that $a\in I$.<span class='qed'></span></p></li>
+	</ol>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

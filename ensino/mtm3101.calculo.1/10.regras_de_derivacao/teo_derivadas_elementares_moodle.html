@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+As derivadas das funções elementares são dadas pelas seguines fórmulas:
+</p>
+
+<ol>
+
+<li>
+<p>
+Se \(u(x)=c\) é constante, então \(u'(x)=0\) para todo \(x\).
+</p>
+
+</li>
+
+<li>
+<p>
+Se \(f(x)=x^n\) é uma função <span>&#8220;</span>potência<span>&#8221;</span>/monomial, onde \(n\) é um inteiro positivo, então \(f'(x)=nx^{n-1}\).
+</p>
+
+</li>
+
+<li>
+<p>
+Se \(g(x)=\frac{1}{x^n}=x^{-n}\) é a recíproca de uma monomial, onde \(n\) é um inteiro positivo, então \(g'(x)=-nx^{-n-1}=-n\frac{1}{x^{n+1}}\).
+</p>
+
+</li>
+
+<li>
+<p>
+Se \(r(x)=x^{\frac{1}{n}}=\sqrt[n]{x}\) é uma <span>&#8220;</span>função raiz<span>&#8221;</span>, onde \(n\) é um inteiro positivo, então \(r'(x)=\frac{1}{n}x^{\frac{1}{n}-1}\).
+</p>
+
+</li>
+
+<li>
+<p>
+Seja \(\exp\) a função exponencial em base natural: \(\exp(x)=e^x\). Então \(\exp'(x)=e^x\). (Isto é, a derivada da exponencial natural é a própria exponencial.)
+</p>
+
+</li>
+
+<li>
+<p>
+Mais geralmente, se \(\exp_a(x)=a^x\) é a exponencial em base \(a\), então \(\exp_a'(x)=\ln(a)a^x\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\ln'(x)=\frac{1}{x}\).
+</p>
+
+</li>
+
+<li>
+<p>
+Mais geralmente,\(\log_a'(x)=\ln(a)\frac{1}{x}\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\sin'(x)=\cos(x)\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\cos'(x)-\sin(x)\).
+</p>
+
+</li>
+</ol>
+
+</div>
+<p>
+<i>Observações</i>:
+</p>
+
+<ul>
+
+<li>
+<p>
+Os itens 2-4 podem são todos casos particulares do seguinte: Se \(\alpha\) é um número real positivo qualquer e \(p(x)=x^\alpha\), então
+<div>
+\begin{equation*}
+p'(x)=\alpha x^{\alpha-1}.
+\end{equation*}
+</div>
+Este fato será visto em detalhes mais à frente no curso.
+</p>
+
+</li>
+
+<li>
+<p>
+Nos itens 2-4, utilizaremos repetidamente a seguinte igualdade:
+<div>
+\begin{equation*}
+\alpha^n-\beta^n=(\alpha-\beta)\left(\alpha^{n-1}+\alpha^{n-2}\beta+\cdots+\alpha\beta^{n-2}+\beta^{n-1}\right),\tag{$*$}
+\end{equation*}
+</div>
+que é válida para quaisquer números reais \(\alpha\) e \(\beta\) e \(n\) inteiro positivo.
+</p>
+
+</li>
+
+<li>
+<p>
+O número \(e\) é <b>definido</b> como o limite \(e=\lim_{x\to 0^+}\left(1+x\right)^{1/x}\).
+</p>
+
+</li>
+</ul>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+
+<ol>
+
+<li>
+<p>
+Temos \(u(x)=c\).
+<div>
+\begin{align*}
+u'(x)
+&=\lim_{h\to 0}\frac{u(x+h)-u(x)}{h}\\
+&=\lim_{h\to 0}\frac{c-c}{h}\\
+&=\lim_{h\to 0}\frac{0}{h}\\
+&=0.
+\end{align*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Temos \(f(x)=x^n\). Vamos utilizar (\(*\)) com \(\alpha=(x+h)\) e \(\beta=x\).
+<div>
+\begin{align*}
+f'(x)
+&=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\\
+&=\lim_{h\to 0}\frac{(x+h)^n-x^n}{h}\\
+&=\lim_{h\to 0}\frac{((x+h)-x)((x+h)^{n-1}+(x+h)^{n-2}x+\cdots+(x+h)x^{n-2}+x^{n-1})}{h}\\
+&=\lim_{h\to 0}((x+h)^{n-1}+(x+h)^{n-2}x+\cdots+(x+h)x^{n-2}+x^{n-1})\\
+&=(x^{n-1}+(x+0)^{n-2}x+\cdots+(x+0)x^{n-2}+x^{n-1})\\
+&=nx^{n-1}.
+\end{align*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Temos \(g(x)=x^{-n}\). Vamos utilizar (\(*\)) com \(\alpha=x\) e \(\beta=(x+h)\).
+<div>
+\begin{align*}
+g'(x)
+&=\lim_{h\to 0}\frac{g(x+h)-g(x)}{h}\\
+&=\lim_{h\to 0}\frac{(x+h)^{-n}-x^{-n}}{h}\\
+&=\lim_{h\to 0}\frac{\frac{1}{(x+h)^n}-\frac{1}{x^n}}{h}\\
+&=\lim_{h\to 0}\frac{x^n-(x+h)^n}{h(x+h)^nx^n}\\
+&=\lim_{h\to 0}\frac{(x-(x+h))(x^{n-1}+x^{n-2}(x+h)+\cdots+x(x+h)^{n-2}+(x+h)^{n-1})}{h(x+h)^nx^n}\\
+&=\lim_{h\to 0}\frac{-h(x^{n-1}+x^{n-2}(x+h)+\cdots+x(x+h)^{n-2}+(x+h)^{n-1})}{h(x+h)^nx^n}\\
+&=\lim_{h\to 0}-\frac{(x^{n-1}+x^{n-2}(x+h)+\cdots+x(x+h)^{n-2}+(x+h)^{n-1})}{(x+h)^nx^n}\\
+&=-\frac{(x^{n-1}+x^{n-2}(x+0)+\cdots+x(x+0)^{n-2}+(x+0)^{n-1})}{(x+0)^nx^n}\\
+&=-n\frac{x^{n-1}}{x^{2n}}\\
+&=-n x^{(n-1)-2n}\\
+&=-n x^{-n-1}.
+\end{align*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Temos \(r(x)=x^{\frac{1}{n}}\).  Vamos utilizar (\(*\)) na <span>&#8220;</span>direção oposta<span>&#8221;</span> com \(\alpha=(x+h)^{\frac{1}{n}}\) e \(\beta=x^{\frac{1}{n}}\)
+<div>
+\begin{align*}
+r'(x)
+&=\lim_{h\to 0}\frac{r(x+h)-r(x)}{h}\\
+&=\lim_{h\to 0}\frac{(x+h)^{\frac{1}{n}}-x^{\frac{1}{n}}}{h}\\
+&=\lim_{h\to 0}\frac{(x+h)^{\frac{1}{n}}-x^{\frac{1}{n}}}{h}\cdot\frac{\left((x+h)^{\frac{n-1}{n}}+(x+h)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+h)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}{\left((x+h)^{\frac{n-1}{n}}+(x+h)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+h)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}\\
+&=\lim_{h\to 0}\frac{(x+h)-x}{h\left((x+h)^{\frac{n-1}{n}}+(x+h)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+h)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}\\
+&=\lim_{h\to 0}\frac{1}{\left((x+h)^{\frac{n-1}{n}}+(x+h)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+h)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}\\
+&=\frac{1}{\left((x+0)^{\frac{n-1}{n}}+(x+0)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+0)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}\\
+&=\frac{1}{nx^{\frac{n-1}{n}}}\\
+&=\frac{1}{n}x^{-\frac{(n-1)}{n}}\\
+&=\frac{1}{n}x^{\frac{1}{n}-1}.
+\end{align*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Este é um caso particular do próximo item, com \(a=e\).
+</p>
+
+</li>
+
+<li>
+<p>
+Dado \(x\) real, temos que
+<div>
+\begin{align*}
+\exp_a'(x)
+&=\lim_{h\to 0}\frac{a^{x+h}-a^x}{h}\\
+&=\lim_{h\to 0}\frac{a^x\cdot a^h-a^x}{h}\\
+&=\lim_{h\to 0}\frac{a^x(a^h-1)}{h}\\
+&=a^x\lim_{h\to 0}\frac{a^h-1}{h}.
+\end{align*}
+</div>
+</p>
+<p>
+O terceiro <a href='../06.teo_confronto/con_lim_fund_moodle.html'>limite fundamental</a> nos diz que \(\lim_{h\to 0}\frac{a^h-1}{h}=\ln(a)\). Substituindo acima, obtemos
+<div>
+\begin{equation*}
+\exp_a'(x)=a^x\ln(a).
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Este será um caso particular do próximo item, com \(a=e\).
+</p>
+
+</li>
+
+<li>
+<p>
+Vamos calcular
+<div>
+\begin{equation*}
+\log_a'(x)=\lim_{y\to x}\frac{\log_a( y )-\log_a(x)}{y-x}.
+\end{equation*}
+</div>
+Façamos a substituição \(y=a^t\). Assim, \(y\to x\) se, e somente se, \(t\to\log_a(x)\), e portanto
+<div>
+\begin{align*}
+\log_a'(x)
+&=\lim_{t\to \log_a(x)}\frac{t-\log_a(x)}{a^t-x}.
+\end{align*}
+</div>
+Para reconhecer este limite, vamos denotar \(x_0=\log_a(x)\) ou seja, \(x=a^{x_0}\). Assim,
+<div>
+\begin{align*}
+\log_a'(x)
+&=\lim_{t\to x_0}\frac{t-x_0}{a^t-a^{x_0}}\\
+&=\left(\lim_{t\to x_0}\frac{a^t-a^{x_0}}{t-x_0}\right)^{-1}\\
+&=\left(\exp_a'(x_0)\right)^{-1}\\
+&=\left(\ln(a)a^{x_0}\right)^{-1}\\
+&=\frac{1}{\ln(a)}\frac{1}{x}
+\end{align*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Utilizando a regra de seno de somas, obtemos
+<div>
+\begin{align*}
+\sin'(x)
+&=\lim_{h\to 0}\frac{\sin(x+h)-\sin(x)}{h}\\
+&=\lim_{h\to 0}\frac{\sin(x)\cos( h )+\cos(x)\sin( h )-\sin(x)}{h}\\
+&=\lim_{h\to 0}\sin(x)\frac{\cos( h )-1}{h}+\lim_{h\to 0}\cos(x)\frac{\sin( h )}{h}.
+\end{align*}
+</div>
+Agora, lembre-se do limite fundamental \(\lim_{h\to 0}\frac{\sin( h )}{h}=1\). Isto lida com o segundo termo acima. Quanto ao primeiro, basta calcularmos
+<div>
+\begin{align*}
+\lim_{h\to 0}\frac{\cos( h )-1}{h}
+&=\lim_{h\to 0}{\cos^2( h )-1}{h(\cos( h )+1)}\\
+&=-\lim_{h\to 0}\frac{\sin^2( h )}{h\cos( h )+1}\\
+&=-\left(\lim_{h\to 0}\sin( h )\right)\left(\lim_{h\to 0}\frac{\sin( h )}{h}\right)\left(\frac{1}{\cos( h )+1}\right)\\
+&=-\sin(0)\cdot 1\cdot\frac{1}{\cos(0)+1}\\
+&=0.
+\end{align*}
+</div>
+Então, concluímos que
+<div>
+\begin{equation*}
+\sin'(x)=\cos(x).
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Utilizando a regra de cosseno de uma soma, obtemos
+<div>
+\begin{align*}
+\cos'(x)
+&=\lim_{h\to 0}\frac{\cos(x+h)-\cos(x)}{h}\\
+&=\lim_{h\to 0}\frac{\cos(x)\cos( h )-\sin(x)\sin( h )-\cos(x)}{h}\\
+&=\lim_{h\to 0}\cos(x)\frac{\cos( h )-1}{h}-\lim_{h\to 0}\sin(x)\frac{\sin( h )}{h}.
+\end{align*}
+</div>
+</p>
+<p>
+Utilizando os mesmos limites fundamentais que no item anterior, concluímos que
+<div>
+\begin{align*}
+\cos'(x)&=-\sin(x).
+\end{align*}
+</div>
+</p>
+
+</li>
+</ol>
+
+</div></body>
+</html>

@@ -1,0 +1,7 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#equationnonvanishingproperty'>3.3.7</a>
+
+	<div class='toload equation'>\begin{align*}
+		f(x)=\theta_X(x)\iff
+			&\forall h_1\ldots,h_n\in\mathcal{A}(X),\\
+			&\text{if }x\not\in\bigcup_{i=1}^n\sigma^{\theta_X}(h_i)\text{ then }\bigcap_{i=1}^n[h_i=\theta_X]\cap[f=\theta_X]\neq\varnothing,\tag{3.3.7}
+	\end{align*}</div>

@@ -1,0 +1,25 @@
+<a class='reflink' href='../4.paois/4.1.pmapa.html#propositioninitialpropertiesofpartialmorphisms'>4.1.2</a>
+
+<!-- 4.1.2 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.1.2</span>
+	If $\theta:S\to T$ is a partial morphism from an inverse semigroup $S$ to a semigroup $T$, then
+	<ol class='alphpar'>
+		<li>
+			For all $s,t\in S$, $\theta(s)\theta(t)=\theta(st)\theta(t^*)\theta(t)=\theta(s)\theta(s^*)\theta(st)$.
+		</li>
+		
+		<li>
+			$\theta(E(S))\subseteq E(T)$.
+		</li>
+		
+		<li>
+			If $e\in E(S)$ and $s\in S$, then $\theta(e)\theta(s)=\theta(es)$ and $\theta(s)\theta(e)=\theta(se)$.
+		</li>
+		
+		<li>
+			$\theta$ is a morphism if and only if for all $s\in S$, $\theta(s^*s)=\theta(s^*)\theta(s)$.
+		</li>
+	</ol>
+	</p>
+</div>

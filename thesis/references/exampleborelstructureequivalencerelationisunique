@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#exampleborelstructureequivalencerelationisunique'>1.6.15</a>
+<!-- 1.6.15 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 1.6.15</span>
+	If $X$ is a standard Borel space and $R$ is a $\ra$-discrete equivalence relation on $X$, then the only standard groupoid Borel structure on $R$ which induces the initial Borel structure of $X=R^{(0)}$ is the one coming from the product $X\times X$. This follows from the Lusin-Novikov Theorem applied to the inclusion map $R\mathcal{H}ookrightarrow X\times X$.
+	</p>
+
+	<p>
+	In this case, $R$ is a Borel subset of $X\times X$, and under the usual identification of bisections of $R$ as partial maps on $X$ preserving $R$-equivalence classes (Example <span class='ref' data-tag='examplebisectionsofequivalencerelationarefunctions'></span>), elements of $\BOR(R)$ corresponds partial Borel automorphisms $f:A\to B$, where $A,B\subseteq X$ are Borel.
+	</p>
+</div>

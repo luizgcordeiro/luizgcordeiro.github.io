@@ -1,0 +1,22 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#theoremequivalenceembeddingintoultraproductformetricstructures'>2.1.18</a>
+
+<!-- 2.1.18 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.1.18</span>
+	Let $\sigma=\left(\mathscr{P},\mathscr{F},\mathscr{C}\right)$ be a metric signature, let $\mathscr{M}$ be a collection of $\sigma$-structures and $L$ another $\sigma$-structure. Then the following are equivalent:</p>
+	<ol class='arpar'>
+		<li> $L$ embeds into an ultraproduct of elements of $\mathscr{M}$.</li>
+		<li> For every collection of finite subsets $\mathbf{A}\subseteq L$, $\mathbf{P}\subseteq\mathscr{P}$, $\mathbf{F}\subseteq\mathscr{F}$ and $\mathbf{C}\subseteq\mathscr{C}$ and every $\epsilon>0$, there exists $M\in\mathscr{M}$ and a map $\phi:L\to M$ such that
+		<div class='equation' id='equationembeddingmetricsignatureultraproductpredicates'>\[
+			\sup_{a_i\in \mathbf{A},P\in\mathbf{P}}|P^L(a_1,\ldots,a_{n(P)})-P^M(\phi(a_1),\ldots,\phi(a_{n(P)}))|<\epsilon\tag{2.1.1}
+		\]</div>
+		<div class='equation' id='equationembeddingmetricsignatureultraproductfunctions'>\[
+			\sup_{a_i\in \mathbf{A},f\in\mathbf{F}}d^M\left(\phi(f^L(a_1,\ldots,a_{n(f)})),f^M(\phi(a_1),\ldots,\phi(a_{n(f)}))\right)<\epsilon.\tag{2.1.2}
+		\]</div>
+		and
+		<div class='equation' id='equationembeddingmetricsignatureultraproductconstants'>\[
+			\sup_{c\in\mathbf{C}}d^M(\phi(c^L),c^M)<\epsilon\tag{2.1.3}
+		\]</div>
+		</li>
+	</ol>
+</div>

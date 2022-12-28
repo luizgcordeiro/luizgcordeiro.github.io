@@ -1,0 +1,26 @@
+<a class='reflink' href='../4.paois/4.1.pmapa.html#propositioncomparingdomainspartialaction'>4.1.7</a>
+
+<!-- 4.1.7 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.1.7</span>
+	If $\theta:S\to\mathcal{I}(X)$ is a partial action, then for all $s,t\in S$,
+	<ol class='alphpar'>
+		<li>
+			if $s\leq t$ then $X_s\leq X_t$.
+		</li>
+		
+		<li>
+			$\theta_s(X_{s^*}\cap X_t)=X_s\cap X_{st}$.
+		</li>
+		
+		<li>
+			$X_s\cap X_t=X_{tt^*s}\cap X_t$.
+		</li>
+		
+		<li>
+			$X_s\subseteq X_{s^*s}$.
+		</li>
+	</ol>
+	Moreover, $\theta$ is a global action if and only if $X_{s^*}=X_{s^*s}$ for all $s$.
+	</p>
+</div>

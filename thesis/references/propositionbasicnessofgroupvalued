@@ -1,0 +1,11 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#propositionbasicnessofgroupvalued'>3.3.11</a>
+
+<!-- 3.3.11 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 3.3.11</span>
+	Suppose that $H_X$ and $H_Y$ are groups, $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are subgroups of $(H_X)^X$ and $(H_Y)^Y$, respectively, $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ is a group isomorphism and $\phi:Y\to X$ is a function. Then $T$ is basic with respect to $\phi$ if and only if for all $y\in Y$,
+	<div class='equation'>\[
+		f(\phi(y))=1\Longrightarrow Tf(y)=1,\qquad\forall f\in\mathcal{A}(X).
+	\]</div>
+	</p>
+</div>

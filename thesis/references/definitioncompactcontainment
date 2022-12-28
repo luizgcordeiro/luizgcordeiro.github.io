@@ -1,0 +1,10 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#definitioncompactcontainment'>1.4.5</a>
+<!-- 1.4.5 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 1.4.5</span>
+Given $A,B\in\tau$, the <em>compact containment relation</em> $\Subset$ is defined by
+<div class='equation'>\[
+A\Subset B\iff \overline{A}\text{ is compact and }\overline{A}\subseteq B.
+\]</div>
+</p>
+</div>

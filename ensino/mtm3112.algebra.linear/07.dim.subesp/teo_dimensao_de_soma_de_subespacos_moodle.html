@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço vetorial de dimensão finita e \(X\) e \(Y\) subespaços de \(V\). Então
+<div>
+\begin{equation*}
+\dim(X+Y)=\dim(X)+\dim(Y)-\dim(X\cap Y).
+\end{equation*}
+</div>
+Em particular, se \(X\) e \(Y\) são suplementares (i.e., \(X\cap Y=\left\{0\right\}\)), então \(\dim(X\oplus Y)=\dim(X)+\dim(Y)\).
+</p>
+
+</div>
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Primeiro, vamos tomar uma base \(\mathcal{Z}=\left\{z_1,\ldots,z_p\right\}\) do subespaço \(X\cap Y\). Em particular, \(\mathcal{Z}\) é um subconjunto linearmente independente tando de \(X\) quanto de \(Y\).
+</p>
+<p>
+Pelo teorema Base entre subconjunto linearmente independente e subconjunto gerador, podemos estender \(\mathcal{Z}\) para uma base de \(X\). Mais precisamente, isto significa que existem \(x_1,\ldots,x_n\in X\) tais que o conjunto
+<div>
+\begin{equation*}
+\mathcal{B}_X=\left\{z_1,\ldots,z_p,x_1,\ldots,x_n\right\}
+\end{equation*}
+</div>
+é uma base de \(X\).
+</p>
+<p>
+Similarmente, existem \(y_1,\ldots,y_m\in Y\) tais que o conjunto
+<div>
+\begin{equation*}
+\mathcal{B}_Y=\left\{z_1,\ldots,z_p,y_1,\ldots,y_m\right\}
+\end{equation*}
+</div>
+é uma base de \(Y\).
+</p>
+<p>
+Vamos provar que \(\mathcal{C}=\left\{z_1,\ldots,z_p,x_1,\ldots,x_n,y_1,\ldots,y_m\right\}\) é uma base de \(X+Y\). Temos dois pontos a verificar
+</p>
+<p>
+\(\mathcal{C}\) é gerador de \(X+Y\):
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+De fato, note que \(\mathcal{C}=\mathcal{B}_X\cup\mathcal{B}_Y\). Pelo Teorema Subespaço gerador por união é soma de subespaços, obtemos
+<div>
+\begin{align*}
+\langle\mathcal{C}\rangle&=\langle \mathcal{B}_X\cup\mathcal{B}_Y\rangle\\
+&=\langle\mathcal{B}_X\rangle+\langle\mathcal{B}_Y\rangle\\
+&=X+Y,
+\end{align*}
+</div>
+ou seja, \(\mathcal{C}\) é gerador para \(X+Y\).
+
+</div>
+<p>
+\(\mathcal{C}\) é linearmente independente:
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+Precisamos mostrar que toda combinação linear nula de elementosde \(\mathcal{C}\) é trivial. Suponha que temos uma combinação linear nula de elementos de \(\mathcal{C}\):
+<div>
+\begin{equation*}
+\alpha_1z_1+\cdots+\alpha_pz_p+\beta_1 x_1+\cdots+\beta_n x_n+\gamma_1 y_1+\cdots+\gamma_m y_m=0.\tag{1}
+\end{equation*}
+</div>
+Devemos mostrar que todos os \(\alpha_i\), \(\beta_j\) e \(\gamma_k\) são iguais a \(0\). Utilizando notação de somatório, temos que
+<div>
+\begin{equation*}
+\sum_{i=1}^p\alpha_i z_i+\sum_{j=1}^n\beta_j x_j=-\sum_{k=1}^m\gamma_ky_k
+\end{equation*}
+</div>
+O termo no lado esquerdo desta equação pertence a \(X\), enquanto o termo no lado direito da equação pertence a \(Y\). Portanto, o lado direito na verdade a \(X\cap Y\). Assim,
+<div>
+\begin{equation*}
+\sum_{k=1}^m\gamma_k y_k\in X\cap Y.
+\end{equation*}
+</div>
+Agora, vamos utilizar o fato de que \(z_1,\ldots,z_p\) geram \(X\cap Y\): Podemos escrever
+<div>
+\begin{equation*}
+\sum_{k=1}^m\gamma_ky_k=\sum_{i=1}^p\lambda_iz_i
+\end{equation*}
+</div>
+para certos escalares \(\lambda_1,\ldots,\lambda_p\). Equivalentemente, temos a combinação linear nula
+<div>
+\begin{equation*}
+\sum_{k=1}^p\lambda_iz_i+\sum_{k=1}^m(-\gamma_k)y_k=0
+\end{equation*}
+</div>
+Como \(\mathcal{B}_Y=\left\{z_1,\ldots,z_p,y_1,\ldots,y_m\right\}\) é linearmente independente, os coeficientes da combinação linear acima são todos nulos, e em particular \(\gamma_k=0\) para todo \(k\).
+<p>
+A Equação (1) pode então ser reescrita como uma combinação linear nula
+<div>
+\begin{equation*}
+\alpha_1z_1+\cdots+\alpha_pz_p+\beta_1x_1+\cdots+\beta_nx_n=0\tag{2}
+\end{equation*}
+</div>
+Como \(\mathcal{B}_X=\left\{z_1,\ldots,z_p,x_1,\ldots,x_n\right\}\) é linearmente independente, então todosos coeficientes desta combinação linear são nulos, isto é, \(\alpha_i=0\) e \(\beta_j=0\) para todos \(i\) e \(j\).
+</p>
+<p>
+Assim, concluímos que \(\alpha_i=\beta_j=\gamma_k=0\) para todos \(i,j,k\), exatamente como queríamos demonstrar.
+</p>
+
+</div>
+<p>
+Portanto, \(\mathcal{C}\) é um subconjunto gerador e linearmente independente de \(X+Y\), ou seja, uma base. Agora note que, por construção:
+</p>
+
+<ul>
+
+<li>
+<p>
+\(\mathcal{Z}\) tem \(p\) elementos e é uma base de \(X\cap Y\). Portanto \(\dim(X\cap Y)=p\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\mathcal{B}_X\) tem \(p+n\) elementos e é uma base de \(X\). Portanto \(\dim(X)=p+n\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\mathcal{B}_Y\) tem \(p+m\) elementos e é uma base de \(Y\). Portanto \(\dim(Y)=p+m\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\mathcal{C}\) tem \(p+n+m\) elementos e é uma base de \(X+Y\). Portanto \(\dim(X+Y)=p+m+n\).
+</p>
+
+</li>
+</ul>
+<p>
+Podemos então calcular
+<div>
+\begin{align*}
+\dim(X)+\dim(Y)-\dim(X\cap Y)&=(p+n)+(p+m)-p\\
+&=p+m+n\\
+&=\dim(X+Y),
+\end{align*}
+</div>
+exatamente o que queríamos.
+</p>
+
+</div></body>
+</html>

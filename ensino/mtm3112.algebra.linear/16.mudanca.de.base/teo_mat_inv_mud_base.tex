@@ -1,0 +1,24 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial de dimensão finita com $\dim(V)=n$, $\mathcal{A}$ uma base ordenada qualquer de $V$, e seja $U\in M_{n\times n}(\mathbb{R})$. Então as seguintes afirmações são equivalentes:
+	\begin{enumerate}
+		\item $U$ é inversível.
+		\item Existe uma base ordenada $\mathcal{B}$ de $V$ tal que $U=\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{A}}$ é a matriz de mudança da base $\mathcal{B}$ para a base $\mathcal{A}$.
+		\item Existe uma base ordenada $\mathcal{B}$ de $V$ tal que $U=\left[\operatorname{id}_V\right]_{\mathcal{A}}^{\mathcal{B}}$ é a matriz de mudança da base $\mathcal{A}$ para a base $\mathcal{B}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Como a identidade $\operatorname{id}_V\colon V\to V$ é inversível, então qualquer matriz que a represente (com relação a quaisquer bases de $V$) também será inversível. Portanto ambos os itens 2 e 3 implicam o item 1.
+	
+	Vamos provar que o item 1 implica no item 2. A implicação do item 1 ao item 3 é similar. Sejam $\mathcal{A}=\left\{a_1,\ldots,a_n\right\}$, e $U=[u_{ij}]_{ij}$.
+	
+	Seja $T\colon V\to V$ a transformação linear que é representada por $U$ com relação à base $\mathcal{A}$, i.e.,
+	\[U=\left[T\right]_{\mathcal{A}}^{\mathcal{A}}.\]
+	Como $U$ é inversível, então $T$ também é inversível, ou seja, um isomorfismo linear. Assim, $\mathcal{B}=\left\{T(a_1),\ldots,T(a_n)\right\}$ é uma base ordenada de $V$.
+	
+	Agora, basta verificar que $U=\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{A}}$. De fato, como
+	\[[u_{ij}]_{ij}=U=\left[T\right]_{\mathcal{A}}^{\mathcal{A}},\]
+	então para cada $j$ temos que
+	\[T(a_j)=\sum_{i=1}^n u_{ij}a_i.\]
+	Estas mesmas igualdades (para $j=1,\ldots,n$) significam que $U=\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{A}}$.
+\end{proof}

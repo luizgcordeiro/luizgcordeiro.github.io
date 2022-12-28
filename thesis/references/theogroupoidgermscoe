@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.7.coe.html#theogroupoidgermscoe'>4.7.6</a>
+
+<!-- 4.7.6 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.7.6</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ and $\gamma=\left(\gamma_t:Y_{t^*}\to Y_t\right)_{t\in T}$ be ample partial actions of $S$ and $T$ on $X$ and $Y$, respectively, and suppose that the groupoids of germs $S \ltimes_\theta X$ and $T \ltimes_\gamma Y$ are isomorphic and Hausdorff. Then $\theta$ and $\gamma$ are continuously orbit equivalent
+	</p>
+</div>

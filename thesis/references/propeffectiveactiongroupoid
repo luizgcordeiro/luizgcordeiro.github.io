@@ -1,0 +1,9 @@
+<a class='reflink' href='../4.paois/4.6.tfpa.html#propeffectiveactiongroupoid'>4.6.5</a>
+
+<!-- 4.6.5 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.6.5
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR3448414'></span>, Theorem 4.7])</span></span>
+	Given a partial action $\theta$ of an inverse semigroup $S$ on a locally compact Hausdorff space $X$, the corresponding groupoid of germs $S\ltimes X$ is effective if and only if $\theta$ is effective.
+	</p>
+</div>

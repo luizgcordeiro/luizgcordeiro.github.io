@@ -1,0 +1,29 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial com produto interno e $W$ um subespaço vetorial de $V$ de dimensão finita. Seja $\left\{w_1,\ldots,w_k\right\}$ uma base ortonormal de $W$.
+	
+	Então existe uma projeção ortogonal de $V$ sobre $W$, que é dada pela transformação linear $P\colon V\to W$ definida por
+	\[P(v)=\sum_{i=1}^k\langle v,w_i\rangle w_i\]
+	para todo $v\in V$.
+\end{theorem}
+
+\begin{proof}
+	Como $\left\{w_1,\ldots,w_k\right\}$ é uma base ortonormal de $W$, então cada vetor $w\in W$ é representado nesta base por
+	\[w=\sum_{i=1}^k\langle w,w_i\rangle w_i,\]
+	o que significa que $P(w)=w$ para todo $w\in W$.
+	
+	Para concluir que $P$ é, de fato, uma projeção ortogonal de $V$ sobre $W$, basta verificar que $v-P(v)$ é ortogonal a $W$ para todo $v\in V$. Para isto, é suficiente verificar que $v-P(v)$ é ortogonal a $w_j$ para cada $j$. De fato, temos que
+	\begin{align*}
+	\langle v-P(v),w_j\rangle
+		&=\langle v,w_j\rangle-\langle P(v),w_j\rangle\\
+		&=\langle v,w_j\rangle-\left\langle\sum_{i=1}^n(\langle v,w_i\rangle) w_i,w_j\right\rangle\\
+		&=\langle v,w_j\rangle-\sum_{i=1}^n(\langle v,w_i\rangle)\langle w_i,w_j\rangle
+	\end{align*}
+	
+	Como $\left\{w_1,\ldots,w_n\right\}$ é ortonormal, então $\langle w_i,w_j\rangle$ é igual a $1$ caso $i=j$, e igual a $0$ caso $i\neq j$. Assim, obtemos
+	\begin{align*}
+	\langle v-P(v),w_j\rangle
+		&=\langle v,w_j\rangle-\langle v,w_j\rangle\\
+		&=0,
+	\end{align*}
+	exatamente como queríamos provar.
+\end{proof}

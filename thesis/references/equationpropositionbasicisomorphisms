@@ -1,0 +1,5 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#equationpropositionbasicisomorphisms'>3.3.3</a>
+
+			<div class='toload equation'>\[
+				f(\phi(y))=g(\phi(y))\Longrightarrow Tf(y)=Tg(y),\qquad\forall f,g\in\mathcal{A}(X).\tag{3.3.3}
+			\]</div>

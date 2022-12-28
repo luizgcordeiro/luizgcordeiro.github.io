@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.2.is.html#definitioncompatibility'>1.2.29</a>
+<!-- 1.2.29 -->
+<div class="toload definition">
+<p><span class="envidentifier">Definition 1.2.29</span>
+Two elements $s,t\in S$ are <em>compatible</em> if $s^*t$ and $st^*$ belong to $E(S)$. A subset $F\subseteq S$ is called <em>compatible</em> if any two elements of $F$ are compatible.
+</p>
+</div>

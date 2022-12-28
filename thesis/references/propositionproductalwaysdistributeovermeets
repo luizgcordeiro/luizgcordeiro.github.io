@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.2.is.html#propositionproductalwaysdistributeovermeets'>1.2.32</a>
+<!-- 1.2.32 -->
+<div class="toload proposition">
+<p><span class="envidentifier">Proposition 1.2.32</span>
+Suppose $S$ is an inverse semigroup, $t\in S$, $F$ is a nonempty subset of $S$ and that $\bigwedge F$ exists. Then $\bigwedge(tF)$ and $\bigwedge(Ft)$ exist, and $\bigwedge(tF)=t\left(\bigwedge F\right)$ and $\bigwedge(Ft)=\left(\bigwedge F\right)t$.
+</p>
+</div>

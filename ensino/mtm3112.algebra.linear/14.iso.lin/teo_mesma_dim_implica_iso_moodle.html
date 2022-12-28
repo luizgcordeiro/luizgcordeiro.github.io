@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Dois espaços vetoriais \(V\) e \(W\) têm a mesma dimensão se, e somente se, \(V\) e \(W\) são isomorfos.
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Primeiro, suponhamos que \(V\) e \(W\) sejam isomorfos.
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Seja \(T\colon V\to W\) um isomorfismo linear. Seja \(\mathcal{B}\) uma base de \(V\). Como \(T\) é injetivo e \(\mathcal{B}\) é linearmente independente, então \(T(\mathcal{B})\) também é linearmente independente. Além disso, como \(T\) é sobrejetivo e \(\mathcal{B}\) é gerador de \(V\), então \(T(\mathcal{B})\) é gerador de \(W\).
+<p>
+Isto mostra que \(T(\mathcal{B})\) é linearmente independente e gerador de \(W\), portanto uma base de \(W\). Mais ainda, a restrição de \(T\) a \(\mathcal{B}\) nos dá uma bijeção entre \(\mathcal{B}\) e \(T(\mathcal{B})\), que portanto têm o mesmo número de elementos. Concluímos que
+<div>
+\begin{equation*}
+\dim(V)=\#\mathcal{B}=\#T(\mathcal{B})=\dim(W).
+\end{equation*}
+</div>
+</p>
+
+</div>
+<p>
+Agora, suponhamos que \(V\) e \(W\) tenham a mesma dimensão.
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Sejam \(\mathcal{B}\) e \(\mathcal{C}\) bases de \(V\) e \(W\), respectivamente. Neste caso, temos
+<div>
+\begin{equation*}
+\#\mathcal{B}=\dim(V)=\dim(W)=\#\mathcal{C},
+\end{equation*}
+</div>
+isto é, \(\mathcal{B}\) e \(\mathcal{C}\) têm o mesmo número de elementos. Portanto, existe uma bijeção \(S\colon\mathcal{B}\to\mathcal{C}\). Consideremos também a sua inversa \(T=S^{-1}\colon\mathcal{C}\to\mathcal{B}\).
+<p>
+Podemos estender &#8210; unicamente &#8210; \(S\) e \(S^{-1}\) para transformações lineares entre \(V\) e \(W\) e vice-versa. Sejam então \(\bar{S}\colon V\to W\) e \(\bar{T}\colon W\to V\) funções lineares com
+<div>
+\begin{equation*}
+\bar{S}(b)=S(b)\qquad\text{e}\qquad\bar{T}(c)=T(c)=S^{-1}(c)
+\end{equation*}
+</div>
+para todos \(b\in\mathcal{B}\) e \(c\in\mathcal{C}\). Daí, segue que
+<div>
+\begin{equation*}
+\bar{T}(\bar{S}(b))=b
+\end{equation*}
+</div>
+para todo \(b\in\mathcal{B}\). Isto significa que \(\bar{T}\circ\bar{S}\) coincide com a identidade na base \(\mathcal{B}\), e portanto \(\bar{T}\) coincide com a identidade em \(V\) inteiro. Obtemos \(\bar{T}\circ\bar{S}=\operatorname{id}_V\). Similarmente, obtemos \(\bar{S}\circ\bar{T}=\operatorname{id}_W\).
+</p>
+<p>
+Daí, concluímos que \(\bar{T}\) é uma função inversa de \(\bar{S}\). Portanto \(\bar{S}\) é uma função linear inversível, e portanto um isomorfismo.
+</p>
+
+</div>
+
+</div></body>
+</html>

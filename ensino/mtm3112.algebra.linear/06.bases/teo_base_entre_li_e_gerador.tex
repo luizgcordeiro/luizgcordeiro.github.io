@@ -1,0 +1,24 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial e $I\subseteq G\subseteq V$, onde $V$ é um espaço vetorial, $G$ é um conjunto gerador para $V$ e $I$ é linearmente independente. Então existe uma base $\mathcal{B}$ de $V$ tal que $I\subseteq\mathcal{B}\subseteq G$.
+\end{theorem}
+\begin{proof}
+	Nós precisaremos utilizar um teorema ``difícil'', chamado de ``Lema de Zorn''. Por simplicidade, primeiro vamos considerar o caso em que $G$ é finito. Neste caso, $I$ também é finito. Neste caso, vamos escrever $G=\left\{g_1,\ldots,g_n\right\}$. Procedemos do seguinte modo:
+	\begin{itemize}
+		\item Caso $I\neq G$ e $I\cup\left\{g_i\right\}$ seja linearmente independente para algum $i$, trocamos $I$ por este conjunto.
+		\item Repetimos o argumento anterior com $I\cup\left\{g_i\right\}$ no lugar de $g_i$.
+	\end{itemize}
+	O processo acima vai terminar em algum momento, pois $G$ é finito. Deste modo, vamos encontrar $I'$ linearmente independente com $I\subseteq I'\subseteq G$ tal que $I'$ é linearmente independente e tal que se $g\in G\setminus I$, então $I'\cup\left\{g\right\}$ é linearmente dependente. Neste caso, basta provar que $I'$ é gerador de $V$. Ora, para isso, basta provar que todo elemento de $G$ é uma combinação linear de elementos de $I'$. O único caso de interesse é caso exista algum elemento $g\in G\setminus I'$.
+	
+	Neste caso, $I'\cup\left\{g\right\}$ é linearmente dependente. Assim, existe uma combinação linear nula não-trivial
+	\[\lambda_g g+\sum_{i\in I'}\lambda_i i=0.\]
+	Por outro lado, $I'$ é linearmente independe, por construção. Se $\lambda_g$ fosse zero, obteríamos uma combinação linear nula não-trivial com elementos de $I'$, o que não é possível. Portanto, $\lambda_g\neq 0$, e assim
+	\[g=\sum_{i\in I'}\lambda_g^{-1}\lambda_i i,\]
+	de onde segue que $g\in\langle I'\rangle$, exatamente como queríamos.
+	
+	No caso geral, o Lema de Zorn garante que existe um conjunto $I'$ que é maximal (com relação à inclusão de conjuntos) que é maximal com respeito às seguintes propriedades:
+	\begin{enumerate}
+		\item $I'$ é linearmente independente;
+		\item $I\subseteq I'\subseteq G$.
+	\end{enumerate}
+	Esencialmente o mesmo argumento que no caso finito mostra que $I'$ é gerador para $V$, e portanto uma base.
+\end{proof}

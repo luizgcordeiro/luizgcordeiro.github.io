@@ -1,0 +1,77 @@
+\begin{theorem}
+	Sejam $I$ um intervalo e $f\colon I\to\mathbb{R}$ uma função contínua e injetiva. Então $f$ é crescente ou $f$ é decrescente no interval inteiro.
+\end{theorem}
+
+Vamos prover duas provas deste teorema. A primeira utiliza somente a Propriedade do Valor Intermediário e propriedades da ordem de $\mathbb{R}$.
+
+\begin{proof}
+	Sejam $a<b$ dois pontos do intervalo $I$. Vamos mostrar que a seguinte propriedade é válida:
+	\begin{itemize}
+		\item ($1$) Se $a<b$ e $f(a)\leq f(b)$, então $f(b)\leq f(c)$ para todo $c\geq b$. 
+	\end{itemize}
+	
+	\begin{quote}
+		De fato, caso contrário, teríamos que $f(c)<f(b)$ para algum $c>b$. Os intervalos abertos $(f(a),f(b))$ e $(f(c),f(b))$ possuem algum ponto em comum, digamos $L$. Pelo Teorema do Valor Intermediário, existiriam $x_1\in (a,b)$ e $x_2\in (b,c)$ tais que $f(x_1)=L=f(x_2)$. Mas $x_1<b<x_2$, o que contradiz a injetividade de $f$.
+	\end{quote}
+	
+	Portanto, a propriedade ($1$) é válida. Similarmente, se prova que
+	\begin{itemize}
+		\item ($2$) Se $a<b$ e $f(a)\leq f(b)$, então $f(d)\leq f(a)$ para todo $d\leq a$.
+	\end{itemize}
+	
+	Estes dois itens nos permitem lidar com os pontos de $I$ que são maiores do que $b$ ou menores do que $a$. Podemos aplicar estes mesmos itens para lidar com pontos entre $a$ e $b$
+	
+	\begin{itemize}
+		\item ($3$) Se $x\leq y\leq z$, $x\neq z$ e $f(x)\leq f(z)$, então $f(x)\leq f(y)\leq f(z)$.
+	\end{itemize}
+
+	\begin{quote}
+		Primeiro, devemos provar que $f(y)\leq f(z)$. Caso contrário, teríamos que $f(x)\leq f(z)< f(y)$. Utilizando o item (1) com $a=x$, $b=y$ e $c=z$, teríamos que $f(y)\leq f(z)$, uma contradição.
+		
+		Portanto, $f(y)\leq f(z)$. Similarmente, se prova que $f(x)\leq f(y)$, utilizando o item (2) com $a=y$ e $b=z$ e $d=x$.
+	\end{quote}
+	
+	Agora estamos quase prontos. Vamos provar que
+	
+	\begin{itemize}
+		\item ($4$) Se $\alpha\leq \alpha_1<\beta_1\leq \beta$ e $f(\alpha)\leq f(\beta)$, então $f(\alpha_1)\leq f(\beta_1)$.
+	\end{itemize}
+	
+	\begin{quote}
+		Do item (3) com $x=\alpha$ e $y=\beta_1$ e $z=\beta$, obtemos $f(\alpha)\leq f(\beta_1)$. Aplicando novamente o item (3) com $x=\alpha$, $y=\alpha_1$ e $z=\beta_1$, obtemos $f(\alpha_1)<f(\beta_1)$.
+	\end{quote}
+	
+	Trocando $f$ por $-f$, obtemos o seguinte (que também pode ser provado diretamente com argumentos análogos, evitando o uso de opostos):
+	
+	\begin{itemize}
+		\item ($5$) Se $\alpha\leq \alpha_1<\beta_1\leq\beta$ e $f(\alpha)\geq f(\beta)$, então $f(\alpha_1)\geq f(\beta_1)$.
+	\end{itemize}
+	
+	O item (5) é equivalente a sua ``contra-positiva'', que na verdade é a implicação oposta a (4):
+	\begin{itemize}
+		\item ($5$') Se $\alpha\leq \alpha_1<\beta_1\leq \beta$ e $f(\alpha_1)> f(\beta_1)$, então $f(\alpha)>f(\beta)$.
+	\end{itemize}
+	
+	Estamos prontos para provar o teorema. Sejam $a<b\in I$. Trocando $f$ por $-f$ se necessário, vamos supor que $f(a)< f(b)$. Com isso, vamos provar que $f(x)<f(y)$ sempre que $x<y$.
+	
+	Sejam $A=\min\left\{x,a\right\}$ e $B=\max\left\{b,x\right\}$. Do item ($5$') com $\alpha=A$, $\alpha_1=a$, $\beta_1=b$, $\beta=B$, obtemos que $f(A)<f(B)$. Do item (4) com $\alpha=A$, $\alpha_1=x$, $\beta_1=y$ e $\beta=B$, obtemos $f(x)\leq f(y)$. Como $f$ é injetiva, $f(x)\neq f(y)$, e portanto $f(x)=f(y)$, exatamente como queríamos demonstrar.
+\end{proof}
+
+Na segunda prova, vamos utilizar algumas propriedades mais específicas (geométricas) de $\mathbb{R}$, que permitem simplificar a prova. A idéia é começar com dois pontos $a<b$ em $I$ com $f(a)<f(b)$. Dados $a_0<b_0$ em $I$, vamos ``transformar $a$ em $a_0$ e $b$ em $b_0$ continuamente'', de modo que a desigualdade $f(a)<f(b)$ também vai se ``transformar continuamente'' na desigualdade $f(a_0)<f(b_0)$. O Teorema do Valor Intermediário ainda é uma peça fundamental desta demonstração.
+
+\begin{proof}
+	Sejam $a<b$ em $I$. A menos de uma troca de sinal, vamos supor que $f(a)<f(b)$. Vamos então provar que $f(a_0)<f(b_0)$ sempre que $a_0<b_0$.
+	
+	De fato, considere $a_0<b_0$ em $I$. Para todo $t\in[0,1]$, o ponto $x_t=a+t(a_0-a)$ está entre $a$ e $a_0$, e portanto pertence a $I$, pois $I$ é um intervalo. Similarmente, o ponto $y_t=b+t(b_0-b)$ também pertence a $I$ para todo $t\in[0,1]$. Além disso, $x_t<y_t$, e portanto $f(x_t)\neq f(y_t)$. As funções $t\mapsto x_t$ e $t\mapsto y_t$ são contínuas.
+	
+	Considere a função $g\colon [0,1]\to\mathbb{R}$ dada por
+	\begin{align*}
+		g(t)&=f(x_t)-f(y_t).
+	\end{align*}
+	
+	Como composições e diferenças de funções contínuas são contínuas, então $g$ é contínua. Além disso, $x_t<y_t$ para todo $t$, logo $f(x_t)\neq f(y_t)$, e portanto $g(t)\neq 0$ para todo $t$.
+	
+	Agora note que $g(0)=f(a)-f(b)<0$. Pelo Teorema do Valor Intermediário, concluímos que $g(1)<0$, pois caso contrário teríamos $g(t)=0$ para algum $t$, o que já sabemos não ser possível.
+	
+	Logo $g(1)<0$, o que significa que $f(a_0)<f(b_0)$, como queríamos demonstrar.
+\end{proof}

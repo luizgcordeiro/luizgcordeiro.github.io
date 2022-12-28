@@ -1,0 +1,21 @@
+Dado um conjunto $X$, denotaremos por $\operatorname{id}_X\colon X\to X$ a \textit{função identidade} de $X$, que associa cada elemento de $X$ a si mesmo: $\operatorname{id}_X(x)=x$ para todo $x\in X$.
+
+\begin{definition}
+	Seja $f\colon X\to Y$ uma função entre conjuntos $X$ e $Y$.
+	\begin{itemize}
+		\item Uma \textbf{inversa à esquerda} de $f$ é uma função $g\colon Y\to X$ tal que a composta $g\circ f=\operatorname{id}_X$ é a função identidade de $X$.
+		
+		\item Uma \textbf{inversa à direita} de $f$ é uma função $h\colon Y\to X$ tal que a composta $f\circ h=\operatorname{id}_Y$ é a função identidade de $Y$.
+		
+		\item Uma \textbf{inversa} (também chamada de \textbf{inversa bilateral}) de $f$ é uma função $k\colon Y\to X$ que é simultaneamente uma inversa à esquerda e uma inversa à direita de $f$.
+	\end{itemize}
+\end{definition}
+
+\hrule
+
+Os conceitos de \href{http://mtm.ufsc.br/~cordeiro/ensino/mtm3112.algebra.linear/12.trans.lin.inj.sobre/rev_inj_sobre_moodle.html}{injetividade, sobrejetividade e bijetividade} são relacionados com funções inversas do seguinte modo:
+\begin{itemize}
+	\item Uma função $f\colon X\to Y$ é \uline{injetiva} se, e somente se, $f$ admite uma inversa à \uline{esquerda}. Em geral, $f$ pode admitir mais do que uma inversa à esquerda.
+	\item Uma função $f\colon X\to Y$ é \uline{sobrejetiva} se, e somente se, $f$ admite uma inverse à \uline{direita}. Em geral, $f$ pode admitir mais do que uma inversa à direita.
+	\item Uma função $f\colon X\to Y$ é \uline{bijetiva} se, e somente se, $f$ admite uma inversa \uline{bilateral}. Neste caso, $f$ admite somente uma inversa bilateral, que é denotada por $f^{-1}\colon Y\to X$. Além disso, $f^{-1}$ também é a única inversa à esquerda e a única inversa à direita de $f$.
+\end{itemize}

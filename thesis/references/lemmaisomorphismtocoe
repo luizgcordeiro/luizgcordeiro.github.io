@@ -1,0 +1,25 @@
+<a class='reflink' href='../4.paois/4.7.coe.html#lemmaisomorphismtocoe'>4.7.5</a>
+
+<!-- 4.7.5 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.7.5</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ and $\gamma=\left(\gamma_t:Y_{t^*}\to Y_t\right)_{t\in T}$ be ample partial actions of inverse semigroups $S$ and $T$ on $X$ and $Y$, respectively, such that the groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are Hausdorff. Let $\Phi: S \ltimes_\theta X \rightarrow T \ltimes_\gamma Y$ be a topological isomorphism, and consider the restriction $\varphi:=\Phi|_X:X\to Y$. Then for all $s$ in $S$ there are elements $t_1, \ldots, t_n$ in $T$ and there are disjoint compact-open subsets $K_1, \ldots K_n$ of $Y$ such that:
+	<ol class='roman'>
+		<li>
+			$K_i \subseteq Y_{{t_i}^*}$;
+		</li>
+		
+		<li>
+			$\varphi(X_{s^*})=\bigcup_{i=1}^nK_i$;
+		</li>
+		
+		<li>
+			$\left\{\varphi^{-1}(K_i):i=1,\ldots,n\right\}$ is a partition of $X_{s^*}$;
+		</li>
+		
+		<li>
+			For all $i\in\left\{1,\ldots,n\right\}$ and for all $x\in\varphi^{-1}(K_i)$, we have $\Phi([s,x])=[t_i,\varphi(x)]$.
+		</li>
+	</ol>
+	</p>
+</div>

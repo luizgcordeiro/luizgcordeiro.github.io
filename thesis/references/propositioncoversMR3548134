@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.7.im.html#propositioncoversMR3548134'>1.7.2</a>
+<!-- 1.7.2 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 1.7.2</span>
+	If $L$ is a generalized Boolean algebra, $X\subseteq L$ is downwards closed, and $C$ is a finite subset of $L$, then the following are equivalent:</p>
+	<ol class='arpar'>
+		<li> $C$ is a cover of $X$;</li>
+		<li> For every nonzero $x\in X$ there is some $c\in C$ with $x\land c\neq 0$.</li>
+		<li> $\bigvee C$ is an upper bound of $X$;</li>
+	</ol>
+</div>

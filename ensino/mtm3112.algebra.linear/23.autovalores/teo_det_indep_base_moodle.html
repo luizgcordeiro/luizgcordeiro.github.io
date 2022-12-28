@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço vetorial e \(\mathcal{B}\) e \(\mathcal{C}\) duas bases ordenadas para \(V\). Dado um endomorfismo linear \(T\colon V\to V\), consideramos as representações matriciais de \(T\) nas bases \(\mathcal{B}\) e \(\mathcal{C}\): \([T]_{\mathcal{B}}^{\mathcal{B}}\) e \([T]_{\mathcal{C}}^{\mathcal{C}}\).
+</p>
+<p>
+Então \(\det[T]_{\mathcal{B}}^{\mathcal{B}}=\det[T]_{\mathcal{C}}^{\mathcal{C}}\).
+</p>
+
+</div>
+<p>
+<i>Importante</i>: Acima, consideramos somente \([T]_{\mathcal{B}}^{\mathcal{B}}\) e \([T]_{\mathcal{C}}^{\mathcal{C}}\), as representações matriciais de \(T\) <u>unicamente</u> na base \(\mathcal{B}\) e <u>unicamente</u> na base \(\mathcal{C}\). De certo modo, as bases \(\mathcal{B}\) e \(\mathcal{C}\) não estão interagindo entre si.
+</p>
+<p>
+O determinante da matriz \([T]_{\mathcal{B}}^{\mathcal{C}}\), que representa \(T\) <span>&#8220;</span>da base \(\mathcal{B}\) para a base \(\mathcal{C}\)<span>&#8221;</span>, em geral será diferente dos determinantes de \([T]_{\mathcal{B}}^{\mathcal{B}}\) e de \([T]_{\mathcal{C}}^{\mathcal{C}}\).
+</p>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Basta utilizar as matrizes de mudança da base \(\mathcal{B}\) para \(\mathcal{C}\) e vice-versa. Seja \(U=\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{B}}\), a matriz de mudança da base \(\mathcal{C}\) para a base \(\mathcal{B}\). Então a matriz de mudança da base \(\mathcal{B}\) para a base \(\mathcal{C}\) (na <span>&#8220;</span>direção oposta<span>&#8221;</span>) é a inversa de \(U\). Isto é,
+<div>
+\begin{equation*}
+\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{C}}=\left(\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{B}}\right)^{-1}=U^{-1}.
+\end{equation*}
+</div>
+</p>
+<p>
+Agora, correspondemos composição de transformações lineares com produto de matrizes:
+<div>
+\begin{align*}
+\left[T\right]_{\mathcal{B}}^{\mathcal{B}}
+&=\left[\operatorname{id}_V\circ T\circ \operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{B}}\\
+&=\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{B}}\cdot \left[T\right]_{\mathcal{C}}^{\mathcal{C}}\cdot \left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{C}}\\
+&=U\left[T\right]_{\mathcal{C}}^{\mathcal{C}} U^{-1}$.
+\end{align*}
+</div>
+</p>
+<p>
+Lembre-se que \(\det(AB)=\det(A)\det(B)\) para quaisquer duas matrizes quadradas de mesma ordem, e também que \(\det(A^{-1})=\det(A)^{-1}\) se \(A\) é inversível. Assim, calculamos
+<div>
+\begin{align*}
+\det\left[T\right]_{\mathcal{B}}^{\mathcal{B}}
+&=\det\left(U\left[T\right]_{\mathcal{C}}^{\mathcal{C}}U^{-1}\right)\\
+&=\det(U)\det\left(\left[T\right]_{\mathcal{C}}^{\mathcal{C}}\right)\det(U^{-1})\\
+&=\det(U)\det\left(\left[T\right]_{\mathcal{C}}^{\mathcal{C}}\right)\det(U)^{-1}\\
+&=\det\left(\left[T\right]_{\mathcal{C}}^{\mathcal{C}}\right),
+\end{align*}
+</div>
+exatamente como queríamos.
+</p>
+
+</div></body>
+</html>

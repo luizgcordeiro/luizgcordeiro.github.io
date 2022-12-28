@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+<p>
+A técnica de <span>&#8220;</span>troca de variáveis<span>&#8221;</span> permite simplificar algumas expressões, para converter o cálculo de limites a um cálculo envolvendo expressões mais familiares.
+</p>
+<p>
+Intuitivamente, este procedimento pode ser entendido do seguinte modo. Suponha que tenhamos um limite que pode ser reconhecido como na forma
+<div>
+\begin{equation*}
+\lim_{y\to a}f(E( y ))
+\end{equation*}
+</div>
+onde \(E( y )\) é uma expressão envolvendo \(y\) e \(f\) é uma função. Vamos criar uma nova <span>&#8220;</span>variável dependente<span>&#8221;</span> \(z=E( y )\), e assumir que os limites \(\lim_{y\to a}E( y )=b\) e \(\lim_{x\to b}f(x)=L\) existam.
+</p>
+<p>
+Isto significa que se \(y\to a\), então \(z=E( y )\to b\), o que implica que \(f(E( y ))=f(z)\to L\).
+</p>
+<p>
+Em resumo, temos que \(f(E( y ))\to L\) quando \(y\to  a\), o que significa que
+<div>
+\begin{equation*}
+\lim_{y\to a}f(E( y ))=\lim_{z\to b}f(z),
+\end{equation*}
+</div>
+onde \(z=E( y )\) e \(b=\lim_{y\to a}E( y )\).
+</p>
+<p>
+Não entraremos nos detalhes técnicos de quando essa troca de variáveis pode ser realizada. Abaixo, vamos mostrar algumas das aplicações mais comuns desta técnica.
+</p>
+
+<hr/>
+
+<h3 class='subsection'>Translação</h3>
+<p>
+Seja \(b\) um número real.  Ponha \(y=x+b\), ou seja, \(x=y-b\). Então
+</p>
+<p>
+\(x\to a\) se, e somente se, \(y\to a+b\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to a}f(x)=\lim_{y\to a+b}f(y-b)
+\end{equation*}
+</div>
+\(x\to a^+\) se, e somente se, \(y\to (a+b)^+\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to a^+}f(x)=\lim_{y\to (a+b)^+}f(y-b)
+\end{equation*}
+</div>
+\(x\to a^-\) se, e somente se, \(y\to (a+b)^-\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to a^-}f(x)=\lim_{y\to (a+b)^-}f(y-b)
+\end{equation*}
+</div>
+\(x\to+\infty\) se, e somente se, \(y\to+\infty\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to+\infty}f(x)=\lim_{y\to+\infty}f(y-b).
+\end{equation*}
+</div>
+\(x\to-\infty\) se, e somente se, \(y\to-\infty\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to-\infty} f(x)=\lim_{y\to -\infty}f(y-b).
+\end{equation*}
+</div>
+</p>
+
+<hr/>
+
+<h3 class='subsection'>Multiplicação por escalar positivo</h3>
+<p>
+Seja \(\lambda>0\). Ponha \(y=\lambda x\), ou seja, \(x=\dfrac{y}{\lambda}\). Então
+</p>
+<p>
+\(x\to a\) se, e somente se, \(y\to \lambda a\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to a}f(x)=\lim_{y\to \lambda a}f\left(\frac{y}{\lambda}\right).
+\end{equation*}
+</div>
+\(x\to a^+\) se, e somente se, \(y\to (\lambda a)^+\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to a^+}f(x)=\lim_{y\to(\lambda a)^+}f\left(\frac{y}{\lambda}\right).
+\end{equation*}
+</div>
+\(x\to a^-\) se, e somente se, \(y\to(\lambda a)^-\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to a^-}f(x)=\lim_{y\to(\lambda)^- a}f\left(\frac{y}{\lambda}\right).
+\end{equation*}
+</div>
+\(x\to+\infty\) se, e somente se, \(y\to+\infty\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to+\infty}f(x)=\lim_{y\to+\infty}f\left(\frac{y}{\lambda}\right)
+\end{equation*}
+</div>
+\(x\to-\infty\) se, e somente se, \(y\to-\infty\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to-\infty} f(x)=\lim_{y\to -\infty}f\left(\frac{y}{\lambda}\right).
+\end{equation*}
+</div>
+</p>
+
+<hr/>
+
+<h3 class='subsection'>Multiplicação por escalar negativo</h3>
+<p>
+Seja \(\lambda<0\). Ponha \(y=\lambda x\), ou seja, \(x=\dfrac{y}{\lambda}\). Então
+</p>
+<p>
+\(x\to a\) se, e somente se, \(y\to \lambda a\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to a}f(x)=\lim_{y\to \lambda a}f\left(\frac{y}{\lambda}\right).
+\end{equation*}
+</div>
+\(x\to a^+\) se, e somente se, \(y\to \lambda a^-\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to a^+}f(x)=\lim_{y\to(\lambda a)^-}f\left(\frac{y}{\lambda}\right).
+\end{equation*}
+</div>
+\(x\to a^-\) se, e somente se, \(y\to(\lambda a)^+\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to a^-}f(x)=\lim_{y\to(\lambda a)^+}f\left(\frac{y}{\lambda}\right).
+\end{equation*}
+</div>
+\(x\to+\infty\) se, e somente se, \(y\to-\infty\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to+\infty} f(x)=\lim_{y\to -\infty}f\left(\frac{y}{\lambda}\right).
+\end{equation*}
+</div>
+\(x\to-\infty\) se, e somente se, \(y\to+\infty\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to-\infty} f(x)=\lim_{y\to +\infty}f\left(\frac{y}{\lambda}\right).
+\end{equation*}
+</div>
+</p>
+
+<hr/>
+
+<h3 class='subsection'>Outras trocas de variáveis</h3>
+<p>
+Outras trocas de variáveis são permitidas, mas deve-se tomar o devido cuidado com limites laterais. Por exemplo, se pormos \(y=e^x\), então \(x\to-\infty\) se, e somente \(y\to 0^+\). Portanto,
+<div>
+\begin{equation*}
+\lim_{x\to-\infty}f(x)=\lim_{y\to 0^+}f(\ln( y ))
+\end{equation*}
+</div>
+</p>
+
+</body>
+</html>

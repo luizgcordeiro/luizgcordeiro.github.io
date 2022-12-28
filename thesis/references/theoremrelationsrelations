@@ -1,0 +1,34 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#theoremrelationsrelations'>3.1.8</a>
+
+<!-- 3.1.8 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.1.8</span>
+	Suppose $\mathcal{A}$ is weakly regular. If $f,g\in\mathcal{A}$, then
+	<ol class='alphpar'>
+		<li>
+			$f\subseteq g\iff\forall h(h\perp g\Rightarrow h\perp f)$;
+		</li>
+		
+		<li>
+			$f\perp g\iff$ The $\subseteq$-infimum of $\left\{f,g\right\}$ is $\theta$ (which is the $\subseteq$-infimum of $\mathcal{A}$);
+		</li>
+		
+		<li>
+			$f\subseteq g\iff\forall h(h\Subset f\Rightarrow h\Subset g)$;
+		</li>
+		
+		<li>
+			$f\subseteq g\iff\forall h(h\perpp g\Rightarrow h\perpp f)$;
+		</li>
+		
+		<li>
+			$f\perpp g\iff\exists h_1,k_1,\ldots,h_n,k_n\in\mathcal{A}$ such that $\left\{h_1,\ldots,h_n\right\}$ is a cover of $f$, $h_i\Subset k_i$ and $k_i\perp g$;
+		</li>
+		
+		<li>
+			$f\Subset g\iff\forall b\in\mathcal{A}$, $\exists h_1,\ldots,h_n\in\mathcal{A}$ such that $\left\{h_1,\ldots,h_n,g\right\}$ is a cover of $b$ and $h_i\perpp f$.
+		</li>
+	</ol>
+	By items (a) and (b), $\perp$ and $\subseteq$ are equi-expressible (i.e., each one is completely determined by the other). By (c) and (d) one can recover $\subseteq$ (and hence $\perp$) from either $\Subset$ or $\perpp$, which in turn implies, from (e) and (f), that $\Subset$ and $\perpp$ are also equi-expressible.
+	</p>
+</div>

@@ -1,0 +1,214 @@
+\subsection*{Revisão básica}
+
+O \textit{determinante} associa a cada matriz quadrada um número (escalar), que permite determinar certas propriedades das matrizes consideradas. Vamos omitir a descrição explícita do determinante a princípio, e primeiramente relembrar como este valor é calculado
+
+O determinante de uma matriz quadrada $A$ de ordem $n\times n$ é denotado por $\det(A)$ ou por $|A|$. A ``função determinante'' (que associa a cada matriz seu determinante) satisfaz às seguintes propriedades:
+
+O determinante de matrizes de ordem pequena podem ser calculados de modo simples:
+
+\begin{itemize}
+	\item Para matrizes de ordem $1\times 1$, o determinante é simplesmente o valor que aparece em sua única entrada:
+		\[\det[a]=a.\]
+	\item Para matrizes de ordem $2\times 2$, o determinante pode ser calculado como a diferença entre os produtos da ``diagonal principal'' e da ``diagonal secundária'':
+		\[\det\begin{bmatrix}
+		a_{11}	& a_{12}\\a_{21}&a_{22}\end{bmatrix}=a_{11}a_{22}-a_{12}a_{21}.\]
+	\item Para matrizes de ordem $3\times 3$, somamos os produtos dos elementos das ``diagonais principais'' e subtraímos os produtos dos elementos das ``diagonais secundárias'':
+		\begin{align*}\det\begin{bmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{bmatrix}
+		&=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}\\
+		&\qquad-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}-a_{13}a_{22}a_{31}.
+		\end{align*}
+\end{itemize}
+
+A descrição explícita do determinante para ordens maiores do que $3$ é um pouco mais complicada, e por isso é útil lembrar de algumas regras que permitem simplificar este cálculo. Destaca-se a Regra de Laplace, que descreveremos a seguir.
+
+\begin{theorem}[Regra de Laplace]
+	Seja $A=\begin{bmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\
+	a_{21}&a_{22}&\cdots&a_{2n}\\
+	\vdots&\vdots&\ddots&\vdots\\
+	a_{n1}&a_{n2}&\cdots&a_{nn}\end{bmatrix}$ uma matriz quadrada de ordem $n\times n$. Para cada par de números $i,j$ entre $1$ e $n$, consideremos a matriz $A_{ij}$ que é obtida da matriz $A$ ao se remover a $i$-ésima linha e a $j$-ésima coluna.
+	
+	Então para todo $i$ entre $1$ e $n$ tem-se que	
+	\[\det(A)=\sum_{k=1}^na_{ik}(-1)^{i+k}\det(A_{ik}),\tag{Lap1}\]
+	e similarmente, para todo $j$ tem-se também que
+	\[\det(A)=\sum_{q=1}^n a_{qj}(-1)^{q+j}\det(A_{qj}).\tag{Lap2}\]
+\end{theorem}
+
+Esta regra permite calcular o determinante de uma matriz de ordem $n\times n$ em termos de $n$ determinantes de matrizes de ordem $(n-1)\times (n-1)$. Um ponto interessante é que se a matriz $A$ possui uma linha $[a_{i1}\ a_{i2}\ \cdots\ a_{in}]$ com muitos zeros, então quase todos os termos na soma na Equação (Lap1) serão nulos, o que simplifica os cálculos. Similarmente, se a matriz $A$ possui uma coluna com muitos zeros, a Equação (Lap2) permite simplificar o cálculo de $\det(A)$.
+
+Por exemplo, vamos tentar calcular o determinante da matriz
+\[A=\begin{bmatrix}
+3 & 3 & 0 & 0\\
+0 & 1 & 0 & 0\\
+2 & -3 & 1 & 3\\
+1 & 9 & 1 & 4
+\end{bmatrix}.\]
+A segunda linha da matriz $A$ possui vários zeros. Vamos então utilizar a fórmula (Lap1) com $i=2$:
+\begin{align*}
+\det(A)
+	&=\sum_{k=1}^4a_{2k}(-1)^{2+k}\det(A_{2k})\\
+	&=a_{21}(-1)^{2+1}\det(A_{21})+a_{22}(-1)^{2+2}\det(A_{22})\\
+	&\qquad+a_{23}(-1)^{2+3}\det(A_{23})+a_{24}(-1)^{2+4}\det(A_{24})\\ \\
+	&=0+1\cdot(-1)^{2+2}\det(A_{22})+0+0\\
+	&=\det(A_{22}).
+\end{align*}
+Agora, vamos escrever explicitamente a matriz $A_{22}$, obtida de $A$ ao se retirar sua segunda linha e sua segunda coluna:
+\[A_{22}=\begin{bmatrix}
+3 & \square & 0 & 0\\
+\square & \square & \square & \square\\
+2 & \square & 1 & 3\\
+1 & \square & 1 & 4
+\end{bmatrix}=\begin{bmatrix}
+3 & 0 & 0\\
+2 & 1 & 3\\
+1 & 1 & 4
+\end{bmatrix}.\]
+O determinante de $A_{22}$ pode ser calculado diretamente, pois é uma matriz $3\times 3$. Alternativamente, podemos utilizar novamente a regra de Laplace, notando que a primeira linha de $A_{22}$ possui vários zeros. Pela Regra de Laplace, temos que
+\begin{align*}
+\det(A_{22})
+	&=3\cdot (-1)^{1+1}\det\begin{bmatrix}
+\square & \square & \square\\
+\square & 1 & 3\\
+\square & 1 & 4
+\end{bmatrix}+0\cdot (-1)^{1+2}\begin{bmatrix}
+\square & \square & \square\\
+2 & \square & 3\\
+1 & \square & 4
+\end{bmatrix}\\
+&\qquad+0\cdot (-1)^{1+3}\begin{bmatrix}
+\square & \square & \square\\
+2 & 1 & \square\\
+1 & 1 & \square
+\end{bmatrix}\\ \\
+&=3\det\begin{bmatrix}1 & 3\\
+1 & 4\end{bmatrix}.
+\end{align*}
+Agora temos somente que calcular um determinante de ordem $2\times 2$:
+\begin{align*}
+\det\begin{bmatrix} 1&3\\1&4\end{bmatrix}
+&=1\cdot 4-3\cdot 1\\
+&=4-3\\
+&=1.
+\end{align*}
+
+Portanto,
+\[\det(A)=\det(A_{22})=3\cdot 1=3.\]
+
+\hrule
+
+\subsection*{Propriedades fundamentais}
+A função determinante possui diversas propriedades algébricas importantes, que podem auxiliar no seu cálculo. Por exemplo:
+
+\begin{itemize}
+	\item O determinante é \textit{multilinear} nas colunas.
+	
+	Mais precisamente, vamos escrever matrizes como ``vetores de colunas'':
+	\[A=\begin{bmatrix}|&|&&|\\c_1&c_2&\cdots&c_n\\|&|&&|\end{bmatrix}.\]
+	
+	Então ao fixarmos $n-1$ colunas de uma matriz, a função de $\mathbb{R}^n$ em $\mathbb{R}$ que dá o determinante da matriz obtida ao se pôr um vetor como a coluna restante é linear:
+	\begin{align*}
+	&\det\begin{bmatrix}|&&|&&|\\c_1&\cdots&\textcolor{blue}{c_i}+\lambda \textcolor{red}{d_i}&\cdots&c_n\\|&&|&&|\end{bmatrix}\\
+	&\qquad\qquad=\det\begin{bmatrix}|&&|&&|\\c_1&\cdots&\textcolor{blue}{c_i}&\cdots&c_n\\|&&|&&|\end{bmatrix}+\lambda \det\begin{bmatrix}|&&|&&|\\c_1&\cdots&\textcolor{red}{d_i}&\cdots&c_n\\|&&|&&|\end{bmatrix}.\end{align*}
+	
+	\item O determinante é \textit{alternante} nas colunas.
+	
+	Isto significa que se trocarmos duas colunas de uma matriz de posição (e mantivermos todas as outras colunas iguais), então o determinante irá trocar de sinal:
+	\[\det\begin{bmatrix}&|&&|&\\
+	\cdots &\textcolor{blue}{c_i}&\cdots&\textcolor{red}{c_j}&\cdots\\&|&&|&\end{bmatrix}=-\det\begin{bmatrix}&|&&|&\\
+	\cdots&\textcolor{red}{c_j}&\cdots&\textcolor{blue}{c_i}&\cdots\\&|&&|&\end{bmatrix}.\]
+	
+	\item O determinante é \textit{normalizado}.
+
+		Isto significa que $\det(I_n)=1$, onde $I_n$ é a matriz identidade de ordem $n\times n$.
+\end{itemize}
+
+Estas três propriedades são fundamentais no sentido de que na verdade existe uma \textit{única} função com estas propriedades, mesmo que não tenhamos ainda uma forma explícita para esta função.
+
+\hrule
+
+\subsection*{Definição explícita}
+
+Agora, vamos dar a descrição explícita da função determinante. Para isso, precisamos de um pouco de teoria. Fixemos um inteiro positivo $n$.
+
+Uma \textbf{permutação} de $n$ elementos é uma função bijetiva $\sigma\colon \left\{1,\ldots,n\right\}\to\left\{1,\ldots,n\right\}$. O conjunto de todas as permutaçõe de $n$ elementos é denotado por $\mathfrak{S}_n$.
+
+Uma \textbf{inversão} de uma permutação $\sigma$ consiste de dois números $i<j$ tais que $\sigma(i)>\sigma(j)$. Vamos denotar por $N(\sigma)$ o número de inversões de $\sigma$. O \textbf{sinal} de $\sigma$ é o valor $\operatorname{sgn}(\sigma)=(-1)^{N(\sigma)}$.
+
+Dada uma matriz quadrada $A=[a_{ij}]_{i,j=1,\ldots,n}$ de ordem $n\times n$, o determinante de $A$ é \textit{definido} como
+\[\det(A)=\sum_{\sigma\in\mathfrak{S}_n}\operatorname{sgn}(\sigma)a_{1\sigma(1)}\cdots a_{n\sigma(n)}.\]
+
+Note que esta definição não utiliza nenhum resultado, porém existem muitos pequenos cálculos que devem ser feitos (especialmente se não tivermos acesso a tabelas de permutações ou a um computador): Primeiro, deve-se descrever todas as permutações de $n$ elementos, das quais existem $n!$. Depois deve-se calcular o número de inversões de cada uma destas permutações, que consiste em verificar $n(n-1)/2$ desigualdades, para então obter o sinal de cada uma destas permutações. Então devemos multiplicar entradas de $A$, correspondendo a cada permutação, e somar estes produtos de acordo com o sinal da permutação respectiva. Isto dá por volta de $n!n(n-1)$ cálculos. Por exemplo, para $n=4$, isto são $288$ cálculos, e um único erro em um deles pode levar a um resultado errado.
+
+\hrule
+
+\subsection*{Propriedades a lembrar}
+
+Por fim, vamos citar as propriedades de determinantes que serão utilizadas no decorrer do curso (repetimos as propriedades já citadas acima). Vamos escrever matrizes como ``vetores de colunas'' ou ``vetores de linhas'' conforme for apropriado
+
+\begin{itemize}
+\item O determinante é \textit{multilinear} nas colunas:
+	\begin{align*}
+	&\det\begin{bmatrix}|&&|&&|\\c_1&\cdots&\textcolor{blue}{c_i}+\lambda \textcolor{red}{d_i}&\cdots&c_n\\|&&|&&|\end{bmatrix}\\
+	&\qquad\qquad=\det\begin{bmatrix}|&&|&&|\\c_1&\cdots&\textcolor{blue}{c_i}&\cdots&c_n\\|&&|&&|\end{bmatrix}+\lambda \det\begin{bmatrix}|&&|&&|\\c_1&\cdots&\textcolor{red}{d_i}&\cdots&c_n\\|&&|&&|\end{bmatrix}.
+	\end{align*}
+	
+	\item o determinante é \textit{multilinear} nas linhas:
+	\[\det\begin{bmatrix}-&\ell_1&-\\
+	&\vdots&\\
+	-&\textcolor{blue}{\ell_i}+\lambda \textcolor{red}{k_i}&-\\
+	&\vdots&\\
+	-&\ell_n&-\end{bmatrix}=\det\begin{bmatrix}-&\ell_1&-\\
+	&\vdots&\\
+	-&\textcolor{blue}{\ell_i}&-\\
+	&\vdots&\\
+	-&\ell_n&-\end{bmatrix}+\lambda \det\begin{bmatrix}-&\ell_1&-\\
+	&\vdots&\\
+	-&\textcolor{red}{k_i}&-\\
+	&\vdots&\\
+	-&\ell_n&-\end{bmatrix}.\]
+	
+	\item O determinante é \textit{alternante} nas colunas:	
+	\[\det\begin{bmatrix}&|&&|&\\
+	\cdots &\textcolor{blue}{c_i}&\cdots&\textcolor{red}{c_j}&\cdots\\&|&&|&\end{bmatrix}=-\det\begin{bmatrix}&|&&|&\\
+	\cdots&\textcolor{red}{c_j}&\cdots&\textcolor{blue}{c_i}&\cdots\\&|&&|&\end{bmatrix}.\]
+	
+	\item O determinante é \textit{alternante} nas linhas:
+	\[\det\begin{bmatrix}&\vdots&\\
+	-&\ell_{i-1}&-\\
+	-&\textcolor{blue}{\ell_i}&-\\
+	-&\ell_{i+1}&-\\
+	&\vdots&\\
+	-&\ell_{j-1}&-\\
+	-&\textcolor{red}{\ell_j}&-\\
+	-&\ell_{j+1}&-\\
+	&\vdots&\end{bmatrix}=-\begin{bmatrix}&\vdots&\\
+	-&\ell_{i-1}&-\\
+	-&\textcolor{red}{\ell_j}&-\\
+	-&\ell_{i+1}&-\\
+	&\vdots&\\
+	-&\ell_{j-1}&-\\
+	-&\textcolor{blue}{\ell_i}&-\\
+	-&\ell_{j+1}&-\\
+	&\vdots&\end{bmatrix}.\]
+	
+	\item O determinante é \textit{normalizado}: $\det(I_n)=1$.
+		
+	\item O determinante preserva produtos:
+	\[\det(AB)=\det(A)\det(B).\]
+	
+	\item O determinante determina inversibilidade de matrizes: Uma matriz $A$ de ordem $n\times n$ é inversível se, e somente se, $\det(A)\neq 0$. Neste caso, $\det(A^{-1})=\det(A)^{-1}$.
+	
+	\item O determinante é preservado por transpostas:
+	\[\det(A^\mathrm{T})=\det(A).\]
+	
+	\item O determinante de matrizes triangulares é o produto da diagonal principal:
+	\[\det\begin{bmatrix}a_1&*&*&\cdots&*\\
+	0&a_2&*&\cdots&*\\
+	0&0&a_3&\cdots&*\\
+	\vdots&\vdots&\vdots&\ddots&\vdots&\\
+	0&0&0&\cdots&a_n\end{bmatrix}=a_1\cdots a_n,\]
+	\[\det\begin{bmatrix}b_1&0&0&\cdots&0\\
+	*&b_2&0&\cdots&0\\
+	*&*&b_3&\cdots&0\\
+	\vdots&\vdots&\vdots&\ddots&\vdots&\\
+	*&*&*&\cdots&b_n\end{bmatrix}=b_1\cdots b_n.\]
+\end{itemize}

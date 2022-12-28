@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#definitionultraproductmetricspaces'>2.1.12</a>
+
+<!-- 2.1.12 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 2.1.12</span>
+	We call the metric space $\left(\prod_{\mathcal{U}} M_i,d^{\mathcal{U}}\right)$ the <em>ultraproduct</em> of the metric spaces $(M_i,d^i)$. We denote the class of an element $(x_i)_i\in\prod_i M_i$ in $\prod_{\mathcal{U}} M_i$ by $(x_i)_{\mathcal{U}}$.
+	</p>
+</div>

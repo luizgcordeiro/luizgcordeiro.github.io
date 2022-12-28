@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.5.qods.html#theorem1512'>1.5.12</a>
+<!-- 1.5.12 -->
+<div class='toload theorem'>
+<p><span class='envidentifier'>Theorem 1.5.12
+<span style='font-weight:normal;'>(Isomorphism Theorem for Boolean inverse semigroups)</span></span>
+Let $\theta:S\to T$ be a morphism of Boolean inverse semigroups (as in Definition <span class='ref' data-tag='definitionmorphismofbooleaninversesemigroups'></span>) and $I\subseteq\theta^{-1}(0)$ a $\lor$-ideal. Then</p>
+<ol class='alphpar'>
+	<li> $\theta$ factors uniquely to a Boolean inverse semigroup morphism $\theta_I:S/I\to T$.</li>
+	<li> $I=\theta^{-1}(0)$ if and only if $\theta_I$ is injective.</li>
+</ol>
+</div>

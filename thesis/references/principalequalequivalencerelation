@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#principalequalequivalencerelation'>1.1.19</a>
+
+<!-- 1.1.19 -->
+<div class="toload proposition">
+<p><span class="envidentifier">Proposition 1.1.19</span>
+A groupoid $\mathcal{G}$ is principal if and only if there exists an equivalence relation $R$ on a set $X$ which is isomorphic to $\mathcal{G}$ as a groupoid.
+</p>
+</div>

@@ -1,0 +1,22 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#definitionactionofinvertibleones'>2.4.15</a>
+
+<!-- 2.4.15 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 2.4.15</span>
+	Let $S$ be a Boolean inverse monoid and consider $S^\times$ the group of $g\in S$ such that $gg^*=g^*g=1$. We define an action of $S^\times$ on $E(S)$ as $g\cdot e=geg^*$. Note that if $\mu$ is an invariant mean on $S$ then for all $g\in S^\times$ and $e\in E(S)$,
+	<div class='équation'>\[
+	\mu(e)=\mu(eg^*ge)=\mu((ge)^*(ge))=\mu((ge)(ge)^*)=\mu(geg^*),
+	\]</div>
+	so this action is isometric and trace-preserving. In particular,
+	<ul>
+		<li> If $S=\MEAS(\mathcal{G})$ for a probability measure-preserving groupoid $\mathcal{G}$, then $[\mathcal{G}]$ acts on $\MAlg(\mathcal{G}^{(0)})$ via
+		<div class='équation'>\[
+		\gamma\cdot A=\ra(\gamma A),\qquad\text{for all }\gamma\in[\mathcal{G}]\text{ and }A\in\MAlg(\mathcal{G}^{(0)}).
+		\]</div></li>
+		<li> If $S=\prod_\mathcal{U}\MEAS(Y_n^2)$ (where $Y_n$ are finite sets with $n$ elements), then $\prod_\mathcal{U}\mathfrak{S}_n$ acts on $\prod_\mathcal{U}\MAlg(Y_n)$ via
+		<div class='équation'>\[
+		\left(\sigma_n\right)_\mathcal{U}\cdot\left(A_n\right)_\mathcal{U}=\left(\sigma_n(A_n)\right)_\mathcal{U}.
+		\]</div></li>
+	</ul>
+	</p>
+</div>

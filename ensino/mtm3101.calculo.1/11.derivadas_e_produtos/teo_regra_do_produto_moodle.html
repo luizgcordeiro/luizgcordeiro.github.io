@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(f\) e \(g\) funções deriváveis em um ponto \(a\). Então a função produto \(fg\) é derivável em \(a\), e
+<div>
+\begin{equation*}
+(fg)'(a)=f'(a)g(a)+f(a)g'(a).
+\end{equation*}
+</div>
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Vamos utilizar a <a href='../09.derivadas/con_der_em_pt_moodle.html'>definição de derivada como um limite</a> e as <a href='../02.limites_elementares/teo_regras_lim_moodle.html'>regras de limites</a>.
+</p>
+
+<div>
+\begin{align*}
+(fg)'(a)
+&=\lim_{x\to a}\frac{(fg)(x)-(fg)(a)}{x-a}\\
+&\qquad\text{(definição de derivada)}\\
+&=\lim_{x\to a}\frac{f(x)g(x)-f(a)g(a)}{x-a}\\\\
+&\qquad\text{(definição de função produto)}\\
+&=\lim_{x\to a}\frac{f(x)g(x)-f(a)g(x)+f(a)g(x)-f(a)g(a)}{x-a}\\
+&\qquad\text{(somar zero no denominador)}\\
+&=\lim_{x\to a}\frac{\left(f(x)-f(a)\right)g(x)+f(a)\left(g(x)-g(a)\right)}{x-a}\\
+&\qquad\text{(reorganização)}\\
+&=\lim_{x\to a}\left(\frac{f(x)-f(a)}{x-a}g(x)+f(a)\frac{g(x)-g(a)}{x-a}\right)\\
+&\qquad\text{(reorganização)}\\
+&=\left(\lim_{x\to a}\frac{f(x)-f(a)}{x-a}\right)\left(\lim_{x\to a}g(x)\right)+f(a)\left(\lim_{x\to a}\frac{g(x)-g(a)}{x-a}\right)\\
+&\qquad\text{(regras de limites)}.
+\end{align*}
+</div>
+<p>
+Como a função \(g\) é diferenciável no ponto \(a\), <a href='../09.derivadas/teo_funcoes_derivaveis_sao_continuas_moodle.html'>então \(g\) é contínua em \(a\)</a>, o que significa que \(\lim_{x\to a}g(x)=g(a)\). Substituindo este limite e \(f'(a)\) e \(g'(a)\) nos limites apropriados na última expressão obtida acima, obtemos
+<div>
+\begin{align*}
+(fg)'(a)&=f'(a)g(a)+f(a)g'(a).
+\end{align*}
+</div>
+</p>
+
+</div></body>
+</html>

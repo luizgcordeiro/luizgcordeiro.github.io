@@ -1,0 +1,62 @@
+\begin{theorem}
+	Seja $T\colon V\to W$ uma transformação linear entre dois espaços vetoriais $V$ e $W$. Então
+	\[\dim(V)=\dim(\ker(T))+\dim(\operatorname{Im}(T)).\]
+	Em particular, $\dim(\operatorname{Im}(T))\leq\dim(V)$.
+\end{theorem}
+
+\begin{proof}
+	Sejam $\mathcal{N}$ uma base de $\ker(T)$, e seja $\mathcal{M}$ uma base de $\operatorname{Im}(T)$. Por definição de $\operatorname{Im}(T)$, escolha, para cada $m\in\mathcal{M}$, um vetor $b_m\in V$ tal que $T(b_m)=m$. Seja $\mathcal{B}=\left\{b_m:m\in M\right\}$.
+	
+	Note que a função $\mathcal{M}\to\mathcal{B}$, $m\mapsto b_m$ é uma bijeção, cuja inversa é a restrição de $T$ a $\mathcal{B}$. Deste modo, $\mathcal{M}$ e $\mathcal{B}$ têm a mesma cardinalidade:
+	\[\#\mathcal{M}=\#\mathcal{B}\tag{1}.\]
+	
+	Além disso, os conjuntos $\mathcal{B}$ e $\mathcal{N}$ são disjuntos. De fato, se existisse um vetor $v\in\mathcal{B}\cap\mathcal{N}$, teríamos que $v=b_m$ para algum $m\in \mathcal{M}$, e assim
+	\[m=T(b_m)=0_W,\]
+	pois $b_m\in\mathcal{N}\subseteq\ker(T)$. Mas isto contradiz o fato de que $\mathcal{M}$ é linearmente independente, e assim não pode conter o vetor $0$.
+	
+	Portanto, $\mathcal{B}$ e $\mathcal{N}$ são disjuntos, e segue que a cardinalidade de sua união é a soma das suas cardinalidades:
+	\[\#\left(\mathcal{B}\cup\mathcal{N}\right)=\#\mathcal{B}+\#\mathcal{N}.\tag{2}\]
+	
+	Agora, vamos mostrar que $\mathcal{B}\cup\mathcal{N}$ é uma base para $V$.
+	
+	\uline{$\mathcal{B}\cup\mathcal{N}$ é gerador para $V$}:
+	
+	\begin{quote}
+		Seja $v\in V$. Temos que $T(v)\in W$. Como $\mathcal{M}$ é uma base para $W$, existem escalares $\lambda_m$, $m\in \mathcal{M}$ (somente uma quantidade finita deles não-nulos) tais que
+		\[T(v)=\sum_{m\in \mathcal{M}}\lambda_m m.\]
+		Assim,
+		\[T(v)=\sum_{m\in M}\lambda_m T(b_m)=T\left(\sum_{m\in M}\lambda_m b_m\right),\]
+		e portanto $v-\sum_{m\in M}\lambda_m b_m\in\ker(T)$. Como $\mathcal{N}$ é uma base para $\ker(T)$, então existem escalares $\mu_n$, $n\in \mathcal{N}$ (novamente, somenet uma quantidade finita deles não-nulos) tais que
+		\[v-\sum_{m\in M}\lambda_m b_m=\sum_{n\in\mathcal{N}}\mu_n n,\]
+		ou seja,
+		\[v=\sum_{m\in M}\lambda_m b_m+\sum_{n\in\mathcal{N}}\mu_n n.\]
+		Isto mostra que todo vetor de $V$ é uma combinação linear de elementos de $\mathcal{B}\cup\mathcal{N}$, e portanto este conjunto é gerador para $V$.
+	\end{quote}
+	
+	\uline{$\mathcal{B}\cup\mathcal{N}$ é linearmente independente}:
+	
+	\begin{quote}
+		Suponha que tenhamos uma combinação linear nula de elementos de $\mathcal{B}\cup\mathcal{N}$:
+		\[\sum_{b\in\mathcal{B}}\alpha_b b+\sum_{n\in\mathcal{N}}\beta_n n=0_V.\tag{$*$}\]
+		Aplicando $T$ em ambos os lados da equação, obtemos
+		\[\sum_{b\in\mathcal{B}}\alpha_b T(b)=0_W,\]
+		pois todo $n\in\mathcal{N}$ pertence ao núcleo de $T$. Como $T$ se restringe a uma bijeção entre $\mathcal{B}$ e $\mathcal{M}$, os elementos $T(b)$, $b\in\mathcal{B}$, são exatamente os elementos de $\mathcal{M}$, sem repetição. Mais formalmente, podemos fazer a substituição $m=T(b)$, $b=b_m$, e obter
+		\[0_W=\sum_{b\in\mathcal{B}}\alpha_b T(b)=\sum_{m\in\mathcal{M}}\alpha_{b_m} m.\]
+		Como $\mathcal{W}$ é linearmente independente (pois é uma base para $\operatorname{Im}(T)$), então $\alpha_{b_m}=0$ para todo $m\in\mathcal{M}$, ou equivalentemente $\alpha_b=0$ para todo $b\in\mathcal{B}$.
+		
+		A Equação ($*$) então se transforma em
+		\[\sum_{n\in\mathcal{N}}\beta_n n=0.\]
+		Como $\mathcal{N}$ é linearmente independente (pois é uma base para $\ker(T)$), então $\beta_n=0$ para todo $n\in\mathcal{N}$.
+		
+		Assim, concluímos que todos os coeficientes $\alpha_b$ e $\beta_n$ na Equação ($*$) são nulos. Isto mostra que $\mathcal{B}\cup\mathcal{N}$ é linearmente independente.
+	\end{quote}
+	
+	Portanto, $\mathcal{B}\cup\mathcal{N}$ é uma base para $V$. Utilizando (1) e (2), concluímos que
+	\begin{align*}
+	\dim(V)
+		&=\#\left(\mathcal{B}\cup\mathcal{N}\right)\\
+		&=\#\mathcal{B}+\#\mathcal{N}\\
+		&=\#\mathcal{M}+\#\mathcal{N}\\
+		&=\dim(\operatorname{Im}(T))+\dim(\ker(T)).
+		\end{align*}
+\end{proof}

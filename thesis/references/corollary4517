@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#corollary4517'>4.5.17</a>
+
+<!-- 4.5.17 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 4.5.17</span>
+	Let $G$ be a group, $S=\mathbf{S}(G)$ and $\theta$ a topological partial action of $S$ on $X$. Then there exists a global action $\alpha$ of $S$ on $X$ such that $\theta_s\leq\alpha_s$ for all $s\in S$ and $S\ltimes_\theta X\cong S\ltimes_\alpha X$.
+	</p>
+</div>

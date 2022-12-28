@@ -1,0 +1,9 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#lemmawhenregularcompactopenareclopen'>3.1.19</a>
+
+<!-- 3.1.19 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.1.19
+	<span style='font-weight:normal;'>(Compare with [<span class='ref' data-tag='MR1351251'></span>, Lemma 6.10])</span></span>
+	Let $\mathfrak{C}$ be a zero-dimensional, locally compact Hausdorff space and suppose that the Boolean algebra $\KB(\mathfrak{C})$ is conditionally complete. Then $\KB(\mathfrak{C})=\operatorname{RO}_K(\mathfrak{C})$.
+	</p>
+</div>

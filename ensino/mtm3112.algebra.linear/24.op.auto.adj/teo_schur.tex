@@ -1,0 +1,101 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial complexo de dimensão finita e $T\colon V\to V$ um endomorfismo linear.
+	
+	Então existe uma base ordenada $\mathcal{B}$ de $V$ tal que a representação matricial $\left[T\right]_{\mathcal{B}}^{\mathcal{B}}$ de $T$ na base $\mathcal{B}$ é triangular superior.
+	
+	\hrule
+	
+	Equivalentemente, toda matriz complexa quadrada é similar a uma matriz triangular superior.
+\end{theorem}
+
+O teorema é provado por \textit{indução}. Essencialmente, vamos mostrar que é possível reduzir o teorema no caso de dimensão $n+1$ (onde $n$ é um número natural) para o mesmo teorema, entretanto em dimensão $n$. Assim, a validade do teorema em dimensão $13$, por exemplo, se reduz à validade em dimensão $12$, que então se reduz à dimensão $11$, $10$, $9$, \ldots, até dimensão $1$, que pode ser mais facilmente verificado.
+
+\hrule
+
+\textit{Observação}: Este resultado é um caso particular do teorema da Forma Normal de Jordan, que permite representar endomorfismos lineares e matrizes por matrizes ainda mais próximas a matrizes diagonais do que simplesmente triangulares.
+
+\begin{proof}
+	\begin{itemize}
+	    \item Note que toda matriz de ordem $1\times 1$ já é triangular superior (e em particular é similar a si mesma). Equivalentemente, isto significa que se $\dim(V)=1$, então todo endomorfismo linear $T\colon V\to V$ pode ser representado por uma matriz triangular superior. Isto prova o teorema em dimensão $1$.
+	
+	    \item Agora, vamos considerar o caso de dimensão $2$. Suponha que $T\colon V\to V$ um endomorfismo linear e $\dim(V)=2$. Seja $v_1$ um autovetor qualquer de $T$ com autovalor associado $\lambda$. Considere qualquer base ordenada $\mathcal{B}=\left\{v_1,v_2\right\}$ de $V$ que possua $v_1$ como seu primeiro elemento. Então a representação de $T$ nesta base é da forma
+	\[[T]_{\mathcal{B}}^{\mathcal{B}}=\begin{bmatrix}
+	\lambda & \ast\\
+	0 & \ast\end{bmatrix}\]
+	(o símbolo ``$\ast$'' é utilizado para entradas cujo valor é desconhecido). Esta matriz já é triangular superior. Isto termina o caso de dimensão $2$. Equivalentemente, isto mostra que toda matriz complexa $2\times 2$ é similar a uma matriz triangular superior.
+	
+	    \item Agora, vamos considerar o caso de dimensão $3$. Suponha que $T\colon V\to V$ é um endomorfismo linear e $\dim(V)=3$. Vamos tentar repetir o mesmo processo que no caso anterior. Seja $v_1$ um autovetor qualquer de $T$ com autovalor associado $\lambda$. Considere uma base ordenada qualquer $\mathcal{B}=\left\{v_1,v_2,v_3\right\}$ de $V$ que possua $v_1$ como seu primeiro elemento. Então a representação de $T$ nesta base é da forma
+	\[[T]_{\mathcal{B}}^{\mathcal{B}}=\begin{bmatrix}\lambda&\ast&\ast\\0&\ast&\ast\\0&\ast&\ast\end{bmatrix}.\]
+	Esta matriz não é necessariamente triangular superior. Para lidar com isso, vamos considerar mais explicitamente a submatriz $B=\begin{bmatrix}b_{11}&b_{12}\\b_{21}&b_{22}\end{bmatrix}$ de $T$ que se encontra no bloco $2\times 2$ inferior direito:
+	\[[T]_{\mathcal{B}}^{\mathcal{B}}=\begin{bmatrix}\lambda&\begin{matrix}\ast&\ast\end{matrix}\\\begin{matrix}0\\0\end{matrix}&B\end{bmatrix}=\begin{bmatrix}\lambda&\ast&\ast\\0&b_{11}&b_{12}\\0&b_{21}&b_{22}\end{bmatrix}.\]
+	
+	No caso anterior, já provamos que toda matriz de ordem $2\times 2$ é similar a uma matriz triangular superior. Isto significa que existe uma matriz inversível $Q=\begin{bmatrix}q_{11}&q_{12}\\q_{21}&q_{22}\end{bmatrix}$ tal que $QBQ^{-1}$ é triangular superior, da forma $QBQ^{-1}=\begin{bmatrix}\ast&\ast\\0&\ast\end{bmatrix}$.
+	
+	Agora, consideremos a matriz $U$ de ordem $3\times 3$, dada por blocos como
+	\[U=\begin{bmatrix}1&\begin{matrix}0&0\end{matrix}\\
+	\begin{matrix}0\\0\end{matrix}&Q\end{bmatrix}=\begin{bmatrix}1&0&0\\
+	0&q_{11}&q_{12}\\0&q_{21}&q_{22}\end{bmatrix}.\]
+	Esta matriz é inversível, e sua inversa é dada por blocos como
+	\[U^{-1}=\begin{bmatrix}1&\begin{matrix}0&0\end{matrix}\\\begin{matrix}0\\0\end{matrix}&Q^{-1}\end{bmatrix}.\]
+	Podemos então calcular
+	\begin{align*}
+		U[T]_{\mathcal{B}}^{\mathcal{B}}U^{-1}
+			&=\begin{bmatrix}1&\begin{matrix}0&0\end{matrix}\\	\begin{matrix}0\\0\end{matrix}&Q\end{bmatrix}\begin{bmatrix}\lambda&\begin{matrix}\ast&\ast\end{matrix}\\\begin{matrix}0\\0\end{matrix}&B\end{bmatrix}\begin{bmatrix}1&\begin{matrix}0&0\end{matrix}\\\begin{matrix}0\\0\end{matrix}&Q^{-1}\end{bmatrix}\\
+			&=\begin{bmatrix}\lambda&\begin{matrix}\ast&\ast\end{matrix}\\\begin{matrix}0\\0\end{matrix}&QB\end{bmatrix}\begin{bmatrix}1&\begin{matrix}0&0\end{matrix}\\\begin{matrix}0\\0\end{matrix}&Q^{-1}\end{bmatrix}\\
+			&=\begin{bmatrix}\lambda&\begin{matrix}\ast&\ast\end{matrix}\\\begin{matrix}0\\0\end{matrix}&QBQ^{-1}\end{bmatrix}\\
+			&=\begin{bmatrix}\lambda&\ast&\ast\\0&\ast&\ast\\0&0&\ast\end{bmatrix},\tag{$\star$}.
+	\end{align*}
+	que é triangular superior.
+	
+	Como $U$ é inversível, então existe uma base $\mathcal{C}$ de $V$ tal que $U$ é a matriz de mudança da base $\mathcal{B}$ para a base $\mathcal{C}$, i.e., $U=\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{C}}$. Segue que $U^{-1}=\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{B}}$ é a matriz de mudança da base $\mathcal{C}$ para a base $\mathcal{B}$. Podemos então trocar a representação de $T$ na base $\mathcal{B}$ para a base $\mathcal{C}$ utilizando a relação entre composição e produtos de matrizes e a Equação ($\star$).
+	\begin{align*}
+	    \left[T\right]_{\mathcal{C}}^{\mathcal{C}}
+	        &=\left[\operatorname{id}_V\circ T\circ\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{C}}\\
+	        &=\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{C}}\left[T\right]_{\mathcal{B}}^{\mathcal{B}}\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{B}}\\
+	        &=U\left[T\right]_{\mathcal{B}}^{\mathcal{B}}U^{-1}\\
+	        &=\begin{bmatrix}\lambda&\ast&\ast\\0&\ast&\ast\\0&0&\ast\end{bmatrix},
+	\end{align*}
+	uma matriz triangular superior, como queríamos.
+	
+	\item O mesmo processo que no caso anterior pode ser feito em todas as dimensões maiores do que $3$. No caso que tivermos $\dim(V)=n+1$, vamos reduzir o teorema ao caso de dimensão $n$.
+	
+	Suponha então que já provamos o teorema no caso de dimensões $1,2,3,\ldots,n$. Seja que $T\colon V\to V$ é um endomorfismo linear, onde $\dim(V)=n+1$.
+	
+	Seja $v_1$ um autovetor qualquer de $T$ com autovalor associado $\lambda$. Considere uma base ordenada qualquer $\mathcal{B}=\left\{v_1,v_2,\ldots,v_{n+1}\right\}$ de $V$ que possua $v_1$ como seu primeiro elemento. Então a representação de $T$ nesta base é da forma
+	\[[T]_{\mathcal{B}}^{\mathcal{B}}=\begin{bmatrix}\lambda&\begin{matrix}\ast&\cdots&\ast\end{matrix}\\\begin{matrix}0\\\vdots\\0\end{matrix}&B\end{bmatrix},\]
+	onde $B$ é uma matriz de ordem $n\times n$.
+	
+	Como assumimos que o teorema já foi provado em dimensão $n$, a matriz $B$ é similar a uma matriz triangular superior. Isto significa que existe uma matriz inversível $Q$ de ordem $n\times n$ tal que $QBQ^{-1}$ é triangular superior, da forma
+	\[QBQ^{-1}=\begin{bmatrix}\ast&\ast&\ast&\cdots&\ast&\ast\\0&\ast&\ast&\cdots&\ast&\ast\\0&0&\ast&\cdots&\ast&\ast\\	\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
+	0&0&0&\cdots&\ast&\ast\\0&0&0&\cdots&0&\ast\end{bmatrix}.\]
+	
+	Agora, consideremos a matriz $U$ de ordem $(n+1)\times(n+1)$, dada por blocos como
+	\[U=\begin{bmatrix}1&\begin{matrix}0&\cdots&0\end{matrix}\\	\begin{matrix}0\\\vdots\\0\end{matrix}&Q\end{bmatrix}.\]
+	Esta matriz é inversível, e sua inversa é dada por blocos como
+	\[U^{-1}=\begin{bmatrix}1&\begin{matrix}0&\cdots&0\end{matrix}\\	\begin{matrix}0\\\vdots\\0\end{matrix}&Q^{-1}\end{bmatrix}.\]
+	Podemos então calcular
+	\begin{align*}
+		U[T]_{\mathcal{B}}^{\mathcal{B}}U^{-1}
+			&=\begin{bmatrix}1&\begin{matrix}0&\cdots&0\end{matrix}\\\begin{matrix}0\\\vdots\\0\end{matrix}&Q\end{bmatrix}\begin{bmatrix}\lambda&\begin{matrix}\ast&\cdots&\ast\end{matrix}\\\begin{matrix}0\\\vdots\\0\end{matrix}&B\end{bmatrix}\begin{bmatrix}1&\begin{matrix}0&\cdots&0\end{matrix}\\	\begin{matrix}0\\\vdots\\0\end{matrix}&Q^{-1}\end{bmatrix}\\
+			&=\begin{bmatrix}\lambda&\begin{matrix}\ast&\cdots&\ast\end{matrix}\\\begin{matrix}0\\\vdots\\0\end{matrix}&QBQ^{-1}\end{bmatrix}\\
+			&=\begin{bmatrix}
+			\lambda&\ast&\cdots&\ast\\
+			0&\ast&\cdots&\ast\\
+			\vdots&\vdots&\ddots&\vdots\\
+			0&0&\cdots&\ast\end{bmatrix},\tag{$\star\star$}
+	\end{align*}
+	que é triangular superior.
+	
+	Como $U$ é inversível, então existe uma base $\mathcal{C}$ de $V$ tal que $U$ é a matriz de mudança da base $\mathcal{B}$ para a base $\mathcal{C}$, i.e., $U=\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{C}}$. Segue que $U^{-1}=\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{B}}$ é a matriz de mudança da base $\mathcal{C}$ para a base $\mathcal{B}$. Utilizando a relação entre composição e produtos de matrizes e a Equação ($\star\star$), obtemos
+	\begin{align*}
+	    \left[T\right]_{\mathcal{C}}^{\mathcal{C}}
+	        &=U\left[T\right]_{\mathcal{B}}^{\mathcal{B}}U^{-1}\\
+	        &=\begin{bmatrix}
+			\lambda&\ast&\cdots&\ast\\
+			0&\ast&\cdots&\ast\\
+			\vdots&\vdots&\ddots&\vdots\\
+			0&0&\cdots&\ast\end{bmatrix},
+	\end{align*}
+	uma matriz triangular superior, como queríamos.
+	\end{itemize}
+\end{proof}

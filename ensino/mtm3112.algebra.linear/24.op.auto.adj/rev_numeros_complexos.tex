@@ -1,0 +1,119 @@
+Os \textbf{números complexos} são uma extensão do conceito de número real: Todo número real é um número complexo, porém nós também assumimos que existe um número $i$, chamado de \emph{unidade complexa}, tal que $i^2=-1$.
+
+Então um número complexo é uma expressão da forma
+\[z=a+bi,\]
+onde $a$ e $b$ são números reais, e $i$ é a unidade complexa. O número $a$ é chamado de \emph{parte real} do número complexo $z$, e o número $b$ de \emph{parte complexa} de $z$. O número complexo $z$ é unicamente determinado por suas partes real e imaginária.
+
+A parte real de um número complexo $z=a+bi$ é denotada por $\operatorname{Re}(z)=a$, e a parte imaginária de $z$ é denotada por $\operatorname{Im}(z)=b$.
+
+O conjunto de todos os números complexos é denotado por $\mathbb{C}$.
+
+\hrule
+
+As operações com números complexos são definidas de modo que todas as propriedades usuais são satisfeitas: associatividade, comutatividade, existência de elemento neutro, distributividade, etc. Assim, a soma de dois números complexos pode ser determinada do seguinte modo: Se $z_1=a_1+b_1i$ e $z_2=a_2+b_2i$, devemos encontrar as partes real e imaginária de $z_1+z_2$, ou seja, devemos encontrar $c,d\in\mathbb{R}$ tais que $z_1+z_2=c+di$. Vamos utilizar as propriedades usuais da soma:
+\begin{align*}
+	z_1+z_2
+		&=(a_1+b_1i)+(a_2+b_2i)\\
+		&=(a_1+a_2)+(b_1i+b_2i)\tag{reagrupando}\\
+		&=(a_1+a_2)+(b_1+b_2)i\tag{distributividade}
+\end{align*}
+ou seja, a parte real de $z_1+z_2$ é $a_1+a_2$, e a parte imaginária de $z_1+z_2$ é $b_1+b_2$.
+
+Similarmente, o produto $z_1z_2$ pode ser determinado do seguinte modo:
+\begin{align*}
+	z_1z_2
+		&=(a_1+b_1i)(a_2+b_2i)\\
+		&=a_1a_2+a_1b_2i+b_1a_2i+b_1ib_2i\\
+		&=a_1a_2+b_1b_2i^2+(a_1b_2+b_1a_2)i+b_1b_2i^2\\
+		&=(a_1a_2-b_1b_2)+(a_1b_2+b_1a_2)i
+\end{align*}
+onde a última igualdade segue do fato que $i^2=-1$.
+
+Cada número real $\lambda=\lambda+0i$ é também um número compleo. O número $0$ é neutro para a adição complexa, e o número real $1$ é neutro para a multiplicação complexa. Se $z=a+bi$ é um número complexo não-nulo, então o inverso multiplicativo de $z$ é dado por
+\[z^{-1}=\frac{a-bi}{a^2+b^2}.\]
+
+\hrule
+
+Os números complexos podem ser representados graficamente utilizando o plano cartesiano: O número complexo $z=a+bi$ corresponde ao ponto $(a,b)$ do plano cartesiano.
+
+\[\begin{tikzpicture}
+\draw[latex-latex] (-2,0)--(3,0);
+\draw[latex-latex] (0,-2)--(0,3);
+\node (z) at (2,1.5) {$\bullet$};
+\node[right] at (z) {$z=a+bi$};
+\draw[dotted] (z)--(2,0) node[below] {$\operatorname{Re}(z)=a$};
+\draw[dotted] (z)--(0,1.5) node[left] {$\operatorname{Im}(z)=b$};
+\end{tikzpicture}\]
+
+O \textbf{módulo} $|z|$ de um número complexo $z$ é definido como a distância de $z$ à origem de $\mathbb{C}$: $|z|=\sqrt{\operatorname{Re}(z)^2+\operatorname{Im}(z)^2}$.
+
+\hrule
+
+Seja $z=a+bi$ um número complexo, representado no plano cartesiano como acima. Vamos conectar a origem com o ponto $z$ por um segmento de reta. O ângulo entre o eixo real e este segmento de reta é chamado de um \textbf{argumento} de $z$. Em geral, o número $z$ admite diversos argumentos, que são únicos a menos de se somar um múltiplo de $2\pi$. Nós vamos considerar principalmente argumentos no intervalo $(-\pi,\pi]$.
+
+\[\begin{tikzpicture}
+\draw[latex-latex] (-2,0)--(3,0);
+\draw[latex-latex] (0,-2)--(0,3);
+\node[blue] (z) at (2,1.5) {$\bullet$};
+\node[blue,right] at (z) {$z=a+bi$};
+\draw[dotted] (z)--(2,0) node[below] {$|z|\cos(\theta)$};
+\draw[dotted] (z)--(0,1.5) node[left] {$|z|\sin(\theta)$};
+\draw[blue,-latex] (0,0)--(z) node[midway,above left] {$|z|$};
+\draw[red,latex-latex] (1,0) arc (0:36.86989:1) node[midway,right] {$\theta$};
+\end{tikzpicture}\]
+
+Neste caso, podemos escrever $z=|z|(\cos(\theta)+i\sin(\theta))$. Esta representação é chamada de \textbf{forma polar} do número complxo $z$.
+
+O produto de números complexos, quando representados em forma polar, pode ser determinado mais facilmente. Suponha que tenhamos dois números complexos $z$ e $w$ representados em forma polar:
+\[z=|z|(\cos(\theta)+i\sin(\theta)),\]
+\[w=|w|(\cos(\eta)+i\sin(\eta)).\]
+Então
+\[zw=|z||w|\left(\cos(\theta+\eta)+i\sin(\theta+\eta)\right)\]
+
+\hrule
+
+O número $(-i)$ também satisfaz à condição de que $(-i)^2=-1$. Portanto não é possível diferenciar $i$ e $-i$, olhando simplesmente para as operações de $\mathbb{C}$. Isto nos leva a considerar a função que identifica $i$ e $-i$. Esta função é chamada de \textit{conjugação}.
+
+Formalmente, o \textbf{conjugado} de um número complexo $z=a+bi$ é o número complexo
+\[\overline{z}=a-bi,\]
+obtido por trocar o sinal da parte imaginária de $z$. Note que $\overline{i}=-i$.
+
+A conjugação complexa preserva todas as operações de $\mathbb{C}$, no sentido de que para quaisquer números complexos $z$ e $w$, vale que
+\begin{itemize}
+	\item $\overline{z+w}=\overline{z}+\overline{w}$;
+	\item $\overline{zw}=\overline{z}\cdot\overline{w}$;
+	\item $\overline{\left(\overline{z}\right)}=z$.
+\end{itemize}
+
+Além disso, a conjugação pode ser utilizada para diversos outros fins.
+\begin{itemize}
+	\item Por exemplo, podemos diferenciar os números reais dos demais números complexos: Um número $\lambda$ é real se, e somente se, $\overline{\lambda}=\lambda$.
+	\item Além disso, a norma de um número complexo também pode ser redefinida utilizando a conjugação: Para $z=a+bi$, temos que $\overline{z}z=a^2+b^2$, e portanto $|z|=\sqrt{a^2+b^2}$.
+	\item O último item também permite utilizar conjugados para determinar inversos: Dado um número complexo não-nulo $z$, temos que $\overline{z}z$ é um número real, e assim
+	\[z^{-1}=\frac{1}{\overline{z}z}\overline{z}.\]
+\end{itemize}
+
+\hrule
+
+A principal propriedade dos números complexos é que todo polinômio não-constante com coeficientes complexos admite uma raiz complexa. Em outras palavras, qualquer equação polinomial não-trivial com coeficientes complexos admite uma solução não-trivial.
+
+\begin{theorem}[Teorema Fundamental da Álgebra]
+	Sejam $n\geq 1$ e $a_0,a_1,\ldots,a_n$ números complexos com $a_n\neq 0$. Então existe $x\in\mathbb{C}$ tal que
+	\[a_nx^n+\cdots+a_1x+a_0=0.\]
+	Em outras palavras, o polinômio complexo $a_nx^n+\cdots+a_1x+a_0$ admite uma raiz complexa.
+	
+	Mais geralmente, todo polinômio complexo pode ser completamente fatorado, no sentido de que se $a_0,\ldots,a_n$ são como acima, então existem $\lambda_1,\ldots,\lambda_n\in\mathbb{C}$ tais que
+	\[a_nx^n+\cdots+a_1 x+a_0=a_n(x-\lambda_1)\cdots(x-\lambda_n).\]
+	Os números $\lambda_1,\ldots,\lambda_n$ são as \textbf{raízes} do polinômio $a_nx^n+\cdots+a_1x+a_0$ (os únicos números complexos que zeram este polinômio), e são únicos a menos de uma reordenação.
+\end{theorem}
+
+A prova deste teorema é relativamente difícil e requer o desenvolvimento de fatos mais avançados de Álgebra ou de Análise Matemática.
+
+A fórmula de Bhaskara também é válida para números complexos. Primeiro, estendemos o conceito de raiz quadrada para números negativos do seguinte modo: Dado um número complexo $z=|z|(\cos(\theta)+i\sin(\theta))$, escrito em forma polar com $\theta\in(-\pi,\pi]$, definimos a raiz quadrada de $z$ como sendo
+\[\sqrt{z}=|z|^{1/2}\left(\cos\left(\frac{\theta}{2}\right)+i\sin\left(\frac{\theta}{2}\right)\right).\]
+Então as soluções de uma equação polinomial de grau $2$ e coeficientes complexos
+\[ax^2+bx+c=0\]
+são dadas por
+\[x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.\]
+
+Também existem procedimentos (mais longos) que permitem encontrar raízes para polinômios de grau $3$ e de grau $4$. Porém não é possível obter procedimentos similares para polinômios de grau $5$ ou superior. Este é o Teorema de Abel--Ruffini.

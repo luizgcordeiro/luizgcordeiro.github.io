@@ -1,0 +1,40 @@
+\begin{theorem}
+	Considere matrizes diagonais $A$ e $B$ de mesma ordem:
+	\begin{align*}A&=\begin{bmatrix}
+		a_{1}&0&\cdots&0\\
+		0&a_{2}&\cdots&0\\
+		\vdots&\vdots&\ddots&\vdots
+		0&0&\cdots&a_{n}
+		\end{bmatrix},\\
+		B&=\begin{bmatrix}
+		b_{1}&0&\cdots&0\\
+		0&b_{2}&\cdots&0\\
+		\vdots&\vdots&\ddots&\vdots
+		0&0&\cdots&b_{n}
+		\end{bmatrix}.\end{align*}
+	Então
+	\begin{enumerate}
+		\item $A+\lambda B=\begin{bmatrix}
+		a_1+\lambda b_{1}&0&\cdots&0\\
+		0&a_2+\lambda b_{2}&\cdots&0\\
+		\vdots&\vdots&\ddots&\vdots
+		0&0&\cdots&a_n+\lambda b_{n}
+		\end{bmatrix}$, para todo $\lambda\in\mathbb{R}$.
+		\item $AB=\begin{bmatrix}
+		a_1b_{1}&0&\cdots&0\\
+		0&a_2b_{2}&\cdots&0\\
+		\vdots&\vdots&\ddots&\vdots
+		0&0&\cdots&a_nb_{n}
+		\end{bmatrix}$.
+		\item Seja $\operatorname{Diag}_n(\mathbb{R})$ o subespaço de $M_n(\mathbb{R})$ consistindo das matrizes diagonais de ordem $n\times n$. Então a função
+		\[\operatorname{diag}\colon\mathbb{R}^n\to\operatorname{Diag}_n(\mathbb{R})\]
+		dada por
+		\[\operatorname{diag}(a_1,\ldots,a_n)=\begin{bmatrix}a_1&0&\cdots&0\\
+		0&a_2&\cdots&0\\\vdots&\vdots&\ddots&\vdots\\0&0&\cdots&a_n\end{bmatrix}\]
+		é um isomorfismo linear.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Os itens 1 e 2 são imediatos das definições das operações com matrizes. A linearidade da função $\operatorname{diag}$ no item 3 segue do item 1, e é claro que $\operatorname{diag}$ é bijetiva, logo um isomorfismo linear.
+\end{proof}

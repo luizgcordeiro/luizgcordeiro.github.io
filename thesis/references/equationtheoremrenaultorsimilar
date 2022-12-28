@@ -1,0 +1,5 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#equationtheoremrenaultorsimilar'>3.5.1</a>
+
+	<div class='toload equation'>\[
+		\int_{\mathcal{G}^{\phi(\ra(c))}} P(\phi^{-1}(s))P(\phi^{-1}(s)^{-1}c)|f(s)|^2d\phi_*\lambda_{\mathcal{H}}^{\ra(c)}(s)=P(c)\int_{\mathcal{G}^{\phi(\ra(c))}} |f(s)|^2d\lambda_{\mathcal{G}}^{\phi(\ra(c))}(s)\tag{3.5.1}
+	\]</div>

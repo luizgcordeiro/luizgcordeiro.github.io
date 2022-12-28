@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.2.is.html#definitionmorphismofsemigroups'>1.2.2</a>
+<!-- 1.2.2 -->
+<div class="toload definition">
+<p><span class="envidentifier">Definition 1.2.2</span>
+A <em>morphism</em> of semigroups is a map $\theta:S\to T$ satisfying $\theta(s_1s_2)=\theta(s_1)\theta(s_2)$ for all $s_1,s_2\in S$. Moreover, $\theta$ is an <em>isomorphism</em> if it is invertible and $\theta^{-1}$ is also a morphism.
+</p>
+</div>

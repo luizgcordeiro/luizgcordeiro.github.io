@@ -1,0 +1,12 @@
+Sejam $V$ um espaço vetorial. Dado um vetor $v\in V$, lembre-se que um \emph{oposto} de $v$ é um vetor $w$ tal que $v+w=w+v=0_V$ (onde $0_V$ é o vetor nulo). Um dos axiomas de espaço vetorial nos diz que que todo vetor admite ao menos um oposto.
+
+\begin{theorem}
+	Todo vetor de $V$ admite somente um oposto.
+\end{theorem}
+\begin{proof}
+	Suponha que $w$ e $p$ sejam opostos do vetor $v$. Devemos mostrar que $w=p$. Por um lado, as definições de vetor nulo e de oposto implicam que
+	\[w=w+0_V=w+(v+p),\]
+	pois $p$ é um oposto de $v$. Por outro lado,
+	\[p=0_V+p=(w+v)+p,\]
+	pois $w$ também é um oposto de $v$. Pela propriedade associativa da soma, $(w+v)+p=w+(v+p)$, logo os termos nas equações acima coincidem. Portanto, $w=p$, como queríamos demonstrar.
+\end{proof}

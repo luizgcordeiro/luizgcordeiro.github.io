@@ -1,0 +1,31 @@
+\begin{theorem}
+	Sejam $A_1,\ldots,A_n$ subespaços vetoriais de um espaço vetorial $V$. Então a soma $A_1+\cdots+A_n$ é um subespaço vetorial de $V$.
+\end{theorem}
+
+\begin{proof}
+	Vamos verificar somente o caso de dois subespaços vetoriais. O geral é completamente análogo.
+	
+	Sejam então $A$ e $B$ dois subespaços vetoriais de $V$. Vamos verificar que $A+B$ satisfaz a todos os axiomas para subespaços vetoriais. Primeiro note que, como $A$ e $B$ são subespaços, então $0_V\in A$ e $0_V\in B$, logo $0_V=0_V+0_V\in A+B$. Isto mostra que $A+B$ é não-vazio.
+	
+	\begin{enumerate}
+		\item Vamos mostrar que $A+B$ é fechado pela soma. Suponha que $x_1,x_2\in A+B$. Pela definição de $A+B$, isto significa que existem $a_1,a_2\in A$ e $b_1,b_2\in B$ tais que
+		\[x_1=a_1+b_1\]
+		e
+		\[x_2=a_2+b_2.\]
+		Agora calculamos
+		\begin{align*}
+			x_1+x_2&=(a_1+b_1)+(a_2+b_2)\\
+			&=(a_1+a_2)+(b_1+b_2),
+		\end{align*}
+		pelas propriedades associativa e comutativa da soma em $V$. Como $A$ é subespaço vetorial de $V$ então $a_1+a_2\in A$, e similarmente $b_1+b_2\in B$. Isto mostra que $x_1+x_2$ é uma soma de elementos de $A$ e $B$. Portanto $x_1+x_2\in A+B$.
+		
+		\item Agora vamos mostrar que $A+B$ é fechado por multiplicação por escalar. Suponha que $x\in A+B$ e que $\lambda\in\mathbb{R}$. Então $x=a+b$ para algum $a\in A$ e algum $b\in B$. Assim, temos
+		\begin{align*}
+			\lambda x&=\lambda(a+b)\\
+			&=(\lambda a)+(\lambda b),
+		\end{align*}
+		pela propriedade distributiva. Como $A$ é subespaço vetorial de $V$ e $a\in A$ então $\lambda a\in A$. Similarmente, $\lambda b\in B$. Isto mostra que $\lambda x$ é uma soma de elementos de $A$ e $B$, e portanto $\lambda x\in A+B$.
+	\end{enumerate}
+	
+	Mostramos que $A+B$ satisfaz às propriedades que definem subespaços vetoriais, e portanto $A+B$ é, de fato, um subespaço vetorial de $V$.
+\end{proof}

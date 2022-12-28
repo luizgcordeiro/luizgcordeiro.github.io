@@ -1,0 +1,41 @@
+\begin{theorem}
+	Suponha que duas funções reais $f$ e $g$ sejam diferenciáveis em um ponto $a$ e $g(a)\neq 0$. Então a função quociente $\frac{f}{g}$ é diferenciável em $a$, e
+	\[\left(\frac{f}{g}\right)'(a)=\frac{f'(a)g(a)-f(a)g'(a)}{[g(a)]^2}.\]
+\end{theorem}
+
+\begin{proof}
+	Primeiro, vamos considerar o caso em que $f(x)=1$, ou seja, que a função $f$ é constante, igual a $1$. Isto nos permitirá calcular a derivada da função $\frac{1}{g}$ em $a$.
+	
+	Vamos calcular
+	\begin{align*}
+		\left(\frac{1}{g}\right)'(a)
+			&=\lim_{x\to a}\frac{\left[\frac{1}{g(x)}-\frac{1}{g(a)}\right]}{x-a}\\
+			&\qquad\text{(definição de derivada)}\\
+			&=\lim_{x\to a}\frac{\left[\frac{g(a)-g(x)}{g(x)g(a)}\right]}{x-a}\\
+			&\qquad\text{(reorganizacão)}\\
+			&=\lim_{x\to a}\frac{g(a)-g(x)}{g(x)g(a)}\cdot\frac{1}{x-a}\\
+			&\qquad\text{(reorganizacão)}\\
+			&=\lim_{x\to a}-\frac{g(x)-g(a)}{x-a}\cdot\frac{1}{g(x)}\frac{1}{g(a)}\\
+			&\qquad\text{(reorganizacão)}\\
+			&=\left(-\lim_{x\to a}\frac{g(x)-g(a)}{x-a}\right)\left(\frac{1}{\lim_{x\to a}g(x)}\right)\left(\frac{1}{g(a)}\right).\\
+			&\qquad\text{(regras de limites)}\\
+	\end{align*}
+	Como a função $g$ é diferenciável no ponto $a$, \href{../09.derivadas/teo_funcoes_derivaveis_sao_continuas_moodle.html}{então $g$ é contínua em $a$}, o que significa que $\lim_{x\to a}g(x)=g(a)$. Substituindo este limite $g'(a)$ nos primeiro limite acima, obtemos
+	\begin{align*}
+		\left(\frac{1}{g}\right)'(a)
+			&=-g'(a)\frac{1}{g(a)}\frac{1}{g(a)}\\
+			&=-\frac{g'(a)}{[g(a)]^2}.\tag{$*$}
+	\end{align*}
+	
+	Agora, no caso geral, vamos calcular $\left(\frac{f}{g}\right)'(a)$ utilizando a fórmula acima para $\left(\frac{1}{g}\right)'(a)$ e a \href{teo_regra_do_produto_moodle.html}{regra do produto}. Note que $\frac{f}{g}=f\cdot\frac{1}{g}$. Assim,
+	\begin{align*}
+		\left(\frac{f}{g}\right)'(a)
+			&=\left(f\cdot\frac{1}{g}\right)'(a)\\
+			&=f'(a)\left(\frac{1}{g}\right)(a)+f(a)\left(\frac{1}{g}\right)'(a)\\
+			&\qquad\text{(regra do produto)}\\
+			&=\frac{f'(a)}{g(a)}-f(a)\frac{g'(a)}{[g(a)]^2}\\
+			&\qquad\text{(Equação ($*$))}\\
+			&=\frac{f'(a)g(a)-f(a)g'(a)}{[g(a)]^2}\\
+			&\qquad\text{(reorganizacão).}\\
+	\end{align*}
+\end{proof}

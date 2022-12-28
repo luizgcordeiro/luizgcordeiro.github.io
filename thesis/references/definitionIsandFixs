@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.7.im.html#definitionIsandFixs'>1.7.3</a>
+<!-- 1.7.3 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 1.7.3
+	<span style='font-weight:normal;'>([<span class='ref'data-tag='MR3548134'></span>, Definition 3.6])</span></span>
+	If $S$ is an inverse semigroup, we say that an idempotent $e\in E(S)$ is <em>fixed</em> by an element $s\in S$ if $se=e$. We denote by $\mathcal{I}_s=\left\{e\in E(S):se=e\right\}$ the set of fixed idempotents of $s$.
+	</p>
+</div>

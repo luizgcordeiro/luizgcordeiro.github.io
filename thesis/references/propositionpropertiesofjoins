@@ -1,0 +1,10 @@
+<a class='reflink' href='../1.gis/1.2.is.html#propositionpropertiesofjoins'>1.2.37</a>
+<!-- 1.2.37 -->
+<div class="toload proposition">
+<p><span class="envidentifier">Proposition 1.2.37</span>
+Let $S$ be an inverse semigroup.
+<ol class="alphpar">
+	<li> If $F\subseteq E(S)$ admits a join, then $\bigvee F\in E(S)$;</li>
+	<li> If $F\subseteq S$ admits a join, then $F^*$ also admits a join, namely $\bigvee(F^*)=\left(\bigvee F\right)^*$.</li>
+</ol></p>
+</div>

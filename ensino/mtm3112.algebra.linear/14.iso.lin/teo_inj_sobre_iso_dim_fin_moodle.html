@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) e \(W\) dois espaços vetoriais de dimensões finitas e iguais, \(\dim(V)=\dim(W)\). Dada uma transformação linear \(T\colon V\to W\), as seguintes afirmações são equivalentes:
+</p>
+
+<ol>
+
+<li>
+<p>
+\(T\) é injetiva.
+</p>
+
+</li>
+
+<li>
+<p>
+\(T\) é sobrejetiva.
+</p>
+
+</li>
+
+<li>
+<p>
+\(T\) é um isomorfismo.
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Seja \(n=\dim(V)=\dim(W)\). Pelo Teorema do Núcleo e da Imagem, temos que
+<div>
+\begin{equation*}
+n=\dim(\ker(T))+\dim(\operatorname{Im}(T)).\tag{NI}
+\end{equation*}
+</div>
+</p>
+<p>
+Suponhamos então que \(T\) é injetiva. Isto significa que \(\ker(T)=\left\{0_V\right\}\), ou equivalentemente que \(\dim(\ker(T))=0\). Da Equação (NI), obtemos \(\dim(\operatorname{Im}(T))=n=\dim(W)\), e portanto \(\operatorname{Im}(T)=W\), o que significa que \(T\) é sobrejetiva.
+</p>
+<p>
+A recíproca é similar: Se supormos que \(T\) é sobrejetiva, então \(\dim(\operatorname{Im}(T))=n\), e da Equação (NI) segue que \(\dim(\ker(T))=0\), o que significa que \(T\) é injetiva.
+</p>
+<p>
+Portanto, \(T\) é injetiva se, e somente se, \(T\) é sobrejetiva, e neste caso \(T\) acaba sendo na verdade bijetiva &#8210; um isomorfismo linear. Reciprocamente, isomorfismos lineares são, pro definição, tanto injetivos quanto sobrejetivos.
+</p>
+<p>
+Isto mostra que qualquer uma das afirmações do teorema implica em qualquer outra, e portanto são todas equivalentes.
+</p>
+
+</div></body>
+</html>

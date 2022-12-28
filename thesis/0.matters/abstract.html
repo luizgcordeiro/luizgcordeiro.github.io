@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands"></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2>Abstract</h2>
+<p>
+This thesis is divided into four chapters. In the first one, all the pre-requisite theory of semigroups and groupoids is introduced, as well as a few new results - such as a short study of $\lor$-ideals and quotients in distributive semigroups and a non-commutative Loomis-Sikorski Theorem.
+</p>
+<p>
+In the second chapter, we motivate and describe the sofic property for probability measure-preserving groupoids and prove several permanence properties for the class of sofic groupoids. This provides a common ground for similar results in the particular cases of groups ([<span class='ref' data-tag="MR2220572"></span>]) and equivalence relations ([<span class='ref' data-tag="MR2566316"></span>,
+<span class='ref' data-tag='MR2826401'></span>]). In particular, we prove that soficity is preserved under finite index extensions of groupoids. We also prove that soficity can be determined in terms of the full group alone, answering a question by Conley, Kechris and Tucker-Drob.
+</p>
+<p>
+In the third chapter we turn to the classical problem of reconstructing a topological space from a suitable structure on the space of continuous functions. We prove that a locally compact Hausdorff space can be recovered from classes of functions with values on a Hausdorff space together with an appropriate notion of disjointness, as long as some natural regularity hypotheses are satisfied. This allows us to recover (and even generalize) classical theorem by Kaplansky, Milgram, Banach-Stone, among others, as well as recent results of a similar nature, and obtain new consequences as well. Furthermore, we extend the techniques used here to obtain structural theorems related to topological groupoids.
+</p>
+In the fourth and final chapter, we study dynamical aspects of partial actions of inverse semigroups, and in particular how to construct groupoids of germs and (partial) crossed products and how do they relate to each other. This chapter is based on joint work with Viviane Beuter.
+<p>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>Topologically free partial actions</h3>
+
+<p>
+In this section we introduce a notion of topological freeness for partial actions of inverse semigroups which will be used later in our study of continuous orbit equivalence. We use this notion in Theorem <span class='ref' data-tag='theoremcharacterizationofeunitaryintermsofactions'></span> to describe $E$-unitary inverse semigroups in terms of the existence of certain topologically free partial actions.
+</p>
+
+<!-- 4.6.1 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 4.6.1</span>
+	The <em>isotropy subgroupoid</em> of a groupoid $\mathcal{G}$ is the subgroupoid
+	<div class='equation'>\begin{align*}
+		\operatorname{Iso}(\mathcal{G})
+			&=\bigcup_{x\in\mathcal{G}^{(0)}}\mathcal{G}_x^x\\
+			&=\left\{a\in\mathcal{G}:\so(a)=\ra(a)\right\}.
+	\end{align*}</div>
+	</p>
+</div>
+
+<!-- 4.6.2 -->
+<div class='definition' id='definitioneffective'>
+	<p><span class='envidentifier'>Definition 4.6.2
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR2460017'></span>])</span></span>
+	A topological groupoid $\mathcal{G}$ is <em>effective</em> if the interior of $\operatorname{Iso}(\mathcal{G})$ coincides with the unit space $\mathcal{G}^{(0)}$.
+	</p>
+</div>
+
+<p>
+Proposition 3.6 of [<span class='ref' data-tag='MR2460017'></span>] shows that every Hausdorff topologically principal étale Hausdorff groupoid (Definition <span class='ref' data-tag='definitiontopologicallyprincipal'></span>) is effective. The converse is true when we add the assumptions that $\mathcal{G}$ is second countable and that its unit space $\mathcal{G}^{(0)}$ has the Baire property.
+</p>
+
+<p>
+If $\theta$ is a partial action of an inverse semigroup $S$ on a set $X$, we will denote by $S_x$ the subset $\left\{s\in S:x\in X_{s^*}\right\}$ of $S$.
+</p>
+
+<!-- 4.6.3 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 4.6.3
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR3448414'></span>, Definition 4.1])</span></span>
+	Suppose $\theta$ is a partial action of an inverse semigroup $S$ on a topological space $X$. Given $x\in X$ and $s\in S_x$, we say that
+	<ol>
+		<li>
+			$x$ is <em>fixed</em> by $s$ if $\theta_s(x)=x$.
+		</li>
+		
+		<li>
+			$x$ is <em>trivially fixed</em> by $s$ if there is $e\in E(S)$ such that $e\leq s$ and $x\in X_e$.
+		</li>
+	</ol>
+	We also define the set
+	<div class='equation' id='equationdefinitionlambda'>\begin{align*}
+		\Lambda(\theta)
+			&=\left\{x\in X:\text{if }s\in S_x\text{ and }x\text{ is fixed by }s\text{ then }x\text{ is trivially fixed by }s\right\}.\tag{4.6.1}
+	\end{align*}</div>
+	</p>
+</div>
+
+<p>
+We should mention, however, that partial actions which correspond to effective groupoids of germs were defined under the name "topologically free" in [<span class='ref' data-tag='MR3448414'></span>], so in order to avoid confusion throughout this paper, we will therefore call the class of actions defined in [<span class='ref' data-tag='MR3448414'></span>] <em>effective</em>. This way, topologically free partial actions will correspond to topologically principal groupoids of germs, whereas effective partial actions will correspond to effective groupoids of germs.
+</p>
+
+<!-- 4.6.4 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 4.6.4
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR3448414'></span>, Definition 4.1])</span></span>
+	A partial action $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ of an inverse semigroup $S$ on  topological space $X$ is <em>effective</em> if for all $s\in S$, the interior of the set of points fixed by $s$ coincides with the set of points trivially fixed by $s$.
+	</p>
+</div>
+
+<!-- 4.6.5 -->
+<div class='proposition' id='propeffectiveactiongroupoid'>
+	<p><span class='envidentifier'>Proposition 4.6.5
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR3448414'></span>, Theorem 4.7])</span></span>
+	Given a partial action $\theta$ of an inverse semigroup $S$ on a locally compact Hausdorff space $X$, the corresponding groupoid of germs $S\ltimes X$ is effective if and only if $\theta$ is effective.
+	</p>
+</div>
+
+<!-- 4.6.6 -->
+<div class='definition' id='deffree'>
+	<p><span class='envidentifier'>Definition 4.6.6</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a partial action of an inverse semigroup $S$ on a topological space $X$. We say that $\theta$ is <em>topologically free</em> if $\Lambda(\theta)$ is dense in $X$ (Equation (<span class='ref' data-tag='equationdefinitionlambda'></span>)).
+	</p>
+</div>
+
+<p>
+Topological freeness of a topological partial action $\theta$ of a discrete countable group $G$ on a locally compact, Hausdorff, and second countable topological space $X$ was first defined in [<span class='ref' data-tag='MR3694599'></span>, Definition 2.3] as follows: For every $g\in G\setminus\left\{1\right\}$, the set $\Fix(\theta_g)$ has empty interior. This condition is formally weaker than the one we adopt, but the countability hypotheses on $G$ and $X$ assure that, in this case, this is equivalent to Definition <span class='ref' data-tag='deffree'></span>. An application of Baire's Category Theorem, as in [<span class='ref' data-tag='MR3694599'></span>, Lemma 2.4], gives the following result:
+</p>
+
+<!-- 4.6.7 -->
+<div class='proposition'>
+	<p><span class='envidentifier'>Proposition 4.6.7</span>
+	Let $S$ be a countable inverse semigroup and let $X$ be a locally compact, Hausdorff, and second countable topological space $X$. Then a partial action $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ of $S$ on $X$ is topologically free if and only if for all $s\in S$, the set
+	<div class='equation'>\[
+		\left\{x\in X_{s^*}:\text{if }\theta_s(x)=x\text{ then there is }e\in E(S)\text{ with }e\leq s\text{ and }x\in X_e\right\}
+	\]</div>
+	is dense in $X_{s^*}$.
+	</p>
+</div>
+
+<p>
+By a <em>free</em> partial action we mean a topologically free partial action on a discrete space (that is, a set). It is interesting to note that freeness of a partial action implies that the associated groupoid of germs is Hausdorff, as the next proposition shows, however this is not true for topologically free partial actions, as in Example <span class='ref' data-tag='examplenonhausdorffgroupoidofgerms'></span>.
+</p>
+
+<!-- 4.6.8 -->
+<div class='proposition' id='propfreeimplieshausdorff'>
+	<p><span class='envidentifier'>Proposition 4.6.8</span>
+	If $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ is a free partial action of an inverse semigroup $S$ on a locally compact Hausdorff space $X$ then $S\ltimes X$ is Hausdorff.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='propfreeimplieshausdorff'>Proof</a>
+</p>
+
+<div class='proof' id='proofofpropfreeimplieshausdorff'>
+	<p>
+	Suppose that $[s,x]\neq [t,y]$ are elements of $S\ltimes X$. If $x \neq y,$ choose disjoint neighbourhoods $U, V$ of $x$ and $y$ in $X$, respectively. Clearly, $[s,U \cap X_{s^*}]$ and $[t,V \cap X_{t^*}]$ are disjoint neighbourhoods of $[s, x]$ and $[t,y],$ respectively.
+	</p>
+	
+	<p>
+	Next, assume that $x=y$. By freeness of $\theta$, we have that $\theta_s(x)=\theta_t(x)$ if and only if there is $u \in S$, such that $u\leq s,t$ and $x \in X_{u^*}$, or equivalently $[s,x]=[t,x]$. Hence, if $[s,x]\neq[t,x]$ then $\theta_s(x)\neq\theta_t(x)$. Since $X$ is Hausdorff, there are disjoint  neighbourhoods $U$ and $V$ of $\theta_s(x)$ and $\theta_t(x)$, respectively. It is easy see that $[s,\theta_{s^*}(U)]$ and $[t,\theta_{t^*}(V)]$ are disjoint neighbourhoods of $[s,x]$ and $[t,x]$, respectively.<span class='qed'></span>
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	The proof above is a combination of the facts that free partial actions on (discrete) sets correspond to (discrete) principal  groupoids of germs, and that every principal topological groupoid with Hausdorff unit space is itself Hausdorff.
+	</p>
+</div>
+
+<!-- 4.6.9 -->
+<div class='example' id='examplenonhausdorffgroupoidofgerms'>
+	<p><span class='envidentifier'>Example 4.6.9</span>
+	As in Example <span class='ref' data-tag='nonhausdorffaction'></span>, let $S=\mathbb{N}\cup\left\{\infty,z\right\}$ be the inverse semigroup obtained by adjoining to the lattice $\mathbb{N}$ the group $\left\{\infty,z\right\}$ of order $2$ (where $\infty$ represents the unit), such that for all $n\in\mathbb{N}$,
+	<div class='equation'>\begin{align*}
+		n\infty&=\infty n=nz=zn=n.
+	\end{align*}</div>
+	</p>
+	
+	<p>
+	Again, consider $\theta$ the Munn representation of $S$ on $X=E(S)=\mathbb{N}\cup\left\{\infty\right\}$, endowed with the same topology as the one-point compactification of $\mathbb{N}$. This is a topologically free partial action, since $\Lambda(\theta)=\mathbb{N}$ is dense in $X$, however the associated groupoid of germs $S\ltimes X$ is not Hausdorff (see Example <span class='ref' data-tag='nonhausdorffaction'></span>).
+	</p>
+</div>
+
+<p>
+If $G$ is a group, by Definition <span class='ref' data-tag='deffree'></span> a partial action of $G$ is free if for all $x\in X$ (and for all $g\in G_x$), one has that $\theta_g(x)=x$ implies $g=1$, where $1$ is the identity of $G$, which is the usual notion of freeness for partial group actions.
+</p>
+
+<p>
+The following proposition is a useful rewording of freeness, and the proof is similar to the argument in Remark <span class='ref' data-tag='equivalence2groupoidofgermes'></span>
+</p>
+
+<!-- 4.6.10 -->
+<div class='proposition'>
+	<p><span class='envidentifier'>Proposition 4.6.10</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a topological partial action of $S$ on $X$. The $\Lambda(\theta)$ (Equation (<span class='ref' data-tag='equationdefinitionlambda'></span>)) coincides with
+	<div class='equation'>\[
+		\left\{x\in X:\forall s,t\in S_x\left(\text{if }\theta_s(x)=\theta_t(x)\text{ then there exists }\exists u\leq s,t\text{ and }x\in X_{u^*}\right)\right\}.
+	\]</div>
+	In particular, $\theta$ is topologically free if and only if the set above is dense in $X$.
+	</p>
+</div>
+
+<p>
+We will now reword topological freeness of a partial action in terms of the groupoid of germs $S\ltimes X$.
+</p>
+
+<!-- 4.6.11 -->
+<div class='proposition' id='propprincipalfree'>
+	<p><span class='envidentifier'>Proposition 4.6.11</span>
+	Suppose that $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ is a partial action of an inverse semigroup $S$ on a locally compact Hausdorff space $X$. Then the groupoid of germs $S\ltimes X$ is topologically principal if and only if the action $\theta$ is topologically free.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='propprincipalfree'></a>
+</p>
+
+<div class='proof' id='proofofpropprincipalfree'>
+	<p>
+	As usual, we may assume the action $\theta$ is non-degenerate and identify $X$ with $(S\ltimes X)^{(0)}$. Then it is enough to prove that, under this identification, $\Lambda(\theta)$ consists of all $x\in X$ with trivial isotropy, that is,
+	<div class='equation'>\begin{align*}
+		\Lambda(\theta)
+			&=\left\{x\in X:(S \ltimes X)_x^x=\left\{x\right\}\right\}.
+	</div>
+	Let $x\in X$ be given. First suppose $x\in \Lambda(\theta)$ and $[s,x]\in(S\ltimes X)_x^x$. This means that $x=\ra[s,x]=\theta_s(x)$, so there is $e\in E(S)\cap S_x$, $e\leq s$, which implies $[s,x]=[e,x]=x$.
+	</p>
+	
+	<p>
+	Conversely suppose $(S\ltimes X)_x^x=\left\{x\right\}$ and let $s\in S_x$ with $\theta_s(x)=x$. This means that $[s,x]\in(S\ltimes X)_x^x$, and so $[s,x]=[e,x]$ for some idempotent $e\in S_x$. By definition of the groupoid of germs, we can find another idempotent $f\in S_x$ with $se=ef$, so in particular $ef$ is an idempotent, $ef\leq s$, and $x\in X_{ef}$. This proves $x\in \Lambda(\theta)$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+We finish this section by describing how $E$-unitary inverse semigroups can be characterized in terms of their partial actions.
+</p>
+
+<!-- 4.6.12 -->
+<div class='theorem' id='theoremfactorpartialactioneunitaryfree'>
+	<p><span class='envidentifier'>Theorem 4.6.12</span>
+	Let $\theta=(\theta_s:X_{s^*}\to X_s)_{s\in S}$ be a topological partial action of an $E$-unitary inverse semigroup $S$ on a topological space $X$ and  $\widetilde{\theta}=\left(\widetilde{\theta}_\gamma:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ be the partial action of $\mathbf{G}(S)$ on $X$ induced by $\theta$, as in Theorem <span class='ref' data-tag='theoremfactorpartialactioneunitary'></span>. Then $\theta$ is topologically free if and only if $\widetilde{\theta}$ is topologically free.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='theoremfactorpartialactioneunitaryfree'></a>
+</p>
+
+<div class='proof' id='proofoftheoremfactorpartialactioneunitaryfree'>
+	<p>
+	We just need to prove that $\Lambda(\theta)=\Lambda(\widetilde{\theta})$. Suppose $x\in\Lambda(\theta)$, and that $\gamma\in\mathbf{G}(S)$ fixes $x$. Choose $s\in S$ such that $[s]=\gamma$ and $\theta_s(x)=\widetilde{\theta}_\gamma(x)=x$. Since $x\in\Lambda(\theta)$ then there is $e\in E(S)$, $e\leq s$ with $x\in X_e$. As $S$ is $E$-unitary, we have $s\in E(S)$ and $\gamma=[s]$ is the identity of $\mathbf{G}(S)$. This proves that $\Lambda(\theta)\subseteq\Lambda(\widetilde{\theta})$.
+	</p>
+	
+	<p>
+	Conversely, if $x\in\Lambda(\widetilde{\theta})$ and $s\in S$ fixes $x$, then $\widetilde{\theta}_{[s]}(x)=\theta_s(x)=x$. By hypothesis, this implies that $[s]$ is the unit of $\mathbf{G}(S)$, i.e., $[s]=[s^*s]$. Since $S$ is $E$-unitary then $s\in E(S)$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 4.6.13 -->
+<div class='proposition' id='propositionesidempotents'>
+	<p><span class='envidentifier'>Proposition 4.6.13</span>
+	Let $S$ be an $E$-unitary inverse semigroup and  $\theta$ be a topologically free partial action of $S$ on $X$ with $X_{s}\neq \varnothing$ for all $s$. Then $E(S)=\left\{s:\theta_s\text{ is idempotent}\right\}$.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='propositionesidempotents'></a>
+</p>
+
+<div class='proof' id='proofofpropositionesidempotents'>
+	<p>
+	If $\theta_s$ is an idempotent, just choose $x\in X_{s^*}\cap\Lambda(\theta)$, so the equality $\theta_s(x)=x$ is valid and implies $e\leq s$ for some $e\in E(S)$, so $s$ is idempotent because $S$ is $E$-unitary.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+In [<span class='ref' data-tag='MR2221438'></span>], a morphism $\theta:S\to T$ of inverse semigroups is called <em>idempotent-pure</em> if $\theta^{-1}(E(T))=E(S)$, and in [<span class='ref' data-tag='MR3231479'></span>] these were called <em>essentially injective</em> morphisms. The same notion could be used for partial morphisms and actions.
+</p>
+
+<!-- 4.6.14 -->
+<div class='proposition' id='propositionconditionsonpartialactionthatimplyeunitary'>
+	<p><span class='envidentifier'>Proposition 4.6.14</span>
+	Let $S$ be an inverse semigroup and $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ be a partial action of $S$ a space $X$ such that
+	<ol class='roman'>
+		<li>
+			$\theta$ factors through $\mathbf{G}(S)$ -- there is a partial action $\widetilde{\theta}=\left(\widetilde{\theta}_s:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ such that $\widetilde{\theta}_{[s]}(x)=\theta_s(x)$ for all $x\in X_{s^*}$ (in particular $X_s\subseteq\widetilde{X}_{[s]}$ for all $s\in S$);
+		</li>
+		
+		<li>
+			$\left\{s\in S:\theta_s\text{ is idempotent}\right\}=E(S)$.
+		</li>
+	</ol>
+	Then $S$ is $E$-unitary.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='propositionconditionsonpartialactionthatimplyeunitary'></a>
+</p>
+
+<div class='proof' id='proofofpropositionconditionsonpartialactionthatimplyeunitary'>
+	<p>
+	Suppose $e\in E(S)$, $e\leq s$. We need to prove that $s$, or equivalently by (ii) that $\theta_s$, is idempotent. Since $e\leq s$, we have $1=[e]=[s]$, thus for all $x\in X_{s^*}$, $\theta_s(x)=\widetilde{\theta}_{[s]}(x)=x$, so $\theta_s$ is an idempotent and $s$ is idempotent by (ii).<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+Given an inverse semigroup $S$, consider the canonical left action $\alpha$ of $S$ on itself (Definition <span class='ref' data-tag='definitioncanonicalleftaction'></span>): $\alpha_s(t)=st$ whenever $t^*t\leq s^*s$ ($s,t\in S$).
+</p>
+
+<!-- 4.6.15 -->
+<div class='theorem' id='theoremcharacterizationofeunitaryintermsofactions'>
+	<p><span class='envidentifier'>Theorem 4.6.15</span>
+	$S$ is $E$-unitary if and only if it admits a topologically free partial action satisfying (i) and (ii) of Proposition <span class='ref' data-tag='propositionconditionsonpartialactionthatimplyeunitary'></span>.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='theoremcharacterizationofeunitaryintermsofactions'></a>
+</p>
+
+<div class='proof' id='proofoftheoremcharacterizationofeunitaryintermsofactions'>
+	<p>
+	Proposition <span class='ref' data-tag='propositionconditionsonpartialactionthatimplyeunitary'></span> proves one direction. Assume then that $S$ is $E$-unitary, and let us prove that the canonical left action $\alpha$ of $S$ is free: Suppose $st=t$, where $tt^*\leq s^*s$. Then $s\geq stt^*=tt^*$, which is idempotent, so $s$ is idempotent itself. This clearly implies that the action $\alpha$ is free. Condition (i) is satisfied by Theorem <span class='ref' data-tag='theoremfactorpartialactioneunitary'></span>, and condition (ii) by Proposition <span class='ref' data-tag='propositionesidempotents'></span>.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+An immediate consequence of the above proof is:
+</p>
+
+<!-- 4.6.16 -->
+<div class='corollary'>
+	<p><span class='envidentifier'>Corollary 4.6.16</span>
+	$S$ is $E$-unitary if and only if the canonical left action $S\to\mathcal{I}(S)$ is free.
+	</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

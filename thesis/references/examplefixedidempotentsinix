@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.7.im.html#examplefixedidempotentsinix'>1.7.6</a>
+<!-- 1.7.6 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 1.7.6</span>
+	If $f\in\mathcal{I}(X)$ for some set $X$, then $\Fix(f)$ is the identity function of the set of fixed points of $f$, $\left\{x\in\operatorname{dom}(f):f(x)=x\right\}$, and so under the usual interpretation that $E(\mathcal{I}(X))$ consists of subsets of $X$, $\Fix(f)$ is the set of fixed points of $f$. (See Example <span class='ref'data-tag='exampleidempotentssets'></span>.)
+	</p>
+</div>

@@ -1,0 +1,27 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#definitionhaarsystem'>3.5.3</a>
+
+<!-- 3.5.3 !-->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 3.5.3
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR584266'></span>, Definition 2.2])</span></span>
+	A (<em>continuous</em>) <em>left Haar system</em> for a locally compact Hausdorff topological groupoid $\mathcal{G}$ is a collection of regular Borel measures $\lambda=\left\{\lambda^x:x\in\mathcal{G}^{(0)}\right\}$ on $\mathcal{G}$ such that
+	<ol class='roman'>
+		<li>
+			For each $x\in\mathcal{G}^{(0)}$, $\lambda^x$ has support contained in $\mathcal{G}^x$;
+		</li>
+		
+		<li>
+			(left invariance) For each $a\in\mathcal{G}$, $\lambda^{\ra(a)}(aE)=\lambda^{\so(a)}(E)$ for every compact $E\subseteq \mathcal{G}^{\so(a)}$;
+		</li>
+		
+		<li>
+			(continuity) For each $f\in C_c(\mathcal{G})$, the map
+			<div class='equation'>\[
+				\mathcal{G}^{(0)}\to\mathbb{C},\quad x\mapsto \int fd\lambda^x
+			\]</div>
+		is continuous.
+		</li>
+	</ol>
+	We will not make any distinction of whether each $\lambda^x$ is considered as a measure on $\mathcal{G}$ or as a measure on $\mathcal{G}^x$. We say that $\lambda$ is <em>fully supported</em> if the support of $\lambda^x$ is all of $\mathcal{G}^x$ for all $x\in\mathcal{G}^{(0)}$.
+	</p>
+</div>

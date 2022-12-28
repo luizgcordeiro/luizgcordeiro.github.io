@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço vetorial com produto interno e \(W\) um subespaço vetorial de \(V\). Então existe no máximo uma única projeção ortogonal de \(V\) sobre \(W\).
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Suponha que \(P_1,P_2\colon V\to W\) sejam projeções ortogonais de \(V\) sobre \(W\). Seja \(v\in V\) um vetor arbitrário. Devemos mostrar que \(P_1(v)\) e \(P_2(v)\) são iguais, e para isso calcularemos a norma de sua diferença.
+</p>
+<p>
+Temos que
+<div>
+\begin{align*}
+\Vert P_1(v)-P_2(v)\Vert^2&=\langle P_1(v)-P_2(v),P_1(v)-P_2(v)\rangle\\
+&=\langle P_1(v),P_1(v)\rangle-\langle P_1(v),P_2(v)\rangle-\langle P_2(v),P_1(v)\rangle+\langle P_2(v),P_2(v)\rangle\tag{$\heartsuit$}
+\end{align*}
+</div>
+</p>
+<p>
+Seja \(i\in\left\{1,2\right\}\). Como \(P_i\) é uma projeção ortogonal de \(V\) sobre \(w\), isto significa que para todo \(w\in W\) tem-se que
+<div>
+\begin{equation*}
+\langle v-P_i(v),w\rangle=0,
+\end{equation*}
+</div>
+ou equivalentemente
+<div>
+\begin{equation*}
+\langle v,w\rangle=\langle P_i(v),w\rangle.
+\end{equation*}
+</div>
+Utilizando esta igualdade com \(w=P_j(v)\), onde \(j\in\left\{1,2\right\}\) obtemos
+<div>
+\begin{equation*}
+\langle v,P_j(v)\rangle=\langle P_i(v),P_j(v)\rangle\tag{$*$}
+\end{equation*}
+</div>
+para quaisquer \(i,j\in\left\{1,2\right\}\).
+</p>
+<p>
+Utilizando a Equação (\(*\)) para as possíveis escolhas de \(i\) e \(j\), obtemos:
+</p>
+
+<ul>
+
+<li>
+<p>
+Para \(i=j=1\):
+<div>
+\begin{equation*}
+\langle v,P_1(v)\rangle=\langle P_1(v),P_1(v)\rangle.
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Para \(i=1\), \(j=2\):
+<div>
+\begin{equation*}
+\langle v,P_2(v)\rangle=\langle P_1(v),P_2(v)\rangle.
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Para \(i=2\), \(j=1\):
+<div>
+\begin{equation*}
+\langle v,P_1(v)\rangle=\langle P_2(v),P_1(v)\rangle.
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Para \(i=j=2\):
+<div>
+\begin{equation*}
+\langle v,P_2(v)\rangle=\langle P_2(v),P_2(v)\rangle.
+\end{equation*}
+</div>
+</p>
+
+</li>
+</ul>
+<p>
+Agora substituímos cada um cada expressão nos items acima na Equação (\(\heartsuit\)):
+<div>
+\begin{align*}
+\Vert P_1(v)-P_2(v)\Vert^2
+&=\langle v,P_1(v)\rangle-\langle v,P_2(v)\rangle-\langle v,P_1(v)\rangle +\langle v,P_2(v)\rangle\\
+&=0.
+\end{align*}
+</div>
+</p>
+<p>
+Concluímos que \(\Vert P_1(v)-P_2(v)\Vert=0\), e portanto \(P_1(v)=P_2(v)\).
+</p>
+<p>
+Como o vetor \(v\in V\) é arbitrário, concluímos que \(P_1=P_2\).
+</p>
+
+</div></body>
+</html>

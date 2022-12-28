@@ -1,0 +1,72 @@
+A técnica de ``troca de variáveis'' permite simplificar algumas expressões, para converter o cálculo de limites a um cálculo envolvendo expressões mais familiares.
+
+Intuitivamente, este procedimento pode ser entendido do seguinte modo. Suponha que tenhamos um limite que pode ser reconhecido como na forma
+\[\lim_{y\to a}f(E(y))\]
+onde $E(y)$ é uma expressão envolvendo $y$ e $f$ é uma função. Vamos criar uma nova ``variável dependente'' $z=E(y)$, e assumir que os limites $\lim_{y\to a}E(y)=b$ e $\lim_{x\to b}f(x)=L$ existam.
+
+Isto significa que se $y\to a$, então $z=E(y)\to b$, o que implica que $f(E(y))=f(z)\to L$.
+
+Em resumo, temos que $f(E(y))\to L$ quando $y\to  a$, o que significa que
+\[\lim_{y\to a}f(E(y))=\lim_{z\to b}f(z),\]
+onde $z=E(y)$ e $b=\lim_{y\to a}E(y)$.
+
+Não entraremos nos detalhes técnicos de quando essa troca de variáveis pode ser realizada. Abaixo, vamos mostrar algumas das aplicações mais comuns desta técnica.
+
+\hrule
+
+\subsection*{Translação}
+
+Seja $b$ um número real.  Ponha $y=x+b$, ou seja, $x=y-b$. Então
+
+$x\to a$ se, e somente se, $y\to a+b$. Portanto,
+\begin{equation*}\lim_{x\to a}f(x)=\lim_{y\to a+b}f(y-b)\end{equation*}
+$x\to a^+$ se, e somente se, $y\to (a+b)^+$. Portanto,
+\begin{equation*}\lim_{x\to a^+}f(x)=\lim_{y\to (a+b)^+}f(y-b)\end{equation*}
+$x\to a^-$ se, e somente se, $y\to (a+b)^-$. Portanto,
+\begin{equation*}\lim_{x\to a^-}f(x)=\lim_{y\to (a+b)^-}f(y-b)\end{equation*}
+$x\to+\infty$ se, e somente se, $y\to+\infty$. Portanto,
+\begin{equation*}\lim_{x\to+\infty}f(x)=\lim_{y\to+\infty}f(y-b).\end{equation*}
+$x\to-\infty$ se, e somente se, $y\to-\infty$. Portanto,
+\begin{equation*}\lim_{x\to-\infty} f(x)=\lim_{y\to -\infty}f(y-b).\end{equation*}
+
+\hrule
+
+\subsection*{Multiplicação por escalar positivo}
+
+Seja $\lambda>0$. Ponha $y=\lambda x$, ou seja, $x=\dfrac{y}{\lambda}$. Então
+
+$x\to a$ se, e somente se, $y\to \lambda a$. Portanto,
+\begin{equation*}\lim_{x\to a}f(x)=\lim_{y\to \lambda a}f\left(\frac{y}{\lambda}\right).\end{equation*}
+$x\to a^+$ se, e somente se, $y\to (\lambda a)^+$. Portanto,
+\begin{equation*}\lim_{x\to a^+}f(x)=\lim_{y\to(\lambda a)^+}f\left(\frac{y}{\lambda}\right).\end{equation*}
+$x\to a^-$ se, e somente se, $y\to(\lambda a)^-$. Portanto,
+\begin{equation*}\lim_{x\to a^-}f(x)=\lim_{y\to(\lambda)^- a}f\left(\frac{y}{\lambda}\right).\end{equation*}
+$x\to+\infty$ se, e somente se, $y\to+\infty$. Portanto,
+\begin{equation*}\lim_{x\to+\infty}f(x)=\lim_{y\to+\infty}f\left(\frac{y}{\lambda}\right)\end{equation*}
+$x\to-\infty$ se, e somente se, $y\to-\infty$. Portanto,
+\begin{equation*}\lim_{x\to-\infty} f(x)=\lim_{y\to -\infty}f\left(\frac{y}{\lambda}\right).\end{equation*}
+
+\hrule
+
+\subsection*{Multiplicação por escalar negativo}
+
+Seja $\lambda<0$. Ponha $y=\lambda x$, ou seja, $x=\dfrac{y}{\lambda}$. Então
+
+$x\to a$ se, e somente se, $y\to \lambda a$. Portanto,
+\begin{equation*}\lim_{x\to a}f(x)=\lim_{y\to \lambda a}f\left(\frac{y}{\lambda}\right).\end{equation*}
+$x\to a^+$ se, e somente se, $y\to \lambda a^-$. Portanto,
+\begin{equation*}\lim_{x\to a^+}f(x)=\lim_{y\to(\lambda a)^-}f\left(\frac{y}{\lambda}\right).\end{equation*}
+$x\to a^-$ se, e somente se, $y\to(\lambda a)^+$. Portanto,
+\begin{equation*}\lim_{x\to a^-}f(x)=\lim_{y\to(\lambda a)^+}f\left(\frac{y}{\lambda}\right).\end{equation*}
+$x\to+\infty$ se, e somente se, $y\to-\infty$. Portanto,
+\begin{equation*}\lim_{x\to+\infty} f(x)=\lim_{y\to -\infty}f\left(\frac{y}{\lambda}\right).\end{equation*}
+$x\to-\infty$ se, e somente se, $y\to+\infty$. Portanto,
+\begin{equation*}\lim_{x\to-\infty} f(x)=\lim_{y\to +\infty}f\left(\frac{y}{\lambda}\right).\end{equation*}
+
+\hrule
+
+\subsection*{Outras trocas de variáveis}
+
+Outras trocas de variáveis são permitidas, mas deve-se tomar o devido cuidado com limites laterais. Por exemplo, se pormos $y=e^x$, então $x\to-\infty$ se, e somente $y\to 0^+$. Portanto,
+\begin{equation*}\lim_{x\to-\infty}f(x)=\lim_{y\to 0^+}f(\ln( y ))\end{equation*}
+

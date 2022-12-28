@@ -1,0 +1,9 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#examplekaplanskyisl1l2'>3.4.5</a>
+
+<!-- 3.4.5 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 3.4.5
+	<span style='font-weight:normal;'>(Kaplansky, [<span class='ref' data-tag='MR0020715'></span>])</span></span>
+	Suppose that $X$ is compact and $\mathcal{A}$ is an $R$-normal (<span class='ref' data-tag='footnoternormal' id='footnoternormal'></span>) sublattice of $C(X,R)$. Condition <span class='ref' data-tag='conditionnormallatticel1'></span> is trivial, so let us check that $\mathcal{A}$ satisfies <span class='ref' data-tag='conditionnormallatticel2'></span>: Suppose $f$, $U$, $x$ and $\alpha$ are as in that condition. For the sake of the argument we can assume $f(x)\leq\alpha$. Let $\beta$ be any lower bound of $f(X)$, and from $R$-normality find $h\in\mathcal{A}$ such that $h(x)=\alpha$ and $h=\beta$ outside $U$. Then $g=f\lor h$ has the desired properties.
+	</p>
+</div>

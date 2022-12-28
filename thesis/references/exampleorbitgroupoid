@@ -1,0 +1,12 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#exampleorbitgroupoid'>1.1.15</a>
+
+<!-- 1.1.15 -->
+<div class="toload example">
+<p><span class="envidentifier">Example 1.1.15</span>
+If $\mathcal{G}$ is a groupoid, then the image of the map $(\ra,\so):\mathcal{G}\to\mathcal{G}^{(0)}\times\mathcal{G}^{(0)}$, $(\ra,\so)(a)=(\ra(a),\so(a))$, is an equivalence relation on $\mathcal{G}^{(0)}$, called the <em>orbit equivalence relation</em>, which we will denote by $\mathcal{R}(\mathcal{G})$. An $\mathcal{R}(\mathcal{G})$-equivalence class is called an <em>orbit</em>.
+</p>
+<ul>
+	<li> If $\theta$ is an action of a group $G$ on a space $X$, then $\mathcal{R}(G\ltimes_\theta X)$ is the usual orbit equivalence relation of the action $\theta$, so orbits of $G\ltimes_\theta X$ coincide with orbits of $\theta$. We will abuse notation and denote, in this case, the <em>orbit groupoid</em> as $\mathcal{R}(\theta)=\mathcal{R}(G\ltimes_\theta X)$.</li>
+	<li> If $R$ is an equivalence relation on a set $X$, then the orbit of an element $x\in X$ is the $R$-equivalence class of $x$.</li>
+</ul>
+</div>

@@ -1,0 +1,14 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#propositiongroupoidmorphism'>1.1.21</a>
+
+<!-- 1.1.21 -->
+<div class="toload proposition">
+<p><span class="envidentifier">Proposition 1.1.21</span>
+Let $\phi:\mathcal{G}\to\mathcal{H}$ be a groupoid morphism. Then
+<ol class="alphpar">
+	<li> $\phi(a^{-1})=\phi(a)^{-1}$ for all $a\in\mathcal{G}$;</li>
+	<li> $\phi(\mathcal{G}^{(0)})\subseteq\mathcal{H}^{(0)}$;</li>
+	<li> $\phi(\mathfrak{s}(a))=\mathfrak{s}(\phi(a))$ and $\phi(\mathfrak{r}(a))=\mathfrak{r}(\phi(a))$ for all $a\in\mathcal{G}$;</li>
+	<li> If $\phi$ is invertible then $\phi^{-1}$ is also a morphism.</li>
+</ol>
+(In particular, groupoids morphisms are precisely their functors.)</p>
+</div>

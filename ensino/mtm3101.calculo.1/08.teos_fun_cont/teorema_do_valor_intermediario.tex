@@ -1,0 +1,33 @@
+\begin{theorem}
+Seja $f\colon [a,b]\to\mathbb{R}$ uma função real contínua, definida em um intervalo real fechado $[a,b]$ (onde $a$ e $b$ são números reais e $a < b$. Suponha que $I$ é um valor que satisfaz $f(a)\leq I\leq f(b)$ ou que $f(b)\leq I\leq f(a)$. Então existe $c\in[a,b]$ tal que $f(c)=I$.
+\end{theorem}
+
+Em termos mais simples, este teorema nos diz que se $I$ é um valor qualquer entre $f(a)$ e $f(b)$, então $I$ é atingido pela função $f$.
+
+\begin{proof}
+Vamos supor que $f(a)\leq I\leq f(b)$. O outro caso é similar.
+
+Considere o conjunto $A$ consistindo dos pontos $d\in [a,b]$ tais que para todo $x\in[a,d]$, tem-se que $f(x)\leq I$.
+
+Primeiro, note que $a\in A$: o único ponto $x\in[a,a]$ é o próprio $x=a$, que satisfaz $f(a)\leq I$ por hipótese.
+
+Agora vamos verificar que $A$ é um intervalo. Para isto, basta mostrar que se $d_1$ e $d_2$ são pontos de $A$ e $d_1 < y < d_2$ então $y\in A$. De fato, nestas condições teremos que $y\in[a,b]$, e que, se $x\in[a,y]$, então em particular $y\in [a,d_2]$, de onde segue que $f(x)\leq I$ pela definição de $A$ (pois $d_2\in A$).
+
+Concluímos que $A$ é um subintervalo de $[a,b]$ que contém $a$, e portanto terá uma das formas $[a,c)$ ou $[a,c]$, para algum $c\in[a,b]$. Vamos mostrar, em qualquer caso, que $f(c)=I$.
+
+Suponha o contrário, que $f(c)\neq 0$. Temos dois casos a considerar.
+
+\textbf{Caso 1}. $f(c) < I$.
+
+\begin{quote}
+Neste caso, vamos usar a continuidade de $f$ em $c$ e obter $\delta>0$ tal que $f(x)\leq I$ para todo $x\in[c,c+\delta)$. Assim, para todo $x\in[a,c)=A$ temos que $f(x)\leq I$ (pela definição de $A$), e se $x\in\left[c,c+\dfrac{\delta}{2}\right]$ também temos que $f(x)\leq I$. Isto mostra que se $x\in\left[a,c+\dfrac{\delta}{2}\right]$ então $f(x)\leq I$, ou seja, $c+\dfrac{\delta}{2}\in A$, o que é um absurdo, pois o ponto máximo de $A$ é $c$.
+\end{quote}
+
+\textbf{Caso 2} $f(c)>I$.
+
+\begin{quote}
+Em particular, devemos ter que $c>a$. Agora, vamos usar a continuidade de $f$ em $c$ para obter $\delta>0$ tal que $f(x)>I$ para todo $x\in (c-\delta,c]$. Em particular, $f\left(c-\dfrac{\delta}{2}\right) < I$. Mas por outro lado, $c-\dfrac{\delta}{2}\in [a,c)\subseteq A$. Isto contradiz a própria definição de $A$.
+\end{quote}
+
+Em todo caso, concluímos que $f(c)$ não pode ser diferente de $I$, ou seja, que $f(c)=I$.
+\end{proof}

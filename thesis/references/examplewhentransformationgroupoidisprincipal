@@ -1,0 +1,9 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#examplewhentransformationgroupoidisprincipal'>1.1.18</a>
+
+<!-- 1.1.18 -->
+<div class="toload example">
+<p><span class="envidentifier">Example 1.1.18</span>
+If $\theta$ is an action of a group $G$ on a set $X$, then the transformation groupoid $G\ltimes_\theta X$ is principal if, and only if, the action $\theta$ is free: Indeed, for all $x\in X$, let $G_x=\left\{g\in G:gx=x\right\}$ be the stabilizer of $x$, so the map
+\[G_x\to (G\ltimes_\theta X)_x^x,\qquad g\mapsto (g,x)\]
+is a group isomorphism. Thus $G\ltimes_\theta X$ is principal if and only if $G_x$ is trivial for all $x\in X$, i.e., $\theta$ is free.
+</p></div>

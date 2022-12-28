@@ -1,0 +1,14 @@
+\begin{definition}
+	Sejam $f$ uma função e $a$ um ponto de seu domínio. Dizemos que a função $f$ é \textbf{contínua em $a$} se $\lim_{x\to a}f(x)=f(a)$. 
+	
+	Formalmente, isto significa que para todo $\epsilon>0$, existe $\delta>0$ tal que se $|x-a|<\delta$ e $x$ pertence ao domínio de $f$, então $|f(x)-f(a)|<\epsilon$
+	
+	Se $f$ for contínua em todos os pontos de seu domínio, dizemos simplesmente que $f$ é \textbf{contínua}.
+\end{definition}
+
+\textit{Observações}:
+\begin{enumerate}
+	\item Caso somente um dos limite laterais de $f$ em $a$ faça sentido, adaptamos a definição acima considerando somente este limite. Por exemplo, a função $s(x)=\sqrt{x}$ está definida em $[0,+\infty)$. No ponto $a=0$, somente o limite lateral à direita faz sentido. De todo modo, $s$ é contínua em $0$, pois
+	\[\lim_{x\to 0^+}s(x)=\lim_{x\to 0^+}\sqrt{x}=0=s(0).\]
+	\item Na definição de limite, aparece a condição ``$0<|x-a|<\delta$'', pois não avaliamos $f$ no ponto $a$. Por outro lado, na definição acima nós consideramos somente que ``$|x-a|<\delta$''. Isto é permitido pois, dado $\epsilon>0$, a desigualdade ``$|f(x)-f(a)|<\epsilon$'' é trivialmente válida em $x=a$.
+\end{enumerate}

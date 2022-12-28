@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>3.5. New results</h3>
+
+<h3 class='subsection' id='subsectionl1spaces'>$L^1$-spaces of locally compact spaces</h3>
+
+<p>
+Let $\mathbb{K}=\mathbb{R}$ or $\mathbb{C}$ be fixed. Given a topological space $X$, $C_c(X)$ will denote the space of $\mathbb{K}$-valued compactly supported continuous functions on $X$ (the support of $f\in C(X,\mathbb{K})$ is the usual one: $\supp(f)=\overline{[f\neq 0]}$.)
+</p>
+
+<p>
+We will say that a Borel measure $\mu$ on a locally compact Hausdorff space $X$ is <em>regular</em> (as in [<span class='ref' data-tag='MR924157'></span>]) if the following conditions are satisfied:
+<ul>
+	<li>
+		$\mu(K)\smallerthan\infty$ for all compact $K\subseteq X$ (i.e., we always assume regular measures are <em>locally finite</em>);
+	</li>
+	
+	<li>
+		For every Borel $E\subseteq X$,
+		<div class='equation'>\[
+			\mu(E)=\inf\left\{\mu(V):E\subseteq V,\ V\text{ open}\right\};
+		\]</div>
+	</li>
+	
+	<li>
+		For every open $U\subseteq X$ with $\mu(U)\smallerthan\infty$,
+		<div class='equation'>\[
+			\mu(U)=\sup\left\{\mu(K):K\subseteq U,\ K\text{ compact}\right\}.
+		\]</div>
+	</li>
+</ul>
+and recall that the <em>support</em> of $\mu$ is the set of points $x\in X$ whose neighbourhoods always have positive measure. We say that $\mu$ is <em>fully supported</em> (on $X$) is the support of $\mu$ coincides with $X$, i.e., if every nonempty open subset has positive measure.
+</p>
+
+<!-- 3.5.1 -->
+<div class='lemma' id='lemmadisjointnessl1'>
+	<p><span class='envidentifier'>Lemma 3.5.1</span>
+	Let $X$ be a locally compact Hausdorff space and $\mu$ a fully supported Borel measure on $X$ such that every compact subset of $X$ has finite measure. If $\Vert\cdot\Vert_1$ denotes the corresponding $L^1$-norm, then for all $f,g\in C_c(X)$, $f\perp g$ if and only if
+	<div class='equation'>\[
+		\Vert Af+Bg\Vert_1=|A|\Vert f\Vert_1+|B|\Vert g\Vert_1\qquad\forall A,B\in\mathbb{K}.
+	\]</div>
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmadisjointnessl1'>Proof</a>
+<div class='proof' id='proofoflemmadisjointnessl1'>
+	<p>
+	If $f\perp g$ then $|Af+Bg|=|A||f|+|B||g|$, so the condition described above is immediate.
+	</p>
+	
+	<p>
+	Suppose $f$ and $g$ are not disjoint, say $x\in X$ is such that $f(x)\neq 0$ and $g(x)\neq 0$, so up to nonzero multiples we may assume $f(x)=g(x)=1$. In this case, there is an open set $U$, and thus of nonzero measure under $\mu$, such that $|f(y)-g(y)|\smallerthan f(y)-1/2$ for all $y\in U$, so
+	<div class='qedhere'>\[
+		\Vert f-g\Vert_1\leq\int_{X\setminus U}|f-g|d\mu+\int_U|f|d\mu-\dfrac{\mu(U)}{2}\smallerthan\Vert f\Vert_1+\Vert g\Vert_1
+	\]<span class='qed'></span></div>
+	</p>
+</div>
+
+<!-- 3.5.2 -->
+<div class='theorem' id='theoremdisjointnessl1'>
+	<p><span class='envidentifier'>Theorem 3.5.2</span>
+	Let $X$ and $Y$ be locally compact Hausdorff spaces with fully supported regular Borel measures $\mu_X$ and $\mu_Y$, and let $T:C_c(X)\to C_c(Y)$ be a linear isomorphism which is isometric with respect to the $L^1$-norms. Then there exists a homeomorphism $\phi:Y\to X$ and a continuous function $p:Y\to\mathbb{S}^1$ such that
+	<div class='equation'>\[
+		Tf(y)=p(y)\frac{d\mu_X}{d(\phi_*\mu_Y)}(\phi(y))f(\phi(y))
+	\]</div>
+	for all $f\in C_c(X)$ and $y\in Y$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremdisjointnessl1'>Proof</a>
+<div class='proof' id='proofoftheoremdisjointnessl1'>
+	<p>
+	By the previous lemma, $T$ is a $\perp$-isomorphism, so Jarosz' Theorem (<span class='ref' data-tag='theoremjarosz'></span>) implies that there is a homeomorphism $\phi:Y\to X$ and a non-vanishing function $P:Y\to\mathbb{C}$ such that
+	<div class='equation'>\[
+		T(f)(y)=P(y)f(\phi(y)),\qquad\text{for all }f\in C_c(X)\text{ and }y\in Y.
+	\]</div>
+	</p>
+	
+	<p>
+	Now using the fact that $T$ is isometric, we have, for every $f\in C_c(X)$,
+	<div class='equation'>\[
+		\int_X|f|d\mu_X=\int_Y|Tf|d\mu_Y=\int_Y|P||f\circ\phi|d\mu_Y=\int_X|P\circ\phi^{-1}||f|d(\phi_*\mu_Y),
+	\]</div>
+	and this means that $|P\circ\phi^{-1}|$ is a continuous instance of the Radon-Nikodym derivative $d\mu_X/d(\phi_*\mu_Y)$. Since $p=P/|P|:Y\to\mathbb{S}^1$ is continuous, we obtain the result.<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection'>3.5.2. Measured groupoid convolution algebras</h3>
+
+<p>
+In the next two results, we will focus on convolution algebras of topological groupoids. First, we will consider <em>measured groupoids</em> in the sense of Hahn. See [<span class='ref' data-tag='MR496796'></span>, <span class='ref' data-tag='MR496797'></span>, <span class='ref' data-tag='MR584266'></span>, <span class='ref' data-tag='MR1444088'></span>, <span class='ref' data-tag='MR0427598'>,</span>]. Note that throughout this section we consider only regular measures. Initially, given a locally compact Hausdorff topological groupoid $\mathcal{G}$, we consider $C_c(\mathcal{G})$, the space of real or complex-valued, compactly supported, continuous functions on $\mathcal{G}$, simply as a vector space (with pointwise operations).
+
+<!-- 3.5.3 !-->
+<div class='definition' id='definitionhaarsystem'>
+	<p><span class='envidentifier'>Definition 3.5.3
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR584266'></span>, Definition 2.2])</span></span>
+	A (<em>continuous</em>) <em>left Haar system</em> for a locally compact Hausdorff topological groupoid $\mathcal{G}$ is a collection of regular Borel measures $\lambda=\left\{\lambda^x:x\in\mathcal{G}^{(0)}\right\}$ on $\mathcal{G}$ such that
+	<ol class='roman'>
+		<li>
+			For each $x\in\mathcal{G}^{(0)}$, $\lambda^x$ has support contained in $\mathcal{G}^x$;
+		</li>
+		
+		<li>
+			(left invariance) For each $a\in\mathcal{G}$, $\lambda^{\ra(a)}(aE)=\lambda^{\so(a)}(E)$ for every compact $E\subseteq \mathcal{G}^{\so(a)}$;
+		</li>
+		
+		<li>
+			(continuity) For each $f\in C_c(\mathcal{G})$, the map
+			<div class='equation'>\[
+				\mathcal{G}^{(0)}\to\mathbb{C},\quad x\mapsto \int fd\lambda^x
+			\]</div>
+		is continuous.
+		</li>
+	</ol>
+	We will not make any distinction of whether each $\lambda^x$ is considered as a measure on $\mathcal{G}$ or as a measure on $\mathcal{G}^x$. We say that $\lambda$ is <em>fully supported</em> if the support of $\lambda^x$ is all of $\mathcal{G}^x$ for all $x\in\mathcal{G}^{(0)}$.
+	</p>
+</div>
+
+<div class='remark' id='remarkhaarsystemshavefinitecompactvalues'>
+	<p><span class='envidentifier'>Remark</span>
+	It follows from condition (iii) above that if $K$ is a compact subset of $\mathcal{G}$, then $\sup_{x\in\mathcal{G}^{(0)}}\lambda^x(K)\smallerthan\infty$.
+	</p>
+</div>
+
+<!-- 3.5.4 !-->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.5.4</span>
+	If $G$ is a locally compact Hausdorff topological group, a left Haar system on $G$ is the same as a left Haar measure on $G$.
+	</p>
+</div>
+
+<!-- 3.5.5 !-->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.5.5</span>
+	If $X$ is a locally compact Hausdorff topological space, considered as a unit groupoid, a left Haar system on $X$ consists of measures $p_x$ supported on $\left\{x\right\}$ for $x\in X$, and so can be regarded as a continuous non-negative function $p:X\to[0,\infty)$.
+	</p>
+</div>
+
+<!-- 3.5.6 !-->
+<div class='example' id='examplehaarsystemfxandhaarmeasure'>
+	<p><span class='envidentifier'>Example 3.5.6</span>
+	Let $G$ be a locally compact Hausdorff topological group, acting continuously on a locally compact Hausdorff topological space $X$. Let $\lambda$ be a left Haar measure for $G$, and $f:X\to[0,\infty)$ a continuous $G$-invariant function (i.e., $f(gx)=f(x)$ for all $x\in X$ and $g\in G$). We define a Haar system $(\lambda,f)$ on $G\ltimes X$ by setting
+	<div class='equation'>\[
+	(\lambda,f)^x(A)=f(x)\lambda\left(\left\{g\in G:(g,g^{-1}(x))\in A\right\}\right)
+	\]</div>
+	for all $x\in X$ (regarded as the unit space $(G\ltimes X)^{(0)}$) and $A\subseteq G\ltimes X$.
+	</p>
+</div>
+
+<!-- 3.5.7 !-->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.5.7</span>
+	In contrast with the case of groups, we can have non-trivial Haar systems without full support on groupoids. Let $X=\left\{a,b\right\}$ be a set with two points and $\mathcal{G}=X\times X$ the coarsest equivalence relation on $X$. For all $x\in X$ and all $A\subseteq\mathcal{G}$, set $\lambda^x(A)=\#(A\cap\left\{(x,a)\right\})$. Then $\lambda=\left\{\lambda^a,\lambda^b\right\}$ is a Haar system on $\mathcal{G}$ such that $\lambda^x$ is non-trivial and not fully supported for all $x\in X=\mathcal{G}^{(0)}$.
+	</p>
+</div>
+
+<p>
+Left invariance of $\lambda$ implies that for all $a\in\mathcal{G}$ and $f\in C_c(\mathcal{G}^{\ra(a)})$,
+<div class='equation'>\[
+	\int f(s)d\lambda^{\ra(a)}(s)=\int f(at)d\lambda^{\so(a)}(t),
+\]</div>
+and we can endow $C_c(\mathcal{G})$ with convolution product
+<div class='equation'>\[
+	(fg)(a)=\int f(s)g(s^{-1}a)\lambda^{\ra(a)}(s)=\int f(at)g(t^{-1})\lambda^{\so(a)}(t),
+\]</div>
+which makes $C_c(\mathcal{G})$ an algebra.
+</p>
+
+<!-- 3.5.8 !-->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 3.5.8</span>
+	Let $\mathcal{G}$ be a locally compact Hausdorff topological groupoid with a left Haar system $\lambda$. Given a regular Borel measure $\mu$ on $\mathcal{G}^{(0)}$, the measure <em>induced</em> by $\mu$ and $\lambda$ is the unique regular Borel measure $(\lambda\circ\mu)$ on $\mathcal{G}$ which satisfies
+	<div class='equation'>\[
+		(\lambda\circ\mu)(E)=\int_{\mathcal{G}^{(0)}}\lambda^x(E)d\mu(x)
+	\]</div>
+	for every compact $E\subseteq\mathcal{G}$. Note that this is well-defined because we are only considering continuous Haar systems, and the existence of $(\lambda\circ\mu)$ is guaranteed by the Riesz-Markov-Kakutani Representation Theorem (see [<span class='ref' data-tag='MR924157'></span>, Theorem 2.14]).
+	</p>
+</div>
+
+<p>
+If $\mu$ is fully supported on $\mathcal{G}^{(0)}$ and $\lambda$ is a fully supported Haar system on a locally compact Hausdorff groupoid $\mathcal{G}$, then $(\lambda\circ\mu)$ is fully supported on $\mathcal{G}$: Indeed, if $A\subseteq\mathcal{G}$ is open (and has compact closure, without loss of generality) then $\ra(A)$ is open and nonempty in $\mathcal{G}^{(0)}$ by [<span class='ref' data-tag='MR584266'></span>, Proposition 2.4], and for all $x\in\ra(A)$, $A\cap\mathcal{G}^x$ is open and nonempty in $\mathcal{G}^x$. Thus
+<div class='equation'>\[
+	(\lambda\circ\mu)(A)=\int_{\ra(A)}\lambda^x(A\cap\mathcal{G}^x)d\mu(x)>0,
+\]</div>
+because we're integrating a strictly positive function on a set of positive measure.
+</p>
+
+<p>
+The following lemma will allow us to verify if certain maps are groupoid morphisms.
+</p>
+
+<!-- 3.5.9 !-->
+<div class='lemma' id='lemmaproduct'>
+	<p><span class='envidentifier'>Lemma 3.5.9</span>
+	Given a topological groupoid $\mathcal{G}$ with $\mathcal{G}^{(0)}$ Hausdorff and $a,b\in\mathcal{G}$, we have $\so(a)=\ra(b)$ if and only if for every pair of neighbourhoods $U$ of $a$ and $V$ of $b$ the product $UV$ is nonempty.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmaproduct'>Proof</a>
+<div class='proof' id='proofoflemmaproduct'>
+	From the second condition one can construct two nets $(a_i)_i$ and $(b_i)_i$ (over the same ordered set) converging to $a$ and $b$, respectively, such that $\so(a_i)=\ra(b_i)$, and so $\so(a)=\ra(b)$ because $\mathcal{G}^{(0)}$ is Hausdorff. The reverse implication is trivial.<span class='qed'></span>
+</div>
+
+<!-- 3.5.10 !-->
+<div class='lemma' id='lemmaderivativehaar'>
+	<p><span class='envidentifier'>Lemma 3.5.10</span>
+	If $\lambda$ and $\mu$ are continuous Haar systems on a locally compact Hausdorff topological groupoid $\mathcal{G}$ such that the Radon-Nikodym derivatives $D^x=\frac{d\lambda^x}{d\mu^x}$ exist for all $x\in\mathcal{G}^{(0)}$, then $D$ is invariant in the sense that for all $a\in\mathcal{G}$ and $\mu^{\so(a)}$-almost every $g\in\mathcal{G}^{\so(a)}$, $D^{\ra(a)}(ag)=D^{\so(a)}(g)$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmaderivativehaar'>Proof</a>
+<div class='proof' id='proofoflemmaderivativehaar'>
+	<p>
+	Using invariance of $\mu$ and $\lambda$, we have, for every $f\in C_c(\mathcal{G}^{\so(a)})$,
+	<div class='equation'>\begin{align*}
+		\int f(t) D^{\ra(a)}(at)d\mu^{\so(a)}(t)&=\int f(a^{-1}s)D^{\ra(a)}(s)d\mu^{\ra(a)}(s)\\
+			&=\int f(a^{-1}s)d\lambda^{\ra(a)}(s)=\int f(t)d\lambda^{\so(a)}(t).
+		\end{align*}
+	</div>
+	Thus $t\mapsto D^{\ra(a)}(at)$ satisfies the characterizing property of the Radon-Nikodym derivative $d\lambda^{\so(a)}/d\mu^{\so(a)}=D^{\so(a)}$, hence these functions coincide $\mu^{\so(a)}$-a.e.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+Now we prove that the convolution algebra $C_c(\mathcal{G})$ together with the $L^1$-norm coming from $(\lambda\circ\mu)$, where $\lambda$ is a (fully supported) Haar system on $\mathcal{G}$ and $\mu$ is a fully supported measure on $\mathcal{G}^{(0)}$ completely determines the triple $(\mathcal{G},\lambda,\mu)$, up to isomorphism (compare this with the results of [<span class='ref' data-tag='MR2102633'></span>]). We denote by $\mathbb{S}^1$ the <em>circle group</em> (of complex numbers with absolute value $1$ under multiplication).
+</p>
+
+<!-- 3.5.11 !-->
+<div class='theorem' id='theoremmeasuredgroupoidconvolutionalgebra'>
+	<p><span class='envidentifier'>Theorem 3.5.11</span>
+	Let $\mathcal{G}$ and $\mathcal{H}$ be locally compact Hausdorff groupoids. For each $Z\in\left\{\mathcal{G},\mathcal{H}\right\}$, let $\lambda_Z$ be a fully supported Haar system on $Z$, and $\mu_Z$ a fully supported regular Borel measure on $Z^{(0)}$.
+	</p>
+
+	<p>
+	If $T:C_c(\mathcal{G})\to C_c(\mathcal{H})$ is an algebra isomorphism which is isometric with respect to the $L^1$-norms of $(\lambda_Z\circ\mu_Z)$ ($Z\in\left\{\mathcal{G},\mathcal{H}\right\}$), then there is a (unique) topological groupoid isomorphism $\phi:\mathcal{H}\to\mathcal{G}$ and a continuous morphism $p:\mathcal{H}\to\mathbb{S}^1$ such that
+	<div class='equation'>\[
+		Tf(h)=p(h)D(\phi(h))f(\phi(h)),
+	\]</div>
+	where $D$ is a continuous instance of the Radon-Nikodym derivative
+	<div class='equation'\>\[
+		D(a)=\frac{d\lambda_{\mathcal{G}}^{\ra(a)}}{d(\phi_*\lambda_{\mathcal{H}}^{\phi^{-1}(\ra(a))})}(a),
+	\]</div>
+	and in this case, $\mu_{\mathcal{G}}=\phi_*\mu_{\mathcal{H}}$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremmeasuredgroupoidconvolutionalgebra'>Proof</a>
+<div class='proof' id='proofoftheoremmeasuredgroupoidconvolutionalgebra'>
+	<p>
+	Again applying Lemma <span class='ref' data-tag='lemmadisjointnessl1'></span> and Jarosz' Theorem (<span class='ref' data-tag='theoremjarosz'></span>), we can find a homeomorphism $\phi:\mathcal{H}\to\mathcal{G}$ and a continuous non-vanishing scalar function $P$ such that
+	<div class='equation'>\[
+		Tf(h)=P(h) f(\phi(h))\qquad\text{for all } f\in C_c(\mathcal{G})\text{ and }h\in\mathcal{H}.
+	\]</div>
+	</p>
+	
+	<p>
+	Let us check that $\phi$ is a groupoid morphism. Suppose $(a,b)\in\mathcal{H}^{(2)}$, but such that $\phi(ab)$ is not equal to $\phi(a)\phi(b)$, which might a priori not even be defined. By continuity of the product on $\mathcal{G}$ or Lemma <span class='ref' data-tag='lemmaproduct'></span> (depending on whether $\phi(a)\phi(b)$ is defined or not), find neighbourhoods $U$ and $V$ of $a$ and $b$, respectively, such that $\phi(ab)\not\in\phi(U)\phi(V)$.
+	</p>
+	
+	Choose non-negative functions $f_a,f_b\in C_c(\mathcal{H})$ such that
+	<div class='equation'>\[
+		\supp(f_a)\subseteq U,\quad\supp(f_b)\subseteq V\quad\text{and}\quad f_a(a)=f_b(b)=1.
+	\]</div>
+	Then $ab\in\supp(f_af_b)$, because $\lambda_{\mathcal{H}}$ has full support, and so
+	<div class='equation'>\begin{align*}
+		\phi(ab)&\in\supp(T^{-1}(f_af_b))\\
+			&=\supp(T^{-1}(f_a)T^{-1}(f_b))\\
+			&\subseteq\supp(T^{-1}(f_a))\supp(T^{-1}(f_b))\\
+			&=\phi(\supp(f_a))\phi(\supp(f_b))\\
+			&\subseteq \phi(U)\phi(V),
+	\end{align*}</div>
+	a contradiction. Therefore $\phi$ is a morphism and a homeomorphism, thus a topological groupoid isomorphism (Proposition <span class='ref' data-tag='propositiongroupoidmorphism'></span>(d)).
+	</p>
+	
+	<p>
+	If $f,g\in C_c(\mathcal{G})$ and $c\in\mathcal{H}$, then on one hand
+	<div class='equation'>\begin{align*}
+		T(fg)(c)
+			&=(TfTg)(c)\\
+			&=\int_{\mathcal{G}^{\ra(c)}} Tf(t)Tg(t^{-1}c)\lambda_{\mathcal{H}}^{\ra(c)}(t)\\
+			&=\int_{\mathcal{H}^{\ra(c)}} P(t)f(\phi(t))P(t^{-1}c)g(\phi(t^{-1}c))d\lambda_{\mathcal{H}}^{\ra(c)}(t)\\
+			&=\int_{\mathcal{G}^{\phi(\ra(c))}} P(\phi^{-1}(s))f(s)P(\phi^{-1}(s)^{-1}c)g(s^{-1}\phi(c))d(\phi_*\lambda_{\mathcal{H}}^{\ra(c)})(s),
+	\end{align*}</div>
+	and on the other
+	<div class='equation'>\begin{align*}
+		T(fg)(c)
+			&=P(c)(fg)(\phi(c))\\
+			&=P(c)\int_{\mathcal{G}^{\phi(\ra(c))}} f(t)g(t^{-1}\phi(c))d\lambda_{\mathcal{G}}^{\phi(\ra(c))}(t).
+	\end{align*}</div>
+	</p>
+	
+	<p>
+	Now let $f\in C_c(\mathcal{G}^{\phi(\ra(c))})$ be an arbitrary non-negative function. Define $g\in C_c(\mathcal{G}_{\phi(\so(c))})$ by $g(t)=f(\phi(c)t^{-1})$. Extending $f$ and $g$ arbitrarily to elements of $C_c(\mathcal{G})$, the equality above becomes
+	<div class='equation' id='equationtheoremrenaultorsimilar'>\[
+		\int_{\mathcal{G}^{\phi(\ra(c))}} P(\phi^{-1}(s))P(\phi^{-1}(s)^{-1}c)|f(s)|^2d\phi_*\lambda_{\mathcal{H}}^{\ra(c)}(s)=P(c)\int_{\mathcal{G}^{\phi(\ra(c))}} |f(s)|^2d\lambda_{\mathcal{G}}^{\phi(\ra(c))}(s)\tag{3.5.1}
+	\]</div>
+	for all non-negative $f\in C_c(\mathcal{G}^{\phi(\ra(c))})$ and all $c\in H$. Define $D:\mathcal{G}\to\mathbb{C}$ (or simply $\mathbb{R}$ in the real case) by
+	<div class='equation'>\[
+		D(s)=\frac{P(\phi^{-1}(s))P(\phi^{-1}(s)^{-1})}{P(\phi^{-1}(\ra(s)))}.
+	\]</div>
+	Using Equation (<span class='ref' data-tag='equationtheoremrenaultorsimilar'></span>) with $y=\ra(c)$ in place of $c$, we obtain
+	<div class='equation'>\[
+		\int_{\mathcal{G}^{\phi(y)}} D(s)|f(s)|^2d(\phi_*\lambda_{\mathcal{H}}^{y})(s)=\int_{\mathcal{G}^{\phi(y)}}|f(s)|^2d\lambda_{\mathcal{G}}^{\phi(y)}(s)
+	\]</div>
+	for all $f\in C_c(\mathcal{G}^{\phi(y)})$, thus $D$ is a continuous instance of the Radon-Nikodym derivative
+	<div class='equation'>\[
+		D(s)=\frac{d\lambda_{\mathcal{G}}^{\phi(y)}}{d(\phi_*\lambda_{\mathcal{H}}^{y})}(s)=\frac{d\lambda_{\mathcal{G}}^{\phi(\ra(c))}}{d(\phi_*\lambda_{\mathcal{H}}^{\ra(c)})}(s).
+	\]</div>
+	Now applying this to Equation (<span class='ref' data-tag='equationtheoremrenaultorsimilar'></span>), and using regularity of all measures involved, we conclude that for $\lambda_{\mathcal{G}}^{\phi(\ra(c))}$-a.e.\ $s\in\mathcal{G}^{\phi(\ra(c))}$,
+	<div class='equation'>\[
+		P(\phi^{-1}(s))P(\phi^{-1}(s)^{-1}c)=D(s)P(c),
+	\]</div>
+	and since all functions involved are continuous, and $\lambda_{\mathcal{G}}^{\phi(\ra(c))}$ has full support, the same equality is actually valid for <em>all</em> $s\in\mathcal{G}^{\phi(\ra(c))}$. Equivalently, for all $c\in\mathcal{H}$ and all $t\in\mathcal{H}^{\ra(c)}$, $P(t)P(t^{-1}c)=D(\phi(t))P(c)$. Together with Lemma <span class='ref' data-tag='lemmaderivativehaar'></span>, this implies that the map $p=P/(D\circ\phi)$ is a continuous groupoid morphism from $\mathcal{H}$ to the group of non-zero scalars.
+	</p>
+	
+	<p>
+	Now let us verify that $\mu_{\mathcal{G}}$ and $\phi_*\mu_{\mathcal{H}}$ are equivalent measures. Suppose $K\subseteq\mathcal{G}^{(0)}$ is a compact set with positive measure $\mu_{\mathcal{G}}$. For every $x\in K$, choose any nonempty open set $A_x$ in $\mathcal{G}^x$ with compact closure (although $A_x$ is not necessarily open in $\mathcal{G}$). Letting $E=\overline{\bigcup_{x\in K}A_x}$, we obtain a compact subset of $\mathcal{G}$ with positive measure $(\lambda_{\mathcal{G}}\circ\mu_{\mathcal{G}})$. Using regularity of the measures, we can extend the formula $T(f)=P\cdot f\circ\phi$ to characteristic functions of compact sets, and the resulting map will also be an isometry. In particular,
+	<div class='equation'>\[
+		(\lambda_{\mathcal{H}}\circ\mu_{\mathcal{H}})(\phi^{-1}(E))=(\lambda_{\mathcal{G}}\circ\mu_{\mathcal{G}})(E)>0,
+	\]</div>
+	so $\ra(\phi^{-1}(E))=\phi^{-1}(K)$ has positive measure $\mu_{\mathcal{H}}$. By inner regularity of the measures, we conclude that $\mu_{\mathcal{G}}$ is absolutely continuous with respect to $\phi_*\mu_{\mathcal{H}}$, and the reverse is similar.
+	</p>
+	
+	<p>
+	As for the last part, let us denote by $\Vert\cdot\Vert_Z$ the $L^1$-norm with respect to $(\lambda_Z\circ\mu_Z)$ when $Z\in\left\{\mathcal{G},\mathcal{H}\right\}$. For all $f\in C_c(\mathcal{G})$ we have
+	<div class='équation'>\begin{align*}
+		\Vert Tf\Vert_{\mathcal{H}}
+			&=\int_{\mathcal{H}^{(0)}}\left(\int_{\mathcal{H}^y}|Tf|d\lambda_{\mathcal{H}}^y\right)d\mu_{\mathcal{H}}(y)\\
+			&=\int_{\mathcal{H}^{(0)}}\left(\int_{\mathcal{H}^y}D|p(f\circ\phi)|d\lambda_{\mathcal{H}}^y\right)d\mu_{\mathcal{H}}(y)\\
+			&=\int_{\mathcal{G}^{(0)}}\left(\int_{\mathcal{G}^{x}}|(p\circ\phi^{-1})f|d\lambda_{\mathcal{G}}^x\right)d(\phi_*\mu_{\mathcal{H}})(x)\\
+			&=\int_{\mathcal{G}^{(0)}}\left(\int_{\mathcal{G}^{x}}|(p\circ\phi^{-1})(s)|\left(\frac{d(\phi_*\mu_{\mathcal{H}})}{d\mu_{\mathcal{G}}}(x)\right)|f(s)|d\lambda_{\mathcal{G}}^x(s)\right)d\mu_{\mathcal{G}}(x)\\
+			&=\int_{\mathcal{G}^{(0)}}\left(\int_{\mathcal{G}^{x}}|(p\circ\phi^{-1})(s)|\left(\frac{d(\phi_*\mu_{\mathcal{H}})}{d\mu_{\mathcal{G}}}(\ra(s))\right)|f(s)|d\lambda_{\mathcal{G}}^x(s)\right)d\mu_{\mathcal{G}}(x)\\
+			&=\int_{\mathcal{G}}|p\circ\phi^{-1}|\left(\frac{d(\phi_*\mu_{\mathcal{H}})}{d\mu_{\mathcal{G}}}\circ\ra\right)|f(s)|d(\lambda_{\mathcal{G}}\circ\mu_{\mathcal{G}})
+	\end{align*}</div>
+	and since
+	<div class='equation'>\[
+		\Vert Tf\Vert_{\mathcal{H}}=\Vert f\Vert_{\mathcal{G}}=\int_{\mathcal{G}}|f|d(\lambda_{\mathcal{G}}\circ\mu_{\mathcal{G}}),
+	\]</div>
+	we obtain
+	<div class='equation' id='equationcomparecocycleandradonnykodymofbasisspace'>\[
+		|p\circ\phi^{-1}|=\frac{d\mu_{\mathcal{G}}}{d(\phi_*\mu_{\mathcal{H}})}\circ\ra\qquad(\lambda_{\mathcal{G}}\circ\mu_{\mathcal{G}})\text{-a.e.}\tag{3.5.2}
+	\]</div>
+	Since $p$ is a morphism then $p(\mathcal{H}^{(0)})=\left\{1\right\}$, which, along with Equation (<span class='ref' data-tag='equationcomparecocycleandradonnykodymofbasisspace'></span>) and continuity of $p$, yields $|p|=|p\circ\ra|=1$ on $\mathcal{H}$. The same  Equation (<span class='ref' data-tag='equationcomparecocycleandradonnykodymofbasisspace'></span>) then also implies $\mu_{\mathcal{G}}=\phi_*\mu_{\mathcal{H}}$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+As an immediate consequence, when considering only locally compact Hausdorff groups, we obtain:
+</p>
+
+<!-- 3.5.12 !-->
+<div class='corollary'>
+	<p><span class='envidentifier'>Corollary 3.5.12</span>
+	Let $G$ and $H$ be locally compact Hausdorff groups with Haar measures $\lambda_G$ and $\lambda_H$, respectively, and $C_c(G)$ and $C_c(H)$ the respective (real or complex) convolution algebras with $L^1$ metrics induced by $\lambda_G$ and $\lambda_H$. If $T:C_c(G)\to C_c(H)$ is an isometric algebra isomorphism, then there are a topological group isomorphism $\phi:H\to G$ and a continuous character $p$ on $H$ such that
+	<div class='equation'>\[
+		Tf(h)=cp(h)f(\phi h)
+	\]</div>
+	for all $h\in H$, where $c$ is the constant such that $\lambda_G=c\lambda(\phi_*\lambda_H)$.
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	A stronger version of the corollary above, for $L^1$-algebras of locally compact Hausdorff groups, was first proven by Wendel in [<span class='ref' data-tag='MR0049910'></span>]. Further generalizations of Wendel's Theorem were proven in [<span class='ref' data-tag='MR0177058'></span>] and [<span class='ref' data-tag='MR0193531'></span>], and closely results in [<span class='ref' data-tag='MR0160846'></span>] and [<span class='ref' data-tag='MR0361622'></span>].
+	</p>
+</div>
+
+<h3 class='subsection'>3.5.3. $(I,\ra)$-Groupoid convolution algebras</h3>
+
+<p>
+In the next result we will again use the convolution algebras of topological groupoids, however now we will consider another norm, which was already defined in the work of Hahn ([<span class='ref' data-tag='MR496797'></span>]) and played an important role in Renault's work ([<span class='ref' data-tag='MR584266'></span>]). Let $\mathcal{G}$ be a locally compact étale Hausdorff groupoid, $\mathbb{K}=\mathbb{R}$ or $\mathbb{C}$ and $\theta=0$, and let $\lambda$ be a Haar system for $\mathcal{G}$. Again, we will consider the convolution algebra $C_c(\mathcal{G})=C_c(\mathcal{G},\mathbb{K})$ as defined in the previous subsection.
+</p>
+
+<p>
+Every fully supported left Haar system on an étale groupoid is essentially the counting measure (see [<span class='ref' data-tag='MR584266'></span>, 2.7]), in the sense that for all $a\in\mathcal{G}$, $\lambda^{\ra(a)}(\left\{a\right\})>0$ and the map $a\mapsto \lambda^{\ra(a)}(\left\{a\right\})$ is constant on each set $\mathcal{G}_x^y$, where $x,y\in\mathcal{G}^{(0)}$: this follows by computing
+<div class='equation'>\[
+	\lambda^x(\left\{x\right\})=\lambda^{\so(a)}(\left\{\so(a)\right\})=\lambda^{\ra(a)}(a\left\{\so(a)\right\})=\lambda^{\ra(a)}(\left\{a\right\}).
+\]</div>
+</p>
+
+<p>
+We define the $(I,\ra)$-norm on $C_c(\mathcal{G})$ as
+<div class='equation'>\[
+	\Vert f\Vert_{I,\ra}=\sup_{x\in\mathcal{G}^{(0)}}\int |f|d\lambda^x.
+\]</div>
+Note that this norm is always finite, by the <span class='ref' data-tag='remarkhaarsystemshavefinitecompactvalues'></span> succeeding Definition <span class='ref' data-tag='definitionhaarsystem'></span>.
+</p>
+
+<p>
+The unit space $\mathcal{G}^{(0)}$ of $\mathcal{G}$ is a closed unit subgroupoid, hence (trivially) étale, Hausdorff and locally compact itself. The convolution product on $C_c(\mathcal{G}^{(0)})$ coincides with the pointwise product, and the $(I,\ra)$-norm is the uniform one:
+<div class='equation'>\[
+	\Vert f\Vert_{I,\ra}=\Vert f\Vert_\infty=\sup_{x\in\mathcal{G}^{(0)}}|f(x)|,\qquad\forall f\in C_c(\mathcal{G}^{(0)}).
+\]</div>
+</p>
+
+<p>
+Moreover, $\mathcal{G}^{(0)}$ is also open in $\mathcal{G}$ (because $\mathcal{G}$ is étale), so we can identify $C_c(\mathcal{G}^{(0)})$ with the subalgebra $\left\{f\in C_c(\mathcal{G}^{(0)}:\supp(f)\subseteq\mathcal{G}^{(0)}\right\}$ of $C_c(\mathcal{G})$.
+</p>
+
+<!-- 3.5.13 !-->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 3.5.13</span>
+	The algebra $C_c(\mathcal{G}^{(0)})$, identified as a subalgebra of $C_c(\mathcal{G})$, is called the <em>diagonal subalgebra</em> of $C_c(\mathcal{G})$. If $\mathcal{G}$ and $\mathcal{H}$ are locally compact étale Hausdorff groupoids, an isomorphism $T: C_c(\mathcal{G})\to C_c(\mathcal{H})$ is called <em>diagonal-preserving</em> if $T(C_c(\mathcal{G}^{(0)}))=C_c(\mathcal{H}^{(0)})$.
+	</p>
+</div>
+
+<!-- 3.5.14 !-->
+<div class='theorem' id='theoremrenault'>
+	<p><span class='envidentifier'>Theorem 3.5.14</span>
+	Let $\mathcal{G}$ and $\mathcal{H}$ be locally compact Hausdorff étale groupoids with continuous fully supported left Haar systems $\lambda_G$ and $\lambda_H$, respectively, and $T:C_c(\mathcal{G})\to C_c(\mathcal{H})$ a diagonal-preserving algebra isomorphism, isometric with respect to the $(I,\ra)$-norms. Then there is a (unique) topological groupoid isomorphism $\phi:\mathcal{H}\to\mathcal{G}$ and a continuous morphism $p:\mathcal{H}\to\mathbb{S}^1$ such that
+	<div class='equation'>\[
+		Tf(h)=p(h)D(\phi(h))f(\phi(h)),
+	\]</div>
+	where $D$ is a continuous instance of the Radon-Nikodym derivative
+	<div class='equation'>\[
+		D(a)=\frac{d\lambda_{\mathcal{G}}^{\ra(a)}}{d(\phi_*\lambda_{\mathcal{H}}^{\phi^{-1}(\ra(a))})}(a).
+	\]</div>
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremrenault'>Proof</a>
+<div class='proof' id='proofoftheoremrenault'>
+	<p>
+	By the Banach-Stone Theorem (<span class='ref' data-tag='theorembanachstone'></span>), there is a homeomorphism $\phi:\mathcal{H}^{(0)}\to\mathcal{G}^{(0)}$ and a continuous function $P:\mathcal{H}^{(0)}\to\mathbb{S}^1$ such that $Tf(y)=P(y)f(\phi(y))$ for all $f\in C_c(\mathcal{G}^{(0)})$ and $y\in\mathcal{H}^{(0)}$. Since $T$ is multiplicative we obtain $P=1$. (The same conclusion can be obtained in a similar manner by Milgram's or Jarosz' Theorem.)
+	</p>
+	
+	<p>
+	For each $x\in\mathcal{G}^{(0)}$, let $\left\{a^x_i:i\in I_x\right\}$ be a net of functions in $C_c(\mathcal{G}^{(0)})$ satisfying:
+	<ol class='roman'>
+		<li>
+			$0\leq a^x_i\leq 1$, and $a^x_i(x)=1$;
+		</li>
+		
+		<li>
+			$\bigcap_i\supp(a^x_i)=\left\{x\right\}$;
+		</li>
+		
+		<li>
+			If $j\geq i$ then $[a^x_j\neq 0]\subseteq[a^x_i\neq 0]$.
+		</li>
+	</ol>
+	Items (ii) and (iii), and compactness of each $\supp(a^x_i)$ imply that $\left\{[a^x_i\neq 0]:i\in I_x\right\}$ is a neighbourhood basis at $x$. For $y\in\mathcal{H}^{(0)}$, let $a^y_i=T(a^{\phi(y)}_i)=a^{\phi(y)}_i\circ\phi$, so that the net $\left\{a^y_i:i\in I_{\phi(y)}\right\}$ satisfies (i)-(iii) as well.
+	</p>
+	
+	<p>
+	Continuity of $\lambda_G$ implies that for all $x\in \mathcal{G}^{(0)}$ and $f\in C_c(\mathcal{G})$, $\lim_{i\in I_x}\Vert a^x_i f\Vert_{I,\ra}=\int |f(\gamma)|d\lambda^x(\gamma)$, and similarly on $\mathcal{H}$.
+	</p>
+	
+	<p>
+	Given $f,g\in C_c(\mathcal{G})$, we use Lemma <span class='ref' data-tag='lemmadisjointnessl1'></span> to obtain
+	<div class='equation'>\begin{align*}
+		f\perp g
+			&\iff\forall x\left(f|_{\mathcal{G}^x}\perp g|_{\mathcal{G}^x}\text{ in }C(\mathcal{G}^x)\right)\\
+			&\iff\forall x\forall A,B(\lim\Vert a^x_i(Af+Bg)\Vert_{I,\ra}=\lim(|A|\Vert a^x_i f\Vert_{I,\ra}+|B|\Vert a^x_i g\Vert_{I,\ra},
+	\end{align*}</div>
+	and the last condition is preserved by $T$, so by Jarosz' Theorem $T$ is of the form $Tf(\alpha)=\widetilde{P}(\alpha)f(\widetilde{\phi}(\alpha))$ for a certain homeomorphism $\widetilde{\phi}:\mathcal{H}\to\mathcal{G}$ and a non-vanishing continuous scalar function $\widetilde{P}$. We can readily see that $\widetilde{\phi}$ and $\widetilde{P}$ are extensions of $\phi$ and $P$, respectively, so instead let us simply denote $\widetilde{\phi}=\phi$ and $\widetilde{P}=P$.
+	</p>
+	
+	<p>
+	The proof that $\phi$ is a groupoid isomorphism, and that $P$ can be decomposed as $P=(D\circ\phi)p$ for the (continuous) Radon-Nikodym derivative $D$ and some continuous morphism $p:\mathcal{H}\to\mathbb{C}\setminus\left\{0\right\}$ is the same as in Theorem <span class='ref' data-tag='theoremmeasuredgroupoidconvolutionalgebra'></span>, but the verification that $|p|=1$ is different.
+	</p>
+	
+	<p>
+	Given $y\in\mathcal{H}^{(0)}$  and $f\in C_c(\mathcal{G})$,
+	<div class='equation'>\[
+		\int_{\mathcal{H}^y}|Tf|d\lambda_{\mathcal{H}}^y=\int_{\mathcal{H}^y} |p|(D\circ\phi)|f\circ\phi|d\lambda_{\mathcal{H}}^y=\int_{\mathcal{G}^{\phi^{-1}(y)}} |p\circ\phi^{-1}||f|d\lambda_{\mathcal{G}}^{\phi(y)}.
+	\]</div>
+	Considering again the functions $a^{\phi(y)}_i$ and $a^y_i$, and the fact that $T$ is isometric we obtain
+	<div class='equation'>\begin{align*}
+		\int_{\mathcal{G}^{\phi^{-1}(y)}} |p\circ\phi^{-1}||f|d\lambda_{\mathcal{G}}^{\phi(y)}
+			&=\lim_{i\in I_{\phi(y)}}\Vert a_i^y Tf\Vert_{I,\ra}\\
+			&=\lim_{i\in I_{\phi(y)}}\Vert a_i^{\phi(y)} f\Vert_{I,\ra}\\
+			&=\int_G|f|d\lambda_{\mathcal{G}}^{\phi(y)}
+	\end{align*}</div>
+	for all $f\in C_c(\mathcal{G})$, which implies that $|p|=1$ $\lambda_{\mathcal{H}}^y$-a.e. Since $p$ is continuous and $\lambda_{\mathcal{H}}$ is fully supported, we conclude that $|p|=1$ on $\mathcal{H}$.<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection'>3.5.4. Groups of circle-valued functions</h3>
+
+<p>
+A natural question in $C^*$-algebra theory is whether we can extend isomorphisms of unitary groups of $C^*$-algebras to isomorphisms (or anti/conjugate-isomorphisms) of the whole $C^*$-algebras. Dye proved in [<span class='ref' data-tag='MR0066568'></span>] that this is always possible for continuous von Neumann factors, however this is not true in the general $C^*$-algebraic case, even in the commutative case (<span class='ref' data-tag='footnoteunitarycomcstar' id='footnoteunitarycomcstar'></span>) (see the <a href='../0.matters/appendix.html'>Appendix</a>). Therefore we should consider isomorphisms between unitary groups which preserve more structure than just the product, such as an analogue to that of Theorem <span class='ref' data-tag='theoremliwong'></span>.
+</p>
+
+<!-- 3.5.15 !-->
+<div class='theorem' id='theoremisomorphismgroupifcirclevaluedfunctions'>
+	<p><span class='envidentifier'>Theorem 3.5.15</span>
+	Let $X$ and $Y$ be two Stone spaces (Definition <span class='ref' data-tag='definitionstonespace'></span>). Suppose that $T:C(X,\mathbb{S}^1)\to C(Y,\mathbb{S}^1)$ is a group isomorphism such that $1\in f(X)\iff 1\in Tf(X)$. Then there exist a homeomorphism $\phi:Y\to X$, a finite subset $F\subseteq Y$ whose points are isolated (in $Y$) and a continuous function $p:Y\setminus F\to\left\{\pm 1\right\}$ satisfying $Tf(y)=f(\phi(y))^{p(y)}$ for all $y\in Y\setminus F$.
+	</p>
+	
+	<p>
+	In particular, if $X$ (and/or $Y$) do not have isolated points then $F=\varnothing$.
+	</p>
+</div>
+
+<p>
+The following lemma, based on [<span class='ref' data-tag='MR3162258'></span>], will be crucial to the proof of this theorem.
+</p>
+
+<!-- 3.5.16 !-->
+<div class='lemma' id='lemmatheoremisomorphismgroupifcirclevaluedfunctions'>
+	<p><span class='envidentifier'>Lemma 3.5.16</span>
+	Suppose that $X$ is a Stone space. For every pair of continuous functions $f,g:X\to\mathbb{S}^1$ and for every finite subset $F\subseteq X$ such that $f(F)\cup g(F)$ does not contain $1$, there exists $h\in C(X,\mathbb{S}^1)$ such that
+	<div class='equation'>\[
+		h(x)\not\in\left\{f(x),g(x)\right\}\text{ for all }x\text{ and }h(F)=\left\{1\right\}.
+	\]</div>
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='lemmatheoremisomorphismgroupifcirclevaluedfunctions'>Proof</a>
+</p>
+<div class='proof' id='proofoflemmatheoremisomorphismgroupifcirclevaluedfunctions'>
+	<p>
+	For every point $y\in F$, choose a clopen set $U_y$ containing $y$ such that $f(U_y)\cup g(U_y)$ does not contain $1$. For every other point $x\in X':=X\setminus\bigcup_{y\in F}U_y$, there is a clopen set $U\subseteq X'$ such that $f(U)\cup g(U)\neq\mathbb{S}^1$. Using compactness of $X'$ and taking complements and intersections if necessary we can find a clopen partition $U_1,\ldots,U_n$ of $X'$ such that $f(U_i)\cup g(U_i)\neq\mathbb{S}^1$ for all $i$. Simply choose $z_i\in \mathbb{S}^1\setminus(f(U_i)\cup g(U_i))$ and define $h=z_i$ on $U_i$, and $h=1$ on $\bigcup_{f\in F}U_f$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='theoremisomorphismgroupifcirclevaluedfunctions'>Proof</a> of Theorem <span class='ref' data-tag='theoremisomorphismgroupifcirclevaluedfunctions'></span>
+</p>
+<div class='proof' id='proofoftheoremisomorphismgroupifcirclevaluedfunctions'>
+	<p>
+	For the notion of support we will use (Definition <span class='ref' data-tag='definitionsigma'></span>), we take $\theta=1$, the constant function at $1$, so regularity of $C(X,\mathbb{S}^1)$ is immediate. 
+	</p>
+	
+	<p>
+	Suppose that $f\perp g$ but that $Tf\not\perp Tg$. By Lemma <span class='ref' data-tag='lemmatheoremisomorphismgroupifcirclevaluedfunctions'></span>, there exists $H\in C(Y,\mathbb{S}^1)$ such that $H\neq Tf,Tg$ everywhere, but that $1\in H(Y)$. Let $h=T^{-1}H$. Then $T(f^{-1}h)$ and $T(g^{-1}h)$ do not attain $1$, which implies that $f^{-1}h$ and $g^{-1}h$ do not attain $1$ as well. Thus
+	<div class='equation'>\begin{align*}
+		h^{-1}(1)
+			&=X\cap h^{-1}(1)=(f^{-1}(1)\cup g^{-1}(1))\cap h^{-1}(1)\\
+			&=(g^{-1}(1)\cap h^{-1}(1))\cup(f^{-1}(1)\cap h^{-1}(1))\\
+			&\subseteq (g^{-1}h)^{-1}(1)\cup (f^{-1}h)^{-1}(1)\\
+			&=\varnothing.
+	\end{align*}</div>
+	But $(Th)^{-1}(1)=H^{-1}(1)$ is nonempty, contradicting the given property of $T$.
+	</p>
+	
+	<p>
+	Therefore $f\perp g$ implies $Tf\perp Tg$, and the same argument yields the opposite implication, so $T$ is a $\perp$-isomorphism. Let $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ be the subgroups of order-$2$ elements of $C(X,\mathbb{S}^1)$ and $C(Y,\mathbb{S}^1)$, respectively (i.e., the groups of continuous functions with values in $\left\{-1,1\right\}$).
+	</p>
+	
+	<p>
+	$\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are also regular, since $X$ and $Y$ are zero-dimensional, and the restriction $T|_{\mathcal{A}(X)}:\mathcal{A}(X)\to \mathcal{A}(Y)$ is a $\perpp$-isomorphism, because $\perp$ and $\perpp$ coincide on $\mathcal{A}(X)$ and $\mathcal{A}(Y)$. Let $\phi:Y\to X$ be the corresponding $T|_{\mathcal{A}(X)}$-homeomorphism. 
+	</p>
+	
+	<p>
+	Let $h\in C(X,\mathbb{S}^1)$ be arbitrary. Since $\sigma(h)=\bigcup_{a\in \mathcal{A}(X),a\subseteq h}\sigma(a)$ and $T$ is a $\perp$-isomorphism, we obtain by Theorem <span class='ref' data-tag='theoremdisjoint'></span> that, for all $h\in C(X,\mathbb{S}^1)$,
+	<div class='equation'>\[
+		\phi(\sigma(Th))=\bigcup_{\substack{a\in \mathcal{A}(X)\\a\subseteq h}}\phi(\sigma(Ta))=\bigcup_{\substack{a\in \mathcal{A}(X)\\a\subseteq h}}\sigma(a)=\sigma(h).
+	\]</div>
+	Since $\phi$ is a homeomorphism it preserves closures, from which it follows that $T$ is also a $\perpp$-isomorphism, and $\phi$ is also the $T$-homeomorphism.
+	</p>
+	
+	<p>
+	<u>Claim</u>: $f(\phi(y))=1\iff Tf(y)=1$.
+	</p>
+	
+	<p>
+	Suppose $f(\phi(y))\neq 1$. Choose a function $g\in C(X,\mathbb{S}^1)$ which coincides with $f$ on a neighbourhood of $\phi(y)$ and such that $1\not\in g(X)$. Then $1\not\in Tg(Y)$ and since $Tf$ coincides with $Tg$ on a neighbourhood of $y$ then $Tf(\phi(y))=Tg(\phi(y))\neq 1$. The other direction is analogous, and thus we have proved the claim.
+	</p>
+	
+	<p>
+	Therefore $T$ is basic. Let $\chi$ be the $T$-transform, so that each section $\chi(y,\cdot)$ is an automorphism of the circle. If $\chi(y,\cdot)$ is continuous then it has the form $\chi(y,z)=z^{p(y)}$ where $p(y)\in\left\{\pm1\right\}$. Let us prove that for all except finitely many $y\in Y$, the section $\chi(y,\cdot)$ is continuous. The following argument is adapted from [<span class='ref' data-tag='MR0029476'></span>].
+	</p>
+	
+	<p>
+	 Let $F=\left\{y\in Y:\chi(y,\cdot)\text{ is discontinuous}\right\}$, and suppose that $F$ were infinite. By Proposition <span class='ref' data-tag='propositiondisjointopensets'></span>, there are countably infinitely many distinct points $y_n\in F$ ($n\in\mathbb{N}$), such that no $y_n$ lies in the closure of the other ones. We can choose a sequence $z_n\to 1$ such that $\chi(y_n,z_n)$ lies in the second or third quadrant (<span class='ref' data-tag='footnotediscontinuouscirclehom' id='footnotediscontinuouscirclehom'></span>). Define $f(\phi(y_n))=z_n$, $f=1$ on the boundary of $\left\{\phi(y_n):n\in\mathbb{N}\right\}$ and extend $f$ continuously to all of $X$. Let $y$ be an accumulation point of $\left\{y_n\right\}$, so that in particular $f(\phi(y))=1$. Then
+	<div class='equation'>\[
+		Tf(y)=\chi(y,1),\quad Tf(y_n)=\chi(y_n,z_n).
+	\]</div>
+	But $y$ is an accumulation point of the $y_n$, and $Tf(y_n)$ lies in the second or third quadrant while $Tf(y)=1$, a contradiction to the continuity of $Tf$.
+	</p>
+	
+	<p>
+	Therefore $F$ is finite, so now we show that it is open in order to conclude that its points are isolated in $Y$. Let $y\in Y$ and choose $z_0\in\mathbb{S}^1$ of the form $z_0=e^{it}$ where $-\pi/4\leq t\leq \pi/4$, but such that $\chi(y,z_0)$ is in the second or third quadrant, so in particular it is not $z_0$ nor $z_0^{-1}$. Denote by $z_0$ the constant function at $z_0$, we that
+	<div class='equation'>\[
+		T(z_0)(y)=\chi(y,z_0)\neq z_0,z_0^{-1}.
+	\]</div>
+	Since $T(z_0)$ is continuous, there is a neighbourhood $U$ of $y$ such that $\chi(x,z_0)\neq z_0,z_0^{-1}$ for all $x\in U$, so $x\in F$.
+	</p>
+	
+	<p>
+	Therefore $Y'=Y\setminus F$ is also compact, and we already constructed the function $p:Y'\to\left\{\pm 1\right\}$ with the desired property. To see that $p$ is continuous, denote by $i$ the constant function $x\mapsto i$ and note that
+	<div class='equation'>\[
+		p^{-1}(1)=\left\{y\in Y':\chi(y,i)=i\right\}=\left\{y\in Y':T(i)(y)=i\right\}=T(i)^{-1}(i)\cap Y',
+	\]</div>
+	and similarly $p^{-1}(-1)=T(i)^{-1}(-i)\cap Y'$, so these two sets, which are complementary in $Y'$, are closed and hence clopen.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 3.5.17 !-->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.5.17</span>
+	As an easy example where the subset $F\subseteq Y$ in the previous theorem is nonempty, let $X=Y=\left\{\ast\right\}$ be (equal) singletons, and let $t:\mathbb{S}^1\to\mathbb{S}^1$ be a discontinuous automorphism of $\mathbb{S}^1$.
+	</p>
+	
+	<p>
+	Consider the map $T:C(X,\mathbb{S}^1)\to C(Y,\mathbb{S}^1)$, $T(f)(\ast)=t(f(\ast))$ (in other words, $T$ is the function obtained from $t$ by identifying $C(X,\mathbb{S}^1)$ and $C(Y,\mathbb{S}^1)$ with $\mathbb{S}^1$). Then $T$ satisfies the hypotheses of the previous theorem but $F=Y$.
+	</p>
+</div>
+
+<p>
+We now endow $C(X,\mathbb{S}^1)$ with the uniform metric:
+<div class='equation'>\[
+	d_\infty(f,g)=\sup_{x\in X}|f(x)-g(x)|
+\]</div>
+(which is the metric coming from the $C^*$-algebra $C(X,\mathbb{C})$).
+</p>
+
+<!-- 3.5.18 !-->
+<div class='theorem' id='theoremisometricisomorphismcirclegroups'>
+	<p><span class='envidentifier'>Theorem 3.5.18</span>
+	If $X$ and $Y$ are as above and $T:C(X,\mathbb{S}^1)\to C(Y,\mathbb{S}^1)$ is an isometric isomorphism, then there is a homeomorphism $\phi:Y\to X$ and a continuous function $p:Y\to\left\{\pm 1\right\}$ such that $Tf(y)=f(\phi(y))^{p(y)}$ for all $y\in Y$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremisometricisomorphismcirclegroups'>Proof</a>
+<div class='proof' id='proofoftheoremisometricisomorphismcirclegroups'>
+	<p>
+	We identify each $\lambda\in\mathbb{S}^1$ with the corresponding constant map on $X$ or $Y$. The constant function $-1$ is characterized by the following two properties:
+	<ul>
+		<li>
+			\item $(-1)^2=1$;
+		</li>
+		
+		<li>
+			If $g^3=1$, then $d_\infty(-1,g)\in\left\{1,2\right\}$.
+		</li>
+	</ul>
+	Thus $T(-1)=-1$. A function $f$ does not attain $1$ if and only if $d_\infty(-1,f)\smallerthan 1$, so $T$ preserves functions not attaining $1$, and we apply Theorem <span class='ref' data-tag='theoremisomorphismgroupifcirclevaluedfunctions'></span> (or more precisely its proof) in order to obtain a homeomorphism $\phi:Y\to X$, a function $\chi:Y\times\mathbb{S}^1\to\mathbb{S}^1$ and a continuous function $p:Y'\to\left\{-1,1\right\}$, where $Y'=\left\{y\in Y:\chi(y,\cdot)\text{ is continuous}\right\}$, such that
+	<div class='equation'>\[
+		Tf(y)=\chi(y,f(\phi(y))\qquad\text{and}\qquad\chi(y',t)=t^{p(y')}
+	\]</div>
+	for all $y\in Y$, $y'\in Y'$ and $f\in C(X,\mathbb{S}^1)$. It remains only to prove that $Y'=Y$, i.e., every section $\chi(y,\cdot)$ is continuous.
+	</p>
+	
+	<p>
+	If $\lambda_i\to\lambda$ in $\mathbb{S}^1$ then we also have uniform convergence of the corresponding constant functions, so
+	<div class='equation'>\[
+		\chi(y,\lambda_i)=T(\lambda_i)y\to T(\lambda)y=\chi(y,\lambda),
+	\]</div>
+	thus $\chi(y,\cdot)$ is continuous for all $y$.<span class='qed'></span>
+	</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

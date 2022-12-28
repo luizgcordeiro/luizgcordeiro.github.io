@@ -1,0 +1,12 @@
+<a class='reflink' href='../1.gis/1.2.is.html#definitionkappadistributivesemigroup'>1.2.40</a>
+<!-- 1.2.40 -->
+<div class="toload definition">
+<p><span class="envidentifier">Definition 1.2.40
+<span style="font-weight:normal;">([<span class='ref' data-tag='MR1940513'></span>, p. 82])</span></span>
+Let $\kappa$ be a cardinal. An inverse semigroup $S$ is <em>$\kappa$-distributive</em> if for every compatible set $F\subseteq S$ with $|F|<\kappa$, the supremum $\bigvee F$ exists and for all $z\in S$,
+<div class="equation"\[
+z\left(\bigvee F\right)=\bigvee(zF).
+\]</div>
+Note that $|zF|\leq |F|$ and $zF$ is compatible by Proposition <span class='ref' data-tag='propositioncompatibility'></span>, and that $\left(\bigvee F\right)z=\bigvee(Fz)$ also holds by Proposition <span class='ref' data-tag='propositionpropertiesofjoins'></span>(b).
+</p>
+</div>

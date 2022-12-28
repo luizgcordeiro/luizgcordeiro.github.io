@@ -1,0 +1,13 @@
+\begin{theorem}
+	Seja $V$ um espaço vetorial com produto interno e $A$ um subconjunto de vetores não-nulos de $V$. Se $A$ é ortogonal, então $A$ é linearmente independente.
+\end{theorem}
+
+\begin{proof}
+	Considere uma combinação linear nula de elementos de $A$:
+	\[\sum_{i=1}^n\lambda_i a_i=0_V,\tag{$*$}\]
+	onde $a_1,\ldots,a_n$ são elementos distintos de $A$ e $\lambda_1,\ldots,\lambda_n$ são escalares. Dado $j\in\left\{1,\ldots,n\right\}$, devemos provar que $\lambda_j=0$. Tomamos o produto interno à direita em ($*$) com $a_j$, e obtemos, por linearidade na primeira entrada,
+	\[\sum_{i=1}^n\lambda_i\langle a_i,a_j\rangle=0.\tag{$**$}\]
+	Como $A$ é ortogonal, $\langle a_i,a_j\rangle=0$ se $i\neq j$. Assim, ($**$) se reescreve como
+	\[\lambda_j\langle a_j,a_j\rangle=0.\]
+	Por hipótese, $a_j\neq 0$, e portanto $\lambda_j=0$, como queríamos.
+\end{proof}

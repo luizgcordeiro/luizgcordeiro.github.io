@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#propositionwheneveryborelbisectionisborelbisection'>1.6.8</a>
+<!-- 1.6.8 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 1.6.8</span>
+	Let $\mathcal{G}$ be a Borel groupoid for which there exists a countable family $\mathcal{C}\subseteq\BOR(\mathcal{G})$ such that $\mathcal{G}\subseteq\bigcup\mathcal{C}$. Then every bisection of $\mathcal{G}$ which is a Borel subset belongs to $\BOR(\mathcal{G})$.
+	</p>
+</div>

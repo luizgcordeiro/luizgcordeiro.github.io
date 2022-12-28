@@ -1,0 +1,14 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#examplegraphtriangle'>1.1.2</a>
+<div class='toload example'>
+<p>
+<span class="envidentifier">Example 1.1.2</span> Let $X$ be a set and $R$ any binary relation on $X$, i.e., a subset of $X^2$. Define a directed graph $\mathcal{G}$ by letting $\mathcal{G}^{(0)}=X$, $\mathcal{G}^{(1)}=R$, $\mathfrak{s}(y,x)=x$ and $\mathfrak{r}(y,x)=y$ for all $(y,x)\in R$.
+</p>
+<p>
+As a sub-example, let $X=\left\{a,b,c\right\}$ and $R=\left\{(b,a),(c,b),(a,c)\right\}$. The associated graph can be depicted as
+<div class="equation">\[
+	\xymatrix{
+	&b\ar[rd]&\\
+	a\ar[ur]&&c\ar[ll]
+	}
+\]</div></p>
+</div>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(A\) uma matrix \(m\times n\) e \(R\) a forma reduzida por linhas de \(A\).
+</p>
+<p>
+Então as linhas que contêm os pivôs de \(R\) formam uma base para o espaço linha de \(A\).
+</p>
+
+</div>
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Note que as linhas que contêm os pivôs de \(R\) formam uma base para o espaço linha de \(R\). De fato, \(R\) estar em forma reduzida por linhas significa que
+<div>
+\begin{equation*}
+R=\begin{bmatrix}-&v_1&-\\&\vdots&\\-&v_k&-\\-&0&-\\&\vdots&\\-&0&-
+
+\end{bmatrix}
+\end{equation*}
+</div>
+onde os \(v_i=(v_{i1},\ldots,v_{in})\) são vetores (linhas) tais que, se o pivô de \(v_i\) se encontra em uma entrada \(p\), então as \(p\)-ésimas entradas de \(v_{i+1}\), \(v_{i+2}\), &#8230;, \(v_k\) são todas iguais a zero.
+</p>
+<p>
+As linhas \(v_1,\ldots,v_k\), que contêm os pivôs de \(R\), claramente geram o espaço linha de \(R\). Quanto a elas serem linearmente independentes, suponha que temos uma combinação linear nula:
+<div>
+\begin{equation*}
+\lambda_1 v_1+\cdots+\lambda_k v_k=0.
+\end{equation*}
+</div>
+Vamos olhar para a entrada do pivô de \(v_1\): Pela propriedade descrita acima, as entradas correspondentes de \(v_2,\ldots,v_k\) são todas nulas. Portanto, se o pivô está na \(p\)-ésima entrada de \(v_1\), obtemos
+<div>
+\begin{equation*}
+\lambda_1 v_{1p}=0,
+\end{equation*}
+</div>
+e portanto \(\lambda_1=0\). A combinação linear nula se transforma em
+<div>
+\begin{equation*}
+\lambda_2 v_2+\cdots+\lambda_k v_k=0.
+\end{equation*}
+</div>
+Repetimos o mesmo argumento para \(v_2\), olhando para a entrada que contém seu pivô, e depois para \(v_3\), \(v_4\), &#8230;, \(v_k\), até concluir que \(\lambda_1=\lambda_2=\cdots=\lambda_k=0\).
+</p>
+<p>
+Isto mostra que \(v_1,\ldots,v_k\) são linearmente independentes e geradores para o espaço linha de \(R\), e portanto geram uma base para este espaço.
+</p>
+<p>
+Para concluir o teorema, basta provar que espaço linha de \(R\) e o espaço linha de \(A\) coincidem. Para isto, vamos demonstrar que operações elementares em linhas não alteram espaços linha.
+</p>
+<p>
+Suponha que uma matriz \(C\) é formada a partir de uma matriz \(B\) por uma única operação elementar de linhas. Sejam \(b_1,\ldots,b_m\) as linhas de \(B\). Existem três operações que podem ter sido feitas:
+</p>
+
+<ul>
+
+<li>
+<p>
+Troca de linhas.
+</p>
+<p>
+Neste caso, \(C\) é obtida de \(B\) trocando duas linhas de posição. Neste caso, as linhas de \(B\) e \(C\) são exatamente as mesmas, a menos de uma reordenação, e é claro que os espaços linhas de \(B\) e \(C\) são iguais, pois têm os mesmos geradores.
+</p>
+
+</li>
+
+<li>
+<p>
+Multiplicar uma linha por um escalar não-nulos.
+</p>
+<p>
+Neste caso, uma das linhas de \(C\) é obtida ao se multiplicar uma linha de \(B\) por um escalar não-nulo. Digamos que uma linha \(b_i\) foi multiplicada por um escalar \(\lambda\neq 0\). Neste caso, as linhas de \(C\) são \(b_1,\ldots,b_{i-1},\lambda b_i,b_{i+1},\ldots,b_m\), enquanto as linhas de \(B\) são \(b_1,\ldots,b_m\). Claramente, estes conjuntos de vetores geram o mesmo subespaço. Portanto \(\operatorname{Lin}(C)=\operatorname{Lin}(B)\).
+</p>
+
+</li>
+
+<li>
+<p>
+Adicionar um múltiplo de uma linha a outra.
+</p>
+<p>
+Isto significa que as linhas de \(C\) são as mesmas que as de \(B\), exceto que para algum \(i\), a linha \(b_i\) é trocada por um vetor da forma \(b_i+\lambda b_j\) para algum \(j\neq i\). De qualquer modo, ambas as linhas de \(C\) e de \(B\) geram o mesmo subespaço, como é fácil de verificar.
+</p>
+
+</li>
+</ul>
+<p>
+Em todos os casos, \(\operatorname{Lin}(C)=\operatorname{Lin}(B)\).
+</p>
+<p>
+Voltando à prova do teorema, a matriz \(R\) pode ser obtida a partir de \(A\) a por uma quantidade finita de operações elementares em linhas. Como cada uma dessas operações elementares preserva espaços linha, então o espaço linha de \(R\) coincide com o espaço linha de \(A\).
+</p>
+
+</div></body>
+</html>

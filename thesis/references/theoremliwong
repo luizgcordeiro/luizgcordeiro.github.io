@@ -1,0 +1,13 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#theoremliwong'>3.4.14</a>
+
+<!-- 3.4.14 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.4.14
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR3162258'></span>])</span></span>
+	Let $X$ and $Y$ be compact Hausdorff spaces, and $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ be two regular vector sublattices of $C(X,\mathbb{R})$ and $C(Y,\mathbb{R})$, respectively. Suppose that $T:\mathcal{A}(X)\to \mathcal{A}(Y)$ is a linear isomorphism which preserves non-vanishing functions, that is, for all $f\in\mathcal{A}(X)$,
+	<div class='equation'>\[
+		0\in f(X)\iff 0\in Tf(Y).
+	\]</div>
+	Then there is a homeomorphism $\phi:Y\to X$ and a continuous non-vanishing function $p:Y\to\mathbb{R}$ such that $Tf(y)=p(y)f(\phi(y))$ for all $f\in\mathcal{A}(X)$ and $y\in Y$.
+	</p>
+</div>

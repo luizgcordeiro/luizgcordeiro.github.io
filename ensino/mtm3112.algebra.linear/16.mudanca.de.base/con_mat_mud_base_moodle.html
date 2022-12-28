@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Definição</b>.
+<p>
+Seja \(V\) um espaço vetorial de dimensão finita com duas bases ordenadas \(\mathcal{B}=\left\{b_1,\ldots,b_n\right\}\) e \(\mathcal{C}=\left\{c_1,\ldots,c_n\right\}\).
+</p>
+<p>
+A <b>matriz de mudança da base \(\mathcal{B}\) para a base \(\mathcal{C}\)</b> é a matriz \([\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{C}}\), que representa a função identidade de \(V\) relativa às bases \(\mathcal{B}\) e \(\mathcal{C}\).
+</p>
+
+<hr/>
+<p>
+Esta matriz é usada para encontrar as coordenadas de vetores de \(V\) em diferentes bases. Dado um vetor \(v\in V\) com vetor coordenada \([v]^{\mathcal{B}}\) relativo à base \(\mathcal{B}\), temos que \([v]^\mathcal{C}=[\operatorname{id}]_{\mathcal{B}}^{\mathcal{C}}[v]^{\mathcal{B}}\).
+</p>
+
+</div>
+
+<hr/>
+<p>
+Matrizes de mudança de bases podem ser calculadas do seguinte modo: Em geral, os espaços vetoriais que consideramos já vêm com uma base <span>&#8220;</span>canônica<span>&#8221;</span> (por exemplo, \(\mathbb{R}^n\) com sua base padrão; O espaço \(\mathbb{R}[x]\) dos polinômios reais com a base consistindo dos monômios), e as representações de vetores nessas bases canônicas são fáceis de se calcular.
+</p>
+<p>
+Digamos então que \(\mathcal{A}\) é uma base <span>&#8220;</span>canônica<span>&#8221;</span> ordenada de um espaço vetorial \(V\) e \(\mathcal{C}=\left\{c_1,\ldots,c_n\right\}\) é outra base ordenada de \(V\). Considere \([c_i]^{\mathcal{A}}\), os vetores coordenadas de cada vetor de \(\mathcal{C}\) na base \(\mathcal{A}\) (que estamos assumindo que são fáceis de se calcular). Então por definição, temos que
+<div>
+\begin{equation*}
+\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{A}}=
+\begin{bmatrix}
+| & & | \\
+[c_1]^{\mathcal{A}} & \cdots & [c_n]^{\mathcal{A}} \\
+| & & |
+
+
+\end{bmatrix}
+\end{equation*}
+</div>
+e portanto
+<div>
+\begin{align*}
+\left[\operatorname{id}_V\right]_{\mathcal{A}}^\mathcal{C}
+&=\left(\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{A}}\right)^{-1}\\
+&=\left(\begin{bmatrix}
+| & & | \\
+[c_1]^{\mathcal{A}} & \cdots & [c_n]^{\mathcal{A}} \\
+| & & |
+
+
+\end{bmatrix}\right)^{-1}.
+\end{align*}
+</div>
+</p>
+
+<hr/>
+<p>
+Mais geralmente, suponha agora que \(\mathcal{B}\) e \(\mathcal{C}\) sejam duas bases ordenadas de \(V\), e que \(\mathcal{A}\) é uma base <span>&#8220;</span>canônica<span>&#8221;</span>. Então a matriz de mudança de base \([\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{A}}\) é fácil de se calcular (suas colunas são os vetores coordenadas dos elementos de \(\mathcal{B}\) na base \(\mathcal{A}\)), e o procedimento acima provê um método de cálculo para \([\operatorname{id}_V]_{\mathcal{A}}^\mathcal{C}\). Portanto, para calcular a matriz de mudança da base \(\mathcal{B}\) para a base \(\mathcal{C}\), podemos simplesmente calcular o produto destas matrizes, pois
+<div>
+\begin{equation*}
+\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{C}}=\left[\operatorname{id}_V\right]_{\mathcal{A}}^{\mathcal{C}}\cdot\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{A}}.
+\end{equation*}
+</div></body>
+</html>

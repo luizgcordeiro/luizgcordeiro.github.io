@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#propositionmeasureinvariancefororbitrelation'>1.6.21</a>
+<!-- 1.6.21 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 1.6.21</span>
+	If $\mathcal{G}$ is a $\ra$-discrete standard Borel groupoid and $\mu$ is a measure on $\mathcal{G}^{(0)}$, then $\mu$ is invariant for $\mathcal{G}$ if and only if $\mu$ is invariant for the orbit relation $\mathcal{R}(\mathcal{G})$.
+	</p>
+</div>

@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#theoremfiniteindexgroupoids'>2.3.12</a>
+
+<!-- 2.3.12 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.3.12</span>
+	Suppose $\mathcal{H}\subseteq\mathcal{G}$ is of finite index. If $\mathcal{H}$ is sofic, so is $\mathcal{G}$.
+	</p>
+</div>

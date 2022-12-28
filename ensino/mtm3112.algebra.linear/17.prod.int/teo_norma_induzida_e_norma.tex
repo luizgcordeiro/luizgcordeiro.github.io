@@ -1,0 +1,27 @@
+\begin{theorem}
+	Seja $V$ um espaço vetorial munido com um produto interno $\langle\,\cdot\,,\,\cdot\,\rangle$. Então a expressão
+	\[\Vert v\Vert=\sqrt{\langle v,v\rangle}\]
+	define uma norma em $V$.
+\end{theorem}
+
+\begin{proof}
+	A única propriedade não-trivial que se deve verificar é a desigualdade triangular. Sejam $u,v\in V$. Então
+	\begin{align*}
+	\Vert u+v\Vert^2
+		&=\langle u+v,u+v\rangle\\
+		&=\langle u,u\rangle+2\langle u,v\rangle+\langle v,v\rangle\\
+		&=\Vert u\Vert^2+2\langle u,v\rangle+\Vert v\Vert^2.
+	\end{align*}
+	Pela Desigualdade de Cauchy--Bunyakovsky--Schwarz, temos que $\langle u,v\rangle\leq\Vert u\Vert \Vert v\Vert$, e portanto
+	\begin{align*}
+	\Vert u+v\Vert^2
+		&\leq\Vert u\Vert^2+2\Vert u\Vert\Vert v\Vert+\Vert v\Vert^2\\
+		&=\left(\Vert u\Vert+\Vert v\Vert\right)^2.
+	\end{align*}
+	
+	Tomando raízes quadradas em ambos os lados da equação acima (o que é permitido pois todos os termos de interesse são não-negativos), concluímos que
+	\[\Vert u+v\Vert\leq\Vert u\Vert+\Vert v\Vert,\]
+	precisamente a desigualdade triangular.
+	
+	A prova de que as outras propriedades de norma são satisfeitas é deixada como um exercício.
+\end{proof}

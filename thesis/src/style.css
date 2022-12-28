@@ -1,0 +1,259 @@
+.proofbutton {
+	margin: 5px 0 5px 0;
+}
+
+body {
+	background-color: #F7F7F7;
+}
+
+.envidentifier {
+		font-weight: bold;
+		font-style: normal;
+}
+
+.envidentifier::after {
+		content: ".";
+}
+
+div.definition, div.example, div.remark	 {
+	padding: 5px;
+	background: #E0FCFA;
+	box-shadow: 3px 5px #A4D3BC;
+	margin-bottom:15px;
+	margin-top: 10px;
+	font-style: normal;
+}
+
+div.theorem, div.proposition, div.corollary, div.lemma {
+	padding: 5px;
+	background: #FFF5D5;
+	box-shadow: 3px 5px #FFDA63;
+	margin-bottom: 15px;
+	margin-top: 10px;
+	font-style: italic;
+}
+
+main div.definition, main div.example, main div.remark, main div.theorem, main div.proposition, main div.lemma, main div.corollary{
+	width:100%;
+}
+
+div.definition p:first-child, div.example p:first-child, div.remark p:first-child, div.theorem p:first-child, div.proposition p:first-child, div.lemma p:first-child, div.corollary p:first-child {
+	display: inline;
+}
+
+.proofbutton {
+	margin-top:0px;
+}
+
+div.proof {
+	position:relative;
+	display: none;
+	border-style: double;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+span.qed{
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+	font-style: italic;
+	font-weight: normal;
+}
+
+span.qed::after{
+	content: "Q.E.D.";
+}
+
+
+/*
+We now set the sidebar. It is not static, i.e. it disappears when scrolling down.
+This seems preferable since scrolling down can
+get a bit laggy and generally distracts from the reading
+
+The sidebar has a title (e.g. the book's title), chapters (given by h1's) and
+sections (given by h2's)
+*/
+
+div.sidebar {
+float: left;
+width: 20%;/* make sure this is compatible with the margin-left at div.main*/
+}
+
+div.sidebar h1.sidebar-title {
+background-color: EAEAEA;
+display: block; /*block occupies an entire line*/
+font-size:180%;
+margin-bottom: 0px;
+margin-top: 0px;
+border-style: solid;
+border-width:2px;
+}
+
+div.sidebar h1 {
+background-color: #EDEDED;
+font-weight: bold;
+display: block;
+font-size: 100%;
+}
+
+div.sidebar h2 {
+background-color: #F9F9F9;
+display: block;
+font-size:90%;
+margin-bottom: 0px;
+margin-top: 0px;
+}
+
+/*
+The main part of the document is a floating block right of the sidebar
+*/
+
+div.main {
+margin-left: 20%;/* make sure this is compatible with the width of #sidebar*/
+width: 50%;
+padding: 10px;/* distance from margin to content*/
+text-align: justify;
+}
+
+/*
+The right bar is to the right of the main bar, and should look like the main part.
+It will consist of a bunch of divs with the necessary references.
+*/
+
+div.fullrightbar {
+position: fixed;
+margin-left:70%;
+width: 28%;/* make sure this is compatible with the width of #sidebar*/
+padding:10px;/* margin around <p>'s*/
+text-align: justify;
+overflow: auto;
+}
+
+/*
+Buttons load content to the right bar. Let's make them look nices
+*/
+
+button.makeref {
+border: none;
+background-color: #C6ECE2;
+border: 1px dotted blue;
+padding: 2px;
+}
+
+/*
+Some useful commands
+*/
+
+ol,ul {
+	margin-top: 1ex;
+	margin-bottom: 1ex;
+}
+ol.roman {
+    counter-reset: roman;
+	position:relative;
+}
+ol.roman > li {
+    list-style: none;
+}
+ol.roman > li:before {
+  counter-increment: roman;
+  content: "(" counter(roman,lower-roman) ")";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+
+ol.arpar {
+    counter-reset: ar;
+	position:relative;
+}
+ol.arpar > li {
+    list-style: none;
+}
+ol.arpar > li:before {
+  counter-increment: ar;
+  content: "(" counter(ar) ")";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+
+ol.alphpar {
+    counter-reset: alphpar;
+	position:relative;
+}
+ol.alphpar > li {
+    list-style: none;
+}
+ol.alphpar > li:before {
+  counter-increment: alphpar;
+  content: "(" counter(alphpar,lower-alpha) ")";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+
+/* Reference style*/
+ol.listofreferences {
+	counter-reset: refnumber;
+	position:relative;
+}
+ol.listofreferences > li {
+	list-style: none;
+}
+ol.listofreferences > li:before {
+  counter-increment: refnumber;
+  content: "[" counter(refnumber) "]";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+
+span.author {
+font-weight: bold;
+}
+
+span.title {
+font-style: italic;
+}
+
+/*
+Now we add tooltips. These are the texts which will appear on the
+right-hand side of the screen when the mouse hovers over some
+reference and/or citation
+*/
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.main .tooltiptext {
+  visibility: hidden;
+  width: 120%;
+  left: 80%;
+  background-color: gray;
+  color: #fff;
+  border-radius: 600px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position:absolute;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

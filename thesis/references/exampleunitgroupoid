@@ -1,0 +1,23 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#exampleunitgroupoid'>1.1.22</a>
+
+<!-- 1.1.22 -->
+<div class="toload example">
+<p><span class="envidentifier">Example 1.1.22</span>
+Every set $X$ can be regarded as a groupoid by setting $X^{(2)}=\left\{(x,x):x\in X\right\}$ and the product $xx=x$ for all $x\in X$.
+</p>
+<p>
+Alternatively, let $X^{(2)}$ be the identity equivalence relation on $X$, regarded as a groupoid as in Example <span class='ref' data-tag='exampleequivalencerelationsarecategories'></span>, or let $\left\{1\right\}$ be the trivial group acting (trivially) on $X$ and consider the transformation groupoid $\left\{1\right\}\ltimes X$ as in <span class='ref' data-tag='exampletransformationgroupoid'></span>. Any of the two bijections
+\[\begin{array}{rcl}
+X&\longrightarrow&X^{(2)}\\
+x&\longmapsto&(x,x)
+\end{array}\qquad\text{or}\qquad\begin{array}{rcl}
+X&\longrightarrow&\left\{1\right\}\ltimes X\\
+x&\longmapsto&(1,x)
+\end{array}
+\]
+induces the same groupoid structure on $X$ as above.
+</p>
+<p>
+In any case, the groupoids constructed in this manner are precisely the groupoids $\mathcal{G}$ satisfying $\mathcal{G}^{(0)}=\mathcal{G}$, and these are called the <em>unit groupoids</em>.
+</p>
+</div>

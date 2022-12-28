@@ -1,0 +1,15 @@
+<a class='reflink' href='../1.gis/1.8.nclst.html#lemmabooleanalgebraofsmallerelements'>1.8.10</a>
+<!-- 1.8.10 -->
+<div class='toload lemma'>
+<p><span class='envidentifier'>Lemma 1.8.10</span>
+Let $S$ be a weakly Boolean inverse semigroup and $g\in S$. We define $G$ to be the semigroup with underlying set
+<div class='equation'>\[
+G=\left\{g\right\}^{\downarrow}=\left\{s\in S:s\leq g\right\}
+\]</div>
+and whose operation is the meet of $S$: $G^2\to G$, $(s,t)\mapsto s\land t$ (which is well-defined by Proposition <span class='ref' data-tag='propositioncompatibility'></span>(c)).
+</p>
+
+<p>
+Then $G$ is a unital Boolean algebra. The order of $S$ restricts to the order of $G$, and arbitrary joins and meets in $S$ coincide with arbitrary joins and meets in $G$. If $S$ is $\sigma$-distributive then $G$ is $\sigma$-complete.
+</p>
+</div>

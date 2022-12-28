@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Seja \(V\) um espaço vetorial equipado com um produto interno \(\langle\,\cdot\,,\,\cdot\,\rangle\). Então para quaisquer \(u,v\in V\), vale que
+<div>
+\begin{equation*}
+\left(\langle u,v\rangle\right)^2\leq\langle u,u\rangle\langle v,v\rangle.
+\end{equation*}
+</div>
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Primeiro, note que o teorema é válido caso \(u=0\), pois neste caso os lados da desigualdade desejada são iguais a zero.
+</p>
+<p>
+Vamos então assumir que \(u\neq 0\), o que significa que \(\langle u,u\rangle>0\) pois o produto interno é não-degenerado. Para todo número real \(\lambda\), as propriedades do produto interno implicam que
+<div>
+\begin{align*}
+0
+&\leq  \langle \lambda u+v,\lambda u+v\rangle\\
+&=\lambda^2\langle u,u\rangle+2\lambda\langle u,v\rangle+\langle v,v\rangle.\tag{$*$}
+\end{align*}
+</div>
+</p>
+<p>
+O último termo da desigualdade acima pode ser visto como um polinômio de segundo grau na variável \(\lambda\). Como a desigualdade é válida para <u>todo</u> número real \(\lambda\), então em particular é válida no ponto onde este polinômio alcança seu mínimo.
+</p>
+<p>
+Especificamente, a desigualdade (\(*\)) é válida em particular para o valor \(\lambda=-\frac{\langle u,v\rangle}{\langle u,u\rangle}\), o que nos dá
+<div>
+\begin{equation*}
+0\leq\frac{\langle u,v\rangle^2}{\langle u,u\rangle}-2\frac{\langle(\langle u,v\rangle\rangle)^2}{\langle u,u\rangle}+\langle v,v\rangle,
+\end{equation*}
+</div>
+o que é equivalente a
+<div>
+\begin{equation*}
+\frac{(\langle u,v\rangle)^2}{\langle u,u\rangle}\leq\langle v,v\rangle,
+\end{equation*}
+</div>
+ou ainda, multiplicando ambos os lados pelo número positivo \(\langle u,u\rangle\), à desigualdade
+<div>
+\begin{equation*}
+\left(\langle u,v\rangle\right)^2\leq\langle u,u\rangle\langle v,v\rangle,
+\end{equation*}
+</div>
+exatamente o que queríamos.
+</p>
+
+</div></body>
+</html>

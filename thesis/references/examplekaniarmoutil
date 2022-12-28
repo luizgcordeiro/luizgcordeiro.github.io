@@ -1,0 +1,16 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#examplekaniarmoutil'>3.1.10</a>
+
+<!-- 3.1.10 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.1.10
+	<span style='font-weight:normal'>(Kania-Rmoutil, [<span class='ref' data-tag='MR3813611'></span>])</span></span>
+	Suppose that $X$ is a Stone space (Definition <span class='ref' data-tag='definitionstonespace'></span>) and that $H$ is a Hausdorff space with at least two points. Let $\mathcal{A}$ consist of all continuous $H$-valued functions with finite range and $\theta$ be any element of $\mathcal{A}$. Regularity of $\mathcal{A}$ is an immediate consequences of $X$ being zero-dimensional (and $H$ containing more than one point). Define the <em>compatibility ordering</em> on $C(X)$ by
+	<div class='equation'>\[
+		f\preceq g\iff g|_{\supp^\theta(f)}=f|_{\supp^\theta(f)}.
+	\]</div>
+	Then $\perp$ coincides with $\perpp$, and it can be described in terms of $\preceq$ by
+	<div class='equation'>\[
+		f\perp g\iff f\perpp g\iff\inf_{\preceq}(f,g)=\theta(=\inf_{\preceq}\mathcal{A})\text{ and }\left\{f,g\right\}\text{ has a }\preceq\text{-upper bound.}
+	\]</div>
+	</p>
+</div>

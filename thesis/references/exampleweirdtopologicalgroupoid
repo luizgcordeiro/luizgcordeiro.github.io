@@ -1,0 +1,14 @@
+<a class='reflink' href='../1.gis/1.3.tg.html#exampleweirdtopologicalgroupoid'>1.3.5</a>
+<!-- 1.3.5 -->
+<div class='toload example'>
+<p><span class='envidentifier'>Example 1.3.5</span>
+Let $\mathcal{G}$ be any groupoid and assume $\mathcal{G}^{(0)}$ is endowed with some (arbitrary) topology. Define a topology on $\mathcal{G}$ where $A\subseteq \mathcal{G}$ is open if and only if $A\cap\mathcal{G}^{(0)}$ is open in $\mathcal{G}^{(0)}$. This makes $\mathcal{G}$ a topological groupoid. Indeed, $A^{-1}\cap\mathcal{G}^{(0)}=A\cap\mathcal{G}^{(0)}$ for all $A\subseteq\mathcal{G}$, which implies that the inversion is continuous, so let us check the product is continuous: Let $(a,b)\in \mathcal{G}[2]$ and $U$ any open set containing $ab$. There are a few possibilities:
+<ul>
+	<li>If $a,b\not\in\mathcal{G}^{(0)}$, then $\left\{a\right\}$ and $\left\{b\right\}$ are open and $\left\{a\right\}\left\{b\right\}=\left\{ab\right\}\subseteq U$;</li>
+	<li>If $a\not\in \mathcal{G}^{(0)}$ but $b\in\mathcal{G}^{(0)}$, then $\left\{a\right\}$ and $\mathcal{G}^{(0)}$ are open, respectively, and $\left\{a\right\}\mathcal{G}^{(0)}=\left\{ab\right\}\subseteq U$;</li>
+	<li>The case $a\in \mathcal{G}^{(0)}$ and $b\not\in\mathcal{G}^{(0)}$ is similar to the previous one;</li>
+	<li>If both $a,b\in \mathcal{G}^{(0)}$, then $a=b\in U\cap\mathcal{G}^{(0)}$ and $(U\cap\mathcal{G}^{(0)})(U\cap\mathcal{G}^{(0)})=U\cap\mathcal{G}^{(0)}\subseteq U$;</li>
+</ul>
+In any case there are open sets $A$ and $B$ containing $a$ and $b$, respectively, such that $AB\subseteq U$, which proves that the product is continuous.
+</p>
+</div>

@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.2.is.html#propositionifcommonupperboundthencompatible'>1.2.28</a>
+<!-- 1.2.28 -->
+<div class="toload proposition">
+<p><span class="envidentifier">Proposition 1.2.28</span>
+Suppose $S$ is an inverse semigroup and $s,t\in S$ admit a common upper bound (that is, there is some $z\in S$ with $s\leq z$ and $t\leq z$). Then $s^*t\in E(S)$ and $st^*\in E(S)$.
+</p>
+</div>

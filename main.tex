@@ -1,0 +1,179 @@
+\documentclass[a4paper]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[brazil]{babel}		%portuguese hyphenation
+\usepackage[includeheadfoot, margin=1in]{geometry}
+
+\usepackage[bookmarksnumbered]{hyperref}    %Adds ability to crete hyperlinks
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{eucal}			%\CMcal for original cal
+%\usepackage{nicefrac}  %nice fractions: \nicefrak[<fontcmd>]{<num>}{<den>}
+\usepackage{tensor} %Better tensor indices \tensor[left]{symbol}{right}. \tensor* collapses spacing
+
+%\usepackage{wrapfig}			%figures surrounded by text
+%\usepackage{graphicx}			%figures
+%\usepackage{multicol}		%Multicolumn environment, \begin{multicols}{# of columns}\end{multicols}
+
+\usepackage{amsthm}
+\usepackage{enumitem}  %Options for enumerate environment
+\usepackage[normalem]{ulem} %Better underlines
+
+%\everymath{\displaystyle}
+%\usepackage{tikz-cd}			%\usetikzlibrary{matrix}	%diagramas
+%\usepackage{tikz}  \usetikzlibrary{arrows}
+%\usepackage[vcentermath]{youngtab}			%Young diagrams and tableaux
+
+%\usepackage{tabularx}  %auto-sized columns in a fixed width table
+%\usepackage{ltablex}   %combine tabularx with package longtable to obtain multi-page tables
+
+%\usepackage[numbers]{natbib}    %bibtex
+%\usepackage{doi}
+
+\usepackage[backend=biber,style=ieee,url=false]{biblatex} %biber
+\bibliography{library.bib}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{generalnumbering}   \numberwithin{generalnumbering}{section}
+
+\theoremstyle{plain}    \newtheorem{theorem}[generalnumbering]{Theorem}
+\theoremstyle{plain}    \newtheorem{corollary}[generalnumbering]{Corollary}
+\theoremstyle{definition}   \newtheorem{definition}[generalnumbering]{Definition}
+\theoremstyle{definition}   \newtheorem{example}[generalnumbering]{Example}
+\theoremstyle{plain}    \newtheorem{proposition}[generalnumbering]{Proposition}
+\theoremstyle{plain}    \newtheorem{lemma}[generalnumbering]{Lemma}
+
+\newcommand{\namefordifferentenvironment}{}
+
+\theoremstyle{plain}    \newtheorem{plainstyle}[generalnumbering]{\namefordifferentenvironment}
+\theoremstyle{plain}    \newtheorem*{plainstyle*}{\namefordifferentenvironment}
+\theoremstyle{definition}    \newtheorem{definitionstyle}[generalnumbering]{\namefordifferentenvironment}
+\theoremstyle{definition}    \newtheorem*{definitionstyle*}{\namefordifferentenvironment}
+
+\newenvironment{penv}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{plainstyle}}{\end{plainstyle}}
+\newenvironment{penv*}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{plainstyle*}}{\end{plainstyle*}}
+\newenvironment{denv}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{definitionstyle}}{\end{definitionstyle}}
+\newenvironment{denv*}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{definitionstyle*}}{\end{definitionstyle*}}
+
+\newcommand{\ntag}{\tag{\thegeneralnumbering}\stepcounter{generalnumbering}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%New commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand*{\thefootnote}{[\arabic{footnote}]}   %Footnote numbers with brackets
+
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+
+\newcommand{\cat}[1]{\normalfont{\textsc{\textbf{#1}}}}
+
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt\hbox{\scriptsize.}\hbox{\scriptsize.}}}=}
+\newcommand*{\eqdef}{=\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt\hbox{\scriptsize.}\hbox{\scriptsize.}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%AUTHOR INFO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{The Title}
+%\subtitle{}
+%\date{}
+\author{Luiz Gustavo Cordeiro%\thanks{Thanks 1} \thanks{Thanks 2} \thanks{Thanks 3} \thanks{Thanks 4}
+}
+%Thanks should be given separately for AMSART
+%\thanks{Thanks 1}
+%\thanks{Thanks 2}
+
+%\address{UMPA, UMR 5669 CNRS -- École Normale Supérieure de Lyon\\46 allée d'Italie, 69364 Lyon Cedex 07, France}
+%\email{luizgc6@gmail.com}				%AMSART
+
+
+%\address{Institute of Mathematics and Statistics,	%AMSART
+%University of Ottawa,
+%585 King Edward Ave.,
+%Ottawa, ON K1N 6N5,
+%Canada}
+%\email{luizgc6@gmail.com, luis-gustavo.cordeiro@ens-lyon.fr}				%AMSART
+
+%\subjclass[2010]%		%AMSART
+%{Primary ;
+%Secondary
+%,
+%
+%}
+
+%\keywords{}		%AMSART
+
+\begin{document}
+\maketitle
+
+\section{Espaços Vetoriais}
+
+\begin{definition}
+Um \emph{espaço vetorial} consiste de um conjunto não vazio $V$, cujos elementos são chamados de \emph{vetores}, munido de duas operações:
+\begin{itemize}
+    \item A \emph{soma} ou \emph{adição} de vetores, que a cada par de vetores $u,v$ faz corresponder um novo vetor $u+v$, chamado de \emph{soma} de $u$ e $v$.
+    \item A \emph{multiplicação escalar}, que a cada vetor $v$ e a cada número real $\alpha$ associa um novo vetor $\alpha v$, chamado de \emph{produto} de $\alpha$ e $v$.
+\end{itemize}
+    Estas operações também devem satisfazer às seguintes condições abaixo (chamadas de \emph{axiomas} de espaços vetoriais): Para quaisquer vetores $u,v,w$ e quaisquer números reais $\alpha,\beta$:
+    \begin{enumerate}[label=(\roman*)]
+        \item \uline{Comutatividade}: $u+v=v+u$;
+        \item \uline{Associatividade}: $(u+v)+w=u+(v+w)$ e $\alpha(\beta v)=(\alpha\beta)v$;
+        \item \uline{Existência de vetor nulo}: Existe um vetor $0$ tal que $v+0=0+v=v$ para todo $v\in E$;
+        \item \uline{Existência de inverso aditivo}: Para todo vetor $v$, existe um vetor $-v$, chamado de \emph{oposto} de $v$, tal que $v+(-v)=0$;
+        \item \uline{Distributividade}: $(\alpha+\beta)v=\alpha v+\beta v$, e $\alpha(u+v)=\alpha u+\alpha v$;
+        \item \uline{Multiplicação por $1$}: $1v=v$.
+    \end{enumerate}
+\end{definition}
+
+\begin{denv*}{Observação}
+    Note que o mesmo símbolo ``$0$'' é utilizado para denotar tanto o vetor nulo, quanto o número real zero.
+\end{denv*}
+
+Várias dessas propriedades são similares às satisfeitas pelas operações entre números reais. Porém, agora estamos trabalhando com dois conjuntos diferentes ao mesmo tempo -- $V$ e $\mathbb{R}$ -- que operam entre si, e devemos tomar cuidado com o modo com que as operações são tomadas. Por exemplo, podemos multiplicar dois números reais, ou um número real e um vetor; mas não podemos multiplicar dois vetores.
+
+Para realçar a natureza distinta de vetores e de números, é comum utilizar-se de convenções ortográficas; Por exemplo, às vezes se convenciona que vetores são denotados por letras com setas em cima (como em ``$\vec{w}$'').
+
+Na convenção que utilizaremos, as letras finais do alfabeto ($u$, $v$, $w$,\ldots) geralmente denotarão vetores, e letras gregas ($\alpha$, $\beta$, $\gamma$,\ldots) denotarão números reais.
+
+\begin{example}
+    Considere o conjunto $V=[0,\infty)]$ dos números reais não-negativos. Vamos definir as seguintes operações $\oplus$ e $\odot$ em $V$: Para quaisquer $v,w\in V$ e qualquer $\alpha\in\mathbb{R}$,
+    \[v\oplus w=v+w\quad\text{e}\quad\alpha \odot v=|\alpha|v,\]
+    (onde as operações nos lados direitos das equações são a soma e produto usuais de $\mathbb{R}$).
+    
+    Então $V$, com as operações $\oplus$ e $\odot$, satisfaz a alguns dos axiomas de espaços vetoriais, como à propriedade comutativa. Porém, $V$ não satisfaz à propriedade distributiva: Se tomarmos $\alpha=1$, $\beta=-1$, e $v=1$, então
+    \[(\alpha+\beta)\odot v=|1-1|\cdot 1=0\cdot 1=0;\]
+    mas
+    \[(\alpha\odot v)\oplus(\beta\odot v)=(|1|\cdot 1)+(|1|\cdot 1)=1+1=2,\]
+    e portanto os termos no lado esquerdo são diferentes.
+    
+    Por um lado, os axiomas de espaços vetoriais devem ser satisfeitos para \uline{todas as escolhas} de vetores e números reais. Mas como pudemos fazer uma escolha que não satisfaz à uma das propriedades, isto significa que $V$ não é um espaço vetorial.
+\end{example}
+
+\begin{example}
+    O conjunto $\mathbb{R}$ de números reais, com sua soma e multiplicação usuais, é um espaço vetorial.
+\end{example}
+
+%\bibliographystyle{amsplain}   5Just for bibtex
+%\bibliography{library}
+
+\printbibliography  %Biber
+
+\end{document}

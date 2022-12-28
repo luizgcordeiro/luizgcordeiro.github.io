@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#proposition166'>1.6.6</a>
+<!-- 1.6.6 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 1.6.6</span>
+	$\BOR(\mathcal{G})$ is closed under products: If $A,B\in\BOR(\mathcal{G})$ then $AB=\left\{ab:(a,b)\in(A\times B)\cap\mathcal{G}^{(2)}\right\}\in\BOR(\mathcal{G})$.
+	</p>
+</div>

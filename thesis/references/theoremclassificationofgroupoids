@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#theoremclassificationofgroupoids'>1.1.31</a>
+
+<!-- 1.1.31 -->
+<div class="toload theorem">
+<p><span class="envidentifier">Theorem 1.1.31</span>
+<ol class="alphpar">
+	<li>Every connected groupoid $\mathcal{G}$ is isomorphic to one of the form $G\times(X^2)$, where $G$ is a group, $X$ is a set and $X^2$ is the coarsest equivalence relation on $X$ as in Example <span class='ref' data-tag='exampleequivalencerelationsarecategories'></span>.</li>
+	<li>Every connected groupoid $\mathcal{G}$ is isomorphic to a transformation groupoid (of a transitive group action).</li>
+	<li>Every groupoid $\mathcal{G}$ is isomorphic to a coproduct of transformation groupoids (of transitive group actions).</li>
+</ol></p>
+</div>

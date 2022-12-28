@@ -1,0 +1,18 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#propostion4311'>4.3.11</a>
+
+<!-- 4.3.11 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.3.11</span>
+	Suppose $\alpha$ is a (non-degenerate), algebraic partial action of $S$ on $A$, and assume that
+	<ol class='roman'>
+		<li>
+		$A$ has local units;
+		</li>
+		
+		<li>
+		every ideal $A_e$, $e\in E(S)$, has local units.
+		</li>
+	</ol>
+	Then the map $\iota:A\to A\rtimes S$, given by $a\mapsto \sum_{i=1}^n \overline{a_i\delta_{e_i}}$, where $e_i\in E(S)$ and $a_i\in A_{e_i}$ are chosen such that $a=\sum_{i=1}^n a_i$, is a well-defined injective algebra morphism.
+	</p>
+</div>

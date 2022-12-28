@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.5.qods.html#proposition1511'>1.5.11</a>
+<!-- 1.5.11 -->
+<div class='toload proposition'>
+<p><span class='envidentifier'>Proposition 1.5.11</span>
+A nonempty subset $I$ of a distributive inverse semigroup $S$ with zero is a $\lor$-ideal if and only if there is an inverse semigroup $T$ with $0$ and a $\lor$-morphism $\theta:S\to T$ with $I=\theta^{-1}(0)$.
+</p>
+</div>

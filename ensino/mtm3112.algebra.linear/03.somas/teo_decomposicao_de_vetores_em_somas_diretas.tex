@@ -1,0 +1,39 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial e $A_1,\ldots,A_n,C$ subespaços vetoriais de $V$ tais que $C=A_1+\cdots+A_n$. Então as seguintes afirmações são equivalentes:
+	\begin{enumerate}
+		\item $C=A_1\oplus \cdots\oplus A_n$, i.e., os subespaços $A_1,\ldots,A_n$ são \href{http://mtm.ufsc.br/~cordeiro/ensino/mtm3112.algebra.linear/03.somas/con_subesp_indep_moodle.html}{independentes}.
+		\item Para cada $c\in C$, existem \uline{únicos} vetores $a_i\in A_i$ tais que $c=\sum_{i=1}^n a_i$
+	\end{enumerate}
+\end{theorem}
+
+Em termos mais simples, este teorema garante que podemos decompor cada vetor de uma soma direta $A_1\oplus\cdots\oplus A_n$ de um modo único como soma dos termos $A_i$.
+
+\begin{proof}
+	Novamente, vamos nos concentrar no caso em que temos somente dois subespaços, pois o caso geral é completamente análogo mas com notação mais pesada.
+	
+	Sejam $A$ e $B$ dois subespaços vetoriais de $V$ e $C=A+B$.
+	
+	1.$\Rightarrow$2.
+	
+	\begin{quote}
+		Primeiro, vamos supor que $A$ e $B$ são suplementares. Pela definição de soma de subespaços e como $C=A+B$, então cada vetor de $C$ pode ser decomposto como uma soma de um elemento de $A$ com um elemento de $B$. O problem se restringe a mostrar a unicidade desta decomposição.
+		
+		Suponha que $x\in C=A+B$, e que $a_1,a_2\in A$ e $b_1,b_2\in B$ são tais que
+		\[x=a_1+b_1=a_2+b_2.\]
+		Podemos reescrever a equação acima como
+		\[a_1-a_2=b_2-b_1.\]
+		O vetor $a_1-a_2$ pertence ao subespaço $A$, enquanto o vetor $b_2-b_1$ pertence ao subespaço $B$. Mas estes dois vetores coincidem, e portanto pertencem a $A\cap B$, que contém somente o vetor $0_V$. Isto mostra que
+		\[a_1-a_2=0_V=b_2-b_1.\]
+		Segue que $a_1=a_2$ e que $b_1=b_2$, o que mostra a unicidade da decomposição de $x$ como uma soma de vetores em $A$ e em $B$.
+	\end{quote}
+	
+	2.$\Rightarrow$1.
+		
+	\begin{quote}
+		Agora, vamos supor que cada vetor de $C=A+B$ se decompõe de modo único como uma soma de vetores em $A$ e em $B$, e vamos mostrar que $A$ e $B$ são suplementares.
+		
+		Seja $x\in A\cap B$. Sejam $a_1=b_2=x$ e $a_2=b_1=0_V$. Note que $a_1,a_2\in A$, e que $b_1,b_2\in B$. Além disso, temos que
+		\[x=a_1+b_1=a_2+b_2,\]
+		duas decomposições de $x$ como soma de um elemento de $A$ com um elemento de $B$. Como essa decomposição é única, por hipótese, concluímos que $a_1=a_2$, isto é, que $x=0_V$.
+	\end{quote}
+\end{proof}

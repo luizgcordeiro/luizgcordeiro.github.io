@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#theoremisometricisomorphismcirclegroups'>3.5.18</a>
+
+<!-- 3.5.18 !-->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.5.18</span>
+	If $X$ and $Y$ are as above and $T:C(X,\mathbb{S}^1)\to C(Y,\mathbb{S}^1)$ is an isometric isomorphism, then there is a homeomorphism $\phi:Y\to X$ and a continuous function $p:Y\to\left\{\pm 1\right\}$ such that $Tf(y)=f(\phi(y))^{p(y)}$ for all $y\in Y$.
+	</p>
+</div>

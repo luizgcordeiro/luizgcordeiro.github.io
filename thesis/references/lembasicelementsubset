@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#lembasicelementsubset'>4.4.30</a>
+
+<!-- 4.4.30 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.4.30</span>
+	Given $s\in S$, any subset $B$ of $[s,X_{s^*}]$ is of the form $B=[s,\so(B)]$.
+	</p>
+</div>

@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#corollarykidaindex'>2.3.11</a>
+
+<!-- 2.3.11 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 2.3.11</span>
+	Suppose $\mathcal{H}$ is an ergodic subgroupoid of a standard $\ra$-discrete probability measure-preserving groupoid $(\mathcal{G},\mu)$ with $\mathcal{H}^{(0)}=\mathcal{G}^{(0)}$ (up to null sets). Then $\mathcal{H}$ has finite index in $\mathcal{G}$ if and only if the equivalence relation $\sim_{\mathcal{H}}$ on $\mathcal{G}$ is periodic (i.e., a.e.\ equivalence class is finite). Moreover, if $\psi_1,\ldots,\psi_k$ are left transversals of $\mathcal{H}$ in $\mathcal{G}$, then the index map $I:\mathcal{G}^{(0)}\to\mathbb{N}\cup\left\{\infty\right\}$ is a.e.-constant and equal to $k$.
+	</p>
+</div>

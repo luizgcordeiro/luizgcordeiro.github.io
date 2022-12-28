@@ -1,0 +1,13 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#propweaksemilattice'>4.2.23</a>
+
+<!-- 4.2.23 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.2.23
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR2565546'></span>, Theorem 5.17])</span></span>
+	An inverse semigroup $S$ is a weak semilattice if and only if for any topological partial action $\theta:S\to\mathcal{I}(X)$ such that $X_s$ is clopen for all $s \in S$, the groupoid of germs $S\ltimes X$ is Hausdorff.
+	</p>
+	
+	<p>
+	In particular, if $S$ is a weak semilattice and $X$ is totally disconnected, then the groupoid of germs $S\ltimes X$ is an ample Hausdorff groupoid.
+	</p>
+</div>

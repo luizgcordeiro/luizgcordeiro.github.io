@@ -1,0 +1,12 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#generalprocedureforclassification'>procedure</a>
+
+<div class='toload'>
+<ol>
+	<li> Describe the relation $\perpp$ with the algebraic structure at hand. In general, we will first describe $\perp$ and use it in order to describe $\perpp$.</li>
+	<li> Given an algebraic isomorphism $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ for appropriate classes of functions $\mathcal{A}(X)$ and $\mathcal{A}(Y)$, the first item ensures that $T$ is a $\perpp$-isomorphism, so let $\phi:Y\to X$ be the $T$-homeomorphism.</li>
+	<li> Prove that $T$ is $\phi$-basic. Let $\chi$ be the $(\phi,T)$-transform.</li>
+	<li> Items 1.-3. also apply to $T^{-1}$, which is thus also a basic $\perpp$-isomorphism.</li>
+	<li> Items 3. and 4. imply, by Proposition <span class='ref' data-tag='propositionbasicisomorphisms'></span>(a) and (b), that the sections $\chi(y,\cdot)$ are injective and in the case that $\mathcal{A}(Y)$ is regular, Proposition <span class='ref' data-tag='propositionbasicisomorphisms'></span>(d) implies that $\chi(y,\cdot)$ is also surjective.</li>
+	<li> If we have a classification of algebraic isomorphisms between $H_X$ and $H_Y$, this classification will apply to each section $\chi(y,\cdot)$ of the $(\phi,T)$-transform, by Proposition <span class='ref' data-tag='propositionmodelmorphism'></span>. This will in turn describe $T$ completely.</li>
+</ol>
+</div>

@@ -1,0 +1,25 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#lemmamorphismregularopenofsubset'>3.1.23</a>
+
+<!-- 3.1.23 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.1.23</span>
+	Let $X$ be a topological space and $U$ an open set of $X$. Then
+	<ol class='alphpar'>
+		<li>
+			If $A\in\operatorname{RO}(X)$ then $A\cap U\in\operatorname{RO}(U)$.
+		</li>
+		
+		<li>
+			The map
+			<div class='equation'>\[
+				\varphi_U:\operatorname{RO}(X)\to\operatorname{RO}(U),\qquad \varphi_U(A)=A\cap U
+			\]</div>
+			is order-preserving and surjective; The map $\zeta_U:A\mapsto \operatorname{int}_X(\operatorname{cl}_X(A))$ is an order-preserving right inverse to $\varphi_U$;
+		</li>
+		
+		<li>
+			$\varphi_U$ is an order isomorphism if and only if $U$ is dense in $X$.
+		</li>
+	</ol>
+	</p>
+</div>

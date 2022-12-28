@@ -1,0 +1,19 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#nonhausdorffaction'>4.2.19</a>
+
+<!-- 4.2.19 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 4.2.19</span>
+	Let $S=\mathbb{N}\sqcup\left\{\infty,z\right\}$ be a disjoint union of the lattice $\mathbb{N}$ and a two-set element $\left\{\infty, z\right\}$, with product given, for $m,n\in\mathbb{N}$,
+	<div class='equation'>\[
+		nm=\min(n,m),\qquad n\infty=\infty n=nz=zn=n,
+	\]</div>
+	<div class='equation'>\[
+		\quad z\infty=\infty z=z\qquad\text{and}\quad z^2=\infty^2=\infty.
+	\]</div>
+	In other words, $S$ is the semigroup obtained by adjoining the lattice $\mathbb{N}$ to the group or order $2$ $\left\{z,\infty\right\}$, in a way that every element of $\mathbb{N}$ is smaller than $z$ and $\infty$.
+	</p>
+	
+	<p>
+	Let $X=E(S)=\mathbb{N}\cup\left\{\infty\right\}$, seen as the one-point compactification of the natural numbers, and $\theta$ the Munn representation of $S$, so that $S\ltimes X=(S,\cdot)$, however with the topology whose open sets are either cofinite or contained in $\mathbb{N}$. In particular, $S \ltimes X$ is not Hausdorff.
+	</p>
+</div>

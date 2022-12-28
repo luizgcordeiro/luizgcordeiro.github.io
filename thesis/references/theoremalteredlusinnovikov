@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#theoremalteredlusinnovikov'>1.6.11</a>
+<!-- 1.6.11 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 1.6.11</span>
+	Let $X$ and $Y$ be two standard Borel spaces and $f:X\to Y$ a <em>countable-to-one</em> function, that is, $f^{-1}(y)$ is (at most) countable for all $y\in Y$. Then there is a Borel partition $\left\{X_n\right\}_n$ of $X$ such that the restriction $f|_{X_n}:X_n\to f(X_n)$ is a Borel isomorphism -- that is $f|_{X_n}$ is bijective with Borel inverse -- for all $n$ (and $f(X_n)$ is Borel in $Y$ for all $n$).
+	</p>
+
+	<p>
+	In particular if $A\subseteq X$ is Borel then $f(A)$ is Borel in $Y$.
+	</p>
+</div>

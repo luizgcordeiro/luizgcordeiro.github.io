@@ -1,0 +1,16 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#lemmanormalizerssteinbergalgebradiagonal1'>4.4.13</a>
+
+<!-- 4.4.13 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.4.13</span>
+	Suppose that $f\in N_R(\mathcal{G})$.
+	<ol class='alphpar'>
+		<li>
+		If $g$ is an inverse of $f$ relative to $D_R(\mathcal{G})$, then $fg,gf\in D_R(\mathcal{G})$.
+		</li>
+		<li>
+		The inverse of $f$ relative to $D_R(\mathcal{G})$ is unique.
+		</li>
+	</ol>
+	</p>
+</div>

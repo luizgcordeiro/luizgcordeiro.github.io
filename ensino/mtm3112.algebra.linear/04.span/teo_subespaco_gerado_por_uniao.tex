@@ -1,0 +1,39 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial e $A,B\subseteq V$ dois subconjuntos de $V$. Então
+	\[\langle A\cup B\rangle=\langle A\rangle+\langle B\rangle.\]
+\end{theorem}
+
+\begin{proof}
+	Temos duas inclusões de conjuntos a demonstrar
+	
+	$\langle A\cup B\rangle\subseteq\langle A\rangle+\langle B\rangle$:
+	
+	\begin{quote}
+	Primeiro, note que
+	\[A\subseteq\langle A\rangle\subseteq\langle A\rangle+\langle B\rangle,\]
+	e similarmente
+	\[B\subseteq\langle B\rangle\subseteq\langle A\rangle+\langle B\rangle.\]
+	Então obtemos
+	\[A\cup B\subseteq\langle A\rangle+\langle B\rangle.\]
+	Isto mostra que $\langle A\rangle+\langle B\rangle$ é um subespaço de $V$ que contém $A\cup B$. Como $\langle A\cup B\rangle$ é, por definição, o menor subespaço de $V$ que contém $A\cup B$, então $\langle A\cup B\rangle$ está contido em $\langle A\rangle+\langle B\rangle$, ou seja,
+	\[\langle A\cup B\rangle\subseteq\langle A\rangle+\langle B\rangle.\]
+	\end{quote}
+	
+	$\langle A\rangle+\langle B\rangle\subseteq\langle A\cup B\rangle$:
+	
+	\begin{quote}
+	Para concluir o teorema, devemos mostrar que $\langle A\rangle+\langle B\rangle$ está contido em $\langle A\cup B\rangle$. Tome um elemento qualquer
+	\[x\in\langle A\rangle+\langle B\rangle.\]
+	Então $x$ pode ser reescrito como
+	\[x=a+b,\tag{1}\]
+	onde $a\in\langle A\rangle$ e $b\in\langle B\rangle$. Pelo Teorema Span e subespaço gerado coincidem, os elementos de $\langle A\rangle$ são exatamente as combinações lineares de elementos de $A$. Assim, podemos reescrever
+	\[a=\mu_1a_1+\cdots+\mu_na_n\]
+	para certos $a_1,\ldots,a_n\in A$ e escalares $\mu_1,\ldots,\mu_n$. Similarmente,
+	\[b=\lambda_1b_1+\cdots+\lambda_m b_m\]
+	para certos $b_1,\ldots,b_m\in B$ e escalares $\lambda_1,\ldots,\lambda_m$. Assim, a Equação (1) pode ser reescrita como
+	\[x=\mu_1a_1+\cdots+\mu_na_n+\lambda_1b_1+\cdots+\lambda_mb_m.\]
+	Todos os elementos $a_i,b_j$ pertencem a $A\cup B$. Isto mostra que $x$ é uma combinação linear de elementos de $A\cup B$. Novamente utilizando o Teorema Span e subespaço gerado coincidem, concluímos que $x\in\langle A\cup B\rangle$.
+	\end{quote}
+	
+	Concluímos que $\langle A\rangle+\langle B\rangle$ está contido em $\langle A\cup B\rangle$ e vice-versa, o que mostra que estes dois conjuntos na verdade coincidem.
+\end{proof}

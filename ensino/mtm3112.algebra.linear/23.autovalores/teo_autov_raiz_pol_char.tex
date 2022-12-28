@@ -1,0 +1,29 @@
+\begin{theorem}
+	Seja $T\colon V\to V$ um endomorfismo linear em um espaço vetorial $V$ de dimensão finita.
+	
+	Então os autovalores de $T$ são exatamente as raízes do polinômio característico $p_T(\lambda)$.
+\end{theorem}
+
+\begin{proof}
+	Primeiro, vamos supor que $\lambda$ é um autovalor de $T$. Vamos mostrar que $\lambda$ é uma raiz de $p_T(\lambda)$.
+	
+	De fato, a definição de autovalor nos diz que existe um vetor não nulo $v\neq 0_V$ (um autovetor associado) tal que $T(v)=\lambda v$. Equivalentemente, isto significa que
+	\[(\lambda\operatorname{id}_V-T)(v)=0_V.\]
+	Isto significa que $v$ pertence ao núcleo de $\lamdba\operatorname{id}_V-T$, que portanto não é trivial. Logo, $\lambda\operatorname{id}_V-T$ não é injetiva, e como estamos considerando um espaço de dimensão finita, isto significa que $\lambda\operatorname{id}_V-T$ não é inversível.
+	
+	Agora, lembremos do seguinte fato acerca do determinante: Uma matriz é inversível se e somente se o seu determinante é não-nulo. O mesmo fato é válido para endomorfismos lineares (a prova pode ser feita utilizando o teorema acerca da correspondência entre matrizes e transformações lineares, mas vamos omití-la).
+	
+	Portanto, como $\lambda\operatorname{id}_V-T$ é não inversível então seu determinante é nulo, ou seja,
+	\begin{align*}
+	p_T(\lambda)
+		&=\det\left(\lambda\operatorname{id}_V-T\right)\\
+		&=0.
+	\end{align*}
+	o que significa que $\lamdba$ é, de fato, uma raiz do polinômio característico $p_T$ de $T$.
+	
+	Assim, demonstramos que todo autovalor de $T$ é uma raiz do seu polinômio característico.
+	
+	\hrule
+	
+	A prova da recíproca -- em que se mostra que toda raiz do polinômio característico é autovalor -- é feita utilizando argumentos similares, e vamos deixá-la como exercício.
+\end{proof}

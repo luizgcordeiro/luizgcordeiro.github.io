@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands"></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h1 class=chapter>Chapter 1. Groupoids and inverse semigroups</h1>
+
+<p>
+In this chapter we introduce all terms and notation that will be used throughout the thesis. For the sake of completeness, proofs are provided for most results, except those which are trivial consequences of previous ones or have essentially the same proof as in more well-known cases (for example, for groups). The introductory parts are somewhat based on [<span class='ref' data-tag='MR0466355'></span>] and [<span class='ref' data-tag='MR1724106'></span>], although the order of presentation of the topics (and consequently some proofs) is substantially different from either.
+</p>
+
+<p>
+There are a few parts which are new to the theory, or at least not completely standardized, such as non-commutative versions of the Loomis-Sikorski Theorems (Theorems <span class='ref' data-tag='theoremncloomissikorskinontracial'></span> and <span class='ref' data-tag='theoremtracialncloomissikorski'></span>) and the study of quotients of distributive semigroups by $\lor$-ideals (<a href="1.5.qods.html">Section 1.5</a>). These abstract results will then be applied in subsequent chapters, and they will to simplify significantly some computations.
+</p>
+
+<p>
+We start by introducing groupoids in a graph-theoretical fashion, a manner similar to how categories are described in [<span class='ref' data-tag='MR1712872'></span>]. Although this is a somewhat convoluted way of defining them, it should make the overall structure and dynamical nature of groupoids clearer. However after this we will give the algebraic definition of groupoids as well which will be used more often throughout this document for its succinctness.
+</p>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

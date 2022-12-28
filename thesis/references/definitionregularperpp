@@ -1,0 +1,17 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#definitionregularperpp'>3.1.5</a>
+
+<!-- 3.1.5 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 3.1.5</span>
+	Let $\mathcal{A}\subseteq C_c(X)$ be a subset containing $\theta$. Denote $\sigma(\mathcal{A})=\left\{\sigma(f):f\in\mathcal{A}\right\}$. We say that $(X,\theta,\mathcal{A})$ (or simply $\mathcal{A}$) is
+	<ol>
+		<li>
+			<em>weakly regular</em> if $\sigma(\mathcal{A})$ is a basis for the topology of $X$.
+		</li>
+		
+		<li>
+			<em>regular</em> if for every $x\in X$, every neighbourhood $U$ of $x$ and every $c\in H$ there is $f\in\mathcal{A}$ with $f(x)=c$ and $\supp(f)\subseteq U$.
+		</li>
+	</ol>
+	</p>
+</div>

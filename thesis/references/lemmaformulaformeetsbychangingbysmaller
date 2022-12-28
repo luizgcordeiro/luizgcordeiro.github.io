@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.2.is.html#lemmaformulaformeetsbychangingbysmaller'>1.2.47</a>
+<!-- 1.2.47 -->
+<div class='toload lemma'>
+<p><span class='envidentifier'>Lemma 1.2.47</span>
+If $S$ is an inverse semigroup, $s,t\in S$, $s\land t$ exists and $z\leq t$, then $s\land z$ exists and $s\land z=(s\land t)z^*z$
+</p>
+</div>

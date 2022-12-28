@@ -1,0 +1,28 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#propositionconstructfunction'>3.3.13</a>
+
+<!-- 3.3.13 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 3.3.13</span>
+	Let $X$ be a locally compact Hausdorff space, $\left\{x_n\right\}_n$ be a sequence of elements of $X$, $\left\{U_n\right\}_n$ a sequence of open subsets of $X$ such that
+	<ol class='roman'>
+		<li>
+			$x_n\in U_n$;
+		</li>
+		
+		<li>
+			$U_n\cap U_m=\varnothing$ for all $n\neq m$.
+		</li>
+	</ol>
+	Let $H$ be a Hausdorff first-countable locally path-connected topological space and consider $\left\{g_n:U_n\to H\right\}$ a family of continuous functions such that $g_n(x_n)$ converges to some $t\in H$. Then
+	<ol class='alphpar'>
+		<li>
+			There exists a continuous function $f:X\to H$ such that $f(x_n)=g_n(x_n)$ for all sufficiently large $n$, and $f(x)=t$ for all $x\not\in\bigcup_n U_n$.
+		</li>
+		
+		<li>
+			if $H=\mathbb{R}$, there is a continuous function $f:X\to H$ such that $f=g_n$ on a neighbourhood of $x_n$ and $f(x)=t$ for all $x\not\in\bigcup_n U_n$.
+		</ol>
+	</ol>
+	(Note that it is not necessary to take subsequences!)
+	</p>
+</div>

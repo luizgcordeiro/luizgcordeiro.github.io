@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) e \(W\) espaços vetoriais de dimensão finita, e \(\mathcal{B}=\left\{b_1,\ldots,b_n\right\}\) e \(\mathcal{C}=\left\{c_1,\ldots,c_m\right\}\) bases ordenadas de \(V\) e \(W\), respectivamente.
+</p>
+<p>
+Então para todo \(w\in W\), temos que \(w\in\operatorname{Im}(T)\) se, e somente se, \([w]^{\mathcal{C}}\in\operatorname{Col}\left(\left[T\right]_{\mathcal{B}}^\mathcal{C}\right)\).
+</p>
+
+<hr/>
+<p>
+Em termos mais familiares, ao representarmos vetores e transformações lineares com relação às bases de \(V\) e \(W\), também estaresmos identificando imagens de transformações lineares com espaços coluna de matrizes.
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Por um lado, a imagem de \(T\) é gerada pelos vetores \(T(b_1),\ldots,T(b_n)\), isto é,
+<div>
+\begin{equation*}
+\operatorname{Im}(T)=\langle T(b_1),\ldots,T(b_n)\rangle.
+\end{equation*}
+</div>
+Esta igualdade de conjuntos pode ser reescrita em termos de vetores de \(W\) do seguinte modo:
+<div>
+\begin{equation*}
+w\in\operatorname{Im}(T)\iff w\in\langle T(b_1),\ldots,T(b_n)\rangle.
+\end{equation*}
+</div>
+</p>
+<p>
+Agora passamos de \(W\) para \(M_{m\times 1}(\mathbb{R})\), por meio do isomorfismo que associa a cada vetor \(w\) de \(W\) sua representação \(\left[w\right]^{\mathcal{C}}\) na base \(\mathcal{C}\). Como subespaços gerados também são claramente preservados por isomorfismos lineares, obtemos
+<div>
+\begin{align*}
+w\in\operatorname{Im}(T)
+&\iff w\in\langle T(b_1),\ldots,T(b_n)\rangle\\
+&\iff \left[w\right]^{\mathcal{C}}\in\langle\left[T(b_1)\right]^{\mathcal{C}},\ldots,\left[T(b_n)\right]^{\mathcal{C}}\rangle.
+\end{align*}
+</div>
+</p>
+<p>
+Por definição, as colunas de \(\left[T\right]_{\mathcal{B}}^{\mathcal{C}}\) são exatamente os vetores (matrizes coluna) \(\left[T(b_1)\right]^{\mathcal{C}},\ldots,\left[T(b_n)\right]\), e portanto o espaço coluna de \(\left[T\right]_{\mathcal{B}}^{\mathcal{C}}\) é o espaço gerado por estes vetores. Assim, concluímos as equivalências
+<div>
+\begin{align*}
+w\in\operatorname{Im}(T)
+&\iff \left[w\right]^{\mathcal{C}}\in\langle\left[T(b_1)\right]^{\mathcal{C}},\ldots,\left[T(b_n)\right]^{\mathcal{C}}\rangle\\
+&\iff \left[w\right]^{\mathcal{C}}\in\operatorname{Col}\left(\left[T\right]_{\mathcal{B}}^{\mathcal{C}}\right),
+\end{align*}
+</div>
+exatamente como queríamos.
+</p>
+
+</div></body>
+</html>

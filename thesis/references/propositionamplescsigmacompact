@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.8.nclst.html#propositionamplescsigmacompact'>1.8.16</a>
+<!-- 1.8.16 -->
+<div class='toload proposition'>
+<p><span class='envidentifier'>Proposition 1.8.16</span>
+If $\mathcal{G}$ is an ample Hausdorff groupoid and $S=\KB(\mathcal{G})$, then $S$ satisfies condition (SC) if and only if $\mathcal{G}$ is $\sigma$-compact. More precisely, a subset $C\subseteq\KB(\mathcal{G})$ satisfies (SC1)-(SC2) if and only if $\mathcal{G}\subseteq\bigcup C$.
+</p>
+</div>

@@ -1,0 +1,15 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#lemmasupportssofic'>2.4.5</a>
+
+<!-- 2.4.5 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 2.4.5</span>
+	Let $S$ be a Boolean inverse monoid with a faithful normalized invariant mean $\mu$, and suppose $s,t\in S$, $ss^*=s^*s=tt^*=t^*t=1$. Then</p>
+	<ol class='alphpar'>
+		<li> $d_\mu(s,1)=\mu(\supp(s))$.</li>
+		<li> $d_\mu(s,t)=d_\mu(s^*t,1)$.</li>
+		<li> $\supp(s)=\Fix(t)$ if and only if $d_\mu(s,t)=1$ and $\tr_\mu(s)+\tr_\mu(t)=1$.</li>
+		<li> $\supp(s)\supp(t)=0$ if and only if $d_\mu(s,t)=d_\mu(1,s)+d_\mu(1,t)$. In this case, $\supp(s^*t)=\supp(s)\lor\supp(t)$.</li>
+		<li> If $\supp(s)\supp(t)=0$ then $\supp(st)=\supp(s)\lor\supp(t)$.</li>
+		<li> $\supp(sts^*)=s\supp(t)s^*$.</li>
+	</ol>
+</div>

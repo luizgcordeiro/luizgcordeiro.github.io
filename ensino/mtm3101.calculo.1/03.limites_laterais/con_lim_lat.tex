@@ -1,0 +1,40 @@
+\begin{definition}
+	Sejam $f=f(x)$ uma função de uma variável real e $a$ um número real.
+
+	Um número real $L$ é o \textbf{limite à esquerda} de $f$ no ponto $a$ se para todo $\epsilon>0$, existe $\delta>0$ (dependendo de $\epsilon$) tal que se $x$ pertence ao domínio de $f$ e $a-\delta<x<a$, então $|f(x)-L|<\epsilon$.
+
+	\[
+	\begin{tikzpicture}
+		%eixos coordenados
+		\draw[latex'-latex'] (-3,0)--(3,0);
+		\draw[blue] (0,-.15)--(0,.15) node [label={[label distance=2pt]270:{$a$}}] {};
+		\draw[(-,thick, blue] (-2,0) node[below] {$a-\delta$} to (0,0);
+		\draw (-0.8,-.15)--(-.8,.15) node [label={[label distance=2pt]270:{$x$}}] {};
+		\draw[blue,domain=-2:-.02,smooth,variable=\x,samples=1000] plot ({\x},{(1/2)*\x*sin((1/(0.3*\x))r)+.5+(0.1*\x*\x)});
+		\node[blue,right] at (0,.5) {$L$};
+	\end{tikzpicture}\]
+
+	\hrule
+
+	Um número real $R$ é o \textbf{limite à direita} de $f$ no ponto $a$ se para todo $\epsilon>0$, existe $\delta>0$  (dependendo de $\epsilon$) tal que se $x$ pertence ao domínio de $f$ e $a<x<a+\delta$, então $|f(x)-R|<\epsilon$.
+
+	\[
+	\begin{tikzpicture}
+		%eixos coordenados
+		\draw[latex'-latex'] (-3,0)--(3,0);
+		\draw[red] (0,-.15)--(0,.15) node [label={[label distance=2pt]270:{$a$}}] {};
+		\draw[(-,thick, red] (2,0) node[below] {$a+\delta$} to (0,0);
+		\draw (0.8,-.15)--(.8,.15) node [label={[label distance=2pt]270:{$x$}}] {};
+		\draw[red,domain=.02:2,smooth,variable=\x,samples=1000] plot ({\x},{(1/2)*\x*sin((1/(0.3*\x))r)+.75+(0.1*\x*\x)});
+		\node[red,left] at (0,.75) {$R$};
+	\end{tikzpicture}\]
+
+	\hrule
+	
+	Limites à esquerda e à direita também são chamados de \textbf{limites laterais}. Resultados análogos ao \href{../01.limites/teo_unicidade_de_limite}{Teorema de Unicidade de Limites} são válidos, i.e., limites laterais são únicos caso existam. O limite à esquerda é denotado por
+	\[\lim_{x\to a^-}f(x)=L.\]
+	e o limite à direita é denotado por
+	\[\lim_{x\to a^+}f(x)=R.\]
+\end{definition}
+
+Por vezes, os chamaremos \href{01.limites\con_limite_formal_moodle.html}{limites no sentido inicial} (sem considerar lateralidade) de limites \textit{bilaterais}.

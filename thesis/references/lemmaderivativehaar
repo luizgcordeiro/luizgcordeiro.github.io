@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#lemmaderivativehaar'>3.5.10</a>
+
+<!-- 3.5.10 !-->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.5.10</span>
+	If $\lambda$ and $\mu$ are continuous Haar systems on a locally compact Hausdorff topological groupoid $\mathcal{G}$ such that the Radon-Nikodym derivatives $D^x=\frac{d\lambda^x}{d\mu^x}$ exist for all $x\in\mathcal{G}^{(0)}$, then $D$ is invariant in the sense that for all $a\in\mathcal{G}$ and $\mu^{\so(a)}$-almost every $g\in\mathcal{G}^{\so(a)}$, $D^{\ra(a)}(ag)=D^{\so(a)}(g)$.
+	</p>
+</div>

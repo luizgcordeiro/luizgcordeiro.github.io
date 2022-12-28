@@ -1,0 +1,44 @@
+Lembre-se da nossa convenção: se $f=f(x)$ é uma função, só poderemos falar de limites de $f$ num ponto $a$ caso $a$ ``possa ser aproximado por pontos do domínio de $f$'' -- formalmente, caso para todo $\delta>0$ existir $d$ no domínio de $f$ tal que $0<|d-a|<\delta$.
+
+\hrule
+
+\begin{theorem}[Unicidade de limites]
+	Uma função $f$ possui no máximo um limite num ponto $a$.
+	
+	Mais precisamente, se $L$ e $M$ são limites de $f=f(x)$ em $a$, então $L=M$.
+\end{theorem}
+\begin{proof}
+	A prova é feita por ``\href{https://pt.wikipedia.org/wiki/Reductio_ad_absurdum}{redução ao absurdo}''. Vamos supor que a tese é falsa, de onde deduziremos uma contradição, o que mostrará que a tese é verdadeira.
+	
+	Suponha que $L$ e $M$ fossem dois limites \emph{diferentes} de $f$ em $a$. Isto significa que a distância de $L$ a $M$ é positiva:
+	\[|L-M|>0.\]
+	Agora lembre-se o que significa dizer que $L$ é o limite de $f$ em $a$: Para todo $\epsilon>0$, existe $\delta=\delta(f,a,L,\epsilon)>0$ (dependendo de $f$, de $a$, de $L$ e de $\epsilon$) tal que para todo $x$ no domínio de $f$,
+	\[\text{se }0<|x-a|<\delta\qquad\text{então }|f(x)-L|<\epsilon.\]
+	Como isto é válido para \uline{todo} número positivo $\epsilon$, é válido para qualquer escolha mais específica. Por exemplo, podemos usar esta propriedade para $\epsilon=\frac{|L-M|}{2}$: Existe $\delta_1>0$ tal que para todo $x$ no domínio de $f$,
+	\[\text{se }0<|x-a|<\delta_1\qquad\text{então }|f(x)-M|<\frac{|L-M|}{2}.\]
+	Similarmente, como $M$ também é limite de $f$ em $a$, então existe $\delta_2>0$ tal que para todo $x$ no domínio de $f$,
+	\[\text{se }0<|x-a|<\delta_2\text{ então }|f(x)-M|<\frac{|L-M|}{2}.\]
+	Os números $\delta_1$ e $\delta_2$ podem ser diferentes, mas o importante é que nós só nos concentramos nos pontos $x$ com $|x-a|$ pequeno.
+	
+	Consideremos então $\delta=\min\left\{\delta_1,\delta_2\right\}$, o menor entre $\delta_1$ e $\delta_2$. Como ambos são positivos, $\delta$ também é positivo.
+	
+	Agora nós usamos nossa convenção técnica: Considere qualquer ponto $d$ no domínio de $f$ tal que $0<|d-a|<\delta$. Então em particular teremos que que
+	\[0<|d-a|<\delta_1,\]
+	pois $\delta\leq\delta_1$. A escolha de $\delta_1$ implica que
+	\[|f(d)-L|<\frac{|L-M|}{2}.\]
+	Similarmente, $0<|d-a|<\delta_2$, o que implica também que
+	\[|f(d)-M|<\frac{|L-M|}{2}.\]
+	Agora podemos utilizar estes dois fatos e deduzir a seguinte sequência de desigualdades:
+	\begin{align*}
+	|L-M|&=|L-f(d)+f(d)-M|\\
+		&\overset{(\star)}{\leq} |L-f(d)|+|f(d)-M|\\
+		&\overset{(\star\star)}{=}|f(d)-L|+|f(d)-M|\\
+		&<\frac{|L-M|}{2}+\frac{|L-M|}{2}\\
+		&=|L-M|
+	\end{align*}
+	onde a desigualdade ($\star$) segue da \emph{desigualdade triangular}, e a igualdade ($\star\star$) segue da simetria do módulo. Na penúltima linha temos uma desigualdade estrita. Comparando o primeiro e o último termos, concluímos que
+	\[|L-M|<|L-M|,\]
+	um absurdo, pois um número real não pode ser estritamente menor do que ele mesmo.
+	
+	Portanto, os limites $L$ e $M$ não podem ser distintos; em outras palavras, $L=M$, como queríamos.
+\end{proof}

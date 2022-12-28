@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.8.nclst.html#theoremncloomissikorskinontracial'>1.8.17</a>
+<!-- 1.8.17 -->
+<div class='toload theorem'>
+<p><span class="envidentifier">Theorem 1.8.17 (Non-commutative Loomis-Sikorski)</span>
+Let $S$ be a $\sigma$-complete Boolean inverse semigroup satisfying (SC). Then there exists a $\ra$-discrete Borel groupoid $\mathcal{G}$ and an ideal $\mathcal{I}\subseteq\BOR(\mathcal{G})$ such that $S$ is isomorphic to $\BOR(\mathcal{G})/\mathcal{I}$.
+</p>
+</div>

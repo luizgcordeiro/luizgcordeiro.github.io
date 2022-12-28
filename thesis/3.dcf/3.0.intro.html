@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h1 class='chapter'>Chapter 3. Disjoint continuous functions</h1>
+
+<p>
+Since Stone's seminal work [<span class='ref' data-tag='MR1501865'></span>], the relations between algebraic and analytical structures have been a topic of great interest in Algebra, Analysis and Logic. In fact, the non-commutative Stone duality theorem proved in the first chapter (Theorem <span class='ref' data-tag='theoremnoncommutativestoneduality'></span>) is a prime example of this.
+</p>
+
+<p>
+Now suppose that $X$ is a compact, Hausdorff topological space, and let $C(X)$ be the set of continuous real or complex-valued functions on $X$. Then $C(X)$ comes with several natural algebraic structures, induced by pointwise operations, and a natural question is how to recover the space $X$ (up to homeomorphism) from $C(X)$.
+</p>
+
+<p>
+In general, the topological vector space structure of $C(X)$ (with the topology coming from the uniform norm) is not sufficient to determine $X$ up to homeomorphism (<span class='ref' data-tag='footnotemilutintheorem' id='footnotemilutintheorem'></span>). Thus, we need to consider additional structures on $C(X)$ in order to recover $X$, and in fact several results of this nature have been proven. Two compact, Hausdorff spaces $X$ and $Y$ are homeomorphic if and only if $C(X)$ and $C(Y)$ are isomorphic as:
+<ul>
+	<li> Banach spaces (under isometric linear isomorphisms); (Banach-Stone '32-37 [<span class='ref' data-tag='MR1357166'></span>, <span class='ref' data-tag='MR1501905'></span>]);</li>
+	<li> rings (Gelfand-Kolmogorov '39 [<span class='ref' data-tag='gelfandkolmogorov93'></span>, <span class='ref' data-tag='gelfandkolmogorov1939'></span>]);</li>
+	<li> multiplicative semigroups (Milgram '40 [<span class='ref' data-tag='MR0029476'></span>]);</li>
+	<li> $C^*$-algebras (Gelfand-Naimark '43 [<span class='ref' data-tag='MR0009426'></span>]);</li>
+	<li> ordered sets (Kaplansky '47 [<span class='ref' data-tag='MR0020715'></span>]);</li>
+	<li> vector space with the disjointness relation (Jarosz '90 [<span class='ref' data-tag='MR1060366'></span>]).</li>
+</ul>
+</p>
+
+<p>
+There are also more recent results by Kania-Rmoutil ([<span class='ref' data-tag='MR3813611'></span>]) and Li-Wong ([<span class='ref' data-tag='MR3162258'></span>]) which generalize the previous theorems to different degrees, and studies of spaces of non-scalar valued functions by Hernández-Ródenas ([<span class='ref' data-tag='MR2324919'></span>]) and Kaplansky ([<span class='ref' data-tag='MR0020715'></span>]). Our goal is to use a (stronger version of) the disjointness relation studied by Jarosz, but without the vector space structure, in order to obtain further generalizations of all of these results and new consequences.
+</p>
+
+<p>
+This chapter is organized as follows: In the first section we introduce the terminology and the notation which will be used in this chapter, and we prove the two main theorems (Theorems <span class='ref' data-tag='theoremdisjoint'></span> and <span class='ref' data-tag='maintheorem'></span>). In the second section we introduce "disjointness ideals", which can be used to provide alternative proofs of the main theorems of the first section, and which will play a role in the study of Steinberg algebras in the next chapter. In the third section, we study an important class maps, called "basic", between spaces of functions, and which will appear in most applications of the previous results. The results of this section apply to different algebraic and analytical structures on sets of continuous functions. In the fourth section we recover the classical and recent results described above, and generalize some of them. In the last section we obtain new results: a classification of linear isomorphisms which are isometric with respect to $L^1$-norms (Theorem <span class='ref' data-tag='theoremdisjointnessl1'></span>) (<span class='ref' data-tag='footnotel1isomorphism' id='footnotel1isomorphism'></span>), classifications of classes of isomorphisms of algebras associated to groupoids (Theorems <span class='ref' data-tag='theoremmeasuredgroupoidconvolutionalgebra'></span> and <span class='ref' data-tag='theoremrenault'></span>), and of classes of isomorphisms of groups of circle-valued functions (Theorems <span class='ref' data-tag='theoremisometricisomorphismcirclegroups'></span> and <span class='ref' data-tag='theoremisomorphismgroupifcirclevaluedfunctions'></span>).
+</p>
+
+<p>
+The theory developed here will also be used in <a href='../4.paois/4.0.html'>Chapter 4</a> to obtain "recovery" results for topological partial actions from algebraic partial actions (Theorem <span class='ref' data-tag='theoremperpppartialactions'></span> and Proposition <span class='ref' data-tag='propactionalphatheta'></span>), and to classify diagonal-preserving isomorphisms of certain Steinberg algebras (Theorem <span class='ref' data-tag='theoremsteinbergalgebras'></span>).
+</p>
+
+<p>
+In the <a href='../0.matters/appendix.html'>Appendix</a>, we include a proof of the existence of a topological group isomorphism between $C([0,1],\mathbb{S}^1)$ and $C([0,1]^2,\mathbb{S}^1)$. The original example was given by Vladimir Pestov in his referee report of Ahmed Al-Rawashdeh's Ph.D. thesis ([<span class='ref' data-tag='MR2913684'></span>]). Because the report is not widely available, we reproduce the example with the kind permission of its author.
+</p>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

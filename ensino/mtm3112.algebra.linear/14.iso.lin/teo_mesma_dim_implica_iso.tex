@@ -1,0 +1,30 @@
+\begin{theorem}
+	Dois espaços vetoriais $V$ e $W$ têm a mesma dimensão se, e somente se, $V$ e $W$ são isomorfos.
+\end{theorem}
+
+\begin{proof}
+	Primeiro, suponhamos que $V$ e $W$ sejam isomorfos.
+	
+	\begin{quote}
+		Seja $T\colon V\to W$ um isomorfismo linear. Seja $\mathcal{B}$ uma base de $V$. Como $T$ é injetivo e $\mathcal{B}$ é linearmente independente, então $T(\mathcal{B})$ também é linearmente independente. Além disso, como $T$ é sobrejetivo e $\mathcal{B}$ é gerador de $V$, então $T(\mathcal{B})$ é gerador de $W$.
+		
+		Isto mostra que $T(\mathcal{B})$ é linearmente independente e gerador de $W$, portanto uma base de $W$. Mais ainda, a restrição de $T$ a $\mathcal{B}$ nos dá uma bijeção entre $\mathcal{B}$ e $T(\mathcal{B})$, que portanto têm o mesmo número de elementos. Concluímos que
+		\[\dim(V)=\#\mathcal{B}=\#T(\mathcal{B})=\dim(W).\]
+	\end{quote}
+	
+	Agora, suponhamos que $V$ e $W$ tenham a mesma dimensão.
+	
+	\begin{quote}
+		Sejam $\mathcal{B}$ e $\mathcal{C}$ bases de $V$ e $W$, respectivamente. Neste caso, temos
+		\[\#\mathcal{B}=\dim(V)=\dim(W)=\#\mathcal{C},\]
+		isto é, $\mathcal{B}$ e $\mathcal{C}$ têm o mesmo número de elementos. Portanto, existe uma bijeção $S\colon\mathcal{B}\to\mathcal{C}$. Consideremos também a sua inversa $T=S^{-1}\colon\mathcal{C}\to\mathcal{B}$.
+		
+		Podemos estender -- unicamente -- $S$ e $S^{-1}$ para transformações lineares entre $V$ e $W$ e vice-versa. Sejam então $\bar{S}\colon V\to W$ e $\bar{T}\colon W\to V$ funções lineares com
+		\[\bar{S}(b)=S(b)\qquad\text{e}\qquad\bar{T}(c)=T(c)=S^{-1}(c)\]
+		para todos $b\in\mathcal{B}$ e $c\in\mathcal{C}$. Daí, segue que
+		\[\bar{T}(\bar{S}(b))=b\]
+		para todo $b\in\mathcal{B}$. Isto significa que $\bar{T}\circ\bar{S}$ coincide com a identidade na base $\mathcal{B}$, e portanto $\bar{T}$ coincide com a identidade em $V$ inteiro. Obtemos $\bar{T}\circ\bar{S}=\operatorname{id}_V$. Similarmente, obtemos $\bar{S}\circ\bar{T}=\operatorname{id}_W$.
+		
+		Daí, concluímos que $\bar{T}$ é uma função inversa de $\bar{S}$. Portanto $\bar{S}$ é uma função linear inversível, e portanto um isomorfismo.
+	\end{quote}
+\end{proof}

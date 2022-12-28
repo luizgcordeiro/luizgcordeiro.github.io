@@ -1,0 +1,69 @@
+Cayley's theorem states that every group can be represented as a permutation group on some set. More generally, the Vagner-Preston theorem states that every inverse semigroup can be represented as a semigroup of partial bijections on some set. In this subsection, we will further generalize this to represent semigroupoids as certain semigroupoids of partial bijections.
+
+Representation results have been obtained in the context of \emph{inverse categories}, i.e., (possibly large) categories which behave as inverse semigroupoids. Namely, it is proven that every (locally small) inverse category may be faithfully embedded into the category $\cat{PInj}$ of sets and partial bijections. For more details, see \cite[p.\ 87]{MR0506554}, \cite[Theorem 3.8]{MR1871071}, \cite[Proposition 3.11]{MR3093088}. However we adopt a fundamentally different perspective from those works, by considering inverse semigroupoids as innate to bundles. This approach has the advantage of making the dynamical nature of inverse semigroupoids more explicit, and in particular to naturally motivating a natural notion of \emph{action} for inverse semigroupoids.
+
+Let $\pi\colon X\to X^{(0)}$ be a bundle. A \emph{partial bijection between fibers} of $\pi$ is a triple $(y,f,x)$, where $x,y\in X^{(0)}$ and $f\colon\dom(f)\to\ran(f)$ is a bijection with $\dom(f)\subseteq\pi^{-1}(x)$ and $\ran(f)\subseteq\pi^{-1}(y)$ (in other words, $f$ is a \emph{partial bijection} from $\pi^{-1}(x)$ to $\pi^{-1}(y)$). We denote by $\mathcal{I}(\pi)$ the set of all partial bijections between fibers of $\pi$.
+
+We make $\mathcal{I}(\pi)$ into a graph over $X^{(0)}$ by setting
+\[\so(y,f,x)=x\qquad\text{and}\qquad\ra(y,f,x)=y\]
+and then induce a product structure on $\mathcal{I}(\pi)$ as
+\[(z,g,y)(y,f,x)=(z,g\circ f,x)\]
+where $g\circ f$ is the usual partial composition of functions
+\[g\circ f\colon f^{-1}(\ran(f)\cap\dom(g))\to g(\dom(g)\cap\ran(f)),\qquad (g\circ f)(x)=g(f(x)).\]
+
+The verification that this products makes $\mathcal{I}(\pi)$ into an inverse semigroupoid is straightforward. The inverse of an element $(y,f,x)$ is $(x,f^{-1},y)$, where $f^{-1}\colon\ran(f)\to\dom(f)$ is the inverse function of $f$. The idempotent set of $\mathcal{I}(\pi)$ is
+\[E(\mathcal{I}(\pi))=\left\{(x,\id_A,x):x\in X^{(0)},A\subseteq\pi^{-1}(x)\right\}.\]
+%\begin{proposition}
+%$\mathcal{I}(\pi)$ is an inverse semigroupoid.
+%\end{proposition}
+%\begin{proof}
+%Associativity of $\mathcal{I}(\pi)$ is somewhat immediate, as is the fact that $\mathcal{I}(\pi)$ is regular, so we just need to prove that inverses are unique (alternatively, one can show that idempotents commute; see the argument of \cite[Theorem 5.1.5]{MR1455373}). Suppose $(x,g,y)$ is an inverse of $(y,f,x)$. Then $f\circ g\circ f=f$. Composing both sides with $f^{-1}$ on the left and on the right yields $g|_{\dom(f^{-1})\cap\dom(g)}=f^{-1}$. Thus $g$ is an extension of $f$. Similarly, from $g\circ f\circ g=g$ we see that $f$ is an extension of $g^{-1}$, so $f^{-1}$ is an extension of $g$. Therefore $g=f^{-1}$.\qedhere
+%\end{proof}
+
+In particular cases, this construction leads to well-known examples of semigroups and groupoids.
+
+\begin{example}
+Suppose that $X$ is a set, seen as a bundle over a singleton set $X^{(0)}=\left\{\ast\right\}$, i.e., we consider the bundle $\pi\colon X\to\left\{\ast\right\}$, $\pi_X(x)=\ast$ for all $x\in X$. Then $\mathcal{I}(X)\defeq\mathcal{I}(\pi)$ is simply the inverse semigroup of partial bijections of $X$.
+\end{example}
+
+\begin{example}
+Consider the identity function $\id_X$ of a set $X$. Let $L_2=\left\{0,1\right\}$ be the lattice with two elements $0<1$, which is an inverse semigroup under meets. Let $X\times X$ be the transitive equivalence relation on $X$, seen as a groupoid. Then $\mathcal{I}(\id_X)$ is isomorphic to the product inverse semigroupoid $(X\times X)\times L_2$ (where the product semigroupoid structure is defined in the obvious manner). Namely, to an element $(y,f,x)$ of $\mathcal{I}(\id_X)$ we associate the element $(y,x,0)$ of $(X\times X)\times L_2$ if $f=\varnothing$, the empty function, and $(y,x,1)$ otherwise.
+
+Note that the equivalence relation $X\times X$ is isomorphic to the subsemigroupoid of maximal elements (with respect to the canonical order) of $(X\times X)\times L_2$, or to the initial groupoid of $\mathcal{I}(\id_X)$ (see Subsection \ref{subsec:groupoidofgerms}).
+\end{example}
+
+We now state our representation theorem for inverse semigroupoids.
+
+\begin{theorem}\label{thm:representationtheoremoid}
+Let $\mathcal{S}$ be an inverse semigroupoid. Then $\mathcal{S}$ is isomorphic to a sub-inverse semigroupoid of $\mathcal{I}(\pi)$ for some bundle $\pi$.
+\end{theorem}
+\begin{proof}
+Considering the range map $\ra\colon\mathcal{S}\to \mathcal{S}^{(0)}$, we will define an embedding $\alpha\colon\mathcal{S}\to\mathcal{I}(\ra)$. Namely, given $a\in\mathcal{S}$, $\alpha(a)$ is a triple of the form $(y,\alpha_a,x)$, where $x,y\in\mathcal{S}^{(0)}$ and $\alpha_a$ is a partial bijection from $\ra^{-1}(x)$ to $\ra^{-1}(y)$. We first describe the map $\alpha_a$.
+
+For every $a\in\mathcal{S}$, let $D_a=\left\{t\in \mathcal{S}:tt^*\leq aa^*\right\}$. If $t\in D_{a^*}$, then
+\[(at)(at)^*=att^*a^*\leq aa^*,\]
+so $at\in D_a$. Therefore we may define $\alpha_a\colon D_{a^*}\to D_a$ as $\alpha_a(t)=at$. It is a bijection, since if $t\in D_{a^*}$, then $\alpha_a(t)\in D_a$, so we may apply $\alpha_{a^*}$ and obtain
+\[\alpha_{a^*}(\alpha_a(t))=\alpha_{a^*}(at)=a^*at=t,\]
+because $tt^*\leq a^*a$. This proves that $\alpha_{a^*}\circ\alpha_a=\id_{D_{a^*}}$. Changing the roles of $a^*$ and $a$ we conclude that $\alpha_a$ is invertible, with $\alpha_a^{-1}=\alpha_a^*$.
+
+Moreover, we have $D_a\subseteq\ra^{-1}(\ra(a))$ and thus we may define $\alpha\colon \mathcal{S}\to\mathcal{I}(\ra)$ by
+\[\alpha(a)=(\ra(a),\alpha_a,\so(a)).\]
+Notice that, for $a,b\in\mathcal{S}$,
+\[ab\text{ is defined}\iff\so(a)=\ra(b)\iff\so(\alpha(a))=\ra(\alpha(b))\iff\alpha(a)\alpha(b)\text{ is defined}.\ntag\label{eq:equivalenceproductdefinedivagnerprestonoid}\]
+Using the equivalence above and the same arguments as in the proof of the Vagner-Preston theorem (see \cite[Proposition 2.1.3]{MR1724106}, for example), it follows that $\alpha$ is an injective semigroupoid homomorphism. In fact, the right-to-left implications of \ref{eq:equivalenceproductdefinedivagnerprestonoid} imply that the image of $\alpha$ is a sub-semigroupoid of $\mathcal{I}(\ra)$, onto which $\alpha$ is an isomorphism.\qedhere
+\end{proof}
+
+Still considering the map $\alpha$ of the proof above, note that the vertex set of $\mathcal{I}(\ra)$ is $\mathcal{S}^{(0)}$, the vertex set of $\mathcal{S}$. We have $\so\circ\alpha=\so$, so the ``vertex map'' (as in Corollary \ref{cor:graphedhomomorphisminducesvertexmap}) associated to $\alpha$ is the identity of $\mathcal{S}^{(0)}$. This motivates the definition of an \emph{action} of an inverse semigroupoid $\mathcal{S}$ on a set $X$.
+
+\begin{definition}\label{def:action}
+A \emph{global action} of an inverse semigroupoid $\mathcal{S}$ on a set $X$ consists of a map $\pi\colon X\to\mathcal{S}^{(0)}$, called the \emph{anchor map} and a semigroupoid homomorphism $\theta\colon\mathcal{S}\to\mathcal{I}(\pi)$ such that the vertex map $\theta^{(0)}
+\colon\mathcal{S}^{(0)}\to\mathcal{I}(\pi)^{(0)}=\mathcal{S}^{(0)}$ is the identity $\id_{\mathcal{S}^{(0)}}$.
+
+More explicitly, it consists of a map $\pi\colon X\to\mathcal{S}^{(0)}$ and a family $\left\{\theta_a:a\in\mathcal{S}\right\}$ of bijections $\theta_a\colon\dom(\theta_a)\to\ran(\theta_a)$ such that
+\begin{enumerate}[label=(\roman*)]
+    \item $\dom(\theta_a)\subseteq\pi^{-1}(\so(a))$ and $\ran(\theta_a)\subseteq\pi^{-1}(\ra(a))$ for all $a\in\mathcal{S}$;
+    \item $\theta_{a}\circ\theta_b=\theta_{ab}$ for all $(a,b)\in\mathcal{S}^{(2)}$.
+\end{enumerate}
+\end{definition}
+
+However, as stated in the introduction, we will be interested in more general notions than actions, which is the content of the next subsection.

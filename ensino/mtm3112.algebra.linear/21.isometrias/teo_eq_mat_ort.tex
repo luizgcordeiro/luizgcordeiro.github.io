@@ -1,0 +1,58 @@
+\begin{theorem}
+	Seja $A\in M_{n\times n}(\mathbb{R})$, uma matriz quadrada real. São equivalentes:
+	\begin{enumerate}
+		\item $A$ é ortogonal.
+		\item $A^T$ é ortogonal.
+		\item As colunas de $A$ são ortonormais.
+		\item As linhas de $A$ são ortonormais.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Primeiro, provamos que as afirmações 1 e 3 são equivalentes.
+	
+		\begin{quote}
+			Considere as colunas $c_1,\ldots,c_n$ de $A$:
+			\[A=\begin{bmatrix}
+				| & | & & |\\
+				c_1 & c_2 & \cdots & c_n\\
+				| & | & & |\end{bmatrix}.\]
+			Então a transposta de $A$ é dada por
+			\[A^T=\begin{bmatrix}
+			- & c_1 & -\\
+			- & c_2 & -\\
+			  & \vdots & \\
+			- & c_n & -\end{bmatrix}.\]
+			
+			A matriz produto $A^TA$ então é calculada como
+			\begin{align*}
+				A^T A
+					&=\begin{bmatrix}
+						- & c_1 & -\\
+						- & c_2 & -\\
+						  & \vdots & \\
+						- & c_n & -\end{bmatrix}
+					\begin{bmatrix}
+						| & | & & |\\
+						c_1 & c_2 & \cdots & c_n\\
+						| & | & & |
+					\end{bmatrix}\\
+					&=\begin{bmatrix}
+						\langle c_1,c_1\rangle & \langle c_1,c_2\rangle & \cdots & \langle c_1,c_n\rangle\\
+						\langle c_2,c_1\rangle & \langle c_2,c_2\rangle & \cdots & \langle c_2,c_n\rangle\\
+						\vdots & \vdots & \ddots & \vdots\\
+						\langle c_n,c_1\rangle & \langle c_n,c_2\rangle & \cdots & \langle c_n,c_n\rangle
+					\end{bmatrix}\\
+					&=[\langle c_i,c_j\rangle]_{i,j},
+			\end{align*}
+			onde $\langle\cdot,\cdot\rangle$ denota o produto interno Euclidiano de $\mathbb{R}^n$.
+			
+			Portanto, $A^TA$ é a identidade se, e somente se, $\langle c_i,c_j\rangle=1$ se $i=j$ e $0$ se $i\neq j$, o que significa que as colunas $c_1,\ldots,c_n$ são ortonormais.
+		\end{quote}
+		
+	A demonstração da equivalência das afirmações 2 e 4 é similar. Falta somente provar que 1 e 2 são equivalentes.
+	
+	\begin{quote}
+		A matriz $A$ é ortogonal se, e somente se, $A^TA=I_{n\times n}$, o que significa que $A^T$ é uma inversa à esquerda para $A$. Mas como para matrizes quadradas inversas à esquerda, inversas à direita e inversas bilaterais coincidem, isto equivale a dizer que $A A^T=I_{n\times n}$, ou que $(A^T)^T(A^T)=A^T$(pois $(A^T)^T=A$). Esta última afirmação significa que $A^T$ é ortogonal.
+	\end{quote}
+\end{proof}

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>1.7.Invariant means</h2>
+
+<p>
+In this section we will consider the algebraic analogues of invariant measures on groupoids, which are called <em>invariant means</em>. These were originally studied in [<span class='ref'data-tag='MR3448402'></span>] in the context of <em>paradoxical decompositions</em>, and their connections with $C^*$-algebras were described in [<span class='ref'data-tag='MR3548134'></span>].
+</p>
+
+<p>
+We will be interested in the analytical structure that such an invariant mean will induce on a Boolean inverse monoid, and this will be revisited when we introduce sofic groupoids and study them in the <a href='../2.sg/2.0.intro.html'>next chapter</a>. This is also a setting we will consider in the <a href='../1.gis/1.8.nclst.html'>next section</a>, on which we will prove a non-commutative version of the Loomis-Sikorski Theorem and determine Boolean semigroups which are measured semigroups of probability measure-preserving groupoids.
+</p>
+
+<p>
+Although we will introduce the concepts as in [<span class='ref'data-tag='MR3548134'></span>], we will reword some definitions to fit better to the nomenclature and notation we have used so far. It should be noted that Boolean inverse monoids of [<span class='ref'data-tag='MR3548134'></span>] correspond to <em>weakly</em> Boolean inverse monoids as in Definition <span class='ref'data-tag='definitionbooleaninversesemigroup'></span>.
+</p>
+
+<h3 class='subsection'>1.7.1. Covers and fixed idempotents</h3>
+
+<!-- 1.7.1 -->
+<div class='definition' id='definitioncoverinposet'>
+	<p><span class='envidentifier'>Definition 1.7.1</span>
+	Let $L$ be a poset with zero. A <em>cover</em> of an element $x\in L$ is a family $C\subseteq L$ such that whenever $e\in L$ satisfies $c\land e=0$ for all $c\in C$, then $x\land e=0$ as well. A <em>cover</em> of a subset $X\subseteq L$ is a family $C\subseteq L$ which is a cover of every element of $X$.
+	</p>
+</div>
+
+<!-- 1.7.2 -->
+<div class='proposition' id='propositioncoversMR3548134'>
+	<p><span class='envidentifier'>Proposition 1.7.2</span>
+	If $L$ is a generalized Boolean algebra, $X\subseteq L$ is downwards closed, and $C$ is a finite subset of $L$, then the following are equivalent:</p>
+	<ol class='arpar'>
+		<li> $C$ is a cover of $X$;</li>
+		<li> For every nonzero $x\in X$ there is some $c\in C$ with $x\land c\neq 0$.</li>
+		<li> $\bigvee C$ is an upper bound of $X$;</li>
+	</ol>
+</div>
+
+<a class='proofbutton' data-tag='propositioncoversMR3548134'>Proof</a>
+<div class='proof' id='proofofpropositioncoversMR3548134'>
+	<p>
+	<u>(1)$\Rightarrow$(2)</u>: If $x\in X$ satisfies $x\land c=0$ for all $c\in C$, then the definition of cover implies $x=x\land x=0$.
+	</p>
+
+	<p>
+	<u>(2)$\Rightarrow$(3): </u>If $x\in X$, then the element $y=x\setminus\bigvee C$ of $X$ satisfies $y\land c=0$ for all $c\in C$, so $y=0$ by property (2) and thus $x\leq y\lor\bigvee C=\bigvee C$.
+	</p>
+
+	<p>
+	<u>(3)$\Rightarrow$(1)</u>: If $e\in L$ satisfies $e\land c=0$ for all $c\in C$, then for all $x\in X$,</p>
+	<div class='equation'>\[
+	e\land x\leq e\land\bigvee C=\bigvee_{c\in C} e\land c=0.
+	\]<span class='qed'></span></div>
+</div>
+
+<p>
+We need now to consider <em>fixed</em> idempotents of elements of inverse semigroups. These can be thought of as the set of fixed points of a function, as described in Example <span class='ref'data-tag='examplefixedidempotentsinix'></span>.
+</p>
+
+<!-- 1.7.3 -->
+<div class='definition' id='definitionIsandFixs'>
+	<p><span class='envidentifier'>Definition 1.7.3
+	<span style='font-weight:normal;'>([<span class='ref'data-tag='MR3548134'></span>, Definition 3.6])</span></span>
+	If $S$ is an inverse semigroup, we say that an idempotent $e\in E(S)$ is <em>fixed</em> by an element $s\in S$ if $se=e$. We denote by $\mathcal{I}_s=\left\{e\in E(S):se=e\right\}$ the set of fixed idempotents of $s$.
+	</p>
+</div>
+
+<p>
+The following lemma is immediate from the facts that if $e$ is idempotent then $e^*e=e$, and that $E(S)$ is downwards directed.
+</p>
+
+<!-- 1.7.4 -->
+<div class='lemma' id='lemmaIs1'>
+	<p><span class='envidentifier'>Lemma 1.7.4</span>
+	If $S$ is an inverse semigroup, then for all $s\in S$,
+	<div class='equation'>\[
+	\mathcal{I}_s=\left\{e\in E(S):e\leq s\right\}=\left\{e\in S:e\leq s\text{ and }e\leq s^*s\right\}.
+	\]</div>
+	In particular, $\mathcal{I}_s$ is downwards closed and $\mathcal{I}_{s^*}=\mathcal{I}_s$.
+	</p>
+</div>
+
+<!-- 1.7.5 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 1.7.5
+	<span style='font-weight:normal'>([<span class='ref'data-tag='MR1300843'></span>, Definition 1.7])</span></span>
+	If $S$ is an inverse semigroup, $s\in S$ and the meet $s\land s^*s$ exists, we denote it by $\Fix(s)=s\land s^*s$ and call $\Fix(s)$ the <em>fixed point idempotent</em> of $s$.
+	</p>
+</div>
+
+<p>
+Since, by Lemma <span class='ref'data-tag='lemmaIs1'></span>, $\mathcal{I}_s$ is the set of lower bounds of $\left\{s,s^*s\right\}$, then
+<div class='equation'>\[
+\Fix(s)=\bigvee\mathcal{I}_s,
+\]</div>
+in the sense that one of these elements exists if and only if the other exists, in which case they are equal and $\Fix(s)$ is the maximal idempotent fixed by $s$.
+</p>
+
+<!-- 1.7.6 -->
+<div class='example' id='examplefixedidempotentsinix'>
+	<p><span class='envidentifier'>Example 1.7.6</span>
+	If $f\in\mathcal{I}(X)$ for some set $X$, then $\Fix(f)$ is the identity function of the set of fixed points of $f$, $\left\{x\in\operatorname{dom}(f):f(x)=x\right\}$, and so under the usual interpretation that $E(\mathcal{I}(X))$ consists of subsets of $X$, $\Fix(f)$ is the set of fixed points of $f$. (See Example <span class='ref'data-tag='exampleidempotentssets'></span>.)
+	</p>
+</div>
+
+<!-- 1.7.7 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 1.7.7</span>
+	If $A\in\KB(\mathcal{G})$ for some ample Hausdorff groupoid $\mathcal{G}$, then $\Fix(A)=A\cap\mathcal{G}^{(0)}$.
+	</p>
+</div>
+
+<p>
+In [<span class='ref'data-tag='MR1300843'></span>], Leech studied the <em>fixed point operator</em> $\Fix$ for an inverse monoid $S$, and in particular proved that $\Fix(s)$ is defined for all $s\in S$ if and only if $S$ admits meets (with respect to its usual order). Lemma <span class='ref'data-tag='lemmaIs2'></span>(b) below describes the same fact for inverse semigroups.
+</p>
+
+<!-- 1.7.8 -->
+<div class='lemma' id='lemmaIs2'>
+	<p><span class='envidentifier'>Lemma 1.7.8</span>
+	Suppose that $S$ is an inverse semigroup and $\Fix(s)$ exists for all $s\in S$. Then whenever $s,t\in S$,</p>
+	<ol class='alphpar'>
+		<li> $\Fix(s)=\Fix(s^*)$.</li>
+		<li> $s\land t$ exists and $s\Fix(s^*t)=t\Fix(s^*t)=s\land t$.</li>
+		<li> $\Fix(s^*t)$ is a lower bound of $\left\{s^*s,t^*t\right\}$.</li>
+		<li> $\Fix(s^*t)=(s\land t)^*(s\land t)$.</li>
+		<li> If $z\in S$ then $\Fix(s^*t)\Fix(t^*z)\leq\Fix(s^*z)$.</li>
+		<li> $\Fix(st^*)=t\Fix(s^*t)t^*=s\Fix(s^*t)t^*$.</li>
+	</ol>
+</div>
+
+<a class='proofbutton' data-tag='lemmaIs2'>Proof</a>
+<div class='proof' id='proofoflemmaIs2'>
+	<ol class='alphpar'>
+		<li> By <span class='ref'data-tag='lemmaIs1'></span>, $\Fix(s)=\bigvee\mathcal{I}_s=\bigvee\mathcal{I}_{s^*}=\Fix(s^*)$.</li>
+		<li> Since $s\Fix(s^*t)\leq s$ and $s\Fix(s^*t)\leq ss^*t\leq t$, then $s\Fix(s^*t)$ is a lower bound of $\left\{s,t\right\}$. If $p$ is any other lower bound of $\left\{s,t\right\}$, then $p^*p$ is an idempotent and $p^*p\leq s^*t$, so $p^*p\leq\Fix(s^*t)$, which implies $p=pp^*p\leq s\Fix(s^*t)$. This proves $s\Fix(s^*t)=s\land t$, and the other equality is similar.</li>
+		<li> follows from item (a) and Lemma <span class='ref'data-tag='lemmaIs1'></span>.</li>
+		<li> follows from (b) and (c).</li>
+		<li> Since $\Fix(s^*t)\Fix(t^*z)\in E(S)$, then applying Lemma <span class='ref'data-tag='lemmaIs1'></span> we obtain
+		<div class='equation'>\[
+		\Fix(s^*t)\Fix(t^*z)\leq s^*tt^*z\leq s^*z,
+		\]</div>
+		that is, $\Fix(s^*t)\Fix(t^*z)\in\mathcal{I}_{s^*z}$ and so $\Fix(s^*t)\Fix(t^*z)\leq\bigvee\mathcal{I}_{s^*z}=\Fix(s^*z)$.</li>
+		<li> By (b) and (d),
+		<div class='equation'>\begin{align*}
+		t\Fix(s^*t)t^*&=t\Fix(s^*t)\Fix(s^*t)t^*=(t\Fix(s^*t))(t\Fix(s^*t))^*\\
+		&=(s\land t)(s\land t)^*(s^*\land t^*)^*(s^*\land t^*)=\Fix(st^*),
+		\end{align*}</div>
+		and the other equality is similar.<span class='qed'></span></li>
+	</ol>
+</div>
+
+<!-- 1.7.9 -->
+<div class='corollary' id='corollary179'>
+	<p><span class='envidentifier'>Corollary 1.7.9</span>
+	If $S$ is a Boolean inverse semigroup and $s,t\in S$ then $t\setminus s=t(t^*t\setminus\Fix(s^*t))$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='corollary179'>Proof</a>
+<div class='proof' id='proofofcorollary179'>
+	<p>
+	Using the previous lemma and Proposition <span class='ref'data-tag='propositionrelativecomplementsandoperations'></span>(a),</p>
+	<div class='equation'>\[
+	t\setminus s=t\setminus(s\land t)=t(t^*t\setminus(s\land t)^*(s\land t))=t(t^*t\setminus\Fix(s^*t)).
+	\]<span class='qed'></span>
+	</div>
+</div>
+
+<p>
+Note that, by Proposition <span class='ref'data-tag='propositioncoversMR3548134'></span>, the condition in item (1) below is precisely condition (H) considered in [<span class='ref'data-tag='MR3548134'></span>] when we restrict our study to weakly Boolean inverse semigroups (which are the semigroups of interest there).
+</p>
+
+<!-- 1.7.10 -->
+<div class='proposition' id='proposition1710'>
+	<p><span class='envidentifier'>Proposition 1.7.10</span>
+	Given a weakly Boolean inverse semigroup $S$, the following are equivalent:</p>
+	<ol class='arpar'>
+		<li> For every $s\in S$, there is a finite subset $C\subseteq\mathcal{I}_s$ which is a cover of $\mathcal{I}_s$.</li>
+		<li> For all $s\in S$, $\bigvee\mathcal{I}_s$ exists.</li>
+		<li> For all $s\in S$, $\Fix(s)$ exists.</li>
+		<li> $S$ is a Boolean inverse semigroup.</li>
+	</ol>
+</div>
+
+<a class='proofbutton' data-tag='proposition1710'>Proof</a>
+<div class='proof' id='proofofproposition1710'>
+	<p>
+	<u>(1)$\Rightarrow$(2)</u>: Suppose (1) is valid, $s\in S$ and $C\subseteq\mathcal{I}_s$ is a finite cover $C$ of $\mathcal{I}_s$. Since $\mathcal{I}_s$ is a compatible set, $\bigvee C$ exists and it is an upper bound for $\mathcal{I}_s$ by Proposition <span class='ref'data-tag='propositioncoversMR3548134'></span>. This obviously implies $\bigvee C=\bigvee\mathcal{I}_s$.
+	</p>
+
+	<p>
+	<u>(2)$\iff$(3)</u> is clear from the comment below Definition <span class='ref'data-tag='definitionfixs'></span>.
+	</p>
+
+	<p>
+	<u>(3)$\Rightarrow$(4)</u> follows  from Lemma <span class='ref'data-tag='lemmaIs2'></span>(b).
+	</p>
+
+	<p>
+	<u>(4)$\Rightarrow$ (1)</u>: If $S$ is Boolean then $\Fix(s)$ is the maximum of $\mathcal{I}_s$ and $\left\{\Fix(s)\right\}$ is a finite cover of $\mathcal{I}_s$ (by Proposition <span class='ref'data-tag='propositioncoversMR3548134'></span>).<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection'>1.7.2. Invariant means and uniform metrics</h3>
+
+<!-- 1.7.11 -->
+<div class='definition' id='definitioninvariantmean'>
+	<p><span class='envidentifier'>Definition 1.7.11
+	<span style='font-weight:normal;'>([<span class='ref'data-tag='MR3448402'></span>])</span></span>
+	A <em>mean</em> on a weakly Boolean inverse semigroup $S$ is a map $\mu:E(S)\to[0,\infty)$ satisfying
+	<ol>
+		<li> $\mu(e\lor f)=\mu(e)+\mu(f)$ whenever $e,f\in E(S)$, $ef=0$.</li>
+	</ol>
+	and a mean $\mu$ is called <em>invariant</em> if
+	<ol>
+		<li value='2'> $\mu(s^*s)=\mu(ss^*)$ for all $s\in S$;</li>
+	</ol>
+	A mean $\mu$ on $S$ will be called <em>faithful</em> if $\mu(e)=0$ implies $e=0$, and if $S$ is a monoid and $\mu(1)=1$, we say that $\mu$ is <em>normalized</em>.</p>
+</div>
+
+<!-- 1.7.12 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 1.7.12</span>
+	If $X$ is a set, and again by identifying $E(\mathcal{I}(X))$ with subsets of $X$, a mean on $\mathcal{I}(X)$ corresponds to a finite, finitely additive measure on $X$ (endowed with the discrete $\sigma$-algebra).
+	</p>
+</div>
+
+<!-- 1.7.13 -->
+<div class='example' id='exampleinvariantmeansaremeasures'>
+	<p><span class='envidentifier'>Example 1.7.13</span>
+	Let $S$ be a Boolean inverse semigroup. By non-commutative Stone duality (Theorem <span class='ref'data-tag='theoremnoncommutativestoneduality'></span>), there exists an ample Hausdorff groupoid $\mathcal{G}$ such that $S=\KB(\mathcal{G})$. 
+	</p>
+
+	<p>
+	Identifying $E(S)$ with the collection of compact-open subsets of $\mathcal{G}^{(0)}$, an invariant mean $\mu$ on $E(S)$ corresponds to a pre-measure, also denoted $\mu$, on the ring of compact-open subsets of $\mathcal{G}^{(0)}$. Since $\mathcal{G}^{(0)}$ is zero-dimensional, we can extend $\mu$ uniquely to a regular, locally finite Borel measure on $\mathcal{G}^{(0)}$. This is a consequence of a theorem of Mařík ([<span class='ref'data-tag='MR0088532'></span>]), although a simple application of the Riesz-Markov-Kakutani Theorem also yields an elementary proof in the case at hand (see the Remark below). This interpretation is sometimes useful because we have more freedom to take unions in $\KB(\mathcal{G})$, even though we do not end up with elements of $\KB(\mathcal{G})$.
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	If $X$ is a zero-dimensional, locally compact Hausdorff space, then every finitely additive pre-measure $\mu$ on $\KB(X)$ (the collection of compact-open subsets of $X$) extends uniquely to a regular Borel measure (<span class='ref' data-tag='footnoteimdefofregmeas'></span>) on $X$. Indeed, $\mu$ is in fact $\sigma$-additive because all sets of $\KB(X)$ are compact-open, so if $A=\bigcup_n A_n$  where $A,A_n\in\KB(X)$ and the sets $A_n$ are pairwise disjoint, then all except finitely many $A_n$ are empty, from which $\mu(A)=\sum_n\mu(A_n)$ follows.
+	</p>
+
+	<p>
+	Let $\mathcal{A}$ be the complex span of all characteristic functions of elements of $\KB(X)$, and consider the functional $\tau:\mathcal{A}\to\mathbb{C}$, $\tau(f)=\int fd\mu$.
+	</p>
+
+	<p>
+	Then $\mathcal{A}$ is dense in $C_c(X,\mathbb{C})$ (the vector space of complex-valued, compactly supported continuous functions on $X$) with uniform norm, so the continuous positive functional $\tau$ extends uniquely to a positive functional on $C_c(X,\mathbb{C})$.
+	</p>
+
+	<p>
+	By the Riesz-Markov-Kakutani Representation Theorem ([<span class='ref'data-tag='MR924157'></span>, Theorem 2.14]), $\tau$ corresponds to a unique regular Borel measure $\nu$ on $X$, which extends $\mu$ because $\nu(A)=\tau(1_A)=\mu(A)$ for all $A\in\KB(X)$.
+	</p>
+</div>
+
+<p>
+Either using Example <span class='ref'data-tag='exampleinvariantmeansaremeasures'></span> or proceeding in a manner similar to that of measure theory, the following properties of invariant means follow easily:
+</p>
+
+<!-- 1.7.14 -->
+<div class='proposition' id='propositionpropertiesofmean'>
+	<p><span class='envidentifier'>Proposition 1.7.14</span>
+	Suppose $\mu$ is a mean on a weakly Boolean semigroup $S$. Then</p>
+	<ol class='alphpar'>
+		<li> $\mu(0)=0$.</li>
+		<li> $\mu(e\lor f)=\mu(e)+\mu(f)-\mu(ef)$ for all $e,f\in E(S)$.</li>
+		<li> If $e\leq f$ in $E(S)$ then $\mu(f)=\mu(e)+\mu(f\setminus e)$.</li>
+	</ol>
+</div>
+
+<p>
+Invariant means induce a metric structure on the corresponding semigroup in a natural manner.
+</p>
+
+<!-- 1.7.15 -->
+<div class='definition' id='definitionuniformmetric'>
+	<p><span class='envidentifier'>Definition 1.7.15</span>
+	If $\mu$ is an invariant mean on a Boolean inverse semigroup $S$, we define the <em>uniform metric</em> (induced by $\mu$) as
+	<div class='equation'>\[
+	d_\mu(s,t)=\mu\left((s^*s\lor t^*t)\setminus\Fix(s^*t)\right),
+	\]</div>
+	and whenever $S$ is endowed with an invariant mean, this is the metric structure we will consider (see <span class='ref'data-tag='propositionpropertiesofuniformmetric'></span>(b)).
+	</p>
+</div>
+
+<!-- 1.7.16 -->
+<div class='example' id='uniformmetriconkbg'>
+	<p><span class='envidentifier'>Example 1.7.16</span>
+	If $S=\KB(\mathcal{G})$ and $\mu$ is an invariant measure on $\mathcal{G}^{(0)}$, regarded as an invariant mean on $E(S)$ as in Example <span class='ref'data-tag='exampleinvariantmeansaremeasures'></span>, then $d_\mu(A,B)=\mu(\so(A\triangle B))$, where $A\triangle B=(A\cup B)\setminus (A\cap B)$ is the symmetric difference of $A$ and $B$.
+	</p>
+</div>
+
+<!-- 1.7.17 -->
+<div class='proposition' id='propositionpropertiesofuniformmetric'>
+	<p><span class='envidentifier'>Proposition 1.7.17</span>
+	Suppose $\mu$ is an invariant mean on a Boolean semigroup $S$. Then if $s,t,z\in S$,</p>
+	<ol class='alphpar'>
+		<li> $d_\mu(s,t)=\mu\left((s\setminus t)^*(s\setminus t)\lor(t\setminus s)^*(t\setminus s)\right)$.</li>
+		<li> $d_\mu$ is a pseudometric on $S$.</li>
+		<li> $d_\mu(s^{-1},t^{-1})=d_\mu(s,t)$.</li>
+		<li> $d_\mu(zs,zt)\leq d_\mu(s,t)$ and $d_\mu(sz,tz)\leq d_\mu(s,t)$.</li>
+		<li> $d_\mu(s_1s_2,t_1t_2)\leq d_\mu(s_1,t_2)+d_\mu(s_2,t_2)$.</li>
+		<li> If $s,t,z,w\in S$ then $d_\mu(s\land t,z\land w)\leq d_\mu(s,z)+d_\mu(t,w)$.</li>
+		<li> If $\left\{s,t\right\}$ and $\left\{z,w\right\}$ are compatible, then $d_\mu(s\lor t,z\lor w)\leq d_\mu(s,z)+d_\mu(t,w)$.</li>
+		<li> If $s,t,z,w\in S$ then $d_\mu(s\setminus t,z\setminus w)\leq d_\mu(s,z) +d_\mu(t,w)$.</li>
+	</ol>
+</div>
+
+<a class='proofbutton' data-tag='propositionpropertiesofuniformmetric'>Proof</a>
+<div class='proof' id='proofofpropositionpropertiesofuniformmetric'>
+	<p>
+	Items (a) and (b) actually follow from Examples <span class='ref'data-tag='exampleinvariantmeansaremeasures'></span> and <span class='ref'data-tag='uniformmetriconkbg'></span>, but we can give a purely semigroup-theoretic proof of them:</p>
+	<ol class='alphpar'>
+		<li> follows from Lemma <span class='ref'data-tag='lemmaIs2'></span>(d) and (a).</li>
+		<li> Let $s,t,z\in S$. Since $s\setminus t=\left((s\setminus t)\setminus z)\right)\lor\left((s\land z)\setminus t)\right)$, then
+			<div class='equation'>\[
+				(s\setminus t)^*(s\setminus t)\leq(s\setminus z)^*(s\setminus z)\lor(z\setminus t)^*(z\setminus t),
+			\]</div>
+			and similarly with the roles of $s$ and $t$ interchanged, so simply apply (a) to obtain the result.</li>
+		<li> follows from (a) and property 1. in the definition of invariant mean (<span class='ref'data-tag='definitioninvariantmean'></span>).</li>
+		<li> follows from distributivity of the product over relative complements and items (a) and (c).</li>
+		<li> By (b) and (d),
+			<div class='equation'>\[
+				d_\mu(s_1s_2,t_1t_2)\leq d_\mu(s_1s_2,t_1s_2)+d_\mu(t_1s_2,t_1t_2)\leq d_\mu(s_1,t_1)+d_\mu(s_2,t_2).
+			\]</div></li>
+		<li> Just note that
+			<div class='equation'>\[
+				d_\mu(s\land t,z\land w)\leq d_\mu(s\land t, s\land w)+d_\mu(s\land w,z\land w)\leq d_\mu(t,w)+d_\mu(s,z),
+			\]</div>
+			where the second inequality follows from item (a).</li>
+		<li> Using the distributive properties, we obtain
+			<div class='equation'>\[
+				(s\lor t)\setminus(z\lor w)=(s\setminus(z\lor w))\lor(t\setminus(z\lor w))\leq (s\setminus z)\lor (t\setminus w),
+			\]</div>
+			and similarly $(z\lor w)\setminus(s\setminus t)\leq (z\setminus s)\lor (w\setminus t)$, then the result follows from item (a).</li>
+		<li> If $S$ is a unital Boolean algebra, and if we denote the complement of an element $x\in S$ by $x^c=1\setminus x$, then
+			<div class='equaiton'>\begin{align*}
+				(s\setminus t)\setminus(z\setminus w)&=st^c(zw^c)^c=st^c(z^c\lor w)=st^cz^c\lor st^cw\\
+				&=s(t\lor w)^c\lor (sw)t^c=(s\setminus(t\lor w))\lor((sw)\setminus t).
+			\end{align*}</div>
+			For a general Boolean inverse monoid, the same computation on the unital Boolean algebra $\left\{x\in S:x\leq s\right\}$ (and intersecting all elements with $s$, if necessary) will also yield
+			<div class='equation'>\[
+				(s\setminus t)\setminus(z\setminus w)=(s\setminus(t\lor w))\lor((s\land w)\setminus t),
+			\]</div>
+				and similarly $(z\setminus w)\setminus (s\setminus t)=(z\setminus(w\lor t))\lor((z\land t)\setminus w)$. These equalities and item (a) yield the desired inequality.<span class='qed'></span></li>
+	</ol>
+</div>
+
+<!-- 1.7.18 -->
+<div class='corollary' id='corollaryidealofnullsetsbooleaninversesemigroup'>
+	<p><span class='envidentifier'>Corollary 1.7.18</span>
+	If $\mu$ is an invariant mean on a Boolean inverse semigroup $S$, then
+	<div class='equation'>\[
+	\mathcal{N}(\mu)=\left\{n\in S:\mu(n^*n)=0\right\}=\left\{n\in S:d_\mu(0,n)=0\right\}
+	\]</div>
+	is a $\lor$-ideal of $S$, and $s\sim_{\mathcal{N}(\mu)} t$ if and only if $d_\mu(s,t)=0$. Moreover, $\mu$ factors to a faithful invariant mean on the quotient $S/\mathcal{N}(\mu)$, whose associated metric is the quotient metric of $d_\mu$.
+	</p>
+</div>
+
+<p>
+We will still denote the invariant mean on $S/\mathcal{N}(\mu)$ by $\mu$ and the respective quotient metric by $d_\mu$.
+</p>
+
+<!-- 1.7.19 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.7.19</span>
+If $(\mathcal{G},\mu)$ is a probability measure-preserving groupoid, and we identify $\mu$ with an invariant mean on $\BOR(\mathcal{G})$ in the usual manner, then $\MEAS(\mathcal{G},\mu)=\BOR(\mathcal{G})/\mathcal{N}(\mu)$.
+</p>
+</div>
+
+<!-- 1.7.20 -->
+<div class='proposition' id='proposition1720'>
+	<p><span class='envidentifier'>Proposition 1.7.20</span>
+	Given an invariant mean $\mu$ on a Boolean inverse semigroup $S$, $d_\mu$ is a metric if and only if $\mu$ is faithful.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='proposition1720'>Proof</a>
+<div class='proof' id='proofofproposition1720'>
+	<p>
+	Suppose $d_\mu$ is a metric and $\mu(e)=0$. Then $d_\mu(e,0)=\mu(e^*e)=\mu(e)=0$, so $e=0$ and $\mu$ is faithful.
+	</p>
+
+	<p>
+	Conversely, suppose $\mu$ is faithful and $d_\mu(s,t)=0$. This means that
+	<div class='equation'>\[
+	\mu(s^*s\lor t^*t\setminus\Fix(s^*t))=0,
+	\]</div>
+	so $(s^*s\lor t^*t)\setminus\Fix(s^*t)=0$. But Lemma <span class='ref'data-tag='lemmaIs2'></span>(c) implies $\Fix(s^*t)\leq s^*s\land t^*t$, therefore $s^*s=t^*t=\Fix(s^*t)$ by faithfulness of $\mu$, thus <span class='ref'data-tag='lemmaIs2'></span>(b) yields
+	<div class='equation'>\[
+	s=ss^*s=s\Fix(s^*t)=t\Fix(s^*t)=tt^*t=t,
+	\]</div>
+	so $d_\mu$ is a metric.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+The last function we will associate to an invariant mean $\mu$ on a Boolean inverse semigroup is the <em>trace</em>, which is a simple extension of $\mu$ to all of $S$ and which encodes $d_\mu$ in a simpler manner.
+</p>
+
+<!-- 1.7.21 -->
+<div class='definition' id='definitiontrace'>
+<p><span class='envidentifier'>Definition 1.7.21</span>
+If $S$ is a Boolean inverse semigroup endowed with an invariant mean $\mu$ and $s\in S$, define the <em>trace</em> of $s$ as $\tr(s)=\mu(\Fix(s))$ (or $\tr_\mu$ if we need to make $\mu$ explicit).
+</p>
+</div>
+
+<!-- 1.7.22 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 1.7.22</span>
+	Let $(X,\mu)$ be a standard probability space and $S$ the inverse semigroup of measure-preserving Borel automorphisms of $X$. By identifying $E(S)$ with the set of Borel subsets of $X$ and $\mu$ with an invariant mean on $S$, the trace of $f\in S$ is
+	<div class='equation'>\[
+	\tr_\mu(f)=\mu\left(\left\{x\in X:f(x)=x\right\}\right).
+	\]</div></p>
+</div>
+
+<!-- 1.7.23 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 1.7.23</span>
+	As a particular case of the previous example, let $X$ be a finite set with $n$ elements (seen as a discrete Borel space) and $\mu_\#$ the normalized counting measure on $X$: $\mu_\#(A)=\#A/n$ for all $A\subseteq X$, where $\#A$ stands for the cardinality of $A$. Then $\mathcal{I}(X)$ is precisely the set of measure-preserving Borel automorphisms of $(X,\mu_\#)$.
+	</p>
+
+	<p>
+	Let $S$ be the inverse semigroup of $n\times n$ partial permutation matrices, that is, $n\times n$ matrices such that every row and every column has entries in $\left\{0,1\right\}$, and at most one entry in each row and in each column is nonzero. Then $S$ and $\mathcal{I}(X)$ are isomorphic via the map $\theta:\mathcal{I}(X)\to S$, $f\mapsto\theta(f)=[f_{ij}]_{ij}$ given by
+	<div class='equation'>\[
+	f_{ij}=\begin{cases}
+	1,&\text{if }j\in\operatorname{dom}(f)\text{ and }f(j)=i,\\
+	0,&\text{otherwise.}
+	\end{cases}
+	\]</div></p>
+
+	<p>
+	Composing the trace on $\mathcal{I}(X)$ (induced by $\mu_\#$) with $\theta^{-1}$, we obtain the usual normalized matrix trace on $S$: $\tr([m_{ij}]_{ij})=(1/n)\sum_{i=1}^n m_{ii}$.
+	</p>
+</div>
+
+<!-- 1.7.24 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 1.7.24</span>
+	If $S=\KB(\mathcal{G})$ and $\mu$ is an invariant mean on $S$, then $\tr(A)=\mu(A\cap\mathcal{G}^{(0)})$ for all $A\in S$.
+	</p>
+</div>
+
+<!-- 1.7.25 -->
+<div class='theorem' id='theoremtracepreservingisisometric'>
+	<p><span class='envidentifier'>Theorem 1.7.25</span>
+	Let $S,T$ be Boolean inverse monoids with faithful and normalized invariant means $\mu$ and $\nu$, respectively. Then a semigroup morphism $\theta:S\to T$ preserves traces if and only if it is isometric with respect to $d_\mu$ and $d_\nu$. In this case, $\theta$ is a morphism of Boolean inverse monoids satisfying $\theta(1)=1$ (i.e., $\theta$ is proper).
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremtracepreservingisisometric'>Proof</a>
+<div class='proof' id='proofoftheoremtracepreservingisisometric'>
+<p>First suppose $\theta$ preserves the trace. Then the definitions of $d_\mu$ and $\tr_\mu$, and Proposition <span class='ref'data-tag='propositionpropertiesofmean'></span>(c) imply
+<div class='equation'>\[
+d_\mu(s,t)=\tr_\mu(s^*s)+\tr_\mu(t^*t)-\tr_\mu(s^*st^*t)-\tr_\mu(s^*t),
+\]</div>
+and similarly for $d_\nu$, and so it is clear that $\theta$ is isometric.
+</p>
+
+<p>
+Conversely, suppose $\theta$ is isometric. First we prove that $\theta(0)=0$ and $\theta(1)=1$. Since $0\leq 1$ then $\theta(0)\leq \theta(1)$, so
+<div class='equation'>\[
+1=d_\mu(0,1)=d_\nu(\theta(0),\theta(1))=\nu((\theta(0)\lor\theta(1))\setminus(\theta(0)\theta(1)))=\nu(\theta(1)\setminus\theta(0)),
+\]</div>
+and faithfulness of $\nu$ implies $\theta(1)\setminus\theta(0)=1$, so $\theta(1)=1$ and $\theta(0)=0$. Now note that for all $s\in S$,
+<div class='equation'>\[
+\tr_\mu(s)=\mu(\Fix(s))=\mu(s^*s)-\mu\left(s^*s\setminus\Fix(s)\right)=d_\mu(s^*s,0)-d_\mu(s^*s,s),
+\]</div>
+and similarly for $\tr_\nu$. Therefore $\theta$ preserves traces.
+</p>
+
+<p>
+In this case, we have already verified that $\theta(0)=0$ and $\theta(1)=1$. In order to verify that $\theta$ preserves meets, we first verify that $\theta(\Fix(s))=\Fix(\theta(s))$ for all $s\in S$: Indeed, $\Fix(s)$ is an idempotent fixed by $s$, so $\theta(\Fix(s))$ is an idempotent fixed by $\theta(s)$ and so $\theta(\Fix(s))\leq\bigvee\mathcal{I}_{\theta(s)}=\Fix(\theta(s))$ (from Definition <span class='ref'data-tag='definitionfixs'></span> and the paragraph following it).  As
+<div class='equation'>\begin{align*}
+\nu(\theta(\Fix(s)))&=\tr_\nu(\theta(\Fix(s)))=\tr_\mu(\Fix(s))=\mu(\Fix(s))=\tr_\mu(s)=\tr_\nu(\theta(s))\\
+&=\nu(\Fix(\theta(s))),
+\end{align*}</div>
+faithfulness of $\nu$ implies $\theta(\Fix(s))=\Fix(\theta(s))$.
+</p>
+
+<p>
+Given $s,t\in S$, since $s\land t=s\Fix(s^*t)$ (Lemma <span class='ref'data-tag='lemmaIs2'></span>(b)), it follows from the previous argument that $\theta(s\land t)=\theta(s)\land \theta(t)$.
+</p>
+
+<p>
+Similarly, in order to prove that $\theta$ is a $\lor$-morphism we first assume $e,f\in E(S)$. Then $\theta(e\lor f)$ is an upper bound of $\left\{\theta(e),\theta(f)\right\}$, and so $\theta(e)\lor\theta(f)\leq\theta(e\lor f)$. But on the other hand,
+<div class='equation'>\begin{align*}
+\nu(\theta(e)\lor\theta(f))&=\tr_\nu(\theta(e))+\tr_\nu(\theta(f))-\tr_\nu(\theta(ef))\\
+&=\tr_\mu(e)+\tr_\mu(f)-\tr_\mu(ef)\\
+&=\tr_\mu(e\lor f)=\tr_\nu(\theta(e\lor f))=\nu(\theta(e\lor f)),
+\end{align*}</div>
+and again faithfulness of $\nu$ implies $\theta(e)\lor\theta(f)=\theta(ef)$.
+</p>
+
+<p>
+Given compatible elements $s,t\in S$, $\theta(s)$ and $\theta(t)$ are compatible in $T$, and $\theta(s)\lor\theta(t)\leq\theta(s\lor t)$. But
+<div class='equation'>\begin{align*}
+(\theta(s)\lor\theta(t))^*(\theta(s)\lor\theta(t))&=\theta(s)^*\theta(s)\lor\theta(t)^*\theta(t)=\theta(s^*s)\lor\theta(t^*t)=\theta(s^*s\lor t^*t)\\
+&=\theta((s\lor t),^*(s\lor t))=\theta(s\lor t)^*\theta(s\lor t)
+\end{align*}</div>
+so $\theta(s)\lor\theta(t)=\theta(s\lor t)$ (Theorem <span class='ref'data-tag='theoremorder'></span>(e)).<span class='qed'></span>
+</p></div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

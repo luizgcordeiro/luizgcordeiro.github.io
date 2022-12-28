@@ -1,0 +1,11 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#corollarysupportssofic'>2.4.6</a>
+
+<!-- 2.4.6 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 2.4.6</span>
+	Let $\theta:[\mathcal{G}]\to\prod_{\mathcal{U}}\mathfrak{S}_n$ be an isometric embedding and $\alpha,\beta\in[\mathcal{G}]$.</p>
+	<ol class='alphpar'>
+		<li> $\supp(\alpha)=\Fix(\beta)$ if and only if $\supp(\theta(\alpha))=\Fix(\theta(\beta))$.</li>
+		<li> $\supp(\alpha)\cap\supp(\beta)=\varnothing$ if and only if $\supp(\theta(\alpha))\land\supp(\theta(\beta))=0$.</li>
+	</ol>
+</div>

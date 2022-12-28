@@ -1,0 +1,16 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#theorem344'>3.4.4</a>
+
+<!-- 3.4.4 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.4.4</span>
+	Suppose that $G$ and $H$ are Hausdorff topological groups, and $X$ and $Y$ are compact Hausdorff spaces for which $(X,\overline{1_G},C(X,G))$ and $(Y,\overline{1_H},C(Y,H))$ are regular.
+	</p>
+	
+	<p>
+	Let $T:C(X,G)\to C(Y,H)$ be a non-vanishing group isomorphism (Definition <span class='ref' data-tag='definitionnonvanishingbijection'></span>). Then there exist a homeomorphism $\phi:Y\to X$ and a map $w:Y\to\operatorname{AbsIso}(H,G)$ such that $Tf(y)=w(y)(f(\phi(y))$ for all $y\in Y$ and $f\in C(X,G)$.
+	</p>
+	
+	<p>
+	If $T$ is continuous on the constant functions then each $w(y)$ is continuous and $T$ is continuous on $C(X,G)$. If both $T$ and $T^{-1}$ are continuous on the constant functions then $w(y)\in\operatorname{TopIso}(H,G)$ and $T$ is a homeomorphism for the topologies of pointwise convergence.
+	</p>
+</div>

@@ -1,0 +1,14 @@
+<a class='reflink' href='../1.gis/1.7.im.html#lemmaIs2'>1.7.8</a>
+<!-- 1.7.8 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 1.7.8</span>
+	Suppose that $S$ is an inverse semigroup and $\Fix(s)$ exists for all $s\in S$. Then whenever $s,t\in S$,</p>
+	<ol class='alphpar'>
+		<li> $\Fix(s)=\Fix(s^*)$.</li>
+		<li> $s\land t$ exists and $s\Fix(s^*t)=t\Fix(s^*t)=s\land t$.</li>
+		<li> $\Fix(s^*t)$ is a lower bound of $\left\{s^*s,t^*t\right\}$.</li>
+		<li> $\Fix(s^*t)=(s\land t)^*(s\land t)$.</li>
+		<li> If $z\in S$ then $\Fix(s^*t)\Fix(t^*z)\leq\Fix(s^*z)$.</li>
+		<li> $\Fix(st^*)=t\Fix(s^*t)t^*=s\Fix(s^*t)t^*$.</li>
+	</ol>
+</div>

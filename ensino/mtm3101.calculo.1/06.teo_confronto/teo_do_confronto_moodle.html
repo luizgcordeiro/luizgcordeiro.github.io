@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Suponha que \(f\), \(m\) e \(M\) são funções, todas definidas em intervalos ao redor de um ponto \(a\), e satisfazendo
+\(m(x)\leq f(x)\leq M(x)\)]
+para todo \(x\) suficientemente próximo de \(a\), e que
+<div>
+\begin{equation*}
+\lim_{x\to a}m(x)=\lim_{x\to a}M(x)=L.
+\end{equation*}
+</div>
+Então \(\lim_{x\to a}f(x)=L\).
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Dado \(\epsilon>0\), tome \(\delta_m,\delta_M>0\) tais que
+<div>
+\begin{equation*}
+0<|x-a|<\delta_m\quad\text{implica que}\quad |m(x)-L|<\epsilon
+\end{equation*}
+</div>
+e
+<div>
+\begin{equation*}
+0<|x-a|<\delta_M\quad \text{implica que}\quad |M(x)-L|<\epsilon.
+\end{equation*}
+</div>
+</p>
+<p>
+Seja \(\delta_1=\min(\delta_m,\delta_M)\). Se \(0<|x-a|<\delta\), então
+<div>
+\begin{equation*}
+|m(x)-L|<\epsilon\quad\text{e}\quad|M(x)-L|<\epsilon,
+\end{equation*}
+</div>
+ou equivalentemente
+<div>
+\begin{equation*}
+L-\epsilon < m(x) < L+\epsilon\quad\text{e}\quad L-\epsilon < M(x) < L+\epsilon.
+\end{equation*}
+</div>
+Como \(m(x)\leq f(x)\leq M(x)\) para \(x\) suficientemente próximo de \(a\), então existe \(\delta_2>0\) tal que \(0<|x-a|<\delta_2\) implica nestas desigualdades.
+</p>
+<p>
+Concluímos que se \(0<|x-a|<\min(\delta_1,\delta_2)\), então
+<div>
+\begin{equation*}
+L-\epsilon < m(x)\leq f(x)\leq M(x) < L+\epsilon,
+\end{equation*}
+</div>
+e portanto
+<div>
+\begin{equation*}
+|f(x)-L|<\epsilon.
+\end{equation*}
+</div>
+</p>
+<p>
+Isto prova que \(L=\lim_{x\to a}f(x)\).
+</p>
+
+</div></body>
+</html>

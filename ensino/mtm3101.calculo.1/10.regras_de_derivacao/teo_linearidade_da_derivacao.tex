@@ -1,0 +1,44 @@
+\begin{theorem}
+	Sejam $f$ e $g$ funções diferenciáveis em um ponto $a$ e $\lambda$ um número real. Então $f+g$ e $\lambda f$ são diferenciáveis em $a$, e
+	\begin{enumerate}
+		\item $(f+g)'(a)=f'(a)+g'(a)$.
+		\item $(\lambda f)'(a)=\lambda f'(a)$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Basta utilizar a \href{../09.derivadas/con_der_em_pt_moodle.html}{definição de derivada como um limite} e as \href{../02.limites_elementares/teo_regras_lim_moodle.html}{regras de limites}.
+	
+	\begin{enumerate}
+		\item Primeiro, consideramos a função soma $f+g$.
+			\begin{align*}
+				(f+g)'(a)
+					&=\lim_{x\to a}\frac{(f+g)(x)-(f+g)(a)}{x-a}\\
+					&\qquad\text{(definição de derivada)}\\
+					&=\lim_{x\to a}\frac{\left(f(x)+g(x)\right)-\left(f(a)+g(a)\right)}{x-a}\\
+					&\qquad\text{(definição de soma de função)}\\
+					&=\lim_{x\to a}\frac{\left(f(x)-f(a)\right)+\left(g(x)-g(a)\right)}{x-a}\\
+					&\qquad\text{(reorganização dos termos)}\\
+					&=\lim_{x\to a}\left(\frac{f(x)-f(a)}{x-a}+\frac{g(x)-g(a)}{x-a}\right)\\
+					&\qquad\text{(reorganização dos termos)}\\
+					&=\left(\lim_{x\to a}\frac{f(x)-f(a)}{x-a}\right)+\left(\lim_{x\to a}\frac{g(x)-g(a)}{x-a}\right)\\
+					&\qquad\text{(regras de limites)}\\
+					&=f'(a)+g'(a).\\
+					&\qquad\text{(definição de derivada)}
+			\end{align*}
+		\item Agora consideramos o produto de $f$ pelo escalar $\lambda$.
+			\begin{align*}
+				(\lambda f)'(a)
+					&=\lim_{x\to a}\frac{(\lambda f)(x)-(\lambda f)(a)}{x-a}\\
+					&\qquad\text{(definição de derivada)}\\
+					&=\lim_{x\to a}\frac{\left(\lambda f(x)\right)-\left(\lambda f(a)\right)}{x-a}\\
+					&\qquad\text{(definição de soma de função)}\\
+					&=\lim_{x\to a}\left(\lambda \frac{f(x)-f(a)}{x-a}\right)\\
+					&\qquad\text{(reorganização dos termos)}\\
+					&=\lambda\left(\lim_{x\to a}\frac{f(x)-f(a)}{x-a}\right)\\
+					&\qquad\text{(regras de limites)}\\
+					&=\lambda f'(a).\\
+					&\qquad\text{(definição de derivada)}
+			\end{align*}
+	\end{enumerate}
+\end{proof}

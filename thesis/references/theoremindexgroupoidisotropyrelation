@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#theoremindexgroupoidisotropyrelation'>2.3.10</a>
+
+<!-- 2.3.10 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.3.10</span>
+	Suppose $\mathcal{H}$ is an ergodic subgroupoid of a standard $\ra$-discrete probability measure-preserving groupoid $(\mathcal{G},\mu)$ with $\mathcal{H}^{(0)}=\mathcal{G}^{(0)}$ (up to null sets). Then $\mathcal{H}$ has finite index in $\mathcal{G}$ if and only if $\mathcal{R}(\mathcal{H})$ has finite index in $\mathcal{R}(\mathcal{G})$ and $\mathcal{H}_x^x$ has finite index in $\mathcal{G}_x^x$ for $\mu$-a.e.\ $x\in \mathcal{G}^{(0)}$.
+	</p>
+</div>

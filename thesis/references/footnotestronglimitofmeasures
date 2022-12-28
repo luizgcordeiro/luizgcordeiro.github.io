@@ -1,0 +1,7 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#footnotestronglimitofmeasures'>Footnote</a>
+
+<div class='toload footnote'>
+<p>
+Recall that a net $\left\{\mu_i\right\}_{i\in I}$ of measures on a measurable space $(X,\mathcal{B})$ converges strongly to a measure $\mu$ if $\mu_i(A)\to \mu(A)$ for all $A\in\mathcal{B}$.
+</p>
+</div>

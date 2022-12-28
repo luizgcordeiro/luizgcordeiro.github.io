@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.7.im.html#theoremtracepreservingisisometric'>1.7.25</a>
+<!-- 1.7.25 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 1.7.25</span>
+	Let $S,T$ be Boolean inverse monoids with faithful and normalized invariant means $\mu$ and $\nu$, respectively. Then a semigroup morphism $\theta:S\to T$ preserves traces if and only if it is isometric with respect to $d_\mu$ and $d_\nu$. In this case, $\theta$ is a morphism of Boolean inverse monoids satisfying $\theta(1)=1$ (i.e., $\theta$ is proper).
+	</p>
+</div>

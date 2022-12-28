@@ -1,0 +1,696 @@
+<!DOCTYPE html />
+<html>
+<<<<<<< HEAD
+	<head>
+		<meta http-equiv='content-type' content='text/html; charset=UTF-8'/>
+		<title>
+			Luiz Gustavo Cordeiro's website
+		</title>
+	</head>
+	<style>
+		body {
+		background-color:#4C4C4C;
+		margin-top: 0;
+		}
+		#topnav {
+		list-style-type: none;
+		width: 700px;
+		max-width: 60%;
+		padding:0;
+		margin: 0 auto 0 auto;
+		/* order: 3px solid #73AD21;*/
+		overflow: hidden;
+		background-color:#DADADA;
+		}
+		#topnav li {
+		margin:0;
+		padding:0;
+		display:inline;
+		float:left;
+		width:120px;}
+		#topnav li a {
+		display:block;
+		text-align: center;
+		padding: 20px;
+		text-decoration: none;
+		font-size: 17px;
+		background-color: #A9CCE3;
+		color:#0000FF;
+		}
+		#topnav li a.active {
+		background-color: #7FB3D5;
+		color:#0000C0;
+		}
+		#topnav li a:hover {
+		background-color: #5499C7;
+		color:#000080;
+		}
+		.main{
+		display:block;
+		margin: auto;
+		width: 660px;
+		max-width: 60%;
+		/* border: 3px solid #73AD21;*/
+		padding: 20px;
+		background-color:#DADADA;
+		}
+		#shortcv {
+		display:block;
+		}
+		.basicinfo {
+		padding:2%;
+		vertical-align: middle;
+		display: inline-block;
+		right:0px;
+		margin-left:5%;
+		}
+		#tableshortcv {
+		border-collapse: collapse;
+		width: 95%;
+		margin: auto;
+		}
+		#tableshortcv th{
+		width:30%;
+		}
+		#tableshortcv td, #tableshortcv th{
+		border: 1px solid;
+		padding:5px;
+		}
+		.listofpublications .title {
+		font-weight:bold;}
+		.listofpublications .journal {
+		font-style:italic;}
+		.listofpublications .arxiv {
+		font-family:monospace;}
+	</style>
+	<body>
+		<ul id='topnav'>
+			<li>
+				<a href='http://www.mtm.ufsc.br/~cordeiro' class='active'>Home</a>
+			</li>
+			<li>
+				<a href='#ensino'>Ensino</a>
+			</li>
+			<li>
+				<a href='#research'>Research</a>
+			</li>
+		</ul>
+		<div class='main'>
+			<img id='randomImage' src='foto.jpg' style='width:40%;vertical-align: middle;display: inline-block;' alt="[Deveria ter uma imagem de mim na ponte Hercílio Luz aqui....]"/>
+			<script>
+				function getRandomImage() {
+				var images = ['foto_1.jpg', 'foto_2.jpg', 'foto_3.jpg'];
+				var image = images[Math.floor(Math.random()*images.length)];
+				return image;
+				}
+				function displayRandomImage() {
+				var htmlImage = document.getElementById("randomImage");
+				htmlImage.src = ["fotos/" + getRandomImage()];
+				}
+				displayRandomImage();
+			</script>
+			<div class='basicinfo' style=''>
+				Luiz Gustavo Cordeiro<br/>
+				<i>Departamento de Engenharias da Mobilidade, sala U277<br/>
+					Universidade Federal de Santa Catarina, campus Joinville</i>
+				<br/>
+				e-m<span style="display:none">justomakeitharder</span>ail: luiz.c<span style="display:none">justomakeitharderagain</span>ordeiro@ufsc.br
+				<br/>
+				<br/>
+				<a href='http://lattes.cnpq.br/7004706597272978'>
+					Currículo Lattes
+				</a>
+				<br/>
+				<br/>
+				<a href='http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4335770A4&tipo=completo&idiomaExibicao=2'>Curriculum (english)</a>
+			</div>
+			<h2>Short CV </h2>
+			<table id='tableshortcv'>
+				<tr>
+					<th>September 16<sup>th</sup>, 1992</th>
+					<td>Born in Florianópolis (Brazil)</td>
+				</tr>
+				<tr>
+					<th>Mar 2010 – Dec 2013</th>
+					<td>B.Sc. in Mathematics and Scientific Computing at <a href='http://ufsc.br'>Universidade Federal de Santa Catarina</a>
+					</td>
+				</tr>
+				<tr>
+					<th>Sep 2014 – Jul 2018</th>
+					<td>Ph.D. in Mathematics at <a href='https://science.uottawa.ca/mathstat/en'>University of Ottawa</a>
+						<br/>
+						Thesis: <span class="title">
+							<a href='http://dx.doi.org/10.20381/ruor-22277'>Soficity and other dynamical aspects of groupoids and inverse semigroups</a>
+						</span>, <a class='htmlarticle' href='https://luizgcordeiro.github.io/thesis/0.matters/thesis.html'>HTML version</a>
+					</td>
+				</tr>
+				<tr>
+					<th>Oct 2018 – May 2019</th>
+					<td>Post-Doc at <a href='http://www.umpa.ens-lyon.fr/'>UMPA - ENS-Lyon</a>
+					</td>
+				</tr>
+				<tr>
+					<th>Dec 2019 – Current </th>
+					<td>Professor at the <a href='http://mtm.ufsc.br'>Department of Mobility Engineerings</a>, Universidade Federal de Santa Catarina (Joinville campus)</td>
+				</tr>
+			</table>
+			<p>Languages: Portuguese (native), English (fluent), French (lower intermediary)</p>
+			<!-- Resources -->
+			<h2>Resources I enjoy</h2>
+			<ul>
+				<li>
+					<a href='https://ncatlab.org'>nLab</a>
+				</li>
+				<li>
+					<a href='https://topology.jdabbs.com/'>π-base</a>, a community database of topological examples
+				</li>
+				<li>
+					<a href='https://stacks.math.columbia.edu/'>The Stacks Project</a>, an open source textbook and reference work on algebraic geometry
+				</li>
+				<li>
+					<a href='https://mathscinet.ams.org/mrlookup'>MR Lookup</a>, a reference tool for linking
+				</li>
+				<li>
+					<a href='https://mathoverflow.net/'>math<b>
+							<i>overflow</i>
+						</b>
+					</a>, <a href='https://math.stackexchange.com/'>math.stackexchange</a>
+				</li>
+				<li>
+					<a href='http://linear.ups.edu/curriculum.html'>Open Math Curriculum</a>
+				</li>
+				<li>
+					<a href='https://www.overleaf.com/'>Overleaf</a>: Online LaTeX editor and compiler.
+				</li>
+				<li>
+					<a href='https://replit.com/'>replit</a>: Online terminal and compiler for most common programming languages.
+				</li>
+			</ul>
+			<!-- Ensino -->
+			<h2 id='ensino'>
+				Ensino
+			</h2>
+			<ul>
+				<li>
+					<a href='https://www.youtube.com/playlist?list=PLCu2J2ApGrRzMFK96fRuBVqTEbEWUquVS'>Videoaulas de Álgebra Linear (MTM3112)</a> e <a href='ensino/MTM3112 slides/MTM3112_slides.html'>slides das videoaulas</a> (corrigidos)
+				</li>
+			</ul>
+			<!-- Research -->
+			<h2 id='research'>
+				Research
+			</h2>
+			My main topics of interest are:
+			<ul>
+				<li> Groupoids, semigroups, and more generally semigroupoids;</li>
+				<li> Actions, partial actions, preactions, etc. of semigroupoids;</li>
+				<li> Algebras (C*, W*, Steinberg…) associated to semigroupoids </li>
+				<li> Stone like dualities; Banach–Stone like theorems</li>
+			</ul>
+			Please feel free ask me for the published versions of the articles below. The HTML versions are either the manuscripts accepted for publication, or the most up-to-date preprints.
+			<ol class='listofpublications'>
+				<li>
+					<span class='title'>
+						<a href='https://doi.org/10.4171/RMI/1277'>The talented monoid of a directed graph with applications to graph algebras</a>
+					</span>
+					<br/>
+					<span class='author'>Luiz Gustavo Cordeiro</span>, <a class='author' href='http://mtm.ufsc.br/~daemi/'>Daniel Gonçalves</a> and <a class='author' href='https://www.westernsydney.edu.au/staff_profiles/WSU/professor_roozbeh_hazrat'>Roozbeh Hazrat</a>
+					<br/>
+					Published at <span class='journal'>Revista Matemática Iberoamericana1 (online first)</span>
+					<br/>
+					<a class='arxiv' href='https://arxiv.org/abs/2003.09911'>arXiv:2003.09911 [math.RA]</a>
+					<br/>
+				</li>
+				<hr/>
+				<li>
+					<span class='title'>
+						<a href='https://doi.org/10.1142/S0218196720500411'>Sectional algebras of semigroupoid bundles</a>
+					</span>
+					<br/>
+					<span class='author'>Luiz Gustavo Cordeiro</span>
+					<br/>
+					Published at <a class='journal' href='https://www.worldscientific.com/worldscinet/ijac'>International Journal of Algebra and Computation 30 (6)</a>
+					<br/>
+					<a class='arxiv' href='https://arxiv.org/abs/1906.05430'>arXiv:1906.05430 [math.RA]</a>
+					<br/>
+				</li>
+				<hr/>
+				<li>
+					<span class='title'>Étale inverse semigroupoids &ndash; the fundamentals</span>
+					<br/>
+					<span class='author'>Luiz Gustavo Cordeiro</span>
+					<br/>
+					<span class='journal'>Preprint</span>
+					<br/>
+					<a class='arxiv' href='https://arxiv.org/abs/1902.09375'>arXiv:1902.09375 [math.DS]</a>
+					<br/>
+					<a class='htmlarticle' href='articles/2019.eisai/main_front.html'>HTML version</a>
+				</li>
+				<hr/>
+				<li>
+					<span class='title'>
+						<a href='https://doi.org/10.1016/j.jpaa.2019.106275'>A general Banach–Stone type theorem and applications</a>
+					</span>
+					<br/>
+					<span class='author'>Luiz Gustavo Cordeiro</span>
+					<br/>
+					Published at <span class='journal'>Journal of Pure and Applied Algebra 224 (6), 2020</span>
+					<br/>
+					<a class='arxiv' href='https://arxiv.org/abs/1711.00545'>arXiv:1711.00545 [math.GN]</a>
+					<br/>
+					<a class='htmlarticle' href='articles/2020.agbsttaa/A general Banach-Stone type theorem and applications_front.html'>HTML version</a>
+				</li>
+				<hr/>
+				<li>
+					<span class='title'>
+						<a href='https://doi.org/10.1016/j.jpaa.2019.06.001'>The dynamics of partial inverse semigroup actions</a>
+					</span>
+					<br/>
+					<span class='author'>Luiz Gustavo Cordeiro</span> and <span class='author'>
+						<a href='https://www.udesc.br/professor/viviane.beuter'>Viviane Maria Beuter</a>
+					</span>
+					<br/>
+					Published at <span class='journal'>Journal of Pure and Applied Algebra 224 (3), 2020</span>
+					<br/>
+					<a class='arxiv' href='https://arxiv.org/abs/1804.00396'>arXiv:1804.00396 [math.RA]</a>
+					<br/>
+				</li>
+				<hr/>
+				<li>
+					<span class='title'>
+						<a href='https://doi.org/10.1016/j.crma.2018.07.003'>On sofic groupoids and their full groups</a>
+					</span>
+					<br/>
+					<span class='author'>Luiz Gustavo Cordeiro</span>
+					<br/>
+					Published at <span class='journal'>Comptes Rendus Mathematiques 356 (9), 2018</span>
+					<br/>
+					<a class='htmlarticle' href='articles/2018.osgatfg/osg_front.html'>HTML version</a>
+				</li>
+			</ol>
+		</div>
+	</body>
+</html>
+=======
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Luiz Gustavo Cordeiro's website</title>
+  </head>
+  <style>
+    body {
+      background-color: #4c4c4c;
+      margin-top: 0;
+    }
+
+    #topnav {
+      list-style-type: none;
+      width: 700px;
+      max-width: 60%;
+      padding: 0;
+      margin: 0 auto 0 auto;
+      /* order: 3px solid #73AD21;*/
+      overflow: hidden;
+      background-color: #dadada;
+    }
+
+    #topnav li {
+      margin: 0;
+      padding: 0;
+      display: inline;
+      float: left;
+      width: 120px;
+    }
+
+    #topnav li a {
+      display: block;
+      text-align: center;
+      padding: 20px;
+      text-decoration: none;
+      font-size: 17px;
+      background-color: #a9cce3;
+      color: #0000ff;
+    }
+
+    #topnav li a.active {
+      background-color: #7fb3d5;
+      color: #0000c0;
+    }
+
+    #topnav li a:hover {
+      background-color: #5499c7;
+      color: #000080;
+    }
+
+    .main {
+      display: block;
+      margin: auto;
+      width: 660px;
+      max-width: 60%;
+      /* border: 3px solid #73AD21;*/
+      padding: 20px;
+      background-color: #dadada;
+    }
+
+    #shortcv {
+      display: block;
+    }
+
+    .basicinfo {
+      padding: 2%;
+      vertical-align: middle;
+      display: inline-block;
+      right: 0px;
+      margin-left: 5%;
+      max-width: 50%;
+    }
+
+    #tableshortcv {
+      border-collapse: collapse;
+      width: 95%;
+      margin: auto;
+    }
+
+    #tableshortcv th {
+      width: 30%;
+    }
+
+    #tableshortcv td,
+    #tableshortcv th {
+      border: 1px solid;
+      padding: 5px;
+    }
+
+    .listofpublications .title {
+      font-weight: bold;
+    }
+
+    .listofpublications .journal {
+      font-style: italic;
+    }
+
+    .listofpublications .arxiv {
+      font-family: monospace;
+    }
+  </style>
+
+  <body>
+    <ul id="topnav">
+      <li>
+        <a href="https://luizgcordeiro.github.io/" class="active">Home</a>
+      </li>
+      <li>
+        <a href="#ensino">Ensino</a>
+      </li>
+      <li>
+        <a href="#research">Research</a>
+      </li>
+    </ul>
+    <div class="main">
+      <img
+        id="randomImage"
+        src="foto.jpg"
+        style="width: 40%; vertical-align: middle; display: inline-block"
+        alt="[Deveria ter uma imagem de mim na ponte Hercílio Luz aqui....]"
+      />
+      <script>
+        function getRandomImage() {
+          var images = ["foto_1.jpg", "foto_2.jpg", "foto_3.jpg"];
+          var image = images[Math.floor(Math.random() * images.length)];
+          return image;
+        }
+        function displayRandomImage() {
+          var htmlImage = document.getElementById("randomImage");
+          htmlImage.src = ["fotos/" + getRandomImage()];
+        }
+        displayRandomImage();
+      </script>
+      <div class="basicinfo">
+        Luiz Gustavo Cordeiro<br />
+        Professor, Departmental Research Coordinator<br/>
+        <i>Universidade Federal de Santa Catarina</i><br />
+        <i>Campus de Joinville</i><br />
+        <i>Departamento de Engenharias da Mobilidade</i><br />
+        <i>Sala U277</i><br />
+        e-m<span style="display: none">justomakeitharder</span>ail: luiz.c<span
+          style="display: none"
+          >justomakeitharderagain</span
+        >ordeiro@ufsc.br
+        <br />
+        <br />
+        <a href="http://lattes.cnpq.br/7004706597272978"> Currículo Lattes </a> <br />
+        <a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4335770A4&tipo=completo&idiomaExibicao=2"
+          >Curriculum (english)</a>
+      </div>
+      <h2>Short CV</h2>
+      <table id="tableshortcv">
+        <tr>
+          <th>September 16<sup>th</sup>, 1992</th>
+          <td>Born in Florianópolis (Brazil)</td>
+        </tr>
+        <tr>
+          <th>Mar 2010 – Dec 2013</th>
+          <td>
+            B.Sc. in Mathematics and Scientific Computing at
+            <a href="http://ufsc.br">Universidade Federal de Santa Catarina</a>
+          </td>
+        </tr>
+        <tr>
+          <th>Sep 2014 – Jul 2018</th>
+          <td>
+            Ph.D. in Mathematics at
+            <a href="https://science.uottawa.ca/mathstat/en"
+              >University of Ottawa</a
+            >
+            <br />
+            Thesis:
+            <span class="title">
+              <a href="http://dx.doi.org/10.20381/ruor-22277"
+                >Soficity and other dynamical aspects of groupoids and inverse
+                semigroups</a
+              > </span
+            >,
+            <a
+              class="htmlarticle"
+              href="https://luizgcordeiro.github.io/thesis/0.matters/thesis.html"
+              >HTML version</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <th>Oct 2018 – May 2019</th>
+          <td>
+            Post-Doc at
+            <a href="http://www.umpa.ens-lyon.fr/">UMPA - ENS-Lyon</a>
+          </td>
+        </tr>
+        <tr>
+          <th>Dec 2019 – Current</th>
+          <td>
+            Professor at Universidade Federal de Santa Catarina
+          </td>
+        </tr>
+      </table>
+      <p>
+        Languages: Portuguese (native), English (fluent), French (basic)
+      </p>
+      <!-- Resources -->
+      <h2>Resources I enjoy</h2>
+      <ul>
+        <li>
+          <a href="https://ncatlab.org">nLab</a>
+        </li>
+        <li>
+          <a href="https://topology.jdabbs.com/">π-base</a>, a community
+          database of topological examples
+        </li>
+        <li>
+          <a href="https://stacks.math.columbia.edu/">The Stacks Project</a>, an
+          open source textbook and reference work on algebraic geometry
+        </li>
+        <li>
+          <a href="https://mathscinet.ams.org/mrlookup">MR Lookup</a>, a
+          reference tool for linking
+        </li>
+        <li>
+          <a href="https://mathoverflow.net/"
+            >math<b>
+              <i>overflow</i>
+            </b> </a
+          >, <a href="https://math.stackexchange.com/">math.stackexchange</a>
+        </li>
+        <li>
+          <a href="http://linear.ups.edu/curriculum.html"
+            >Open Math Curriculum</a
+          >
+        </li>
+      </ul>
+      <!-- Ensino -->
+      <h2 id="ensino">Ensino</h2>
+      <ul>
+        <li>
+          <a
+            href="https://www.youtube.com/playlist?list=PLCu2J2ApGrRzMFK96fRuBVqTEbEWUquVS"
+            >Videoaulas de Álgebra Linear (MTM3112)</a
+          >
+          e
+          <a href="ensino/MTM3112 slides/MTM3112_slides.html"
+            >slides das videoaulas</a
+          >
+          (corrigidos)
+        </li>
+      </ul>
+      <!-- Research -->
+      <h2 id="research">Research</h2>
+      My main topics of interest are:
+      <ul>
+        <li>Groupoids, semigroups, and more generally semigroupoids;</li>
+        <li>Actions, partial actions, preactions, etc. of semigroupoids;</li>
+        <li>Algebras (C*, W*, Steinberg…) associated to semigroupoids</li>
+        <li>Stone like dualities; Banach–Stone like theorems</li>
+      </ul>
+      Please feel free to ask me for the published versions of the articles below.
+      The HTML versions are either the manuscripts accepted for publication, or
+      the most up-to-date preprints.
+      <ol class="listofpublications">
+        <li>
+          <span class="title">
+            <a href="https://doi.org/10.4171/RMI/1277"
+              >The talented monoid of a directed graph with applications to
+              graph algebras</a
+            >
+          </span>
+          <br />
+          <span class="author">Luiz Gustavo Cordeiro</span>,
+          <a class="author" href="http://mtm.ufsc.br/~daemi/"
+            >Daniel Gonçalves</a
+          >
+          and
+          <a
+            class="author"
+            href="https://www.westernsydney.edu.au/staff_profiles/WSU/professor_roozbeh_hazrat"
+            >Roozbeh Hazrat</a
+          >
+          <br />
+          Published at
+          <span class="journal"
+            >Revista Matemática Iberoamericana1 (online first)</span
+          >
+          <br />
+          <a class="arxiv" href="https://arxiv.org/abs/2003.09911"
+            >arXiv:2003.09911 [math.RA]</a
+          >
+          <br />
+        </li>
+        <hr />
+        <li>
+          <span class="title">
+            <a href="https://doi.org/10.1142/S0218196720500411"
+              >Sectional algebras of semigroupoid bundles</a
+            >
+          </span>
+          <br />
+          <span class="author">Luiz Gustavo Cordeiro</span>
+          <br />
+          Published at
+          <a
+            class="journal"
+            href="https://www.worldscientific.com/worldscinet/ijac"
+            >International Journal of Algebra and Computation 30 (6)</a
+          >
+          <br />
+          <a class="arxiv" href="https://arxiv.org/abs/1906.05430"
+            >arXiv:1906.05430 [math.RA]</a
+          >
+          <br />
+        </li>
+        <hr />
+        <li>
+          <span class="title"
+            >Étale inverse semigroupoids &ndash; the fundamentals</span
+          >
+          <br />
+          <span class="author">Luiz Gustavo Cordeiro</span>
+          <br />
+          <span class="journal">Preprint</span>
+          <br />
+          <a class="arxiv" href="https://arxiv.org/abs/1902.09375"
+            >arXiv:1902.09375 [math.DS]</a
+          >
+          <br />
+          <a class="htmlarticle" href="articles/2019.eisai/main_front.html"
+            >HTML version</a
+          >
+        </li>
+        <hr />
+        <li>
+          <span class="title">
+            <a href="https://doi.org/10.1016/j.jpaa.2019.106275"
+              >A general Banach–Stone type theorem and applications</a
+            >
+          </span>
+          <br />
+          <span class="author">Luiz Gustavo Cordeiro</span>
+          <br />
+          Published at
+          <span class="journal"
+            >Journal of Pure and Applied Algebra 224 (6), 2020</span
+          >
+          <br />
+          <a class="arxiv" href="https://arxiv.org/abs/1711.00545"
+            >arXiv:1711.00545 [math.GN]</a
+          >
+          <br />
+          <a
+            class="htmlarticle"
+            href="articles/2020.agbsttaa/A general Banach-Stone type theorem and applications_front.html"
+            >HTML version</a
+          >
+        </li>
+        <hr />
+        <li>
+          <span class="title">
+            <a href="https://doi.org/10.1016/j.jpaa.2019.06.001"
+              >The dynamics of partial inverse semigroup actions</a
+            >
+          </span>
+          <br />
+          <span class="author">Luiz Gustavo Cordeiro</span> and
+          <span class="author">
+            <a href="https://www.udesc.br/professor/viviane.beuter"
+              >Viviane Maria Beuter</a
+            >
+          </span>
+          <br />
+          Published at
+          <span class="journal"
+            >Journal of Pure and Applied Algebra 224 (3), 2020</span
+          >
+          <br />
+          <a class="arxiv" href="https://arxiv.org/abs/1804.00396"
+            >arXiv:1804.00396 [math.RA]</a
+          >
+          <br />
+        </li>
+        <hr />
+        <li>
+          <span class="title">
+            <a href="https://doi.org/10.1016/j.crma.2018.07.003"
+              >On sofic groupoids and their full groups</a
+            >
+          </span>
+          <br />
+          <span class="author">Luiz Gustavo Cordeiro</span>
+          <br />
+          Published at
+          <span class="journal"
+            >Comptes Rendus Mathematiques 356 (9), 2018</span
+          >
+          <br />
+          <a class="htmlarticle" href="articles/2018.osgatfg/osg_front.html"
+            >HTML version</a
+          >
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>
+>>>>>>> 774781000700240f96435bab1e90c96111dbfaa6

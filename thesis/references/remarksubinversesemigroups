@@ -1,0 +1,6 @@
+<a class='reflink' href='../1.gis/1.2.is.html#remarksubinversesemigroups'>Remark</a>
+<div class="toload remark">
+<p><span class="envidentifier">Remark</span>
+If $S$ is an inverse semigroup and $T$ is a subsemigroup which is regular, then every element $t\in T$ admits an inverse $t'\in T$. However since inverses are unique in $S$ then $t'=t^*$. Therefore regular sub-semigroups of inverse semigroups are sub-inverse semigroups.
+</p>
+</div>

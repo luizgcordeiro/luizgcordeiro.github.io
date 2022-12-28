@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<script src="../../src/jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="../../src/style.css">
+
+<title>Étale inverse semigroupoids - the fundamentals</title>
+
+</head>
+<body>
+
+<div style='display: none' id='latexcommands'>
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+\end{equation*}
+</div>
+
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>Étale inverse semigroupoids - the fundamentals</h1>
+<h1 class='sidebar-section'><a href='main_front.html'>Front page</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='main_1.html'>1. Introduction</a></h1>
+<h2 class='sidebar-subsection'><a href='main_1.html#2'>Notation and running conventions</a></h2>
+<h2 class='sidebar-subsection'><a href='main_1.html#3'>1.1. Setoids, bundles and partitions</a></h2>
+<h2 class='sidebar-subsection'><a href='main_1.html#12'>1.2. Graphs</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_2.html'>2. Inverse semigroupoids</a></h1>
+<h2 class='sidebar-subsection'><a href='main_2.html#20'>2.1. Exel and graphed semigroupoids</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#81'>2.2. Inverse semigroupoids</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#117'>2.3. A representation theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#134'>2.4. $\land$-prehomomorphisms, partial homomorphisms, and actions</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#166'>2.5. Semidirect products</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_3.html'>3. Topological and étale inverse semigroupoids</a></h1>
+<h2 class='sidebar-subsection'><a href='main_3.html#246'>3.1. Continuous $\land$-preactions and semidirect products</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_4.html'>4. Constructions with inverse semigroupoids</a></h1>
+<h2 class='sidebar-subsection'><a href='main_4.html#268'>4.1. Underlying groupoids</a></h2>
+<h2 class='sidebar-subsection'><a href='main_4.html#274'>4.2. Quotients</a></h2>
+<h2 class='sidebar-subsection'><a href='main_4.html#286'>4.3. Semigroupoids of germs and the initial groupoid</a></h2>
+<h2 class='sidebar-subsection'><a href='main_4.html#358'>4.4. Global actions</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_5.html'>5. Duality</a></h1>
+<h2 class='sidebar-subsection'><a href='main_5.html#430'>5.1. The general procedure</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#431'>5.2. Reconstruction of $\mathcal{S}^{(0)}$ from $\mathbf{KB}(\mathcal{S})$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#452'>5.3. The category $\Sigma\cat{-Ord}$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#462'>5.4. The category
+$\cat{Amp}_\star$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#463'>5.5. The functor $\mathbb{K}\colon\cat{Amp}_\star^{\mathrm{op}}\to\cat{&Sigma;-Ord}$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#467'>5.6. The functor $\mathbb{P}\colon\cat{&Sigma;-Ord}^{\mathrm{op}}\to\cat{Amp}$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#478'>5.7. The natural equivalence</a></h2>
+</div>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h1 class='maintitle'>Étale inverse semigroupoids - the fundamentals</h1>
+
+
+
+<div class='author'>
+<span class='authorname'>Luiz Gustavo Cordeiro</span> (<span class='authoremail'>luiz.cordeiro<span style='display:none'>rand</span>&#64;ufsc.br</span>)<br><span class='authorinstitution'>Previously at <a href='http://www.umpa.ens-lyon.fr/'>Unité de Mathématiques Pures et Appliquées</a>, École Normale Supérieure de Lyon<br>
+	Currently at <a href='http://mtm.ufsc.br/'>Departamento de Matemática</a>, Universidade Federal de Santa Catarina</span><br>
+<span class='authorsupport'>The author was supported by ANR project GAMME (<a href='https://anr.fr/Project-ANR-14-CE25-0004'>ANR-14-CE25-0004</a>)</span></div>
+
+<div class='published'><!-- Please refer to the originally published version:<br> -->
+<!-- DOI: <a href=https://doi.org/10.1016/j.jpaa.2019.106275>10.1016/j.jpaa.2019.106275</a> --></div>
+
+<div class='abstract'>
+<b>Abstract.</b> 
+<p>
+In this article we will study semigroupoids, and more specifically inverse semigroupoids. These are a common generalization to both inverse semigroups and groupoids, and provide a natural language on which several types of dynamical structures may be described. Moreover, this theory allows us to precisely compare and simultaneously generalize aspects of both the theories of inverse semigroups and groupoids.
+</p>
+<p>
+We begin by comparing and settling the differences between two notions of semigroupoids which appear in the literature (one by Tilson and another by Exel). We specialize this study to inverse semigroupoids, and in particular an analogue of the Vagner-Preston Theorem is obtained. This representation theorem leads to natural notions of actions, and more generally $\land$-preactions and partial actions, of étale inverse semigroupoids, which generalize topological actions of inverse semigroups and continuous actions of étale groupoids. Many constructions which are commonplace in the theories of inverse semigroups and groupoids are also generalized, and their categorical properties made explicit. We finish this paper with a version of non-commutative Stone duality for ample inverse semigroupoids, which utilizes several of the aforementioned constructions.
+</p>
+
+
+
+</div>
+
+</body>
+</html>

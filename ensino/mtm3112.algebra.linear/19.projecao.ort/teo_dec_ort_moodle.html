@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço com produto interno e \(W\) um subespaço de \(V\) que admite uma projeção ortogonal \(\operatorname{proj}_W\colon V\to W\) (e.g. se \(\dim(W)<\infty\)).Então \(V\) se decompõe como a soma direta \(V=W\oplus W^\perp\).
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Temos dois fatos a verificar:
+</p>
+<p>
+<u>\(W\) e \(W^\perp\) são suplementares, i.e., \(W\cap W^\perp=\left\{0_V\right\}\)</u>.
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+De fato, se \(w\in W\cap W^\perp\), então \(\langle w,w\rangle=0\), de onde segue que \(w=0\).
+
+</div>
+<p>
+<u>\(V\) é a soma de \(W\) e \(W^\perp\): \(V=W+W^\perp\)</u>.
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Dado \(v\in V\), sejam \(w=\operatorname{proj}_W(v)\) e \(p=v-\operatorname{proj}_W(v)\). Então \(v=w+p\), e pela definição de projeção ortogonal, temos tanto que \(w\in W\) quanto que \(p\in W^\perp\). Portanto \(V=W+W^\perp\).
+
+</div>
+<p>
+Isto significa que \(V=W\oplus W^\perp\).
+</p>
+
+</div></body>
+</html>

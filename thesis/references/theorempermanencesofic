@@ -1,0 +1,15 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#theorempermanencesofic'>2.3.4</a>
+
+<!-- 2.3.4 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.3.4</span>
+	Let $(\mathcal{G},\mu)$ be a probability measure-preserving groupoid.</p>
+	<ol class='alphpar'>
+		<li> If $\mu$ is a strong limit (<span class='ref' data-tag='footnotestronglimitofmeasures' id='footnotestronglimitofmeasures'></span>) of sofic measures on $\mathcal{G}$, then $\mu$ is sofic as well.</li>
+		<li> Any convex combination (finite or countably infinite) of sofic measures is sofic.</li>
+		<li> If $\mu$ has a disintegration of the form $\mu=\int_X p_xd\nu(x)$, where $(X,\nu)$ is a probability space and $\nu$-a.e.\ $p_x$ is a probability measure on $\mathcal{G}^{(0)}$ such that $(\mathcal{G},p_x)$ is sofic, then $(\mathcal{G},\mu)$ is also sofic.</li>
+		<li> If $(\mathcal{G},\mu)$ is sofic and $\mathcal{H}$ is a non-null subgroupoid of $\mathcal{G}$ then $(\mathcal{H},\mu_{\mathcal{H}})$ is sofic.</li>
+		<li> If $\left\{\mathcal{H}_n\right\}_n$ is a countable Borel partition of $\mathcal{G}$ in non-null subgroupoids, then $\mathcal{G}$ is sofic if and only if each $\mathcal{H}_n$ is sofic.</li>
+		<li> If $\nu\ll\mu$, both $\nu$ and $\mu$ being invariant probability measures on $\mathcal{G}^{(0)}$, and $\mu$ is sofic, then $\nu$ is sofic as well.</li>
+	</ol>
+</div>

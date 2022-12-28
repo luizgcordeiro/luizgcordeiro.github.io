@@ -1,0 +1,70 @@
+\begin{theorem}
+	Sejam $V$ e $W$ espaços vetoriais com produtos internos e de dimensão $n$, $\mathcal{B}=\left\{b_1,\ldots,b_n\right\}$ e $\mathcal{C}=\left\{c_1,\ldots,c_n\right\}$ bases ortonormais ordenadas de $V$ e $W$, respectivamente, e $T\colon V\to W$ uma transformação linear.
+	
+	Então $T$ é uma isometria se, e somente se, a matriz $[T]_{\mathcal{B}}^{\mathcal{C}}$ é ortogonal.
+	
+	\hrule
+	
+	Em termos mais simples, isometrias lineares são exatamente as transformações lineares que são representadas por matrizes ortogonais com relação a bases ortonormais.
+\end{theorem}
+
+\begin{proof}
+	Seja $t_{ij}$ o valor na $(i,j)$-ésima entrada de $[T]_{\mathcal{B}}^{\mathcal{C}}$. Como $t_{ij}$ é a ``$i$-ésima coordenada da $j$-ésima imagem da base $\mathcal{B}$ por $T$''. Como estamos lidando com bases ortonormais, esta coordenada é dada por $\langle T(b_j),c_i\rangle$. Ou seja,
+	\[[T]_{\mathcal{B}}^{\mathcal{C}}=[t_{ij}]_{i,j},\quad\text{e}\quad t_{ij}=\langle T(b_j),c_i\rangle.\]
+	
+	Primeiro, vamos construir a função cuja matriz associada corresponde à transposta de $[T]_{\mathcal{B}}^{\mathcal{C}}$. Defina $T^*\colon W\to V$ na base $\mathcal{C}$ por
+	\[T^*(c_i)=\sum_{k=1}^n \langle T(b_k),c_i\rangle b_k.\]
+	Agora, consideremos as entradas de $[T^*]_{\mathcal{C}}^{\mathcal{B}}=[s_{ij}]_{i,j}$. Similarmente ao cálculo dos $t_{ij}$, temos que
+	\[s_{ji}=\langle T^*(c_i),b_j\rangle=\langle T(b_j),c_i\rangle=t_{ij}.\]
+	Isto significa que $[T^*]_{\mathcal{C}}^\mathcal{B}$ é exatamente a transposta de $[T]_{\mathcal{B}}^{\mathcal{C}}$.
+	
+	Além disso, temos que
+	\[[T^*\circ T]_{\mathcal{B}}^{\mathcal{B}}=[T^*]_{\mathcal{C}}^\mathcal{B}\cdot [T]_{\mathcal{B}}^{\mathcal{C}},\]
+	e que $[\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}}=I_{n\times n}$, a identidade $n\times n$.
+	
+	Assim, obtemos a equivalência entre as seguintes afirmações:
+	\begin{itemize}
+		\item $[T]_{\mathcal{B}}^{\mathcal{C}}$ é uma matriz ortogonal.
+		\item $T^*$ como definida acima é a transformação inversa de $T$. (\textit{Observação}: Para ser mais preciso, deveríamos dizer que $T^*$ é uma inversa \uline{à esquerda} de $T$. Mas como todos os tipos de inversas coincidem em dimensão finita, podemos ignorar a lateralidade da inversa.)
+	\end{itemize}
+	Vamos trabalhar na segunda afirmaçao. Afirmar que $T^*$ é a inversa de $T$ equivale a dizer que
+	\[T^*(T(b_j))=b_j\]
+	para todo $j$. Vamos calcular $T^*(T(b_j))$. Como $\mathcal{C}$ é ortonormal, então as coordenadas de $T(b_j)$ são os produtos internos de $T(b_j)$ com o respectivo elemento de $\mathcal{C}$, ou seja, 
+	\begin{align*}
+	T^*(T(b_j))
+		&=T^*\left(\sum_{i=1}^n\langle T(b_j),c_i\rangle c_i\right)\\
+		&=\sum_{i=1}^n\langle T(b_j),c_i\rangle T^*(c_i)\\
+		&=\sum_{i=1}^n\langle T(b_j),c_i\rangle\sum_{k=1}^n\langle T(b_k),c_i\rangle b_k\\
+		&=\sum_{k=1}^n\left(\sum_{i=1}^n\langle T(b_j),c_i\rangle\langle T(b_k),c_i\rangle\right)b_k.
+	\end{align*}
+	A última expressão nos dá as coordenadas de $T^*(T(b_j))$ na base $\mathcal{B}$: A $k$-ésim coordenada é $\sum_{i=1}^n\langle T(b_j),c_i\rangle\langle T(b_k),c_i\rangle$. Portanto, $T^*(T(b_j))$ é igual a $b_j$ se, e somente se, a igual a sua $j$-ésima coordenada é $1$ e as outras são $0$.
+	
+	Obtemos então a equivalência entre as afirmações:
+	\begin{itemize}
+		\item $[T]_{\mathcal{B}}^{\mathcal{C}}$ é uma matriz ortogonal.
+		\item Para todos $j,k=1,\ldots, n$,
+		\[\sum_{i=1}^n\langle T(b_j),c_i\rangle\langle T(b_k),c_i\rangle=\begin{cases}1,&\text{se }j=k\\
+		0,&\text{ se }j\neq k\end{cases}.\]
+	\end{itemize}
+	
+	Por fim, vamos trabalhar com a expressão ``$\sum_{i=1}^n\langle T(b_j),c_i\rangle\langle T(b_k),c_i\rangle$'', que aparece na segunda expressão acima. Dados $j,k$, vamos expandir $T(b_j)$ e $T(b_k)$ com relação à base $\mathcal{C}$:
+	\[T(b_j)=\sum_{i=1}^n \langle T(b_j),c_i\rangle c_i,\qquad T(b_k)=\sum_{p=1}^n\langle T(b_k),c_p\rangle c_p.\]
+	Tomando o produto interno de $T(b_j)$ e $T(b_k)$, temos
+	\begin{align*}
+		\langle T(b_j),T(b_k)\rangle
+			&=\sum_{i,p=1}^n\langle T(b_j),c_i\rangle \langle T(b_k,c_p\rangle \langle c_i,c_p\rangle.
+	\end{align*}
+	Como $\mathcal{C}$ é ortonormal, então $\langle c_i,c_p\rangle=1$ se $i=p$ e $0$  se $i\neq p$, e segue que
+	\[\langle T(b_j),T(b_k)\rangle=\sum_{i=1}^n\langle T(b_j),c_i\rangle\langle T(b_k),c_i\rangle\]
+	O termo na direita é exatamente a expressão que queríamos considerar. 
+	
+	Por outro lado, $\mathcal{B}$ é ortonormal, e assim $\langle b_j,b_k\rangle=1$ se $j=k$ e $0$ se $j\neq k$.
+	
+	Concluímos então a equivalência entre as afirmações:
+	\begin{itemize}
+		\item $[T]_{\mathcal{B}}^{\mathcal{C}}$ é uma matriz ortogonal.
+		\item Para todos $j,k=1,\ldots, n$,
+		\[\langle T(b_j),T(b_k)=\langle b_j,b_k\rangle.\]
+	\end{itemize}
+	Claramente a segunda afirmação corresponde a $T$ preservar ângulos(dado que $\mathcal{B}$ é uma base), o que por sua vez equivale a $T$ ser uma isometria. Isto completa a demonstração.
+\end{proof}

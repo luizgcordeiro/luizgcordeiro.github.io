@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.2.is.html#examplesemilatticesasinversesemigroups'>1.2.3</a>
+<!-- 1.2.3 -->
+<div class="toload example">
+<p><span class="envidentifier">Example 1.2.3</span>
+Every $\land$-semilattice is an inverse semigroup with the meet as the operation: $xy=x\land y$. In this case, every element is its own inverse: $x^*=x$.
+</p>
+
+<p>
+We will always regard $\land$-semilattices as inverse semigroups with this operation.
+</p>
+</div>

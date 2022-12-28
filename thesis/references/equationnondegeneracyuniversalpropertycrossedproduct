@@ -1,0 +1,5 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#equationnondegeneracyuniversalpropertycrossedproduct'>4.3.3</a>
+
+	<div class='toload equation'>\[
+		\sigma(s)\sigma(s^*)=\overline{(1_s)\delta_s(1_{s^*})\delta_{s^*}}=\overline{1_s\delta_{ss^*}}.\tag{4.3.3}
+	\]</div>

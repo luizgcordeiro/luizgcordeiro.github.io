@@ -1,0 +1,14 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#definitionbooleanrepresentation'>4.4.5</a>
+
+<!-- 4.4.5 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.4.5
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR3274831'></span>, Definition 3.9])</span></span>
+	A <em>Boolean representation</em> of a Boolean inverse semigroup $S$ on an algebra $B$ is a semigroup morphism $\pi:S\to B$ from $S$ to the multiplicative semigroup of $B$ which satisfies
+	<div class='equation'>\begin{align*}
+		\pi(s\lor t)
+			&=\pi(s)+\pi(t)
+	\end{align*}</div>
+	whenever $s$ and $t$ are compatible and $s\land t=0$.
+	</p>
+</div>

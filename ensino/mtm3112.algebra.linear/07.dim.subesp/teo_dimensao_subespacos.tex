@@ -1,0 +1,12 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial e $W$ um subespaço vetorial de $V$. Então $\dim(W)\leq\dim(V)$.
+	
+	Além disso, se $V$ tem dimensão finita e $\dim(W)=\dim(V)$, então $V=W$.
+\end{theorem}
+
+\begin{proof}
+	Seja $\mathcal{C}$ uma base para $W$. Em particular, $\mathcal{C}$ é linearmente independente em $V$, e portanto podemos estender $\mathcal{C}$ para uma base de $V$. Tome $\mathcal{B}$ uma base de $V$ tal que $\mathcal{C}\subseteq\mathcal{B}$. Em particular, $\mathcal{C}$ tem no máximo o mesmo tanto de elementos que $\mathcal{B}$, e obtemos
+	\[\dim(W)=\#\mathcal{C}\leq\#\mathcal{B}=\dim(V).\]
+	
+	No caso de $V$ ter dimensão finita e $\dim(W)=\dim(V)$, teremos que $\mathcal{C}$ e $\mathcal{B}$ são dois conjuntos finitos, com o mesmo número de elementos, e com $\mathcal{C}=\mathcal{B}$. Isto implica que $\mathcal{C}=\mathcal{B}$, e portanto $W=\langle\mathcal{C}\rangle=\langle\mathcal{B}\rangle=V$.
+\end{proof}

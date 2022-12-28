@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Uma tranformação linear \(T\colon V\to W\) é sobrejetiva se, e somente se, \(T\) admite uma inversa linear à direita, i.e., se existe uma transformação linear \(S\colon W\to V\) tal que \(T\circ S=\operatorname{id}_W\).
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Lembre-se do seguinte fato geral: Se \(f\colon X\to Y\) é uma função entre dois conjuntos, então \(f\) é sobrejetiva se, e somente se, \(f\) admite uma inversa à direita. Assim, se \(T\) admite uma inversa linear à direita então \(T\) é injetiva. O problema deste teorema se resume então a provar que, no caso de \(T\) ser sobrejetiva, pode-se tomar uma inversa à direita de \(T\) que seja linear.
+</p>
+<p>
+Suponhamos que \(T\) seja sobrejetiva. Considere uma base qualquer \(\mathcal{C}\) de \(W\). Para definir uma função linear \(S\colon W\to V\), basta definir \(S\) na base \(\mathcal{C}\). Como \(T\) é sobrejetiva, então para cada \(c\in\mathcal{C}\) podemos escolher um vetor \(S(c)\in V\) tal que \(T(S(c))=c\).
+</p>
+<p>
+Assim, temos \(S\) definida em \(\mathcal{C}\), que se estende linearmente para uma função linear de \(W\) em \(V\).
+</p>
+<p>
+Se \(c\in\mathcal{C}\), então \(T(S(c))=c\), o que mostra que \(T\circ S\) é a identidade em \(\mathcal{C}\). Como \(\mathcal{C}\) é uma base de \(W\), então \(T\circ S\) é a identidade de \(W\).
+</p>
+
+</div></body>
+</html>

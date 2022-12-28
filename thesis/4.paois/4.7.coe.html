@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>Continuous orbit equivalence</h3>
+
+<p>
+In [<span class='ref' data-tag='MR3694599'></span>], Li characterized continuous orbit equivalence of topologically free partial group actions in terms of diagonal-preserving isomorphisms of the associated $C^*$-crossed products. In this section, we will extend the notion of continuous orbit equivalence to partial actions of inverse semigroups and characterize orbit equivalence of topologically free systems in terms of diagonal-preserving isomorphisms of the associated skew inverse semigroup rings.
+</p>
+
+<p>
+Recall that if $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ is a partial action of an inverse semigroup $S$ on a topological space $X$, we write $S\ast X=\left\{(s,x)\in S\times X:x\in X_{s^*}\right\}$.
+</p>
+
+<!-- 4.7.1 -->
+<div class='definition' id='definitioncoe'>
+	<p><span class='envidentifier'>Definition 4.7.1</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ and  $\gamma=\left(\gamma_t:Y_{t^*}\to Y_t\right)_{t\in T}$ be topological partial actions on topological spaces $X$ and $Y$, respectively. We say that $\theta$ and $\gamma$ are <em>continuously orbit equivalent</em> if there exists a homeomorphism 
+	<div class='equation'>\begin{align*}
+		\varphi:
+			&X \to Y
+	\end{align*}</div>
+	and continuous maps
+	<div class='equation'>\[
+		a: S\ast X \to T\qquad\text{and}\qquad b: T\ast Y \to S
+	\]</div>
+	such that for all $x\in X$, $s\in S_x$, $y\in Y$ and $t\in T_y$,
+	<ol class='roman'>
+		<li>
+			$\varphi(\theta_s(x)) = \gamma_{a(s,x)}(\varphi(x))$;
+		</li>
+		
+		<li>
+			$\varphi^{-1}(\gamma_t(y)) = \theta_{b(t,y)}(\varphi^{-1}(y))$.
+		</li>
+	</ol>
+	Implicitly, we require that $a(g,x) \in T_{\varphi(x)}$ and $b(t,y) \in S_{\varphi^{-1}(y)}$. We will call the triple $(\varphi,a,b)$ a \emph{continuous orbit equivalence} between $\theta$ and $\gamma$.
+	</p>
+</div>
+
+<p>
+Our next goal is to prove, under appropriate conditions, that continuous orbit equivalence of topologically free partial actions is equivalent to isomorphism of the respective groupoids. This is a generalization of the analogous results for groups ([<span class='ref' data-tag='MR3789176'></span>, Theorem 1.2] and [<span class='ref' data-tag='MR3694599'></span>, Theorem 2.7]).
+</p>
+
+<p>
+Given a continuous orbit equivalence $(\varphi,a,b)$ between partial actions $\theta$ and $\gamma$ as in Definition <span class='ref' data-tag='definitioncoe'></span>, we will factor the map $a:S\ltimes_\theta X\to T$ to a product-preserving map (<span class='ref' data-tag='footnote47coe1' id='footnote47coe1'></span>) from the groupoid of germs $S\ltimes_\theta X$ to $T$, and similarly for the map $b:T\ltimes_\gamma Y\to S$. For this, we need to prove some identities related to how $(\varphi,a,b)$ respects the structure of $S$ and $T$.
+</p>
+
+<!-- 4.7.2 -->
+<div class='lemma' id='lemseila'>
+	<p><span class='envidentifier'>Lemma 4.7.2</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ and  $\gamma=\left(\gamma_t:Y_{t^*}\to Y_t\right)_{t\in T}$ be topologically free partial actions, and $(\varphi,a,b)$ is a continuous orbit equivalence between $\theta$ and $\gamma$. Assume that the groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are Hausdorff. Then
+	<ol class='alphpar'>
+		<li>
+			$[s_1, x]=[s_2, x]$ implies that $[a(s_1,x),\varphi(x)]=[a(s_2,x),\varphi(x)]$, for all $x\in X$ and $s_1, s_2 \in S_x$.
+		</li>
+		
+		<li>
+			$[a(s_1s_2, x),\varphi(x)]=[a(s_1, \theta_{s_2}(x))a(s_2, x),\varphi(x)]$ for all $x\in X$ and $s_2\in S_x$ and $s_1\in S_{\theta_{s_2}(x)}$.
+		</li>
+		
+		<li>
+			$[b(a(s, x), \varphi(x)),x] = [s,x],$ for all $x\in X$ and $s\in S_x$.
+		</li>
+	</ol>
+	Analogous statements hold with $(\varphi^{-1},b,a)$ in place of $(\varphi,a,b)$.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='lemseila'>Proof</a>
+</p>
+
+<div class='proof' id='proofoflemseila'>
+	<ol class='alphpar'>
+		<li>
+			Let $x\in X$ and $s_1, s_2 \in S_x$. Choose an open neighbourhood $U$ of $x\in X$ such that
+			<div class='equation'>\[
+				a(s_1, \widetilde{x})=a(s_1, x)\qquad\text{and}\qquad a(s_2, \widetilde{x})=a(s_2, x)
+			\]</div>
+			whenever $\widetilde{x}\in U$. Then for all $\widetilde{x}\in U\cap\varphi^{-1}(\Lambda(\gamma))$ we have
+			<div class='equation'>\begin{align*}
+				[s_1,\widetilde{x}]=[s_2,\widetilde{x}]\ 
+					&\Longrightarrow\ \theta_{s_1}(\widetilde{x})=\theta_{s_2}(\widetilde{x})\\
+					&\ \Longrightarrow\ \varphi(\theta_{s_1}(\widetilde{x}))=\varphi(\theta_{s_2}(\widetilde{x}))\\
+					&\ \Longrightarrow \ \gamma_{a(s_1,\widetilde{x})}(\varphi(\widetilde{x}))=\gamma_{a(s_2,\widetilde{x})}(\varphi(\widetilde{x})),
+			\end{align*}</div>
+			so the definition of $\Lambda(\gamma)$ and the given property of $U$ imply $[a(s_1,x),\varphi(\widetilde{x})]=[a(s_2,x),\varphi(\widetilde{x})]$. Since $\gamma$ is topologically free, $\Lambda(\gamma)$ is dense in $Y$, so $U\cap\varphi^{-1}(\Lambda(\gamma))$ is dense in $U$. Taking the limit $\widetilde{x}\to x$ we conclude that $[a(s_1,x),\varphi(x)]=[a(s_2,x),\varphi(x)]$ (we are using the fact that $T\ltimes_\gamma Y$ is Hausdorff, so limits are unique).
+		</li>
+		
+		<li>
+			Choose an open neighbourhood $U$ of $x \in X$ such that 
+			<div class='equation'>\[
+				a(s_1s_2,\widetilde{x})=a(s_1s_2,x),\quad a(s_1,\theta_{s_2}(\widetilde{x}))= a(s_1,\theta_{s_2}(x))\quad\text{and}\quad a(s_2, \widetilde{x}) = a(s_2,x)
+			\]</div>
+			for all $\widetilde{x} \in U$. Then for all $\widetilde{x} \in U \cap\varphi^{-1}(\Lambda(\gamma))$ we have
+			<div class='equation'>\begin{align*}
+				\gamma_{a(s_1s_2, \widetilde{x})}(\varphi(\widetilde{x}))
+					&=\varphi(\theta_{s_1s_2}(\widetilde{x}))\\
+					&=\varphi(\theta_{s_1}(\theta_{s_2}(\widetilde{x}))\\
+					&=\gamma_{a(s_1,\theta_{s_2}(\widetilde{x}))}(\varphi(\theta_{s_2}(\widetilde{x})))\\
+					&=\gamma_{a(s_1,\theta_{s_2}(\widetilde{x}))}(\gamma_{a(s_2, \widetilde{x})}(\varphi(\widetilde{x})))\\
+					&=\gamma_{a(s_1, \theta_{s_2}(\widetilde{x}))a(s_2,\widetilde{x})}(\varphi(\widetilde{x})),
+			\end{align*}</div>
+			so, as in item (a), the given property of $U$ and the definition of $\Lambda(\gamma)$ imply that
+			<div class='equation'>\begin{align*}
+				[a(s_1s_2,x),\varphi(\widetilde{x})]
+					&=[a(s_1,\theta_{s_2}(x))a(s_2, x),\varphi(\widetilde{x})].
+			\end{align*}</div>
+			Since $\varphi^{-1}(\Lambda(\gamma))\cap U$ is dense in $U$, we conclude that
+			<div class='equation'>\begin{align*}
+				[a(s_1s_2,x),\varphi(x)]
+					&=[a(s_1,\theta_{s_2}(x))a(s_2,x),\varphi(x)].
+			\end{align*}</div>
+		</li>
+		
+		<li>
+			Similarly to the previous items, take neighbourhoods $U$ of $x$ and $V$ of $\varphi(x)$ such that
+			<div class='equation'>\[
+				a(s,\widetilde{x})=a(s,x)\qquad\text{and}\qquad b(a(s,x),\widetilde{y})=b(a(s,x),\varphi(x))
+			\]</div>
+			whenever $\widetilde{x}\in U$ and $\widetilde{y}\in V$. Then for all $\widetilde{x}\in U\cap\varphi^{-1}(V)\cap \Lambda(\theta)$ we have
+			<div class='equation'>\begin{align*}
+				\theta_{b(a(s,\widetilde{x}),\varphi(\widetilde{x}))}(\widetilde{x})
+					&=\varphi^{-1}(\gamma_{a(s,\widetilde{x})}(\varphi(\widetilde{x})))\\
+					&=\varphi^{-1}(\varphi(\theta_s(\widetilde{x})))\\
+					&=\theta_s(\widetilde{x}),
+			\end{align*}</div>
+			so the properties of $U$, $V$ and $\Lambda(\theta)$ yield $[b(a(s,x),\varphi(x)),\widetilde{x}]=[s,\widetilde{x}]$ and again taking $\widetilde{x}\to x$ gives us the desired result.<span class='qed'></span>
+		</li>
+	</ol>
+</div>
+
+<!-- 4.7.3 -->
+<div class='theorem' id='theocoegroupoidgermiso'>
+	<p><span class='envidentifier'>Theorem 4.7.3</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ and $\gamma=\left(\gamma_t:Y_{t^*}\to Y_t\right)_{t\in T}$ be topologically free, continuously orbit equivalent partial actions, and suppose that the groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are Hausdorff. Then $S \ltimes_\theta X$ and $T \ltimes_\gamma Y$ are isomorphic as topological groupoids.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='theocoegroupoidgermiso'>Proof</a>
+</p>
+
+<div class='proof' id='proofoftheocoegroupoidgermiso'>
+	<p>
+	Let $(\varphi,a,b)$ be a continuous orbit equivalence between $\theta$ and $\gamma$. By by Lemma <span class='ref' data-tag='lemseila'></span>(a) we can define
+	<div class='equation'>\begin{align*}
+		\Phi:&S\ltimes_\theta X&\to&T\ltimes_\gamma Y\\
+			&\Phi([s,x])&=&[a(s,x),\varphi(x)].
+	\end{align*}</div>
+	By Lemma <span class='ref' data-tag='lemseila'></span>(b), $\Phi$ is a groupoid morphism. Since $a$ and $\varphi$ are continuous then $\Phi$ is continuous. Similarly, the map
+	<div class='equation'>\begin{align*}
+		\Psi:&T \ltimes_\gamma Y&\to& S\ltimes_\theta X\\
+		&\Psi([t,y])&=&[b(t,y),\varphi^{-1}(y)]
+	\end{align*}</div>
+	is a continuous groupoid morphism as well. $\Phi$ and $\Psi$ are inverses of each other due to Lemma <span class='ref' data-tag='lemseila'></span>(c).<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+Note that the continuous maps $a$ and $b$ in the definition of continuous orbit equivalence take values in discrete spaces (namely, the corresponding semigroups), and so $X$ and $Y$ are required to have sufficiently many clopen sets in order for a continuous orbit equivalence between the corresponding partial actions to exist. Since we will now be interested in constructing an orbit equivalence for two actions from an isomorphism of the corresponding groupoids of germs, we will need to concentrate on spaces which have sufficiently many clopen sets and partial actions which respect this structure.
+</p>
+
+<!-- 4.7.4 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 4.7.4
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR2565546'></span>, Definition 5.2])</span></span>
+	A topological partial action $\theta$ of an inverse semigroup $S$ on a topological space $X$ is <em>ample</em> if
+	<ol class='roman'>
+		<li>
+			$X$ is locally compact, Hausdorff and zero-dimensional;
+		</li>
+		
+		<li>
+			$X_s$ is a compact-open subset of $X$ for all $s\in S$.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<!-- 4.7.5 -->
+<div class='lemma' id='lemmaisomorphismtocoe'>
+	<p><span class='envidentifier'>Lemma 4.7.5</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ and $\gamma=\left(\gamma_t:Y_{t^*}\to Y_t\right)_{t\in T}$ be ample partial actions of inverse semigroups $S$ and $T$ on $X$ and $Y$, respectively, such that the groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are Hausdorff. Let $\Phi: S \ltimes_\theta X \rightarrow T \ltimes_\gamma Y$ be a topological isomorphism, and consider the restriction $\varphi:=\Phi|_X:X\to Y$. Then for all $s$ in $S$ there are elements $t_1, \ldots, t_n$ in $T$ and there are disjoint compact-open subsets $K_1, \ldots K_n$ of $Y$ such that:
+	<ol class='roman'>
+		<li>
+			$K_i \subseteq Y_{{t_i}^*}$;
+		</li>
+		
+		<li>
+			$\varphi(X_{s^*})=\bigcup_{i=1}^nK_i$;
+		</li>
+		
+		<li>
+			$\left\{\varphi^{-1}(K_i):i=1,\ldots,n\right\}$ is a partition of $X_{s^*}$;
+		</li>
+		
+		<li>
+			For all $i\in\left\{1,\ldots,n\right\}$ and for all $x\in\varphi^{-1}(K_i)$, we have $\Phi([s,x])=[t_i,\varphi(x)]$.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='lemmaisomorphismtocoe'>Proof</a>
+</p>
+
+<div class='proof' id='proofoflemmaisomorphismtocoe'>
+	<p>
+	Since $[s, X_{s^*}]$ is a compact-open bisection, then $\Phi([s,X_{s^*}])$ is a compact-open bisection in $T\ltimes_\gamma Y$, so there are elements $t_1,\ldots,t_n $ of $T$ and disjoint compact-open subsets $K_1,\ldots,K_n$ of $Y$ with $K_i\in Y_{t_i^*}$ such that
+	<div class='equation' id='equationlemmaisomorphismtocoeproof'>\[
+		\Phi([s,X_{s^*}])=\bigcup_{i=1}^n[t_i,K_i].\tag{4.7.1}
+	\]</div>
+	</p>
+	
+	<p>
+	Then item (i) is immediately  satisfied. Item (ii) follows by taking sources on both sides of Equation (<span class='ref' data-tag='equationlemmaisomorphismtocoeproof'></span>), and (iii) follows from (ii) and the fact that $\varphi$ is injective.
+	</p>
+	
+	<p>
+	Let us prove (iv). Consider $i\in\left\{1,\ldots,n\right\}$ and $x\in\varphi^{-1}(K_i)$. Then Equation (<span class='ref' data-tag='equationlemmaisomorphismtocoeproof'></span>) implies that $\Phi[s,x]\in [t_j, K_j]$, for some $j\in\left\{i,\cdots,n\right\}$, and in particular $\so([s,x])\in K_j$. As $K_1,\ldots,K_n$ are pairwise disjoint and
+	<div class='equation'>\begin{align*}
+		\so(\Phi[s,x])
+			&=\Phi(\so[s,x])\\
+			&=\varphi(x)\in K_i,
+	\end{align*}</div>
+	then $K_j=K_i$. Therefore, $\Phi[s,x]=[t_i,\varphi(x)]$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+We are now ready to prove that topological isomorphisms between Hausdorff groupoids of germs yield a continuous orbit equivalence between the respective partial actions.
+</p>
+
+<!-- 4.7.6 -->
+<div class='theorem' id='theogroupoidgermscoe'>
+	<p><span class='envidentifier'>Theorem 4.7.6</span>
+	Let $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ and $\gamma=\left(\gamma_t:Y_{t^*}\to Y_t\right)_{t\in T}$ be ample partial actions of $S$ and $T$ on $X$ and $Y$, respectively, and suppose that the groupoids of germs $S \ltimes_\theta X$ and $T \ltimes_\gamma Y$ are isomorphic and Hausdorff. Then $\theta$ and $\gamma$ are continuously orbit equivalent
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='theogroupoidgermscoe'>Proof</a>
+</p>
+
+<div class='proof' id='proofoftheogroupoidgermscoe'>
+	<p>
+	Let $\Phi : S \ltimes_\theta X \rightarrow  T \ltimes_\gamma Y$ be an isomorphism of topological groupoids. Then $\Phi$ restricts to a homeomorphism between the unit spaces of its domain and image, that is, the map
+	<div class='equation'>\[
+		\varphi:= \Phi|_X: X \to Y
+	\]</div>
+	is a homeomorphism.
+	</p>
+	
+	<p>
+	Given $s\in S$, and choose $t_1,\ldots,t_n\in T$ and compact-open subsets $K_1$, \ldots, $K_n\subseteq Y$ satisfying properties (a)-(d) of Lemma <span class='ref' data-tag='lemmaisomorphismtocoe'></span>. Define $a(s,x)=t_i$ whenever $x\in\varphi^{-1}(K_i)$, so that $a$ is a continuous map on $\left\{s\right\}\times X_{s^*}$. This way, we define a continuous function $a$ on all of $S\ast X=\bigcup_{s\in S}\left\{s\right\}\times X_{s^*}$. Let us show that $a$ satisfies the desired property for a continuous orbit equivalence between $\theta$ and $\gamma$: Given $(s,x)\in S\ast X$, let $t=a(s,x)$, so the definition of $a(s,x)$ implies
+	<div class='equation'>\begin{align*}
+		\gamma_{a(s,x)}(\varphi(x))
+			&=\ra\left([a(s,x),\varphi(x)]\right)\\
+			&=\ra\left([t,\varphi(x)]\right)\\
+			&=\ra(\Phi[s,x])\\
+			&=\Phi(\ra[s,x])\\
+			&=\varphi(\theta_s(x)),
+	\end{align*}</div>
+	</p>
+	
+	<p>
+	Proceeding similarly with $\Phi^{-1}$ in place of $\Phi$, we construct a function $b:T\ast Y\to S$ with analogous properties, so that $a$ and $b$ describe a continuous orbit equivalence between $\theta$ and $\gamma$.<span class='qed'></span>
+	</p>
+</div>
+ 
+ <!-- 4.7.7 -->
+<div class='corollary'>
+	<p><span class='envidentifier'>Corollary 4.7.7</span>
+	Let $S$ be an inverse semigroup which is a weak semilattice and $\theta$ be an ample partial action of $S$ on $X$. Let $\tau$ be the canonical action of $\KB(S\ltimes_\theta X)$ on $X$ (see Example <span class='ref' data-tag='examplecanonicalaction'></span>). Then $\theta$ and $\gamma$ are continuously orbit equivalent.
+	</p>
+</div>
+
+<p>
+Recall that in the definition of ample partial action we assume that the domains are compact-open. The conclusion of Theorem <span class='ref' data-tag='theogroupoidgermscoe'></span> is not true in general without this assumption, i.e., there are non-continuously orbit equivalent topologically free partial actions with isomorphic groupoids of germs.
+</p>
+
+<!-- 4.7.8 -->
+<div class='example' id='exampleomega1isbad'>
+	<p><span class='envidentifier'>Exampel 4.7.8</span>
+	Let $\omega_1$ be the first uncountable ordinal endowed with the order topology, making it zero-dimensional, locally compact and Hausdorff (see 1.19 and 17.2(c) of [<span class='ref' data-tag='MR0264581'></span>]). Let $S=\left\{1\right\}$ be the trivial group, acting trivially on $\omega_1$.
+	</p>
+	
+	<p>
+	Consider $T=\omega_1$ as a lattice, and the action $\gamma$ of $T$ on $\omega_1$ in which $\gamma_t$ is the identity function of $\left\{\alpha\in\omega_1:\alpha\smallerthan t\right\}$ for all $t\in T$.
+	</p>
+	
+	<p>
+	The transformation groupoids $S\ltimes\omega_1$ and $T\ltimes\omega_1$ are both unit groupoids and isomorphic to $\omega_1$. However, there is no continuous orbit equivalence between the trivial action of $S$ and $\gamma$.
+	</p>
+	
+	<p>
+	Indeed, first we identify $S\ast\omega_1=\left\{1\right\}\times\omega_1$ with $\omega_1$ in the obvious manner. Let $\varphi:\omega_1\to\omega_1$ be a homeomorphism and $a:\omega_1\to T$ a continuous function. The condition in Definition <span class='ref' data-tag='definitioncoe'></span> is that $\varphi(\alpha)$ belongs to the domain of $\gamma_{a(\alpha)}$ for all $\alpha$, that is,
+	<div class='equation' id='equationomega1isbad'>\begin{align*}
+		\[\varphi(\alpha)\smallerthan a(\alpha)
+			&\qquad\text{for all }\alpha\in\omega_1.\tag{4.7.2}
+	\end{align*}</div>
+	In other words, the continuous function $f:\omega_1\to\omega_1$, $f(\alpha)=a(\varphi^{-1}(\alpha))$ satisfies $\alpha<f(\alpha)$ for all $\alpha\in\omega_1$, so let us prove that this leads to a contradiction (the argument is similar to that of [<span class='ref' data-tag='MR0264581'></span>, Example 20.11]): Let $\alpha_0\in\omega_1$ be arbitrary and for all $n\geq 0$ set $\alpha_{n+1}=f(\alpha_n)$. Then $\beta=\sup_n\alpha_n$ satisfies $\beta=\lim_n\alpha_n$, and since $f$ is continuous then
+	<div class='equation'>\begin{align*}
+		f(\beta)
+			&=\lim_n f(\alpha_n)\\
+			&=\lim_n\alpha_{n+1}\\
+			&=\beta,
+	\end{align*}</div>
+	a contradiction.
+	</p>
+</div>
+
+<p>
+Similar ideas are used in [<span class='ref' data-tag='MR0264581'></span>, Example 20.11] to prove that $\omega_1$ is not paracompact, which suggests that some property regarding paracompactness of the domains of the partial action needs to be satisfied in order for Theorem <span class='ref' data-tag='theogroupoidgermscoe'></span> to be valid. The general condition that allows the theorem to be proven is ultraparacompactness: a zero-dimensional, locally compact, Hausdorff space is <em>ultraparacompact</em> if every open cover can be refined to a clopen partition. See [<span class='ref' data-tag='MR0261565'></span>] and the references therein for distinct characterizations and more information about this property.
+</p>
+
+<p>
+For example, every second-countable (or more generally every Lindelöf), zero-dimensional, locally compact Hausdorff space is ultraparacompact. The proof of (the analogue of) Theorem <span class='ref' data-tag='theogroupoidgermscoe'></span> with ultraparacompact domains instead of compact-open is essentially the same, but it is preferable to leave the theorem stated with more standard - and elegant - assumptions.
+</p>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

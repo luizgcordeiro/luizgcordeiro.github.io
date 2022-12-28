@@ -1,0 +1,23 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#importantlemmakaplansky'>3.4.7</a>
+
+<!-- 3.4.7 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.4.7</span>
+	Let $\mathcal{A}$ be a sublattice of $C_b(X,R)$ satisfying <span class='ref' data-tag='conditionnormallatticel1'></span> and <span class='ref' data-tag='conditionnormallatticel2'></span>, and let $f_0$ be any element of $\mathcal{A}$. Let $\mathcal{A}_{\geq f_0}=\left\{f\in\mathcal{A}:f\geq f_0\right\}$. Then $(X,f_0,\mathcal{A}_{\geq f_0})$ is weakly regular and for $f,g\in\mathcal{A}_{\geq f_0}$,
+	<ol class='alphpar'>
+		<li>
+			$f\perp g\iff f\land g=f_0$ (which is the minimum of $\mathcal{A}_{\geq f_0})$;
+		</li>
+		
+		<li>
+			$f\Subset g$ is equivalent to the following statement:
+			<div class='equation'>\[
+			\begin{split}
+				\text{for every bounded subset $\mathcal{H}\subseteq\mathcal{A}$ such that $h\subseteq f$ for all $h\in \mathcal{H}$,}\\
+				\text{there is an upper bound $k$ of $\mathcal{H}$ such that $k\subseteq g$.}
+			\end{split}\tag{K}
+			\]</div>
+		</li>
+	</ol>
+	</p>
+</div>

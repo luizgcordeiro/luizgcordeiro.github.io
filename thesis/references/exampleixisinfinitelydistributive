@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.2.is.html#exampleixisinfinitelydistributive'>1.2.36</a>
+<!-- 1.2.36 -->
+<div class="toload example">
+<p><span class="envidentifier">Example 1.2.36</span>
+	If $X$ is a set then, by Example <span class='ref' data-tag='examplebisectionsofequivalencerelationarefunctions'></span>, $\mathcal{I}(X)$ is isomorphic to $\operatorname{\bf Bis}(X\times X)$, and thus it is (infinitely) distributive by Example <span class='ref' data-tag='bisgisinfinitelydistributive'></span> above. If $\mathscr{F}$ is any compatible subset of $\mathcal{I}(X)$, then the join of $\mathscr{F}$ is the function given by
+	<div class="equation">\[
+	\bigvee \mathscr{F}:\bigcup_{f\in F}\dom(f)\to\bigcup_{f\in F}\ran(f),\qquad \left(\bigvee \mathscr{F}\right)(x)=f(x),
+	\]</div>
+	where $f\in \mathscr{F}$ is chosen such that $x\in\dom(f)$ ("$\dom$" and "$\ran$" stand for the domain and range of an element of $\mathcal{I}(X)$).
+	</p>
+</div>

@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.7.im.html#definitioncoverinposet'>1.7.1</a>
+<!-- 1.7.1 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 1.7.1</span>
+	Let $L$ be a poset with zero. A <em>cover</em> of an element $x\in L$ is a family $C\subseteq L$ such that whenever $e\in L$ satisfies $c\land e=0$ for all $c\in C$, then $x\land e=0$ as well. A <em>cover</em> of a subset $X\subseteq L$ is a family $C\subseteq L$ which is a cover of every element of $X$.
+	</p>
+</div>

@@ -1,0 +1,25 @@
+\begin{definition}
+	Uma \textbf{norma} em um espaço vetorial real \(V\) é uma função
+	\[\begin{array}{r c c c}
+		\Vert\cdot\Vert\colon
+			&V
+				&\longrightarrow
+					&[0,+\infty)\\
+			&v
+				&\longmapsto
+					&\Vert v\Vert
+		\end{array}\]
+	satisfazendo às seguintes condições:
+	
+	\begin{enumerate}
+		\item \uline{Subaditividade}/\uline{desigualdade triangular}: Para todos $u,v\in V$ vale que
+			\[\Vert u+v\Vert\leq\Vert u\Vert+\Vert v\Vert.\]
+		\item \uline{Homogeneidade em módulo}: Para todos $v\in V$ e todo $\lambda\in\mathbb{R}$ vale que
+			\[\Vert\lambda u\Vert=|\lambda|\Vert u\Vert.\]
+		\item \uline{Positividade estrita}/\uline{não-degenerecência}: Se $u\neq 0_V$, então $\Vert u\Vert>0$.
+	\end{enumerate}
+	
+	\hrule
+	
+	\textit{Observação}: Neste curso, só consideraremos normas induzidas de produtos internos.
+\end{definition}

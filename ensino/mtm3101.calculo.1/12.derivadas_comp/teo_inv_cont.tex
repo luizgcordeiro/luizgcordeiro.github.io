@@ -1,0 +1,15 @@
+\begin{theorem}
+	Sejam $I$ um intervalo e $f\colon I\to\mathbb{R}$ uma função contínua. Então $f(I)$, a imagem de $f$, é um intervalo. Se $f$ é injetiva, então a sua inversa $f^{-1}\colon f(\mathbb{R})\to I$ é um contínua.
+\end{theorem}
+
+\begin{proof}
+	Para provar que $f(I)$ é um intervalo, é necessário provar que sepre que $u<p<v$ com $u,v\in f(I)$, tem-se também que $p\in f(I)$. De fato, neste caso, escolhemos $a,b\in I$ tais que $f(a)=u$ e $f(b)=v$. Pelo Teorema do Valor Intermediário, existe $c$ entre $a$ e $b$ tal que $f(c)=p$, logo $p\in f(I)$.
+	
+	Agora vamos assumir que $f$ é injetiva. Então $f$ é estritamente crescente, ou estritamente decrescente. Vamos supor o primeiro caso, que $f$ é estritamente crescente. Vamos mostrar que $f^{-1}$ também é estritamente crescente. Caso $f$ seja decrescente, então $f^{-1}$ também será decrescente. Em todo caso, $f^{-1}$ é monótona
+	
+	De fato, suponha que $u<v$ em $f(I)$. Vamos mostrar que $f^{-1}(u)<f^{-1}(v)$ em $I$. Caso contrário, teríamos que $f^{-1}(v)\leq f^{-1}(u)$, e como $f$ é crescente isto implicaria que $f(f^{-1}(v))\leq f(f^{-1}(u)$, ou seja, $v\leq u$, contrário à nossa hipótese. Portanto, $f^{-1}$ é crescente.
+	
+	Vamos provar que $f^{-1}$ satisfaz à Propriedade do Valor Intermediário. Sejam $u,v\in f(I)$ e $x\in I$ tais que $f^{-1}(u)\leq x\leq f^{-1}(v)$. Então o ponto $p=f(x)$ está entre $u$ e $v$, pois $f$ é monótona, e $f^{-1}(p)=x$.
+	
+	Concluímos que $f^{-1}$ é uma função monótona, definida em um intervalo, e que satisfaz à Propriedade do Valor Intermediário. Portanto, $f^{-1}$ é contínua.
+\end{proof}

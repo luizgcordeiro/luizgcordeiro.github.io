@@ -1,0 +1,5 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#equationisotropygroupoidsindex'>2.3.1</a>
+
+	<div class='toload equation'>\[
+		\operatorname{Iso}(\mathcal{G})=\left\{g\in \mathcal{G}:\so(g)=\ra(g)\right\},\qquad\operatorname{Iso}(\mathcal{H})=\left\{h\in\mathcal{H}:\so(h)=\ra(h)\right\}.\tag{2.3.1}
+	\]</div>

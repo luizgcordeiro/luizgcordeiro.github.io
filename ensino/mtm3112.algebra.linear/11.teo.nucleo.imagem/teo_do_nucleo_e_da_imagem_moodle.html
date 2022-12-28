@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Seja \(T\colon V\to W\) uma transformação linear entre dois espaços vetoriais \(V\) e \(W\). Então
+<div>
+\begin{equation*}
+\dim(V)=\dim(\ker(T))+\dim(\operatorname{Im}(T)).
+\end{equation*}
+</div>
+Em particular, \(\dim(\operatorname{Im}(T))\leq\dim(V)\).
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Sejam \(\mathcal{N}\) uma base de \(\ker(T)\), e seja \(\mathcal{M}\) uma base de \(\operatorname{Im}(T)\). Por definição de \(\operatorname{Im}(T)\), escolha, para cada \(m\in\mathcal{M}\), um vetor \(b_m\in V\) tal que \(T(b_m)=m\). Seja \(\mathcal{B}=\left\{b_m:m\in M\right\}\).
+</p>
+<p>
+Note que a função \(\mathcal{M}\to\mathcal{B}\), \(m\mapsto b_m\) é uma bijeção, cuja inversa é a restrição de \(T\) a \(\mathcal{B}\). Deste modo, \(\mathcal{M}\) e \(\mathcal{B}\) têm a mesma cardinalidade:
+<div>
+\begin{equation*}
+\#\mathcal{M}=\#\mathcal{B}\tag{1}.
+\end{equation*}
+</div>
+</p>
+<p>
+Além disso, os conjuntos \(\mathcal{B}\) e \(\mathcal{N}\) são disjuntos. De fato, se existisse um vetor \(v\in\mathcal{B}\cap\mathcal{N}\), teríamos que \(v=b_m\) para algum \(m\in \mathcal{M}\), e assim
+<div>
+\begin{equation*}
+m=T(b_m)=0_W,
+\end{equation*}
+</div>
+pois \(b_m\in\mathcal{N}\subseteq\ker(T)\). Mas isto contradiz o fato de que \(\mathcal{M}\) é linearmente independente, e assim não pode conter o vetor \(0\).
+</p>
+<p>
+Portanto, \(\mathcal{B}\) e \(\mathcal{N}\) são disjuntos, e segue que a cardinalidade de sua união é a soma das suas cardinalidades:
+<div>
+\begin{equation*}
+\#\left(\mathcal{B}\cup\mathcal{N}\right)=\#\mathcal{B}+\#\mathcal{N}.\tag{2}
+\end{equation*}
+</div>
+</p>
+<p>
+Agora, vamos mostrar que \(\mathcal{B}\cup\mathcal{N}\) é uma base para \(V\).
+</p>
+<p>
+<u>\(\mathcal{B}\cup\mathcal{N}\) é gerador para \(V\)</u>:
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Seja \(v\in V\). Temos que \(T(v)\in W\). Como \(\mathcal{M}\) é uma base para \(W\), existem escalares \(\lambda_m\), \(m\in \mathcal{M}\) (somente uma quantidade finita deles não-nulos) tais que
+<div>
+\begin{equation*}
+T(v)=\sum_{m\in \mathcal{M}}\lambda_m m.
+\end{equation*}
+</div>
+Assim,
+<div>
+\begin{equation*}
+T(v)=\sum_{m\in M}\lambda_m T(b_m)=T\left(\sum_{m\in M}\lambda_m b_m\right),
+\end{equation*}
+</div>
+e portanto \(v-\sum_{m\in M}\lambda_m b_m\in\ker(T)\). Como \(\mathcal{N}\) é uma base para \(\ker(T)\), então existem escalares \(\mu_n\), \(n\in \mathcal{N}\) (novamente, somenet uma quantidade finita deles não-nulos) tais que
+<div>
+\begin{equation*}
+v-\sum_{m\in M}\lambda_m b_m=\sum_{n\in\mathcal{N}}\mu_n n,
+\end{equation*}
+</div>
+ou seja,
+<div>
+\begin{equation*}
+v=\sum_{m\in M}\lambda_m b_m+\sum_{n\in\mathcal{N}}\mu_n n.
+\end{equation*}
+</div>
+Isto mostra que todo vetor de \(V\) é uma combinação linear de elementos de \(\mathcal{B}\cup\mathcal{N}\), e portanto este conjunto é gerador para \(V\).
+
+</div>
+<p>
+<u>\(\mathcal{B}\cup\mathcal{N}\) é linearmente independente</u>:
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Suponha que tenhamos uma combinação linear nula de elementos de \(\mathcal{B}\cup\mathcal{N}\):
+<div>
+\begin{equation*}
+\sum_{b\in\mathcal{B}}\alpha_b b+\sum_{n\in\mathcal{N}}\beta_n n=0_V.\tag{$*$}
+\end{equation*}
+</div>
+Aplicando \(T\) em ambos os lados da equação, obtemos
+<div>
+\begin{equation*}
+\sum_{b\in\mathcal{B}}\alpha_b T(b)=0_W,
+\end{equation*}
+</div>
+pois todo \(n\in\mathcal{N}\) pertence ao núcleo de \(T\). Como \(T\) se restringe a uma bijeção entre \(\mathcal{B}\) e \(\mathcal{M}\), os elementos \(T(b)\), \(b\in\mathcal{B}\), são exatamente os elementos de \(\mathcal{M}\), sem repetição. Mais formalmente, podemos fazer a substituição \(m=T(b)\), \(b=b_m\), e obter
+<div>
+\begin{equation*}
+0_W=\sum_{b\in\mathcal{B}}\alpha_b T(b)=\sum_{m\in\mathcal{M}}\alpha_{b_m} m.
+\end{equation*}
+</div>
+Como \(\mathcal{W}\) é linearmente independente (pois é uma base para \(\operatorname{Im}(T)\)), então \(\alpha_{b_m}=0\) para todo \(m\in\mathcal{M}\), ou equivalentemente \(\alpha_b=0\) para todo \(b\in\mathcal{B}\).
+<p>
+A Equação (\(*\)) então se transforma em
+<div>
+\begin{equation*}
+\sum_{n\in\mathcal{N}}\beta_n n=0.
+\end{equation*}
+</div>
+Como \(\mathcal{N}\) é linearmente independente (pois é uma base para \(\ker(T)\)), então \(\beta_n=0\) para todo \(n\in\mathcal{N}\).
+</p>
+<p>
+Assim, concluímos que todos os coeficientes \(\alpha_b\) e \(\beta_n\) na Equação (\(*\)) são nulos. Isto mostra que \(\mathcal{B}\cup\mathcal{N}\) é linearmente independente.
+</p>
+
+</div>
+<p>
+Portanto, \(\mathcal{B}\cup\mathcal{N}\) é uma base para \(V\). Utilizando (1) e (2), concluímos que
+<div>
+\begin{align*}
+\dim(V)
+&=\#\left(\mathcal{B}\cup\mathcal{N}\right)\\
+&=\#\mathcal{B}+\#\mathcal{N}\\
+&=\#\mathcal{M}+\#\mathcal{N}\\
+&=\dim(\operatorname{Im}(T))+\dim(\ker(T)).
+\end{align*}
+</div>
+</p>
+
+</div></body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h1 class='chapter'>Chapter 4. Partial actions of inverse semigroups</h1>
+
+<p>
+Partial actions of groups on $C^*$-algebras (initially defined for $\mathbb{Z}$ in [<span class='ref' data-tag='MR1276163'></span>] and for general discrete groups in [<span class='ref' data-tag='MR1331978'></span>]), are a powerful tool in the study of $C^*$-algebras associated to dynamical systems (see [<span class='ref' data-tag='MR3043025'></span>, <span class='ref' data-tag='MR3539347'></span>, <span class='ref' data-tag='MR1703078'></span>, <span class='ref' data-tag='MR3699170'></span>, <span class='ref' data-tag='MR3210558'></span>, <span class='ref' data-tag='MR3600124'></span>]). In [<span class='ref' data-tag='MR2115083'></span>] Dokuchaev and Exel introduced partial group actions in a purely algebraic context, and although this algebraic theory is not yet as well-developed as its $C^*$-algebraic counterpart, it has attracted interest from researchers in the area due to important classes of algebras, such as graph and ultragraph Leavitt path algebras, being described as (partial) crossed products ([<span class='ref' data-tag='MR3196063'></span>, <span class='ref' data-tag='arxiv1706.03628'></span>]).
+</p>
+
+<p>
+Groupoids are also being extensively used in order to study and classify similar classes of algebras ([<span class='ref' data-tag='MR3274831'></span>]), since every partial group action on a topological space induces a transformation groupoid ([<span class='ref' data-tag='MR2045419'></span>]), and every étale groupoids can be obtained in this manner ([<span class='ref' data-tag='MR2419901'></span>, Proposition 5.4]). In fact, a categorical relationship between the representation theories of groupoids and of inverse semigroups is described in [<span class='ref' data-tag='MR2969047'></span>].
+</p>
+
+<p>
+In the $C^*$-algebraic case, it is known that the algebras of transformation groupoids coincide with crossed products of associated partial actions ([<span class='ref' data-tag='MR2045419'></span>]). However, in the algebraic case only partial results of this nature had been obtained ([<span class='ref' data-tag='MR3743184'></span>, <span class='ref' data-tag='arxiv1710.09723'></span>]). 
+</p>
+
+<p>
+In this chapter we will study partial actions of inverse semigroups, as defined in [<span class='ref' data-tag='MR3231479'></span>]. They are a common generalization of both partial actions of groups and actions of inverse semigroups. We will be mostly interested in partial actions on topological spaces and algebras, although the same theory can be extended to other classes of algebraic or geometric spaces. These allows us to construct <em>groupoids of germs</em> as in [<span class='ref' data-tag='MR2419901'></span>] and crossed products associated to partial actions of inverse semigroups. These constructions generalize transformation groupoids and the usual crossed products by groups, respectively.
+</p>
+
+<p>
+In this general setting, we prove that the Steinberg algebra of a Hausdorff groupoid of germs is (naturally) isomorphic to a crossed product algebra for partial actions of inverse semigroups (Theorem <span class='ref' data-tag='theoremsteinbergiscrossed'></span>). This is a generalization of the aforementioned results of [<span class='ref' data-tag='MR3743184'></span>, <span class='ref' data-tag='arxiv1710.09723'></span>], and also an algebraic analogue of Abadie's result in [<span class='ref' data-tag='MR2045419'></span>] in the more general context of inverse semigroups.
+</p>
+
+<p>
+Moreover, there are canonical constructions which allow us to build new actions from partial actions of inverse semigroups ([<span class='ref' data-tag='MR3231479'></span>, <span class='ref' data-tag='MR2419901'></span>]), and so we study the isomorphism of the associated groupoids of germs and crossed product algebras. In particular, we obtain algebraic analogues of some of the results of <span class='ref' data-tag='MR3231226'></span>].
+</p>
+
+<p>
+Orbit equivalence and full groups for actions of $\mathbb{Z}$ were initially studied by Giordano, Putnam and Skau in [<span class='ref' data-tag='MR1363826'></span>, <span class='ref' data-tag='MR1710743'></span>, <span class='ref' data-tag='MR2054051'></span>], and by Li in [<span class='ref' data-tag='MR3694599'></span>, <span class='ref' data-tag='MR3789176'></span>] for partial actions of discrete groups. The notion of continuous orbit equivalence can be naturally extended to partial actions of inverse semigroups. We also introduce and study a natural notion of freeness for partial inverse semigroup actions (which is more restrictive than the one in [<span class='ref' data-tag='MR3448414'></span>]). This notion corresponds to the associated groupoids of germs being topologically principal. We also prove that two ample, topologically free partial inverse semigroup actions are continuously orbit equivalent if and only if their corresponding groupoids of germs are isomorphic.
+</p>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

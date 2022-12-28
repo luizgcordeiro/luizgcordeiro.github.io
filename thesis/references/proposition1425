@@ -1,0 +1,18 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#proposition1425'>1.4.25</a>
+ <!-- 1.4.25 -->
+<div class='toload proposition'>
+<span class='envidentifier'>Proposition 1.4.25
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR2827424'></span>, Propositions 2.20 and 2.22]</span></span>
+<ol class='alphpar'>
+	<li> If $\phi:\mathcal{G}\to\mathcal{H}$ is a proper continuous covering morphism of ample Hausdorff groupoids, then
+<div class='equation'>\[
+\mathbf{KB}(\phi):\mathbf{KB}(\mathcal{H})\to\mathbf{KB}(\mathcal{G}),\qquad A\mapsto\phi^{-1}(A),
+\]</div>
+ is a proper morphism of Boolean inverse semigroups.</li>
+	<li> If $\theta:S\to T$ is a proper morphism of Boolean inverse semigroups, then
+<div class='equation'>\[
+\GP(\theta):\GP(T)\to\GP(S),\qquad F\mapsto\theta^{-1}(F),
+\]</div>
+is a proper continuous covering morphism of topological groupoids.</li>
+</ol>
+</div>

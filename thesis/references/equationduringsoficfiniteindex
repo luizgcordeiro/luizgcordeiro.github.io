@@ -1,0 +1,5 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#equationduringsoficfiniteindex'>2.3.2</a>
+
+	<div class='toload equation'>\[
+	A_{i,j}A_{j,k}=(\psi_i^{-1}A\psi_j\cap H)(\psi_j^{-1}A\psi_k\cap H).\tag{2.3.2}
+	\]</div>

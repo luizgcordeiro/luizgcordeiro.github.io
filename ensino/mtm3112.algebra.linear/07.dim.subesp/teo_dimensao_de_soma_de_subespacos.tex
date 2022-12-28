@@ -1,0 +1,66 @@
+\begin{theorem}
+	Sejam \(V\) um espaço vetorial de dimensão finita e \(X\) e \(Y\) subespaços de \(V\). Então
+	\[\dim(X+Y)=\dim(X)+\dim(Y)-\dim(X\cap Y).\]
+	Em particular, se \(X\) e \(Y\) são suplementares (i.e., $X\cap Y=\left\{0\right\}$), então $\dim(X\oplus Y)=\dim(X)+\dim(Y)$.
+\end{theorem}
+\begin{proof}
+	Primeiro, vamos tomar uma base $\mathcal{Z}=\left\{z_1,\ldots,z_p\right\}$ do subespaço $X\cap Y$. Em particular, $\mathcal{Z}$ é um subconjunto linearmente independente tando de $X$ quanto de $Y$.
+	
+	Pelo teorema Base entre subconjunto linearmente independente e subconjunto gerador, podemos estender $\mathcal{Z}$ para uma base de $X$. Mais precisamente, isto significa que existem $x_1,\ldots,x_n\in X$ tais que o conjunto
+	\[\mathcal{B}_X=\left\{z_1,\ldots,z_p,x_1,\ldots,x_n\right\}\]
+	é uma base de $X$.
+	
+	Similarmente, existem $y_1,\ldots,y_m\in Y$ tais que o conjunto
+	\[\mathcal{B}_Y=\left\{z_1,\ldots,z_p,y_1,\ldots,y_m\right\}\]
+	é uma base de $Y$.
+	
+	Vamos provar que $\mathcal{C}=\left\{z_1,\ldots,z_p,x_1,\ldots,x_n,y_1,\ldots,y_m\right\}$ é uma base de $X+Y$. Temos dois pontos a verificar
+	
+	$\mathcal{C}$ é gerador de $X+Y$:
+	\begin{quote}
+		De fato, note que $\mathcal{C}=\mathcal{B}_X\cup\mathcal{B}_Y$. Pelo Teorema Subespaço gerador por união é soma de subespaços, obtemos
+		\begin{align*}
+			\langle\mathcal{C}\rangle&=\langle \mathcal{B}_X\cup\mathcal{B}_Y\rangle\\
+			&=\langle\mathcal{B}_X\rangle+\langle\mathcal{B}_Y\rangle\\
+			&=X+Y,
+		\end{align*}
+		ou seja, $\mathcal{C}$ é gerador para $X+Y$.
+	\end{quote}
+	
+	$\mathcal{C}$ é linearmente independente:
+	\begin{quote}
+		Precisamos mostrar que toda combinação linear nula de elementosde $\mathcal{C}$ é trivial. Suponha que temos uma combinação linear nula de elementos de $\mathcal{C}$:
+		\[\alpha_1z_1+\cdots+\alpha_pz_p+\beta_1 x_1+\cdots+\beta_n x_n+\gamma_1 y_1+\cdots+\gamma_m y_m=0.\tag{1}\]
+		Devemos mostrar que todos os $\alpha_i$, $\beta_j$ e $\gamma_k$ são iguais a $0$. Utilizando notação de somatório, temos que
+		\[\sum_{i=1}^p\alpha_i z_i+\sum_{j=1}^n\beta_j x_j=-\sum_{k=1}^m\gamma_ky_k\]
+		O termo no lado esquerdo desta equação pertence a $X$, enquanto o termo no lado direito da equação pertence a $Y$. Portanto, o lado direito na verdade a $X\cap Y$. Assim,
+		\[\sum_{k=1}^m\gamma_k y_k\in X\cap Y.\]
+		Agora, vamos utilizar o fato de que $z_1,\ldots,z_p$ geram $X\cap Y$: Podemos escrever
+		\[\sum_{k=1}^m\gamma_ky_k=\sum_{i=1}^p\lambda_iz_i\]
+		para certos escalares $\lambda_1,\ldots,\lambda_p$. Equivalentemente, temos a combinação linear nula
+		\[\sum_{k=1}^p\lambda_iz_i+\sum_{k=1}^m(-\gamma_k)y_k=0\]
+		Como $\mathcal{B}_Y=\left\{z_1,\ldots,z_p,y_1,\ldots,y_m\right\}$ é linearmente independente, os coeficientes da combinação linear acima são todos nulos, e em particular $\gamma_k=0$ para todo $k$.
+		
+		A Equação (1) pode então ser reescrita como uma combinação linear nula
+		\[\alpha_1z_1+\cdots+\alpha_pz_p+\beta_1x_1+\cdots+\beta_nx_n=0\tag{2}\]
+		Como $\mathcal{B}_X=\left\{z_1,\ldots,z_p,x_1,\ldots,x_n\right\}$ é linearmente independente, então todosos coeficientes desta combinação linear são nulos, isto é, $\alpha_i=0$ e $\beta_j=0$ para todos $i$ e $j$.
+		
+		Assim, concluímos que $\alpha_i=\beta_j=\gamma_k=0$ para todos $i,j,k$, exatamente como queríamos demonstrar.
+	\end{quote}
+	
+	Portanto, $\mathcal{C}$ é um subconjunto gerador e linearmente independente de $X+Y$, ou seja, uma base. Agora note que, por construção:
+	\begin{itemize}
+		\item $\mathcal{Z}$ tem $p$ elementos e é uma base de $X\cap Y$. Portanto $\dim(X\cap Y)=p$.
+		\item $\mathcal{B}_X$ tem $p+n$ elementos e é uma base de $X$. Portanto $\dim(X)=p+n$.
+		\item $\mathcal{B}_Y$ tem $p+m$ elementos e é uma base de $Y$. Portanto $\dim(Y)=p+m$.
+		\item $\mathcal{C}$ tem $p+n+m$ elementos e é uma base de $X+Y$. Portanto $\dim(X+Y)=p+m+n$.
+	\end{itemize}
+	
+	Podemos então calcular
+	\begin{align*}
+		\dim(X)+\dim(Y)-\dim(X\cap Y)&=(p+n)+(p+m)-p\\
+		&=p+m+n\\
+		&=\dim(X+Y),
+	\end{align*}
+	exatamente o que queríamos.\qedhere
+\end{proof}

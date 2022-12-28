@@ -1,0 +1,21 @@
+<a class='reflink' href='../4.paois/4.1.pmapa.html#propositionequivalencepartialmorphism'>4.1.3</a>
+
+<!-- 4.1.3 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.1.3</span>
+	A map $\theta:S\to T$ between inverse semigroups is a partial morphism if and only if for all $s,t\in S$,
+	<ol class='roman'>
+		<li>
+			$\theta(s^*)=\theta(s)^*$;
+		</li>
+		
+		<li>
+			$\theta(s)\theta(t) \leq\theta(st)$;
+		</li>
+		
+		<li>
+			$\theta(s)\leq\theta(t)$ whenever $s\leq t$.
+		</li>
+	</ol>
+	</p>
+</div>

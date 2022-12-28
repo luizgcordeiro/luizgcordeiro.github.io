@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(A_1,\ldots,A_n\) subespaços vetoriais de um espaço vetorial \(V\). Então a soma \(A_1+\cdots+A_n\) é um subespaço vetorial de \(V\).
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Vamos verificar somente o caso de dois subespaços vetoriais. O geral é completamente análogo.
+</p>
+<p>
+Sejam então \(A\) e \(B\) dois subespaços vetoriais de \(V\). Vamos verificar que \(A+B\) satisfaz a todos os axiomas para subespaços vetoriais. Primeiro note que, como \(A\) e \(B\) são subespaços, então \(0_V\in A\) e \(0_V\in B\), logo \(0_V=0_V+0_V\in A+B\). Isto mostra que \(A+B\) é não-vazio.
+</p>
+
+<ol>
+
+<li>
+<p>
+Vamos mostrar que \(A+B\) é fechado pela soma. Suponha que \(x_1,x_2\in A+B\). Pela definição de \(A+B\), isto significa que existem \(a_1,a_2\in A\) e \(b_1,b_2\in B\) tais que
+<div>
+\begin{equation*}
+x_1=a_1+b_1
+\end{equation*}
+</div>
+e
+<div>
+\begin{equation*}
+x_2=a_2+b_2.
+\end{equation*}
+</div>
+Agora calculamos
+<div>
+\begin{align*}
+x_1+x_2&=(a_1+b_1)+(a_2+b_2)\\
+&=(a_1+a_2)+(b_1+b_2),
+\end{align*}
+</div>
+pelas propriedades associativa e comutativa da soma em \(V\). Como \(A\) é subespaço vetorial de \(V\) então \(a_1+a_2\in A\), e similarmente \(b_1+b_2\in B\). Isto mostra que \(x_1+x_2\) é uma soma de elementos de \(A\) e \(B\). Portanto \(x_1+x_2\in A+B\).
+</p>
+
+</li>
+
+<li>
+<p>
+Agora vamos mostrar que \(A+B\) é fechado por multiplicação por escalar. Suponha que \(x\in A+B\) e que \(\lambda\in\mathbb{R}\). Então \(x=a+b\) para algum \(a\in A\) e algum \(b\in B\). Assim, temos
+<div>
+\begin{align*}
+\lambda x&=\lambda(a+b)\\
+&=(\lambda a)+(\lambda b),
+\end{align*}
+</div>
+pela propriedade distributiva. Como \(A\) é subespaço vetorial de \(V\) e \(a\in A\) então \(\lambda a\in A\). Similarmente, \(\lambda b\in B\). Isto mostra que \(\lambda x\) é uma soma de elementos de \(A\) e \(B\), e portanto \(\lambda x\in A+B\).
+</p>
+
+</li>
+</ol>
+<p>
+Mostramos que \(A+B\) satisfaz às propriedades que definem subespaços vetoriais, e portanto \(A+B\) é, de fato, um subespaço vetorial de \(V\).
+</p>
+
+</div></body>
+</html>

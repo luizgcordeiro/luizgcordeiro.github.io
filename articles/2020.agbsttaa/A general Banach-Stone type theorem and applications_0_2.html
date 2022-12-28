@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<script src="../../src/jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="../../src/style.css">
+
+<title>A general Banach&#8212;Stone type theorem and applications</title>
+
+</head>
+<body>
+
+<div style='display: none' id='latexcommands'>
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+
+\DeclareMathOperator{\KB}{\mathbf{KB}}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+\end{equation*}
+</div>
+
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>A general Banach&#8212;Stone type theorem and applications</h1>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_front.html'>Front page</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_0_2.html'>Introduction</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_1.html'>1. Disjointness and $\perpp$-isomorphisms</a></h1>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_1.html#5'>1.1. Disjointness relations</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_1.html#50'>1.2. $\perpp$-ideals</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_1.html#70'>1.3. The main theorems</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_2.html'>2. Basic maps</a></h1>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#124'>2.1. Algebraic signatures and basic maps</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#127'>2.2. Group-valued maps</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#130'>2.3. Continuity</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#154'>2.4. Non-vanishing bijections</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_3.html'>3. Consequences</a></h1>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#175'>3.1. Milgram's Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#195'>3.2. Group-Valued functions; the Hernández&#8210;Ródenas Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#203'>3.3. Kaplansky's Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#234'>3.4. Li&#8210;Wong Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#243'>3.5. Jarosz' Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#246'>3.6. Banach&#8210;Stone Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#250'>3.7. $L^1$-spaces</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#260'>3.8. Measured groupoid convolution algebras</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#292'>3.9. $(I,\ra)$-Groupoid convolution algebras</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#306'>3.10. Steinberg Algebras</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#342'>3.11. Groups of circle-valued functions</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_3_361.html'>Acknowledgements</a></h1>
+</div>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section' id='2'>Introduction</h2>
+<p>
+Let $X$ be a locally compact and Hausdorff space, and consider $\mathbb{K}=\mathbb{R}$ or $\mathbb{C}$. The initial motivation for this work is the question of whether we can recover $X$ (up to homeomorphism) from $C_c(X,\mathbb{K})$, the set of continuous, compactly supported $\mathbb{K}$-valued functions on $X$. This is a problem initiated mostly after Stone's seminal work [<a class='reference' href='../../HTML citations/MR1501865.html' target='_blank'>MR1501865</a>] on the representations of Boolean algebras, and has proven to be a rich area of study with several important applications in Logic, Functional Analysis, and Operator Algebras.
+</p>
+<p>
+By Milutin's Theorem ([<a class='reference' href='../../HTML citations/MR0206695.html' target='_blank'>MR0206695</a>], or [<a class='reference' href='../../HTML citations/MR1999613.html' target='_blank'>MR1999613</a>, Chapter 36, Theorem 2.1]), just the topological vector space structure of $C_c(X,\mathbb{K})$, when endowed with the supremum norm, is not enough to recover $X$. On the other hand, throughout the last century several authors have proved that by considering additional algebraic structures on $C_c(X,\mathbb{K})$ &#8210; such as that of a ring, a C*-algebra if $\mathbb{K}=\mathbb{C}$, a lattice if $\mathbb{K}=\mathbb{R}$, etc. &#8210; we can in fact recover $X$. See Banach and Stone [<a class='reference' href='../../HTML citations/MR1357166.html' target='_blank'>MR1357166</a>], <a class='reference' href='../../HTML citations/MR1501905.html' target='_blank'>MR1501905</a>], Gelfand and Kolmogorov [<a class='reference' href='../../HTML citations/gelfandkolmogorov1939.html' target='_blank'>gelfandkolmogorov1939</a>], Milgram [<a class='reference' href='../../HTML citations/MR0029476.html' target='_blank'>MR0029476</a>], Gelfand and Naimark [<a class='reference' href='../../HTML citations/MR0009426.html' target='_blank'>MR0009426</a>], Kaplansky [<a class='reference' href='../../HTML citations/MR0020715.html' target='_blank'>MR0020715</a>], Jarosz [<a class='reference' href='../../HTML citations/MR1060366.html' target='_blank'>MR1060366</a>], Li and Wong [<a class='reference' href='../../HTML citations/MR3162258.html' target='_blank'>MR3162258</a>], Hernández and Ródenas [<a class='reference' href='../../HTML citations/MR2324919.html' target='_blank'>MR2324919</a>], Kania and Rmoutil [<a class='reference' href='../../HTML citations/MR3813611.html' target='_blank'>MR3813611</a>].
+</p>
+<p>
+In fact, the results of [<a class='reference' href='../../HTML citations/MR0020715.html' target='_blank'>MR0020715</a>], <a class='reference' href='../../HTML citations/MR2324919.html' target='_blank'>MR2324919</a>] also hold for certain spaces of non-$\mathbb{R}$ or $\mathbb{C}$-valued functions. In a similar manner, Stone's duality for Boolean algebras ([<a class='reference' href='../../HTML citations/MR1501865.html' target='_blank'>MR1501865</a>]) can also be seen as a result on spaces of functions: The Boolean algebra of clopen sets of a topological space $X$ is order-isomorphic to the lattice of functions $C(X,\left\{0,1\right\})$, and if $X$ is a <em>Stone</em> (zero-dimensional, compact Hausdorff) space, then it completely determines $X$.
+</p>
+<p>
+Our goal in this paper is to provide a unified and elementary approach to all these results, under hypotheses that can be easily verified in different settings. For this, we use a stronger version of the <span>&#8220;</span>disjointness<span>&#8221;</span> relation for (supports of) functions as considered by Jarosz in [<a class='reference' href='../../HTML citations/MR1060366.html' target='_blank'>MR1060366</a>]. As we will see in Section <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#166'>3</a>, all of the results above immediately fall in this more general setting.
+</p>
+<p>
+Let us describe the main idea in the case real-valued functions: Two functions $f,g\in C_c(X,\mathbb{R})$ are <em>strongly disjoint</em> if $\supp(f)\cap\supp(g)=\varnothing$, in which case we write $f\perpp g$. Then it is possible to describe, purely in terms of the relation $\perpp$, the subsets of  $C_c(X,\mathbb{R})$ of the form $\mathbf{I}(U)=\left\{f:\supp(f)\subseteq U\right\}$, where $U\subseteq X$ is open. These sets are called <em>$\perpp$-ideals</em>, and we have a bijection $x\mapsto \mathbf{I}(X\setminus\left\{x\right\})$ between $X$ and the set $\widehat{C_c(X,\mathbb{R})}$ of maximal $\perpp$-ideals. This bijection can be made into a homeomorphism, by endowing $\widehat{C_c(X,\mathbb{R})}$ with a topology, described again only in terms of $\perpp$. Therefore, any $\perpp$-isomorphism $T\colon C_c(X,\mathbb{R})\to C_c(Y,\mathbb{R})$ will induce a homeomorphism $Y\cong\widehat{C_c(Y,\mathbb{R})}\cong \widehat{C_c(X,\mathbb{R})}\cong X$. In all of the previously-proven theorems listed above, the algebraic isomorphisms under considerations happen to be also $\perpp$-isomorphisms, and thus those results follow from this.
+</p>
+<p>
+As supports of functions are central to the result above, and we wish also to look at a theory involving non-scalar maps, we will need to extend the notion of support, which is the first problem tackled in Section <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#3'>1</a>.
+</p>
+<p>
+This article is organized as follows: In the <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#3'>first section</a> we introduce all necessary terminology and prove our main recovery theorem (Theorem <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#75'>1.17</a>). In Section <a class='reference' href='A general Banach-Stone type theorem and applications_2.html#97'>2</a>, we study an important class of maps, called <span>&#8220;</span>basic<span>&#8221;</span>, between spaces of functions, and which will appear in most applications. These are the maps which are <span>&#8220;</span>classifiable<span>&#8221;</span> in a certain manner.
+</p>
+<p>
+Due to the level of generality we seek, the first two sections are rather abstract, so the reader is invited to read Definition <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#6'>1.1</a> in order to get familiarized with the notation, read the main Theorem <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#75'>1.17</a>, and proceed directly to the applications in Section <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#166'>3</a>, referring back to previous parts of this article as necessary (or desired).
+</p>
+<p>
+In Section <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#166'>3</a> we obtain classifications of isomorphisms for different algebraic structures on spaces of continuous functions, including the ones mentioned at the beginning of this introduction. The new applications consist of a classification of linear isomorphisms which are isometric with respect to $L^1$-norms (Theorem <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#256'>3.20</a>), classifications of classes of isomorphisms of algebras associated to groupoids (Theorems <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#276'>3.25</a>, <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#295'>3.27</a> and <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#331'>3.41</a>), and a classification of (uniform-metric) isometric isomorphisms between groups of circle-valued functions.
+</p>
+
+</body>
+</html>

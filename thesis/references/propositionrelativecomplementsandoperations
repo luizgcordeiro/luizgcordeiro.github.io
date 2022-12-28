@@ -1,0 +1,17 @@
+<a class='reflink' href='../1.gis/1.2.is.html#propositionrelativecomplementsandoperations'>1.2.48</a>
+<!-- 1.2.48 -->
+<div class='toload proposition'>
+<p><span class='envidentifier'>Proposition 1.2.48</span>
+Let $S$ be a distributive inverse semigroup and $s,t,z,a\in S$.
+<ol class='alphpar'>
+	<li> If $(t\setminus s)$ exists, then $(zt)\setminus(zs)$ exists and is equal to $z(t\setminus s)$. Similarly, $(tz)\setminus(sz)$ exists and is equal to $(t\setminus s)z$.</li>
+	<li> If $t\land z$, $s\land z$ and $(t\setminus s)$ exist, then
+		<div class='equation'>\[
+		(t\land z)\setminus(s\land z)=(t\setminus s)\land z,
+		\]</div>
+		in the sense that these elements exist and are equal.</li>
+	<li>If $a\leq s\lor t$, and $a\setminus s$ exists, then $a\setminus s\leq t$.</li>
+	<li>If $a\setminus s$ and $a\setminus t$ exist, and $s\leq t$, then $a\setminus t\leq a\setminus s$.</li>
+</ol>
+</p>
+</div>

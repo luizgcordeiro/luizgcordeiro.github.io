@@ -1,0 +1,12 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#theoremcrossedproductasasteinbergalgebra'>4.4.41</a>
+
+<!-- 4.4.41 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.4.41</span>
+	Let $S$ be an inverse semigroup which is a weak semilattice, $R$ be an indecomposable ring and $X$ a zero-dimensional, locally compact Hausdorff space. Let $\alpha=\left(\alpha_s:D_{s^*}\to D_s\right)_{s\in S}$ be an algebraic partial action of $S$ on $A_R(X)$ where each ideal $D_s$ has local units and satisfies any condition of Lemma <span class='ref' data-tag='lemmaidealsofclopens'></span>.
+	</p>
+	
+	<p>
+	Then  $A_R(X)\ltimes_{\alpha} X$ is isomorphic to a Steinberg algebra $A_R(S\ltimes_{\theta} X)$ where $\theta$ is a topological partial action of $S$ on $X$ which induces $\alpha$.
+	</p>
+</div>

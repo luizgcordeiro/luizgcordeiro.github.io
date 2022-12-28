@@ -1,0 +1,6 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#relationmaximalgroupimage'>4.5.1</a>
+
+<div class='toload equation'>\begin{align*}
+	s\sim t
+		&\iff\exists u\in S\quad\text{such that}\quad u\leq s,t.\tag{4.5.1}
+\end{align*}</div>

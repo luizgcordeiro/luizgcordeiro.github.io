@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#definitionbooleaninversesemigroup'>1.4.10</a>
+<!-- 1.4.10 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 1.4.10
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR3077869'></span>, 3.4]</span></span>
+A distributive semigroup with zero $S$ is <em>weakly Boolean</em> if $E(S)$ is a generalized Boolean algebra. A weakly Boolean semigroup which is also a $\wedge$-semilattice is called a <em>Boolean</em> semigroup.
+</p>
+</div>

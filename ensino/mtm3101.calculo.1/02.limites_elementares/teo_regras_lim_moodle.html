@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Suponha que \(f\) e \(g\) sejam funções, e que os limites \(\lim_{x\to a}f(x)=L\) e \(\lim_{x\to a}g(x)=M\) existem. Então:
+</p>
+
+<ol>
+
+<li>
+<p>
+<em>Regra da Soma</em>: \(\lim_{x\to a}(f(x)+g(x))\) também existe, e
+<div>
+\begin{equation*}
+\lim_{x\to a}(f(x)+g(x))=L+M.
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+<em>Regra do Produto</em>: \(\lim_{x\to a}(f(x)g(x))\) também existe, e
+<div>
+\begin{equation*}
+\lim_{x\to a}\left(f(x)g(x)\right)=LM.
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+<em>Regra do Quociente</em>: <u>caso \(M\neq 0\)</u>, então o limite \(\lim_{x\to a}\left(\dfrac{f(x)}{g(x)}\right)\) também existe, e
+<div>
+\begin{equation*}
+\lim_{x\to a}\left(\dfrac{f(x)}{g(x)}\right)=\dfrac{L}{M}.
+\end{equation*}
+</div>
+</p>
+
+</li>
+</ol>
+
+</div>
+<p>
+Em linguagem comum, a Regra da Soma diz que <span>&#8220;</span>o limite de uma soma é a soma dos limites<span>&#8221;</span>; a Regra do Produto diz que <span>&#8220;</span>o limite de um produto é o produto dos limites<span>&#8221;</span>; etc.
+</p>
+
+Às vezes estas regras também são expressas de modo mais sucinto, omitindo os termos <span>&#8220;</span>\(L\)<span>&#8221;</span> e <span>&#8220;</span>\(M\)<span>&#8221;</span>. Por exemplo, a Regra da Soma nos diz que
+<div>
+\begin{equation*}
+\lim_{x\to a}(f(x)+g(x))=\left(\lim_{x\to a}f(x)\right)+\left(\lim_{x\to a}g(x)\right),
+\end{equation*}
+</div>
+desde que o lado direito da igualdade acima exista.
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+
+<ol>
+
+<li>
+<p>
+Seja \(\epsilon>0\). Como \(\frac{\epsilon}{2}\) também é um número positivo  e \(\lim_{x\to a}f(x)=L\), então existe \(\delta_1>0\) tal que
+<div>
+\begin{equation*}
+\text{se }0<|x-a|<\delta_1\text{, então }|f(x)-L|<\frac{\epsilon}{2}.\tag{1}
+\end{equation*}
+</div>
+Por outro lado, como \(\lim_{x\to a}g(x)=M\), então existe \(\delta_2>0\) tal que
+<div>
+\begin{equation*}
+\text{se }0<|x-a|<\delta_2\text{, então }|g(x)-L|<\frac{\epsilon}{2}.\tag{2}
+\end{equation*}
+</div>
+</p>
+<p>
+Tome \(\delta=\min\left\{\delta_1,\delta_2\right\}\). Então se \(0<|x-a|<\delta\), teremos tanto que \(0<|x-a|<\delta_1\) quanto que \(0<|x-a|<\delta_2\). As propriedades (1) e (2) então vão implicar que
+<div>
+\begin{equation*}
+|f(x)-L|<\frac{\epsilon}{2}\text{ e }|g(x)-M|<\frac{\epsilon}{2}
+\end{equation*}
+</div>
+valem. Daí, concluímos que
+<div>
+\begin{align*}
+|(f(x)+g(x))-(L+M)|&=|(f(x)-L)+(g(x)-M)|\\
+&\leq |f(x)-L|+|g(x)-M|\\
+&<\frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+&=\epsilon.
+\end{align*}
+</div>
+</p>
+<p>
+Isto mostra que \(\lim_{x\to a}(f(x)+g(x))=L+M\), como queríamos.
+</p>
+
+</li>
+
+<li>
+<p>
+Para provar que \(\lim_{x\to a}(f(x)g(x))=LM\), devemos avaliar \(|f(x)g(x)-LM|\). Para isso, vamos primeiro reescrever a expressão <span>&#8220;</span>\(f(x)g(x)-LM\)<span>&#8221;</span> de uma forma que as expressões <span>&#8220;</span>\(f(x)-L\)<span>&#8221;</span> e <span>&#8220;</span>\(g(x)-M''\) apareçam em evidência.
+<div>
+\begin{align*}
+f(x)g(x)-LM
+&=f(x)g(x)-f(x)M+f(x)M-LM\\
+&=f(x)(g(x)-M)+(f(x)-L)M\\
+&=(f(x)-L)(g(x)-M)+L(g(x)-M)\\
+&\qquad+(f(x)-L)M.\tag{3}
+\end{align*}
+</div>
+</p>
+<p>
+Agora, podemos trabalhar com cada termo da expressão acima separadamente, de modo a garantir que o valor total da expressão seja suficientemente pequeno.
+</p>
+<p>
+Seja \(\epsilon>0\). Considere os valores
+<div>
+\begin{equation*}
+\epsilon_1=\min\left\{1,\frac{\epsilon}{2(|M|+1)}\right\}
+\end{equation*}
+</div>
+e
+<div>
+\begin{equation*}
+\epsilon_2=\frac{\epsilon}{2(|L|+1)}.
+\end{equation*}
+</div>
+Tanto \(\epsilon_1\) quanto \(\epsilon_2\) são positivos. Das hipóteses, existem \(\delta_1,\delta_2>0\) tais que
+<div>
+\begin{equation*}
+\text{se }0<|x-a|<\delta_1\text{ então }|f(x)-L|<\epsilon_1
+\end{equation*}
+</div>
+e
+<div>
+\begin{equation*}
+\text{se }0<|x-a|<\delta_2\text{ então }|g(x)-L|<\epsilon_2.
+\end{equation*}
+</div>
+</p>
+<p>
+Novamente, tome \(\delta=\min\left\{\delta_1,\delta_2\right\}\). Se \(0<|x-a|<\delta\), então da Equação (3) obtemos
+<div>
+\begin{align*}
+|f(x)g(x)-LM|
+&=|(f(x)-L)(g(x)-M)+L(g(x)-M)\\
+&\qquad+(f(x)-L)M|\\
+&\leq |f(x)-L|\cdot |g(x)-M|+ |L|\cdot |g(x)-M|\\
+&\qquad+|f(x)-L|\cdot |M|\\
+&<\epsilon_1\epsilon_2+|L|\epsilon_2+\epsilon_1|M|\tag{4}\\
+&\leq \epsilon_2+|L|\epsilon_2+\epsilon_1|M|\tag{5}\\
+&=(1+|L|)\epsilon_2+\epsilon_1|M|\\
+&\leq (1+|L|)\frac{\epsilon}{(|L|+1)}+\frac{\epsilon_1}{2(|M|+1)}|M|\tag{6}\\
+&<\frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+&=\epsilon.
+\end{align*}
+</div>
+A desigualdade (4) é estrita pois temos que \(|f(x)-L|\cdot|g(x)-M|<\epsilon_1\epsilon_2\), de modo estrito (visto que \(\epsilon_1\) e \(\epsilon_2\) são estritamente positivos. A desigualdade (5) segue do fato que \(\epsilon_1\leq 1\), e desigualdade (6) das definições de \(\epsilon_1\) e \(\epsilon_2\). Isto prova que \(\lim_{x\to a}f(x)g(x)=LM\).
+</p>
+
+</li>
+
+<li>
+<p>
+Pelo item anterior, basta provarmos que \(\lim_{x\to a}\frac{1}{g(x)}=\frac{1}{M}\). Novamente, vamos tentar reescrever a expressão <span>&#8220;</span>\(\frac{1}{g(x)}-\frac{1}{M}\)<span>&#8221;</span> de modo que o termo <span>&#8221;</span>\(g(x)-M\)<span>&#8221;</span> apareça explicitamente.
+</p>
+
+<div>
+\begin{align*}
+\frac{1}{g(x)}-\frac{1}{M}
+&=\frac{M-g(x)}{g(x)M}.\tag{7}
+\end{align*}
+</div>
+<p>
+Como queremos que o valor da expressão acima seja pequeno, devemos garantir que o termo <span>&#8220;</span>\(g(x)\)<span>&#8221;</span> que aparece no denominador seja grande o suficiente (em módulo).
+</p>
+<p>
+Suponha que um valor \(\epsilon'>0\) é dado, e que já sabemos de antemão que \(|g(x)-M|<\epsilon'\). Então obtemos
+<div>
+\begin{align*}
+|g(x)|
+&=|M+(g(x)-M)|\\
+&\geq |M|-|g(x)-M|\tag{8}\\
+&\geq |M|-\epsilon'\tag{9}
+\end{align*}
+</div>
+(a desigualdade (7) é chamada de <em>desigualdade triangular inversa</em>, que pode ser obtida como uma consequência da desigualdade triangular usual). Como queremos que \(|g(x)|\) seja suficientemente grande, poderemos assumir que \(\epsilon'\) é suficientemente pequeno. Por exemplo, se tomarmos \(\epsilon'\leq\frac{|M|}{2}\), obteremos de (8) que
+<div>
+\begin{equation*}
+|g(x)|\geq \frac{|M|}{2},
+\end{equation*}
+</div>
+ou equivalentemente que
+<div>
+\begin{equation*}
+\frac{1}{|g(x)|}\leq\frac{2}{|M|},
+\end{equation*}
+</div>
+desde que \(|g(x)-M|\leq\epsilon'\).
+</p>
+<p>
+Agora vamos aplicar isto à nossa expressão (7). Suponha que \(\epsilon'\leq\frac{|M|}{2}\) e que \(|g(x)-M|\leq\epsilon'\). De (7) e de (9) obtemos que
+<div>
+\begin{align*}
+\left|\frac{1}{g(x)}-\frac{1}{M}\right|
+&=\frac{|M-g(x)|}{|g(x)||M|}\\
+&<\frac{\epsilon'\cdot 2}{|M|^2}.\tag{10}
+\end{align*}
+</div>
+</p>
+<p>
+Os termos na expressão final podem ser tomados tão pequenos quanto se queira, desde que \(\epsilon'\) seja suficientemente pequeno, pois o fator <span>&#8220;</span>\(\frac{2}{M^2}\)<span>&#8221;</span> é fixo. Isto permite concluir a prova deste item quase que imediatemente.
+</p>
+<p>
+Seja \(\epsilon>0\). Tome \(\epsilon'=\min\left\{\frac{\epsilon}{2M^2},\frac{|M|}{2}\right\}\). Como assumimos que \(M\neq 0\) então \(\epsilon'>0\). Como \(\lim_{x\to a}g(x)=M\), então existe \(\delta>0\) tal que se \(0<|x-a|<\delta\) então \(|g(x)-M|<\epsilon'\). Neste caso, estamos nas hipóteses para aplicar a Equação (10), que nos permite concluir que
+<div>
+\begin{align*}
+\left|\frac{1}{g(x)}-\frac{1}{M}\right|<\epsilon,
+\end{align*}
+</div>
+sempre que \(0<|x-a|<\delta\). Isto prova que \(\lim_{x\to a}\frac{1}{g(x)}=\frac{1}{M}\), exatamente como queríamos.
+</p>
+
+</li>
+</ol>
+
+</div></body>
+</html>

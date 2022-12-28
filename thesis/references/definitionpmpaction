@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#definitionpmpaction'>2.5.1</a>
+
+<!-- 2.5.1 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 2.5.1</span>
+	Let $G$ be a group and $\theta$ and $(X,\mu)$ a measure space. An action $\theta$ of $G$ by Borel automorphisms of $X$ is <em>measure-preserving</em> if $\mu(\theta_g(A))=\mu(A)$ for all Borel $A\subseteq X$ and $g\in G$.
+	</p>
+</div>

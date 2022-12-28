@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.7.im.html#exampleinvariantmeansaremeasures'>1.7.13</a>
+<!-- 1.7.13 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 1.7.13</span>
+	Let $S$ be a Boolean inverse semigroup. By non-commutative Stone duality (Theorem <span class='ref'data-tag='theoremnoncommutativestoneduality'></span>), there exists an ample Hausdorff groupoid $\mathcal{G}$ such that $S=\KB(\mathcal{G})$. 
+	</p>
+
+	<p>
+	Identifying $E(S)$ with the collection of compact-open subsets of $\mathcal{G}^{(0)}$, an invariant mean $\mu$ on $E(S)$ corresponds to a pre-measure, also denoted $\mu$, on the ring of compact-open subsets of $\mathcal{G}^{(0)}$. Since $\mathcal{G}^{(0)}$ is zero-dimensional, we can extend $\mu$ uniquely to a regular, locally finite Borel measure on $\mathcal{G}^{(0)}$. This is a consequence of a theorem of Mařík ([<span class='ref'data-tag='MR0088532'></span>]), although a simple application of the Riesz-Markov-Kakutani Theorem also yields an elementary proof in the case at hand (see the Remark below). This interpretation is sometimes useful because we have more freedom to take unions in $\KB(\mathcal{G})$, even though we do not end up with elements of $\KB(\mathcal{G})$.
+	</p>
+</div>

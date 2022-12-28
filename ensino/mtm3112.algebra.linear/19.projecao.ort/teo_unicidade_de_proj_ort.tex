@@ -1,0 +1,44 @@
+\begin{theorem}
+Sejam $V$ um espaço vetorial com produto interno e $W$ um subespaço vetorial de $V$. Então existe no máximo uma única projeção ortogonal de $V$ sobre $W$.
+\end{theorem}
+
+\begin{proof}
+	Suponha que $P_1,P_2\colon V\to W$ sejam projeções ortogonais de $V$ sobre $W$. Seja $v\in V$ um vetor arbitrário. Devemos mostrar que $P_1(v)$ e $P_2(v)$ são iguais, e para isso calcularemos a norma de sua diferença.
+	
+	Temos que
+	\begin{align*}
+	\Vert P_1(v)-P_2(v)\Vert^2&=\langle P_1(v)-P_2(v),P_1(v)-P_2(v)\rangle\\
+	&=\langle P_1(v),P_1(v)\rangle-\langle P_1(v),P_2(v)\rangle-\langle P_2(v),P_1(v)\rangle+\langle P_2(v),P_2(v)\rangle\tag{$\heartsuit$}
+	\end{align*}
+	
+	Seja $i\in\left\{1,2\right\}$. Como $P_i$ é uma projeção ortogonal de $V$ sobre $w$, isto significa que para todo $w\in W$ tem-se que
+	\[\langle v-P_i(v),w\rangle=0,\]
+	ou equivalentemente
+	\[\langle v,w\rangle=\langle P_i(v),w\rangle.\]
+	Utilizando esta igualdade com $w=P_j(v)$, onde $j\in\left\{1,2\right\}$ obtemos
+	\[\langle v,P_j(v)\rangle=\langle P_i(v),P_j(v)\rangle\tag{$*$}\]
+	para quaisquer $i,j\in\left\{1,2\right\}$. 
+	
+	Utilizando a Equação ($*$) para as possíveis escolhas de $i$ e $j$, obtemos:
+	\begin{itemize}
+		\item Para $i=j=1$:
+		\[\langle v,P_1(v)\rangle=\langle P_1(v),P_1(v)\rangle.\]
+		\item Para $i=1$, $j=2$:
+		\[\langle v,P_2(v)\rangle=\langle P_1(v),P_2(v)\rangle.\]
+		\item Para $i=2$, $j=1$:
+		\[\langle v,P_1(v)\rangle=\langle P_2(v),P_1(v)\rangle.\]
+		\item Para $i=j=2$:
+		\[\langle v,P_2(v)\rangle=\langle P_2(v),P_2(v)\rangle.\]
+	\end{itemize}
+	
+	Agora substituímos cada um cada expressão nos items acima na Equação ($\heartsuit$):
+	\begin{align*}
+	\Vert P_1(v)-P_2(v)\Vert^2
+		&=\langle v,P_1(v)\rangle-\langle v,P_2(v)\rangle-\langle v,P_1(v)\rangle +\langle v,P_2(v)\rangle\\
+		&=0.
+	\end{align*}
+	
+	Concluímos que $\Vert P_1(v)-P_2(v)\Vert=0$, e portanto $P_1(v)=P_2(v)$.
+	
+	Como o vetor $v\in V$ é arbitrário, concluímos que $P_1=P_2$.
+\end{proof}

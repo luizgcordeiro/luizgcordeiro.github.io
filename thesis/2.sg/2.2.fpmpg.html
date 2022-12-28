@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>2.2. Finite probability measure-preserving groupoids</h2>
+
+<p>
+Whenever $\left\{(S_i,\mu_i):i\in I\right\}$ is a collection of Boolean inverse monoids with invariant means and $\mathcal{U}$ is an ultrafilter of sets on $I$, the ultraproduct $\prod_\mathcal{U} S_i$ will be considered with the usual structure described in <a href='../2.sg/2.1.uacl.html#subsectionultraproductsofbooleaninversemonoids'>Subsection 2.1.4</a>. Moreover, if $(\mathcal{G},\mu)$ is a probability measure-preserving groupoid (Definition <span class='ref' data-tag='definitionpmpgroupoid'></span>), we will not make a distinction between $\BOR(\mathcal{G},\mu)$ and $\MEAS(\mathcal{G},\mu)$, unless strictly necessary.
+</p>
+
+<p>
+The same way as the properties of a measure space $(X,\mu)$ are usually described in terms of its Borel sets and the measure, the dynamical properties of a probability measure-preserving groupoid $(\mathcal{G},\mu)$ will be described in terms of the semigroup $\MEAS(\mathcal{G},\mu)$. Since soficity is a property which describes the groupoids which can be modelled by finite groupoids, in the sense of the previous section, we start by describing the latter class.
+</p>
+
+<!-- 2.2.1 -->
+<div class='definition' id='definitionnormalizedcountingmeasure'>
+<p><span class='envidentifier'>Definition 2.2.1</span>
+If $X$ is a finite set, we denote by $\# X$ the cardinality of $X$, and we let $\mu_\#$ be the <em>normalized counting measure</em> on $X$ (as a discrete Borel space): $\mu_\#(A)=\#A/\#X$ for all $A\subseteq X$.</p>
+</div>
+
+<!-- 2.2.2 -->
+<div class='proposition' id='proposition222'>
+<p><span class='envidentifier'>Proposition 2.2.2</span>
+If $\mathcal{G}$ is a connected finite groupoid, then the only invariant probability measure on $\mathcal{G}^{(0)}$ (as a discrete Borel space) is the normalized counting measure $\mu_\#$ on $\mathcal{G}^{(0)}$.
+</p>
+</div>
+
+<a class='proofbutton' data-tag='proposition222'>Proof</a>
+
+<div class='proof' id='proofofproposition222'>
+	<p>
+	If $\mu$ is an invariant measure on $\mathcal{G}^{(0)}$, then for all $x,y\in\mathcal{G}^{(0)}$ we can choose $a\in\mathcal{G}$ with $\so(a)=x$ and $\ra(a)=y$. In particular, $A=\left\{a\right\}$ is a bisection of $\mathcal{G}$, so
+	<div class='equation'>\[
+	\mu(\left\{x\right\})=\mu(A^*A)=\mu(AA^*)=\mu(\left\{y\right\})
+	\]</div>
+	(where $A^*=\left\{a^{-1}:a\in A\right\}$ is the inverse of $A$), and so $\mu$ is a multiple of the counting measure. If $\mu$ is a probability measure then $\mu=\mu_\#$.<span class='qed'></span></p>
+</div>
+
+<p>
+In particular, if $X$ is a finite set and we consider the finest equivalence relation $X^2$ on $X$ as a (discrete) probability measure-preserving groupoid, the only invariant measure on $X$, identified as the unit space $(X^2)^{(0)}$ is the normalized counting measure $\mu_\#$ on $X$.
+</p>
+
+<p>
+Whenever necessary, we will identify $\mu_\#$ with a normalized, faithful invariant mean on $\BOR(X^2)$ (as in Example <span class='ref' data-tag='exampleinvariantmeansaremeasures'></span>) and so it induces a metric $d_\#$ on $\BOR(X^2)$, which is usually called the <em>normalized Hamming distance</em>, and the associated trace $\tr_\#$ (Definition <span class='ref' data-tag='definitiontrace'></span>).
+</p>
+
+<p>
+Since $X^2$ is an equivalence relation, we identify $\BOR(X^2)=\mathcal{I}(X)$, as in Example <span class='ref' data-tag='examplebisectionsofequivalencerelationarefunctions'></span>, in which case the trace and distance become
+<div class='equation'>\[
+\tr_\#(f)=\mu_\#\left\{x\in\dom(f):f(x)=x\right\}
+\]</div>
+and
+<div class='equation'>\[
+d_\#(f,g)=\mu_\#(\dom(f)\triangle\dom(g))+\mu_\#\left\{x\in\dom(f)\cap\dom(g):f(x)\neq g(x)\right\}.
+\]</div>
+</p>
+
+<p>
+Following the notation introduced in Definition <span class='ref' data-tag='definitionmeasuredsemigroup'></span>, we will denote this Boolean inverse semigroup endowed with this invariant mean and the associated metric and trace as $\MEAS(X^2,\mu_\#)$ or simply $\MEAS(X^2)$. We will prove that these groupoids actually serve as models for arbitrary finite probability measure-preserving groupoids.
+</p>
+
+<!-- 2.2.3 -->
+<div class='proposition' id='propositionfinitegroupoidsaresofic'>
+	<span class='envidentifier'>Proposition 2.2.3</span>
+	<ol class='alphpar'>
+		<li> If $(\mathcal{G},\mu)$ is a connected finite probability measure-preserving groupoid, then there exists a finite set $X$ and an isometric semigroup embedding
+		<div class='equation'>\[
+			\theta:\MEAS(\mathcal{G},\mu)\to\MEAS(X^2,\mu_\#).
+		\]</div></li>
+		<li> If $\mathcal{G}$ is a finite probability measure-preserving groupoid, then there are finite sets $X_n$, $n\in\mathbb{N}$ and an isometric semigroup embedding $\Theta:\MEAS(\mathcal{G})\to\prod_\mathcal{U}\MEAS(X_n^2)$, where $\mathcal{U}$ is any free ultrafilter on $\mathbb{N}$.</li>
+	</ol>
+</div>
+
+<p>
+Before proceeding with the proof, we introduce some notation which will be useful here as well as later in this chapter.
+</p>
+
+<!-- 2.2.4 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 2.2.4</span>
+If $\left\{(\mathcal{G}_n,\mu_n)\right\}_n$ is a sequence of probability measure-preserving groupoids and $t_n$ are non-negative numbers such that $\sum_n t_n=1$, we construct the <em>convex combination groupoid</em> $\mathcal{G}=\sum t_n\mathcal{G}_n$ as follows: As groupoid, $\mathcal{G}$ is the coproduct $\mathcal{G}=\sqcup_n\mathcal{G}_n$, endowed with the Borel structure generated by the Borel structures of each $\mathcal{G}_n$, and the measure $\mu$ on $\mathcal{G}$ is given by $\mu(A)=\sum_n t_n\mu_n(A\cap\mathcal{G}_n)$.
+</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionfinitegroupoidsaresofic' style='display:inline;'>Proof</a> of Proposition <span class='ref' data-tag='propositionfinitegroupoidsaresofic'></span>
+
+<div class='proof' id='proofofpropositionfinitegroupoidsaresofic'>
+<ol class='alphpar'>
+	<li><p> Using Theorem <span class='ref' data-tag='theoremclassificationofgroupoids'></span>(a), suppose $\mathcal{G}=G\times Y^2$, where $G$ is a finite group, $Y$ is a finite set, and $Y^2$ is the coarsest equivalence relation on $Y$.</p>
+
+		<p>Moreover, since $\mathcal{G}$ is connected then the invariant probability measure on $\mathcal{G}^{(0)}=Y$ is the normalized counting measure on $Y$. Let $X=G\times Y$ and set $\pi:\MEAS(G\times Y^2)\to\MEAS(X^2)$ by
+		<div class='equation'>\[
+			\theta(A)=\left\{((gh,y),(h,x)):(g,(y,x))\in A,h\in G\right\},
+		\]</div>
+		which is easy to verify to be an isometric embedding.</p></li>
+
+	<li><p> First suppose $\mathcal{G}=t\mathcal{H}+(1-t)\mathcal{K}$, where $\mathcal{H},\mathcal{K}$ are connected finite probability measure-preserving groupoids. If $t=0$ then the natural inclusion $\BOR(\mathcal{K})\subseteq\BOR(\mathcal{G})$ factors to an isometric isomorphism $\MEAS(\mathcal{K})\to\MEAS(\mathcal{G})$, and similarly if $t=1$, so we can assume $t\neq 0,1$. Suppose further that $t$ is rational, say $t=p/q$ where, $p,q\in\mathbb{N}$, $0<p<q$.</p>
+
+	<p>
+	By (a), take finite sets $X$ and $Y$ and isometric embeddings $\pi_{\mathcal{H}}:\MEAS(H)\to\MEAS(X^2)$ and $\pi_\mathcal{K}:\MEAS(\mathcal{K})\to\MEAS(Y^2)$. Let $[q]=\left\{0,1,\ldots,q-1\right\}$ be a finite set with $q$ elements, and set $Z=[q]\times X\times Y$ and $\theta:\MEAS(\mathcal{G})\to\MEAS(Z^2)$ by
+	<div class='equation'>\begin{align*}
+	\theta(A)&=\left\{((j,x_2,y),(j,x_1,y)):0\leq j\leq p-1,y\in Y,(x_2,x_1)\in\pi_H(A\cap \mathcal{H})\right\}\\
+	&\hspace{1.5cm}\cup\left\{((j,x,y_2),(j,x,y_1):p\leq j\leq q, x\in X, (y_2,y_1)\in \pi_\mathcal{K}(A\cap\mathcal{K})\right\}
+	\end{align*}</div>
+	so that $\theta$ is an isometric embedding.</p>
+
+	<p>Iterating the argument above, if $\mathcal{G}$ is a rational convex combination of connected groupoids then $\MEAS(\mathcal{G})$ embeds isometrically into some measured semigroup $\MEAS(Z^2)$ for some finite set $Z$.</p>
+
+	<p>Now given an arbitrary finite probability measure-preserving groupoid $(\mathcal{G},\mu)$, Proposition <span class='ref' data-tag='propositioneverygroupoidisacoproductofconnected'></span> guarantees that $\mathcal{G}$ is a coproduct of finite connected groupoids, say $\mathcal{G}=\sqcup_{i=1}^k \mathcal{G}_i$. As above, we can assume $\mu(\mathcal{G}^{(0)}_i)\neq 0$ for all $i$, so the map $A\mapsto \mu(A)/\mu(\mathcal{G}^{(0)}_i)$ is an invariant measure on $\mathcal{G}_i$, thus it coincides with the normalized counting measure. This implies that $\mathcal{G}$ is actually the convex combination
+	<div class='equation'>\[
+		\mathcal{G}=\sum_{i=1}^k \mu(\mathcal{G}^{(0)}_i)\mathcal{G}_i.
+	\]</div>
+	Taking a sequence of rational tuples $(t^1_n,\ldots,t^k_n)$, $n=1,2,\ldots$ such that
+	<div class='equation'>\[
+	\sum_{i=1}^k t_n^i=1\quad\text{for all }n,\quad\text{and}\quad t^i_n\overset{n\to\infty}{\longrightarrow}\mu(\mathcal{G}^{(0)}_i)\quad\text{for all }i,
+	\]</div>
+	we obtain isometric semigroup morphisms $\theta_n:\MEAS(\sum_i t^i_n\mathcal{G}^{(0)}_i)\to\MEAS(X_n^2)$ for certain finite sets $X_n$. Define a semigroup morphism
+	<div class='equation'>\[
+	\Theta:\MEAS(\mathcal{G})\to\prod_\mathcal{U}\MEAS(X_n^2),\qquad \Theta(A)=(\theta_n(A))_\mathcal{U},
+	\]</div>
+	which is isometric with respect to $d_\mu$.<span class='qed'></span></p></li>
+</ol>
+
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

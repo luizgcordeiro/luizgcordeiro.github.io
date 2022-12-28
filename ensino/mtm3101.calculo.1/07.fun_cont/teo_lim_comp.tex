@@ -1,0 +1,24 @@
+\begin{theorem}
+	Sejam $f$ e $g$ duas funções e $a$ um número real. Suponha que
+	\begin{enumerate}
+		\item $\lim_{x\to a}f(x)=L$.
+		\item $g$ está definida e é contínua em $L$.
+	\end{enumerate}
+	Então $\lim_{x\to a}g(f(x))=g(L)$.
+\end{theorem}
+
+Em termos mais, simples, este teorema permite que ``passemos limites para dentro de funções contínuas'', e é às vezes expresso do seguinte modo: Se $\lim_{x\to a}f(x)$ existe e $g$ for contínua neste limite, então
+\[\lim_{x\to a}g(f(x))=g\left(\lim_{x\to a}f(x)\right).\]
+
+\begin{proof}
+	Seja $\epsilon>0$. Como $g$ é contínua em $L$, então existe $\eta>0$ tal que
+	\[\text{se}\qquad |y-L|<\eta\qquad\text{então}\qquad|g( y )-g(L)|<\epsilon.\tag{1}\]
+	
+	Como $L=\lim_{x\to a}f(x)$ e $\eta>0$, então existe $\delta>0$ tal que
+	\[\text{se}\qquad 0<|x-a|<\delta\qquad\text{então}\qquad|f(x)-L|<\eta.\tag{2}\]
+	
+	Suponha então que $0<|x-a|<\delta$. Vamos provar que $|g(f(x))-g(L)|<\epsilon$. De fato, por (2) temos que $|f(x)-L|<\eta$. Agora, usando (1) com $y=f(x)$, obtemos $|g(f(x))-g(L)|< \epsilon$, exatamente como queríamos.
+	
+	Isto prova que $\lim_{x\to a}g(f(x))=g(L)$.
+\end{proof}
+	

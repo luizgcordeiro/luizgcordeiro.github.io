@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#equationconvolutionproductsteinbergalgebra'>4.4.1</a>
+
+<div class='toload equation'>\begin{align*}
+	(fg)(a)
+		&=\sum_{xy=a}f(x)g(y)\\
+		&=\sum_{c\in\mathcal{G}^{\ra(a)}}f(c)g(c^{-1}a)\\
+		&=\sum_{d\in\mathcal{G}_{\so(a)}}f(ad^{-1})g(d),\tag{4.4.1}
+\end{align*}</div>

@@ -1,0 +1,25 @@
+\begin{theorem}
+	Se uma função $f$ é derivável em um ponto $a$ de seu domínio, então $f$ é contínua no ponto $a$.
+	
+	Em particular, se $f$ é derivável em todo o seu domínio, então $f$ é contínua.
+\end{theorem}
+
+\begin{proof}
+	Temos os seguintes limites:
+	\[\lim_{x\to a}\frac{f(x)-f(a)}{x-a}=f'(a)\]
+	e
+	\[\lim_{x\to a}x-a=0.\]
+	
+	Além disso, para $x\neq a$ temos que
+	\[f(x)-f(a)=\left(\frac{f(x)-f(a)}{x-a}\right)(x-a).\]
+	
+	Portanto, o limite de $f(x)-f(a)$ quando $x$ tende a $a$ existe, e é dado por
+	\begin{align*}
+		\lim_{x\to a}\left(f(x)-f(a)\right)
+			&=\left(\lim_{x\to a}\frac{f(x)-f(a)}{x-a}\right)\left(\lim_{x\to a}(x-a)\right)\\
+			&=f'(a)\cdot 0\\
+			&=0.
+	\end{align*}
+	
+	Obtemos $\lim_{x\to a}f(x)-f(a)=0$. Isto é equivalente a dizer que $\lim_{x\to a}f(x)=f(a)$, o que significa precisamente que $f$ é contínua em $a$.
+\end{proof}

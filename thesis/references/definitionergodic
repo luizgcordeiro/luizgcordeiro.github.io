@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#definitionergodic'>2.3.5</a>
+
+<!-- 2.3.5 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 2.3.5</span>
+	If $\mathcal{G}$ is a probability measure-preserving groupoid and $A\subseteq\mathcal{G}^{(0)}$, we say that $A$ is <em>invariant</em> if $\ra(\so^{-1}(A))=A$. We say that $\mathcal{G}$ is <em>ergodic</em> if its only invariant Borel subsets are either null or conull.
+	</p>
+</div>

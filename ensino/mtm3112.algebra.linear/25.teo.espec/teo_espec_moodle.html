@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b> (Teorema Espectral).
+<p>
+Seja \(V\) um espaço complexo com produto interno e dimensão finita. Seja \(T\colon V\to V\) um operator auto-adjunto de \(V\).
+</p>
+<p>
+Então:
+</p>
+
+<ol>
+
+<li>
+<p>
+Todos os autovalores de \(T\) são reais.
+</p>
+
+</li>
+
+<li>
+<p>
+Autovalores que correspondem a autovetores distintos são ortogonais.
+</p>
+
+</li>
+
+<li>
+<p>
+Existe uma base ortonomal de \(V\) consistindo de autovetores de \(T\).
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Como \(T\) é auto-adjunto, então
+<div>
+\begin{equation*}
+\langle T(v),w\rangle=\langle v,T(w)\rangle.\tag{AA}
+\end{equation*}
+</div>
+</p>
+
+<ol>
+
+<li>
+<p>
+para todos os vetores \(v,w\in V\).
+</p>
+<p>
+Seja \(\lambda\) um autovalor de \(T\) com autovetor correspondente \(v_\lambda\). Então utilizamos a igualdade (AA) com \(v=w=v_\lambda\), e obtemos
+<div>
+\begin{align*}
+\langle Tv_\lambda,v_\lambda\rangle
+&=\langle v_\lambda,Tv_\lambda\rangle\\
+\langle \lambda v_\lambda,v_\lambda\rangle
+&=\langle v_\lambda,\lambda v_\lambda\rangle\\
+\lambda \langle v_\lambda,v_\lambda\rangle
+&=\overline{\lambda}\langle v_\lambda,v_\lambda\rangle.
+\end{align*}
+</div>
+Como \(v_\lambda\neq 0_V\) (pois \(v_\lambda\) é um autovetor), então \(\lambda=\overline{\lambda}\), logo \(\lambda\) é real.
+</p>
+
+</li>
+
+<li>
+<p>
+Sejam \(\lambda_1\) e \(\lambda_2\) dois autovalores distintos de \(T\), com autovetores respectivos \(v_1\) e \(v_2\). Vamos utilizar a igualdade (AA) com \(v=v_1\) e \(w=v_2\).
+<div>
+\begin{align*}
+\langle Tv_1,v_2\rangle=\langle v_1,Tv_2\rangle\\
+\langle \lambda_1 v_1,v_2\rangle=\langle v_1,\lambda_2 v_2\rangle\\
+\lambda_1 \langle v_1,v_2\rangle=\overline{\lambda_2}\langle v_1,v_2\rangle\\
+\lambda_1 \langle v_1,v_2\rangle=\lambda_2\langle v_1,v_2\rangle,
+\end{align*}
+</div>
+onde a última igualdade é obtida da anterior pelo primeiro item, pois \(\lambda_2\) é real. Como \(\lambda_1\neq\lambda_2\), a última igualdade implica que \(\langle v_1,v_2\rangle=0\), como queríamos.
+</p>
+
+</li>
+
+<li>
+<p>
+Seja \(\lambda_1\) um autovalor qualquer de \(T\) com um autovetor \(u_1\). Substituindo \(u_1\) por \(\frac{u_1}{\Vert u_1\Vert}\), podemos assumir que \(u_1\) tem norma \(1\). Se \(\dim(V)=1\), basta considerar a base \(\left\{u_1\right\}\) de \(V\), e concluímos o teorema. Vamos então assumir que \(\dim(V)\geq 2\).
+</p>
+<p>
+Considere o complemento ortogonal \(V_2=\langle u_1\rangle^\perp\). Este é o subespaço de \(V\) consistindo dos vetores ortogonais a \(u_1\).
+</p>
+<p>
+Vamos provar que \(V_2\) é invariante por \(T\), i.e., que \(T(V_2)\subseteq V_2\).
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+De fato, se \(v\in V_2\) então \(v\) é ortogonal a \(u_1\). Uamos a igualdade (AA) com \(w=u_1\) para obter
+<div>
+\begin{align*}
+\langle Tv,u_1\rangle
+&=\langle v,Tu_1\rangle\\
+&=\langle v,\lambda_1 u_1\rangle\\
+&=\overline{\lambda_1}\langle v,u_1\rangle\\
+&=0,
+\end{align*}
+</div>\]
+logo \(T(v)\) também é ortogonal a \(u_1\), ou seja, \(T(v)\in V_2\).
+
+</div>
+<p>
+Portanto, podemos considerar a restrição de \(T\) ao subespaço \(V_2\), que é um operador \(T|_{V_2}\colon V_2\to V_2\). Além disso, a igualdade (AA) também é válida quando restrita para vetores de \(V_2\), o que significa que \(T|_{V_2}\) é auto-adjunto (como operador em \(V_2\)). Note que \(\dim(V_2)=\dim(V)-1\).
+</p>
+<p>
+Este passo nos permite reduzir a prova do teorema a um subespaço de dimensão menor do que a original. Então repetindo este procedimento, iremos reduzir o teorema para subespaços de dimensão \(\dim(V)-1\), \(\dim(V)-2\), \(\dim(V)-3\), &#8230;, até dimensão \(1\), um caso que já foi resolvido.
+</p>
+<p>
+Mais formalmente, seja \(\lambda_2\) um autovalor de \(T|_{V_2}\), com autovetor correspondente \(u_2\). Novamente substituindo \(u_2\) por \(\frac{u_2}{\Vert u_2\Vert}\) caso necessário, podemos assumir que \(\Vert u_2\Vert=1\). Claramente \(\lambda_2\) também é um autovalor de \(T\), e \(u_2\), visto como vetor de \(V\), é um autovetor correspondente. Além disso, \(u_2\) é ortogonal a \(u_1\), por construção. Assim, obtemos autovetores \(u_1\) e \(u_2\) de \(T\) que são ortonormais. Se \(\dim(V)=2\), terminamos o procedimento aqui, considerando a base \(\left\{u_1,u_2\right\}\).
+</p>
+<p>
+Caso \(\dim(V)\geq 3\), consideremos os subespaço \(V_3=\langle u_1,u_2\rangle^\perp\) dos vetores ortogonais a \(u_1\) e \(u_2\). Note que \(\dim(V_3)=\dim(V)-2\). O mesmo argumento ao realizado acima permite concluir que \(T(V_3)\subseteq V_3\), e assim obtemos um operador restrito \(T|_{V_3}\colon V_3\to V_3\). Novamente, este operador é auto-adjunto em \(V_3\). Tome um autovalor \(\lambda_3\) de \(T|_{V_3}\) com um autovetor associado \(u_3\). Novamente, \(\lambda_3\) e \(u_3\) também são autovalor e autovetor de \(T\), e \(u_3\) é ortogonal a \(u_1\) e a \(u_2\) por construção. Assim, obtemos uma coleção ortonormal \(\left\{u_1,u_2,u_3\right\}\) de autovetores de \(T\). Se \(\dim(V)=3\), terminamos a prova.
+</p>
+<p>
+Repetimos este procedimento até encontrar uma família ortonormal \(\left\{u_1,\ldots,u_n\right\}\) de autovetores de \(T\), onde \(n=\dim(V)\). Em particular, \(\left\{u_1,\ldots,u_n\right\}\) é linearmente independente, e seu número de elementos é a dimensão do espaço \(V\). Portanto, \(\left\{u_1,\ldots,u_n\right\}\) é de fato uma base ortonormal para \(V\).
+</p>
+
+</li>
+</ol>
+
+</div></body>
+</html>

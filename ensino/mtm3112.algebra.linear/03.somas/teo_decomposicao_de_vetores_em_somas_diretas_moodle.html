@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço vetorial e \(A_1,\ldots,A_n,C\) subespaços vetoriais de \(V\) tais que \(C=A_1+\cdots+A_n\). Então as seguintes afirmações são equivalentes:
+</p>
+
+<ol>
+
+<li>
+<p>
+\(C=A_1\oplus \cdots\oplus A_n\), i.e., os subespaços \(A_1,\ldots,A_n\) são <a href='http://mtm.ufsc.br/~cordeiro/ensino/mtm3112.algebra.linear/03.somas/con_subesp_indep_moodle.html'>independentes</a>.
+</p>
+
+</li>
+
+<li>
+<p>
+Para cada \(c\in C\), existem <u>únicos</u> vetores \(a_i\in A_i\) tais que \(c=\sum_{i=1}^n a_i\)
+</p>
+
+</li>
+</ol>
+
+</div>
+<p>
+Em termos mais simples, este teorema garante que podemos decompor cada vetor de uma soma direta \(A_1\oplus\cdots\oplus A_n\) de um modo único como soma dos termos \(A_i\).
+</p>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Novamente, vamos nos concentrar no caso em que temos somente dois subespaços, pois o caso geral é completamente análogo mas com notação mais pesada.
+</p>
+<p>
+Sejam \(A\) e \(B\) dois subespaços vetoriais de \(V\) e \(C=A+B\).
+</p>
+<p>
+1.\(\Rightarrow\)2.
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Primeiro, vamos supor que \(A\) e \(B\) são suplementares. Pela definição de soma de subespaços e como \(C=A+B\), então cada vetor de \(C\) pode ser decomposto como uma soma de um elemento de \(A\) com um elemento de \(B\). O problem se restringe a mostrar a unicidade desta decomposição.
+<p>
+Suponha que \(x\in C=A+B\), e que \(a_1,a_2\in A\) e \(b_1,b_2\in B\) são tais que
+<div>
+\begin{equation*}
+x=a_1+b_1=a_2+b_2.
+\end{equation*}
+</div>
+Podemos reescrever a equação acima como
+<div>
+\begin{equation*}
+a_1-a_2=b_2-b_1.
+\end{equation*}
+</div>
+O vetor \(a_1-a_2\) pertence ao subespaço \(A\), enquanto o vetor \(b_2-b_1\) pertence ao subespaço \(B\). Mas estes dois vetores coincidem, e portanto pertencem a \(A\cap B\), que contém somente o vetor \(0_V\). Isto mostra que
+<div>
+\begin{equation*}
+a_1-a_2=0_V=b_2-b_1.
+\end{equation*}
+</div>
+Segue que \(a_1=a_2\) e que \(b_1=b_2\), o que mostra a unicidade da decomposição de \(x\) como uma soma de vetores em \(A\) e em \(B\).
+</p>
+
+</div>
+<p>
+2.\(\Rightarrow\)1.
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Agora, vamos supor que cada vetor de \(C=A+B\) se decompõe de modo único como uma soma de vetores em \(A\) e em \(B\), e vamos mostrar que \(A\) e \(B\) são suplementares.
+<p>
+Seja \(x\in A\cap B\). Sejam \(a_1=b_2=x\) e \(a_2=b_1=0_V\). Note que \(a_1,a_2\in A\), e que \(b_1,b_2\in B\). Além disso, temos que
+<div>
+\begin{equation*}
+x=a_1+b_1=a_2+b_2,
+\end{equation*}
+</div>
+duas decomposições de \(x\) como soma de um elemento de \(A\) com um elemento de \(B\). Como essa decomposição é única, por hipótese, concluímos que \(a_1=a_2\), isto é, que \(x=0_V\).
+</p>
+
+</div>
+
+</div></body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>3.2. $\perpp$-ideals</h2>
+
+<p>
+Here we will introduce $\perpp$-ideals, which will be used in relation to partial actions of inverse semigroups in the next chapter. As usual, we fix a locally compact Hausdorff space $X$, a continuous function $\theta$ from $X$ to a Hausdorff space $H$ and a weakly regular family $\mathcal{A}\subseteq C_c(X,\theta)$.
+</p>
+
+<!-- 3.2.1 -->
+<div class='definition' id='definitionstrongcover'>
+	<p><span class='envidentifier'>Definition 3.2.1</span>
+	A finite family $B\subseteq\mathcal{A}$ is said to be a <em>strong cover</em> of an element $a\in\mathcal{A}$ if there is another finite family $\widetilde{B}\subseteq\mathcal{A}$ such that:
+	<ol class='roman'>
+		<li>
+			For all $\widetilde{b}\in\widetilde{B}$, there is some $b\in B$ with $\widetilde{b}\Subset b$;
+		</li>
+		
+		<li>
+			$\widetilde{B}$ is a cover of $a$ (Definition <span class='ref' data-tag='definitiondisjointcover'></span>).
+		</li>
+	</ol>
+	</p>
+</div>
+
+<p>
+The following proposition shows that strong covers encode information about the closures of sets. It is a direct consequence of the definition of $\Subset$ and Lemma <span class='ref' data-tag='lemmacovers'></span>.
+</p>
+
+<!-- 3.2.2 -->
+<div class='proposition' id='propositiongoodformofstrongcover'>
+	<p><span class='envidentifier'>Proposition 3.2.2</span>
+	A finite family $B\subseteq\mathcal{A}$ is a strong cover of $a\in\mathcal{A}$ if and only if $\supp(a)\subseteq\bigcup_{b\in B}\sigma(b)$.
+	</p>
+</div>
+
+<!-- 3.2.3 -->
+<div class='definition' id='definitionperppideal'>
+	<p><span class='envidentifier'>Definition 3.2.3</span>
+	A <em>$\perpp$-ideal</em> in $\mathcal{A}$ is a subset $I\subseteq A$ such that, for all $a\in\mathcal{A}$,
+	<div class='equation'>\[
+		a\in I\iff \text{there is a finite subset }B\subseteq I\text{ which is a strong cover of }a.
+	\]</div>
+	</p>
+</div>
+
+<!-- 3.2.4 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.2.4</span>
+	Suppose $\mathcal{A}$ is a vector sublattice of $C_c(X,\mathbb{R})$ or $C(X,\mathbb{C})$ (self-adjoint in the latter case), where $X$ is a locally compact Hausdorff space. Then a subset $I\subseteq\mathcal{A}$ is a $\perpp$-ideal if and only if $I$ is an additive subgroup and
+	<div class='equation' id='propertyofidealinC(X)'>\[
+	f\in I\iff\exists g\in I\text{ such that }f\Subset g.\tag{3.2.1}
+	\]</div>
+	</p>
+	
+	<p>
+	Indeed, first suppose $I$ is a $\perpp$-ideal. If $f\in I$, then there is a finite strong cover $B\subseteq I$ of $f$. For every $b\in B$, take another finite strong cover $C(b)\subseteq I$ of $b$. Then $\bigcup_{b\in B}C(b)$ is a strong cover of $g=\sum_{b\in B}|\operatorname{Re}(b)|+|\operatorname{Im}(b)|$, thus $g\in I$ and $f\Subset g$, which proves implication "$\Rightarrow$" of (<span class='ref' data-tag='propertyofidealinC(X)'></span>). Implication "$\Leftarrow$" is immediate since $f\Subset g$ if and only if $\left\{g\right\}$ is a strong cover of $f$.
+	</p>
+	
+	<p>
+	To prove that $I$ is additive, let $f_1,f_2\in I$. The implication "$\Rightarrow$" of (<span class='ref' data-tag='propertyofidealinC(X)'></span>), yields $g_1,g_2\in I$ with $f_i\Subset g_i$. Then $\left\{g_1,g_2\right\}$ is a finite strong cover of $f_1+f_2$, so $f_1+f_2\in I$.
+	</p>
+	
+	<p>
+	Now suppose that $I$ is additive and satisfies property (<span class='ref' data-tag='propertyofidealinC(X)'></span>), and let us show that $I$ is a $\perpp$-ideal. Of course, if $f\in I$ then $f$ admits a finite cover by a single element of $I$ (by the "$\Rightarrow$" part of (<span class='ref' data-tag='propertyofidealinC(X)'></span>)). Conversely, suppose $f$ admits a finite strong cover $B\subseteq I$. From (<span class='ref' data-tag='propertyofidealinC(X)'></span>) take, for all $b\in B$, $g_b\in I$ with $b\Subset g_b$, so that $\widetilde{b}:=|\operatorname{Re}(b)|+|\operatorname{Im}(b)|\Subset g_b$ as well. This in turn implies $\widetilde{b}\in I$, so $g=\sum_{b\in B}\widetilde{b}\in I$ and $f\Subset g$, so we conclude that $f\in I$ again from (<span class='ref' data-tag='propertyofidealinC(X)'></span>).
+	</p>
+</div>
+
+<p>
+We will now prove that the lattice of open subsets of a space $X$ is order-isomorphic to the lattice of $\perpp$-ideals of a weakly regular tuple $(X,\theta,\mathcal{A})$.
+</p>
+
+<!-- 3.2.5 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 3.2.5</span>
+	Suppose $(X,\theta,\mathcal{A})$ is weakly regular. Given an open set $U\subseteq X$, denote $\mathbf{I}(U)=\left\{f\in\mathcal{A}:\supp(f)\subseteq U\right\}$. Given a $\perpp$-ideal $I\subseteq\mathcal{A}$, denote $\mathbf{U}(I)=\bigcup_{f\in I}\sigma(f)$.
+	</p>
+</div>
+
+<p>
+Note that $\mathbf{I}(U)$ is a $\perpp$-ideal of $\mathcal{A}$: If $f\in\mathbf{I}(U)$ then we use weak regularity of $\mathcal{A}$ and compactness of $\supp(f)$ to find a finite collection $B\subseteq\mathcal{A}$ such that
+<div class='equation'>\[
+	\supp(f)\subseteq\bigcup_{b\in B}\sigma(b)\subseteq U.
+\]</div>
+In particular, $B\subseteq\mathbf{I}(U)$ and $B$ is a strong cover of $f$. This provides the implication "$\Rightarrow$" of Definition <span class='ref' data-tag='definitionperppideal'></span>, whereas "$\Leftarrow$" is trivial.
+</p>
+
+<!-- 3.2.6 -->
+<div class='theorem' id='theoremperppideals'>
+	<p><span class='envidentifier'>Theorem 3.2.6</span>
+	Suppose $(X,\theta,\mathcal{A})$ is weakly regular.
+	</p>
+	
+	<ol class='alphpar'>
+		<li>
+			For every $\perpp$-ideal $I$ of $\mathcal{A}$, $I=\mathbf{I}(\mathbf{U}(I))$.
+		</li>
+		
+		<li>
+			For every open subset $U\subseteq X$, $U=\mathbf{U}(\mathbf{I}(U))$.
+		</li>
+		
+		<li>
+			The map $U\mapsto\mathbf{I}(U)$ is an order isomorphism between the lattices of open sets of $X$ and $\perpp$-ideals of $\mathcal{A}$.
+		</li>
+	</ol>
+</div>
+
+<a class='proofbutton' data-tag='theoremperppideals'>Proof</a>
+<div class='proof' id='proofoftheoremperppideals'>
+	<ol class='alphpar'>
+		<li>
+			<p>
+			Let $I$ be a $\perpp$-ideal. The inclusion $I\subseteq \mathbf{I}(\mathbf{U}(I))$ follows easily from the property of $\perpp$-ideals: if $f\in I$, then take a finite strong cover $B\subseteq I$ of $f$, so that $\supp(f)\subseteq\bigcup_{b\in B}\sigma(b)\subseteq\mathbf{U}(I)$.
+			</p>
+			
+			<p>
+			Conversely, if $f\in\mathbf{I}(\mathbf{U}(I))$ we use compactness of $\supp(f)$ to find a finite family $B\subseteq I$ with $\supp(f)\subseteq\bigcup_{b\in B}\sigma(b)$, so $B$ is a strong cover of $f$ and therefore $f\in I$.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			Suppose $U\subseteq X$ is open. By weak regularity of $(X,\theta,\mathcal{A})$, we have
+			<div class='equation'>\[
+			U=\bigcup_{\substack{f\in\mathcal{A}\\\supp(f)\subseteq U}}\sigma(f)=\bigcup_{f\in\mathbf{I}(U)}\sigma(f)=\mathbf{U}(\mathbf{I}(U)).
+			\]</div>
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			The previous items prove that $U\mapsto\mathbf{I}(U)$ is a bijection, with inverse $I\mapsto\mathbf{U}(I)$. It is clear that both maps are order-preserving.<span class='qed'></span>
+			</p>
+		</li>
+	</ol>
+</div>
+
+<h3 class='subsection'>An alternative proof to Theorem <span class='ref' data-tag='maintheorem'></span></h3>
+
+<p>
+Assume $(X,\theta,\mathcal{A})$ is weakly regular. Let $\widehat{\mathcal{A}}$ be the collection of maximal $\perpp$-ideals of $\mathcal{A}$, and endow it with the topology generated by the sets
+<div class='equation'>\[
+	U(f)=\left\{I\in\widehat{\mathcal{A}}:\exists g\Subset f\text{ such that }g\not\in I\right\},\qquad f\in\mathcal{A}.
+\]</div>
+By Theorem <span class='ref' data-tag='theoremperppideals'></span>, we obtain a bijection $\xi:X\to\widehat{\mathcal{A}}$, $\xi(x)=\mathbf{I}(X\setminus\left\{x\right\})$. Since for all $x\in X$ and $f\in\mathcal{A}$,
+<div class='equation'>\[
+	x\in\sigma(f)\iff\exists g\Subset f\text{ such that } x\in\supp(g)\iff\xi(x)\in U(f),
+\]</div>
+then $\xi(\sigma(f))=U(f)$, which proves that $\xi$ is a homeomorphism. This provides another proof of Theorem <span class='ref' data-tag='maintheorem'></span>.
+</p>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

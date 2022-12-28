@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Definição</b>.
+<p>
+Sejam \(f\) uma função e \(a\) um ponto de seu domínio. Dizemos que a função \(f\) é <b>contínua em \(a\)</b> se \(\lim_{x\to a}f(x)=f(a)\).
+</p>
+<p>
+Formalmente, isto significa que para todo \(\epsilon>0\), existe \(\delta>0\) tal que se \(|x-a|<\delta\) e \(x\) pertence ao domínio de \(f\), então \(|f(x)-f(a)|<\epsilon\)
+</p>
+<p>
+Se \(f\) for contínua em todos os pontos de seu domínio, dizemos simplesmente que \(f\) é <b>contínua</b>.
+</p>
+
+</div>
+<p>
+<i>Observações</i>:
+</p>
+
+<ol>
+
+<li>
+<p>
+Caso somente um dos limite laterais de \(f\) em \(a\) faça sentido, adaptamos a definição acima considerando somente este limite. Por exemplo, a função \(s(x)=\sqrt{x}\) está definida em \([0,+\infty)\). No ponto \(a=0\), somente o limite lateral à direita faz sentido. De todo modo, \(s\) é contínua em \(0\), pois
+<div>
+\begin{equation*}
+\lim_{x\to 0^+}s(x)=\lim_{x\to 0^+}\sqrt{x}=0=s(0).
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Na definição de limite, aparece a condição <span>&#8220;</span>\(0<|x-a|<\delta\)<span>&#8221;</span>, pois não avaliamos \(f\) no ponto \(a\). Por outro lado, na definição acima nós consideramos somente que <span>&#8220;</span>\(|x-a|<\delta\)<span>&#8221;</span>. Isto é permitido pois, dado \(\epsilon>0\), a desigualdade <span>&#8220;</span>\(|f(x)-f(a)|<\epsilon\)<span>&#8221;</span> é trivialmente válida em \(x=a\).
+</p>
+
+</li>
+</ol>
+
+</body>
+</html>

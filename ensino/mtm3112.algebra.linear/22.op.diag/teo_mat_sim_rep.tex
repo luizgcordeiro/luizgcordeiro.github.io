@@ -1,0 +1,18 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial de dimensão finita, $\mathcal{B}$ uma base ordenada de $V$, e $T\colon V\to V$ um endomorfismo linear. Então uma matriz $A$ é similar a $\left[ T\right]_{\mathcal{B}}^{\mathcal{B}}$ se, e somente se, existe uma base ordenada $\mathcal{C}$ de $V$ tal que $A=\left[T\right]_{\mathcal{C}}^{\mathcal{C}}$.
+\end{theorem}
+
+\begin{proof}
+	Por definição, $A$ é similar a $\left[T\right]_{\mathcal{B}}^{\mathcal{B}}$ se, e somente se, existe uma matriz inversível $U$ tal que
+	$A=U\left[T\right]_{\mathcal{B}}^{\mathcal{B}}U^{-1}$.
+	
+	Como \href{http://mtm.ufsc.br/~cordeiro/ensino/mtm3112.algebra.linear/16.mudanca.de.base/teo_mat_inv_mud_base_moodle.html}{matrizes inversíveis coincidem com matrizes de mudança de base}, então $A$ é similar a $\left[T\right]_{\mathcal{B}}^{\mathcal{B}}$ se, e somente se, existe uma base ordenada $\mathcal{C}$ de $V$ tal que
+	\begin{align*}
+	A
+		&=[\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{C}}\left[T\right]_{\mathcal{B}}^{\mathcal{B}}\left([\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{C}}\right)^{-1}\\
+		&=[\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{C}}\left[T\right]_{\mathcal{B}}^{\mathcal{B}}[\operatorname{id}_V]_{\mathcal{C}}^{\mathcal{B}}\\
+		&=\left[\operatorname{id}_V\circ T\circ\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{C}}\\
+		&=\left[T\right]_{\mathcal{C}}^{\mathcal{C}},
+	\end{align*}
+	como queríamos.
+\end{proof}

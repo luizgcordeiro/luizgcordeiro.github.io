@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>2.5. Sofic group actions</h2>
+
+<p>
+In this section we will study actions which induce sofic transformation groupoids. Again, we will focus only on $\ra$-discrete, standard probability-measure preserving groupoids.
+</p>
+
+<!-- 2.5.1 -->
+<div class='definition' id='definitionpmpaction'>
+	<p><span class='envidentifier'>Definition 2.5.1</span>
+	Let $G$ be a group and $\theta$ and $(X,\mu)$ a measure space. An action $\theta$ of $G$ by Borel automorphisms of $X$ is <em>measure-preserving</em> if $\mu(\theta_g(A))=\mu(A)$ for all Borel $A\subseteq X$ and $g\in G$.
+	</p>
+</div>
+
+<!-- 2.5.2 -->
+<div class='proposition' id='propositionactionsmeasurepreserving'>
+	<p><span class='envidentifier'>Proposition 2.5.2</span>
+	Let $\theta$ be an action of a countable group $G$ on a standard probability space $(X,\mu)$ by Borel automorphisms of $X$. Then the following are equivalent:
+	<ol class='arpar'>
+		<li> $\theta$ measure-preserving.</li>
+		<li> $\mu$ is invariant for the Borel groupoid $G\ltimes_\theta X$.</li>
+		<li> $\mu$ is invariant for the orbit equivalence relation $\mathcal{R}(\theta)$.</li>
+	</ol>
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionactionsmeasurepreserving'>Proof</a>
+<div class='proof' id='proofofpropositionactionsmeasurepreserving'>
+	<p>
+	The equivalence (2)$\iff$(3) is proven in Proposition <span class='ref' data-tag='propositionmeasureinvariancefororbitrelation'></span>.
+	</p>
+	
+	<p>
+	For every $g\in G$ and Borel $A\subseteq X$, the element $\left\{g\right\}\times A$ of $\BOR(G\ltimes_\theta A)$ satisfies
+	<div class='equation'>\[
+		\so(\left\{g\right\}\times A)=A,\qquad\ra(\left\{g\right\}\times A)=\theta_g(A),
+	\]</div>
+	and every element of $\BOR(G\rtimes_\theta A)$ is in fact a countable disjoint union of these elements. The equivalence (1)$\iff$(2) follows immediately.\qedhere<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+Recall that recall that equivalence relations correspond to principal groupoids (Proposition <span class='ref' data-tag='principalequalequivalencerelation'></span>), and that <em>free</em> actions are those which induce principal transformation groupoids (Example <span class='ref' data-tag='examplewhentransformationgroupoidisprincipal'></span>). Since we are working in the category of measured spaces, null sets can be essentially disregarded.
+</p>
+
+<!-- 2.5.3 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.5.3</span>
+	A probability measure-preserving action $\theta$ of a countable group $G$ on a measure space $(X,\mu)$ is (<em>essentially</em>) <em>free</em> if for all $g\in G$, the set $\Fix(\theta_g)=\left\{x\in X:\theta_g(x)=x\right\}$ of points fixed by $g$ is null.
+	</p>
+</div>
+
+<!-- 2.5.4 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.5.4</span>
+	A standard, $\ra$-discrete probability measure-preserving groupoid $(\mathcal{G},\mu)$ is (<em>essentially</em>) <em>principal</em> if a.e. point of $\mathcal{G}^{(0)}$ has trivial isotropy, i.e., if
+	<div class='equation'>\[
+	\mu\left(\left\{x\in\mathcal{G}^{(0)}:\mathcal{G}_x^x=\left\{x\right\}\right\}\right)=1.
+	\]</div>
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	If $\theta$ is an essentially free probability measure-preserving action of a countable group $G$ on a standard probability space $(X,\mu)$, we can find a conull subset $Y$ of $X$ such that $\theta_g(Y)\subseteq Y$ for all $g\in G$, and $\theta_g(x)\neq x$ for all $x\in Y$, namely,
+	<div class='equation'>\[
+		Y=\bigcap_{g\in G}\supp(\theta_g)=\left\{x\in X:\forall g\in G,\ \theta_g(x)\neq x\right\}.
+	\]</div>
+	A similar comment holds for for $\ra$-discrete, standard probability measure-preserving groupoids. Therefore our usage of "free" and "principal", in the category of measure spaces, will not be contradictory with the usual one, in the category of sets.
+	</p>
+
+	<p>
+	Moreover, certain distinct classes of topological groupoids have been called "essentially principal" in the literature (see [<span class='ref' data-tag='MR2876963'></span>, <span class='ref' data-tag='MR3377390'></span>, <span class='ref' data-tag='MR584266'></span>]). To avoid any confusion, we will use "topologically principal" and "effective" instead for topological groupoids (see Definitions <span class='ref' data-tag='definitiontopologicallyprincipal'></span> and <span class='ref' data-tag='definitioneffective'></span>).
+	</p>
+</div>
+
+<p>
+The following can be proven with the same arguments of Example <span class='ref' data-tag='examplewhentransformationgroupoidisprincipal'></span> and the remark above.
+</p>
+
+<!-- 2.5.5 -->
+<div class='proposition'>
+	<p><span class='envidentifier'>Proposition 2.5.5</span>
+	A probability measure-preserving action $\theta$ of a countable group $G$ on a probability space $(X,\mu)$ is free if and only if the transformation groupoid $G\ltimes X$ is principal.
+	</p>
+</div>
+
+<p>
+We will now define <em>Bernoulli shifts</em>. Let $G$ be any countable group and $X$ any set. We consider the action $L$ of left multiplication of $G$ on itself: $L_g:G\to G$, $L_g(h)=gh$ for all $h,g\in G$, and then dualize $L$ to an action $\beta$ on the space $X^G$ of functions from $G$ to $X$ by setting
+<div class='equation'>\[
+	\beta_g(f)=f\circ L_{g^{-1}}\qquad\text{ for all}\quad f\in X^G\quad\text{and}\quad g\in G.
+\]</div>
+If we use the product notation $X^G=\prod_G X=\left\{(x_h)_{h\in G}:x_h\in X\right\}$ instead, the action $\beta$ becomes
+<div class='equation'>\[
+	\beta_g\left((x_h)_{h\in G}\right)=\left(x_{g^{-1}h}\right)_{h\in G}
+\]</div>
+for all $g\in G$ and all $(x_h)_{h\in G}\in X^G$.
+</p>
+
+<!-- 2.5.6 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.5.6</span>
+	The action $\beta$ above is called the <em>Bernoulli shift</em> of $G$ on $X$.
+	</p>
+</div>
+
+<p>
+Bernoulli shifts are one of the basic examples in Symbolic Dynamics (see [<span class='ref' data-tag='MR1222644'></span>]). In fact, they can be used to model other actions, as the simple proposition below (with ommited proof) shows. (Recall Definition <span class='ref' data-tag='definitioncovariant'></span> for a <em>covariant</em> map.)
+</p>
+
+<!-- 2.5.7 -->
+<div class='proposition'>
+	<p><span class='envidentifier'>Proposition 2.5.7</span>
+	Let $\theta$ be any action of a countable group $G$ on a set $X$, and let $\beta$ be the Bernoulli shift of $G$ and $X$. Then the map $F:X\to X^G$, $F(x)=(\theta_{g^{-1}}(x))_{g\in G}$ is injective and covariant.
+	</p>
+</div>
+
+In fact, Bernoulli shifts are generally free in cases of interest.
+
+<!-- 2.5.8 -->
+<div class='proposition' id='proposition2518'>
+	<p><span class='envidentifier'>Proposition 2.5.8</span>
+	Let $G$ be a nontrivial countable group and $(X,\mu)$ a standard probability space. Endow $X^G$ with the product measure coming from $\mu$. Then the Bernoulli shift $\beta$ of $G$ on $X$ is a probability measure-preserving action of $G$, and it is free if and only if $(X,\mu)$ is non-atomic, or if $G$ is infinite and $(X,\mu)$ is not an atom.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='proposition2518'>Proof</a>
+<div class='proof' id='proofofproposition2518'>
+	<p>
+	The invariance of measure is immediate on cylinder sets (those of the form $\prod_{g\in G} X_g$, where $X_g\subseteq X$ is Borel), and since these generate the Borel structure of $X^G$ then $\beta$ is measure-preserving. Let us prove that the Bernoulli shift $\beta$ is free under either of the hypotheses stated above.
+	</p>
+	<ul>
+		<li>
+			First assume that $(X,\mu)$ is non-atomic. Then $(X,\mu)$ is isomorphic to the interval $[0,1]$ with Lebesgue measure ([<span class='ref' data-tag='MR1321597'></span>, Theorem 17.41]), and
+			<div class='equation'>\[
+				\Fix(\theta_g)=\left\{(x_h)_h\in X^G:(x_{g^{-1}h})_h=(x_h)_h\right\}\subseteq\left\{(x_h)_h\in X^G:x_1=x_g\right\}.
+			\]</div>
+			The latter set can be regarded as $\Delta\times X^{G\setminus\left\{1,g^{-1}\right\}}$, where $\Delta$ is the diagonal of $X\times X$, and so it has measure $0$.
+		</li>
+
+		<li>
+			Now assume that $G$ is infinite and $X$ is not an atom. Choose distinct elements $h_1,h_2,\ldots,\in G$ such that all $h_1,h_2,\ldots,g^{-1}h_1,g^{-1}h_2,\ldots$ are pairwise distinct. Then
+			<div class='equation'>\[
+				\Fix(\beta_g)\subseteq\left\{(x_h)_h\in X^G:x_{g^{-1}h_i}=x_{h_i}\text{ for all }i\right\},
+			\]</div>
+			and similarly to the previous case above we can see the latter set as an infinite product of diagonals in $X\times X$ and copies of $X$. The diagonal in $X\times X$ has measure smaller than $1$ (because $X$ is not an atom), so an infinite product of them will have measure $0$.
+		</li>
+	</ul>
+
+	<p>
+	In the converse direction, suppose $(X,\mu)$ has an atom $\left\{x_0\right\}$ and that $G$ is finite. Then $\left\{(x_0)_h\right\}$ is an atom of $X^G$ and $\beta_g((x_0)_h))=(x_0)_h$ for all $g\in G$. If $X=\left\{x_0\right\}$ then $X^G=\left\{(x_0)_h\right\}$ is also an atom. In any of these cases, $\beta$ is not free.<span class='qed'></span>
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	In fact, the classification, up to covariant isomorphisms, of Bernoulli shifts has led to the the development of <em>Entropy Theory</em> for measure-preserving actions of groups. Initially, entropy theory was developed for actions of $\mathbb{Z}$, then extended to actions of amenable groups, and recently a theory of entropy for sofic groups has been developed by Bowen ([<span class='ref' data-tag='MR2552252'></span>]), and subsequently improved by Kerr and Li ([<span class='ref' data-tag='MR2854085'></span>]). We refer to the survey paper [<span class='ref' data-tag='MR3666024'></span>] for more details and the history of entropy theory.
+	</p>
+</div>
+
+<p>
+We will now be interested in sofic actions.
+</p>
+
+<!-- 2.5.9 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.5.9</span>
+	A probability measure-preserving action $\theta$ of a countable group $G$ on a space $(X,\mu)$ is <em>sofic</em> if the probability measure-preserving groupoid $(G\ltimes X,\mu)$ is sofic.
+	</p>
+</div>
+
+<p>
+For the remainder of this section, let us recall and fix some notation.
+</p>
+
+<div class='remark' id='conventionssoficactions'>
+	<span class='envidentifier'>Conventions</span>
+
+	<ul>
+		<li>
+			If $X$ is a set and $f\in\mathcal{I}(X)$, we regard $\Fix(f)$ and $\supp(f)$ as in Examples <span class='ref' data-tag='examplefixedidempotentsinix'></span> and <span class='ref' data-tag='examplesupportix'></span>, i.e.,
+			<div class='equation'>\[
+				\Fix(f)=\left\{x\in\dom(f):f(x)=x\right\},\qquad\supp(f)=\left\{x\in\dom(f):f(x)\neq x\right\}.
+			\]</div>
+		</li>
+		
+		<li>
+			We will consider only countable groups, standard probability spaces and measure-preserving actions.
+		</li>
+		
+		<li>
+			We again consider finite sets $Y_n$ with $n$ elements, endowed with their normalized counting measures $\mu_\#$, the permutation group $\mathfrak{S}_n$ of $Y_n$, the measure algebra $\MAlg(Y_n)$ and the measured semigroups $\MEAS(Y_n^2)=\mathcal{I}(Y_n)$ endowed with their normalized Hamming distances $d_\#$ and traces $\tr_\#$. We will also use the symbols $\mu_\#$, $d_\#$ and $\tr_\#$ for corresponding functions on ultraproducts.
+		</li>
+		
+		<li>
+			$\mathcal{U}$ will always denote a ultrafilter of sets on $\mathbb{N}$.
+		</li>
+	</ul>
+</div>
+
+<p>
+Let $\theta$ be a measure-preserving action of $G$ on a standard probability space $(X,\mu)$.
+</p>
+
+<ul>
+	<li>
+		We identify each $g\in G$ with the element $\left\{g\right\}\times X$ of the full group $[G\ltimes_\theta X]$ (compare with Example <span class='ref' data-tag='exampleginsidebisectionsoftransformationgroupoid'></span>). We also identify $E(\MEAS(G\ltimes X))$ with  $\MAlg(X)$, so if $g\in G$ and $A\in\MAlg(X)$, the product $gA$ corresponds to the element $\left\{g\right\}\times A$ of $\MEAS(G\ltimes X)$.
+	</li>
+	
+	<li>
+	We consider the actions of $G$ on $\MAlg(X)$ and of $\prod_\mathcal{U}\mathfrak{S}_{n_k}$ on $\prod_\mathcal{U}\MAlg(Y_{n_k})$ as in Definition <span class='ref' data-tag='definitionactionofinvertibleones'></span>:
+	<div class='equation'>\[
+		g\cdot A=\theta_g(A),\qquad(\sigma_k)_\mathcal{U}\cdot(A_k)_\mathcal{U}=(\sigma_k(A_K))_\mathcal{U}.
+	\]</div>
+	</li>
+</ul>
+
+<p>
+We can compare actions of countable groups by using the notion of <em>weak containment</em> (an analogous notion for representations has been widely studied; see [<span class='ref' data-tag='MR2415834'></span>]): By Proposition <span class='ref' data-tag='propositionultraproductoffunctions'></span>, every probability measure-preserving action $\theta$ of $G$ on a probability space $(Y,\nu)$ induces an action $\theta^\mathcal{U}$ of $G$ on $\prod_\mathcal{U}\MAlg(Y)$ by
+<div class='equation'>\[
+	\theta^\mathcal{U}_g(A_n)_\mathcal{U}=(\theta_g(A_n))_\mathcal{U}.
+\]</div>
+</p>
+
+<!-- 2.5.10 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.5.10
+	<span style='font-weight:normal'>[<span class='ref' data-tag='MR2583950'></span>, p. 64]</span></span>
+	Let $\alpha$ and $\theta$ be free probability measure-preserving actions of a countable group $G$ on spaces $(X,\mu)$ and $(Y,\nu)$, respectively. We say that $\alpha$ is <em>weakly contained</em> in $\theta$ if there exists an isometric morphism
+	<div class='equation'>\[
+		\phi:\MAlg(X)\to\prod_\mathcal{U}\MAlg(Y)
+	\]</div>
+	which is covariant with respect to $\alpha$ and $\theta^\mathcal{U}$.
+	</p>
+</div>
+
+<p>
+In other words, if an action $\alpha$ is weakly contained in $\theta$ then $\alpha$ can be modelled, in the sense of continuous logic, by $\theta$. Another important property of Bernoulli shifts, initially proved by Abért and Weiss in [<span class='ref' data-tag='MR3035287'></span>] and later extended by Seward in [<span class='ref' data-tag='arxiv1501.03367'></span>], is that Bernoulli shifts are weakly contained in every other free probability measure-preserving action.
+</p>
+
+<!-- 2.5.11 -->
+<div class='theorem' id='theoremabertweiss'>
+	<p><span class='envidentifier'>Theorem 2.5.11
+	<span style='font-weight:normal'>[<span class='ref' data-tag='MR3035287'></span>, Theorem 1.1]</span></span>
+	Let $\beta$ be the Bernoulli shift of a countable group $G$ on a standard probability space $(X,\mu)$ (where $X^G$ is endowed with the product measure). Then any free probability-measure preserving action of $G$ on any standard probability space $(Y,\nu)$ weakly contains $\beta$.
+	</p>
+</div>
+
+<p>
+We will now describe soficity of an action in terms of covariant morphisms.
+</p>
+
+<!-- 2.5.12 -->
+<div class='lemma' id='lemmaseparatesetwithdisjointimages'>
+	<p><span class='envidentifier'>Lemma 2.5.12</span>
+	Suppose $X$ and $Y$ are Borel spaces with $Y$ standard, and $f,g:X\to Y$ are Borel maps with $f(x)\neq g(x)$ for all $x\in X$. Then there exists a countable partition $\left\{A_n\right\}$ of $X$ such that $f(A_n)\cap g(A_n)=\varnothing$ for all $n$.
+	</p>
+
+	<p>
+	Consequently, if $\mu$ is a probability measure on $X$, then for all $\epsilon>0$ there exists a finite Borel partition $A_1,\ldots,A_n,C$ of $X$ with $f(A_i)\cap g(A_i)=\varnothing$ for $1\leq i\leq n$ and $\mu(C)\smallerthan\epsilon$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmaseparatesetwithdisjointimages'>Proof</a>
+<div class='proof' id='proofoflemmaseparatesetwithdisjointimages'>
+	<p>
+	Let $d$ be a metric on $Y$ compatible with the Borel structure and for which $(Y,d)$ is separable. Let $I_1=\left\{x\in X:d(f(x),g(x))>1\right\}$ and for $k\geq 2$, consider the Borel set
+	<div class='equation'>\[
+		I_k=\left\{x\in X:1/k\smallerthan d(f(x),g(x))\leq 1/(k-1)\right\},
+	\]</div>
+	so $\left\{I_k\right\}_k$ is a Borel partition of $X$. Given $k$, let $\left\{B^k_n\right\}_n$ be a Borel partition of $Y$ by sets of diameter at most $1/k$, and let $A^k_n=f^{-1}(B^k_n)\cap I_k$. If $x\in A^k_n$, then $f(x)\in B^k_n$ and $d(g(x),f(x))>1/k\geq \operatorname{diam}B^k_n$, so $g(x)\not\in B^k_n$. This proves
+	<div class='equation'>\[
+		f(A^k_n)\cap g(A^k_n)\subseteq B^k_n\cap g(A^k_n)=\varnothing\qquad\text{for all}\quad k\text{ and }n,
+	\]</div>
+	and $\left\{A^k_n:k,n\right\}$ is a countable Borel partition of $X$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 2.5.13 -->
+<div class='lemma' id='lemmatraceissmallerundercovariant'>
+	<p><span class='envidentifier'>Lemma 2.5.13</span>
+	Let $\theta$ be a probability measure-preserving action of $G$ on $(X,\mu)$. Suppose $\sigma:G\to\prod_\mathcal{U}\mathfrak{S}_n$ and $\phi:\MAlg(X)\to\prod_\mathcal{U}\MAlg(Y_{n_k})$ are covariant semigroup morphisms, with $\phi$ isometric. Then for all $g\in G$ and $A\in\MAlg(X)$, $\tr(\sigma(g)\phi(A))\leq\tr(gA)$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmatraceissmallerundercovariant'>Proof</a>
+<div class='proof' id='proofoflemmatraceissmallerundercovariant'>
+	<p>
+	Given $g\in G$ and $A\in\MAlg(X)$, let $B=\operatorname{supp}\theta_g\cap A$. Given $\epsilon>0$, choose, by Lemma <span class='ref' data-tag='lemmaseparatesetwithdisjointimages'></span>, a finite partition $B_1,\ldots,B_n,C$ of $B$ with $\theta_g(B_i)\cap B_i=\varnothing$ for $1\leq i\leq n$ and $\mu(C)\smallerthan\epsilon$.
+	</p>
+
+	<p>
+	Then the elements $\phi(B_i)$ are pairwise disjoint, contained in $\phi(A)$, and covariance of $(\sigma,\phi)$ implies
+	<div class='equation'>\[
+		\left[\sigma(g)\cdot\phi(B_i)\right]\land\phi(B_i)=\phi(g\cdot B_i)\cap\phi(B_i)=\phi(\theta_g(B_i)\cap B_i)=0,
+	\]</div>
+	and from this we obtain $\phi(B_i)\subseteq\supp\left(\sigma(g)\right)\land \phi(A)=\supp(\sigma(g)\phi(A))$. It follows that
+	<div class='equation'>\begin{align*}
+		\operatorname{tr}(\sigma(g)\phi(A))&=\mu_\#(\phi(A))-\mu_\#(\supp(\theta_g\phi(A)))\\
+			&\leq\mu_\#(\phi(A))-\sum_{i=1}^n\mu_\#(\phi(B_i))\\
+			&=\mu(A)-\sum_{i=1}^n\mu(B_i)\\
+			&=\tr(gA)+\mu(C)\leq\tr(gA)+\epsilon.
+	\end{align*}</div>
+	Since $\epsilon$ is arbitrary, we obtain the result.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+The next theorem formalizes the description of soficity used by Ozawa in [<span class='ref' data-tag='ozawasoficnotes'></span>].
+</p>
+
+<!-- 2.5.14 -->
+<div class='theorem' id='theoremrewriesoficactionintermsofcovariant'>
+	<p><span class='envidentifier'>Theorem 2.5.14</span>
+	A free probability measure-preserving action $\theta$ of $G$ on $(X,\mu)$ is sofic if and only if there are a group morphism $\sigma:G\to\prod_\mathcal{U}\mathfrak{S}_n$ and an isometric morphism $\phi:\MAlg(X)\to\prod_\mathcal{U}\MAlg(Y_{n_k})$ such that $(\sigma,\phi)$ is covariant with respect to the canonical actions.
+	</p>
+</div>
+
+<p>
+Recall, from the <span class='ref' data-tag='conventionssoficactions'></span> stated previously, that we identify $G$ and $\MAlg(X)$ with subsemigroups of the measured semigroup $\MEAS(G\ltimes_\theta X)$. The proof of this theorem is similar in parts to that of Theorem <span class='ref' data-tag='theoremfirstimportant'></span>.
+</p>
+
+<a class='proofbutton' data-tag='theoremrewriesoficactionintermsofcovariant' style='display:inline;'>Proof</a> of <span class='ref' data-tag='theoremrewriesoficactionintermsofcovariant'></span>
+<div class='proof' id='proofoftheoremrewriesoficactionintermsofcovariant'>
+	<p>
+	First, suppose $\theta$ is sofic, and let $\Phi:\MEAS(G\ltimes_\theta X)\to\prod_\mathcal{U}\MEAS(Y_{n_k}^2)$ be a sofic embedding. Restricting $\Phi$ to $G$ and to $\MAlg(X)$ we obtain the morphisms $\sigma$ and $\phi$, and $\phi$ is isometric. If $A\in\MAlg(X)$ and $g\in G$,
+	<div class='equation'>\[
+		\phi(g\cdot A)=\Phi(gAg^{-1})=\sigma(g)\phi(A)\Phi\sigma(g)^{-1}=\sigma(g)\cdot\phi(A),
+	\]</div>
+	so $(\sigma,\phi)$ is covariant.
+	</p>
+
+	<p>
+	Conversely, suppose the covariant pair $(\sigma,\phi)$ exists. We need a few steps in order to define a sofic embedding of $G\ltimes_\theta X$.
+	</p>
+	<ol>
+		<li>
+			<p>
+			<b>If $g,h\in G$ and $A,B\in\MAlg(X,\mu)$ satisfy $A\cap B=\theta_g(A)\cap\theta_h(B)=\varnothing$, then $\sigma(g)\phi(A)$ and $\sigma(h)\phi(B)$ are compatible in $\prod_\mathcal{U}\MEAS(Y_{n_k}^2)$</b>.
+			</p>
+		
+			<p>
+			By covariance, we have
+			<div class='equation'>\[
+				\left(\sigma(g)\phi(A)\right)^*\left(\sigma(h)\phi(B)\right)=\phi(A)\sigma(g^{-1}h)\phi(B)=\phi(A\cap(g^{-1}h\cdot B))\sigma(g^{-1}h),
+			\]</div>
+			and since
+			<div class='equation'>\[
+				A\cap(g^{-1}h\cdot B)=\theta_{g^{-1}}(\theta_g(A)\cap\theta_h(B))=\varnothing,
+			\]</div>
+			then $\left(\sigma(g)\phi(A)\right)^*\left(\sigma(h)\phi(B)\right)=0$, and similarly $\left(\sigma(g)\phi(A)\right)*\left(\sigma(h)\phi(B)\right)^*=0$, so $\sigma(g)\phi(A)$ and $\sigma(h)\phi(B)$ are compatible.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<b>If $A_1,\ldots,A_n$ are pairwise disjoint and $g\in G$, then $\sigma(g)\phi(\bigcup_{i=1}^n A_i)=\bigvee_{i=1}^n\sigma(g)\phi(A_i)$</b>.
+			</p>
+			
+			<p>
+			First note that $\bigvee_{i=1}^n\sigma(g)\phi(A_i)$ is well-defined by item 1., so this follows from distributivity of $\prod_\mathcal{U}\MEAS(Y_{n_k}^2)$ and the fact that $\phi$ preserves joins (Theorem <span class='ref' data-tag='theoremtracepreservingisisometric'></span>).
+			</p>
+		</li>
+	</ol>
+
+	<p>
+	Every element $B$ of $\MEAS(G\ltimes_\theta X)$ can be written uniquely as a countable join $B=\bigcup_{g\in G}gB_g$, where $B_g:=\so(B\cap(\left\{g\right\}\times X))$. Let $\mathfrak{M}$ be the submonoid of $\MEAS(G\ltimes_\theta X)$ consisting of those $B\in\MEAS(G\ltimes_\theta X)$ for which all except finitely many $B_g$ are empty. Define
+	<div class='equation'>\[
+		\Theta:\mathfrak{M}\to\prod_\mathcal{U}\MEAS(Y_{n_k}^2),\qquad\Theta(B)=\bigvee_{g\in G}\sigma(g)\phi(B_g),
+	\]</div>
+	which is well-defined by item 1.\ above. To verify that $\Theta$ is a morphism, note that
+	<div class='equation'>\[
+		AB=\bigcup_{g,h\in G}gA_ghB_h=\bigcup_{g,h\in G}gh((h^{-1}\cdot A_g)\cap B_h)=\bigcup_{k\in G}k\left(\bigcup_{g\in G}((g^{-1}k)^{-1}\cdot A_g)\cap B_{g^{-1}k}\right),
+	\]</div>
+	and similarly $\Theta(A)\Theta(B)=\bigvee_{k\in G}\sigma(k)\left(\bigvee_{g\in G}((\sigma(g)^{-1}\sigma(k))^{-1}\cdot\phi(A_g))\land\phi(B_{g^{-1}k})\right)$, so the facts that $(\sigma,\phi)$ is covariant and item 2.\ above imply that $\Theta(AB)=\Theta(A)\Theta(B)$. Let us prove that $\Theta$ is trace-preserving.
+	</p>
+
+	<p>
+	Since $\theta$ is free then $\tr(gB_g)=0$ whenever $g\neq 1$, and Lemma <span class='ref' data-tag='lemmatraceissmallerundercovariant'></span> implies also that $\tr(\sigma(g)\phi(B_g))=0$ when $g\neq 1$. Therefore
+	<div class='equation'>\[
+		\tr(\Phi(B))=\sum_{g\in G}\tr(\sigma(g)\phi(B_g))=\mu(\phi(B_1))=\mu(B_1)=\sum_{g\in G}\tr(gB_g)=\tr(B).
+	\]</div>
+	</p>
+
+	<p>
+	Therefore $\Theta$ is trace-preserving, and hence isometric on the dense submonoid $\mathfrak{M}$ of $\MEAS(G\ltimes_\theta X)$, and thus extends uniquely to a sofic embedding of $G\ltimes_\theta X$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 2.5.15 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 2.5.15</span>
+A covariant pair $(\sigma,\phi)$ as in the Theorem <span class='ref' data-tag='theoremrewriesoficactionintermsofcovariant'></span> will be called a <em>covariant sofic embedding</em>.
+</p>
+</div>
+
+<p>
+In terms of approximation properties, as in Theorem <span class='ref' data-tag='theoremequivalenceembeddingintoultraproductformetricstructures'></span>, this theorem can be rewritten as follows:
+</p>
+
+<!-- 2.5.16 -->
+<div class='corollary' id='corollaryalmostcovariant'>
+	<p><span class='envidentifier'>Corollary 2.5.16</span>
+	A free probability measure-preserving action $\theta$ of $G$ on $(X,\mu)$ is sofic if and only if for every $\epsilon>0$ and for every pair of finite subsets $F\subseteq G$ and $\mathcal{A}\subseteq\MAlg(X)$, there are $n\in\mathbb{N}$ and maps $\sigma:G\to\mathfrak{S}_n$ and $\phi:\MAlg(X)\to\MAlg(Y_n)$ satisfying
+	<ol class='roman'>
+		<li>
+			$d_{\#}(\sigma(gh),\sigma(g)\sigma(h))\smallerthan\epsilon$;
+		</li>
+		
+		<li>
+			$d_{\#}(\phi(A\cap B),\phi(A)\cap\phi(B))\smallerthan\epsilon$;
+		</li>
+		
+		<li>
+			$|\mu_\#(\phi(A))-\mu(A)|\smallerthan\epsilon$;
+		</li>
+		
+		<li>
+			$d_{\#}(\phi(\theta_g(A)),\sigma(g)\cdot\phi(A))\smallerthan\epsilon$,
+		</li>
+	</ol>
+	for all $g,h\in F$ and all $A,B\in\mathcal{A}$.
+	</p>
+</div>
+
+<!-- 2.5.17 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.5.17</span>
+	A pair of maps $(\sigma,\phi)$ satisfying properties (i)-(iv) above is called an <em>$(F,\mathcal{A},\epsilon)$-almost covariant morphism</em>.
+	</p>
+</div>
+
+<p>
+As an immediate consequence of this description of soficity, we obtain:
+</p>
+
+<!-- 2.5.18 -->
+<div class='corollary'>
+	<p><span class='envidentifier'>Corollary 2.5.18</span>
+	Soficity of free actions is preserved under weak containment: If $\alpha$ is a free sofic action which weakly contains a free action $\beta$, then $\beta$ is sofic as well.
+	</p>
+</div>
+
+<p>
+Therefore, if an infinite countable group $G$ admits a free sofic action then any Bernoulli shift of $G$ is sofic by Theorem <span class='ref' data-tag='theoremabertweiss'></span>, so Bernoulli shifts should come up as a natural example of sofic actions. We can now present the elegant proof of soficity of Bernoulli shifts obtained by Ozawa in full details.
+</p>
+
+<!-- 2.5.19 -->
+<div class='proposition' id='proposition2519'>
+	<p><span class='envidentifier'>Proposition 2.5.19
+	<span style='font-weight:normal'>[<span class='ref' data-tag='MR2566316'></span>, <span class='ref' data-tag='ozawasoficnotes'></span>,<span class='ref' data-tag='MR2826401'></span>]</span></span>
+	Every Bernoulli shift of a sofic group is sofic.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='proposition2519' style='display:inline;'>Proof</a> (based on [<span class='ref' data-tag='ozawasoficnotes'></span>])
+<div class='proof' id='proofofproposition2519'>
+	<p>
+	Let $(X,\mu)$ be a (standard) probability space and consider the Bernoulli shift $\beta$ of $G$ on $X^G$. If $G$ is finite, then $G\ltimes X^G$ is periodic and hence sofic (Corollary <span class='ref' data-tag='periodicequivalencerelationsaresofic'></span>). Assume then that $G$ is infinite so $\beta$ is free.
+	</p>
+
+	<p>
+	We assume $G$ is sofic. Let $\theta=(\theta_k)_\mathcal{U}:G\to\prod_\mathcal{U}\mathfrak{S}_{n_k}$ be a sofic embedding. Let $\phi=(\phi_k)_\mathcal{U}:\MAlg(X)\to\prod_\mathcal{U}\MAlg(Y_{m_k})$ be an isometric semigroup embedding (which exists by Corollary <span class='ref' data-tag='periodicequivalencerelationsaresofic'></span>). We may assume that for all $k$, $\phi_k(X)=Y_{m_k}$ and $\phi_k(\varnothing)=\varnothing$.
+	</p>
+
+	<p>
+	For each $k$, let $Z_k=Y_{m_k}^{n_k}$ the set of functions $f:Y_{n_k}\to Y_{m_k}$. We identify $Y_{n_k}\times Z_k$ with $Y_{n_k\cdot m_k^{n_k}}$ (since both sets have the same number of elements), and the group $\mathfrak{S}_{Y_{n_k}\times Z_k}$ of permutations on $Y_{n_k}\times Z_k$ with $\mathfrak{S}_{n_k\cdot m_k^{n_k}}$. We will define a covariant sofic embedding $(\psi,\eta)$, given by maps $\eta:G\to\prod_\mathcal{U}\mathfrak{S}_{Y_{n_k}\times Z_k}$ and $\psi:\MAlg(X^G)\to\prod_\mathcal{U}\MAlg(Y_{n_k}\times Z_k)$. First, we define $\psi$ on cylinder sets of $X^G$ (which generate its Borel structure).
+	</p>
+
+	<p>
+	Given $A_1,\ldots,A_n\in\MAlg(X)$ and distinct $g_1,\ldots,g_n\in G$, a <em>cylinder set</em> is one which can be written as
+	<div class='equation'>\[
+		C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}=\bigcap_{j=1}^n\left\{f\in X^G: f(g_j)\in A_j\right\}.
+	\]</div>
+	This representation of a nonempty cylinder set in terms of $g_1,\ldots,g_k$ and $A_1,\ldots,A_k$ is unique up to those $A_j$ which are equal to $X$ (and their order), and such a representation describes the empty set if and only if at least one of the $A_j$ is empty. We write $\mathfrak{C}$ for the collection of cylinder sets in $X^G$. Note that $\mathfrak{C}$ is closed under intersections.
+	</p>
+
+	<p>
+	For each $k$, define $\psi_k:\MAlg(X^G)\to\MAlg(Z_k)$ by
+	<div class='equation'>\[
+		\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n})=\bigcap_{j=1}^n\left\{(i,f)\in Y_{n_k}\times Z_k:f\left(\theta_k(g_j)^{-1}(i)\right)\in\phi_k(A_j)\right\}.
+	\]</div>
+	By uniqueness of the representation of cylinder sets and since $\phi_k(X)= Y_{m_k}$ and $\phi_k(\varnothing)=\varnothing$, the definition of $\psi$ does not depend on the given choice (and order) of $g_j$ and $A_j$.
+	</p>
+
+	<p>
+	Therefore we obtain a map $\psi=(\psi)_\mathcal{U}:\mathfrak{C}\to\prod_\mathcal{U}\MAlg(Y_{n_k}\times Z_k)$, which we later extend to all of $\MAlg(X)$. For this, we first prove that $\psi$ preserves meets (intersections).
+	</p>
+
+	<p>
+	Consider cylinders $C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}$ and $C_{h_1,\ldots,h_m}^{B_1,\ldots,B_m}$. By modifying the choice and order of $g_i,h_i,A_i,B_i$, we can assume $m=n$ and $g_i=h_i$, so that
+	<div class='equation'>\[
+		C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}\cap C_{g_1,\ldots,g_n}^{B_1,\ldots,B_n}=C_{g_1,\ldots,g_n}^{A_1\cap B_1,\ldots,A_n\cap B_n}.
+	\]</div>
+	It follows that, for all $k$,
+	<div class='equation' id='equationbernoullishiftintersection1'>\begin{align*}
+		&\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n})\cap\psi_k(C_{g_1,\ldots,g_n}^{B_1,\ldots,B_n})\\
+		&=\bigcap_{j=1}^n\left\{(i,f)\in Y_{n_k}\times Z_k:f\left(\theta_k(g_j)^{-1}(i)\right)\in\phi_k(A_j)\cap\phi_k(B_j)\right\},\tag{2.5.1}
+	\end{align*}</div>
+	and that
+	<div class='equation' id='equationbernoullishiftintersection2'>\begin{align*}
+		&\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}\cap C_{g_1,\ldots,g_n}^{B_1,\ldots,B_n})\\
+		&=\bigcap_{j=1}^n\left\{(i,f)\in Y_{n_k}\times Z_k:f\left(\theta_k(g_j)^{-1}(i)\right)\in\phi_k(A_j\cap B_j)\right\}.\tag{2.5.2}
+	\end{align*}</div>
+	Let $M_k=\max\left\{d_\#(\phi_k(A_j)\cap\phi_k(B_j),\phi_k(A_j\cap B_j):j=1,\ldots,n\right\}$.
+	</p>
+
+	<p>
+	If $(i,f)$ is in the symmetric difference of the sets described in Equations (<span class='ref' data-tag='equationbernoullishiftintersection1'></span>) and (<span class='ref' data-tag='equationbernoullishiftintersection2'></span>), then there is $j$ such that
+	<div class='equation'>\[
+		f(\theta_k(g_j)^{-1}(i))\in(\phi_k(A_j)\cap\phi_k(B_k))\triangle\phi_k(A_j\cap B_j).
+	\]</div>
+	</p>
+
+	<p>
+	For each $j$ and each $i\in Y_{n_k}$, there are exactly
+	<div class='equation'>\[
+		m_k^{n_k-1}\cdot\#\big[(\phi_k(A_j)\cap\phi_k(B_k))\triangle\phi_k(A_j\cap B_j)\big]
+	\]</div>
+	functions from $Y_{n_k}$ to $Y_{m_k}$ which map $\theta_k(g_j)(i)$ to an element of
+	<div class='equation'>\[
+		(\phi_k(A_j)\cap\phi_k(B_k))\triangle\phi_k(A_j\cap B_j).
+	\]</div>
+	Letting $j\in\left\{1,\ldots,n\right\}$ and $i\in Y_{n_k}$ go through all possible values, we conclude that the (normalized Hamming) distance of the sets in Equations (<span class='ref' data-tag='equationbernoullishiftintersection1'></span>) and (<span class='ref' data-tag='equationbernoullishiftintersection2'></span>) is at most
+	<div class='equation'>\begin{align*}
+		&\frac{1}{n_km_k^{n_k}}\cdot n_k\cdot \sum_{j=1}^nm_k^{n_k-1}\#\big[(\phi_k(A_j)\cap\phi_k(B_k))\triangle\phi_k(A_j\cap B_j)\big]\\
+		&=\sum_{j=1}^nd_{\#}(\phi_k(A_j)\cap\phi_k(B_j),\phi_k(A_j,B_j))
+	\end{align*}</div>
+	which converges to $0$ along $\mathcal{U}$, because $\phi=(\phi_k)_\mathcal{U}$ is a sofic embedding. Therefore, $\psi$ satisfies $\psi(C_1\cap C_2)=\psi(C_1)\land\psi(C_2)$ for all cylinders $C_1$, $C_2$, and moreover $\psi(\varnothing)=0$. This allows us to extend $\psi$ to a semigroup embedding to the (Boolean) algebra of sets generated by cylinders, by setting
+	<div class='equation'>\[
+		\psi(A)=\bigvee_k\psi(C_k),
+	\]</div>
+	where $\left\{C_k\right\}_k$ is any finite collection of pairwise disjoint cylinders whose union is $A$. This way, $\psi$ still preserves joins and meets.
+	</p>
+
+	<p>
+	Now we show $\psi$ is isometric, or equivalently that it preserves traces (measures)  by Theorem <span class='ref' data-tag='theoremtracepreservingisisometric'></span>. But again, since $\psi$ preserves joins, it is enough to prove that $\psi$ preserves the trace of cylinders, so consider a cylinder of the form
+	<div class='equation'>\[
+		C=C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}.
+	\]</div>
+	For all $k\in\mathbb{N}$, let
+	<div class='equation'>\[
+		I_k=\left\{i\in Y_{n_k}:\theta_{g_1}(i),\theta_{g_2}(i),\ldots,\theta_{g_n}(i)\text{ are pairwise distinct}\right\}.
+	\]</div>
+	Since $\theta$ is a sofic embedding, $\mu_\#(I_k)$ converges to $1$ along $\mathcal{U}$.
+	</p>
+
+	<p>
+	If $i\in I_k$, then there are exactly
+	<div class='equation'>\[
+		m_k^{n_k-n}\cdot\prod_{j=1}^n\#\left(\phi_k(A_j)\right)
+	\]</div>
+	functions $f:Y_{n_k}\to Y_{m_k}$ for which $(i,f)\in\psi_k(C)$. Therefore,
+	<div class='equation'>\begin{align*}
+			\mu_\#(\psi_k(C))&=\mu_\#(\psi_k(C)\cap(I_k\times Z_k))+\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))\\
+			&\leq\displaystyle{\frac{\#(I_k)}{n_km_k^{n_k}}m_k^{n_k-n}\cdot\prod_{j=1}^n\left(\#\phi_k(A_j)\right)}+\displaystyle{\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))}\\
+			&=\displaystyle{\mu_\#(I_k)\prod_{j=1}^n\mu_\#(A_j)}+\displaystyle{\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))}
+			\end{align*}</div>
+	The first term above converges to $\prod_{j=1}^n\mu_{\#}(A_j)$, which is exactly the measure of $C$, whereas the second term is bounded by
+	<div class='equation'>\[
+		\mu_\#(\psi_k(C)\setminus(I_k\times Z_k))\leq\mu_\#((Y_{n_k}\times Z_k)\setminus(I_k\times Z_k))=\mu_\#(Y_{n_k}\setminus I_k)=1-\mu_\#(I_k),
+	\]</div>
+	which converges to $0$ along $\mathcal{U}$. Therefore $\psi$ is isometric, and since the algebra generated by cylinders is dense in $\MAlg(X^G)$, $\psi$ can be extended to an isometric semigroup embedding $\psi:\MAlg(X^G)\to\prod_{\mathcal{U}}\MAlg(Y_{n_k}\times Z_k)$.
+	</p>
+
+	<p>
+	Now we let, for each $k$, $\eta_k:G\to\mathfrak{S}_{Y_{n_k}\times Z_k}$ be defined by
+	<div class='equation'>\[
+		\eta_k(g)(i,f)=(\theta_g(i),f),\qquad\text{for all }g\in G\quad\text{and}\quad(i,f)\in Y_{n_k}\times Z_k.
+	\]</div>
+	Clearly,
+	<div class='equation'>\[
+		d_\#(\eta_k(g)\eta_k(h),\eta_k(gh))=d_{\#}(\theta_k(g)\theta_k(h),\theta_k(gh))
+	\]</div>
+	for all $g,h\in G$. Thus we define a morphism $\eta=(\eta_k)_\mathcal{U}:G\to\prod_\mathcal{U}\mathfrak{S}_{Y_{n_k}\times Z_k}$.
+	</p>
+
+	<p>
+	We denote by $\beta$ the Bernoulli shift of $G$ on $X$. It remains only to show that $(\eta,\psi)$ is covariant, and again it is enough to prove this for cylinder sets. Let $g\in G$ and a cylinder $C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}$. Then the following equalities hold:
+	<ul>
+		<li>
+			$\displaystyle{\beta_gC_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}=C_{gg_1,\ldots,gg_n}^{A_1,\ldots,A_n}}$;
+		</li>
+		
+		<li>
+			$\displaystyle{\eta_k(g)(\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}))=\bigcap_{j=1}^n\left\{(i,f):f(\theta_k(g_j)^{-1}\theta_k(g)^{-1}(i))\in\phi_k(A_j)\right\}}$; and
+		</li>
+		
+		<li>
+			$\displaystyle{\psi_k(C_{gg_1,\ldots,gg_n}^{A_1,\ldots,A_n})=\bigcap_{j=1}^n\left\{(i,f):f(\theta_k(gg_j)^{-1}(i))\in\phi_k(A_j)\right\}}$.
+		</li>
+	</ul>
+	If $(i,f)$ is in the symmetric difference $\eta_k(g)(\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n}))\triangle\psi_k(C_{gg_1,\ldots,gg_n}^{A_1,\ldots,A_n})$, then there is $j$ for which
+	<div class='equation'>\[
+		\theta_k(gg_j)^{-1}(i)\neq\theta_k(g_j)^{-1}\theta_k(g)^{-1}(i),
+	\]</div>
+	and there are $m_k^{n_k}$ choices for $f\in Z_k$. Thus the distance between these two sets is at most
+	<div class='equation'>\[
+		\frac{1}{n_k m_k^{n_k}}\sum_{j=1}^nn_kd_\#(\theta_k(gg_j)^{-1},\theta_k(g_j)^{-1}\theta_k(g)^{-1})\cdot m_k^{n_k}=\sum_{j=1}^nd_\#(\theta_k(gg_j)^{-1},\theta_k(g_j)^{-1}\theta_k(g)^{-1}),
+	\]</div>
+	which converges to $0$ since $\theta$ is a sofic embedding. This proves that $\eta(g)(\psi(C))=\psi(g\cdot C)$ for all $g\in G$ and all cylinders $C$, and hence for all $C\in\MAlg(X^G)$. Therefore $\beta$ is sofic by Theorem <span class='ref' data-tag='theoremrewriesoficactionintermsofcovariant'></span>.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+One important outstanding question in the area is whether all actions of sofic groups are sofic. However, we may study the related question of how large the class of groups with sofic actions is, by proving that it is closed under some group-theoretic constructions. First, let us quickly review, without proofs, the known closure properties of the class of sofic groups.
+</p>
+
+<!-- 2.5.20 -->
+<div class='theorem' id='theoremclosednessofsofic'>
+	<p><span class='envidentifier'>Theorem 2.5.20</span>
+	The class of sofic groups is closed under:
+	<ol class='alphpar'>
+		<li> Products ([<span class='ref' data-tag='MR2220572'></span>]): If $\left\{G_i\right\}_{i\in I}$ is any family of sofic groups, then $\prod_{i\in I}G_i$ is sofic.</li>
+		<li> Subgroups ([<span class='ref' data-tag='MR2220572'></span>]): If $G$ is sofic and $H\subseteq G$ is a subgroup, then $H$ is sofic.</li>
+		<li> Direct limits ([<span class='ref' data-tag='MR2220572'></span>]): If $\left(\phi_{j,i}: G_i\to G_j\right)_{i,j}$ is a direct net of sofic groups, then the direct limit $\lim_{i\to\infty}G_i$ is sofic.</li>
+		<li> Amenable-by-sofic extensions ([<span class='ref' data-tag='MR2220572'></span>]): If $N$ is a normal subgroup of $G$, $G/N$ is amenable and $N$ is sofic, then $G$ is sofic.</li>
+		<li> Unrestricted wreath products by amenable groups ([<span class='ref' data-tag='arxiv1802.04688'></span>])): If $G$ is sofic and $A$ is amenable then $G\wr\!\wr A$ is sofic.</li>
+		<li> Free products amalgamated over an amenable subgroup ([<span class='ref' data-tag='MR2826401'></span>, <span class='ref' data-tag='MR2823074'></span>]): If $G$ and $H$ are sofic and $A$ is a common amenable subgroup of $G$ and $H$, then $G\ast_A H$ is sofic.</li>
+		<li> Wreath products ([<span class='ref' data-tag='MR3795485'></span>]): If $G$ and $H$ are sofic then $G\wr H$ is sofic.</li>
+		<li> Graph limits (see [<span class='ref' data-tag='MR2794910'></span>] for details).</li>
+	</ol>
+	</p>
+</div>
+
+<!-- 2.5.21 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.5.21
+	<span style='font-weight:normal'>[<span class='ref' data-tag='MR2826401'></span>]</span></span>
+	We denote by $\mathscr{S}$ the class of groups whose probability measure-preserving actions are all sofic.
+	</p>
+</div>
+
+<p>
+We will be interested in proving that the class $\mathscr{S}$ is closed under some of the constructions listed in Theorem <span class='ref' data-tag='theoremclosednessofsofic'></span>.
+</p>
+
+<!-- 2.5.22 -->
+<div class='theorem'>
+	<p><span class='envidentifier' id='theorem2522'>Theorem 2.5.22
+	<span style='font-weight:normal'>[<span class='ref' data-tag='MR2826401'></span>]</span></span>
+	A group $G$ belongs to the class $\mathscr{S}$ if and only if every free probability-measure preserving action of $G$ is sofic.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theorem2522'>Proof</a>
+<div class='proof' id='proofoftheorem2522'>
+	<p>
+	Suppose that every free probability-measure preserving action of $G$ is sofic. Let $\alpha$ be any probability measure-preserving action of $G$ on $(X,\mu)$. Let $\beta$ be any free probability-measure preserving action of $G$ on a space $(Y,\mu)$ (e.g. a Bernoulli shift on a non-atomic space), and define a new free probability measure-preserving action $\Gamma$ of $G$ on $X\times Y$ by
+	<div class='equation'>\[
+		\Gamma_g(x,y)=(\alpha_g(x),\beta_g(y)).
+	\]</div>
+	By assumption, $\Gamma$ is sofic, so there exists a sofic embedding $\Theta:\MEAS(G\ltimes_\Gamma (X\times Y))\to\prod_\mathcal{U}\MEAS(Y_{n_k}^2)$.
+	</p>
+
+	<p>
+	We can embed $\MEAS(G\ltimes_\alpha X)$ isometrically into $\MEAS(G\ltimes_\Gamma (X\times Y))$, via $A\mapsto A\times Y$, so composing this with $\Phi$ we obtain a sofic embedding of $G\ltimes_\alpha X$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 2.5.23 -->
+<div class='theorem' id='theorem2523'>
+	<p><span class='envidentifier'>Theorem 2.5.23</span>
+	The class $\mathscr{S}$ is closed under
+	<ol class='alphpar'>
+		<li> Subgroups: If $G\in\mathscr{S}$ and $H\subseteq G$ is a subgroup, then $H\in\mathscr{S}$.</li>
+		<li> Direct limits: If $\left(\phi_{j,i}: G_i\to G_j\right)$ is a direct net of groups in $\mathscr{S}$, then $\lim_{i\to\infty}G_i\in\mathscr{S}$.</li>
+		<li> Co-amenable extensions: If $N$ is a co-amenable subgroup of $G$ (that is, the left action of $G$ on $G/N$ is amenable) and $N\in\mathscr{S}$, then $G\in\mathscr{S}$.</li>
+		<li> Free products amalgamated over an amenable subgroup ([<span class='ref' data-tag='MR2826401'></span>, Theorem 3.17]): If $G,H\in\mathscr{S}$ and $A$ is a common amenable subgroup of $G$ and $H$, then $G\ast_A H$ is sofic.</li>
+	</ol>
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theorem2523'>Proof</a>
+<div class='proof' id='proofoftheorem2523'>
+	<ol class='alphpar'>
+		<li>
+			<p>
+			Suppose $G\in\mathscr{S}$ and $H$ is a subgroup of $G$. We let $\mathbb{N}_0=\mathbb{N}\cup\left\{0\right\}$ the set of non-negative integers. To simplify the notation, let us assume that the index $[G:H]$ is infinite, although the same arguments work in the case of finite index.
+			</p>
+
+			<p>
+			Let $\left\{a_i:i\in\mathbb{N}_0\right\}$ be a complete set of left representatives of $H$ in $G$ with $a_0=1$. For each pair $(g,i)\in G\times \mathbb{N}_0$, let $J(g,i)\in\mathbb{N}_0$ be the unique number such that $ga_i\in a_{J(g,i)} H$. Then for all $g$, $a_i^{-1}g^{-1}a_{J(g,i)}\in H$.
+			</p>
+			
+			<p>
+			Note that, if we identify $\mathbb{N}_0$ with the quotient space $G/H$ with via $i\mapsto a_iH$, the map $J:G\times\mathbb{N}_0\to\mathbb{N}_0$ corresponds to the action map of the usual left action of $G$ on $G/H$.
+			</p>
+			
+			<p>
+			Let us show that any free probability measure-preserving action $\alpha$ of $H$ on a space $(X,\mu)$ is sofic. First, we construct a probability measure-preserving action $\theta$ of $G$ on $X^{\mathbb{N}_0}$ by setting
+			<div class='equation'>\[
+			\left[\theta_g({\mathbf{x}})\right]_i=\alpha(a_i^{-1}ga_{J(g^{-1},i)})(x_{J(g^{-1},i)}),\qquad\text{for all }{\mathbf{x}}=(x_i)_i\in X^{\mathbb{N}_0}.
+			\]</div>
+			Then $\theta$ is a measure-preserving action of $G$ on $X^{\mathbb{N}_0}$, so we can take a sofic embedding $\Theta:\MEAS(G\ltimes_\theta X^{\mathbb{N}_0})\to\prod_\mathcal{U}\MEAS(Y_n^2)$. The map
+			<div class='equation'>\[
+				\iota:\MEAS(H\ltimes_\alpha X)\to\MEAS(G\ltimes_\theta X^{\mathbb{N}_0})
+			\]</div>
+			<div class='equation'>\[
+			\iota(A)=\left\{(g,(x_i)_i)\in G\times X^{\mathbb{N}_0}:(g,x_0)\in A\right\}
+			\]</div>
+			is an isometric semigroup morphism, because $\alpha_0=1$, so $\Theta\circ\iota$ is a sofic embedding for $H\ltimes_\alpha X$.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			Suppose $G=\displaystyle{\lim_{\longrightarrow}}G_i$, where $G_i\in\mathscr{S}$. For each $i$, let $p_i:G_i\to G$ be the canonical morphism. Let $\alpha$ be a free probability measure-preserving action of $G$ on $(X,\mu)$.
+			</p>
+			
+			<p>
+			Given a finite $F\subseteq G$, choose $i$ such that $F\cup F^2\subseteq p_i(G_i)$, and for each $x\in F\cup F^2$ choose $x^i\in G_i$ such that $p_i(x^i)=x$.
+			</p>
+			
+			<p>
+			Given $x,y\in F$, we do not necessarily have $(x^i)(y^i)=(xy)^i$, but since
+			<div class='equation'>\[
+			p_i((xy)^i)=xy=p_i(x^iy^i),
+			\]</div>
+			then there is $j\geq i$ such that $p_{j,i}(x^iy^i)=p_{j,i}((xy)^i)$, so substituting $i$ by $j$ and $x^i$ by $p_{j,i}(x^i)$ for all $x\in F\cup F^2$ if necessary, we may assume $x^iy^i=(xy)^i$ for all $x\in F$.
+			</p>
+			
+			<p>
+			Let $\alpha_i$ be the composition of $\alpha$ with $p_i$, which is a probability measure-preserving but not necessarily free. In any case, $\alpha_i$ is sofic, so we can find a covariant pair of morphisms
+			<div class='equation'>\[
+				\eta:G_i\to\prod_\mathcal{U}\mathfrak{S}_{n_k}\quad\text{and}\quad\phi:\MAlg(X)\to\prod_\mathcal{U}\MAlg(Y_{n_k}),
+			\]</div>
+			and defining $\sigma(f)=\eta(f_i)$ we obtain, for all $f\in F$ and $A\in\MAlg(A)$,
+			<div class='equation'>\[
+			\phi(f\cdot A)=\phi(f_i\cdot A)=\eta(f_i)\cdot\phi(A)=\sigma(f)\cdot\phi(A),
+			\]</div>
+			and
+			<div class='equation'>\[
+			\sigma(fg)=\eta((fg)^i)=\eta(f^i)\eta(g^i)=\sigma(f)\sigma(g),
+			\]</div>
+			so using Theorem <span class='ref' data-tag='theoremequivalenceembeddingintoultraproductformetricstructures'></span> we can obtain almost covariant morphisms for $F$ (and any finite subset of $\MAlg(X)$), in the sense of Corollary <span class='ref' data-tag='corollaryalmostcovariant'></span>. This proves that $\alpha$ is sofic.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			Let $\alpha$ be a free probability measure-preserving action of $G$ on $(X,\mu)$, $F\subseteq G$ finite, $\mathcal{A}\subseteq\MAlg(X)$ finite and $\epsilon>0$. Using co-amenability of $N\subseteq G$, choose a finite subset $P\subseteq G/N$ such that
+			<div class='equation'>\[
+				\#((F\cdot P)\triangle P)\leq\epsilon\cdot\#(P),
+			\]</div>
+			where $F\cdot P=\left\{(fg)N:f\in F, gN\in P\right\}$. Let $a\mapsto \overline{a}$ be a section of the quotient map $G\to G/N$ -- i.e., $\overline{a}N=a$ for all $a\in G/N$.
+			</p>
+			
+			<p>
+			The restriction $\alpha|_N$ is free and probability measure-preserving, and for all $f\in F$ and $a\in P$,
+			<div class='equation'>\[
+				(\overline{ga})^{-1}g\overline{a}\in N.
+			\]</div>
+			</p>
+			
+			<p>
+			Let $F'=\left\{(\overline{ga})^{-1}g\overline{a}:g\in F^2\cup F, a\in P\right\}$, which is a finite set. Similarly, let $\mathcal{A}'=\left\{\alpha(\overline{a}^{-1})(A):a\in P, A\in\mathcal{A}\right\}$, which is also a finite subset of $\MAlg(X)$.
+			</p>
+			
+			<p>
+			Since $N\in\mathscr{S}$ we can find $n\in\mathbb{N}$ and maps
+			<div class='equation'>\[
+				\sigma:N\to\mathfrak{S}_n\quad\text{and}\quad\phi:\MAlg(X)\to\MAlg(Y_n)
+			\]</div>
+			which form a $(F',\mathcal{A}',\epsilon)$-almost covariant morphism. Define (<span class='ref' data-tag='footnote25sga1' id='footnote25sga1'></span>) $\pi:G\to\mathfrak{S}_{Y_n\times P}$ by setting
+			<div class='equation'>\[
+				\pi(g)(i,a)=(\sigma((\overline{ga})^{-1}g\overline{a})(i),ga),
+			\]</div>
+			which is defined on a set of measure $\geq 1-\epsilon$. Then for all $g,h\in F$ we have
+			<div class='equation'>\begin{align*}
+				\pi(g)\pi(h)(i,a)&\overset{\epsilon}{=}\pi(g)(\sigma((\overline{ha})^{-1}h\overline{a})(i),ha)\\
+					&\overset{\epsilon}{=}(\sigma((\overline{gha})^{-1}g\overline{ha})\sigma((\overline{ha})^{-1}h\overline{a})(i),gha)\\
+					&\overset{\epsilon}{=}(\sigma((\overline{gha})^{-1}g\overline{ha}(\overline{ha})^{-1}h\overline{a})(i),gha)\\
+					&=(\sigma((\overline{gha})^{-1}gh\overline{a})(i),gha)\\
+					&\overset{\epsilon}{=}\pi(gh)(i,a)
+			\end{align*}</div>
+			where the symbol"$\overset{\epsilon}{=}$" means that this equality is valid only up to a set of measure $\epsilon$. So all these terms are equal on a set of measure $\geq1-5\epsilon$, which means that $d_\#(\pi(g)\pi(h),\pi(gh))\leq5\epsilon$. This corresponds to property (i) of an almost covariant morphism (Corollary <span class='ref' data-tag='corollaryalmostcovariant'></span>).
+			</p>
+			
+			<p>
+			We also define $\psi:\MAlg(X)\to\MAlg(Y_n\times P)$ by setting
+			<div class='equation'>\[
+				\psi(A)=\bigcup_{a\in P}\phi(\alpha(\overline{a}^{-1})(A))\times\left\{a\right\}.
+			\]</div>
+			Easy computations, similar to the one above, prove that properties (ii) and (iii) of Corollary <span class='ref' data-tag='corollaryalmostcovariant'></span> are satisfied. We prove almost covariance of $\pi$ and $\psi$. Using the notation "$\overset{\epsilon}{=}$" as above we have, for $g\in F$ and $A\in\mathcal{A}$,
+			<div class='equation'>\begin{align*}
+				\pi(g)(\psi(A))&\overset{\epsilon}{=}\bigcup_{a\in P}\sigma(\overline{ga}^{-1}g\overline{a})\left[\phi(\alpha(\overline{a}^{-1}))(A)\right]\times\left\{ga\right\}\\
+					&\overset{\epsilon}{=}\bigcup_{a\in P}\phi(\alpha(\overline{ga}^{-1}g)(A))\times\left\{ga\right\}\\
+					&\overset{\epsilon}{=}\bigcup_{b\in P}\phi(\alpha(\overline{b}^{-1}g)(A))\times\left\{b\right\}\\
+					&\overset{}{=}\bigcup_{b\in P}\phi(\alpha(\overline{b}^{-1})(\alpha(g)(A)))\times\left\{b\right\}\\
+					&=\psi(\alpha(g)(A))
+			\end{align*}</div>
+			and therefore $(\pi,\psi)$ is a $(F,\mathcal{A},5\epsilon)$-almost covariant morphism.
+			</p>
+		</li>
+		
+		<li>
+			We refer to [<span class='ref' data-tag='MR2826401'></span>, Theorem 3.17].<span class='qed'></span>
+		</li>
+	</ol>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

@@ -1,0 +1,5 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#equationembeddingmetricsignatureultraproductfunctions'>2.1.2</a>
+
+		<div class='toload equation'>\[
+			\sup_{a_i\in \mathbf{A},f\in\mathbf{F}}d^M\left(\phi(f^L(a_1,\ldots,a_{n(f)})),f^M(\phi(a_1),\ldots,\phi(a_{n(f)}))\right)<\epsilon.\tag{2.1.2}
+		\]</div>

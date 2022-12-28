@@ -1,0 +1,11 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#lemmatheoremisomorphismgroupifcirclevaluedfunctions'>3.5.16</a>
+
+<!-- 3.5.16 !-->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.5.16</span>
+	Suppose that $X$ is a Stone space. For every pair of continuous functions $f,g:X\to\mathbb{S}^1$ and for every finite subset $F\subseteq X$ such that $f(F)\cup g(F)$ does not contain $1$, there exists $h\in C(X,\mathbb{S}^1)$ such that
+	<div class='equation'>\[
+		h(x)\not\in\left\{f(x),g(x)\right\}\text{ for all }x\text{ and }h(F)=\left\{1\right\}.
+	\]</div>
+	</p>
+</div>

@@ -1,0 +1,7 @@
+<a class='reflink' href='../2.sg/2.2.fpmpg.html#definitionnormalizedcountingmeasure'>2.2.1</a>
+
+<!-- 2.2.1 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 2.2.1</span>
+If $X$ is a finite set, we denote by $\# X$ the cardinality of $X$, and we let $\mu_\#$ be the \emph{normalized counting measure} on $X$ (as a discrete Borel space): $\mu_\#(A)=\#A/\#X$ for all $A\subseteq X$.</p>
+</div>

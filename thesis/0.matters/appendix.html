@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h1 class='chapter'>Appendix. A group isomorphism between $C(X,\mathbb{S}^1)$ and $C(Y,\mathbb{S}^1)$ for non-homeomorphic $X$ and $Y$</h1>
+
+<p>
+Let $X$ be a compact Hausdorff space, and $G$ be either $\mathbb{R}$ or $\mathbb{S}^1$, which we write as an additive abelian topological group. We endow $C(X,G)$ with the pointwise operations and supremum metric, as usual, which induces the compact-open topology on $C(X,G)$ and makes it a topological group. Given $x_0\in X$, denote $C(X,x_0,G)=\left\{f\in C(X,G):f(x_0)=0\right\}$.
+</p>
+
+<p>
+Note that $C(X,G)$ is isomorphic, as a topological group, to $G\oplus C(X,x_0,G)$ for any $x_0\in G$, via the map
+<div class='equation' id='equationvladimir'>\[
+	\phi_{x_0}:C(X,G)\to G\oplus C(X,x_0,G),\qquad \phi_{x_0}(f)=(f(x_0),f-f(x_0)).\tag{A.1}
+\]</div>
+
+<!-- A.1 -->
+<div class='lemma' id='lemmaa1'>
+	<p><span class='envidentifier'>Lemma A.1</span>
+	If $X$ and $Y$ are compact Hausdorff spaces and $\psi:C(Y,\mathbb{R})\to C(X,\mathbb{R})$ is a bounded linear isomorphism, then there is a bounded linear isomorphism $\phi:C(Y,G)\to C(X,G)$ such that $\phi(1)=1$ (where $1$ denotes the constant function $x\mapsto 1$ on either $X$ or $Y$).
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmaa1'>Proof</a>
+<div class='proof' id='proofoflemmaa1'>
+	<p>
+	Given $k\neq 0$, the map $t\mapsto kt$ is an isomorphism of $\mathbb{R}$. Using that and the isomorphism $\phi_{x_0}$ and this, we see that the map $\phi_k:C(X,\mathbb{R})\to C(X,\mathbb{R})$, $\phi_k(f)=f+(k-1)f(x_0)$, is a linear isomorphism.
+	</p>
+
+	<p>
+	Since $\psi(1_Y)\neq 0$, choose any $x_0$ such that $\psi(1_Y)(x_0)\neq 0$, and take $k=2\frac{\Vert\psi(1_Y)\Vert}{\psi(1_Y)(x_0)}+1$. Then $k\neq 0$ and for all $x\in X$, $\phi_k(\psi(1_Y))(x)=\psi(1_Y)(x)+2\Vert\psi(1_Y)\Vert>0$. Therefore $\Phi(f)=\phi_k\psi(f)/\phi_k(\psi(1_Y))$ satisfies the given conditions.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- A.2 -->
+<div class='lemma' id='lemmaa2'>
+	<p><span class='envidentifier'>Lemma A.2</span>
+	Suppose $X$ and $Y$ are compact Hausdorff and $\psi:C(X,\mathbb{R})\to C(Y,\mathbb{R})$ is a bounded linear isomorphism. Then for any $x_0\in X$ and any $y_0\in Y$, $C(X,x_0,\mathbb{R})$ and $C(Y,y_0,\mathbb{R})$ are isomorphic as topological vector spaces.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmaa2'>Proof</a>
+<div class='proof' id='proofoflemmaa2'>
+	<p>
+	By Lemma <span class='ref' data-tag='lemmaa1'></span>, take an isomorphism $\psi:C(X,\mathbb{R})\to C(Y,\mathbb{R})$ with $\psi(1)=1$. Considering the chain of isomorphisms
+	<div class='equation'>\[
+	\xymatrix{
+	\mathbb{R}\oplus C(X,x_0,\mathbb{R})\ar[r]^{\hspace{20px}\phi_{x_0}^{-1}}
+		& C(X,\mathbb{R}) \ar[r]^{\psi}
+			&C(Y,\mathbb{R})\ar[r]^{\phi_{y_0}\hspace{25px}}
+				& \mathbb{R}\oplus C(Y,y_0,\mathbb{R})\\
+	(t,f)\ar@{|->}[r]
+		& f+t\ar@{|->}[r]
+			&\phi(f)+t\ar@{|->}[r]
+				&(\phi(f)(y_0)+t,\phi(f)-\phi(f)(y_0))
+	}.
+	\]</div>
+	we can conclude that the map $\psi_0:C(X,x_0,\mathbb{R})\to C(Y,y_0,\mathbb{R})$, $\psi_0(f)=\psi(f)-\psi(f)(y_0)$, is surjective, so we just need to check that it is injective. If $\psi_0(f)=0$, then
+	<div class='equation'>\[
+	\phi_{y_0}\psi\phi_{x_0}^{-1}(-\psi(f)(y_0),f)=0,
+	\]</div>
+	which implies that $f=0$ since $\phi_{y_0}\psi\phi_{x_0}^{-1}$ is an isomorphism.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+Suppose $X$ and $Y$ are metrizable, compact, Hausdorff, path-connected and contractible. Then their first cohomotopy groups are trivial (indeed, this follows from any two maps on $X$ and $Y$ being homotopic; see [<span class='ref' data-tag='MR1348489'></span>] for a reference), and Milutin's Theorem ([<span class='ref' data-tag='MR1999613'></span>, Chapter 36], or [<span class='ref' data-tag='MR0206695'></span>, <span class='ref' data-tag='MR0227751'></span>]) states that $C(X,\mathbb{R})$ and $C(Y,\mathbb{R})$ are isomorphic as topological vector spaces.
+</p>
+
+<p>
+By [<span class='ref' data-tag='MR1348489'></span>, Proposition 13], $C(X,x_0,\mathbb{R})$ and $C(X,x_0,\mathbb{S}^1)$ are isomorphic as topological groups, and similarly with $Y$ in place of $X$, hence the previous lemma and Equation (<span class='ref' data-tag='equationvladimir'></span>) imply that if $x_0\in X$ and $y_0\in Y$,
+<div class='equation'>\[
+	C(X,\mathbb{S}^1)\cong \mathbb{S}^1\oplus C(X,x_0,\mathbb{R})\cong\mathbb{S}^1\oplus C(Y,y_0,\mathbb{R})\cong C(Y,\mathbb{S}^1).
+\]</div>
+</p>
+
+<p>
+Therefore, by taking $X=[0,1]$ and $Y=[0,1]^2$, we obtain two non-homeomorphic spaces with $C(X,\mathbb{S}^1)$ and $C(Y,\mathbb{S}^1)$ isomorphic as topological groups, or in other terms we obtain the existence of non-isomorphic commutative $C^*$-algebras, namely $C([0,1],\mathbb{C})$ and $C([0,1]^2,\mathbb{C})$ with topologically isomorphic unitary groups.
+</p>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

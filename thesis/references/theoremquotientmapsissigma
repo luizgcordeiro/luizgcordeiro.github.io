@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.8.nclst.html#theoremquotientmapsissigma'>1.8.14</a>
+<!-- 1.8.14 -->
+<div class='toload theorem'>
+<p><span class='envidentifier'>Theorem 1.8.14</span>
+If $S$ is a $\sigma$-complete Boolean inverse semigroup and $I$ is a $\sigma$-ideal of $S$, then $S/I$ is a $\sigma$-complete Boolean inverse semigroup as well. If $\pi:S\to S/I$ is the quotient map, then for all countable compatible subsets $F\subseteq S$, $\pi(\bigvee F)=\bigvee\pi(F)$.
+</p>
+</div>

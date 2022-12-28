@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>4.5. Partial actions from associated groups and inverse semigroups</h2>
+
+<h3 class='subsection'>4.5.1. $E$ and $E^*$-unitary inverse semigroups</h3>
+
+<p>
+We will now describe how to construct partial actions of groups from actions of inverse semigroups and vice-versa. The class of inverse semigroups which allows us to do this in a more precise manner is that of <em>$E$-unitary inverse semigroups</em>.
+</p>
+
+<!-- 4.5.1 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 4.5.1</span>
+	An inverse semigroup $S$ is
+	<ol>
+		<li>
+			<em>$E$-unitary</em> if whenever $s\in S$ and $e\in E(S)$, if $e\leq s$ then $s\in E(S)$.
+		</li>
+		
+		<li>
+			<em>$E^*$-unitary</em> (sometimes called <em>$0$-$E$-unitary</em>)  if it has a zero and whenever $s\in S$ and $e\in E(S)\setminus\left\{0\right\}$, if $e\leq s$ then $s\in E(S)$.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<p>
+Note that an inverse semigroup $S$ with $0$ is $E$-unitary if and only if $S=E(S)$, which is a somewhat trivial case. Moreover, we can always adjoin a zero (that is, an absorbing) element $0$ to any semigroup $S$, and the semigroup $S_0$ obtained is $E^*$-unitary if and only if $S$ is $E$-unitary.
+</p>
+
+<!-- 4.5.2 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 4.5.2</span>
+	Every group is $E$-unitary.
+	</p>
+</div>
+
+<!-- 4.5.3 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 4.5.3</span>
+	Every $\land$-semilattice is $E$-unitary.
+	</p>
+</div>
+
+<!-- 4.5.4 -->
+<div class='example' id='eunitaryisweaksemilattice'>
+	<p><span class='envidentifier'>Example 4.5.4</span>
+	If $S$ is $E^*$-unitary then it is a semilattice: Indeed, given $s,t\in S$, if $\left\{s,t\right\}$ does not admit any nonzero lower bound then $s\land t=0$. If $\left\{s,t\right\}$ admits a nonzero lower bound, then $s$ and $t$ are compatible, so $s\land t=ts^*s$.
+	</p>
+	
+	<p>
+	As a consequence, every $E$-unitary inverse semigroup $S$ is a weak semilattice: We can embed $S$ into an $E^*$-unitary semigroup $S_0$ by adjoining a $0$. Given $s,t\in S$, let $F=\left\{s\land t\right\}\setminus\left\{0\right\}$, which is either empty or equal to $\left\{s\land t\right\}$, but in any case a finite subset of $S$, so that $\left\{x\in S:x\leq s,t\right\}=\bigcup_{f\in F}\left\{x\in S:x\leq f\right\}$.
+	</p>
+</div>
+
+<p>
+Let us rewrite the $E$ and $E^*$-unitary condition in terms of the compatibility relation.
+</p>
+
+<!-- 4.5.5 -->
+<div class='lemma' id='lemmacompatibilityeunitary'>
+	<p><span class='envidentifier'>Lemma 4.5.5
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR1694900'></span>, Theorem 2.4.6])</span></span>
+	<ol class='alphpar'>
+		<li>
+			An inverse semigroup $S$ with $0$ is $E^*$-unitary if and only if whenever $s,t\in S$ have a non-zero common lower bound then $s$ and $t$ are compatible.
+		</li>
+		
+		<li>
+			An inverse semigroup $S$ is $E$-unitary if and only if whenever $s,t\in S$ have a common lower bound then $s$ and $t$ are compatible.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='lemmacompatibilityeunitary'>Proof</a>
+</p>
+
+<div class='proof' id='proofoflemmacompatibilityeunitary'>
+	<ol class='alphpar'>
+		<li>
+			<p>
+			First assume $S$ is $E^*$-unitary and $s,t\in S$ have a common nonzero lower bound $u\in S\setminus\left\{0\right\}$. Then $u^*u\leq s^*t,t^*s$ and $uu^*\neq 0$, so both $s^*t$ and $st^*$ are idempotent and $s$ and $t$ are compatible. 
+			</p>
+			
+			<p>
+			Conversely, suppose the latter condition is satisfied, $e\leq s$ and $e\in E(S)\setminus 0$. Then $e\leq s, s^*s$, which implies that $s$ and $s^*s$ are compatible and thus $s=s(s^*s)^*$ is an idempotent.
+			</p>
+		</li>
+	</ol>
+	
+	<p>
+	Item (b) follows from (a) by adjoining a $0$ to $S$.<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection' id='subsectionmaximalgroupimage'>4.5.2. Maximal group image</h3>
+
+<p>
+To each inverse semigroup $S$ we can naturally associate a group $\mathbf{G}(S)$ in the following manner: define a relation in $S$ by
+<div class='equation' id='relationmaximalgroupimage'>\begin{align*}
+	s\sim t
+		&\iff\exists u\in S\quad\text{such that}\quad u\leq s,t.\tag{4.5.1}
+\end{align*}</div>
+Alternatively, $s\sim t$ if and only if there exists $e\in E(S)$ such that $es=et$ (and the proof of this equivalence is similar to that in Remark <span class='ref' data-tag='equivalence2groupoidofgermes'></span>).
+</p>
+
+<p>
+Using the fact that the order of $S$ is preserved under products and inverses, it is easy enough to see that $\sim$ is in fact a congruence, so we endow the quotient set $S/{\sim}$ with the quotient quotient semigroup structure. Given $s\in S$, we denote by $[s]$ the equivalence class of $s$ with respect to the relation (<span class='ref' data-tag='relationmaximalgroupimage'></span>).
+</p>
+
+<!-- 4.5.6 -->
+<div class='proposition' id='proposition456'>
+	<p><span class='envidentifier'>Proposition 4.5.6
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR1724106'></span>, Proposition 2.1.2])</span></span>
+	Let $S$ an inverse semigroup. The quotient 
+	<div class='equation'>\begin{align*}
+		\mathbf{G}(S)
+			&:=S/{\sim}
+	\end{align*}</div>
+	is a group. Furthermore, $\mathbf{G}(S)$ is the <em>maximal group homomorphic image</em> of $S$ in the sense that every semigroup morphism $\theta:S\rightarrow G$ from $S$ to a group $G$ factors through $\mathbf{G}(S)$.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='proposition456'>Proof</a>
+</p>
+
+<div class='proof' id='proofofproposition456'>
+	<p>
+	Let $e\in E(S)$ be arbitrary and set $u=[e]$. If $f\in E(S)$ is any other element, then $ef\leq e,f$, so $[f]=[e]=u$.
+	</p>
+	
+	<p>
+	If $s\in S$, then
+	<div class='equation'>\begin{align*}
+		[s]u
+			&=[s][s^*s]\\
+			&=[ss^*s]\\
+			&=[s],
+	\end{align*}</div>
+	and similarly $u[s]=[s]$, so $u$ is a unit for $\mathbf{G}(S)$, and since
+	<div class='equation'>\begin{align*}
+		[s][s^*]
+			&=[ss^*]\\
+			&=u,
+	\end{align*}</div>
+	then $[s^*]$ is the inverse of $[s]$, so $\mathbf{G}(S)$ is a group.
+	</p>
+	
+	<p>
+	If $G$ is a group and $\theta:S\to G$ is a morphism, then suppose $s\sim t$, that is, there is $u\in S$ with $u\leq s,t$, so $\theta(u)\leq\theta(s),\theta(t)$. But since the order on $G$ is equality, we have $\theta(s)=\theta(u)=\theta(t)$, so $\theta$ factors through a morphism $\mathbf{G}(S)\to G$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 4.5.7 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 4.5.7</span>
+	If $G$ is a group then $\mathbf{G}(G)$ is isomorphic to $G$.
+	</p>
+</div>
+
+<!-- 4.5.8 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 4.5.8</span>
+	If $E$ is a $\land$-semilattice then $\mathbf{G}(E)=\left\{1\right\}$ is the trivial group.
+	</p>
+</div>
+
+<!-- 4.5.9 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 4.5.9</span>
+	If $S$ is an inverse semigroup with a zero, then $\mathbf{G}(S)=\left\{1\right\}$ is the trivial group.
+	</p>
+</div>
+
+<p>
+We will now describe how partial actions of $E$-unitary inverse semigroups induce partial actions of their maximal group homomorphic images. The following lemma will be necessary:
+</p>
+
+<!-- 4.5.10 -->
+<div class='lemma' id='lemmacompatibilitypartialaction'>
+	<p><span class='envidentifier'>Lemma 4.5.10</span>
+	Suppose $\theta$ is a  partial action of an inverse semigroup $S$ on a set $X$. If $s,t\in S$ are compatible, then $\theta_s,\theta_t\in\mathcal{I}(X)$ are compatible.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='lemmacompatibilitypartialaction'>Proof</a>
+</p>
+
+<div class='proof' id='proofoflemmacompatibilitypartialaction'>
+	<p>
+	If $s$ and $t$ are compatible then $s^*t\in E(S)$, so $\theta_{s^*t}\in E(\mathcal{I}(X))$. Since $\theta_s^*\theta_t\leq \theta_{s^*t}$, then $\theta_s^*\theta_t$ is an idempotent, and similarly $\theta_s\theta_t^*$ is also idempotent, so $\theta_s$ and $\theta_t$ are compatible.
+	</p>
+</div>
+
+<!-- 4.5.11 -->
+<div class='theorem' id='theoremfactorpartialactioneunitary'>
+	<p><span class='envidentifier'>Theorem 4.5.11</span>
+	Let $\theta=(\theta_s:X_{s^*}\to X_s)_{s\in S}$ be a topological partial action of an $E$-unitary inverse semigroup $S$ on a topological space $X$.
+	</p>
+	
+	<p>
+	Then there is a unique topological partial action $\widetilde{\theta}=\left(\widetilde{\theta}_\gamma:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ of $\mathbf{G}(S)$ on $X$ such that
+	<ol class='roman'>
+		<li>
+			$\widetilde{X}_\gamma=\bigcup_{[s]=\gamma}X_s$ for all $\gamma\in \mathbf{G}(S)$;
+		</li>
+		
+		<li>
+			$\widetilde{\theta}_{[s]}(x)=\theta_s(x)$ for all $s\in S$ and $x\in X_{s^*}$.
+		</li>
+	</ol>
+	(in other words, $\widetilde{\theta}_{\gamma}$ is the join of $\left\{\theta_s:[s]=\gamma\right\}$ in $\mathcal{I}(X)$). 
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	If one allows degenerate partial actions, then item (i) implies that $\theta$ is non-degenerate if and only if $\widetilde{\theta}$ is non-degenerate.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='theoremfactorpartialactioneunitary'>Proof</a> of Theorem <span class='ref' data-tag='theoremfactorpartialactioneunitary'></span>
+</p>
+
+<div class='proof' id='proofoftheoremfactorpartialactioneunitary'>
+	<p>
+	Given $s,t\in S$, if $[s]=[t]$ then $s$ and $t$ admit a common lower bound, and since $S$ is $E$-unitary, this implies that $s$ and $t$ are compatible (Lemma <span class='ref' data-tag='lemmacompatibilityeunitary'></span>), so $\theta_s$ and $\theta_t$ are compatible (Lemma <span class='ref' data-tag='lemmacompatibilitypartialaction'></span>).
+	</p>
+	
+	<p>
+	Thus, given $\gamma\in\mathbf{G}(S)$, the family $\left\{\theta_s:s\in\gamma\right\}$ is compatible in $\mathcal{I}(X)$, so we may define (as in Example <span class='ref' data-tag='exampleixisinfinitelydistributive'></span>) $\widetilde{\theta}_\gamma=\bigvee_{s\in\gamma}\theta_s$. Letting $\widetilde{X}_\gamma$ be given as in item (i), note that $\widetilde{X}_{\gamma^{-1}}$ and $\widetilde{X}_\gamma$ are, respectively, the domain and range of $\widetilde{\theta}_\gamma$. By definition, we have $\widetilde{\theta}_{\gamma^{-1}}^{-1}=\widetilde{\theta}_\gamma^{-1}$ for all $\gamma\in\mathbf{G}(S)$.
+	</p>
+	
+	<p>
+	Using infinite distributivity of $\mathcal{I}(X)$ (Example <span class='ref' data-tag='exampleixisinfinitelydistributive'></span>) we obtain, for all $\gamma,\delta\in \mathbf{G}(S)$,
+	<div class='equation'>\begin{align*}
+		\widetilde{\theta}_\gamma\circ\widetilde{\theta}_{\delta}
+			&=\bigvee_{\substack{s\in\gamma\\t\in\delta}}\theta_s\circ\theta_t\\
+			&\leq\bigvee_{\substack{s\in\gamma,t\in\delta}}\theta_{st}\\
+			&\leq\bigvee_{z\in\gamma\delta}\theta_z\\
+			&=\widetilde{\theta}_{\gamma\delta}.
+	\end{align*}</div>
+	Hence $\widetilde{\theta}=\left(\widetilde{\theta}_{\gamma}:\widetilde{X}_{\gamma^{-1}}\to\widetilde{X}_\gamma\right)_{\gamma\in\mathbf{G}(S)}$ is a partial action, by Proposition <span class='ref' data-tag='propositionequivalencepartialmorphism'></span>. Note that for each $\gamma\in\mathbf{G}(S)$, $X_\gamma$ is a union of open sets, hence open, and $\widetilde{\theta}_{\gamma}$ is a join of continuous functions on open sets, hence continuous. Therefore $\widetilde{\theta}$ is a topological partial action satisfying (i) and (ii).<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 4.5.12 -->
+<div class='proposition' id='propeunitarygroupoidofgerms'>
+	<p><span class='envidentifier'>Proposition 4.5.12</span>
+	Let $\theta$ be a topological partial action of an $E$-unitary inverse semigroup $S$ on a space $X$ and $\widetilde{\theta}$ be the induced partial action on $\mathbf{G}(S)$. Then
+	<div class='equation'>\begin{align*}
+		S\ltimes_\theta X
+			&\cong \mathbf{G}(S)\ltimes_{\widetilde{\theta}} X.
+	\end{align*}</div>
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='propeunitarygroupoidofgerms'>Proof</a>
+</p>
+
+<div class='proof' id='proofofpropeunitarygroupoidofgerms'>
+	<p>
+	Consider the map $[s,x]\mapsto ([s],x)$. Since $S$ is $E$-unitary this map is well-defined and is clearly a morphism, and surjectivity follows since $\widetilde{\theta}_{\gamma}=\bigvee_{[s]=\gamma}\theta_s$. As for injectivity, suppose $([s],x)=([t],y)$, so $x=y$ and $[s]=[t]$. We can in fact assume $x\in X_{s^*}\cap X_{t^*}$. Then $s$ and $t$ are compatible, which implies $s\land t=st^*t$. Since
+	<div class='equation'>\begin{align*}
+		x\in X_{s^*}\cap X_{t^*}
+			&\subseteq X_{s^*}\cap X_{t^*t}\\
+			&=\theta_{t^*t}(X_{s^*}\cap X_{t^*t})\\
+			&\subseteq X_{t^*ts^*}\\
+			&=X_{(s\land t)^*},
+	\end{align*}</div>
+	we conclude that $[s,x]=[t,y]$.<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection'>4.5.3. Universal inverse semigroups</h3>
+
+<p>
+At this point, we have described a strong relationship between partial actions of an $E$-unitary inverse semigroup and partial actions of the associated (maximal homomorphic image) group. Here we will be interested in the other direction, that is, to a group $G$ we want to associate a semigroup $S$ with a map $G\to S$ such that every partial action of $G$ factors through a partial action of $S$. Of course, we could simply take $S=G$, so instead we will look for a semigroup $S$ such that partial action of $G$ factor through <em>global</em> actions of $S$.
+</p>
+
+<p>
+This construction was initially done in [<span class='ref' data-tag='MR1469405'></span>], where Exel defines the <em>universal inverse semigroup</em> $\mathbf{S}(G)$ of a group $G$, with the property that partial actions of $G$ correspond to global actions of $\mathbf{S}(G)$. This was further generalized in [<span class='ref' data-tag='MR3231479'></span>], where Buss and Exel extended this theory from groups to inverse semigroups. However, we will deal only with the group case, as explained above.
+</p>
+
+<p>
+Given a group $G$, let $\mathbf{S}(G)$ be the universal semigroup generated by symbols of the form $[t]$, $t\in G$, modulo the relations
+<ol class='roman'>
+	<li>
+		$[s^{-1}][s][t]=[s^{-1}][st]$;
+	</li>
+	
+	<li>
+		$[s][t][t^{-1}]=[st][t^{-1}]$;
+	</li>
+	
+	<li>
+		$[s][1]=[s]$;
+	</li>
+	
+	<li>
+		$[1][s]=[s]$.
+	</li>
+</ol>
+For every $t\in G$, denote by $\epsilon_t$ the element $\epsilon_t=[t][t^{-1}]$. We call $\mathbf{S}(G)$ the <em>universal semigroup of $G$</em>. The next theorem lists all the necessary properties of $\mathbf{S}(G)$ we will need.
+</p>
+
+<!-- 4.5.13 -->
+<div class='theorem' id='theorem4513'>
+	<p><span class='envidentifier'>Theorem 4.5.13
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR1469405'></span>, Propositions 2.3, 2.5 and 3.2, and Theorems 3.4 and 4.2])</span></span>
+	Let $G$ be a group. Then $\mathbf{S}(G)$ is an inverse semigroup, and
+	<ol class='alphpar'>
+		<li>
+			For all $s\in G$, $[s]^*=[s^{-1}]$.
+		</li>
+		
+		<li>
+			For every $\gamma\in\mathbf{S}(G)$, there are a unique $n\geq 0$ and distinct elements $r_1,\ldots,r_n,s$ in $G$ such that
+			<ol class='roman'>
+				<li>
+					$\gamma=\epsilon_{r_1}\cdots\epsilon_{r_n}[s]$;
+				</li>
+				
+				<li>
+					$r_i\neq 1$ and $r_i\neq s$ for all $i$;
+				</li>
+				
+				<li>
+					$r_i\neq r_j$ for $i\neq j$.
+				</li>
+			</ol>
+		We call such a decomposition $\gamma=\epsilon_{r_1}\cdots\epsilon_{r_n}[s]$ the <em>standard form</em> of $\gamma$, which is unique up to the order of $r_1,\ldots,r_n$.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<p>
+The description of $\mathbf{S}(G)$ with generators and relations also immediately implies the following:
+</p>
+
+<!-- 4.5.14 -->
+<div class='theorem' id='theorem4514'>
+	<p><span class='envidentifier'>Theorem 4.5.14
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR1469405'></span>, Theorem 4.2])</span></span>
+	Let $G$ be a group. If $\theta$ is a topological partial action of $G$ on a topological space $X$, then there is a unique topological global action $\widetilde{\theta}$ of $\mathbf{S}(G)$ on $X$ such that $\widetilde{\theta}_{[t]}=\theta_t$ for all $t\in G$.
+	</p>
+</div>
+
+<!-- 4.5.15 -->
+<div class='proposition' id='propositionGSGigualG'>
+	<p><span class='envidentifier'>Proposition 4.5.15</span>
+	Let $G$ be a group and $\mathbf{S}(G)$ its universal inverse semigroup. Then
+	<ol class='alphpar'>
+		<li>
+			$\mathbf{S}(G)$ is $E$-unitary (see [<span class='ref' data-tag='MR1469405'></span>, Remark 3.5]).
+		</li>
+		
+		<li>
+			The map $G\to \mathbf{G}(\mathbf{S}(G))$, $g\mapsto [[g]]$, is an isomorphism.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='propositionGSGigualG'>Proof</a>
+</p>
+
+<div class='proof' id='proofofpropositionGSGigualG'>
+	<ol class='alphpar'>
+		<li>
+			Suppose $\epsilon\leq\alpha$ where $\epsilon\in E(\mathbf{S}(G))$. Writing $\alpha$ and $\epsilon$ in standard form, we obtain
+			<div class='equation'>\begin{align*}
+				\alpha
+					&=\epsilon_{s_1}\cdots\epsilon_{s_n}[s]
+			\end{align*}</div>
+			and
+			<div class='equation'>\begin{align*}
+				\epsilon
+					&=\epsilon_{e_1}\cdots\epsilon_{e_m}[1].
+			\end{align*}</div>
+			Since $\epsilon\leq\alpha$ and $[1]$ is a unit of $\mathbf{S}(G)$, then
+			<div class='equation'>\begin{align*}
+				\epsilon_{e_1}\cdots\epsilon_{e_m}[1]
+					&=\epsilon\\
+					&=\epsilon\alpha\\
+					&=\epsilon_{e_1}\cdots\epsilon_{e_m}\epsilon_{s_1}\cdots\epsilon_{s_n}[s].
+			\end{align*}</div>
+			From the uniqueness of the standard form of $\epsilon$ we conclude that $s=1$ and $\alpha$ is an idempotent.
+		</li>
+		
+		<li>
+			<p>
+			First note that for all $s,t\in G$,
+			<div class='equation'>\begin{align*}
+				[s][t]
+					&=[s][t][t^{-1}][t]\\
+					&=[st]\epsilon_{t^*},
+				\end{align*}</div>
+			so the map $G\to\mathbf{S}(G)$, $g\mapsto [g]$, is a partial morphism, and the map $\mathbf{S}(G)\to \mathbf{G}(\mathbf{S}(G))$, $\alpha\mapsto[\alpha]$ is a morphism. So $g\mapsto[[g]]$ is a partial morphism between groups, hence a morphism.
+			</p>
+			
+			<p>
+			Given $\alpha\in \mathbf{S}(G)$, since $\alpha=\epsilon_{s_1}\cdots\epsilon_{s_n}[s]$ for certain $s,s_1,\ldots,s_n\in G$, we get $[\alpha]=[[s]]$, so $g\mapsto [[g]]$ is surjective.
+			</p>
+			
+			<p>
+			If $[[g]]=1=[[1]]$, then there is an idempotent $\epsilon=\epsilon_{e_1}\cdots\epsilon_{e_n}[1]$ for which
+			<div class='equation'>\begin{align*}
+				[g]\epsilon_{e_1}\cdots\epsilon_{e_n}
+					&=[1]\epsilon_{e_1}\cdots\epsilon_{e_n},
+			\end{align*}</div>
+			and the uniqueness of the standard form implies $g=1$.<span class='qed'></span>
+			</p>
+		</li>
+	</ol>
+</div>
+
+<p>
+Therefore, the map $S\mapsto\mathbf{S}(G)$ is a left inverse to the map $G\mapsto\mathbf{S}(G)$, and in particular every group is the maximal group image of some $E$-unitary inverse semigroup.
+</p>
+
+<p>
+Suppose $\theta$ is a partial action of $G$ on a set $X$, $\widetilde{\theta}$ is the corresponding global action of $\mathbf{S}(G)$ and $\gamma$ is the induced partial action on $\mathbf{G}(\mathbf{S}(G))$. Every $s\in\mathbf{S}(G)$ is smaller than a unique element of the form $[g]$, $g\in G$, so $[s]=[[g]]$. Moreover, $[g]$ is the maximum element of $[[g]]$, which yields $\gamma_{[[g]]}=\theta_g$ for all $g\in G$.
+</p>
+
+<p>
+This means that the isomorphism of Proposition <span class='ref' data-tag='propositionGSGigualG'></span> also preserves partial actions of $G$ appropriately, so we obtain as an immediate consequence:
+</p>
+
+<!-- 4.5.16 -->
+<div class='corollary' id='corollary4516'>
+	<p><span class='envidentifier'>Corollary 4.5.16</span>
+	Let $\theta$ be a topological partial action of a group $G$ on $X$ and $\widetilde{\theta}$ be the induced global action of $\mathbf{S}(G)$. Then
+	<div class='equation'>\begin{align*}
+		G\ltimes_\theta X
+			&\cong\mathbf{S}(G)\ltimes_{\widetilde{\theta}}X.
+	\end{align*}</div>
+	</p>
+</div>
+
+<p>
+The following interesting corollary shows that for these universal semigroup, partial actions always extend to global actions:
+</p>
+
+<!-- 4.5.17 -->
+<div class='corollary' id='corollary4517'>
+	<p><span class='envidentifier'>Corollary 4.5.17</span>
+	Let $G$ be a group, $S=\mathbf{S}(G)$ and $\theta$ a topological partial action of $S$ on $X$. Then there exists a global action $\alpha$ of $S$ on $X$ such that $\theta_s\leq\alpha_s$ for all $s\in S$ and $S\ltimes_\theta X\cong S\ltimes_\alpha X$.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='corollary4517'>Proof</a>
+</p>
+
+<div class='proof' id='proofofcorollary4517'>
+	<p>
+	Let
+	<ul>
+		<li>
+			$\gamma$ be the partial action of $\mathbf{G}(S)$ induced by $\theta$;
+		</li>
+		
+		<li>
+			$\gamma'$ be the composition of $\gamma$ with the isomorphism $G\to\mathbf{G}(\mathbf{S}(G))$, $g\mapsto [[g]]$;
+		</li>
+		
+		<li>
+			$\alpha$ be the global action of $S=\mathbf{S}(G)$ induced by $\gamma'$.
+		</li>
+	</ul>
+	Then $\mathbf{G}(S)\ltimes_{\gamma} X\cong G\ltimes_{\gamma'} X$, so we use Proposition <span class='ref' data-tag='propeunitarygroupoidofgerms'></span> and Corollary <span class='ref' data-tag='corollary4516'></span> to obtain the sequence of isomorphisms
+	<div class='equation'>\begin{align*}
+	S\ltimes_\theta X
+		&\cong \mathbf{G}(S)\ltimes_{\gamma} X\\
+		&\cong G\ltimes_{\gamma'}X\\
+		&\cong \mathbf{S}(G)\ltimes_\alpha X\\
+		&= S\ltimes_\alpha X.
+	\end{align*}<span class='qed'></span></div>
+	</p>
+	Since for all $s\in S$ we have
+	<div class='equation'>\begin{align*}
+		\theta_{[s]}
+			&\leq\gamma_{[[s]]}\\
+			&=\gamma'_{s}\\
+			&=\alpha_{[s]},
+	\end{align*}</div>
+	then $\alpha$ is the desired global action of $S$.<span class='qed'></span>
+	</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

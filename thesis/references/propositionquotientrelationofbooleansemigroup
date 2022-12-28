@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.5.qods.html#propositionquotientrelationofbooleansemigroup'>1.5.10</a>
+<!-- 1.5.10 -->
+<div class='toload proposition'>
+<p><span class='envidentifier'>Proposition 1.5.10</span>
+If $S$ is a Boolean inverse semigroup and $I\subseteq S$ is a $\lor$-ideal, then $a\sim_I b$ if and only if $a\setminus b,b\setminus a\in I$.
+</p>
+</div>

@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class="section">1.2. Inverse semigroups</h2>
+
+<h3 class="subsection">Nomenclature and notation</h3>
+
+<p>
+Before we start this section, let us fix some nomenclature that will be used throughout the text: Let $(L,\leq)$ be a poset:
+<ol>
+	<li> The <em>join</em> of a subset $F\subseteq L$ is its supremum, and we denote it by $\bigvee F$ if it exists. If $F=\left\{a_1,\ldots,a_n\right\}$ is finite, we also denote $\bigvee F=a_1\lor\cdots\lor a_n$.</li>
+	<li> The <em>meet</em> of a subset $F\subseteq L$ is its infimum, and we denote it by $\bigwedge F$ if it exists. If $F=\left\{a_1,\ldots,a_n\right\}$ is finite, we also denote $\bigwedge F=a_1\land\cdots\land a_n$.</li>
+</ol>
+</p>
+<p>
+We say that $(L,\leq)$ is a
+<ol>
+	<li value="3"> <em>$\wedge$-semilattice</em> (read "meet semilattice") if it admits arbitrary finite meets.</li>
+	<li> <em>lattice</em>, if it admits arbitrary finite meets and joins.</li>
+</ol>
+</p>
+
+<p>
+We say that the poset $L$ has a <em>zero</em> if it has a minimum, denoted by $0=\bigwedge L$.
+</p>
+
+<h3 class="subsection">1.2.1. Inverse semigroups</h3>
+
+<!-- 1.2.1 -->
+<div class="definition" id="definitioninversesemigroup">
+<p><span class="envidentifier">Definition 1.2.1</span>
+A <em>semigroup</em> is a set $S$ endowed with an associative binary operation $(s,t)\mapsto st$. A semigroup is
+<ol>
+	<li> <em>regular</em> if for every $s\in S$ there exists an element $t\in S$, called an <em>inverse</em> of $s$, satisfying $sts=s$ and $tst=t$.</li>
+	<li> an <em>inverse semigroup</em> if it is regular and every $s\in S$ admits a unique inverse. In this case we denote it as $s^*$.</li>
+	<li> a <em>monoid</em> if it has an <em>identity</em> or <em>unit</em>, that is, an element $1\in S$ (necessarily unique) satisfying $1s=s1=s$ for all $s\in S$.</li>
+</ol>
+A <em>subsemigroup</em> of a semigroup $S$ is a subset $T\subseteq S$ which is closed under the semigroup operation. A <em>sub-inverse semigroup</em> of an inverse semigroup is a subsemigroup which is closed under inverses.</p>
+</div>
+
+<!-- 1.2.2 -->
+<div class="definition" id="definitionmorphismofsemigroups">
+<p><span class="envidentifier">Definition 1.2.2</span>
+A <em>morphism</em> of semigroups is a map $\theta:S\to T$ satisfying $\theta(s_1s_2)=\theta(s_1)\theta(s_2)$ for all $s_1,s_2\in S$. Moreover, $\theta$ is an <em>isomorphism</em> if it is invertible and $\theta^{-1}$ is also a morphism.
+</p>
+</div>
+
+<p>
+As usual, we extend the product notation of elements of a semigroup $S$ to subsets of $S$, namely
+<div class="equation">\[
+FG=\left\{fg:(f,g)\in F\times G\right\},\quad tF=\left\{tf:f\in F\right\}\quad\text{and}\quad Ft=\left\{ft:f\in F\right\}
+\]</div>
+whenever $F,G\subseteq S$ and $t\in S$. If $S$ is an inverse semigroup, we also denote
+<div class="equation">\[
+F^*=\left\{f^*:f\in F\right\}.
+\]</div>
+</p>
+
+<div class="remark" id="remarksubinversesemigroups">
+<p><span class="envidentifier">Remark</span>
+If $S$ is an inverse semigroup and $T$ is a subsemigroup which is regular, then every element $t\in T$ admits an inverse $t'\in T$. However since inverses are unique in $S$ then $t'=t^*$. Therefore regular sub-semigroups of inverse semigroups are sub-inverse semigroups.
+</p>
+</div>
+
+<!-- 1.2.3 -->
+<div class="example" id="examplesemilatticesasinversesemigroups">
+<p><span class="envidentifier">Example 1.2.3</span>
+Every $\land$-semilattice is an inverse semigroup with the meet as the operation: $xy=x\land y$. In this case, every element is its own inverse: $x^*=x$.
+</p>
+
+<p>
+We will always regard $\land$-semilattices as inverse semigroups with this operation.
+</p>
+</div>
+
+<!-- 1.2.4 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.4</span>
+If $S$ is an inverse semigroup and $s,t\in S$, then the equation $sts=s$ might be satisfied even though $t$ is not the inverse of $s$.
+</p>
+	
+<p>
+As a particular case of the previous example, let $X$ be a nonempty set and consider the power set $\mathcal{P}(X)$ of $X$, ordered by set inclusion. Then $\mathcal{P}(X)$ is a $\land$-semilattice, and hence an inverse semigroup, under set intersection: $AB=A\land B=A\cap B$ for all $A,B\in\mathcal{P}(X)$.
+</p>
+
+<p>
+However, $\varnothing X\varnothing=\varnothing$, even though $X$ is not the inverse of $\varnothing$.
+</p>
+</div>
+
+<!-- 1.2.5 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.5</span>
+Not every regular semigroup is an inverse semigroup. For example, if $S$ is any set we endow it with the operation $st=s$ for all $s,t\in S$, which makes it regular but not an inverse semigroup if $|S|\mathcal{G}eq 2$. In fact, any two elements are inverses of each other in this semigroup.
+</p>
+</div>
+
+<!-- 1.2.6 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.6</span>
+Let $X$ be a set. Let $\mathcal{I}(X)$ be the set of all partial bijections of $X$, i.e., the set of all bijections $f:\operatorname{dom}(f)\to\operatorname{ran}(f)$, where $\dom(f)$ and $\ran(f)$ are subsets of $X$. We make it a semigroup with the canonical partial composition of maps, namely, given $f,g\in\mathcal{I}(X)$,
+<ol>
+	<li> $\dom(gf)=f^{-1}(\dom(g)\cap\ran(f))$;</li>
+	<li> $\ran(gf)=g(\dom(g)\cap\ran(f))$;</li>
+	<li> $(gf)(x)=g(f(x))$ for all $x\in\dom(gf)$.</li>
+</ol>
+This makes $\mathcal{I}(X)$ an inverse semigroup. Namely, the inverse of $f\in\mathcal{I}(X)$ is the usual inverse function $f^*=f^{-1}:\ran(f)\to\dom(f)$.
+</p>
+<p>
+$\mathcal{I}(X)$ serves as an analogue to permutation groups, and in fact a version of Cayley's Theorem, called the <em>Vagner-Preston Theorem</em> (see Theorem <span class='ref' data-tag="theoremwagnerpreston"></span>) holds: every inverse semigroup is isomorphic to a sub-inverse semigroup of some $\mathcal{I}(X)$.
+</p>
+</div>
+
+<p>
+The semigroups we will be most interested in are the semigroup of bisections of a groupoid, which we now introduce.
+</p>
+
+<!-- 1.2.7 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.2.7</span>
+A <em>bisection</em> in a groupoid $\mathcal{G}$ is a subset $A\subseteq\mathcal{G}$ such that the source and range maps are injective on $A$.
+</p>
+</div>
+
+<!-- 1.2.8 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.8</span>
+A subset of a group is a bisection if and only if it is either empty or a singleton.
+</p>
+</div>
+
+<p>
+If $A$ and $B$ are subsets of a groupoid $\mathcal{G}$, we denote their product by
+<div class="equation">\[
+AB=\left\{ab:(a,b)\in (A\times B)\cap\mathcal{G}^{(2)}\right\}\qquad\text{and}\qquad A^{-1}=\left\{a^{-1}:a\in A\right\}.
+\]</div>
+</p>
+
+<!-- 1.2.9 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.9</span>
+The collection $\operatorname{\mathbf{Bis}}(\mathcal{G})$ of bisections of a groupoid $\mathcal{G}$ is an inverse semigroup under the product and inverse of subsets of $\mathcal{G}$.
+</p>
+</div>
+
+<p>
+Let us briefly recall the notion of the graph of a function.
+</p>
+
+<!-- 1.2.10 -->
+<div class="definition" id="definitiongraphoffunction">
+<p><span class="envidentifier">Definition 1.2.10</span>
+If $f:X\to Y$ is a function between sets $X$ and $Y$, the <em>graph</em> of $f$ is the set
+<div class="equation">\[
+\operatorname{graph}(f)=\left\{(f(x),x):x\in X\right\}.
+\]</div>
+</p>
+</div>
+
+<div class="remark">
+<p><span class="envidentifier">Remark</span>
+Usually (see [<span class='ref' data-tag="MR0453532"></span>, Section 8] or [<span class='ref' data-tag="MR1940513"></span>, p. 11]), the graph of a function is instead defined as the set of pairs $(x,f(x))$ for $x\in X$. However, this convention is more consistent with the convention, adopted throughout the whole thesis, that functions "act on the left".
+</p>
+
+<p>
+Recall that a <em>relation</em> (between sets $X$ and $Y$) is a subset $A\subseteq Y\times X$. The <em>composition</em> of relations $A\subseteq Y\times X$ and $B\subseteq Z\times Y$ is the relation
+<div class="equation">\[
+B\circ A=\left\{(z,x):\text{there exists }y\in Y\text{ such that }(z,y)\in B\text{ and }(y,x)\in A\right\}.
+\]</div>
+(Note that if $R$ is an equivalence relation, regarded as a groupoid, and $A,B\subseteq R\subseteq X\times X$, then the product $BA$ coincides with the composition $B\circ A$.)
+</p>
+
+<p>
+If $f:X\to Y$ and $g:Y\to Z$ are functions, then $\operatorname{graph}(f)\subseteq Y\times X$ and $\operatorname{graph}(g)\subseteq Z\times Y$ are relations, and
+<div class="equation">\[
+\operatorname{graph}(g\circ f)=\operatorname{graph}(g)\circ\operatorname{graph}(f)
+\]</div>
+i.e., graph preserves composition. In particular, the map $f\mapsto\operatorname{graph}(f)$ defines an injective semigroup morphism between the semigroup $X^X$ of functions from a set $X$ to itself (under function composition) to the semigroup $\mathcal{P}(X\times X)$ of binary relations on $X$ (under relation composition).
+</p>
+</div>
+
+<!-- 1.2.11 -->
+<div class="example" id="examplebisectionsofequivalencerelationarefunctions">
+<p><span class="envidentifier">Example 1.2.11</span>
+If $R$ is an equivalence relation on a set $X$ (seen as a principal groupoid), then $\operatorname{\bf Bis}(R)$ can be identified with the subsemigroup of $\mathcal{I}(X)$
+<div class="equation">\[
+\mathcal{J}=\left\{f\in\mathcal{I}(X):\forall x\in\dom(f), (f(x),x)\in R\right\}.
+\]</div>
+Indeed, the map $\theta:\operatorname{\bf Bis}(R)\to\mathcal{J}$, given by
+<div class="equation">\[
+\theta_A=\ra\circ(\so|_A)^{-1}:\so(A)\to\ra(A)
+\]</div>
+is a semigroup morphism with inverse $f\mapsto\operatorname{graph}(f)$. Whenever necessary, we will identify $\operatorname{\bf Bis}(R)$ with $\mathcal{J}$ in this manner.
+</p>
+<p>
+In particular, if $R=X\times X$ then $\mathcal{J}=\mathcal{I}(X)$, so $\operatorname{Bis}(X\times X)$ is isomorphic to $\mathcal{I}(X)$.
+</p>
+</div>
+
+<!-- 1.2.12 -->
+<div class="example" id="exampleginsidebisectionsoftransformationgroupoid">
+<p><span class="envidentifier">Example 1.2.12</span>
+If $\theta$ is an action of a group $G$ on a set $X$, then the map $g\mapsto\left\{g\right\}\times X$ is an injective morphism (Definition <span class='ref' data-tag="definitionmorphismofsemigroups"></span>) of $G$ into $\operatorname{\bf{Bis}}(G\ltimes_\theta X)$.
+</p>
+</div>
+
+<p>
+The set of idempotents in a semigroup plays several important roles in their representation theory (<a href="../4.paois/4.0.intro.html">Chapter 4</a>), so we introduce a notation for it.
+</p>
+
+<!-- 1.2.13 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.2.13</span>
+Given a semigroup $S$, denote by $E(S)=\left\{e\in S:e^2=e\right\}$ the set of idempotents of $S$.
+</p>
+</div>
+
+<p>
+Note that if $s$ and $t$ are inverse elements in a semigroup $S$ then $st\in E(S)$, and conversely every $e\in E(S)$ is an inverse of itself. In particular, if $S$ is an inverse semigroup then $E(S)=\left\{s^*s:s\in S\right\}$. If $S$ is a monoid then $1=1^2\in E(S)$.
+</p>
+
+<!-- 1.2.14 -->
+<div class="example" id="exampleidempotentssets">
+<p><span class="envidentifier">Example 1.2.14</span>
+Given a set $A$, let $\id_A:A\to A$ be the identity function of $A$. Then if $X$ is a set, the idempotent set of $\mathcal{I}(X)$ is
+<div class="equation">\[
+E(\mathcal{I}(X))=\left\{\id_A:A\subseteq X\right\}.
+\]</div>
+Also note that $\id_{A\cap B}=\id_A\id_B$ whenever $A,B\subseteq X$, so by identifying subsets of $X$ with their respective identity functions, the semigroup operation of $\mathcal{I}(X)$ corresponds to intersection of sets. Moreover, $f^*f=\id_{\dom(f)}$ and $ff^*=\id_{\ran(f)}$, so $f^*f$ corresponds to the domain of $f$ and $ff^*$ corresponds to the range of $f$.
+</p>
+</div>
+
+<p>
+We now prove that $E(S)$ is a commutative sub-inverse semigroup of an inverse semigroup $S$, and this is an important fact for calculations which will be performed throughout the next sections and chapters.
+</p>
+
+<!-- 1.2.15 -->
+<div class="theorem" id="theoreminverseiffescommute">
+<p><span class="envidentifier">Theorem 1.2.15
+<span style="font-weight:normal;">([<span class='ref' data-tag='MR0466355'></span>, Theorem 5.1.2],
+[<span class='ref' data-tag='MR1694900'></span>, Theorem 1.1.3])</span></span>
+A regular semigroup $S$ is inverse if and only if the elements of $E(S)$ commute. In this case, $E(S)$ is a sub-inverse semigroup of $S$.
+</p>
+</div>
+<a class='proofbutton' data-tag='theoreminverseiffescommute'>Proof</a>
+<div class="proof" id="proofoftheoreminverseiffescommute">
+<p>
+First assume that $S$ is inverse and let $e,f\in E(S)$. Let $x=(ef)^*$ be the unique inverse of $ef$. Then
+<div class="equation">\[
+(ef)(fxe)(ef)=(ef)x(ef)=ef\quad\text{and}\quad (fxe)(ef)(fxe)=f(xefx)e=fxe,
+\]</div>
+so $(fxe)=(ef)^*=x$. Then we obtain
+<div class="equation">\[
+x^2=(fxe)(fxe)=f(xefx)e=fxe=x,
+\]</div>
+so $x$ is idempotent, and therefore it is its own inverse, that is, $x=fxe=ef$ is idempotent. Similarly, $fe$ is idempotent, so
+<div class="equation">\[
+fe=(fe)^2=f(ef)e=fxe=x=ef.
+\]<span class="qed"></span></div>
+</p>
+
+<p>
+Conversely, assume elements of $E(S)$ commute and let $t_1$ and $t_2$ be inverses of some $s\in S$. Since $st_1$, $st_2$, $t_1s$ and $t_2s$ are idempotents, then
+<div class="equation">\begin{align*}
+t_1&=t_1st_1\\
+&=t_1(st_2)(st_1)\\
+&=t_1(st_1)(st_2)\\
+&=t_1st_2\\
+&=(t_1s)(t_2s)t_2\\
+&=(t_2s)(t_1s)t_2\\
+&=t_2st_2\\
+&=t_2,
+\end{align*}</div>
+so $S$ is inverse.
+</p>
+
+<p>
+If elements of $E(S)$ commute, it is easy to see $E(S)$ is closed under product, and since every element of $E(S)$ is its own inverse then $E(S)$ is a sub-inverse semigroup of $S$.<span class="qed"></span>
+</p></div>
+
+<p>
+An easy application of this result allows us to conclude that inverses in inverse semigroups respect the usual laws of products.
+</p>
+
+<!-- 1.2.16 -->
+<div class="corollary" id="theorempropertiesofinversesinsemigroups">
+<p><span class="envidentifier">Corollary 1.2.16</span>
+Let $S$ be an inverse semigroup. Then
+<ol class="alphpar">
+	<li> $(s^*)^*=s$ for all $s\in S$;</li>
+	<li> $(st)^*=t^*s^*$ for all $s\in S$;</li>
+	<li> If $s\in S$ and $e\in E(S)$ then $ses^*\in E(S)$.</li>
+</ol></p>
+</div>
+
+<p>
+Inverse semigroups have several applications in the theory of $C^*$-algebras: for example, important classes of $C^*$-algebras are generated by semigroups of partial isometries, such as those of Cuntz-Krieger, graph and more generally ultragraph $C^*$-algebras. For more details, we refer to
+[<span class='ref' data-tag='MR3699795'></span>,
+<span class='ref' data-tag='MR2457327'></span>,
+<span class='ref' data-tag='MR2050134'></span>].
+In fact, every regular semigroup of partial isometries of a $C^*$-algebra is an inverse semigroup, as we prove now. (Compare with [<span class='ref' data-tag='MR1724106'></span>, Proposition 2.1.4].)
+</p>
+
+<!-- 1.2.17 -->
+<div class="proposition">
+<p><span class="envidentifier">Proposition 1.2.17</span>
+Let $S$ be a multiplicative semigroup of partial isometries of a $C^*$-algebra $A$. The following are equivalent:
+<ol class="arpar">
+	<li> $S$ is closed under adjoints;</li>
+	<li> $S$ is regular;</li>
+	<li> $S$ is an inverse semigroup.</li>
+</ol>
+</p>
+</div>
+<a class='proofbutton' data-tag='1217'>Proof</a>
+<div class="proof" id="proofof1217">
+<p>
+<u>(1)$\Rightarrow$(2)</u> is obvious.
+</p>
+
+<p>
+<u>(2)$\Rightarrow$(3)</u>: Let us first prove that $E(S)=\left\{p\in S:p\text{ is a projection}\right\}$. If $p\in E(S)$, then in particular $p$ is a partial isometry and $(p^*)^2=p^*$, so
+<div class="equation">\begin{align*}
+(p-p^*)^3&=p^3-p^2p^*-pp^*p+p(p^*)^2-p^*p^2+p^*pp^*+(p^*)^2p-(p^*)^3\\
+&=p-pp^*-p+pp^*-p^*p+p^*+p^*p-p^*=0
+\end{align*}</div>
+and since $p-p^*$ is a normal element of $A$, the functional calculus ([<span class='ref' data-tag='MR1074574'></span>, Theorem 2.1.3]) implies that $p=p^*$, that is, $p$ is a projection.
+</p>
+
+<p>
+Now let us prove that $E(S)$ is commutative: if $p,q\in E(S)$, then $pq\in S$ is a partial isometry and $p$ and $q$ are projections, so
+<div class="equation">\[
+pq=(pq)(pq)^*(pq)=pqq^*p^*pq=(pq)^2
+\]</div>
+and similarly $(qp)^2=qp$, and thus
+<div class="equation">\begin{align*}
+(pq-qp)^3&=(pq)^3-(pq)^2(qp)-(pq)(qp)(pq)+(pq)(qp)^2\\
+&\quad-(qp)(pq)^2+(qp)(pq)(qp)+(qp)^2(pq)-(qp)^3\\
+&=pq-pqp-pq+pqp-qpq+qp+qpq-qp=0.
+\end{align*}</div>
+and again, because $p,q$ are projections then $pq-qp$ is normal in $A$ and the functional calculus implies $pq=qp$. Therefore elements of $E(S)$ commute and $S$ is inverse by Theorem <span class='ref' data-tag='theoreminverseiffescommute'></span>.
+</p>
+
+<p>
+<u>(3)$\Rightarrow$(1)</u>: Let $u\in S$, $v$ be the inverse of $u$ in $S$, and $u^*$ be the adjoint of $u$ in $A$. Without loss of generality, we can assume $A$ is contained in the algebra $B(H)$ of bounded operators of some Hilbert space $H$. In this case, a map $u\in A$ is a partial isometry if and only if $u$ is isometric on $\ker(u)^\perp$, and in this case $u(\ker(u)^\perp)=u(H)=\ker(u^*)^\perp$ ([<span class='ref' data-tag='MR1074574'></span>, Theorem 2.3.3]). Then for all $x\in(\ker u)^\perp$,
+<div class="equation" id="equationpartialisometriesinversesemigroup">\[
+\Vert x\Vert=\Vert u(x)\Vert=\Vert u(v(u(x)))\Vert\leq\Vert v(u(x))\Vert\leq\Vert u(x)\Vert\leq\Vert x\Vert\tag{1.2.1}
+\]</div>
+and this implies that $\Vert v(u(x))\Vert=\Vert u(x)\Vert$, so $u(x)\in(\ker v)^\perp$ because $v$ is a partial isometry. In other words, since $u$ is a partial isometry,
+<div class="equation">\[
+\left(\ker u^*\right)^\perp=u\left((\ker u)^\perp\right)\subseteq\left(\ker v\right)^\perp.
+\]</div>
+Similarly, from $v^*u^*v^*=(vuv)^*=v^*$, we conclude that $\left(\ker v\right)^\perp\subseteq\left(\ker u^*\right)^\perp$, and therefore $\left(\ker u^*\right)^\perp=\left(\ker v\right)^\perp$. Since $u^*$ and $v$ are partial isometries, it is therefore enough to check that $u^*=v$ on $\left(\ker u^*\right)^\perp$.
+</p>
+
+<p>
+If $y\in\left(\ker u^*\right)^\perp$, then $x:=u^*(y)\in(\ker u)^\perp$, and Equation (<span class='ref' data-tag='equationpartialisometriesinversesemigroup'></span>) implies $\Vert v(u(x))\Vert=\Vert x\Vert$. But since $S$ is regular, the proof of (2)$\Rightarrow$(3) also applies and shows that $vu$ is a projection, and thus
+<div class="equation">\[
+u^*(y)=x=v(u(x))=v(u(u^*(y))=v(y).\]<span class="qed"></span>
+</div>
+</p>
+</div>
+
+<p>
+The converse also holds: every inverse semigroup is isomorphic to a semigroup of partial isometries of some $C^*$-algebra. See the discussion after Theorem
+<span class='ref' data-tag='theoremwagnerpreston'></span>.
+</p>
+
+<p id="orderinversesemigroup">
+We define a partial order on an inverse semigroup $S$ with any of the following equivalent statements
+<div class="equation">\begin{align*}
+s\leq t&\iff\exists e\in E(S)\left(te=s\right)\\
+&\iff\exists e\in E(S)(et=s)\\
+&\iff s=ts^*s\\
+&\iff s=ss^*t
+\end{align*}</div>
+(the equivalence of these statements can be proven using Theorem <span class='ref' data-tag='theoreminverseiffescommute'></span>).
+</p>
+
+<!-- 1.2.18 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.18</span>
+If $S$ is an inverse semigroup, the order on $E(S)$ is described by $e\leq f\iff ef=e$ for $e,f\in E(S)$, and then $E(S)$ becomes a $\wedge$-semilattice, where for any two elements $e,f\in E(S)$, $ef=e\land f$.
+</p>
+</div>
+
+<!-- 1.2.19 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.19</span>
+In $\mathcal{I}(X)$, $f\leq g$ if and only if $g$ is an extension of $f$, that is, $\operatorname{dom}(f)\subseteq\operatorname{dom}(g)$ and $g|_{\operatorname{dom}(f)}=f$.
+</p>
+</div>
+
+<!-- 1.2.20 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.20</span>
+If $G$ is a group then $g\leq h$ in $G$ if and only if $g=h$.
+</p>
+</div>
+
+<!-- 1.2.21 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.21</span>
+If $\mathcal{G}$ is a groupoid and $A,B\in\operatorname{\bf Bis}(\mathcal{G})$, then $A\leq B\iff A\subseteq B$.
+</p>
+</div>
+
+<p>
+Using the different descriptions of the order of $S$ and commutativity of $E(S)$ the following theorem can be proven without problems.
+</p>
+
+<!-- 1.2.22 -->
+<div class="theorem" id="theoremorder">
+<p><span class="envidentifier">Theorem 1.2.22
+<span style="font-weight:normal;">(See [<span class='ref' data-tag='MR0466355'></span>, Section 5.2])</span></span>
+Let $S$ be an inverse semigroup. Then
+<ol class="alphpar">
+	<li> $s\leq t$ if and only if $s^*\leq t^*$;</li>
+	<li> If $s\leq t$ and $z\in S$ then  $sz\leq tz$ and $zs\leq zt$;</li>
+	<li> If $s\in S$, $e\in E(S)$ and $s\leq e$ then $s\in E(S)$;</li>
+	<li> If $s\leq t$ then $s^*s=t^*s=s^*t$ and $ss^*=st^*=ts^*$;</li>
+	<li> If $s\leq t$ and $s^*s=t^*t$ then $s=t$.</li>
+</ol></p>
+</div>
+
+<p>
+The next simple proposition gives a simple characterization of zeros in inverse semigroups as absorbing elements.
+</p>
+
+<!-- 1.2.23 -->
+<div class="proposition" id="propositionzerosemigroup">
+<p><span class="envidentifier">Proposition 1.2.23</span>
+An element $p$ of an inverse semigroup $S$ is a zero (minimum) of $S$ if and only if it is absorbing (that is, $ps=p$ for all $s\in S$).
+</p>
+</div>
+<a class='proofbutton' data-tag='propositionzerosemigroup'>Proof</a>
+<div class="proof" id="proofofpropositionzerosemigroup">
+<p>
+If $p$ is absorbing, then for all $s$, $p=ps^*s$, so $p\leq s$ and $p=\bigwedge S$;
+</p>
+
+<p>
+In the other direction, if $p=\bigwedge S$ then $p\leq p^*p$, which is idempotent, and so $p\in E(S)$ by Theorem <span class='ref' data-tag='theoremorder'></span>(c) and in particular $p=p^*$. For all $s\in S$, $p=sp^*p=sp$, so $p$ is absorbing.<span class="qed"></span>
+</p>
+</div>
+
+<p>
+Therefore, we denote any absorbing element of an inverse semigroup $S$ by $0$ and call it a <em>zero</em>, which agrees with the poset definition at the beginning of this section.
+</p>
+
+<!-- 1.2.24 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.24</span>
+In general, a zero for $E(S)$ is not necessarily a zero for $S$ when $S$ is an inverse semigroup. For example, if $G$ is a nontrivial group then $E(G)=\left\{1\right\}$, and $1$ is the minimum of $E(G)$ but not of $G$.
+</p>
+</div>
+
+<p>
+We will now prove a generalization of Cayley's Theorem in group theory, which allows us to think of $\mathcal{I}(X)$ as a sort of "canonical" inverse semigroup. The next proposition summarizes some basic properties of morphisms of semigroups which will be used throughout the text. 
+</p>
+
+<!-- 1.2.25 -->
+<div class="proposition" id="propositionpropertiesofmorphismsofsemigroups">
+<p><span class="envidentifier">Proposition 1.2.25</span>
+Let $\theta:S\to T$ be a morphism of semigroups.
+<ol class="alphpar">
+	<li> $\theta(S)$ is a subsemigroup of $T$;</li>
+	<li> If $\theta$ is invertible then it is immediately an isomorphism;</li>
+	<li> If $S$ is regular then $\theta(S)$ is regular;</li>
+	<li> If $S$ is regular and $T$ is an inverse semigroup then $\theta(S)$ is a sub-inverse semigroup of $T$;</li>
+	<li> If $S$ is inverse and $\theta$ is surjective, then $\theta(E(S))=E(T)$, and $T$ is an inverse semigroup;</li>
+	<li> If $S$ and $T$ are inverse semigroups then $\theta(s^*)=\theta(s)^*$ for all $s\in S$.</li>
+</ol>
+</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionpropertiesofmorphismsofsemigroups'>Proof</a>
+<div class="proof" id="proofofpropositionpropertiesofmorphismsofsemigroups">
+<p>
+(a) and (b) can be proven in the same manner as the analogous statements for groups. (c) is clear and (d) follows from the <span class='ref data-tag='remarksubinversesemigroups'></span> before Example <span class='ref' data-tag='examplesemilatticesasinversesemigroups'></span> and the previous items, and (f) follows easily from the uniqueness of inverses in inverse semigroups. The only item we need to prove then is (e), so suppose $S$ is inverse, $\theta$ is surjective and let $u=\theta(s)\in E(T)$, where $s\in S$. Letting $e=(ss^*)(s^*s)\in E(S)$, we obtain
+<div class="equation">\begin{align*}
+\phi(e)=u\phi(s^*s^*)u=u^2\phi(s^*s^*)u^2=\phi(s^2(s^*)^2s^2)=\phi(s^2)=u^2=u,
+\end{align*}</div>
+so $u=\phi(e)\in\phi(E(S))$. In particular, $E(T)$ is commutative and $T=\theta(S)$ is regular, so $T$ is an inverse semigroup by Theorem <span class='ref' data-tag='theoreminverseiffescommute'></span>.<span class="qed"></span>
+</p>
+</div>
+
+<!-- 1.2.26 -->
+<div class="theorem" id="theoremwagnerpreston">
+<p><span class="envidentifier">Theorem 1.2.26
+<span style="font-weight:normal;">(Vagner-Preston Theorem,
+[<span class='ref' data-tag='MR0064038'></span>,
+<span class='ref' data-tag='MR0048425'></span>])</span></span>
+Every inverse semigroup $S$ is isomorphic to a sub-inverse semigroup of $\mathcal{I}(X)$ for some set $X$.
+</p>
+</div>
+<a class='proofbutton' data-tag='theoremwagnerpreston'>Proof</a>
+<div class="proof" id="proofoftheoremwagnerpreston">
+<p>
+For every $s\in S$, let $D_{s^*}=\left\{t\in S:tt^*\leq s^*s\right\}$, and define a map $\alpha_s:D_{s^*}\to D_s$ by $\alpha_s(z)=sz$. To check that $\alpha_s$ is well-defined, note that for all $z\in D_{s^*}$,
+<div class="equation">\[
+\alpha_s(z)\alpha_s(z)^*=(sz)(sz)^*=szz^*s^*\leq ss^*,
+\]</div>
+so $\alpha_s(z)=sz\in D_s$. The verification that $\alpha_{s^*}=\alpha_s^{-1}$ follows easily from the definition of the order on $S$.
+</p>
+
+<p>
+In order to prove that $\alpha_s\circ\alpha_t=\alpha_{st}$, we first compare their domains, that is, we show that
+<div class="equation">\[
+\alpha_t^{-1}(D_t\cap D_{s^*})=D_{(st)^*}.
+\]</div>
+If $z\in D_{(st)^*}$, then $zz^*\leq (st)^*(st)=t^*s^*st\leq t^*t$ (because $t^*s^*s\leq t^*$), so $z\in D_{t^*}$, and
+<div class="equation">\[
+(\alpha_t(z))(\alpha_t(z))^*=(tz)(tz)^*=tzz^*t^*\leq t(st)^*(st)t^*=tt^*s^*stt^*\leq s^*s,
+\]</div>
+that is, $z\in\alpha_t^{-1}(D_t\cap D_{s^*})$.
+</p>
+
+<p>
+Conversely, if $z\in \alpha_t^{-1}(D_t\cap D_{s^*})$, then $\alpha_t(z)\in D_{s^*}$ which implies $\alpha_t(z)=s^*s\alpha_t(z)$, so
+<div class="equation">
+\[zz^*(st)^*(st)=zz^*t^*s^*st=z\alpha_t(z)^*s^*st=z\alpha_t(z)^*t=zz^*t^*t=zz^*,
+\]</div>
+and therefore $z\in D_{(st)^*}$. It is then clear that $\alpha_{st}=\alpha_s\circ\alpha_t$.
+</p>
+
+<p>
+Finally, for the injectivity of $\alpha$, simply note that if $\alpha_s=\alpha_t$ then $s=\alpha_s(s^*s)=\alpha_t(s^*s)=ts^*s$ so $s\leq t$ and symmetrically, $t\leq s$, so $\alpha:S\to\mathcal{I}(S)$ is an isomorphism from $S$ to a sub-inverse semigroup of $\mathcal{I}(S)$.<span class="qed"></span>
+</p>
+</div>
+
+<p>
+The map $\alpha$ will be used in later chapters, so we give it a name.
+</p>
+
+<!-- 1.2.27 -->
+<div class="definition" id="definitioncanonicalleftaction">
+<p><span class="envidentifier">Definition 1.2.27</span>
+The map $\alpha:S\to\mathcal{I}(S)$ is called the <em>canonical left action of $S$ on itself</em>.
+</p>
+</div>
+
+<div class="remark">
+<p><span class="envidentifier">Remark</span>
+For inverse semigroups with zero, it is natural to ask that morphisms preserve zeros, however this is not the case for the canonical left action. Namely, if $S$ has a zero and $\alpha:S\to\mathcal{I}(S)$ is the canonical left action, then $\theta(0)=\operatorname{id}_{\left\{0\right\}}$, which is not the empty function. However, this is easily remedied by noticing that $0$ is fixed by $\alpha_s$ for all $s\in S$, and so we can restrict each $\alpha_s$ to the complement of $\left\{0\right\}$ and obtain again an injective morphism $\alpha_0:S\to\mathcal{I}(S\setminus\left\{0\right\})$, $\alpha_0(s)=\alpha_s|_{S\setminus\left\{0\right\}}$, which in this case will satisfy $\alpha_0(0)=\varnothing$.
+</p>
+</div>
+
+<p>
+We can use the Vagner-Preston Theorem in order to prove that all inverse semigroups are isomorphic to some semigroup of partial isometries of some $C^*$-algebra (this was first proved in [<span class='ref' data-tag='MR785726'></span>]). Indeed, it is enough to prove this for $\mathcal{I}(X)$, where $X$ is a set. Consider the Hilbert space $H=\ell^2(X)$ with the standard basis $\left\{\delta_x:x\in X\right\}$. Given $f\in\mathcal{I}(X)$, we define $T_f\in B(H)$ by
+<div class="equation">\[
+T_f(\delta_x)=\begin{cases}\delta_{f(x)},&\text{if }x\in\dom(f),\\
+0,&\text{otherwise,}\end{cases}
+\]</div>
+and the map $f\mapsto T_f$ is an injective semigroup morphism.
+</p>
+
+<h3 class="subsection">1.2.2. Distributive semigroups</h3>
+
+<p>
+Let $X$ be a set and $f,g$ two partial bijections of $X$. Oftentimes we are interested in considering a common upper bound of $f$ and $g$, that is, a new function which extends both $f$ and $g$. This is possible, for example, if $f$ and $g$ coincide on the intersection of their domains, and $f^*$ and $g^*$ also coincide on the intersection of their domains. We will deal with this problem in the more abstract setting of general inverse semigroups (as opposed to $\mathcal{I}(X)$).
+</p>
+
+<!-- 1.2.28 -->
+<div class="proposition" id="propositionifcommonupperboundthencompatible">
+<p><span class="envidentifier">Proposition 1.2.28</span>
+Suppose $S$ is an inverse semigroup and $s,t\in S$ admit a common upper bound (that is, there is some $z\in S$ with $s\leq z$ and $t\leq z$). Then $s^*t\in E(S)$ and $st^*\in E(S)$.
+</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionifcommonupperboundthencompatible'>Proof</a>
+<div class="proof" id="proofofpropositionifcommonupperboundthencompatible">
+<p>
+Let $z\in S$ be a common upper bound of $s$ and $t$. Then $s^*t\leq z^*z$, which is an idempotent and thus $s^*t\in E(S)$. The same argument with $s^*$ and $t^*$ in place of $s$ and $t$ yields $st^*\in E(S)$ as well.<span class="qed"></span>
+</p>
+</div>
+
+<!-- 1.2.29 -->
+<div class="definition" id="definitioncompatibility">
+<p><span class="envidentifier">Definition 1.2.29</span>
+Two elements $s,t\in S$ are <em>compatible</em> if $s^*t$ and $st^*$ belong to $E(S)$. A subset $F\subseteq S$ is called <em>compatible</em> if any two elements of $F$ are compatible.
+</p>
+</div>
+
+<!-- 1.2.30 -->
+<div class="proposition" id="propositioncompatibility">
+<p><span class="envidentifier">Proposition 1.2.30</span>
+Let $S$ be an inverse semigroup, $s,t\in S$ two compatible elements and $z\in S$. Then
+<ol class="alphpar">
+	<li> $s^*$ and $t^*$ are compatible;</li>
+	<li> $zs$ and $zt$ are compatible;</li>
+	<li> $s\land t$ exists, and $s\land t=st^*t=tt^*s=ts^*s=ss^*t$.</li>
+</ol>
+</p>
+</div>
+
+<a class='proofbutton' data-tag='propositioncompatibility'>Proof</a>
+<div class="proof" id="proofofpropositioncompatibility">
+<ol class="alphpar">
+	<li> should be clear enough.</li>
+	<li> We have
+		<div class="equation">\[
+		(zs)^*(zt)=(s^*z^*z)t\leq s^*t\qquad\text{and}\qquad(zs)(zt)^*=z(st^*)z^*,
+		\]</div>
+		so $(zs)^*(zt)\in E(S)$ by Theorem <span class='ref' data-tag='theoremorder'></span>(c), and $(zs)(zt)^*\in E(S)$ by Theorem <span class='ref' data-tag='theorempropertiesofinversesinsemigroups'></span>(c), so $zs$ and $zt$ are compatible.</li>
+	<li> We just prove that $s\land t=st^*t$, and the other equalities are similar. Since, $st^*\in E(S)$, then $st^*t\leq t$, and also $st^*t\leq s$, so $st^*t$ is a lower bound of $s$ and $t$. If $p\leq s,t$, then
+	<div class="equation">\[
+	p=pp^*p\leq st^*t,
+	\]</div>
+	so $st^*t$ is the largest lower bound of $s$ and $t$, that is, their meet.<span class="qed"></span></li>
+</ol>
+</div>
+
+<!-- 1.2.31 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.31</span>
+If $X$ is a set and $f,g\in \mathcal{I}(X)$, then $f^*g\in E(\mathcal{I}(X))$ if and only if $f(x)=g(x)$ whenever $x\in\operatorname{dom}(f)\cap\operatorname{dom}(g)$, and similarly $fg^*\in E(\mathcal{I}(X))$ if and only if $f^{-1}(x)=g^{-1}(x)$ whenever $x\in\operatorname{ran}(f)\cap\operatorname{ran}(g)$. Thus, if $f$ and $g$ are compatible we may construct the partial bijection $f\lor g$, defined by
+<ul>
+	<li> $\operatorname{dom}(f\lor g)=\operatorname{dom}(f)\cup\operatorname{dom}(g)$; $\operatorname{ran}(f\lor g)=\operatorname{ran}(f)\cup\operatorname{ran}(g)$;</li>
+	<li> $(f\lor g)(x)=f(x)$ if $x\in\operatorname{dom}(f)$; $(f\lor g)(x)=g(x)$ if $x\in\operatorname{ran}(g)$.</li>
+</ul>
+</p>
+</div>
+
+<p>
+We will be interested in semigroups which satisfy a distributive property for the product with respect to joins. Actually, distributivity of the product over meets is always satisfied, but there are inverse semigroups such that the product does not distribute over joins.
+</p>
+
+<!-- 1.2.32 -->
+<div class="proposition" id="propositionproductalwaysdistributeovermeets">
+<p><span class="envidentifier">Proposition 1.2.32</span>
+Suppose $S$ is an inverse semigroup, $t\in S$, $F$ is a nonempty subset of $S$ and that $\bigwedge F$ exists. Then $\bigwedge(tF)$ and $\bigwedge(Ft)$ exist, and $\bigwedge(tF)=t\left(\bigwedge F\right)$ and $\bigwedge(Ft)=\left(\bigwedge F\right)t$.
+</p>
+</div>
+<a class='proofbutton' data-tag='propositionproductalwaysdistributeovermeets'>Proof</a>
+<div class="proof" id="proofofpropositionproductalwaysdistributeovermeets">
+<p>
+For all $f\in F$, $t(\bigwedge F)\leq tf$, so $t\left(\bigwedge F\right)$ is a lower bound of $tF$. To prove it is the largest one, assume $h$ is another lower bound of $tF$. Then $t^*h\leq t^*tf\leq f$ for all $f\in F$, which implies $t^*h\leq\bigwedge F$.
+</p>
+
+<p>
+Letting $p\in F$ be arbitrary, we have $h\leq tp$ and so $hh^*\leq tpp^*t^*\leq tt^*$, therefore
+<div class="equation">\[
+h=hh^*h\leq tt^*h\leq t\left(\bigwedge F\right).
+\]</div>
+The proof that $\bigwedge(Ft)=\left(\bigwedge F\right)t$ is similar.<span class="qed"></span>
+</p>
+</div>
+
+<!-- 1.2.33 -->
+<div class="definition" id="definitiondistributivesemigroup">
+<p><span class="envidentifier">Definition 1.2.33
+<span style="font-weight:normal;">([<span class='ref' data-tag='MR3077869'></span>])</span></span>
+A <em>distributive semigroup</em> is an inverse semigroup $S$ such that any two compatible elements $s,t\in S$ admit a join $s\lor t$, and for every $z\in S$, $z(s\lor t)=(zs)\lor (zt)$.
+</p>
+</div>
+
+<p>
+Note that in the definition we assume, in principle, only left distributivity of the product over joins, however right distributivity follows as a
+consequence, as we will see in Proposition <span class='ref' data-tag='propositionfinitarydistributivityofdistributivesemigroups'></span>.
+</p>
+
+<!-- 1.2.34 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.2.34</span>
+The simplest non-distributive inverse semigroup is the <em>diamond lattice</em> $M_3$:
+<div class="equation">\[
+\xymatrix{
+&1&\\
+s\ar[ur]&z\ar[u]&t\ar[ul]\\
+&0\ar[ul]\ar[u]\ar[ur]&
+}
+\]</div>
+Here an arrow $x\to y$ denotes $x\leq y$, and the semigroup operation is the meet. $M_3$ admits binary joins, but
+<div class="equation">\[
+z(s\lor t)=z1=z,\qquad\text{however}\qquad(zs)\lor(zt)=0\lor 0=0.
+\]</div>
+</p>
+</div>
+
+<!-- 1.2.35 -->
+<div class="example" id="bisgisinfinitelydistributive">
+<p><span class="envidentifier">Example 1.2.35</span>
+The semigroup $\operatorname{\bf Bis}(\mathcal{G})$ of bisections of a groupoid $\mathcal{G}$ is distributive. More generally, if $\mathscr{F}$ is any (possibly infinite) compatible subset of $\operatorname{\bf Bis}(\mathcal{G})$, then the join of $\mathscr{F}$ exists and coincides with the union of its elements:
+<div class="equation">\[
+\bigvee\mathscr{F}=\bigcup\mathscr{F}=\bigcup_{A\in\mathscr{F}}A.
+\]</div>
+</p>
+
+<p>
+Moreover, in this case we have $A(\bigvee \mathscr{F})=\bigvee(A\mathscr{F})$ for any $A\in\operatorname{\bf Bis}(\mathcal{G})$. We say that $\operatorname{\bf Bis}(\mathcal{G})$ is <em>infinitely distributive</em> ([<span class='ref' data-tag='MR2277324'></span>]). (Cf. Definition <span class='ref' data-tag='definitionkappadistributivesemigroup'></span>.)
+</p>
+</div>
+
+<!-- 1.2.36 -->
+<div class="example" id="exampleixisinfinitelydistributive">
+<p><span class="envidentifier">Example 1.2.36</span>
+	If $X$ is a set then, by Example <span class='ref' data-tag='examplebisectionsofequivalencerelationarefunctions'></span>, $\mathcal{I}(X)$ is isomorphic to $\operatorname{\bf Bis}(X\times X)$, and thus it is (infinitely) distributive by Example <span class='ref' data-tag='bisgisinfinitelydistributive'></span> above. If $\mathscr{F}$ is any compatible subset of $\mathcal{I}(X)$, then the join of $\mathscr{F}$ is the function given by
+	<div class="equation">\[
+	\bigvee \mathscr{F}:\bigcup_{f\in F}\dom(f)\to\bigcup_{f\in F}\ran(f),\qquad \left(\bigvee \mathscr{F}\right)(x)=f(x),
+	\]</div>
+	where $f\in \mathscr{F}$ is chosen such that $x\in\dom(f)$ ("$\dom$" and "$\ran$" stand for the domain and range of an element of $\mathcal{I}(X)$).
+	</p>
+</div>
+
+<!-- 1.2.37 -->
+<div class="proposition" id="propositionpropertiesofjoins">
+<p><span class="envidentifier">Proposition 1.2.37</span>
+Let $S$ be an inverse semigroup.
+<ol class="alphpar">
+	<li> If $F\subseteq E(S)$ admits a join, then $\bigvee F\in E(S)$;</li>
+	<li> If $F\subseteq S$ admits a join, then $F^*$ also admits a join, namely $\bigvee(F^*)=\left(\bigvee F\right)^*$.</li>
+</ol></p>
+</div>
+<a class='proofbutton' data-tag='propositionpropertiesofjoins'>Proof</a>
+<div class="proof" id="proofofpropositionpropertiesofjoins">
+<ol class="alphpar">
+	<li> Let $e=\bigvee F$. For every $f\in F$, $f=f^*f\leq e^*e$, so the definition of join implies $e\leq e^*e\in E(S)$, therefore $e\in E(S)$.</li>
+	<li> Should be clear from Theorem <span class='ref' data-tag='theoremorder'></span>(a) and <span class='ref' data-tag='propositioncompatibility'></span>(a).<span class="qed"></span></li>
+</ol>
+</div>
+
+<p>
+In the remainder of this subsection we will consider distributive properties for sets with more than two elements. We differentiate between finite and infinite sets for the sake of clarity and to obtain appropriate notation in <a href="../2.sg/2.0.intro.html">Chapter 2</a>, and specifically Definition <span class='ref' data-tag='definitionnormalizedcountingmeasure'></span>.
+</p>
+
+<!-- 1.2.38 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.2.38</span>
+Given a set $X$, we denote by $|X|$ the cardinality of $X$. In the particular case that $X$ is finite, we will use instead the symbol $\#X$ to denote its cardinality (number of elements).
+</p>
+</div>
+
+<!-- 1.2.39 -->
+<div class="proposition" id="propositionfinitarydistributivityofdistributivesemigroups">
+<p><span class="envidentifier">Proposition 1.2.39</span>
+If $S$ is a distributive semigroup, then every finite nonempty compatible set $F\subseteq S$ admits a join, and for every $t\in S$,
+<div class="equation">\[
+\bigvee(tF)=t\left(\bigvee F\right)\quad\text{and}\quad\bigvee (Ft)=\left(\bigvee F\right)t.
+\]</div>
+</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionfinitarydistributivityofdistributivesemigroups'>Proof</a>
+<div class="proof" id="proofofpropositionfinitarydistributivityofdistributivesemigroups">
+<p>
+This follows from induction on the cardinality $\#F$: If $\#F=1$ this is trivial, so let us just assume this holds for every compatible set with up to $n$ elements, and $\#F=n+1$. Let $z\in F$ be arbitrary. Then the distributive property implies
+<div class="equation">\[
+z^*\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)=\bigvee\left\{z^*s:s\in F\setminus\left\{z\right\}\right\},
+\]</div>
+a join of idempotents and hence an idempotent (Proposition <span class='ref' data-tag='propositionpropertiesofjoins'></span>(a)). Similarly, $z\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)^*\in E(S)$, so $z$ and $\bigvee\left(F\setminus\left\{z\right\}\right)$ are compatible and thus admit a join. From general order theory it should be clear that
+<div class="equation">\[
+z\lor\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)=\bigvee F.
+\]</div>
+</p>
+
+<p>
+Given any $t\in S$, we have
+<div class="equation">\[
+t\left(\bigvee F\right)=t\left(z\lor\left(\bigvee\left(F\setminus\left\{z\right\}\right)\right)\right)=tz\lor\bigvee\left(tF\setminus\left\{tz\right\}\right)=\bigvee(tF).
+\]</div>
+To obtain $\left(\bigvee F\right)t=\bigvee(Ft)$, we use the previous case with $t^*$ and $F^*$ and obtain
+<div class="equation">\[
+t^*\left(\bigvee F^*\right)=\left(\bigvee t^* F^*\right),
+\]</div>
+and taking inverses and applying Proposition <span class='ref' data-tag='propositionpropertiesofjoins'></span>(b) yields $\left(\bigvee F\right)t=\bigvee(Ft)$.<span class="qed"></span>
+</p>
+</div>
+
+<p>
+To finish, we prove that every distributive inverse semigroup is also distributive with respect to joins and meets. We perform this in a more general setting  by considering inverse semigroups  which are distributive with respect to a given cardinality. For more information on cardinals, see [<span class='ref' data-tag='MR1940513'></span>, Chapter 3]. We will not make assumptions about regularity of cardinals.
+</p>
+
+<!-- 1.2.40 -->
+<div class="definition" id="definitionkappadistributivesemigroup">
+<p><span class="envidentifier">Definition 1.2.40
+<span style="font-weight:normal;">([<span class='ref' data-tag='MR1940513'></span>, p. 82])</span></span>
+Let $\kappa$ be a cardinal. An inverse semigroup $S$ is <em>$\kappa$-distributive</em> if for every compatible set $F\subseteq S$ with $|F|<\kappa$, the supremum $\bigvee F$ exists and for all $z\in S$,
+<div class="equation">\[
+z\left(\bigvee F\right)=\bigvee(zF).
+\]</div>
+Note that $|zF|\leq |F|$ and $zF$ is compatible by Proposition <span class='ref' data-tag='propositioncompatibility'></span>, and that $\left(\bigvee F\right)z=\bigvee(Fz)$ also holds by Proposition <span class='ref' data-tag='propositionpropertiesofjoins'></span>(b).
+</p>
+</div>
+
+Proposition <span class='ref' data-tag='propositionfinitarydistributivityofdistributivesemigroups'></span> states that distributive inverse semigroups (as in Definition <span class='ref' data-tag='definitiondistributivesemigroup'></span>) are precisely the $\aleph_0$-distributive semigroups, where $\aleph_0=|\mathbb{N}|$ is the first infinite cardinal.
+
+The following proposition provides a sharper version (with a significantly different proof) of the main result of <span class='ref' data-tag='MR2277324'></span>.
+
+<!-- 1.2.41 -->
+<div class='proposition' id='propositionkappadistributivedistributemeets'>
+<p><span class='envidentifier'>Proposition 1.2.41</span>
+Let $S$ be a $\kappa$-distributive inverse semigroup, and suppose $F\subseteq S$ is compatible, $|F|<\kappa$. If $z\in S$ is such that $z\land f$ exists for all $f\in F$, then $z\land\left(\bigvee F\right)$ exists and
+<div class='equation'>\[
+z\land(\bigvee F)=\bigvee(z\land F),\qquad\text{ where }z\land F=\left\{z\land f:f\in F\right\}.
+\]</div>
+</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionkappadistributivedistributemeets'>Proof</a>
+<div class="proof" id="proofofpropositionkappadistributivedistributemeets">
+<p>
+Since $z\land F$ is bounded above by $\bigvee F$, then $z\land F$ is compatible. Clearly, $\bigvee(z\land F)$ is a lower bound of $\left\{z,\bigvee F\right\}$, so we need to prove it is the largest one: Suppose $p$ is a lower bound of $\left\{z,\bigvee F\right\}$. Then
+<div class='equation'>\[
+p=\left(\bigvee F\right)p^*p=\bigvee (Fp^*p).
+\]</div>
+Given $f\in F$, we have $f,p\leq\bigvee F$, so $f$ and $p$ are compatible and thus $fp^*\in E(S)$, so $fp^*p\leq p\leq z$. But of course we also have $fp^*p\leq f$, so $fp^*p\leq f\land z$ for all $f\in F$. Therefore
+<div class='equation'>\[
+p=\bigvee (Fp^*p)\leq\bigvee(F\land z).
+\]</div>
+This proves that $\bigvee(F\land z)$ is the largest lower bound of $\left\{z,\bigvee F\right\}$, that is, its meet.<span class='qed'></span>
+</p>
+</div>
+
+<p>
+The finitary case of this proposition becomes:
+</p>
+
+<!-- 1.2.42 -->
+<div class='corollary' id='corollarydistributivedistributemeets'>
+<p><span class='envidentifier'>Corollary 1.2.42</span>
+Let $S$ be a distributive inverse semigroup. If $s\lor t$, $z\land s$ and $z\land t$ exist, then $z\land(s\lor t)$ exists and
+<div class='equation'>\[
+z\land(s\lor t)=(z\land s)\lor(z\land t).
+\]</div>
+</p>
+</div>
+
+<p>
+We will need to deal with maps that preserve more than just semigroup operations, so we define morphisms which respect the order of semigroups in a stronger manner:
+</p>
+
+<!-- 1.2.43 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.2.43</span>
+A <em>$\lor$-morphism</em> of inverse semigroups is a semigroup morphism $\theta:S\to T$ such that whenever $s,t\in S$ are such that the join $s\lor t$ exists, then the join $\theta(s)\lor\theta(t)$ exists as well and $\theta(s\lor t)=\theta(s)\lor\theta(t)$. A <em>$\land$-morphism</em> is defined in a similar manner.
+</p>
+</div>
+
+<div class='remark'>
+<p><span class='envidentifier'>Remark</span>
+In general, the canonical left action of a distributive inverse semigroup (which is used in the Vagner-Preston Theorem) is not a $\lor$-morphism.
+</p>
+<p>
+For example, suppose that $S$ is any distributive semigroup which admits two compatible but non-comparable elements $s$ and $t$, i.e., $s\lor t$ exists and is different from both $s$ and $t$. Let $\alpha:S\to\mathcal{I}(S)$ be the canonical left action of $S$ (Definition <span class='ref' data-tag='definitioncanonicalleftaction'></span>). Then $(s\lor t)^*(s\lor t)$ belongs to the domain of $\alpha_{s\lor t}$, but it does not belong to the domain of $\alpha_s\lor\alpha_t$, so $\alpha_{s\lor t}$ is strictly larger than $\alpha_s\lor\alpha_t$.
+</p>
+<p>
+On the other hand, every distributive inverse semigroup $S$ admits a canonical injective $\lor$-morphism $S\to\mathcal{I}(X)$ for some set $X$. See [<span class='ref' data-tag='MR3700423'></span>, Section 3.3].
+</p>
+</div>
+
+<h3 class='subsection'>1.2.3. Relative complements</h3>
+
+<p>
+The final structural property we will have to deal with are <em>relative complements</em>, which allow us to look at semigroup-theoretic analogues of set differences.
+</p>
+
+<!-- 1.2.44 -->
+<div class='definition' id='definitionrelativecomplementdistributive'>
+<p><span class='envidentifier'>Definition 1.2.44</span>
+Let $S$ be a distributive semigroup with zero and $s\leq t\in S$. A <em>relative complement</em> of $s$ in $t$ is an element $c\leq t$ such that $s\land c=0$ and $t=s\lor c$ (in particular, $s$ and $c$ are compatible).
+</p>
+</div>
+
+<!-- 1.2.45 -->  
+<div class='lemma'>
+<p><span class='envidentifier'>Lemma 1.2.45</span>
+If $S$ is a distributive inverse semigroup, $s\leq t$ in $S$ and $c,d\in S$ are relative complements of $s$ in $t$, then $c=d$.
+</p>
+</div>
+
+<a class='proofbutton' data-tag='lemma1245'>Proof</a>
+<div class="proof" id="proofoflemma1245">
+<p>
+Since $s\lor c=t$ exists, then $s$ and $c$ are compatible and by Proposition <span class='ref' data-tag='propositioncompatibility'></span>(c), $sc^*c=s\land c=0$, thus
+<div class='equation'>\[
+c=tc^*c=(d\lor s)c^*c=dc^*c\lor sc^*c=dc^*c,
+\]</div>
+so $c\leq d$. The reverse inequality is similar.<span class='qed'></span>
+</p>
+</div>
+
+<!-- 1.2.46 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.2.46</span>
+If it exists, we denote the relative complement of an element $s$ in $t$ ($s\leq t$), in a distributive inverse semigroup, by $t\setminus s$.
+</p>
+</div>
+
+<!-- 1.2.47 -->
+<div class='lemma' id='lemmaformulaformeetsbychangingbysmaller'>
+<p><span class='envidentifier'>Lemma 1.2.47</span>
+If $S$ is an inverse semigroup, $s,t\in S$, $s\land t$ exists and $z\leq t$, then $s\land z$ exists and $s\land z=(s\land t)z^*z$
+</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmaformulaformeetsbychangingbysmaller'>Proof</a>
+<div class="proof" id="proofoflemmaformulaformeetsbychangingbysmaller">
+<p>
+We already know that
+<div class='equation'>\[
+(s\land t)z^*z=(sz^*z)\land (tz^*z)=(sz^*z)\land z,
+\]</div>
+which is a lower bound of $s$ and $z$. It is readily checked that it is the largest one.<span class='qed'></span>
+</p>
+</div>
+
+<p>
+In the next proposition, we initially assume that the existence of $t\setminus s$ implies $s\leq t$, however this condition is not necessary in general when we extend the notion of relative complements in <em>Boolean</em> inverse semigroups (<a href='../1.gis/1.4.sdfahg.html'>Section 1.4</a>).
+</p>
+
+<!-- 1.2.48 -->
+<div class='proposition' id='propositionrelativecomplementsandoperations'>
+<p><span class='envidentifier'>Proposition 1.2.48</span>
+Let $S$ be a distributive inverse semigroup and $s,t,z,a\in S$.
+<ol class='alphpar'>
+	<li> If $(t\setminus s)$ exists, then $(zt)\setminus(zs)$ exists and is equal to $z(t\setminus s)$. Similarly, $(tz)\setminus(sz)$ exists and is equal to $(t\setminus s)z$.</li>
+	<li> If $t\land z$, $s\land z$ and $(t\setminus s)$ exist, then
+		<div class='equation'>\[
+		(t\land z)\setminus(s\land z)=(t\setminus s)\land z,
+		\]</div>
+		in the sense that these elements exist and are equal.</li>
+	<li>If $a\leq s\lor t$, and $a\setminus s$ exists, then $a\setminus s\leq t$.</li>
+	<li>If $a\setminus s$ and $a\setminus t$ exist, and $s\leq t$, then $a\setminus t\leq a\setminus s$.</li>
+</ol>
+</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionrelativecomplementsandoperations'>Proof</a>
+<div class="proof" id='proofofpropositionrelativecomplementsandoperations'>
+<ol class='alphpar'>
+	<li><p>Let us verify that $z(t\setminus s)$ satisfies the properties of the relative complement of $zs$ in $zt$. If $p\leq z(t\setminus s),zs$, then $z^*p\leq (t\setminus s)\land s=0$, so $p=zz^*p=0$.</p>
+	
+		<p>On the other hand,
+		<div class='equation'>\[
+		zt=z(s\lor(t\setminus s))=zs\lor z(t\setminus s),
+		\]</div>
+		which is precisely what we need.</p></li>
+		
+	<li>Since $t\land z$ exists and $t\setminus s\leq t$, then, by the previous lemma (Lemma <span class='ref' data-tag='lemmaformulaformeetsbychangingbysmaller'></span>), $(t\setminus s)\land z$ exists. Let us show it satisfies the properties of the relative complement of $(s\land z)$ in $(t\land z)$: On one hand, if $p\leq (t\setminus s)\land z$ and $p\leq (s\land z)$ then $p\leq (t\setminus s)\land s=0$, so
+	<div class='equation'>\[
+	\left[(t\setminus s)\land z\right]\land (s\land z)=0.
+	\]</div>
+	Moreover, using Lemma <span class='ref' data-tag='lemmaformulaformeetsbychangingbysmaller'></span> again yields
+	<div class='equation'>\[
+	t\land z=((t\setminus s)\lor s))\land z=((t\setminus s)\land z)\lor(s\land z).
+	\]</div>
+	Therefore $(t\setminus s)\land z$ is the relative complement of $(s\land z)$ in $(t\land z)$.</li>
+	
+	<li> Since $a,s,t\leq s\lor t$, then $a$, $s$ and $t$ (or any smaller elements) are compatible and Proposition <span class='ref' data-tag='corollarydistributivedistributemeets'></span> allows us to compute
+	<div class='equation'>
+	\begin{align*}
+		a\setminus s&=(a\setminus s)\land a\\
+		&=(a\setminus s)\land(s\lor t)\\
+		&=((a\setminus s)\land s)\lor((a\setminus s)\land t)\\
+		&=0\lor((a\setminus s)\land t)\\
+		&\leq t.
+	\end{align*}</div></li>
+	<li> We are assuming $s\leq t\leq a$, so we have
+	<div class='equation'>\[
+	a= s\lor(a\setminus s)\leq t\lor(a\setminus s),
+	\]</div>
+	which implies $a\setminus t\leq a\setminus s$ by item (c).<span class='qed'></span></li>
+</ol>
+</div>
+
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.7.im.html#corollaryidealofnullsetsbooleaninversesemigroup'>1.7.18</a>
+<!-- 1.7.18 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 1.7.18</span>
+	If $\mu$ is an invariant mean on a Boolean inverse semigroup $S$, then
+	<div class='equation'>\[
+	\mathcal{N}(\mu)=\left\{n\in S:\mu(n^*n)=0\right\}=\left\{n\in S:d_\mu(0,n)=0\right\}
+	\]</div>
+	is a $\lor$-ideal of $S$, and $s\sim_{\mathcal{N}(\mu)} t$ if and only if $d_\mu(s,t)=0$. Moreover, $\mu$ factors to a faithful invariant mean on the quotient $S/\mathcal{N}(\mu)$, whose associated metric is the quotient metric of $d_\mu$.
+	</p>
+</div>

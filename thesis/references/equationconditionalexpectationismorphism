@@ -1,0 +1,9 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#equationconditionalexpectationismorphism'>4.4.8</a>
+
+			<div class='toload equation'>\begin{align*}
+				E(fg)
+					&=E(fg)u\\
+					&=E(fgu)\\
+					&=E(f)gu\\
+					&=E(f)g,\tag{4.4.8}
+			\end{align*}</div>

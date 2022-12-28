@@ -1,0 +1,36 @@
+\begin{theorem}
+	Sejam $I$ um intervalo, $f\colon I\to\mathbb{R}$ uma função injetiva, e $b\in f(I)$. Suponha que $f$ é diferenciável em $f^{-1}(b)$. Então $f^{-1}$ é diferenciável em $b$ se, e somente se, $f'(f^{-1}(b))\neq 0$, e neste caso
+	\[(f^{-1})'(b)=\frac{1}{f'(f^{-1}(b))}.\]
+\end{theorem}
+
+\begin{proof}
+	Primeiro, vamos provar que se $f^{-1}$ é diferenciável em $b$ então $f'(f^{-1}(b))\neq 0$. De fato, pela Regra da Cadeia, temos que
+	\begin{align*}
+	1
+		&=\operatorname{id}'(b)\\
+		&=(f\circ f^{-1})'(b)\\
+		&=f'(f^{-1}(b))\cdot (f^{-1})'(b),
+	\end{align*}
+	logo $f'(f^-1}(b))\neq 0$. (Este cálculo também indica qual que é o único valor possível para $(f^{-1})'(b)$.
+	
+	\hrule
+	
+	Agora, vamos assumir que $f'(f^{-1}(b))\neq 0$, e vamos provar que $f^{-1}$ é diferenciável em $b$.
+	
+	Defina
+	\[h(x)=\begin{cases}\frac{f(x)-b}{x-f^{-1}(b)},&\text{se }x\neq f^{-1}(b)\\f'(f^{-1}(b)),&\text{se }x=f^{-1}(b)\end{cases}\]
+	
+	Como $f$ é diferenciável em $f^{-1}(b)$, então $h$ é contínua em $f^{-1}(b)$. Como $f^{-1}$ é contínua, então $h\circ f^{-1}$ também é contínua em $b$. Além disso, para $y\neq b$ temos que $f^{-1}(y)\neq f^{-1}(b)$. Portanto,
+	\begin{align*}
+	f'(f^{-1}(b))
+		&=h(f^{-1}(b))\\
+		&=\lim_{y\to b}h(f^{-1}(y))\\
+		&=\lim_{y\to b}\frac{f(f^{-1}(y))-b}{f^{-1}(y)-f^{-1}(b)}\\
+		&=\lim_{y\to b}\frac{y-b}{f^{-1}(y)-f^{-1}(b)}.\tag{$*$}
+	\end{align*}
+	
+	Como assumimos que $f'(f^{-1}(b))\neq 0$, podemos tomar inversos em ($*$) e concluir que
+	\[\frac{1}{f'(f^{-1}(b))}=\lim_{y\to b}\frac{f^{-1}(y)-f^{-1}(b)}{y-b}.\]
+	O lado direito da equação acima é exatamente a definição da derivada de $f^{-1}$ em $b$. Portanto, $f^{-1}$ é diferenciável em $b$, e
+	\[(f^{-1})'(b)=\frac{1}{f'(f^{-1}(b))}.
+\end{proof}\]

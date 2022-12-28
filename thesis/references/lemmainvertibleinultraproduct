@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#lemmainvertibleinultraproduct'>2.4.13</a>
+
+<!-- 2.4.13 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 2.4.13</span>
+	If $\sigma=(\sigma_n)\in\prod_\mathcal{U}\MEAS(Y_n^2)$ is invertible, in the sense that $\sigma\sigma^*=(\id_{Y_n})_{\mathcal{U}}$, then there are $\widetilde{\sigma}_n\in\mathfrak{S}_n$ such that $\sigma=(\widetilde{\sigma}_n)_\mathcal{U}$.
+	</p>
+</div>

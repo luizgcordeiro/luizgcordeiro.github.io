@@ -1,0 +1,14 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#equivalence2groupoidofgermes'>4.2.5</a>
+
+<!-- 4.2.5 -->
+<div class='toload remark'>
+	<p><span class='envidentifier'>Remark 4.2.5</span>
+	Notice that if $(s,x),(t,y) \in S\ast X$ then 
+	<div class='equation'>\begin{align*}
+		(s,x) \sim (t,y)\iff x=y,\text{ and }\exists e\in E(S)\text{ such that }x \in X_e,\text{ and }se=te.\tag{4.2.4}
+	\end{align*}</div>
+	Indeed, if $u$ satisfies the condition in Equation (<span class='ref' data-tag='eqequivalencegroupoidgerms1'></span>), take $e=u^*u$. Then $x\in X_u\subseteq x_{u^*u}$ and $e$ satisfies the condition in Equation (<span class='ref' data-tag='eqequivalencegroupoidgerms2'></span>).
+
+	On the other hand, if $e$ satisfies (<span class='ref' data-tag='eqequivalencegroupoidgerms2'></span>), letting $u=se=te$ yields the desired properties of (<span class='ref' data-tag='eqequivalencegroupoidgerms1'></span>).
+	</p>
+</div>

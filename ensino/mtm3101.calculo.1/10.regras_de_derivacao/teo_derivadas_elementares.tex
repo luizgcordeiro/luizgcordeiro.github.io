@@ -1,0 +1,167 @@
+\begin{theorem}
+	As derivadas das funções elementares são dadas pelas seguines fórmulas:
+	\begin{enumerate}
+		%1
+		\item Se $u(x)=c$ é constante, então $u'(x)=0$ para todo $x$.
+		%2
+		\item Se $f(x)=x^n$ é uma função ``potência''/monomial, onde $n$ é um inteiro positivo, então $f'(x)=nx^{n-1}$.
+		%3
+		\item Se $g(x)=\frac{1}{x^n}=x^{-n}$ é a recíproca de uma monomial, onde $n$ é um inteiro positivo, então $g'(x)=-nx^{-n-1}=-n\frac{1}{x^{n+1}}$.
+		%4
+		\item Se $r(x)=x^{\frac{1}{n}}=\sqrt[n]{x}$ é uma ``função raiz'', onde $n$ é um inteiro positivo, então $r'(x)=\frac{1}{n}x^{\frac{1}{n}-1}$.
+		%5
+		\item Seja $\exp$ a função exponencial em base natural: $\exp(x)=e^x$. Então $\exp'(x)=e^x$. (Isto é, a derivada da exponencial natural é a própria exponencial.)
+		%6
+		\item Mais geralmente, se $\exp_a(x)=a^x$ é a exponencial em base $a$, então $\exp_a'(x)=\ln(a)a^x$.
+		%7
+		\item $\ln'(x)=\frac{1}{x}$.
+		%8
+		\item Mais geralmente,$\log_a'(x)=\ln(a)\frac{1}{x}$.
+		%9
+		\item $\sin'(x)=\cos(x)$.
+		%10
+		\item $\cos'(x)-\sin(x)$.
+	\end{enumerate}
+\end{theorem}
+
+\textit{Observações}:
+\begin{itemize}
+	\item Os itens 2-4 podem são todos casos particulares do seguinte: Se $\alpha$ é um número real positivo qualquer e $p(x)=x^\alpha$, então
+	\[p'(x)=\alpha x^{\alpha-1}.\]
+	Este fato será visto em detalhes mais à frente no curso.
+	\item Nos itens 2-4, utilizaremos repetidamente a seguinte igualdade:
+	\[\alpha^n-\beta^n=(\alpha-\beta)\left(\alpha^{n-1}+\alpha^{n-2}\beta+\cdots+\alpha\beta^{n-2}+\beta^{n-1}\right),\tag{$*$}\]
+	que é válida para quaisquer números reais $\alpha$ e $\beta$ e $n$ inteiro positivo.
+	\item O número $e$ é \textbf{definido} como o limite $e=\lim_{x\to 0^+}\left(1+x\right)^{1/x}$.
+\end{itemize}
+
+
+\begin{proof}
+	\begin{enumerate}
+		
+		%1
+		\item Temos $u(x)=c$.
+		\begin{align*}
+		u'(x)
+			&=\lim_{h\to 0}\frac{u(x+h)-u(x)}{h}\\
+			&=\lim_{h\to 0}\frac{c-c}{h}\\
+			&=\lim_{h\to 0}\frac{0}{h}\\
+			&=0.
+		\end{align*}
+		
+		%2
+		\item Temos $f(x)=x^n$. Vamos utilizar ($*$) com $\alpha=(x+h)$ e $\beta=x$.
+		\begin{align*}
+			f'(x)
+				&=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\\
+				&=\lim_{h\to 0}\frac{(x+h)^n-x^n}{h}\\
+				&=\lim_{h\to 0}\frac{((x+h)-x)((x+h)^{n-1}+(x+h)^{n-2}x+\cdots+(x+h)x^{n-2}+x^{n-1})}{h}\\
+				&=\lim_{h\to 0}((x+h)^{n-1}+(x+h)^{n-2}x+\cdots+(x+h)x^{n-2}+x^{n-1})\\
+				&=(x^{n-1}+(x+0)^{n-2}x+\cdots+(x+0)x^{n-2}+x^{n-1})\\
+				&=nx^{n-1}.
+		\end{align*}
+		
+		%3
+		\item Temos $g(x)=x^{-n}$. Vamos utilizar ($*$) com $\alpha=x$ e $\beta=(x+h)$.
+		\begin{align*}
+			g'(x)
+				&=\lim_{h\to 0}\frac{g(x+h)-g(x)}{h}\\
+				&=\lim_{h\to 0}\frac{(x+h)^{-n}-x^{-n}}{h}\\
+				&=\lim_{h\to 0}\frac{\frac{1}{(x+h)^n}-\frac{1}{x^n}}{h}\\
+				&=\lim_{h\to 0}\frac{x^n-(x+h)^n}{h(x+h)^nx^n}\\
+				&=\lim_{h\to 0}\frac{(x-(x+h))(x^{n-1}+x^{n-2}(x+h)+\cdots+x(x+h)^{n-2}+(x+h)^{n-1})}{h(x+h)^nx^n}\\
+				&=\lim_{h\to 0}\frac{-h(x^{n-1}+x^{n-2}(x+h)+\cdots+x(x+h)^{n-2}+(x+h)^{n-1})}{h(x+h)^nx^n}\\
+				&=\lim_{h\to 0}-\frac{(x^{n-1}+x^{n-2}(x+h)+\cdots+x(x+h)^{n-2}+(x+h)^{n-1})}{(x+h)^nx^n}\\
+				&=-\frac{(x^{n-1}+x^{n-2}(x+0)+\cdots+x(x+0)^{n-2}+(x+0)^{n-1})}{(x+0)^nx^n}\\
+				&=-n\frac{x^{n-1}}{x^{2n}}\\
+				&=-n x^{(n-1)-2n}\\
+				&=-n x^{-n-1}.
+		\end{align*}
+		
+		%4
+		\item Temos $r(x)=x^{\frac{1}{n}}$.  Vamos utilizar ($*$) na ``direção oposta'' com $\alpha=(x+h)^{\frac{1}{n}}$ e $\beta=x^{\frac{1}{n}}$
+		\begin{align*}
+			r'(x)
+				&=\lim_{h\to 0}\frac{r(x+h)-r(x)}{h}\\
+				&=\lim_{h\to 0}\frac{(x+h)^{\frac{1}{n}}-x^{\frac{1}{n}}}{h}\\
+				&=\lim_{h\to 0}\frac{(x+h)^{\frac{1}{n}}-x^{\frac{1}{n}}}{h}\cdot\frac{\left((x+h)^{\frac{n-1}{n}}+(x+h)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+h)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}{\left((x+h)^{\frac{n-1}{n}}+(x+h)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+h)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}\\
+				&=\lim_{h\to 0}\frac{(x+h)-x}{h\left((x+h)^{\frac{n-1}{n}}+(x+h)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+h)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}\\
+				&=\lim_{h\to 0}\frac{1}{\left((x+h)^{\frac{n-1}{n}}+(x+h)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+h)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}\\
+				&=\frac{1}{\left((x+0)^{\frac{n-1}{n}}+(x+0)^{\frac{n-2}{n}}x^{\frac{1}{n}}+\cdots+(x+0)^{\frac{1}{n}}x^{\frac{n-2}{n}}+x^{\frac{n-1}{n}}\right)}\\
+				&=\frac{1}{nx^{\frac{n-1}{n}}}\\
+				&=\frac{1}{n}x^{-\frac{(n-1)}{n}}\\
+				&=\frac{1}{n}x^{\frac{1}{n}-1}.
+		\end{align*}
+		
+		%5
+		\item Este é um caso particular do próximo item, com $a=e$.
+		
+		%6
+		\item Dado $x$ real, temos que
+		\begin{align*}
+			\exp_a'(x)
+				&=\lim_{h\to 0}\frac{a^{x+h}-a^x}{h}\\
+				&=\lim_{h\to 0}\frac{a^x\cdot a^h-a^x}{h}\\
+				&=\lim_{h\to 0}\frac{a^x(a^h-1)}{h}\\
+				&=a^x\lim_{h\to 0}\frac{a^h-1}{h}.
+		\end{align*}
+		
+		O terceiro \href{../06.teo_confronto/con_lim_fund_moodle.html}{limite fundamental} nos diz que $\lim_{h\to 0}\frac{a^h-1}{h}=\ln(a)$. Substituindo acima, obtemos
+		\[\exp_a'(x)=a^x\ln(a).\]		
+		%7
+		\item Este será um caso particular do próximo item, com $a=e$.
+		
+		%8
+		\item Vamos calcular
+		\[\log_a'(x)=\lim_{y\to x}\frac{\log_a(y)-\log_a(x)}{y-x}.\]
+		Façamos a substituição $y=a^t$. Assim, $y\to x$ se, e somente se, $t\to\log_a(x)$, e portanto
+		\begin{align*}
+			\log_a'(x)
+				&=\lim_{t\to \log_a(x)}\frac{t-\log_a(x)}{a^t-x}.
+		\end{align*}
+		Para reconhecer este limite, vamos denotar $x_0=\log_a(x)$ ou seja, $x=a^{x_0}$. Assim,
+		\begin{align*}
+			\log_a'(x)
+				&=\lim_{t\to x_0}\frac{t-x_0}{a^t-a^{x_0}}\\
+				&=\left(\lim_{t\to x_0}\frac{a^t-a^{x_0}}{t-x_0}\right)^{-1}\\
+				&=\left(\exp_a'(x_0)\right)^{-1}\\
+				&=\left(\ln(a)a^{x_0}\right)^{-1}\\
+				&=\frac{1}{\ln(a)}\frac{1}{x}
+		\end{align*}
+		
+		%9
+		\item Utilizando a regra de seno de somas, obtemos
+		\begin{align*}
+			\sin'(x)
+				&=\lim_{h\to 0}\frac{\sin(x+h)-\sin(x)}{h}\\
+				&=\lim_{h\to 0}\frac{\sin(x)\cos(h)+\cos(x)\sin(h)-\sin(x)}{h}\\
+				&=\lim_{h\to 0}\sin(x)\frac{\cos(h)-1}{h}+\lim_{h\to 0}\cos(x)\frac{\sin(h)}{h}.
+		\end{align*}
+		Agora, lembre-se do limite fundamental $\lim_{h\to 0}\frac{\sin(h)}{h}=1$. Isto lida com o segundo termo acima. Quanto ao primeiro, basta calcularmos
+		\begin{align*}
+			\lim_{h\to 0}\frac{\cos(h)-1}{h}
+				&=\lim_{h\to 0}{\cos^2(h)-1}{h(\cos(h)+1)}\\
+				&=-\lim_{h\to 0}\frac{\sin^2(h)}{h\cos(h)+1}\\
+				&=-\left(\lim_{h\to 0}\sin(h)\right)\left(\lim_{h\to 0}\frac{\sin(h)}{h}\right)\left(\frac{1}{\cos(h)+1}\right)\\
+				&=-\sin(0)\cdot 1\cdot\frac{1}{\cos(0)+1}\\
+				&=0.
+		\end{align*}
+		Então, concluímos que
+		\[\sin'(x)=\cos(x).\]
+		
+		%10
+		\item Utilizando a regra de cosseno de uma soma, obtemos
+		\begin{align*}
+			\cos'(x)
+				&=\lim_{h\to 0}\frac{\cos(x+h)-\cos(x)}{h}\\
+				&=\lim_{h\to 0}\frac{\cos(x)\cos(h)-\sin(x)\sin(h)-\cos(x)}{h}\\
+				&=\lim_{h\to 0}\cos(x)\frac{\cos(h)-1}{h}-\lim_{h\to 0}\sin(x)\frac{\sin(h)}{h}.
+		\end{align*}
+		
+		Utilizando os mesmos limites fundamentais que no item anterior, concluímos que
+		\begin{align*}
+			\cos'(x)&=-\sin(x).
+		\end{align*}
+	\end{enumerate}
+		
+\end{proof}

@@ -1,0 +1,5 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#definitionsmallcategoryassociativity'>i</a>
+
+<div class='toload'>
+If $(a,b)$ and $(b,c)\in\mathcal{C}^{(2)}$, then $(a,bc),(ab,c)\in\mathcal{C}^{(2)}$ and $a(bc)=(ab)c$.
+</div>

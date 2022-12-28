@@ -1,0 +1,9 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#theoremabertweiss'>2.5.11</a>
+
+<!-- 2.5.11 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.5.11
+	<span style='font-weight:normal'>[<span class='ref' data-tag='MR3035287'></span>, Theorem 1.1]</span></span>
+	Let $\beta$ be the Bernoulli shift of a countable group $G$ on a standard probability space $(X,\mu)$ (where $X^G$ is endowed with the product measure). Then any free probability-measure preserving action of $G$ on any standard probability space $(Y,\nu)$ weakly contains $\beta$.
+	</p>
+</div>

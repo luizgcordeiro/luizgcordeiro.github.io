@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#theoremcompactultrafilters'>2.1.2</a>
+
+<!-- 2.1.2 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 2.1.2</span>
+	$X$ is compact if and only if for every set $I$ and every ultrafilter of sets $\mathcal{U}$ on $I$, every function $(x_i)_i\in X^I$ converges along $\mathcal{U}$.
+	</p>
+</div>

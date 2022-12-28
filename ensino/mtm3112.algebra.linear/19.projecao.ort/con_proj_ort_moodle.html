@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Definição</b>.
+<p>
+Sejam \(V\) um espaço com produto interno e \(W\) um subespaço de \(V\). Uma transformação linear \(P\colon V\to W\) é dita ser uma projeção ortogonal de \(V\) sobre \(W\) se satisfizer às seguintes propriedades:
+</p>
+
+<ol>
+
+<li>
+<p>
+Para todo \(w\in W\), \(P(w)=w\).
+</p>
+
+</li>
+
+<li>
+<p>
+Para todo \(v\in V\), \(v-P(v)\) é ortogonal a \(W\).
+</p>
+
+</li>
+</ol>
+<p>
+Caso exista, a projeção ortogonal de \(V\) sobre \(W\) é única, e a denotaremos por \(\operatorname{proj}_W\).
+</p>
+
+<hr/>
+<p>
+Caso \(W\) tenha dimensão finita, a projeção ortogonal de \(V\) sobre \(W\) sempre existe, e pode ser calculada explicitamente da seguinte forma: Considere uma base ortonormal \(\left\{e_1,\ldots,e_n\right\}\) de \(W\). Dado \(v\in V\), temos que
+<div>
+\begin{equation*}
+\operatorname{proj}_W(v)=\sum_{i=1}^n\langle v,e_i\rangle e_i.
+\end{equation*}
+</div>
+</p>
+
+</div></body>
+</html>

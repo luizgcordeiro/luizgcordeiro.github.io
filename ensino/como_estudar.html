@@ -1,0 +1,314 @@
+<DOCTYPE html/>
+<html>
+	<head>
+		<meta http-equiv='content-type' content='text/html; charset=UTF-8'/>
+		<title>
+			Luiz Gustavo Cordeiro's website
+		</title>
+	</head>
+	<style>
+		body {
+		background-color:#4C4C4C;
+		margin-top: 0;
+		}
+		#topnav {
+		list-style-type: none;
+		width: 700px;
+		max-width: 60%;
+		padding:0;
+		margin: 0 auto 0 auto;
+		/* order: 3px solid #73AD21;*/
+		overflow: hidden;
+		background-color:#DADADA;
+		}
+		#topnav li {
+		margin:0;
+		padding:0;
+		display:inline;
+		float:left;
+		width:120px;}
+		#topnav li a {
+		display:block;
+		text-align: center;
+		padding: 20px;
+		text-decoration: none;
+		font-size: 17px;
+		background-color: #A9CCE3;
+		color:#0000FF;
+		}
+		#topnav li a.active {
+		background-color: #7FB3D5;
+		color:#0000C0;
+		}
+		#topnav li a:hover {
+		background-color: #5499C7;
+		color:#000080;
+		}
+		.main{
+		display:block;
+		margin: auto;
+		width: 660px;
+		max-width: 60%;
+		/* border: 3px solid #73AD21;*/
+		padding: 20px;
+		background-color:#DADADA;
+		}
+		#shortcv {
+		display:block;
+		}
+		.basicinfo {
+		padding:2%;
+		vertical-align: middle;
+		display: inline-block;
+		right:0px;
+		margin-left:5%;
+		}
+		#tableshortcv {
+		border-collapse: collapse;
+		width: 95%;
+		margin: auto;
+		}
+		#tableshortcv th{
+		width:30%;
+		}
+		#tableshortcv td, #tableshortcv th{
+		border: 1px solid;
+		padding:5px;
+		}
+		.listofpublications .title {
+		font-weight:bold;}
+		.listofpublications .journal {
+		font-style:italic;}
+		.listofpublications .arxiv {
+		font-family:monospace;}
+		.listofpublications .doi {
+		font-family:monospace;}
+	</style>
+	<body>
+		<ul id='topnav'>
+			<li>
+				<a href='http://www.mtm.ufsc.br/~cordeiro'>Home</a>
+			</li>
+			<li>
+				<a href='http://www.mtm.ufsc.br/~cordeiro#ensino' class='active'>Ensino</a>
+			</li>
+			<li>
+				<a href='http://www.mtm.ufsc.br/~cordeiro#research'>Research</a>
+			</li>
+		</ul>
+		<div class='main'>
+			<!-- Resources -->
+			<h2>Dicas de estudo e metodologia</h2>
+			<p>A primeira seção abaixo se destina a dar dicas gerais para que alunos aproveitem o máximo possível de seus cursos de matemática na universidade.</p>
+			<p>As próximas seções se destinam a fundamentar essas dicas, bem como fundamentar a minha metodologia geral de ensino.</p>
+			<h3>Dicas gerais de estudo</h3>
+			<ul>
+				<li>
+					<p>
+						<u>Antecipe o conteúdo que será estudado</u>:</p>
+					<p>Folheie a seção relevante do livro-texto um ou dois dias antes da aula. Isso só deve demorar uns poucos minutos, mas vai ajudá-l@ a começar a criar familiaridade com as palavras e conceitos que serão vistos em breve.</p>
+				</li>
+				<li>
+					<p>
+						<u>Espalhe seu estudo pela semana</u>:</p>
+					<ul>
+						<li>Precisa terminar uma lista de 20 exercícios em uma semana?<br/>Tente resolver 3 ou 4 por dia.</li>
+						<li>
+							Precisa ler 3 seções do livro até semana que vem?<br/>Tente ler uma por dia ou a cada dois dias.</li>
+					</ul>
+					<p>Se conseguir fazer mais do que isso de uma vez só e sentir que está progredindo ainda assim, melhor ainda. Mas não tente aprender quatro horas de conteúdo em meia hora.</p>
+				</li>
+				<li>
+					<p>
+						<u>Repense como você escreve suas notas</u>:</p>
+					<p>Você vai para a aula para reescrever o livro-texto, ou para ouvir a explicação do conteúdo e tirar dúvidas?</p>
+				</li>
+				<li>
+					<p>
+						<u>Use fontes confiáveis para seus estudos</u>:</p>
+					<p>Em termos simples, prefira o livro-texto indicado pelo professor ou algum material na Bibliografia indicada no programa da disciplina, ao invés de procurar material não-revisado em sites aleatórios. Se tiver alguma dúvida, peça ao seu professor por indicações.</p>
+					<p>Isso não significa que você não encontrará fontes confiáveis na internet, mas mesmo alguns detalhes e diferenças pequenos (por exemplo, de notação) podem causar muita confusão no seu entendimento do conteúdo.</p>
+				</li>
+			</ul>
+			<h3>Diferenças gerais entre a educação básica e superior</h3>
+			<p>Ao entrar na universidade, o aluno muitas vezes se depara com uma perspectiva diferente do ensino da do Ensino Médio: <u>Os &ldquo;fatos&rdquo; não importam tanto quanto o &ldquo;por quê&rdquo; deles serem válidos.</u>
+			</p>
+			<p>Isso se deve aos objetivos gerais do ensino superior: estimulação do pensamento reflexivo, do senso crítico, e do espírito científico. (Inclusive, esses objetivos estão mencionados na <a href='http://www.planalto.gov.br/ccivil_03/leis/l9394.htm' target='_blank'>Lei 9394, que estabelece as diretrizes e bases da educação nacional</a>.)</p>
+			<p>Especificamente às disciplinas da Matemática, isso pode ser visto do seguinte modo: saber uma certa fórmula não importa tanto quanto saber <u>como se deduz tal fórmula</u>.</p>
+			<p>Porém, isso não significa que devemos jogar todo o conhecimento anterior fora e recomeçar a aprender matemática do zero. No geral, se assume que alunos em disciplinas de matemática têm familiaridade com os diferentes tipos de números (naturais, inteiros, racionais, reais, complexos), como operá-los (em particular, trabalhar com frações, dízimas periódicas, etc.) e alguns conceitos mais abstratos como conjuntos e funções.</p>
+			<p>Por outro lado, também nos importamos com alguns fatos que são vistos e utilizados muitas vezes sem serem devidamente fundamentados:</p>
+			<ul>
+				<li>Por que a &ldquo;fórmula de Bh&amacr;skara&rdquo; (a &ldquo;fórmula quadrática&rdquo;) funciona?</li>
+				<li>Por que se diz que a dízima 0,999&hellip; tem valor 1?</li>
+			</ul>
+			<p>Esses são exemplos de perguntas respondidas em alguns dos cursos iniciais de matemática.</p>
+			<p>O processo de responder essas perguntas é delicado, pois requer uma análise lógica e formal de todos os conceitos envolvidos em cada uma das perguntas. A falta de contato dos alunos com conceitos &ndash; mesmo os mais elementares &ndash; de Lógica é um grave problema, não somente para disciplinas de Matemática mas de todas as ciências (tendo em vista que a Lógica subsume e explica os argumentos científicos). Esse problema é abordado nas referências [8] e [9].</p>
+			<h3>Sobre a necessidade do desenvolvimento formal do conteúdo</h3>
+			<p>Em disciplinas da Matemática Pura, lógica e formalismo têm um papel central na apresentação do conteúdo. O mesmo se aplica &ndash; a menos de algumas especificidades &ndash; a disciplinas que porventura serão aplicadas. O exemplo mais clássico disso é a Álgebra Linear, que permeia toda a Matemática moderna e todas as suas aplicações.</p>
+			<p>Na minha experiência em geral, alunos com foco em disciplinas aplicadas (Engenharia sendo o exemplo principal) têm certa aversão a esta abordagem à disciplina. Então vale explicar a motivação para a mesma:</p>
+			<p>Em termos sucintos: &ldquo;<i>O resultado de um cálculo não importa. O que importa é a habilidade de realizar um cálculo de modo correto.</i>&rdquo;</p>
+			<p>É uma diferença sutil, mas muito importante. Mas pense nos seguinte exemplos triviais:</p>
+			<ul>
+				<li>Se pusermos 4 maçãs em uma cesta que já tem duas maçãs, quantas maçãs haverão na cesta?&hellip;<br/>Seis, obviamente.</li>
+				<li>Mas e se pusermos 4 bananas em uma cesta que já tem duas bananas, quantas bananas a cesta terá?&hellip;<br/>Novamente 6, é óbvio.</li>
+				<li>Vamos complicar: E se pusermos quatro maçãs numa cesta com duas bananas. Quantas frutas haverão na cesta?&hellip;<br/>Obviamente 6, de novo.</li>
+			</ul>
+			<p>Esses três itens são consequência imediata do seguinte fato: 4+2=6. Todos eles são trivializados pelo fato de que você compreende de modo efetivo o que que a frase "4+2=6" significa, e também que ela é verdade. O último exemplo é mais complicado que os dois primeiros, pois são tratadas 3 classes de objetos de uma só vez: maçãs, bananas e frutas. Mas você também sabe que tanto maçãs quanto bananas são exemplos específicos de frutas, o que deve ser compreendido como uma inclusão de conjuntos.</p>
+			<p>O mesmo se aplica a conceitos mais complicados do que a soma de números naturais. Uma real compreensão de um tópico permite aplicá-lo em diferentes circunstâncias, de modo correto e eficiente.</p>
+			<p>(&ldquo;Compreensão&rdquo; é um conceito filosófico, sem uma real definição, mas que todos entendemos mais ou menos o que significa (nós compreendemos o que &ldquo;4+2=6&rdquo; significa, por exemplo). Vide a referência [10] para uma melhor discussão.)</p>
+			<p>Então vem o principal fato do mundo moderno:</p>
+			<ul>
+				<li>Todas as contas não-triviais são realizadas por computadores.</li>
+			</ul>
+			<p>Então o que importa é a habilidade de se comunicar de modo efetivo o procedimento a ser realizado. A determinação de tal procedimento é feita por meio da compreensão e intuição do que quer quer esteja sendo tratado.</p>
+			<p>Esta &ldquo;compreensão&rdquo; é exatamente o ponto abordado por questões teóricas, que pedem por uma explicação formal (precisa e sem ambiguidade) para um fato intuitivo (descrito na questão de modo formal).</p>
+			<h3>Sobre a linguagem: Português e Lógica</h3>
+			<p>
+				Em geral, a maior dificuldade que os alunos têm &ndash; na minha experiência e conforme conversas com meus colegas - é na comunicação efetiva e precisa e na interpretação correta dos conceitos da Matemática. Conforme descrito anteriormente, na minha opinião também é desnecessário requerer que alunos fiquem &ldquo;fazendo continhas&rdquo; que na prática serão feitas por um computador; O importante é saber criar um programa que resolva o problema. Mas para isso se tem que entender a teoria.
+			</p>
+			<p>Essa dificuldade por parte dos alunos é constatada inclusive na pesquisa em Educação Matemática. Por exemplo, no artigo [11], os autores estudam as dificuldades de alunos em cursos de Álgebra, no qual Álgebra Linear se encaixa. Conforme o resumo:</p><p style='margin-left:30px;'>&ldquo;O principal objetivo desta pesquisa é examinar a relação entre diferentes tipos de erros cometidos por estudantes e os conhecimentos necessários para resolver situações-problema em Álgebra, Aritmética e Geometria. Para a análise de erros seguimos as considerações de Kinfong e Holtan e para investigar o conhecimento necessário para ultrapassar os erros mobilizamos a teoria de Mayer. A metodologia de pesquisa é semi-experimental, envolvendo um teste de matemática com seis questões e entrevistas dirigidas. Os resultados da pesquisa revelaram que os erros na solução dos problemas-palavra aritméticos resultaram da falta de conhecimentos linguísticos, semânticos, estruturais e comunicativos; no que diz respeito aos problemas-palavra, os erros vinculam-se à lacunas no conhecimento semântico, estrutural e intuitivo. Em relação aos problemas-palavra algébricos os erros devem-se a lacunas quanto às operações matemáticas. Em síntese, os resultados mostram que a maior deficiência dos alunos relaciona-se a lacunas relativas ao conhecimento semântico, estrutural e comunicativo.&rdquo;</p>
+			<p>
+			Por isso um foco na compreensão &ldquo;real&rdquo; (no sentido filosófico mesmo) é mais importante do que garantir que os alunos aprendam a aplicar cegamente fórmulas e fazer cálculos sem sentido.
+</p>
+			<h3>Sobre o tempo de estudo</h3>
+			<p>A regra geral é a seguinte: Você deve passar no mínimo o mesmo tempo estudando fora de aula do que em aula.</p>
+			<p>Isso não significa que você deve planejar exatamente 4 horas da semana para estudar Geometria Analítica além das aulas. Pode ser que você precise de um pouco mais ou um pouco menos, e isso também pode variar de semana a semana na mesma disciplina.</p>
+			<p>Mas essa regra geral serve para que você consiga se planejar antes mesmo dos semestres começarem. Um bom número de horas-aula durante o semestre é entre 20 e 24, e isso provavelmente vai fazer com que você gaste 40 horas ou mais por semana em estudo.</p>
+			<p style='margin-left:30px;'>&ldquo;<em>Mas e se eu precisar trabalhar ou tiver outras prioridades?!</em>&rdquo;</p>
+			<p>Sem problema. Reduza um pouco a sua carga horária para umas 12 horas-aula por semana, ou quem sabe até menos se for possível. Os estudos não devem ser tratados simplesmente como um hobbie (a não ser que você tenha entrado na universidade com esse objetivo específico), e requerem tempo e dedicação específicos a eles.</p>
+			<h3>Sobre a concentração de material de estudo</h3>
+			<p>Uma sugestão que você provavelmente vai ouvir de vários professores é a de &ldquo;<em>não deixar o estudo para última hora</em>&rdquo;. Isso inclui não virar a noite estudando para uma prova.</p>
+			<p>Essa sugestão é bem fundamentada na pesquisa educacional. O artigo [4] trata de 3 diferentes análises de retenção de conteúdo, onde se comparam a &ldquo;condensação de conteúdo&rdquo; (&ldquo;<em>massing</em>&rdquo; &ndash; quando quantidades maiores de conteúdo são estudados em um tempo mais curto) com o &ldquo;espaçamento de conteúdo&rdquo; (&ldquo;<em>spacing</em> &ndash; quando o conteúdo é visto pouco-a-pouco por vários dias).
+			</p>
+			<p>Os resultados são unânimes: o espaçamento de conteúdo gera resultados (por volta de 50%) melhores no aprendizado final do que a concentração de conteúdo. Isso é contrário ao que os próprios participantes dos estudos acreditavam (que estudos concentrados são mais eficientes)!</p>
+			<p>Os resultados em [5] indicam o mesmo:</p>
+			<p style='margin-left:30px;'>[&hellip;] &ldquo;<em>most participants believed they learned more from massed than from spaced presentations, even though their performance on the name-selection test proved otherwise.</em>&rdquo; [&hellip;]</p>
+			<p style='margin-left:30px;'>(Tradução livre) [&hellip;] &ldquo;<em>a maioria dos participantes acreditava que aprendiam mais com estudos concentrados do que com apresentações espaçadas, mesmo que seus resultados nos teste de seleção de nomes provasse o contrário.</em>&rdquo; [&hellip;]</p>
+			<p>Esses resultados também aparecem na literatura mesmo quando os autores a princípio acreditam que a concentração de conteúdo é superior, como, por exemplo, acontece em [6]:</p>
+			<p style='margin-left:30px;'>[&hellip;] &ldquo;<em>In marked contrast to our expectations, spaced study resulted in
+					significantly better test performance than did massed study</em>&rdquo; [&hellip;]</p>
+			<p style='margin-left:30px;'>(Tradução livre) [&hellip;] &ldquo;<em>Em um contraste marcante às nossas expectativas, o estudo espaçado gerou resultados significativamente melhores do que o estudo concentrado</em>&rdquo; [&hellip;]</p>
+			<p>O estudo em [7] leva a resultados similares para crianças.</p>
+			<p>No fim, o estudo espaçado e constante do conteúdo é retificado pela pesquisa como sendo o melhor caminho para um aprendizado verdadeiro, e gera resultados consistentemente melhores do que tentar condensar uma grande quantidade de conteúdo em um espaço curso de tempo, mesmo que o contrário pareça verdade.</p>
+			<h3>Sobre exames de livro aberto</h3>
+			<p>Normalmente, do ponto de vista de alunos, exames com consulta ao material didático (OBEs - &ldquo;<em>Open Book Exams</em>&rdquo;) geram menos ansiedade do que exames sem consulta (CBEs - &ldquo;<em>Closed Book Exams</em>&rdquo;). Afinal, por que é necessário decorar conteúdo que está disponível a qualquer momento, em qualquer lugar?</p>
+			<p>Entretanto, as pesquisas indicam que isso não é completamente válido: Na discussão de [2], se lê:</p>
+			<p style='margin-left:30px;'>[&hellip;] &ldquo;<em>if test format does affect outcomes, it favors the argument that people prepare more for CBEs. This may be driven by the finding that students anticipate lessened anxiety with OBEs even though this does not appear to translate to actual experiences of lessened anxiety.</em>&rdquo; [&hellip;]</p>
+			<p style='margin-left:30px;'>(Tradução livre) [&hellip;] &ldquo;<em>se o formato de uma avaliação afetar o seu resultado, isso favorece o argumento de que as pessoas se preparam mais para exames sem consulta. Isso pode ser causado pela descoberta de que estudantes antecipam menos ansiedade com exames consulta, mesmo que isso não resulte em redução factual da sensação de ansiedade.</em>&rdquo; [&hellip;]</p>
+			<p>Outros resultados agravantes contra exames com consulta se dão na referência [1]. Neste artigo, se comparou o aprendizado ao final do curso entre grupos de alunos que realizaram exames com versus sem consulta. Em geral, alunos que realizaram exames com consulta obtiveram notas ~21% mais baixas do que alunos que realizaram exames de livro fechado durante o semestre. Os resultados em [3] são similares (diferença de ~19% nas notas).</p>
+			<p>A bibliografia indica que as expectativas dos alunos com relação aos diferentes tipos de exames levam a diferentes práticas de estudo, o que explica essas diferenças no aprendizado. De acordo com [1], com exames sem consulta, os alunos participam mais das aulas e de atividades complementares, e também realizam mais atividades optativas. Essas são todas boas práticas de estudo, que levam &ndash; de acordo com nossa experiência &ndash; a notas melhores e uma melhor compreensão do assunto estudado. Além disso, alunos que seguiam essas boas práticas de estudo se saíram bem em ambos os tipos de avaliação, o que reforça a necessidade dessas boas práticas.</p>
+			<h2>Referências:</h2>
+			<ol class='listofpublications'>
+				<li>
+					<!-- 1 -->
+					<span class='title'>Do Open-Book Exams Impede Long-Term Learning in Introductory Biology Courses?</span>
+					<br/>
+					<span class='author'>Randy Moore</span> e <span class='author'>Philip A. Jensen</span>
+					<br/>
+					<span class='journal'>Journal of College Science Teaching 36 (7), 2007</span>
+					<br/>
+					<a class='doi' href='https://www.jstor.org/stable/42992504'>JSTOR: 42992504</a>
+				</li>
+				<li>
+					<!-- 2 -->
+					<span class='title'>Comparing Open-Book and Closed-Book Examinations.</span> A Systematic Review.
+					<br/>
+					<span class='author'>Steven J. Durning</span>, <span class='author'>Steven J. Durning</span>, <span class='author'>Ting Dong</span>
+					<span class='author'>Temple Ratcliffe</span>, <span class='author'>Lambert Schuwirth</span>, <span class='author'>Anthony R. Artino</span>, <span class='author'>John R. Boulet</span> and <span class='author'>Kevin Eva</span>
+					<br/>
+					<span class='journal'>Academic Medicine 91 (4), 2016</span>
+					<br/>
+					<a class='doi' href='https://doi.org/10.1097/ACM.0000000000000977'>DOI: 10.1097/ACM.0000000000000977</a>
+				</li>
+				<li>
+					<!-- 3 -->
+					<span class='title'>Open-Book Versus Closed-Book Tests in University Classes: A Field Experiment.</span>
+					<br/>
+					<span class='author'>Ralf Rummer</span>, <span class='author'>Judith Schweppe</span> e <span class='author'>Annett Schwede</span>
+					<br/>
+					<span class='journal'>Frontiers in Psychology 10, 2019</span>
+					<br/>
+					<a class='doi' href='https://doi.org/10.3389/fpsyg.2019.00463'>DOI: 10.3389/fpsyg.2019.00463</a>
+				</li>
+				<li>
+					<!-- 4 -->
+					<span class='title'>Optimising Learning Using Flashcards: Spacing Is More Effective Than Cramming.</span>
+					<br/>
+					<span class='author'>Nate Kornell</span>
+					<br/>
+					<span class='journal'>Applied Cognitive Psychology 23, 2009</span>
+					<br/>
+					<a class='doi' href='https://doi.org/10.1002/acp.1537'>DOI: 10.1002/acp.1537</a>
+				</li>
+				<li>
+					<!-- 5 -->
+					<span class='title'>The Cognitive Science of Learning Enhancement: Optimizing Long-Term Retention</span>
+					<br/>
+					<span class='author'>Eric Eich</span>
+					<br/>
+					website: <a class='doi' href='https://ctlt.ubc.ca/resources/isotl/resources-archives/the-cognitive-science-of-learning-enhancement-optimizing-long-term-retention/'>https://ctlt.ubc.ca/resources/isotl/resources-archives/the-cognitive-science-of-learning-enhancement-optimizing-long-term-retention/</a>
+				</li>
+				<li>
+					<!-- 6 -->
+					<span class='title'>Learning Concepts and Categories</span>: Is Spacing the &ldquo;Enemy of Induction&rdquo;?
+					<br/>
+					<span class='author'>Nate Kornell</span> e <span class='author'>Robert A. Bjork</span>
+					<br/>
+					<span class='journal'>Psychological Sciente 19 (6), 2008</span>
+					<br/>
+					<a class='doi' href='https://doi.org/10.1111/j.1467-9280.2008.02127.x'>DOI: 10.1111/j.1467-9280.2008.02127.x</a>
+				</li>
+				<li>
+					<!-- 7 -->
+					<span class='title'>Distributing Learning Over Time: The Spacing Effect in Children’s Acquisition and Generalization of Science Concepts</span>
+					<br/>
+					<span class='author'>Haley A. Vlach</span> e <span class='author'>Catherine M. Sandhofer</span>
+					<br/>
+					<span class='journal'>Child Development 83 (4), 2012</span>
+					<br/>
+					<a class='doi' href='https://doi.org/10.1111/j.1467-8624.2012.01781.x'>DOI: 10.1111/j.1467-8624.2012.01781.x</a>
+				</li>
+				<li>
+					<!-- 8 -->
+					<span class='title'>The quality of argumentations of first-year pre-service teachers.</span>
+					<br/>
+					<span class='author'>Leander Kempen</span> e <span class='author'>Rolf Biehler</span>
+					<br/>
+					<span class='journal'>Proceedings of the joint meeting of PME38 and PME-NA36 3, 2014</span>
+					<br/>
+					Website: <a href='https://eric.ed.gov/?id=ED599831' target='_blank'>https://eric.ed.gov/?id=ED599831</a>
+				</li>
+				<li>
+					<!-- 9 -->
+					<span class='title'>Research on Teaching and Learning Mathematics at the Tertiary Level</span>: State-of-the-Art and Looking Ahead
+					<br/>
+					<span class='author'>Irene Biza</span>, <span class='author'>Victor Giraldo</span>, <span class='author'>Reinhard Hochmuth</span>, <span class='author'>Azimehsadat Khakbaz</span> e <span class='author'>Chris Rasmussen</span>
+					<br/>
+					<span class='series'>ICME-13 Topical Surveys</span>
+					<br/>
+					<a class='doi' href='https://doi.org/10.1007/978-3-319-41814-8_1'>DOI: 10.1007/978-3-319-41814-8_1</a>
+				</li>
+				<li>
+					<!-- 10 -->
+					<span class='title'>What is understanding?</span> An overview of recent debates in epistemology and philosophy of science
+					<br/>
+					<span class='author'>Christoph Baumberger<span class='author'>, <span class='author'>Claus Beisbart</span> e <span class='author'>Georg Brun</span>
+						<br/>
+						<span class='series'/>
+						<br/>
+						Disponível em <a class='url' href='https://www.georgbrun.ch/publications/Baumberger-Beisbart-Brun-WhatIsUnderstanding.pdf'>https://www.georgbrun.ch/publications/Baumberger-Beisbart-Brun-WhatIsUnderstanding.pdf</a>
+					</li>
+				<li>
+					<!-- 11 -->
+					<span class='title'>A relação entre diferentes tipos de erros cometidos por estudantes e o conhecimento exigido para resolver problemas-palavra</span>
+					<br/>
+					<span class='author'>Majid Haghverdi</span>, <span class='author'>Ahmad Shahvarani Semnani</span> e <span class='author'>Mohammad Seifi</span>
+						<br/>
+						<span class='journal'/>Bolema: Boletim de Educação Matemática 26 (42B), 2012</span><br/>
+						<br/>
+						<a class='doi' href='https://10.1590/S0103-636X2012000200012'>DOI: 10.1590/S0103-636X2012000200012 </a>
+					</li>
+				</ol>
+			</div>
+		</body>
+	</html>

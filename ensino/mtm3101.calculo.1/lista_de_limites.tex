@@ -1,0 +1,53 @@
+\subsection*{Regras dos limites}
+
+As seguintes igualdades são válidas sempre que o lado direito da equação fizer sentido, para $a\in[-\infty,\infty]$:
+
+\begin{itemize}
+	\item $\lim_{x\to a}(f(x)+\lambda)=\left(\lim_{x\to a}f(x)\right)+\lambda$
+	\item $\lim_{x\to a}\left(f(x)\pm g(x)\right)=\left(\lim_{x\to a}f(x)\right)\pm \left(\lim_{x\to a}g(x)\right)$
+	\item $\lim_{x\to a}(\lambda f(x))=\lambda\lim_{x\to a}f(x)$
+	\item $\lim_{x\to a}f(x)g(x)=\left(\lim_{x\to a}f(x)\right)\left(\lim_{x\to a}g(x)\right)$
+	\item $\lim_{x\to a}\left(f(x)^n\right)=\left(\lim_{x\to a}f(x)\right)^n$
+	\item $\lim_{x\to a}\dfrac{f(x)}{g(x)}=\dfrac{\lim_{x\to a}f(x)}{\lim_{x\to a}g(x)}$.
+\end{itemize}
+
+\subsection*{Funções contínuas}
+
+Se $f$ é uma função contínua em $a$, então
+\[\lim_{x\to a}f(x)=f(a)\]
+Em particular isto vale para funções elementares (polinomial, exponencial, logaritmo, raiz, trigonométrica, etc.)
+
+Caso $n>0$ seja inteiro e positivo,
+\begin{itemize}
+	\item $\lim_{x\to 0^+}\frac{1}{x^k}=+\infty$
+	\item $\lim_{x\to 0^+}\frac{1}{x^k}=\begin{cases}-\infty&,\text{se }k\text{ é ímpar}\\+\infty,&\text{se }k\text{ é par}\end{cases}$.
+\end{itemize}
+
+
+\subsection*{Composição}
+
+Se $g$ é contínua em $f(a)$, então
+\[\lim_{x\to a}(g(f(x))=g(\lim_{x\to a}f(x))\]
+
+\subsection*{Regra de L'Hôpital}
+
+Se as funções $f$ e $g$ são diferenciáveis ao redor de $a$ e a fração $\frac{f(a)}{g(a)}$ é indeterminada, então
+\[\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)},\]
+(desde que o lado direito faça sentido).
+
+\subsection*{Limites no infinito}
+
+\begin{itemize}
+\item $\lim_{x\to\infty}\frac{a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0}{b_mx^m+b_{m-1}x^{m-1}+\cdots+b_1x+b_0}=\begin{cases}\frac{a_n}{b_m},&\text{ se }n=m\\\pm\infty,&\text{ se }n>m\\0,&\text{se }n<m\end{cases}$
+\item $\lim_{x\to\infty}\frac{e^x}{x^n}=\infty$
+\item $\lim_{x\to\infty}\frac{x}{\ln x}=\infty$
+\end{itemize}
+
+\subsection*{Mudanças de variáveis}
+
+\begin{itemize}
+\item $\lim_{x\to a}f(x)=\lim_{y\to ka}f\left(\frac{y}{k}\right)$
+\item $\lim_{x\to a}f(x)=\lim_{y\to a+b}f(y-b)$
+\item $\lim_{x\to\infty}f(x)=\lim_{y\to 0^+}f\left(\frac{1}{y}\right)$
+\item $\lim_{x\to-\infty}f(x)=\lim_{y\to 0^-}f\left(\frac{1}{y}\right)$
+\end{itemize}

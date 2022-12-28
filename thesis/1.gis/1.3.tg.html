@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class="section">1.3. Topological groupoids</h2>
+
+<!-- 1.3.1 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.3.1</span>
+A <em>topological groupoid</em> is a groupoid $\mathcal{G}$ endowed with a topology which makes the product map $\mathcal{G}^{(2)}\to G$ and the inversion $\mathcal{G}\to \mathcal{G}$ continuous (where we consider the product topology on $\mathcal{G}^{(2)}$).
+</p>
+</div>
+
+<!-- 1.3.2 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.3.2</span>
+Any topological group, seen as a groupoid, is a topological groupoid.
+</p>
+</div>
+
+<!-- 1.3.3 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.3.3</span>
+If $R$ is an equivalence relation on a topological space $X$, then $R$ is a topological groupoid when endowed with the topology induced by the product topology of $X\times X$, however in general this is not the most suitable topology (see Example <span class='ref' data-tag='exampleequivalencerelationisnotetalewithproducttopology'></span>).
+</p>
+</div>
+
+<!-- 1.3.4 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.3.4</span>
+Let $G$ be a topological group acting continuously on a topological space $X$ (that is, the action map $G\times X\to X$, $(g,x)\mapsto gx$ is continuous). Then the transformation groupoid $G\ltimes X$ endowed with the product topology of $G\times X$ is a topological groupoid.
+</p>
+</div>
+
+<!-- 1.3.5 -->
+<div class='example' id='exampleweirdtopologicalgroupoid'>
+<p><span class='envidentifier'>Example 1.3.5</span>
+Let $\mathcal{G}$ be any groupoid and assume $\mathcal{G}^{(0)}$ is endowed with some (arbitrary) topology. Define a topology on $\mathcal{G}$ where $A\subseteq \mathcal{G}$ is open if and only if $A\cap\mathcal{G}^{(0)}$ is open in $\mathcal{G}^{(0)}$. This makes $\mathcal{G}$ a topological groupoid. Indeed, $A^{-1}\cap\mathcal{G}^{(0)}=A\cap\mathcal{G}^{(0)}$ for all $A\subseteq\mathcal{G}$, which implies that the inversion is continuous, so let us check the product is continuous: Let $(a,b)\in \mathcal{G}^{(2)}$ and $U$ any open set containing $ab$. There are a few possibilities:
+<ul>
+	<li>If $a,b\not\in\mathcal{G}^{(0)}$, then $\left\{a\right\}$ and $\left\{b\right\}$ are open and $\left\{a\right\}\left\{b\right\}=\left\{ab\right\}\subseteq U$;</li>
+	<li>If $a\not\in \mathcal{G}^{(0)}$ but $b\in\mathcal{G}^{(0)}$, then $\left\{a\right\}$ and $\mathcal{G}^{(0)}$ are open, respectively, and $\left\{a\right\}\mathcal{G}^{(0)}=\left\{ab\right\}\subseteq U$;</li>
+	<li>The case $a\in \mathcal{G}^{(0)}$ and $b\not\in\mathcal{G}^{(0)}$ is similar to the previous one;</li>
+	<li>If both $a,b\in \mathcal{G}^{(0)}$, then $a=b\in U\cap\mathcal{G}^{(0)}$ and $(U\cap\mathcal{G}^{(0)})(U\cap\mathcal{G}^{(0)})=U\cap\mathcal{G}^{(0)}\subseteq U$;</li>
+</ul>
+In any case there are open sets $A$ and $B$ containing $a$ and $b$, respectively, such that $AB\subseteq U$, which proves that the product is continuous.
+</p>
+</div>
+
+<!-- 1.3.6 -->
+<div class='definition' id='definitionetalegroupoid'>
+<p><span class='envidentifier'>Definition 1.3.6</span>
+A groupoid is <em>étale</em> if the source map $\mathfrak{s}:\mathcal{G}\to\mathcal{G}^{(0)}$ map is a local homeomorphism.
+</p>
+</div>
+
+<p>
+Étale groupoids were first considered in depth by Renault in [<span class='ref' data-tag='MR584266'></span>], in connection with $C^*$-algebras, as those groupoids which have open unit space and admit a left Haar system. We initially adopt the current (equivalent) working definition; see Definition 2.6 and Proposition 2.8 of [<span class='ref' data-tag='MR584266'></span>], and Theorem <span class='ref' data-tag='theoremequivalenceetale'></span> below.
+</p>
+
+<!-- 1.3.7 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.3.7</span>
+Every topological space, seen as a unit groupoid (Example <span class='ref' data-tag='exampleunitgroupoid'></span>), is étale.
+</p>
+</div>
+
+<!-- 1.3.8 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 1.3.8</span>
+	If $G$ is a topological group acting continuously on a topological space $X$, then the transformation groupoid $G\ltimes X$ (endowed with the product topology) is étale if and only if $G$ is discrete.
+	</p>
+</div>
+
+<!-- 1.3.9 -->
+<div class='example' id='exampleequivalencerelationisnotetalewithproducttopology'>
+	<p><span class='envidentifier'>Example 1.3.9</span>
+	Let $R$ be an equivalence relation on a topological space $(X,\nu)$.
+	</p>
+
+	<p>
+	In general, the product topology makes $R$ a non-étale topological groupoid, the simplest example being $R=X\times X$ when $X$ has any non-isolated point (see Proposition <span class='ref' data-tag='propositionetalehasbasisofbisections'></span>).
+	</p>
+
+	<p>
+	On the other hand, suppose that $(X,\nu)$ is Hausdorff and $\tau$ is any topology on $R$ for which:
+	<ol class='roman'>
+		<li> $(R,\nu)$ is a compact étale topological groupoid;</li>
+		<li> The range map $\ra:(R,\tau)\to(X,\nu)$ is continuous.</li>
+	</ol>
+	Then $\tau$ is induced from the product topology of $(X,\nu)\times(X,\nu)$ (see [<span class='ref' data-tag='MR2054051'></span>, Proposition 3.2]). In particular, in this case the topology $\nu$ of $X$, identified with $R^{(0)}$, is induced from $\tau$. (Compare this with Example <span class='ref' data-tag='exampleborelstructureequivalencerelationisunique'></span> in the Borel setting.)
+	</p>
+</div>
+
+<p>
+The initial problem we will deal with is showing that $\mathcal{G}^{(0)}$ is open in $\mathcal{G}$ whenever $\mathcal{G}$ is étale. This is not immediate from the étale condition, which deals, in principle, only with the relative topology of $\mathcal{G}^{(0)}$ induced by that of $\mathcal{G}$.
+</p>
+
+<p>
+Note that if $\mathcal{G}$ is a topological groupoid and $A$ is open in $\mathcal{G}$, then $A^{-1}$ is immediately open (since the inversion $a\mapsto a^{-1}$ is a homeomorphism), however it is not necessarily true that $AB$ is open when $A$ and $B$ are open (e.g. in Example <span class='ref' data-tag='exampleweirdtopologicalgroupoid'></span>).
+</p>
+
+<!-- 1.3.10 -->
+<div class='proposition' id='propositionetalehasbasisofbisections'>
+	<p><span class='envidentifier'>Proposition 1.3.10</span>
+	If $\mathcal{G}$ is an étale groupoid, then the open bisections of $\mathcal{G}$ form a basis for its topology. Moreover, if $A$ is any open bisection of an étale groupoid $\mathcal{G}$ then the source map restricts to a homeomorphism $\mathfrak{s}|_A:A\to \mathfrak{s}(A)$ (and similarly for the range map). In particular, $\mathfrak{s}^{-1}(x)$ is discrete for all $x\in\mathcal{G}^{(0)}$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionetalehasbasisofbisections'>Proof</a>
+<div class='proof' id='proofofpropositionetalehasbasisofbisections'>
+	<p>
+	If $I:\mathcal{G}\to\mathcal{G}$, $I(a)=a^{-1}$ is the inversion map, then $\mathfrak{r}=\mathfrak{s}\circ I$, so both $\mathfrak{s}$ and $\mathfrak{r}$ are local homeomorphisms and it follows that open bisections form a basis for the topology of $\mathcal{G}$. Since the source map restricts to a bijective local homeomorphism on any open bisection it actually restricts to a homeomorphism, as desired.
+	</p>
+	<p>
+	The last statement follows from the fact that if $A$ is a bisection and $x\in\mathcal{G}^{(0)}$ then $\mathfrak{s}^{-1}(x)\cap A$ is either empty or a singleton.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 1.3.11 -->
+<div class='theorem' id='theoremequivalenceetale'>
+<p><span class='envidentifier'>Theorem 1.3.11
+<span style='font-weight: normal;'>[<span class='ref' data-tag='MR2304314'></span>, Theorem 5.18]</span></span>
+Let $\mathcal{G}$ be a topological groupoid and let $m:\mathcal{G}^{(2)}\to G$, $m(a,b)=ab$ be the product map. The following are equivalent:</p>
+<ol class='arpar'>
+	<li> $\mathcal{G}$ is étale.</li>
+	<li> $\mathcal{G}^{(0)}$ is open and $m$ is a local homeomorphism.</li>
+	<li> $\mathcal{G}^{(0)}$ is open in $\mathcal{G}$ and $m$ is an open map (or equivalently, the product of open sets in $\mathcal{G}$ is open).</li>
+	<li> $\mathcal{G}^{(0)}$ is open and the source map $\mathfrak{s}:\mathcal{G}\to\mathcal{G}^{(0)}$ is an open map.</li>
+</ol>
+</div>
+
+<a class='proofbutton' data-tag='theoremequivalenceetale'>Proof</a>
+<div class='proof' id='proofoftheoremequivalenceetale'>
+	<p> <u>(1)$\Rightarrow$(2)</u>: Assume $\mathcal{G}$ is étale, and let $\pi:\mathcal{G}^{(2)}\to\mathcal{G}$, $\pi(a,b)=b$, which is immediately continuous. Let us show that $\pi$ is a local homeomorphism: If $A$ and $B$ are open bisections in $\mathcal{G}$, then $\pi((A\times B)\cap\mathcal{G}^{(2)})=B\cap\mathfrak{r}|_B^{-1}(\mathfrak{s}(A)\cap \mathfrak{r}(B))$. Since $\mathfrak{r}(B)$ and $\mathfrak{s}(A)$ are open in $\mathcal{G}^{(0)}$ and $\mathfrak{r}|_B:B\to\mathfrak{r}(B)$ is a homeomorphism we conclude that $\pi$ is open, and since it is injective on $(A\times B)\cap\mathcal{G}^{(2)}$, then $\pi$ is a local homeomorphism, as we wanted. We now have $\mathfrak{s}\circ m=\mathfrak{s}\circ\pi$, and both $\mathfrak{s}$ and $\pi$ are local homeomorphisms, so $m$ is a local homeomorphism as well. In particular, if $A$ is a bisection then $\mathfrak{s}(A)=m((A\times A^{-1})\cap \mathcal{G}^{(2)})$ is open in $\mathcal{G}$, so since open bisections cover $\mathcal{G}$ and $\mathcal{G}^{(0)}=\mathfrak{s}(\mathcal{G})$, $\mathcal{G}^{(0)}$ is open in $\mathcal{G}$.
+	</p>
+	<p>
+	The implication (2)$\Rightarrow$(3) is trivial.
+	</p>
+	<p>
+	<u>(3)$\Rightarrow$(4)</u>: Assuming (3), if $A$ is open then $\mathfrak{s}(A)=(A^{-1}A)\cap \mathcal{G}^{(0)}$ is open as well.
+	</p>
+
+	<p>
+	<u>(4)$\Rightarrow$(1)</u>: Let $a\in\mathcal{G}$. The map
+	<div class='equaiton'>\[
+	f:\left\{(g,h)\in\mathcal{G}:\so(g)=\so(h)\right\}\to\mathcal{G},\qquad f(g,h)=gh^{-1}
+	\]</div>
+	is continuous, since $\mathcal{G}$ is a topological groupoid. We have $f(a,a)=\ra(a)\in\mathcal{G}^{(0)}$, and $\mathcal{G}^{(0)}$ is open. Thus there exist open sets $C,D\subseteq\mathcal{G}$ containing $a$ such that 
+	<div class='equation'>\[
+	CD^{-1}=f\left(\left\{(c,d)\in C\times D:\so(c)=\so(d)\right\}\right)\subseteq\mathcal{G}^{(0)}.
+	\]</div>
+	This implies that the source map is injective on the neighbourhood $C\cap D$ of $a$. Therefore, the source map is continuous (again, since $\mathcal{G}$ is a topological groupoid), open, and locally injective, hence a local homeomorphism.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+The next examples prove that a topological groupoid may have open unit space but the product of two open sets might not be open and vice-versa.
+</p>
+
+<!-- 1.3.12 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.3.12</span>
+Given a topological group $G$, seen as a topological groupoid, the product of open sets of $G$ is always open, however the unit space is the singleton $\left\{1\right\}$, so $G$ is étale if and only if it is discrete.
+</p>
+</div>
+
+<!-- 1.3.13 -->
+<div class='example' id='exampledifferenttopologyonZ'>
+<p><span class='envidentifier'>Example 1.3.13</span>
+Given an infinite set $P$ of integers, we consider the topology on $\mathbb{Z}$ generated by the sets $p\mathbb{Z}+a$, where $a\in\mathbb{Z}$ and $p\in P$. This makes $\mathbb{Z}$ a non-discrete (i.e., non-étale), countable, second-countable, zero-dimensional, non-locally compact, Hausdorff topological group.
+</p>
+</div>
+
+<!-- 1.3.14 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.3.14</span>
+Let $\mathcal{G}$ be a groupoid such that $\mathcal{G}^{(0)}$ is endowed with some topology, and consider $\mathcal{G}$ with the topology induced by $\mathcal{G}^{(0)}$ as in Example <span class='ref' data-tag='exampleweirdtopologicalgroupoid'></span>. The unit space $\mathcal{G}^{(0)}$ is open, so $\mathcal{G}$ is étale if and only if the product of open sets is open. This happens if and only if for every $a\in\mathcal{G}\setminus\mathcal{G}^{(0)}$, $\mathfrak{s}(a)$ is isolated in $\mathcal{G}^{(0)}$.
+</p>
+</div>
+
+<!-- 1.3.15 -->
+<div class='example'>
+<p><span class='envidentifier'>Example 1.3.15</span>
+As a particular case of the previous example, let $\mathbb{Z}_2=\left\{0,1\right\}$ be the group with two elements, and consider the interval $[0,1]$ as a unit groupoid. Endow the (algebraic) product groupoid $\mathbb{Z}_2\times [0,1]$ with the topology whose open sets are those $A\subseteq\mathbb{Z}_2\times[0,1]$ such that $\left\{x\in[0,1]:(0,x)\in A\right\}$ is open in $[0,1]$. Then $\mathbb{Z}_2\times[0,1]$ is a non-étale, Hausdorff topological groupoid with open unit space. Indeed, $\left\{(1,0)\right\}$ is open in $\mathbb{Z}_2\times[0,1]$, but $\left\{(1,0)\right\}\left\{(1,0)\right\}=\left\{(0,0)\right\}$ is not.
+</p>
+</div>
+
+<p>
+Finally, whenever dealing with topological structures we will be mostly interested in maps which preserve the topology up to the correct degree, so we define precisely what we mean by <em>topological</em> groupoid morphisms below.
+</p>
+
+<!-- 1.3.16 -->
+<div class='definition'>
+<p><span class='envidentifier'>Definition 1.3.16</span>
+A <em>topological groupoid morphism</em> is a continuous groupoid morphism of topological groupoids. A <em>topological groupoid isomorphism</em> is a groupoid morphism which is also a homeomorphism.
+</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

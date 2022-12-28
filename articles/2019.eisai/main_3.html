@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<script src="../../src/jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="../../src/style.css">
+
+<title>Étale inverse semigroupoids - the fundamentals</title>
+
+</head>
+<body>
+
+<div style='display: none' id='latexcommands'>
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+\end{equation*}
+</div>
+
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>Étale inverse semigroupoids - the fundamentals</h1>
+<h1 class='sidebar-section'><a href='main_front.html'>Front page</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='main_1.html'>1. Introduction</a></h1>
+<h2 class='sidebar-subsection'><a href='main_1.html#2'>Notation and running conventions</a></h2>
+<h2 class='sidebar-subsection'><a href='main_1.html#3'>1.1. Setoids, bundles and partitions</a></h2>
+<h2 class='sidebar-subsection'><a href='main_1.html#12'>1.2. Graphs</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_2.html'>2. Inverse semigroupoids</a></h1>
+<h2 class='sidebar-subsection'><a href='main_2.html#20'>2.1. Exel and graphed semigroupoids</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#81'>2.2. Inverse semigroupoids</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#117'>2.3. A representation theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#134'>2.4. $\land$-prehomomorphisms, partial homomorphisms, and actions</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#166'>2.5. Semidirect products</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_3.html'>3. Topological and étale inverse semigroupoids</a></h1>
+<h2 class='sidebar-subsection'><a href='main_3.html#246'>3.1. Continuous $\land$-preactions and semidirect products</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_4.html'>4. Constructions with inverse semigroupoids</a></h1>
+<h2 class='sidebar-subsection'><a href='main_4.html#268'>4.1. Underlying groupoids</a></h2>
+<h2 class='sidebar-subsection'><a href='main_4.html#274'>4.2. Quotients</a></h2>
+<h2 class='sidebar-subsection'><a href='main_4.html#286'>4.3. Semigroupoids of germs and the initial groupoid</a></h2>
+<h2 class='sidebar-subsection'><a href='main_4.html#358'>4.4. Global actions</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_5.html'>5. Duality</a></h1>
+<h2 class='sidebar-subsection'><a href='main_5.html#430'>5.1. The general procedure</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#431'>5.2. Reconstruction of $\mathcal{S}^{(0)}$ from $\mathbf{KB}(\mathcal{S})$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#452'>5.3. The category $\Sigma\cat{-Ord}$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#462'>5.4. The category
+$\cat{Amp}_\star$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#463'>5.5. The functor $\mathbb{K}\colon\cat{Amp}_\star^{\mathrm{op}}\to\cat{&Sigma;-Ord}$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#467'>5.6. The functor $\mathbb{P}\colon\cat{&Sigma;-Ord}^{\mathrm{op}}\to\cat{Amp}$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#478'>5.7. The natural equivalence</a></h2>
+</div>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section' id='218'>3. Topological and étale inverse semigroupoids</h2>
+We will now consider semigroupoid endowed with topologies which are compatible with their algebraic structures. In general, a (partial) algebraic structure $\mathscr{A}$ consists of families $\mathscr{A}_0$ of sets and $\mathscr{A}_1$ of partial functions between sets in $\mathscr{A}_0$, and $\mathscr{A}$ is said to be <em>topological</em> if all sets in $\mathscr{A}_0$ are endowed with topologies, and all functions in $\mathscr{A}_1$ are continuous. The homomorphisms between such structure are also assumed to be continuous. This applies, in particular, to graphs and (Exel/graphed/inverse) semigroupoids. We write the following definitions in full for the sake of completeness.
+
+<!-- 3.1 -->
+<div class='definition' id='219'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>3.1</span>.
+<p>
+A <em>topological graph</em> is a graph $(G^{(0)},G,\so,\ra)$, such that $G^{(0)}$ and $G$ are endowed with topologies making $\so$ and $\ra$ continuous.
+</p>
+<p>
+A <em>topological</em> (Exel) semigroupoid is a semigroupoid $\Lambda$ endowed with some topology which makes the product continuous (where $\Lambda^{[2]}$ is endowed with the product topology of $\Lambda\times\Lambda$).
+</p>
+<p>
+A topological graphed semigroupoid is a graphed semigroupoid which is both a topological graph and a topological semigroupoid.
+</p>
+
+</div>
+
+<!-- 3.2 -->
+<div class='definition' id='220'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>3.2</span>.
+<p>
+A <em>topological inverse semigroupoid</em> is an inverse semigroupoid $\mathcal{S}$ which is a topological graphed semigroupoid, and such that the inverse map $(\ )^*\colon\mathcal{S}\to\mathcal{S}$, $s\mapsto s^*$, is continuous.
+</p>
+
+</div>
+<p>
+Note that since $(\ )^*\circ (\ )^*=\id_{\mathcal{S}}$, then $(\ )^*$ being continuous implies that it is a homeomorphism.
+</p>
+
+<!-- 3.3 -->
+<div class='definition' id='221'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>3.3</span>.
+<p>
+A topological inverse semigroupoid $\mathcal{S}$ is <em>étale</em> if the source map $\so\colon\mathcal{S}\to\mathcal{S}^{(0)}$ is a local homeomorphism. (Equivalently, the range map $\ra=\so\circ(\ )^*$ is a local homeomorphism.)
+</p>
+
+</div>
+
+<div class='alt' id='222'>
+<span class='envidentifier'>Remark</span>
+<p>
+As in [<a class='reference' href='../../HTML citations/MR2304314.html' target='_blank'>MR2304314</a>], recall that a topological groupoid $\mathcal{G}$ is <em>étale</em> if the source map $\so\colon a\mapsto a^{-1}a$ is a local homeomorphism from $\mathcal{G}$ to $\mathcal{G}^{(0)}=\so(\mathcal{G})$, where <em>$\mathcal{G}^{(0)}$ is endowed with the subspace topology of $\mathcal{G}$</em>. It is not immediately clear that this coincides with the notion in Definition <a class='reference' href='main_3.html#221'>3.3</a> since for étale semigroupoids we do not assume $\mathcal{S}^{(0)}$ to even be a subset of $\mathcal{S}$.
+</p>
+<p>
+Corollary <a class='reference' href='main_3.html#229'>3.6</a> below deals with this: Suppose $\mathcal{G}$ is a topological groupoid, étale in the sense of <a class='reference' href='main_3.html#221'>3.3</a>. Let $\tau$ be the topology of $\mathcal{G}$, $\tau|_{\mathcal{G}^{(0)}}$ ist restriction to $\mathcal{G}^{(0)}$, and $\eta$ the topology of $\mathcal{G}^{(0)}$. By <a class='reference' href='main_3.html#229'>3.6</a><a class='reference' href='main_3.html#231'>(a)</a>, $E(\mathcal{G})=\mathcal{G}^{(0)}$ is open in $\mathcal{G}$. The source map on $\mathcal{G}^{(0)}$ is simply the identity map $(\mathcal{G}^{(0)},\tau|_{\mathcal{G}^{(0)}})\to(\mathcal{G}^{(0)},\eta)$, and it is a bijective (local) homeomorphism, hence $\tau|_{\mathcal{G}^{(0)}}=\eta$.
+</p>
+
+</div>
+<p>
+Homomorphisms of topological semigroupoids are always assumed to be continuous. A homomorphism $\phi=(\phi^{(0)},\phi^{(1)})\colon G\to H$ of topological graphs is continuous in the sense that $\phi^{(0)}$ and $\phi^{(1)}$ are continuous. When dealing with topological graphed semigroupoids this is a condition which we need to require, but when dealing with étale inverse semigroupoids, continuity of the <span>&#8220;</span>arrow map<span>&#8221;</span> actually implies continuity of the <span>&#8220;</span>vertex map<span>&#8221;</span>. For this we recall a fact from the general theory of étale spaces.
+</p>
+<p>
+Suppose that $\pi_i\colon X_i^{(1)}\to X_i^{(0)}$ ($i=1,2$) are continuous bundles,  and that $f=(f^{(0)},f^{(1)})\colon\pi_1\to\pi_2$ is a bundle homomorphism (possibly discontinuous a priori). Suppose further that $f^{(1)}$ is continuous and that $\pi_1$ is open (and surjective). Then $f^{(0)}$ is continuous. Indeed, since $\pi_1$ is open and surjective then $X_1^{(0)}$ is endowed with the the quotient (final) topology that $\pi_1$ induces. We have the commutative square
+<div class='equation' id='223'>
+<img src='main_tikz_5.png' class='tikzpicture' style='width:190px'>
+</div>
+which implies that $f^{(0)}$ is the quotient map induced from the continuous map $\pi_2\circ f^{(1)}$, and is therefore continuous.
+</p>
+<p>
+We thus apply the fact above with the bundle induced by the source maps of graphed semigroupoids, and in conjunction with Corollary <a class='reference' href='main_2.html#78'>2.20</a> to obtain the result below:
+</p>
+
+<!-- 3.4 -->
+<div class='corollary' id='224'>
+<span class='envidentifier'>Corollary</span> <span class='envcounter'>3.4</span>.
+<p>
+Suppose that $\phi\colon\mathcal{S}\to\mathcal{T}$ is a continuous homomorphism between topological inverse semigroupoids and that $\mathcal{S}$ is étale. Then there exists a unique continuous map $\phi^{(0)}\colon\mathcal{S}^{(0)}\to\mathcal{T}^{(0)}$ for which $(\phi^{(0)},\phi)$ is a graphed semigroupoid homomorphism.
+</p>
+
+</div>
+<p>
+A <em>bisection</em> of a graphed semigroupoid $\mathcal{S}$ is a subset $U\subseteq\mathcal{S}$ such that the source and range maps are injective on $U$. We denote by $\mathbf{B}(\mathcal{S})$ the set of all open bisections of an étale inverse semigroupoid $\mathcal{S}$. If $U\in\mathbf{B}(\mathcal{S})$, then the source and range maps restrict to homeomorphisms from $U$ onto open subsets of $\mathcal{S}^{(0)}$. Moreover, $\mathbf{B}(\mathcal{S})$ is a basis for the topology of $\mathcal{S}$.
+</p>
+
+<!-- 3.5 -->
+<div class='proposition' id='225'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>3.5</span>.
+<p>
+If $\mathcal{S}$ is an étale inverse semigroupoid then the product map $\mu\colon\mathcal{S}^{(2)}\to\mathcal{S}$ is open.
+</p>
+
+</div>
+<div class='proof' id='226'>
+<span class='envidentifier'>Proof</span>.
+<p>
+We follow the proof of [<a class='reference' href='../../HTML citations/cordeirothesis.html' target='_blank'>cordeirothesis</a>]: Let $\pi\colon \mathcal{S}^{(2)}\to\mathcal{S}$ be the projection $\pi(a,b)=a$. We prove that $\pi$ is open. If $A,B\in\mathbf{B}(\mathcal{S})$, then $\pi((A\times B)\cap \mathcal{S}^{(2)})=A\cap \so^{-1}(\ra(B))$. Since $\ra(B)$ is open in $\mathcal{S}^{(0)}$ and $\so$ is continuous, then $\pi((A\times B)\cap \mathcal{S}^{(2)})$ is open in $\mathcal{S}$. This proves that $\pi$ is open, as $\mathbf{B}(\mathcal{S})$ is a basis for $\mathcal{S}$. Moreover, $\pi$ is injective on $(A\times B)\cap\mathcal{S}^{(2)}$, because the range map is injective on $B$. Therefore, $\pi$ is a locally injective open continuous map, that is, a local homeomorphism.
+</p>
+<p>
+Since $\ra\circ\pi=\ra\circ\mu$ on $\mathcal{S}^{(2)}$ and both $\ra$ and $\pi$ are local homeomorphisms, then $\mu$ is a local homeomorphism as well.
+</p>
+
+</div>
+<p>
+We thus make $\mathbf{B}(\mathcal{S})$ into a semigroup with the usual product of sets: for all $A,B\in\mathbf{B}(\mathcal{S})$,
+<div class='equation' id='227'>
+\begin{equation*}
+AB=\left\{ab:(a,b)\in (A\times B)\cap \mathcal{S}^{(2)}\right\}.
+\end{equation*}
+</div>
+Then $\mathbf{B}(\mathcal{S})$ is, in fact, an inverse semigroup. However, we are not able to recover the semigroupoid $\mathcal{S}$ from $\mathbf{B}(\mathcal{S})$ alone, since the canonical order of $\mathbf{B}(\mathcal{S})$ does not correspond to set inclusion. We have
+<div class='equation' id='228'>
+\begin{equation*}
+A\leq B\iff A=BA^*A\iff\text{for all }a\in A\text{ there exists }b\in B\text{ such that }a\leq b.
+\end{equation*}
+</div>
+</p>
+<p>
+In Section <a class='reference' href='main_5.html#363'>5</a>, we will prove that an inverse semigroupoid $\mathcal{S}$ may be recovered from $\mathbf{B}(\mathcal{S})$ and set inclusion $\subseteq$.
+</p>
+<p>
+We finish this section by mentioning a few simple, but nevertheless important, consequences of Proposition <a class='reference' href='main_3.html#225'>3.5</a>.
+</p>
+
+<!-- 3.6 -->
+<div class='corollary' id='229'>
+<span class='envidentifier'>Corollary</span> <span class='envcounter'>3.6</span>.
+<p>
+Let $\mathcal{S}$ be an étale inverse semigroupoid. Then
+</p>
+
+<style>ol.altlist230 > li:before {
+content:  '(' counter(listcounter,lower-alpha) ')';
+}
+</style>
+<ol class='alt altlist230'>
+
+<li id='231'>
+<p>
+$E(\mathcal{S})$ is open in  $\mathcal{S}$;
+</p>
+
+</li>
+
+<li id='232'>
+<p>
+For all open $A\subseteq \mathcal{S}$, the <em>upper</em> and <em>lower closures</em> <div class='equation' id='233'>
+\begin{equation*}
+A^{\uparrow,\leq}=\left\{b\in\mathcal{S}:b\geq a\text{ for some }a\in A\right\}\quad\text{and}\quad A^{\downarrow,\leq}=\left\{b\in\mathcal{S}:b\leq a\text{ for some }a\in A\right\}
+\end{equation*}
+</div>
+are open in $\mathcal{S}$.
+</p>
+
+</li>
+</ol>
+
+</div>
+<div class='proof' id='234'>
+<span class='envidentifier'>Proof</span>.
+
+<style>ol.altlist235 > li:before {
+content:  '(' counter(listcounter,lower-alpha) ')';
+}
+</style>
+<ol class='alt altlist235'>
+
+<li id='236'>
+<p>
+Simply note that $E(\mathcal{S})=\bigcup\left\{A^*A:A\in \mathbf{B}(\mathcal{S})\right\}$.
+</p>
+
+</li>
+
+<li id='237'>
+<p>
+The lower set $A^{\downarrow,\leq}=AE(\mathcal{S})$ is the product of open sets, hence open.
+</p>
+<p>
+Suppose $b\geq a$ for some $a\in A$, i.e., $ba^*a=a$. Since the semigroupoid operations are continuous, there exist neighbourhoods $U$ of $b$ and $V$ of $a$ such that $UV^*V\subseteq A$. Let $B=U\cap\so^{-1}(\so(A\cap V))$. Then $B$ is an open neighbourhood of $b$.
+</p>
+<p>
+Given $c\in B$, we have $\so(c)=\so(a)$ for some $a\in A\cap V$, so $ca^*a$ is defined, belongs to $UV^*V\subseteq A$ and $ca^*a\leq c$, so $c\in A^{\uparrow,\leq}$. Therefore $B$ is an open neighbourhood of $b$ contained in $A^{\uparrow,\leq}$.
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<!-- 3.7 -->
+<div class='example' id='238'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>3.7</span>.
+<p>
+For non-étale semigroupoids, upper (and lower) closures of open sets are not necessarily open.
+</p>
+<p>
+Let $X=[0,1]$ with its usual topology and $L_2=\left\{0,1\right\}$ the lattice with $0\smallerthan 1$. The inverse semigroupoid $L_2\times X$ is étale. Consider the subsemigroupoid $\Lambda=(L_2\times X)\setminus\left\{(0,1/n):n\in\mathbb{N}_{\geq 1}\right\}$. Then $\Lambda$ is a non-étale topological inverse semigroupoid.
+</p>
+<p>
+Let $U$ be any neighbourhood of $0$ in $X$. Then $\tilde{U}\defeq(\left\{0\right\}\times U)\cap\Lambda$ is a neighbourhood of $(0,0)$ in $\Lambda$, but the upper closure $\tilde{U}^{\uparrow,\leq}=(L_2\times U)\cap\Lambda$ contains the non-interior point $(1,0)$.
+</p>
+
+</div>
+<p>
+It follows from Corollary <a class='reference' href='main_3.html#229'>3.6</a> that if $\mathcal{S}$ is an étale inverse semigroupoid, then $E(\mathcal{S})$ is also an étale inverse semigroupoid with the subspace topology. In fact a weaker version of the converse holds: If $\mathcal{S}$ is a topological inverse semigroupoid and $E(\mathcal{S})$ is open and étale, then $\mathcal{S}$ has a basis of open bisections. However this only implies that the source map is locally injective, but not necessarily open, and so $\mathcal{S}$ may be non-étale. In any case, the following generalization of [<a class='reference' href='../../HTML citations/MR2304314.html' target='_blank'>MR2304314</a>] holds, with simple adaptations on the proof.
+</p>
+
+<!-- 3.8 -->
+<div class='theorem' id='239'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>3.8</span>.
+<p>
+Let $\mathcal{S}$ be a topological inverse semigroupoid. Then the following are equivalent:
+</p>
+
+<style>ol.altlist240 > li:before {
+content:  '(' counter(listcounter) ')';
+}
+</style>
+<ol class='alt altlist240'>
+
+<li id='241'>
+<p>
+$\mathcal{S}$ is étale;
+</p>
+
+</li>
+
+<li id='242'>
+<p>
+$E(\mathcal{S})$ is open and étale, and the product of open sets is open.
+</p>
+
+</li>
+
+<li id='243'>
+<p>
+$E(\mathcal{S})$ is open and étale, and $\mathcal{S}A$ is open for each open $A\subseteq\mathcal{S}$.
+</p>
+
+</li>
+
+<li id='244'>
+<p>
+$E(\mathcal{S})$ is open and étale, and $A^*A$ is open for each open $A\subseteq\mathcal{S}$.
+</p>
+
+</li>
+
+<li id='245'>
+<p>
+$E(\mathcal{S})$ is open and étale, and the source map is open;
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<h3 class='subsection' id='246'>3.1. Continuous $\land$-preactions and semidirect products</h3>
+<p>
+Tipically, in the topological setting we consider actions which preserve the topological structure. Let us consider the <span>&#8220;</span>action map<span>&#8221;</span> associated to a $\land$-preaction $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$, which we also denote by $\theta$:
+<div class='equation' id='247'>
+\begin{equation*}
+\theta\colon\mathcal{S}\ltimes\Lambda\to\Lambda,\qquad\theta(a,x)=\theta_a(x).
+\end{equation*}
+</div>
+In the case that $\mathcal{S}$ and $\Lambda$ are topological semigroupoids, we endow $\mathcal{S}\ltimes\Lambda$ with the product topology. If $A\subseteq\mathcal{S}$ and $U\subseteq\Lambda$, we denote $A\ast U=(A\times U)\cap(\mathcal{S}\ltimes\Lambda)$, so that the basic open sets of $\mathcal{S}\ltimes\Lambda$ have the form $A\ast U$ where $A$ and $U$ are (basic) open subsets of $\mathcal{S}$ and $\Lambda$, respectively.
+</p>
+
+<!-- 3.9 -->
+<div class='definition' id='248'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>3.9</span>.
+<p>
+A $\land$-preaction $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$ of a topological inverse semigroupoid $\mathcal{S}$ on a topological semigroupoid $\Lambda$ is <em>continuous</em> if $\pi$ and the <span>&#8220;</span>action map<span>&#8221;</span> $\theta\colon\mathcal{S}\ltimes\Lambda\to\Lambda$ are continuous. If the action map $\theta$ is open then we call $(\pi,\theta)$ an <em>open</em> $\land$-preaction.
+</p>
+
+</div>
+<p>
+Evidently, the semidirect product $\mathcal{S}\ltimes\Lambda$ associated to a continuous $\land$-preaction $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$ is a topological semigroupoid (as long as the product <a class='reference' href='main_2.html#168'>(2.49)</a> is associative).
+</p>
+
+<div class='alt' id='249'>
+<span class='envidentifier'>Remark</span>
+<p>
+Suppose that $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$ is a continuous open $\land$-preaction. Given $a\in\mathcal{S}$, let $A$ be any open bisection containing $a$. Then <div class='equation' id='250'>
+\begin{equation*}
+\ran(\theta_a)=\pi^{-1}(\ra(a))\cap\theta(A\ast\Lambda)
+\end{equation*}
+</div>
+is open in $\pi^{-1}(\ra(a))$.
+</p>
+
+</div>
+<p>
+If $\Lambda$ is a topological graphed or inverse semigroupoid then $\mathcal{S}\ltimes\Lambda$ will also be a topological graphed or inverse semigroupoid, where the vertex set $(\mathcal{S}\ltimes\Lambda)^{(0)}=\Lambda^{(0)}$ is endowed with its original topology.
+</p>
+<p>
+The following proposition simplifies the verification of when an action is open.
+</p>
+
+<!-- 3.10 -->
+<div class='proposition' id='251'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>3.10</span>.
+<p>
+Let $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$ be a continuous $\land$-preaction of topological semigroupoids. Then $(\pi,\theta)$ is open if and only if the map
+<div class='equation' id='252'>
+\begin{equation*}
+p\colon\mathcal{S}\ltimes\Lambda\to\Lambda,\qquad(a,x)\mapsto x
+\end{equation*}
+</div>
+is open.
+</p>
+
+</div>
+<div class='proof' id='253'>
+<span class='envidentifier'>Proof</span>.
+<p>
+Let $A\subseteq\mathcal{S}$ and $U\subseteq\Lambda$ be open. Assuming that $(\pi,\theta)$ is open, we have
+<div class='equation' id='254'>
+\begin{equation*}
+p(A\ast U)=\theta(A^*\ast\theta(A\ast U)),
+\end{equation*}
+</div>
+which is open as the action map $\theta$ is open.
+</p>
+<p>
+Conversely, assume that $p$ is open. The map <div class='equation' id='255'>
+\begin{equation*}
+I\colon\mathcal{S}\ltimes\Lambda\to\mathcal{S}\ltimes\Lambda,\qquad (a,x)\mapsto (a^*,\theta_a(x))
+\end{equation*}
+</div>
+is a self-homeomorphism of $\mathcal{S}\ltimes\Lambda$ of order $2$, and in particular it is an open map. The action map is the composition $\theta=p\circ I$, hence an open map.
+</p>
+
+</div>
+<p>
+For example, if $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$ is a continuous $\land$-preaction and $\mathcal{S}\ltimes\Lambda$ is open in $\mathcal{S}\times\Lambda$, then $(\pi,\theta)$ is also open. This is an assumption made, for example, in [<a class='reference' href='../../HTML citations/MR2045419.html' target='_blank'>MR2045419</a>].)
+</p>
+<p>
+Finally, if $\mathcal{S}$ and $\mathcal{T}$ are étale inverse semigroupoids and $(\pi,\theta)\colon\mathcal{S}\curvearrowright\mathcal{T}$ is an open continuous $\land$-preaction, then $\mathcal{S}\ltimes\mathcal{T}$ is also an étale inverse semigroupoid. Indeed, if $A\subseteq\mathcal{S}$ is an open bisection and $U\subseteq\mathcal{T}$ is open, then the map $p$ is injective on $A\ast U$. Indeed, if $p(a,x)=p(b,y)$, where $(a,x),(b,y)\in A\ast U$, then $x=y$ (by definition of $p$) and $\so(a)=\pi(x)=\pi(y)=\so(b)$, thus $a=b$ as $A$ is a bisection. Therefore $p$ is locally injective, continuous and open, i.e., a local homeomorphism. The range map $\ra_{\mathcal{S}\ltimes\mathcal{T}}$ of $\mathcal{S}\ltimes\mathcal{T}$ is the composition of the range map $\ra_{\mathcal{T}}$ of $\mathcal{T}$ and the action map $\theta$, which are both local homeomorphisms. Therefore $\mathcal{S}\ltimes\mathcal{T}$ is étale.
+</p>
+
+<!-- 3.11 -->
+<div class='example' id='256'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>3.11</span>.
+<p>
+We will now describe an analogue, in the setting of semigroupoids, of the canonical actions of a semigroup on its idempotent semilattice (the <em>Munn representation</em>), and of
+</p>
+<p>
+Let $\mathcal{S}$ be an inverse semigroupoid. We denote by $\operatorname{F}(\mathcal{S})$ the set of elements $b\in\mathcal{S}$ such that
+</p>
+
+<style>ol.altlist257 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist257'>
+
+<li id='258'>
+<p>
+$\so(b)=\ra(b)$;
+</p>
+
+</li>
+
+<li id='259'>
+<p>
+For all $e\leq b^*b$, we have $beb^*=e$;
+</p>
+
+</li>
+</ol>
+<p>
+The verification that $\operatorname{F}(\mathcal{S})$ is an inverse sub-semigroupoid of $\mathcal{S}$ is straightforwards, using properties of the canonical order of $\mathcal{S}$. Note that $E(\mathcal{S})\subseteq\operatorname{F}(\mathcal{S})$. If $b\in\operatorname{F}(\mathcal{S})$, then $b^*b=bb^*$, and for all $e\in E(\mathcal{S})\cap\mathcal{S}^b$, $beb^*=eb^*b$
+
+If $a\in\mathcal{S}$, $b\in\operatorname{F}(\mathcal{S})$ and $ab$ is defined, then $aba^*\in\operatorname{F}(\mathcal{S})$ as well.
+</p>
+<p>
+Then $\mathcal{S}$ carries a natural action by conjugation) on $\operatorname{F}(\mathcal{S})$ as follows. Consider the bundle $\pi\defeq\so|_{\operatorname{F}(\mathcal{S})}=\ra|_{\operatorname{F}(\mathcal{S})}\colon\operatorname{F}(\mathcal{S})\to\mathcal{S}^{(0)}$. Given $a\in\mathcal{S}$, let $\dom(\mu_a)\defeq\left\{b\in\operatorname{F}(\mathcal{S}):bb^*\leq a^*a\right\}$, which is an ideal of $\operatorname{F}(\mathcal{S})$, and contained in $\pi^{-1}(\so(a))$. The map $\mu_a\colon\dom(\mu_a)\to\ran(\mu_{a^*})$, $\mu_a(b)=aba^*$, is an isomorphism, and the pair $(\pi,\tau)$ is a global action of $\mathcal{S}$ on $\operatorname{F}(\mathcal{S})$.
+</p>
+<p>
+If $\mathcal{S}$ is an étale inverse semigroupoid, then $\operatorname{int}(\operatorname{F}(\mathcal{S})$ is invariant, in the sense that $\mu(\mathcal{S}\ast\operatorname{int}(\operatorname{F}(\mathcal{S})))\subseteq \operatorname{int}(\operatorname{F}(\mathcal{S}))$. Indeed, if $A$ and $U$ are open bisections of $\mathcal{S}$ and $U\subseteq\operatorname{F}(\mathcal{S})$, then $\mu(A\ast U)=AUA^*$ is the set of products $aua^*$ (whenever defined), where $a\in A$ and $u\in U$. Since the product of open sets is open and $\mathcal{S}\ast\operatorname{int}(\operatorname{F}(\mathcal{S}))$ is the union of all such sets $A\ast U$, then $\operatorname{int}(\operatorname{F}(\mathcal{S}))$ is invariant.
+</p>
+<p>
+Thus we may restrict the action $(\pi,\mu)$ to $\operatorname{int}(\operatorname{F}(\mathcal{S}))$. In fact, the argument in the paragraph above proves that the restriction of $(\pi,\mu|_U)$ to any invariant open subset $U$ of $\operatorname{F}(\mathcal{S})$ is an open action. Since $E(\mathcal{S})$ is also open and invariant, then the semigroupoids $\mathcal{S}\ltimes\operatorname{int}(\operatorname{F}(\mathcal{S})$ and $\mathcal{S}\ltimes E(\mathcal{S})$ are étale as well.
+</p>
+<p>
+In classical cases, the action $\mu$ is well-known.
+</p>
+
+<ul>
+
+<li id='260'>
+<p>
+If $\mathcal{S}$ is an étale groupoid, then $\operatorname{F}(\mathcal{S})$ is the isotropy subgroupoid of $\mathcal{S}$. The restriction of $(\pi,\mu)$ to $E(\mathcal{S})=\mathcal{S}^{(0)}$ is the canonical action of $\mathcal{S}$ on its unit space: $\mu_g$ is defined only as $\mu_g(\so(g))=\ra(g)$, for each $g\in\mathcal{S}$.
+</p>
+
+</li>
+
+<li id='261'>
+<p>
+if $\mathcal{S}$ is a discrete inverse semigroup then the restriction of $(\pi,\mu)$ to $E(\mathcal{S})$ is the <em>Munn representation</em> of $\mathcal{S}$.
+</p>
+
+</li>
+</ul>
+
+</div>
+<p>
+We finish this section by proving that continuous $\land$-preactions of discrete inverse semigroups, and continuous non-degenerate global actions of étale groupoids, are always open. Of course, it is enough to consider only actions on topological spaces (unit groupoids).
+</p>
+
+<!-- 3.12 -->
+<div class='example' id='262'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>3.12</span>.
+<p>
+Just as in Example <a class='reference' href='main_2.html#151'>2.43</a>, a topological partial (or global) action $\theta$ of an inverse semigroup $S$ on a topological space $X$ is precisely a continuous partial action of $S$ on $X$, as topological semigroupoids (as in [<a class='reference' href='../../HTML citations/arxiv1804.00396.html' target='_blank'>arxiv1804.00396</a>]), where we regard $S$ as a discrete space.
+</p>
+<p>
+In fact, more generally, if $\theta$ is a continuous $\land$-preaction of $S$ on $X$, then $\dom(\theta_a)$ is open in $X$ for all $a\in S$ (by a previous remark). Thus $S\ltimes X=\bigcup_{a\in S}\left\{a\right\}\times\dom(\theta_a)$ is open in $S\times X$ (since we regard $S$ as a discrete space). From the comment after Proposition <a class='reference' href='main_3.html#251'>3.10</a>, it follows that $\theta$ is an open $\land$-preaction, and in particular $S\ltimes X$ is an étale inverse semigroupoid.
+</p>
+
+</div>
+
+<!-- 3.13 -->
+<div class='example' id='263'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>3.13</span>.
+<p>
+As in Example <a class='reference' href='main_2.html#152'>2.44</a>, a continuous, non-degenerate global action $(\pi,\theta)\colon\mathcal{G}\curvearrowright X$ of a topological groupoid $\mathcal{G}$ on a topological space $X$ is the same notion as used in [<a class='reference' href='../../HTML citations/MR2969047.html' target='_blank'>MR2969047</a>]. Suppose moreover that $\mathcal{G}$ is étale, and let us prove that $(\pi,\theta)$ is open. The map $p$ of Proposition <a class='reference' href='main_3.html#251'>3.10</a> is precisely the source map $\so\colon\mathcal{G}\ltimes X\to X$, $\so(g,x)=x$, so we need only to prove that it is open. Let $A\subseteq\mathcal{G}$ and $U\subseteq X$ be open. From Example <a class='reference' href='main_2.html#152'>2.44</a>, we know that $\pi^{-1}(\so(a))=\dom(\theta_a)$ for all $a\in\mathcal{G}$, so it follows that
+<div class='equation' id='264'>
+\begin{equation*}
+\so(A\ast U)=\pi^{-1}(\so(A))\cap U
+\end{equation*}
+</div>
+which is open because $\mathcal{G}$ is étale. Therefore $(\pi,\theta)$ is an open global action.
+</p>
+
+</div>
+<p>
+We now refine Proposition <a class='reference' href='main_2.html#164'>2.48</a> to the topological setting. Recall that any $\land$-preaction $(\pi,\theta)$ may be extended, in a minimal manner, to a partial action $(\pi,\overline{\theta})$.
+</p>
+
+<!-- 3.14 -->
+<div class='proposition' id='265'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>3.14</span>.
+<p>
+If $\mathcal{S}$ is an étale semigroupoid, $\Lambda$ is a topological semigroupoid and $(\pi,\theta)$ is a continuous (resp. open) $\land$-preaction, then the minimal partial action $(\pi,\overline{\theta})$ of Proposition <a class='reference' href='main_2.html#164'>2.48</a> is also continuous (resp. open).
+</p>
+
+</div>
+<p>
+To avoid confusion, we denote $\mathcal{S}\ltimes\Lambda$ and $\mathcal{S}\overline{\ltimes}\Lambda$ the (underlying sets of the) semidirect products associated to $\theta$ and $\overline{\theta}$, respectively, and if $A\subseteq\mathcal{S}$, $U\subseteq\Lambda$, by $A\ast U\defeq(A\times U)\cap(\mathcal{S}\ltimes\Lambda)$ and $A\overline{\ast}U\defeq(A\times U)\cap(\mathcal{S}\overline{\ltimes}\Lambda)$. The action maps are still denoted $\theta$ and $\overline{\theta}$.
+</p>
+
+<div class='proof' id='266'>
+<span class='envidentifier'>Proof</span>.
+<p>
+If $U\subseteq\Lambda$ is open, then $\overline{\theta}^{-1}(U)$ is the union of the sets of the form $(A^{\uparrow,\leq})\overline{\ast} V$, where $A\subseteq \mathcal{S}$ and $V\subseteq\Lambda$ are open, and $A\ast V\subseteq\theta^{-1}(U)$. Thus, if $(\pi,\theta)$ is continuous then $(\pi,\overline{\theta})$ is also continuous.
+</p>
+<p>
+Similarly, if $A\subseteq\mathcal{S}$ and $V\subseteq\Lambda$ are open, then $\overline{\theta}(A\overline{\ast} V)=\theta(A^{\downarrow,\leq}\ast V)$, so $(\pi,\theta)$ being open implies that $(\pi,\overline{\theta})$ is also open.
+</p>
+
+</div>
+
+</body>
+</html>

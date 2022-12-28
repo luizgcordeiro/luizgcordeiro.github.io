@@ -1,0 +1,6 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#equationtheoremsteinbergiscrossed1'>4.4.6</a>
+
+	<div class='toload equation'>\begin{align*}
+		\psi([s,U][t,V])
+			&=\overline{1_{\theta_s(\theta_t(V)\cap U)}\delta_{st}}.\tag{4.4.6}
+	\end{align*}</div>

@@ -1,0 +1,6 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#equationbernoullishiftintersection1'>2.5.1</a>
+
+	<div class='toload equation'>\begin{align*}
+		&\psi_k(C_{g_1,\ldots,g_n}^{A_1,\ldots,A_n})\cap\psi_k(C_{g_1,\ldots,g_n}^{B_1,\ldots,B_n})\\
+		&=\bigcap_{j=1}^n\left\{(i,f)\in Y_{n_k}\times Z_k:f\left(\theta_k(g_j)^{-1}(i)\right)\in\phi_k(A_j)\cap\phi_k(B_j)\right\}\tag{2.5.1}
+	\end{align*}</div>

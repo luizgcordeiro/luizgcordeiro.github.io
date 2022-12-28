@@ -1,0 +1,285 @@
+<!--
+First of all we need to state the document type to help browsers
+-->
+<!DOCTYPE html>
+
+<!--
+The "html" tag states the beggining and end of document;
+head contains codes;
+body contains content
+-->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+<!--
+We use jquery (https://jquery.com) to load content and references from other places.
+
+More precisely, we use the ".load()" function, which is implemented by
+
+<... id="new.id"></...>
+
+<script>
+$( "#new.id" ).load( "source.html #old.id [tag]" );
+</script>
+
+This will create the item with ID "new.id", which will be empty at the beggining.
+The script then goes through "source.html", finding all items with ID "old.id" and adds
+them to "new.id". So for example, if "new.id" is a list, the items with id "old.id".
+
+If you add [tag] at the end, it will instead load elements with that tag, which are
+inside the "old.id" element. You can probably play with it
+-->
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	
+<!--
+Below are scripts for MathJax
+-->
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+
+<!--
+Now we define "environments" and some
+codes that should run when some tags are called.
+
+These are done with CSS. Like
+
+tag.class { properties}
+
+can also use "outer tag"."outer class" "inside tag"."inside class" anc thind like this
+
+# (hash) goes for id
+
+div creates new boxes
+-->
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+<!--
+There is, however, one problem: Counters have to be added individually!
+To see this, suppose that page "a" is section 3.1, and we want to reference
+Example 3.1.4 (or whatever that is).
+
+The counter for the last digit (in this case, 4) needs to be computed inside "a".
+
+So if we want to reference 3.1.4 in "b", we would need to run all the code of "a"
+(or at least pass through 3.1.1, 3.1.2 and 3.1.3) to have the correct number.
+
+This is even more pronounced on chapters and section.
+
+The way StacksProject probably deals with this is by having very short sections, so if any counter changes,
+it is easy to change the next counters (which will be reset in the following section) and just go
+through the references, which are not too many in general.
+Another possibility is that the whole project is pre-compiled using some program that deals with
+counters appropriatelly, which is more probable (but much more time-consuming).
+
+linear.ups.edu deals with this in a different manner, by not using counters at all and
+simply using abbreviations. This seems more reasonable although it does not follow
+the usual convention of mathematical papers.
+
+Since this is simply a proof-of-concept with a static document (my thesis), I will
+just manually number everything.
+-->
+
+</head>
+
+<!--
+For references, add an id to whatever element you want to reference,
+and make a link to it. (see better procedure below)
+-->
+
+<body>
+
+<!--
+Below are LaTeX commands which will be used throughout
+-->
+
+<div style="display: none" id="latexcommands"></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+</script>
+
+<!--
+Side bar
+-->
+<div id="sidebar" class="sidebar"></div>
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2>This project</h2>
+
+<p>
+Most mathematical material is written in print form, such as for books and journals, and suffers from obvious
+defects:
+	<ul>
+		<li> The environmental impact of printing books and magazines.</li>
+		<li> Editoring and presentation of content; For examples equations which do not fit lines, or the reader
+		having to go back-and-forth between pages to check references, notation, etc.</li>
+		<li> The material is only available where it is physically present, in contrast to electronically available
+		content.</li>
+	</ul>
+</p>
+
+<p>
+As a colleague pointed out, it is also unreasonable that we read much of this content in electronic devices,
+but still use formats such as pdf which have those same problems.
+</p>
+<p>
+This is a problem which has already been addressed in artistic literature, with the introduction of mobile books
+formats such as EPUB and MOBI, which render text adapted to whatever screen or device the reader is using.
+Of course there are still some issues to be addressed (such as elements sometimes overlapping), as any new technology
+ought to have (recall web browser experience in the 90's).
+</p>
+<p>
+During the Winter section of 2018 I taught a Linear Algebra course (MAT1302) at the University of Ottawa, and
+the textbook we used was Robert Beeze's <span style="font-style:italic;">A first course in linear algebra</span>,
+which is a free online textbook available at
+<a href="http://linear.ups.edu" style="font-family:consolas;background-color:light-gray;">http://linear.ups.edu</a>.
+This is an example of a simple but nevertheless marvelous approach to solving the problems above: There are no unwanted page
+breaks in the text; and content may be displayed or ommited dynamically, to the interest of the reader. For example,
+a student in any Social Science program taking a course which follows this book will probably not need to read the proofs
+of theorems, so they are immediatelly ommited and do not take any space, making the presentation of the material
+overall cleaner. On the other hand, a math or physics student needs only to click a button to show the proof. Exercises
+and their proposed solutions are deal with similarly.
+</p>
+<p>
+Another, more advanced, example of an online textbook is the <i>Stacks Project</i>, available at <a href="https://stacks.math.columbia.edu/" style="font-family:consolas;background-color:light-gray;">https://stacks.math.columbia.edu/</a>. One obvious advantage of this approach
+is the lack of <span style='border-bottom: dotted 2px;'title="Pun intended">size issues</span>, as the online book takes only some some megabytes instead of some 6000 pages.
+</p>
+
+<p>
+Both textbooks have pdf versions as well, which are useful to anyone who wants to have print versions.
+</p>
+
+<p>
+In short, the advantages to these online textbooks over traditional ones are, at least:
+<ul>
+	<li> No need to print books and articles (save the trees!) (although the usage of electronic devices for the sole
+	purpose of accessing this material will also have an environmental cost);</li>
+	<li> No need for students to buy books; nor do libraries need to buy and store several copies of a book
+	(and buy new editions with insignificant changes) to provide them to students who cannot afford those books;</li>
+	<li> Easy access wherever you are; no need to carry books around (save your back!);</li>
+	<li> Some dynamic features which are impossible for hard books; In particular, better referencing and editoring features;</li>
+	<li> The content can be easily modified to fix mistakes, typos, or to add updates and improvements;</li>
+	<li> No issues with the length of the text; The content may be written with as much detail, as many examples, and as pedantically
+	as necessary.</li>
+</ul>
+	The two possible issues of this approach to textbook are:
+<ul>
+	<li> One needs internet access to read the books; This is remedied by having pdf versions (or really any other type of offline version)
+	available which may be printed out or preferably downloaded.</li>
+	<li> There are server costs with the book webpage; This can only be minimized with decent coding, to make sure the server sends only the
+	necessary data to the readers.</li>
+</ul>
+</p>
+
+<p>
+My interest on this approach to mathematical literature grew exponentially during my thesis writing,
+when I had to deal with all of the problems cited above, and it grows even larger along with my interest in
+the teaching of mathematics (at the university level).
+</p>
+
+<p>
+So as a proof-of-concept, I'm taking my thesis and I am adapting it to HTML. Compared
+to the Stacks Project and Beezer's book, I will require one additional feature related to referencing: the content
+of any reference should be easily displayable in the same page, without the need to change to other pages
+and having to go back-and-forth in the material. The current
+implementation allows the reader to point the mouse to a reference, whose content will then appear on the right side of the screen.
+</p>
+
+Here is a messy list of lingering issues and ideas:
+<ul>
+	<li>Why sometimes there is some space between theorem/proposition/whatever statement and "proof" buttons?! This seems to be a problem with the say CSS handles paragraph margins/paddings.</li>
+	<li>Make "Q.E.D." automatically be included at the end of proofs (this is probably not feasible since sometimes it
+	will be inside a list item, right after an equation, etc. the same way as "\qedhere" in latex);</li>
+	<li>Make "Q.E.D." appear on the bottom-right corner of the proof block (check!), in a manner that does not overlap text if
+	it gets to the end of the line (no check...)</li>
+	<li>Pages are too heavy `! Is it because of xypic, jquery (in particular a few .load()s), mathJax, all of these? linear.ups.edu pages are quite
+	large and full of (mostly simple) equations but they do load fast.</li>
+	<li>Better tag/id system. I'm using the same tags as I did in the tex files in my thesis, but an approach like Stack Project's, with simple tags (like "AB01") is probably better.</li>
+	<li>Maybe coding of proof display buttons may be simplified.</li>
+	<li>Maybe or maybe not add the type of reference (Theorem, Definition, Remark, paragraph...) to the reference file, separately from the number/tag. This way maybe creating a reference could automatically add "Theorem 1.2.3" instead of only "1.2.3"; But sometimes I want the latter...</li> 
+	<li>Is jquery really necessary? I use mostly '.load()' and '.get()'. If the files are pre-processed (not ideal) this could be avoided.</li>
+	<li>Make numbered theorems, definitions, etc. with counters. Stacks and linear.ups.edu ignore this problem in different manners: Sections in Stacks are very short,
+	and linear.ups.edu does not use numbered statements at all.</li>
+	<li>It seems the scrollbar size is not considered in the page, and sometimes it goes over content in the right bar.</li>
+	<li>What if a reference is too large vertically? Make sure a vertical scrolling bar appears.</li>
+	<li>Is <a class='loadknowl' href="https://aimath.org/knowlepedia/">knowl</a> better than the approach I have for references and proof display link?
+	<li>Make punctuation stick to the right line when ending in math (e.g. "$\$G\$$.") Bad solution: write "$\$G.\$$" instead.</li>
+</ul>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

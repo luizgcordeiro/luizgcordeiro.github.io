@@ -1,0 +1,111 @@
+\begin{theorem}
+Suponha que $f$ e $g$ sejam funções, e que os limites $\lim_{x\to a}f(x)=L$ e $\lim_{x\to a}g(x)=M$ existem. Então:
+\begin{enumerate}
+	\item \emph{Regra da Soma}: $\lim_{x\to a}(f(x)+g(x))$ também existe, e
+	\[\lim_{x\to a}(f(x)+g(x))=L+M.\]
+	\item \emph{Regra do Produto}: $\lim_{x\to a}(f(x)g(x))$ também existe, e
+	\[\lim_{x\to a}\left(f(x)g(x)\right)=LM.\]
+	\item \emph{Regra do Quociente}: \uline{caso $M\neq 0$}, então o limite $\lim_{x\to a}\left(\dfrac{f(x)}{g(x)}\right)$ também existe, e
+	\[\lim_{x\to a}\left(\dfrac{f(x)}{g(x)}\right)=\dfrac{L}{M}.\]
+\end{enumerate}
+\end{theorem}
+	
+Em linguagem comum, a Regra da Soma diz que ``o limite de uma soma é a soma dos limites''; a Regra do Produto diz que ``o limite de um produto é o produto dos limites''; etc.
+
+Às vezes estas regras também são expressas de modo mais sucinto, omitindo os termos ``$L$'' e ``$M$''. Por exemplo, a Regra da Soma nos diz que
+\[\lim_{x\to a}(f(x)+g(x))=\left(\lim_{x\to a}f(x)\right)+\left(\lim_{x\to a}g(x)\right),\]
+desde que o lado direito da igualdade acima exista.
+
+\begin{proof}
+	\begin{enumerate}
+		\item Seja $\epsilon>0$. Como $\frac{\epsilon}{2}$ também é um número positivo  e $\lim_{x\to a}f(x)=L$, então existe $\delta_1>0$ tal que
+		\[\text{se }0<|x-a|<\delta_1\text{, então }|f(x)-L|<\frac{\epsilon}{2}.\tag{1}\]
+		Por outro lado, como $\lim_{x\to a}g(x)=M$, então existe $\delta_2>0$ tal que
+		\[\text{se }0<|x-a|<\delta_2\text{, então }|g(x)-L|<\frac{\epsilon}{2}.\tag{2}\]
+		
+		Tome $\delta=\min\left\{\delta_1,\delta_2\right\}$. Então se $0<|x-a|<\delta$, teremos tanto que $0<|x-a|<\delta_1$ quanto que $0<|x-a|<\delta_2$. As propriedades (1) e (2) então vão implicar que
+		\[|f(x)-L|<\frac{\epsilon}{2}\text{ e }|g(x)-M|<\frac{\epsilon}{2}\]
+		valem. Daí, concluímos que
+		\begin{align*}
+			|(f(x)+g(x))-(L+M)|&=|(f(x)-L)+(g(x)-M)|\\
+				&\leq |f(x)-L|+|g(x)-M|\\
+				&<\frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+				&=\epsilon.
+		\end{align*}
+		
+		Isto mostra que $\lim_{x\to a}(f(x)+g(x))=L+M$, como queríamos.
+		
+		\item Para provar que $\lim_{x\to a}(f(x)g(x))=LM$, devemos avaliar $|f(x)g(x)-LM|$. Para isso, vamos primeiro reescrever a expressão ``$f(x)g(x)-LM$'' de uma forma que as expressões ``$f(x)-L$'' e ``$g(x)-M''$ apareçam em evidência.
+		\begin{align*}
+			f(x)g(x)-LM
+				&=f(x)g(x)-f(x)M+f(x)M-LM\\
+				&=f(x)(g(x)-M)+(f(x)-L)M\\
+				&=(f(x)-L)(g(x)-M)+L(g(x)-M)\\
+				&\qquad+(f(x)-L)M.\tag{3}
+		\end{align*}
+		
+		Agora, podemos trabalhar com cada termo da expressão acima separadamente, de modo a garantir que o valor total da expressão seja suficientemente pequeno.
+		
+		Seja $\epsilon>0$. Considere os valores
+		\[\epsilon_1=\min\left\{1,\frac{\epsilon}{2(|M|+1)}\right\}\]
+		e
+		\[\epsilon_2=\frac{\epsilon}{2(|L|+1)}.\]
+		Tanto $\epsilon_1$ quanto $\epsilon_2$ são positivos. Das hipóteses, existem $\delta_1,\delta_2>0$ tais que
+		\[\text{se }0<|x-a|<\delta_1\text{ então }|f(x)-L|<\epsilon_1\]
+		e
+		\[\text{se }0<|x-a|<\delta_2\text{ então }|g(x)-L|<\epsilon_2.\]
+		
+		Novamente, tome $\delta=\min\left\{\delta_1,\delta_2\right\}$. Se $0<|x-a|<\delta$, então da Equação (3) obtemos
+		\begin{align*}
+			|f(x)g(x)-LM|
+				&=|(f(x)-L)(g(x)-M)+L(g(x)-M)\\
+				&\qquad+(f(x)-L)M|\\
+				&\leq |f(x)-L|\cdot |g(x)-M|+ |L|\cdot |g(x)-M|\\
+				&\qquad+|f(x)-L|\cdot |M|\\
+				&<\epsilon_1\epsilon_2+|L|\epsilon_2+\epsilon_1|M|\tag{4}\\
+				&\leq \epsilon_2+|L|\epsilon_2+\epsilon_1|M|\tag{5}\\
+				&=(1+|L|)\epsilon_2+\epsilon_1|M|\\
+				&\leq (1+|L|)\frac{\epsilon}{(|L|+1)}+\frac{\epsilon_1}{2(|M|+1)}|M|\tag{6}\\
+				&<\frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+				&=\epsilon.
+		\end{align*}
+		A desigualdade (4) é estrita pois temos que $|f(x)-L|\cdot|g(x)-M|<\epsilon_1\epsilon_2$, de modo estrito (visto que $\epsilon_1$ e $\epsilon_2$ são estritamente positivos. A desigualdade (5) segue do fato que $\epsilon_1\leq 1$, e desigualdade (6) das definições de $\epsilon_1$ e $\epsilon_2$. Isto prova que $\lim_{x\to a}f(x)g(x)=LM$.
+		
+		\item Pelo item anterior, basta provarmos que $\lim_{x\to a}\frac{1}{g(x)}=\frac{1}{M}$. Novamente, vamos tentar reescrever a expressão ``$\frac{1}{g(x)}-\frac{1}{M}$'' de modo que o termo ''$g(x)-M$'' apareça explicitamente.
+		
+		\begin{align*}
+			\frac{1}{g(x)}-\frac{1}{M}
+				&=\frac{M-g(x)}{g(x)M}.\tag{7}
+		\end{align*}
+		
+		Como queremos que o valor da expressão acima seja pequeno, devemos garantir que o termo ``$g(x)$'' que aparece no denominador seja grande o suficiente (em módulo).
+		
+		Suponha que um valor $\epsilon'>0$ é dado, e que já sabemos de antemão que $|g(x)-M|<\epsilon'$. Então obtemos
+		\begin{align*}
+			|g(x)|
+				&=|M+(g(x)-M)|\\
+				&\geq |M|-|g(x)-M|\tag{8}\\
+				&\geq |M|-\epsilon'\tag{9}
+		\end{align*}
+		(a desigualdade (7) é chamada de \emph{desigualdade triangular inversa}, que pode ser obtida como uma consequência da desigualdade triangular usual). Como queremos que $|g(x)|$ seja suficientemente grande, poderemos assumir que $\epsilon'$ é suficientemente pequeno. Por exemplo, se tomarmos $\epsilon'\leq\frac{|M|}{2}$, obteremos de (8) que
+		\[|g(x)|\geq \frac{|M|}{2},\]
+		ou equivalentemente que
+		\[\frac{1}{|g(x)|}\leq\frac{2}{|M|},\]
+		desde que $|g(x)-M|\leq\epsilon'$.
+		
+		Agora vamos aplicar isto à nossa expressão (7). Suponha que $\epsilon'\leq\frac{|M|}{2}$ e que $|g(x)-M|\leq\epsilon'$. De (7) e de (9) obtemos que
+		\begin{align*}
+			\left|\frac{1}{g(x)}-\frac{1}{M}\right|
+				&=\frac{|M-g(x)|}{|g(x)||M|}\\
+				&<\frac{\epsilon'\cdot 2}{|M|^2}.\tag{10}
+		\end{align*}
+		
+		Os termos na expressão final podem ser tomados tão pequenos quanto se queira, desde que $\epsilon'$ seja suficientemente pequeno, pois o fator ``$\frac{2}{M^2}$'' é fixo. Isto permite concluir a prova deste item quase que imediatemente.
+		
+		Seja $\epsilon>0$. Tome $\epsilon'=\min\left\{\frac{\epsilon}{2M^2},\frac{|M|}{2}\right\}$. Como assumimos que $M\neq 0$ então $\epsilon'>0$. Como $\lim_{x\to a}g(x)=M$, então existe $\delta>0$ tal que se $0<|x-a|<\delta$ então $|g(x)-M|<\epsilon'$. Neste caso, estamos nas hipóteses para aplicar a Equação (10), que nos permite concluir que
+		\begin{align*}
+			\left|\frac{1}{g(x)}-\frac{1}{M}\right|<\epsilon,
+		\end{align*}
+		sempre que $0<|x-a|<\delta$. Isto prova que $\lim_{x\to a}\frac{1}{g(x)}=\frac{1}{M}$, exatamente como queríamos.
+	\end{enumerate}
+\end{proof}

@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.7.im.html#definitiontrace'>1.7.21</a>
+<!-- 1.7.21 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 1.7.21</span>
+If $S$ is a Boolean inverse semigroup endowed with an invariant mean $\mu$ and $s\in S$, define the <em>trace</em> of $s$ as $\tr(s)=\mu(\Fix(s))$ (or $\tr_\mu$ if we need to make $\mu$ explicit).
+</p>
+</div>

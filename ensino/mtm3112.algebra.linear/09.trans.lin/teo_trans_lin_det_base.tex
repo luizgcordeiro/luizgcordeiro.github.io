@@ -1,0 +1,15 @@
+\begin{theorem}
+	Sejam $V$ e $W$ espaços vetoriais e $\mathcal{B}$ uma base de $V$.
+	
+	Então cada função $S\colon\mathcal{B}\to W$ se estende unicamente para uma função linear de $V$ em $W$; i.e., existe uma única função linear $\bar{S}\colon V\to W$ que satisfaz $\bar{S}(b)=S(b)$ para todo $b\in\mathcal{B}$.
+\end{theorem}
+
+\begin{proof}[Esboço da prova]
+	Dada uma função $S$ como acima, defina $\bar{S}\colon V\to W$ do seguinte modo: dado um vetor $v\in V$, escreva $v$ como uma combinação linear de elementos da base $\mathcal{B}$: $v=\sum_{b\in\mathcal{B}}\lambda_b b$. Definimos então $\bar{S}(v)=\sum_{b\in\mathcal{B}}\lambda_b S(b)$. Como $\mathcal{B}$ é base, então este modo de se escrever $v$ como uma combinação linear de elementos de $\mathcal{B}$ é único, e portanto a função $\bar{S}$ está bem-definida.
+	
+	A verificação de que $\bar{S}$ é linear é simples: por exemplo, se $v=\sum_{b\in\mathcal{B}}\lambda_b b$ é um elemento de $V$ e $\mu$ é um escalar, então $\mu v$ se escreve como uma combinação linear de elementos de $\mathcal{B}$ como $\mu v=\sum_{b\in\mathcal{B}}(\mu\lambda_b)b$, e portanto
+	\[\bar{S}(\mu v)=\sum_{b\in\mathcal{B}}(\mu\lambda_b)S(b)=\mu\bar{S}(v).\]
+	Isto mostra que $\bar{S}$ preserva produto por escalar, e a prova de que $\bar{S}$ preserva somas é similar.
+	
+	A unicidade de $\bar{S}$ com a propriedade desejada segue do fato geral que duas transformações lineares de $V$ em $W$ são iguais se e somente se coincidem em algum conjunto gerador de $V$, cuja demonstração é deixada como exercício.
+\end{proof}

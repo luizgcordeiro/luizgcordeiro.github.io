@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#definitionmeasuredsemigroup'>1.6.21</a>
+<!-- 1.6.22 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 1.6.22</span>
+	The <em>measured semigroup</em> of a probability measure-preserving groupoid $(\mathcal{G},\mu)$ is the semigroup quotient
+	<div class='equation'>\[
+	\MEAS(\mathcal{G},\mu)=\BOR(\mathcal{G})/\mathbf{Null}(\mathcal{G},\mu),
+	\]</div>
+	which we simply denote by $\MEAS(\mathcal{G})$ when the measure $\mu$ is implicit and there is no risk of confusion.
+	</p>
+</div>

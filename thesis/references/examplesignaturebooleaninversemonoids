@@ -1,0 +1,16 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#examplesignaturebooleaninversemonoids'>2.1.10</a>
+
+<!-- 2.1.10 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 2.1.10</span>
+	A Boolean inverse monoid $S$ with a normalized, faithful invariant mean $\mu$ is a metric structure for the signature containing binary function symbols $\land,\setminus$ and $\cdot$ (for the semigroup operation), a unary function symbol $(\ )^*$ (and appropriate moduli of continuity) and constant symbols $0,1$. We can also consider a unary predicate $E$ determining idempotents via $E(s)=d_\mu(s,s^*s)$.
+	</p>
+
+	<p>
+	One slightly more problematic operation is the "join", which is only defined for compatible elements. One way to remedy this is to define a new operation $\overset{\star}{\lor}$ on $S$ as
+	<div class='equation'>\[
+	s\overset{\star}{\lor}t=s\lor\left((tt^*\setminus ss^*)t(t^*t\setminus s^*s)\right),
+	\]</div>
+	so that $s\overset{\star}{\lor}t=s\lor t$ whenever $s$ and $t$ are compatible. This way we can add the symbol $\lor$ to the signature of Boolean inverse monoids, and interpret it as $\overset{\star}{\lor}$ in $S$.
+	</p>
+</div>

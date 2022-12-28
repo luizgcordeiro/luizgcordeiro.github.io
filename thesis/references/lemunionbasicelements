@@ -1,0 +1,21 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#lemunionbasicelements'>4.4.31</a>
+
+<!-- 4.4.31 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.4.31</span>
+	Let $S\ltimes X$ be a Hausdorff groupoid of germs, and consider two finite collections $\left\lbrace\left[s_i,U_i\right]:i=1,\ldots,n\right\}$ and $\left\lbrace\left[t_j,V_j\right]:j=1,\ldots,m\right\rbrace$ of pairwise disjoint basic compact-open bisections of $S\ltimes X$ such that 
+	<div class='equation'>\begin{align*}
+		\bigcup_{i=1}^n\left[s_i,U_i\right]
+			&=\bigcup_{j=1}^m\left[t_j,V_j\right].
+	\end{align*}</div>
+	</p>
+	
+	<p>
+	Then for each pair $i,j$, there is a finite set  $\left\{\left[u_k^{ij},W_k^{ij}\right]\right\}_{1\leq k\leq l^{ij}}$ of pairwise disjoint basic neighbourhoods of $S\ltimes X$ such that 
+	<div class='equation'>\begin{align*}
+		\left[s_i,U_i\right]\cap\left[t_j,V_j\right]
+		&=\bigcup_{k=1}^{l^{ij}}\left[u_k^{ij},W_k^{ij}\right]
+	\end{align*}</div>
+	and $u_k^{ij}\leq s_i,t_j$ for each $i,j$.
+	</p>
+</div>

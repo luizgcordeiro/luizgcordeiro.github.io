@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#definitionprincipalgroupoid'>1.1.17</a>
+
+<!-- 1.1.17 -->
+<div class="toload definition">
+<p><span class="envidentifier">Definition 1.1.17</span>
+A groupoid $\mathcal{G}$ is <em>principal</em> if $\mathcal{G}_x^x$ is a trivial group for all $x\in\mathcal{G}^{(0)}$.
+</p>
+</div>

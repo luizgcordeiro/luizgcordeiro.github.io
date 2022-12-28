@@ -1,0 +1,12 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#definitioncovariantrepresentation'>4.3.13</a>
+
+<!-- 4.3.12 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.3.12</span>
+	Let $\alpha$ be a partial action of $S$ on an algebra $A$. A <em>covariant representation</em> of $\alpha$ consists of an algebra $B$ and a pair $(\theta,\phi)$, where $\theta:S\to B$ is a partial morphism of $S$ to the multiplicative semigroup of $B$, and $\phi:A\to B$ is an algebra morphism, satisfying the <em>covariance</em> condition: For all $s\in S$ and $a_{s^*}\in A_{s^*}$,
+	<div class='equation'>\[
+		\phi(\alpha_s(a_{s^*}))=\theta(s)\phi(a_{s^*})\theta(s^*).
+	\]</div>
+	We say that $(\theta,\phi)$ is <em>non-degenerate</em> if $\theta(s)\theta(s^*)\in\phi(A_s)$ for all $s\in S$ (and <em>degenerate</em> otherwise).
+	</p>
+</div>

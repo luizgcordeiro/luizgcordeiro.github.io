@@ -1,0 +1,6 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#equationembeddingmetricsignatureultraproductconstants'>2.1.3</a>
+
+
+		<div class='toload equation'>\[
+			\sup_{c\in\mathbf{C}}d^M(\phi(c^L),c^M)<\epsilon\tag{2.1.3}
+		\]</div>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço com produto interno e \(W\) um subespaço de \(V\) que admite uma projeção ortogonal \(\operatorname{proj}_W\colon V\to W\) (e.g. se \(\dim(W)<\infty\)).Então
+</p>
+
+<ol>
+
+<li>
+<p>
+Para todos \(v\in V\) e \(w\in W\), temos que \(\langle v,w\rangle=\langle\operatorname{proj}_W(v),w\rangle\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(W^\perp=\ker(\operatorname{proj}_{W})\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(V\) se decompõe como a soma direta \(V=W\oplus W^\perp\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\operatorname{proj}_{W^\perp}=\operatorname{id}_V-\operatorname{proj}_W\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(\left(W^\perp\right)^\perp=W\).
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+
+<ol>
+
+<li>
+<p>
+Dado \(v\in V\), uma das propriedades de projeção ortogonal nos dizem que \(v-\operatorname{proj}_W(v)\) é ortogonal a \(W\). Isto significa que para todo \(w\in W\), temos que
+<div>
+\begin{equation*}
+\langle v-\operatorname{proj}_W(v),w\rangle=0,
+\end{equation*}
+</div>
+ou equivalentemente, utilizando a linearidade na primeira entrada do produto interno,
+<div>
+\begin{equation*}
+\langle v,w\rangle=\langle\operatorname{proj}_W(v),w\rangle.
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Temos duas inclusões de conjunto a verificar:
+</p>
+<p>
+<u>\(W^\perp\subseteq\ker(\operatorname{proj}_W)\)</u>.
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+Se \(u\in W^\perp\), então
+<div>
+\begin{align*}
+\Vert \operatorname{proj}_W(u)\Vert^2
+&=\langle\operatorname{proj}_W(u),\operatorname{proj}_W(u)\rangle\\
+&=\langle u,\operatorname{proj}_W(u)\rangle\\
+&=0,
+\end{align*}
+</div>
+onde a segunda igualdade é obtida pelo item 1., e a terceita igualdade decorre do fato de que \(u\in W^\perp\) e \(\operatorname{proj}_W(u)\in W\). Isto significa que \(\operatorname{proj}_W(u)=0\), ou seja, \(u\in\ker(\operatorname{proj}_W)\).
+
+</div>
+<p>
+<u>\(\ker(\operatorname{proj}_W)\subseteq W^\perp\)</u>.
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+Suponha que \(u\in\ker(\operatorname{proj}_W)\). Então
+<div>
+\begin{equation*}
+u=u-\operatorname{proj}_W(u).
+\end{equation*}
+</div>
+O lado direito da equação pertence a \(W^\perp\) (conforme uma das propriedades de projeção ortogonal nos diz). Portanto \(u\in W^\perp\).
+
+</div>
+
+</li>
+
+<li>
+<p>
+Para mostrar que \(V=W\oplus W^\perp\), temos dois fatos a verificar:
+</p>
+<p>
+<u>\(W\) e \(W^\perp\) são suplementares, i.e., \(W\cap W^\perp=\left\{0_V\right\}\)</u>.
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+De fato, se \(w\in W\cap W^\perp\), então \(\langle w,w\rangle=0\), de onde segue que \(w=0\).
+
+</div>
+<p>
+<u>\(V\) é a soma de \(W\) e \(W^\perp\): \(V=W+W^\perp\)</u>.
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Dado \(v\in V\), sejam \(w=\operatorname{proj}_W(v)\) e \(p=v-\operatorname{proj}_W(v)\). Então \(v=w+p\), e pela definição de projeção ortogonal, temos tanto que \(w\in W\) quanto que \(p\in W^\perp\). Portanto \(V=W+W^\perp\).
+
+</div>
+<p>
+Isto significa que \(V=W\oplus W^\perp\).
+</p>
+
+</li>
+
+<li>
+<p>
+Agora, vamos mostrar que a transformação \(Q=\operatorname{id}_V-\operatorname{proj}_W\) é a projeção ortogonal de \(V\) sobre \(W^\perp\). Primeiro note que, do mesmo modo que já mencionamos acima, \(v-\operatorname{proj}_W(v)\) é um elemento de \(W^\perp\) para todo \(v\in V\), e portanto \(Q\) define uma transformação linear \(Q\colon V\to W^\perp\).
+</p>
+<p>
+<u>Para todo \(u\in W^\perp\), temos que \(Q(u)=u\)</u>.
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+Seja \(u\in W^\perp\). Então \(u-Q(u)=\operatorname{proj}_W(u)=0\), pelo item 2, ou seja, \(Q(u)=u\).
+
+</div>
+<p>
+<u>Para todo \(v\in V\), \(v-Q(v)\in \left(W^\perp\right)^\perp\)</u>.
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+Dado \(v\in V\), temos que \(v-Q(v)=\operatorname{proj}_W(v)\), que é um elemento de \(W\). Claramente, \(W\subseteq\left(W^\perp\right)^\perp\), e portanto \(v-Q(v)\) é ortogonal a \(W^\perp\).
+
+</div>
+<p>
+Isto significa que \(Q=\operatorname{id}_V-\operatorname{proj}_W\) é, de fato, a projeção ortogonal de \(V\) sobre \(W^\perp\).
+</p>
+
+</li>
+
+<li>
+<p>
+Conforme já mencionamos acima, é claro que \(W\subseteq\left(W^\perp\right)^\perp\), e portanto somente a inclusão oposta de conjuntos precisa ser verificada. Utilizando o item 2. com \(W^\perp\) no lugar de \(u\), temos que
+<div>
+\begin{equation*}
+\left(W^\perp\right)^\perp=\ker(\operatorname{proj}_{W^\perp}).
+\end{equation*}
+</div>
+Mas pelo item 4., \(\operatorname{proj}_{W^\perp}=\operatorname{id}_V-\operatorname{proj}_W\). Assim, segue que \(v\in\ker(\operatorname{proj}_{W^\perp})\) se, e somente se, \(v=\operatorname{proj}_W(v)\), ou seja, se, e somente se, \(v\in W\).
+</p>
+<p>
+Portanto, \(\left(W^\perp\right)^\perp=\ker(\operatorname{proj}_{W^\perp})=W\).
+</p>
+
+</li>
+</ol>
+
+</div></body>
+</html>

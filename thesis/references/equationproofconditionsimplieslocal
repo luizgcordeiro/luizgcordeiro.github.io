@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#equationproofconditionsimplieslocal'>4.4.5</a>
+
+	<div class='toload equation'>\begin{align*}
+	\beta\alpha
+		&=\sum_{b\in\mathcal{G}_x^x}\left(\sum_{\substack{cd=b\\\ra(d)=y}}f^*(c)f(d)\right)b\\
+		&=\sum_{\substack{cd=x\\\ra(d)=y}}f^*(c)f(d)x\\
+		&=x,\tag{4.4.5}
+	\end{align*}</div>

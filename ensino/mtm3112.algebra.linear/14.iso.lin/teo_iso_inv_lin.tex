@@ -1,0 +1,39 @@
+\begin{theorem}
+	Seja $T\colon V\to W$ um isomorfismo linear entre espaços vetoriais $V$ e $W$. Então a função inversa $T^{-1}\colon W\to V$ também é linear.
+\end{theorem}
+
+Vamos prover duas provas distintas pra este teorema.
+
+\begin{proof}[Prova usual]
+	Sejam $w_1,w_2\in W$ e $\lambda\in\mathbb{R}$. Devemos provar que $T^{-1}(w_1+\lambda w_2)=T^{-1}(w_1)+\lambda T^{-1}(w_2)$.
+	
+	Sejam $v_1=T^{-1}(w_1)$ e $v_2=T^{-1}(w_2)$. Como $T$ é linear, temos que
+	\begin{align*}
+		T(v_1+\lambda v_2)
+			&=T(v_1)+\lambda T(v_2)\\
+			&=w_1+\lambda w_2.
+	\end{align*}
+	
+	Aplicando $T^{-1}$ no primeiro e no último termos acima, obtemos a igualdade
+	\[v_1+\lambda v_2=T^{-1}(w_1+\lambda w_2),\]
+	ou seja,
+	\[T^{-1}(w_1)+\lambda T^{-1}(w_2)=T^{-1}(w_1+\lambda w_2),\]
+	como queríamos demonstrar.
+\end{proof}
+
+\begin{proof}[Prova alternativa]
+	Como $T$ é injetiva, então \href{http://mtm.ufsc.br/~cordeiro/ensino/mtm3112.algebra.linear/13.trans.lin.comp/teo_inj_inv_esq_moodle.html}{$T$ admite uma inversa linear à esquerda}. Isto é, existe uma função linear $L\colon W\to V$ tal que
+	\[L\circ T=\operatorname{id}_V.\]
+	
+	Porém, como $T$ é inversível então esta função inversa à esquerda de $T$ é na verdade a própria inversa de $T$. De fato,
+	\begin{align*}
+	L
+		&=L\circ \operatorname{id}_W\\
+		&=L\circ (T\circ T^{-1})\\
+		&=(L\circ T)\circ T^{-1}\\
+		&=\operatorname{id}_V\circ T^{-1}\\
+		&=T^{-1}.
+	\end{align*}
+	
+	Isto mostra que $T^{-1}=L$, que é linear por construção.
+\end{prof}

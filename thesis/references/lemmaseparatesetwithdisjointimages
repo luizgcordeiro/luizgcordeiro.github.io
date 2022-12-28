@@ -1,0 +1,12 @@
+<a class='reflink' href='../2.sg/2.5.satfg.html#lemmaseparatesetwithdisjointimages'>2.5.12</a>
+
+<!-- 2.5.12 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 2.5.12</span>
+	Suppose $X$ and $Y$ are Borel spaces with $Y$ standard, and $f,g:X\to Y$ are Borel maps with $f(x)\neq g(x)$ for all $x\in X$. Then there exists a countable partition $\left\{A_n\right\}$ of $X$ such that $f(A_n)\cap g(A_n)=\varnothing$ for all $n$.
+	</p>
+
+	<p>
+	Consequently, if $\mu$ is a probability measure on $X$, then for all $\epsilon>0$ there exists a finite Borel partition $A_1,\ldots,A_n,C$ of $X$ with $f(A_i)\cap g(A_i)=\varnothing$ for $1\leq i\leq n$ and $\mu(C)\smallerthan\epsilon$.
+	</p>
+</div>

@@ -1,0 +1,11 @@
+<a class='reflink' href='../3.dcf/3.2.pi.html#definitionperppideal'>3.2.3</a>
+
+<!-- 3.2.3 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 3.2.3</span>
+	A <em>$\perpp$-ideal</em> in $\mathcal{A}$ is a subset $I\subseteq A$ such that, for all $a\in\mathcal{A}$,
+	<div class='equation'>\[
+		a\in I\iff \text{there is a finite subset }B\subseteq I\text{ which is a strong cover of }a.
+	\]</div>
+	</p>
+</div>

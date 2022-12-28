@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Uma tranformação linear \(T\colon V\to W\) é injetiva se, e somente se, \(T\) admite uma inversa linear à esquerda, i.e., se existe uma transformação linear \(S\colon W\to V\) tal que \(S\circ T=\operatorname{id}_V\).
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Lembre-se do seguinte fato geral: Se \(f\colon X\to Y\) é uma função entre dois conjuntos, então \(f\) é injetiva se, e somente se, \(f\) admite uma inversa à esquerda. Assim, se \(T\) admite uma inversa linear à esquerda então \(T\) é injetiva. O problema deste teorema se resume então a provar que, no caso de \(T\) ser injetiva, pode-se tomar uma inversa à esquerda de \(T\) que seja linear.
+</p>
+<p>
+Suponhamos que \(T\) seja injetiva. Considere uma base qualquer \(\mathcal{B}\) de \(V\). Então o conjunto imagem direta
+<div>
+\begin{equation*}
+T(\mathcal{B})=\left\{T(b):b\in\mathcal{B}\right\}
+\end{equation*}
+</div>
+de \(\mathcal{B}\) por \(T\) é linearmente independente em \(W\) (visto que \(T\) é injetiva). Segue que existe uma base \(\mathcal{C}\) de \(W\) tal que \(T(\mathcal{B})\subseteq\mathcal{C}\).
+</p>
+<p>
+Para definir uma função linear \(S\colon W\to V\), basta definir \(S\) na base \(\mathcal{C}\). Dado \(c\in\mathcal{C}\), temos dois casos:
+</p>
+
+<ul>
+
+<li>
+<p>
+Se \(c\in T(\mathcal{B})\), então \(c=T(b)\) para algum \(b\in\mathcal{B}\), e este \(b\) e único pois \(T\) é injetiva. Definimos \(S(c)=b\).
+</p>
+
+</li>
+
+<li>
+<p>
+Caso \(c\not\in T(\mathcal{B})\), defina \(S(c)=0\).
+</p>
+
+</li>
+</ul>
+<p>
+Então \(S(c)\) se estende linearmente para uma transformação linear de \(W\) em \(V\).
+</p>
+<p>
+Se \(b\in\mathcal{B}\), então \(S(T(b))=b\), o que mostra que \(S\circ T\) é a identidade em \(\mathcal{B}\). Como \(\mathcal{B}\) é uma base de \(V\), então \(S\circ T\) é a identidade de \(V\).
+</p>
+
+</div></body>
+</html>

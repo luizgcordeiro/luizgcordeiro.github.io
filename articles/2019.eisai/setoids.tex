@@ -1,0 +1,31 @@
+\begin{denv*}{Setoids}
+A \emph{setoid} is a pair $(X,R)$, where $X$ is a set and $R$ is an equivalence relation on $X$. Equivalently, a setoid is a principal groupoid. A morphism of setoids $(X,R_X)$ and $(Y,R_Y)$ is simply a relational morphism, that is, a map $f\colon X\to Y$ such that $(f\times f)(R_X)\subseteq R_Y$. Equivalently, a morphism of setoids, seen as principal groupoids, is simply a groupoid homomorphism.
+\end{denv*}
+
+\begin{denv*}{Bundles/Fibrations}
+A \emph{bundle} or \emph{fibration} is a function $\pi\colon X^{(1)}\to X^{(0)}$. $X^{(0)}$ is called the \emph{base space}, and we say that $X^{(1)}$ is \emph{fibred over $X^{(0)}$}, or that $\pi$ is a \emph{bundle over $X^{(0)}$}. Although of most insterest are the surjective bundles, we do not make such an assumption.
+
+A morphism between bundles $(X^{(0)},X^{(1)},\pi_X)$ and $(Y^{(0)},Y^{(1)},\pi_Y)$ is a pair $f=(f^{(0)},f^{(1)})$ of maps $f^{(i)}\colon X^{(i)}\to Y^{(i)}$ ($i=0,1$) such that $f^{(0)}\circ\pi_X=\pi_Y\circ f^{(1)}$. In other words, bundles and their morphisms are simply the category of arrows of $\cat{Set}$, the category of sets and functions (see \cite[p.\ 40]{MR1712872}).
+\end{denv*}
+
+\begin{denv*}{Partitions}
+A \emph{partition} is a pair $(X,\mathscr{P})$, where $X$ is a set and $\mathscr{P}$ is a partition of $X$ (i.e., a collection of nonempty, pairwise disjoint subsets of $X$ such that $\bigcup\mathscr{P}=X$). A \emph{morphism} between partitions $(X,\mathscr{P}_X)$ and $(Y,\mathscr{P}_Y)$ is a map $f\colon X\to Y$ such that for every $A\in\mathscr{P}_X$, there exists $B\in\mathscr{P}(Y)$ such that $f(A)\subseteq B$.
+\end{denv*}
+
+Setoids, surjective bundles and partitions are equivalent concepts. More precisely, the categories $\cat{Std}$, $\cat{Bdl}_{\mathrm{sur}}$ and $\cat{Part}$ which they respectively define are equivalent:
+\begin{enumerate}
+    \item Given a setoid $(X,R)$, we construct the bundle $(X/R,X,\pi_X)$, where $X/R$ is the quotient space and $\pi_X\colon X\to X/R$ is the quotient map. Given a morphism of setoids $f\colon (X,R_X)\to (Y,R_Y)$, there exists a unique map $f^{(0)}\colon X/R_X\to Y/R_Y$ such that $f^{(0)}\circ\pi_X=\pi_Y\circ f$. Then $(f^{(0)},f)$ is a morphism of bundles.
+    
+    \item Given a bundle $(X^{(0)},X^{(1)},\pi)$, we consider the partition $\mathscr{P}_X=\left\{\pi^{-1}(x):x\in\pi(X^{(1)})\right\}$ of $X^{(1)}$. Given a bundle morphism $f=(f^{(0)},f^{(1)})\colon(X^{(0)},X^{(1)},\pi_X)\to (Y^{(0)},Y^{(1)},\pi_Y)$, the map $f^{(1)}$ is a morphism of partitions $f^{(1)}\colon (X^{(1)},\mathscr{P}_{X})\to (Y^{(1)},\mathscr{P}_{Y})$.
+    
+    \item Any partition $(X,\mathscr{P})$ induces an equivalence relation $R_{\mathscr{P}}$ on $X$ as
+    \[R_{\mathscr{P}}=\left\{(x,y)\in X\times X:\text{there exists }A\in\mathscr{P}\text{ such that }x,y\in A\right\}\]
+    Given a morphism of partitions $f\colon (X,\mathscr{P}_X)\to (Y,\mathscr{P}_Y)$, the same map $f\colon X\to Y$ is also a morphism of setoids.
+\end{enumerate}
+
+All of these constructions are functorial. If we denote $F\colon \cat{Std}\to\cat{Bdl}_{\mathrm{sur}}$, $G\colon \cat{Bdl}_{\mathrm{sur}}\to\cat{Part}$ and $H\colon\cat{Part}\to\cat{Std}$ the functors described above, then $H\circ G\circ F=\id_{\cat{Std}}$, $G\circ F\circ H$ is equivalent to $\id_{\cat{Bdl}_{\mathrm{sur}}}$, and $F\circ H\circ G=\id_{\cat{Part}}$. In particular, these three categories are equivalent ($\cat{Std}$ and $\cat{Part}$ being in fact isomorphic). We will, therefore, not make any meaningful distinction between these concepts.
+
+Bundles are generally easier to describe in the topological setting: A \emph{continuous} or \emph{topological bundle} is a continuous map $\pi\colon X^{(1)}\to X^{(0)}$ between topological spaces. In this  setting, we also consider only bundle morphisms $f=(f^{(1)},f^{(0)})$ such that $f^{(0)}$ and $f^{(1)}$ are continuous. Equivalently, continuous bundles and their morphisms form the category of arrows of $\cat{Top}$, the category of topological spaces and continuous maps.
+
+Given bundles (fibrations) $\pi_i\colon X_i\to X^{(0)}$ ($i=1,2,$) over the same base space $X^{(0)}$, the \emph{fibred product} of $\pi_1$ and $\pi_2$ is
+\[X_1\tensor[_{\pi_1}]{\ast}{_{\pi_2}} X_2=\left\{(x_1,x_2)\in X_1\times X_2:\pi_1(x_1)=\pi_2(x_2)\right\}.\]

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<script src="../../src/jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="../../src/style.css">
+
+<title>Étale inverse semigroupoids - the fundamentals</title>
+
+</head>
+<body>
+
+<div style='display: none' id='latexcommands'>
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+\end{equation*}
+</div>
+
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>Étale inverse semigroupoids - the fundamentals</h1>
+<h1 class='sidebar-section'><a href='main_front.html'>Front page</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='main_1.html'>1. Introduction</a></h1>
+<h2 class='sidebar-subsection'><a href='main_1.html#2'>Notation and running conventions</a></h2>
+<h2 class='sidebar-subsection'><a href='main_1.html#3'>1.1. Setoids, bundles and partitions</a></h2>
+<h2 class='sidebar-subsection'><a href='main_1.html#12'>1.2. Graphs</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_2.html'>2. Inverse semigroupoids</a></h1>
+<h2 class='sidebar-subsection'><a href='main_2.html#20'>2.1. Exel and graphed semigroupoids</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#81'>2.2. Inverse semigroupoids</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#117'>2.3. A representation theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#134'>2.4. $\land$-prehomomorphisms, partial homomorphisms, and actions</a></h2>
+<h2 class='sidebar-subsection'><a href='main_2.html#166'>2.5. Semidirect products</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_3.html'>3. Topological and étale inverse semigroupoids</a></h1>
+<h2 class='sidebar-subsection'><a href='main_3.html#246'>3.1. Continuous $\land$-preactions and semidirect products</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_4.html'>4. Constructions with inverse semigroupoids</a></h1>
+<h2 class='sidebar-subsection'><a href='main_4.html#268'>4.1. Underlying groupoids</a></h2>
+<h2 class='sidebar-subsection'><a href='main_4.html#274'>4.2. Quotients</a></h2>
+<h2 class='sidebar-subsection'><a href='main_4.html#286'>4.3. Semigroupoids of germs and the initial groupoid</a></h2>
+<h2 class='sidebar-subsection'><a href='main_4.html#358'>4.4. Global actions</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='main_5.html'>5. Duality</a></h1>
+<h2 class='sidebar-subsection'><a href='main_5.html#430'>5.1. The general procedure</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#431'>5.2. Reconstruction of $\mathcal{S}^{(0)}$ from $\mathbf{KB}(\mathcal{S})$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#452'>5.3. The category $\Sigma\cat{-Ord}$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#462'>5.4. The category
+$\cat{Amp}_\star$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#463'>5.5. The functor $\mathbb{K}\colon\cat{Amp}_\star^{\mathrm{op}}\to\cat{&Sigma;-Ord}$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#467'>5.6. The functor $\mathbb{P}\colon\cat{&Sigma;-Ord}^{\mathrm{op}}\to\cat{Amp}$</a></h2>
+<h2 class='sidebar-subsection'><a href='main_5.html#478'>5.7. The natural equivalence</a></h2>
+</div>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section' id='1'>1. Introduction</h2>
+<p>
+Groups, semigroups and categories are ubiquitous in Mathematics. The dynamical systems associated with such structures are usually assumed to satisfy some form of associativity, roughly stating that <span>&#8220;</span>performing certain related operations in any order will always yield the same result<span>&#8221;</span>. This is clearly the case, for example, when considering group actions. Moreover, different components of a given system play different roles: Given a left action of a group $G$ on a set $X$, the elements of $G$ can be composed both with elements of $G$ (on either side) and with elements of $X$ on their right (via the action), however elements of $X$ can only be composed with elements of $G$ on their left. This leads us to consider partially defined operations.
+</p>
+<p>
+Semigroupoids are an algebraic abstraction of these concepts: they are sets with partially defined binary operations with are associative in a precise way. In particular, the two most prominent examples of semigroupoids are categories and semigroups.
+</p>
+<p>
+Whereas the most common categories one first encounters consist of unrelated objects of a given signature, such as the categories of rings, topological spaces, posets, etc&#8230; and certain structure-preserving maps between them, we consider a more algebraic-geometric approach: categories (and semigroupoids) ought to be regarded as collections of transformations between subobjects of a single object. The classical version of this approach is well-established, where one seeks to understand a given object by looking at its automorphism group. This is the first motivation for this work.
+</p>
+<p>
+This approach &#8210; to study an object by analyzing its <span>&#8220;</span>partial automorphisms<span>&#8221;</span> &#8210; has been popularized in the contexts of Topological Dynamics and Operator Algebras mainly after the introduction of <em>partial actions</em> of groups by Exel on his study of the structure of $C^*$-algebras endowed with circle actions in [<a class='reference' href='../../HTML citations/MR1276163.html' target='_blank'>MR1276163</a>]. This turned out to be a rich an fruitful research direction, since it allows one to consider algebras and topological dynamical systems which are not induced (in any natural fashion) by a group action, but rather from transformations among its subsets (see [<a class='reference' href='../../HTML citations/arxiv1804.00396.html' target='_blank'>arxiv1804.00396</a>], <a class='reference' href='../../HTML citations/MR3789176.html' target='_blank'>MR3789176</a>], <a class='reference' href='../../HTML citations/MR2645883.html' target='_blank'>MR2645883</a>], for example).
+</p>
+<p>
+A variation on the <span>&#8220;</span>partial transformation<span>&#8221;</span> approach was taken by Sieben in [<a class='reference' href='../../HTML citations/MR1671944.html' target='_blank'>MR1671944</a>], <a class='reference' href='../../HTML citations/MR1456588.html' target='_blank'>MR1456588</a>], who instead considered <em>actions of inverse semigroups</em> on topological spaces and algebras. Inverse semigroups have been thoroughly studied in the last century, which provides solid foundation for this approach.
+</p>
+<p>
+Another approach to Topological Dynamics and Operator Algebras, and which in fact predates the works above, is the usage of <em>groupoids</em>, which have played a central role in the theory of $C^*$-algebras since Renault's seminal work [<a class='reference' href='../../HTML citations/MR584266.html' target='_blank'>MR584266</a>], since they provide a geometric counterpart to a large class of (non-commutative) $C^*$-algebras. In simple terms, and as an interpretation of [<a class='reference' href='../../HTML citations/MR2460017.html' target='_blank'>MR2460017</a>], groupoids are the <span>&#8220;</span>non-commutative spectra<span>&#8221;</span> of <span>&#8220;</span>non-commutative, dynamical $C^*$-algebras<span>&#8221;</span>.
+</p>
+<p>
+Groupoids, partial actions of groups, and actions of inverse semigroups &#8210; or more generally <em>partial actions of inverse semigroups</em> &#8210; are related via the constructions of <span>&#8220;</span>groupoids of germs<span>&#8221;</span> and <span>&#8220;</span>crossed products<span>&#8221;</span>. We refer to [<a class='reference' href='../../HTML citations/MR2045419.html' target='_blank'>MR2045419</a>], <a class='reference' href='../../HTML citations/arxiv1804.00396.html' target='_blank'>arxiv1804.00396</a>], <a class='reference' href='../../HTML citations/MR3743184.html' target='_blank'>MR3743184</a>], <a class='reference' href='../../HTML citations/MR3851326.html' target='_blank'>MR3851326</a>], <a class='reference' href='../../HTML citations/MR2799098.html' target='_blank'>MR2799098</a>], <a class='reference' href='../../HTML citations/MR1724106.html' target='_blank'>MR1724106</a>], <a class='reference' href='../../HTML citations/MR1671944.html' target='_blank'>MR1671944</a>], <a class='reference' href='../../HTML citations/MR2565546.html' target='_blank'>MR2565546</a>]. In fact, groupoids and inverse semigroups may be seen as dual to each other, via the <em>non-commutative Stone duality</em> of Lawson-Lenz, [<a class='reference' href='../../HTML citations/MR3077869.html' target='_blank'>MR3077869</a>]. We also refer to [<a class='reference' href='../../HTML citations/MR2969047.html' target='_blank'>MR2969047</a>], <a class='reference' href='../../HTML citations/MR2644910.html' target='_blank'>MR2644910</a>], <a class='reference' href='../../HTML citations/MR2304314.html' target='_blank'>MR2304314</a>] for related studies.
+</p>
+<p>
+Actions of groupoids have also appeared throughout the literature, in the context of Lie theory ([<a class='reference' href='../../HTML citations/MR2012261.html' target='_blank'>MR2012261</a>]), algebraic topology ([<a class='reference' href='../../HTML citations/MR2273730.html' target='_blank'>MR2273730</a>]), operator algebras and topological dynamics ([<a class='reference' href='../../HTML citations/MR2982887.html' target='_blank'>MR2982887</a>], <a class='reference' href='../../HTML citations/MR2969047.html' target='_blank'>MR2969047</a>], <a class='reference' href='../../HTML citations/MR2941279.html' target='_blank'>MR2941279</a>]). A generalization of groupoids and inverse monoids, called <em>inverse categories</em>, were initially introduced in [<a class='reference' href='../../HTML citations/MR0506554.html' target='_blank'>MR0506554</a>] and have been considered in recent work, e.g. in the study of <em>tilings</em> ([<a class='reference' href='../../HTML citations/MR1736698.html' target='_blank'>MR1736698</a>]), logic and recursion theory ([<a class='reference' href='../../HTML citations/MR1871071.html' target='_blank'>MR1871071</a>], <a class='reference' href='../../HTML citations/MR3605681.html' target='_blank'>MR3605681</a>]) and crossed product algebras ([<a class='reference' href='../../HTML citations/MR2959793.html' target='_blank'>MR2959793</a>]).
+</p>
+<p>
+The main goal of this article is to study the structure of <em>inverse semigroupoids</em>, which are a common generalization of both inverse semigroups and groupoids. First we begin by comparing the notions of semigroupoid used in [<a class='reference' href='../../HTML citations/MR3597709.html' target='_blank'>MR3597709</a>], <a class='reference' href='../../HTML citations/MR915990.html' target='_blank'>MR915990</a>] to that of [<a class='reference' href='../../HTML citations/MR2754831.html' target='_blank'>MR2754831</a>], which is more general. After that, we introduce inverse semigroupoids and prove some basic facts about their structure (some which had already been proven in [<a class='reference' href='../../HTML citations/MR3597709.html' target='_blank'>MR3597709</a>]). We follow with a representation theorem, which is an analogue of Cayley's Theorem for groups and the Vagner-Preston theorem for inverse semigroups. It motivates a notion of actions &#8210; and more generally $\land$-preactions and partial actions &#8210; of inverse semigroupoids on semigroupoids, in a manner which covers previously used notions for inverse semigroups and for groupoids. These are used to construct <span>&#8220;</span>semidirect products<span>&#8221;</span> which generalize transformation groupoids of partial group actions, semidirect products of inverse semigroups, semidirect products of groupoids, among others.
+</p>
+<p>
+In the third section we look at <em>topological semigroupoids</em>, specializing to the <em>étale inverse semigroupoid</em> case, and generalize some results known for topological groupoids to this setting. The fourth section generalizes some constructions from the theory of inverse semigroups, and we describe their categorical properties explicitly. The fifth and last section contains a generalization of non-commutative Stone duality to the context of inverse semigroupoids.
+</p>
+
+<h3 class='subsection' id='2'>Notation and running conventions</h3>
+<p>
+The <em>domain</em> and <em>codomain</em> of a map $f$ are denoted by $\dom(f)$ and $\cod(f)$, respectively. The image of a subset $A\subseteq\dom(f)$ is denoted as $f(A)$, and the range of $f$ is $\ran(f)\defeq f(\dom(f))$. Note that $\cod(f)=\ran(f)$ if and only if $f$ is surjective.
+</p>
+<p>
+Given maps $f_i\colon X_i\to Y_i$ ($i=1,2$), we define $f_1\times f_2\colon X_1\times X_2\to Y_2\times Y_2$ as $(f_1\times f_2)(x_1,x_2)=(f_1(x_1),f_2(x_2))$. If $X_1=X_2\eqdef X$, we define $(f_1,f_2)\colon X\to Y_1\times Y_2$ as $(f_1,f_2)(x)=(f_1(x),f_2(x))$.
+The identity map of a set $X$ is denoted as $\id_X$, and more generally $\id_{\mathcal{C}}$ stands for the identity functor of a category $\mathcal{C}$.
+</p>
+<p>
+We denote as $\mathbb{N}=\left\{0,1,2,\ldots,\right\}$ the set of non-negative integers, and as $\mathbb{N}_{\geq 1}=\mathbb{N}\setminus\left\{0\right\}$ the set of positive integers.
+</p>
+<p>
+We assume familiarity with inverse semigroups and étale groupoids. The main references are [<a class='reference' href='../../HTML citations/MR1694900.html' target='_blank'>MR1694900</a>], <a class='reference' href='../../HTML citations/MR1724106.html' target='_blank'>MR1724106</a>] (see also the author's PhD thesis [<a class='reference' href='../../HTML citations/cordeirothesis.html' target='_blank'>cordeirothesis</a>]). A <em>semilattice</em> is a poset $(P,\leq)$ admiting binary meets (infima), and is always regarded as an inverse semigroup under meets: $ab=a\land b=\inf\left\{a,b\right\}$ for all $a,b\in P$.
+</p>
+
+<h3 class='subsection' id='3'>1.1. Setoids, bundles and partitions</h3>
+<div class='alt' id='4'>
+<span class='envidentifier'>Setoids</span>
+<p>
+A <em>setoid</em> is a pair $(X,R)$, where $X$ is a set and $R$ is an equivalence relation on $X$. Equivalently, a setoid is a principal groupoid. A morphism of setoids $(X,R_X)$ and $(Y,R_Y)$ is simply a relational morphism, that is, a map $f\colon X\to Y$ such that $(f\times f)(R_X)\subseteq R_Y$. Equivalently, a morphism of setoids, seen as principal groupoids, is simply a groupoid homomorphism.
+</p>
+
+</div>
+
+<div class='alt' id='5'>
+<span class='envidentifier'>Bundles/Fibrations</span>
+<p>
+A <em>bundle</em> or <em>fibration</em> is a function $\pi\colon X^{(1)}\to X^{(0)}$. $X^{(0)}$ is called the <em>base space</em>, and we say that $X^{(1)}$ is <em>fibred over $X^{(0)}$</em>, or that $\pi$ is a <em>bundle over $X^{(0)}$</em>. Although of most insterest are the surjective bundles, we do not make such an assumption.
+</p>
+<p>
+A morphism between bundles $(X^{(0)},X^{(1)},\pi_X)$ and $(Y^{(0)},Y^{(1)},\pi_Y)$ is a pair $f=(f^{(0)},f^{(1)})$ of maps $f^{(i)}\colon X^{(i)}\to Y^{(i)}$ ($i=0,1$) such that $f^{(0)}\circ\pi_X=\pi_Y\circ f^{(1)}$. In other words, bundles and their morphisms are simply the category of arrows of $\cat{Set}$, the category of sets and functions (see [<a class='reference' href='../../HTML citations/MR1712872.html' target='_blank'>MR1712872</a>]).
+</p>
+
+</div>
+
+<div class='alt' id='6'>
+<span class='envidentifier'>Partitions</span>
+<p>
+A <em>partition</em> is a pair $(X,\mathscr{P})$, where $X$ is a set and $\mathscr{P}$ is a partition of $X$ (i.e., a collection of nonempty, pairwise disjoint subsets of $X$ such that $\bigcup\mathscr{P}=X$). A <em>morphism</em> between partitions $(X,\mathscr{P}_X)$ and $(Y,\mathscr{P}_Y)$ is a map $f\colon X\to Y$ such that for every $A\in\mathscr{P}_X$, there exists $B\in\mathscr{P}(Y)$ such that $f(A)\subseteq B$.
+</p>
+
+</div>
+<p>
+Setoids, surjective bundles and partitions are equivalent concepts. More precisely, the categories $\cat{Std}$, $\cat{Bdl}_{\mathrm{sur}}$ and $\cat{Part}$ which they respectively define are equivalent:
+</p>
+
+<ol>
+
+<li id='7'>
+<p>
+Given a setoid $(X,R)$, we construct the bundle $(X/R,X,\pi_X)$, where $X/R$ is the quotient space and $\pi_X\colon X\to X/R$ is the quotient map. Given a morphism of setoids $f\colon (X,R_X)\to (Y,R_Y)$, there exists a unique map $f^{(0)}\colon X/R_X\to Y/R_Y$ such that $f^{(0)}\circ\pi_X=\pi_Y\circ f$. Then $(f^{(0)},f)$ is a morphism of bundles.
+</p>
+
+</li>
+
+<li id='8'>
+<p>
+Given a bundle $(X^{(0)},X^{(1)},\pi)$, we consider the partition $\mathscr{P}_X=\left\{\pi^{-1}(x):x\in\pi(X^{(1)})\right\}$ of $X^{(1)}$. Given a bundle morphism $f=(f^{(0)},f^{(1)})\colon(X^{(0)},X^{(1)},\pi_X)\to (Y^{(0)},Y^{(1)},\pi_Y)$, the map $f^{(1)}$ is a morphism of partitions $f^{(1)}\colon (X^{(1)},\mathscr{P}_{X})\to (Y^{(1)},\mathscr{P}_{Y})$.
+</p>
+
+</li>
+
+<li id='9'>
+<p>
+Any partition $(X,\mathscr{P})$ induces an equivalence relation $R_{\mathscr{P}}$ on $X$ as
+<div class='equation' id='10'>
+\begin{equation*}
+R_{\mathscr{P}}=\left\{(x,y)\in X\times X:\text{there exists }A\in\mathscr{P}\text{ such that }x,y\in A\right\}
+\end{equation*}
+</div>
+Given a morphism of partitions $f\colon (X,\mathscr{P}_X)\to (Y,\mathscr{P}_Y)$, the same map $f\colon X\to Y$ is also a morphism of setoids.
+</p>
+
+</li>
+</ol>
+<p>
+All of these constructions are functorial. If we denote $F\colon \cat{Std}\to\cat{Bdl}_{\mathrm{sur}}$, $G\colon \cat{Bdl}_{\mathrm{sur}}\to\cat{Part}$ and $H\colon\cat{Part}\to\cat{Std}$ the functors described above, then $H\circ G\circ F=\id_{\cat{Std}}$, $G\circ F\circ H$ is equivalent to $\id_{\cat{Bdl}_{\mathrm{sur}}}$, and $F\circ H\circ G=\id_{\cat{Part}}$. In particular, these three categories are equivalent ($\cat{Std}$ and $\cat{Part}$ being in fact isomorphic). We will, therefore, not make any meaningful distinction between these concepts.
+</p>
+<p>
+Bundles are generally easier to describe in the topological setting: A <em>continuous</em> or <em>topological bundle</em> is a continuous map $\pi\colon X^{(1)}\to X^{(0)}$ between topological spaces. In this  setting, we also consider only bundle morphisms $f=(f^{(1)},f^{(0)})$ such that $f^{(0)}$ and $f^{(1)}$ are continuous. Equivalently, continuous bundles and their morphisms form the category of arrows of $\cat{Top}$, the category of topological spaces and continuous maps.
+</p>
+<p>
+Given bundles (fibrations) $\pi_i\colon X_i\to X^{(0)}$ ($i=1,2,$) over the same base space $X^{(0)}$, the <em>fibred product</em> of $\pi_1$ and $\pi_2$ is
+<div class='equation' id='11'>
+\begin{equation*}
+X_1\left.\right._{\pi_1}\!\!\ast_{\pi_2} X_2=\left\{(x_1,x_2)\in X_1\times X_2:\pi_1(x_1)=\pi_2(x_2)\right\}.
+\end{equation*}
+</div>
+</p>
+
+<h3 class='subsection' id='12'>1.2. Graphs</h3>
+Graphs will be used in the description of semigroupoids, and provide a geometric picture which will be useful throughout this paper. The graphs we consider are sometimes called <em>directed multigraphs</em>, since all edges come with a direction and we allow multiple edges between points.
+
+<!-- 1.1 -->
+<div class='definition' id='13'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.1</span>.
+<p>
+A <em>graph</em> is a tuple $G=(G^{(0)},G^{(1)},\so,\ra)$, where $G^{(0)}$ and $G^{(1)}$ are classes of <em>vertices</em> and <em>arrows</em>, respectively, and $\so,\ra\colon G^{(1)}\to G^{(0)}$ are functions, called the <em>source</em> and <em>range</em> maps.
+</p>
+
+</div>
+<p>
+Alternative terminology is sometimes employed. Elements of $G^{(0)}$ are also called <em>objects</em> or <em>units</em>; elements of $G^{(1)}$ are called <em>edges</em>; The source map is also called the <em>domain</em> map, and the range map the <em>target</em> or <em>codomain</em> map. We may alternate between these terminologies depending on the context. If necessary, we will use subscripts to specify the graph $G$, as in writing $\so_G$ and $\ra_G$.
+</p>
+<p>
+We usually write simply $G$ in place of $G^{(1)}$, so that an inclusion of the form $g\in G$ means that $g$ is an arrow of $G$.
+</p>
+<p>
+Note that the source and range maps give fibred structures on $G^{(1)}$ over $G^{(0)}$. Moreover, we will generally assume that $G=\so(G)\cup\ra(G)$, in the same manner that surjective bundles are the ones of interest.
+</p>
+<p>
+A <em>graph morphism</em> $\phi\colon G\to H$ between graphs $G$ and $H$ is a pair $\phi=(\phi^{(0)},\phi^{(1)})$ of maps $\phi^{(0)}\colon G^{(0)}\to H^{(0)}$ and $\phi^{(1)}\colon G^{(1)}\to H^{(1)}$ such that $\so_H\circ\phi^{(1)}=\phi^{(0)}\circ\so_G$ and $\ra_H\circ\phi^{(1)}=\phi^{(0)}\circ\ra_G$. In other words, it is a simultaneous fibred morphism from $G$ to $H$ over their respective source and range maps. A <em>graph isomorphism</em> is a graph morphism $\phi$ such that both $\phi^{(0)}$ and $\phi^{(1)}$ are bijective, and in this case $\phi^{-1}=((\phi^{(0)})^{-1},(\phi^{(1)})^{-1})$ is also a graph morphism.
+<div class='equation' id='14'>
+<img src='main_tikz_1.png' class='tikzpicture' style='width:763px'>
+</div>
+</p>
+<p>
+A <em>sink</em> in a graph is a vertex $v\in G^{(0)}$ such that $\so^{-1}(v)=\varnothing$. A <em>source</em> in a graph is a vertex $v\in G^{(0)}$ such that $\ra^{-1}(v)=\varnothing$.
+<div class='equation' id='15'>
+<img src='main_tikz_2.png' class='tikzpicture' style='width:379px'>
+</div>
+We will interpret the arrows of a graph as functions, and thus they will be composed from right to left, as functions are. Given $k\in\mathbb{N}_{\geq 1}$, we consider the set of <em>$k$-paths</em> of a graph $G$ as
+<div class='equation' id='16'>
+\begin{equation*}
+G^{(k)}=\left\{(g_1,\ldots,g_k)\in (G^{(1)})^ k:\so(g_i)=\ra(g_{i+1})\text{ for all }i\right\}
+\end{equation*}
+</div>
+Naturally, edges of $G$ are identified with $1$-paths, so the notation $G^{(1)}$ is unambiguous in this manner. We regard $G^ {(k)}$ as a graph itself, with vertex set $G^{(0)}$ and the source and range maps given by
+<div class='equation' id='17'>
+\begin{equation*}
+\so(g_1,\ldots,g_k)=\so(g_k)\qquad\text{and}\qquad\ra(g_1,\ldots,g_k)=\ra(g_1).
+\end{equation*}
+</div>
+</p>
+<p>
+We also regard $G^{(0)}$ as a trivial graph with vertex set $G^{(0)}$, and the source and range maps the identity function: $\so,\ra=\id_{G^{(0)}}$.
+</p>
+<p>
+If $G$ and $H$ are graphs over the same vertex set $G^{(0)}=H^{(0)}$, we make the fibred product $G\left.\right._{\so}\!\!\ast_{\ra} H$ into a graph over that same vertex set, with source and range maps $\ra(g,h)=\ra(g)$ and $\so(g,h)=\so(h)$.  The construction of graphs of paths obey the <span>&#8220;</span>rules of exponentiation<span>&#8221;</span>, where the fibred product $\left.\right._{\so}\!\!\ast_{\ra}$ takes the role of the product: given $k,p\in\mathbb{N}_{\geq 0}$, we have natural isomorphisms
+<div class='equation' id='18'>
+\begin{equation*}
+(G^{(k)})^{(p)}\cong G^{(pk)}\qquad\text{and}\qquad G^{(k)}\left.\right._{\so}\!\!\ast_{\ra}G^{(p)}\cong G^{(k+p)}.
+\end{equation*}
+</div>
+</p>
+
+</body>
+</html>

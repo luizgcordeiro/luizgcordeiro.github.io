@@ -1,0 +1,32 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial e $\mathcal{B}$ e $\mathcal{C}$ duas bases ordenadas para $V$. Dado um endomorfismo linear $T\colon V\to V$, consideramos as representações matriciais de $T$ nas bases $\mathcal{B}$ e $\mathcal{C}$: $[T]_{\mathcal{B}}^{\mathcal{B}}$ e $[T]_{\mathcal{C}}^{\mathcal{C}}$.
+	
+	Então $\det[T]_{\mathcal{B}}^{\mathcal{B}}=\det[T]_{\mathcal{C}}^{\mathcal{C}}$.
+\end{theorem}
+
+\textit{Importante}: Acima, consideramos somente $[T]_{\mathcal{B}}^{\mathcal{B}}$ e $[T]_{\mathcal{C}}^{\mathcal{C}}$, as representações matriciais de $T$ \uline{unicamente} na base $\mathcal{B}$ e \uline{unicamente} na base $\mathcal{C}$. De certo modo, as bases $\mathcal{B}$ e $\mathcal{C}$ não estão interagindo entre si.
+
+O determinante da matriz $[T]_{\mathcal{B}}^{\mathcal{C}}$, que representa $T$ ``da base $\mathcal{B}$ para a base $\mathcal{C}$'', em geral será diferente dos determinantes de $[T]_{\mathcal{B}}^{\mathcal{B}}$ e de $[T]_{\mathcal{C}}^{\mathcal{C}}$.
+
+\begin{proof}
+	Basta utilizar as matrizes de mudança da base $\mathcal{B}$ para $\mathcal{C}$ e vice-versa. Seja $U=\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{B}}$, a matriz de mudança da base $\mathcal{C}$ para a base $\mathcal{B}$. Então a matriz de mudança da base $\mathcal{B}$ para a base $\mathcal{C}$ (na ``direção oposta'') é a inversa de $U$. Isto é,
+	\[\left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{C}}=\left(\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{B}}\right)^{-1}=U^{-1}.\]
+	
+	Agora, correspondemos composição de transformações lineares com produto de matrizes:
+	\begin{align*}
+		\left[T\right]_{\mathcal{B}}^{\mathcal{B}}
+			&=\left[\operatorname{id}_V\circ T\circ \operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{B}}\\
+			&=\left[\operatorname{id}_V\right]_{\mathcal{C}}^{\mathcal{B}}\cdot \left[T\right]_{\mathcal{C}}^{\mathcal{C}}\cdot \left[\operatorname{id}_V\right]_{\mathcal{B}}^{\mathcal{C}}\\
+			&=U\left[T\right]_{\mathcal{C}}^{\mathcal{C}} U^{-1}$.
+	\end{align*}
+	
+	Lembre-se que $\det(AB)=\det(A)\det(B)$ para quaisquer duas matrizes quadradas de mesma ordem, e também que $\det(A^{-1})=\det(A)^{-1}$ se $A$ é inversível. Assim, calculamos
+	\begin{align*}
+		\det\left[T\right]_{\mathcal{B}}^{\mathcal{B}}
+			&=\det\left(U\left[T\right]_{\mathcal{C}}^{\mathcal{C}}U^{-1}\right)\\
+			&=\det(U)\det\left(\left[T\right]_{\mathcal{C}}^{\mathcal{C}}\right)\det(U^{-1})\\
+			&=\det(U)\det\left(\left[T\right]_{\mathcal{C}}^{\mathcal{C}}\right)\det(U)^{-1}\\
+			&=\det\left(\left[T\right]_{\mathcal{C}}^{\mathcal{C}}\right),
+	\end{align*}
+	exatamente como queríamos.
+\end{proof}

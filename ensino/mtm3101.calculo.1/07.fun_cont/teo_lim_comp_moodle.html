@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(f\) e \(g\) duas funções e \(a\) um número real. Suponha que
+</p>
+
+<ol>
+
+<li>
+<p>
+\(\lim_{x\to a}f(x)=L\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(g\) está definida e é contínua em \(L\).
+</p>
+
+</li>
+</ol>
+<p>
+Então \(\lim_{x\to a}g(f(x))=g(L)\).
+</p>
+
+</div>
+<p>
+Em termos mais, simples, este teorema permite que <span>&#8220;</span>passemos limites para dentro de funções contínuas<span>&#8221;</span>, e é às vezes expresso do seguinte modo: Se \(\lim_{x\to a}f(x)\) existe e \(g\) for contínua neste limite, então
+<div>
+\begin{equation*}
+\lim_{x\to a}g(f(x))=g\left(\lim_{x\to a}f(x)\right).
+\end{equation*}
+</div>
+</p>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Seja \(\epsilon>0\). Como \(g\) é contínua em \(L\), então existe \(\eta>0\) tal que
+<div>
+\begin{equation*}
+\text{se}\qquad |y-L|<\eta\qquad\text{então}\qquad|g( y )-g(L)|<\epsilon.\tag{1}
+\end{equation*}
+</div>
+</p>
+<p>
+Como \(L=\lim_{x\to a}f(x)\) e \(\eta>0\), então existe \(\delta>0\) tal que
+<div>
+\begin{equation*}
+\text{se}\qquad 0<|x-a|<\delta\qquad\text{então}\qquad|f(x)-L|<\eta.\tag{2}
+\end{equation*}
+</div>
+</p>
+<p>
+Suponha então que \(0<|x-a|<\delta\). Vamos provar que \(|g(f(x))-g(L)|<\epsilon\). De fato, por (2) temos que \(|f(x)-L|<\eta\). Agora, usando (1) com \(y=f(x)\), obtemos \(|g(f(x))-g(L)|< \epsilon\), exatamente como queríamos.
+</p>
+<p>
+Isto prova que \(\lim_{x\to a}g(f(x))=g(L)\).
+</p>
+
+</div>
+</body>
+</html>

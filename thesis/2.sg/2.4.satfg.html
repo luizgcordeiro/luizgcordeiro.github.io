@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'> 2.4. Soficity and the full group</h2>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Convention</span>
+	During this Section, we will only consider standard, $\ra$-discrete probability measure-preserving groupoids and standard probability spaces.
+	</p>
+</div>
+
+<p>
+In this Section we will prove (Theorem <span class='ref' data-tag='theoremsecondimportant'></span>) that, under weak dynamical conditions, the  full group of a probability measure-preserving groupoid, as a metric group, is enough to determine soficity. This answer, in this case, a question posed by Conley, Kechris and Tucker-Drob in [<span class='ref' data-tag='MR3035288'></span>].
+</p>
+
+<p>
+If $(X,\mu)$ is a probability space, seen as a unit groupoid, then the measured semigroup $\MEAS(X,\mu)$ coincides with what is usually called its <em>measure algebra</em>, that is, the $\sigma$-complete Boolean algebra of Borel subsets of $X$ modulo null sets, endowed with its given probability measure. We will follow the usual convention and denote it by $\MAlg(X,\mu)$ (or simply $\MAlg(X)$) instead, in order to decrease the risk of confusion later on. Given a probability measure-preserving groupoid $(\mathcal{G},\mu)$, the set of idempotents of $\MEAS(\mathcal{G},\mu)$ can be identified with $\MAlg(\mathcal{G}^{(0)},\mu)$.
+</p>
+
+<p>
+Again, for each $n\in\mathbb{N}$, fix $Y_n$ a set with $n$ elements and consider the full equivalence relation $Y_n^2$, whose full group $[Y_n^2]$ can be identified as the permutation group $\mathfrak{S}_n$ on $n$ elements, as in Example <span class='ref' data-tag='examplefullgroupofequivalencerelation'></span>, with the normalized Hamming distance
+<div class='équation'>\[
+d_\#(f,g)=\frac{\#\left\{i\in Y_n:f(i)\neq g(i)\right\}}{n}.
+\]</div>
+A well-known theorem of Dye [<span class='ref' data-tag='MR0158048'></span>] states that when $R$ is an aperiodic equivalence relation, the full group $[R]$ completely determines $R$. With this in mind, we prove that a probability measure-preserving groupoid $\mathcal{G}$ is sofic if and only if $[\mathcal{G}]$ embeds isometrically into $\prod_{\mathcal{U}}\mathfrak{S}_n$, as long as $\mathcal{G}$ is "sufficiently dynamic".
+</p>
+
+<!-- 2.4.1 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.4.1</span>
+	A group $G$ with a bi-invariant metric $d$ is <em>metrically sofic</em> if it embeds isometrically into an ultraproduct $\prod_\mathcal{U}\mathfrak{S}_n$ of permutation groups with their normalized Hamming distances.
+	</p>
+</div>
+
+<!-- 2.4.2 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 2.4.2</span>
+	It is easy to come up with non-metrically sofic groups, even of diameter one. For example, let $G=\left\{1,i,-1,-i\right\}$ be the copy of the cyclic group of order $4$ inside $\mathbb{C}$, and endow it with the metric $d_G(g,h)=|g-h|/2$, which gives it diameter $1$. For every element $f$ of a permutation group $\mathfrak{S}_n$, $d_\#(f^2,1)\leq d(f,1)$, so the same is valid for elements of ultraproducts of permutation groups by &Lstrok;o&sacute;&apos; Theorem (<span class='ref' data-tag='lostheorem'></span>). However, $d_G(i^2,1)>d(i,1)$, so $(G,d_G)$ is not metrically sofic.
+	</p>
+</div>
+
+<p>
+We will need a few technical lemmas relating the full group $[\mathcal{G}]$, the measure algebra $\MAlg(\mathcal{G}^{(0)})$ and the measured semigroup $\MEAS(\mathcal{G})$. Before this, we do a quick detour back to general Boolean inverse monoid theory.
+</p>
+
+<!-- 2.4.3 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.4.3</span>
+	If $S$ is a Boolean inverse monoid and $s\in S$, the <em>support</em> of $s$ is $\supp(s)=s^*s\setminus\Fix(s)$.
+	</p>
+</div>
+
+<!-- 2.4.4 -->
+<div class='example' id='examplesupportix'>
+	<p><span class='envidentifier'>Example 2.4.4</span>
+	If $S=\mathcal{I}(X)$, then $\supp(f)$ can be identified with its usual support, that is, $\left\{x\in\dom(f):f(x)\neq x\right\}$.
+	</p>
+</div>
+
+<!-- 2.4.5 -->
+<div class='lemma' id='lemmasupportssofic'>
+	<p><span class='envidentifier'>Lemma 2.4.5</span>
+	Let $S$ be a Boolean inverse monoid with a faithful normalized invariant mean $\mu$, and suppose $s,t\in S$, $ss^*=s^*s=tt^*=t^*t=1$. Then</p>
+	<ol class='alphpar'>
+		<li> $d_\mu(s,1)=\mu(\supp(s))$.</li>
+		<li> $d_\mu(s,t)=d_\mu(s^*t,1)$.</li>
+		<li> $\supp(s)=\Fix(t)$ if and only if $d_\mu(s,t)=1$ and $\tr_\mu(s)+\tr_\mu(t)=1$.</li>
+		<li> $\supp(s)\supp(t)=0$ if and only if $d_\mu(s,t)=d_\mu(1,s)+d_\mu(1,t)$. In this case, $\supp(s^*t)=\supp(s)\lor\supp(t)$.</li>
+		<li> If $\supp(s)\supp(t)=0$ then $\supp(st)=\supp(s)\lor\supp(t)$.</li>
+		<li> $\supp(sts^*)=s\supp(t)s^*$.</li>
+	</ol>
+</div>
+
+<a class='proofbutton' data-tag='lemmasupportssofic'>Proof</a>
+<div class='proof' id='proofoflemmasupportssofic'>
+	<ol class='alphpar'>
+		<li> This follows from the original definition of the uniform metric:
+			<div class='équation'>\[
+				d_\mu(s,1)=\mu(s^*s\lor 1^*1\setminus\Fix(s^*1))=\mu(1\setminus\Fix(s))=1-\tr_\mu(s).
+			\]</div></li>
+		<li> Since $t^*t=tt^*=1$,
+			<div class='équation'>\[
+				d_\mu(s,t)=d_\mu(st^*t,t)\leq d_\mu(st^*,1)=d_\mu(st^*,tt^*)\leq d_\mu(s,t).
+			\]</div>
+		</li>
+		<li><p>
+			First suppose $d_\mu(s,t)=\tr_\mu(s)+\tr_\mu(t)=1$. Since $\Fix(s)\Fix(t)\leq\Fix(s^*t)$, then (a) and (b) imply $d_\mu(s,t)\leq 1-\mu(\Fix(s)\Fix(t))$, so since $\mu$ is faithful, we have $\Fix(s)\Fix(t)=0$. From the second equality, we conclude that $\mu(\Fix(s)\lor\Fix(t))=1$, and therefore $\Fix(t)=1\setminus\Fix(s)=\supp(s)$.
+			</p>
+			<p>
+			In the other direction, suppose $\supp(s)=\Fix(t)$. Then of course $\tr_\mu(s)+\tr_\mu(t)=1$, and for the other equality, we simply prove that $\Fix(s^*t)=0$. Indeed, if $e=e^2\leq s^*t$, then
+			<div class='équation'>\[
+				\Fix(t)e=s^*t\Fix(t)e=s^*\Fix(t)e,
+			\]</div>
+			which implies $\Fix(t)e\leq\Fix(s^*)=\Fix(s)=1\setminus\Fix(t)$. But also $\Fix(t)e\leq\Fix(t)$, so $\Fix(t)e=0$. Similarly, $\Fix(s)e=0$, and therefore $e=e(\Fix(s)\lor\Fix(t))=0$.
+			</p>
+		</li>
+		<li><p>
+			Since $\Fix(s)\Fix(t)\leq\Fix(s^*t)$, then taking complements in $E(S)$ yields
+			<div class='equation' id='equationlemmasupportssofic'>\[
+				\supp(s^*t)\leq\supp(s)\lor\supp(t)\tag{2.4.1},
+			\]</div>
+			and then
+			<div class='equation' id='lemmasupportssofic2'>\begin{align*}
+				d_\mu(s,t)&=\mu(\supp(s^*t))\leq\mu(\supp(s)\lor\supp(t))\\
+					&\leq \mu(\supp(s))+\mu(\supp(t))\\
+					&=d_\mu(s,1)+d_\mu(t,1).\tag{2.4.2}
+			\end{align*}</div>
+			Note that the second inequality is an equality if and only if $\supp(s)\supp(t)=0$. This proves that if $d_\mu(s,1)+d_\mu(t,1)=d_\mu(s,t)$ then $\supp(s)\supp(t)=0$.
+			</p>
+			<p>
+			Conversely, if $\supp(s)\supp(t)=0$ then $\Fix(s)\lor\Fix(t)=1$. Since
+			<div class='equation'>\begin{align*}
+				\Fix(t)\Fix(s^*t)=\Fix(s^*t)\Fix(t)=s^*t\Fix(s^*t)\Fix(t)\\
+				=s^*t\Fix(t)\Fix(s^*t)=s^*\Fix(t)\Fix(s^*t),
+			\end{align*}</div>
+			Then $\Fix(t)\Fix(s^*t)\leq\Fix(s^*)=\Fix(s)$, therefore
+			<div class='équation'>\[
+				\Fix(s^*t)=\Fix(s)\Fix(s^*t)\lor\Fix(t)\Fix(s^*t)\subseteq\Fix(s),
+			\]</div>
+			and similarly $\Fix(s^*t)\leq\Fix(t)$. This proves $\Fix(s^*t)=\Fix(s)\Fix(t)$, so $\supp(s)\lor\supp(t)=\supp(s^*t)$, which is the opposite inclusion of Equation (<span class='ref' data-tag='equationlemmasupportssofic'></span>), and so all inequalities in Equation (<span class='ref' data-tag='lemmasupportssofic2'></span>) are in fact equalities.
+			</p>
+		</li>
+		<li> This follows from (d) and the fact that $\supp(s)=\supp(s^*)$, because $s^*s=ss^*=1$.
+		</li>
+		<li> $\supp(sts^*)=1\setminus sts^*=ss^*\setminus sts^*=s(1\setminus t)s^*=s\supp(t)s^*$.<span class='qed'></span>
+		</li>
+	</ol>
+</div>
+
+<p>
+From items (c) and (d) of the lemma above, we immediately obtain:
+</p>
+
+<!-- 2.4.6 -->
+<div class='corollary' id='corollarysupportssofic'>
+	<p><span class='envidentifier'>Corollary 2.4.6</span>
+	Let $\theta:[\mathcal{G}]\to\prod_{\mathcal{U}}\mathfrak{S}_n$ be an isometric embedding and $\alpha,\beta\in[\mathcal{G}]$.</p>
+	<ol class='alphpar'>
+		<li> $\supp(\alpha)=\Fix(\beta)$ if and only if $\supp(\theta(\alpha))=\Fix(\theta(\beta))$.</li>
+		<li> $\supp(\alpha)\cap\supp(\beta)=\varnothing$ if and only if $\supp(\theta(\alpha))\land\supp(\theta(\beta))=0$.</li>
+	</ol>
+</div>
+
+<!-- 2.4.7 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.4.7</span>
+	A probability measure-preserving groupoid $\mathcal{G}$ is <em>aperiodic</em> if $\mathcal{G}_x$ is infinite for a.e. $x\in \mathcal{G}^{(0)}$.
+	</p>
+</div>
+
+<!-- 2.4.8 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 2.4.8</span>
+	A standard probability measure-preserving equivalence relation $R$ on a standard probability space $(X,\mu)$ is aperiodic if and only if the equivalence class of a.e. point of $x\in X$ is infinite.
+	</p>
+</div>
+
+<!-- 2.4.9 -->
+<div class='lemma' id='lemmaaperiodicsupport'>
+	<p><span class='envidentifier'>Lemma 2.4.9</span>		
+	Suppose $(\mathcal{G},\mu)$ is an aperiodic probability measure-preserving groupoid. Then for all $A\in\MAlg(\mathcal{G}^{(0)})$, there exists $\alpha\in[\mathcal{G}]$ such that $\supp(\alpha)=A$.
+	</p>
+</div>
+
+<p>
+Recall that we only consider $\ra$-discrete and standard groupoids.
+</p>
+
+<a class='proofbutton' data-tag='lemmaaperiodicsupport'>Proof</a>
+<div class='proof' id='proofoflemmaaperiodicsupport'>
+	<p>
+	We can decompose $\mathcal{G}$ as $\mathcal{G}=\mathcal{H}\sqcup\mathcal{K}$, where $\mathcal{H}$ and $\mathcal{K}$ are subgroupoids, $|\ra\left(\mathcal{G}_x\right)|=\infty$ for all $x\in\mathcal{H}^{(0)}$, and $\mathcal{K}^x_x$ is infinite for all $x\in\mathcal{K}^{(0)}$, and we may assume that both $\mathcal{H}^{(0)}$ and $\mathcal{K}^{(0)}$ are non-null in $\mathcal{G}^{(0)}$ (in either case the proof can be adapted in an obvious manner).
+	</p>
+
+	<p>
+	The equivalence relation $\mathcal{R}(\mathcal{H})=(\ra,\so)(\mathcal{H})$ on $\mathcal{H}^{(0)}$ is also aperiodic, so by [<span class='ref' data-tag='MR2583950'></span>, Lemma 4.10], there exists $f\in[\mathcal{R}(\mathcal{H})]$ such that $\supp(f)=A\cap\mathcal{H}^{(0)}$, and by Theorem <span class='ref' data-tag='theoremquotientfrommeasuredgroupoidtoorbitrelation'></span> there exists $\alpha_{\mathcal{H}}$ such that $(\ra,\so)(\alpha_{\mathcal{H}})=f$, so $A\cap\mathcal{H}^{(0)}=\supp(\alpha_{\mathcal{H}})$.
+	</p>
+
+	<p>
+	Consider the subset of $\mathcal{K}$
+	<div class='équation'>\[
+	Z=\left\{k\in \mathcal{K}:\so(k)=\ra(k)\right\}\setminus A.
+	\]</div>
+	The restriction of the source map to $Z$ is countable-to-one and its image contains $A\cap\mathcal{K}[0]$, so by Corollary <span class='ref' data-tag='corollarysurjectiveborelmapshavesections'></span> implies that there exits $\beta\subseteq Z$ such that $\so(\beta)=A$. Then $\alpha_{\mathcal{K}}=\beta\cup(\mathcal{K}\setminus A)$ belongs to the full group $[\mathcal{K}]$, and $\supp(\alpha_\mathcal{K})=A\cap\mathcal{K}^{(0)}$
+	</p>
+
+	<p>
+	To finish, let $\alpha=\alpha_{\mathcal{H}}\cup\alpha_{\mathcal{K}}$, so $\alpha\in[\mathcal{G}]$ and $\supp(\alpha)=A$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 2.4.10 -->
+<div class='lemma' id='lemmasupportspreservedunderembeddings'>
+	<p><span class='envidentifier'>Lemma 2.4.10</span>
+	Suppose that $(\mathcal{G},\mu)$ is an aperiodic probability measure-preserving groupoid, $\theta:[\mathcal{G}]\to\prod_{\mathcal{U}}\mathfrak{S}_n$ is an isometric embedding, and let $\alpha,\beta\in[\mathcal{G}]$. Then $\supp(\alpha)=\supp(\beta)$ if and only if $\supp(\theta(\alpha))=\supp(\theta(\beta))$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmasupportspreservedunderembeddings'>Proof</a>
+<div class='proof' id='proofoflemmasupportspreservedunderembeddings'>
+	<p>
+	Assume $\supp(\alpha)=\supp(\beta)$. By Lemma <span class='ref' data-tag='lemmaaperiodicsupport'></span>, choose $\gamma\in[\mathcal{G}]$ such that $\supp(\gamma)=X\setminus\supp(\alpha)$, i.e., $\Fix(\gamma)=\supp(\alpha)$. Applying Corollary <span class='ref' data-tag='corollarysupportssofic'></span>(a) twice,
+	<div class='equation'>\begin{align*}
+	\supp(\alpha)=\supp(\beta)&\iff\Fix(\gamma)=\supp(\theta(\beta))\iff\Fix(\theta(\gamma))=\supp(\theta(\beta))\\
+	&\iff\supp(\theta(\alpha))=\supp(\theta(\beta)).
+	\end{align*}<span class='qed'></span></div>
+	</p>
+</div>
+
+<p>
+The next lemma will allow us to extend elements of $\MEAS(\mathcal{G})$ to elements of $[\mathcal{G}]$.
+</p>
+
+<!-- 2.4.11 -->
+<div class='lemma' id='lemmaextensionfullsemigrouptofullgroup'>
+	<p><span class='envidentifier'>Lemma 2.4.11</span>
+	If $\gamma\in\MEAS(\mathcal{G})$, then there exists $\widetilde{\gamma}\in[\mathcal{G}]$ with $\gamma\subseteq\widetilde{\gamma}$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmaextensionfullsemigrouptofullgroup'>Proof</a>
+<div class='proof' id='proofoflemmaextensionfullsemigrouptofullgroup'>
+	<p>
+	Let $\gamma_0=\gamma$, and for all $n\geq 1$, set
+	<div class='équation'>\[
+	\gamma_n=\left\{g\in \gamma^{-n}:\so(g)\not\in \so(\gamma)\text{ and }\ra(g)\not\in \ra(\gamma)\right\}.
+	\]</div>
+	Using the fact that $\gamma$ is a bisection and by construction of the $\gamma_n$, we have
+	<div class='équation'>\[
+	\so(\gamma_n)\cap\so(\gamma_m)=\ra(\gamma_n)\cap\ra(\gamma_m)=\varnothing,\qquad\text{whenever }n\neq m.
+	\]</div>
+	</p>
+
+	<p>
+	The sets $\bigcup_n\so(\gamma_n)$ and $\bigcup_n\ra(\gamma_n)$ are both contained $\so(\gamma)\cup\ra(\gamma)$, so let us prove they are conull in there. Set
+	<div class='équation'>\[
+	B=\ra(\gamma)\setminus \bigcup_n\so(\gamma_n)=\bigcap_n\ra(\gamma^n)\setminus\so(\gamma),
+	\]</div>
+	and for all $m\geq 0$, set
+	<div class='équation'>\[
+	B_m=\ra(\gamma^{-m}B)=\bigcap_n\ra(\gamma^n)\cap\so(\gamma^m)\setminus\so(\gamma^{m+1}).
+	\]</div>
+	These sets are pairwise disjoint, and since $\mu$ is invariant then they have the same measure, because
+	<div class='équation'>\[
+	B_{m+1}=\ra(\gamma^{-1}B_m),\quad\text{and}\quad B_m=\ra(\gamma B_{m+1}),\quad\text{for all }m.
+	\]</div>
+	</p>
+
+	<p>
+	But $\mu$ is finite, therefore $\mu(B)=0$, and $\bigcup_n\so(\gamma_n)$ is conull in $\so(\gamma)\cup\ra(\gamma)$. Similarly, $\bigcup_n\ra(\gamma_n)$ is conull in $\so(\gamma)\cup\ra(\gamma)$. 
+	</p>
+
+	<p>
+	Therefore $\widetilde{\gamma}=\bigcup_n\gamma_n\cup(\mathcal{G}^{(0)}\setminus(\so(\gamma)\cup\ra(\gamma))$ has the desired properties.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 2.4.12 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 2.4.12</span>
+	If $R$ is a $\ra$-discrete probability-measure preserving Borel equivalence relation on a standard probability space $(X,\mu)$, then the previous lemma implies that every partial Borel automorphism $f:A\to B$ ($A,B\subseteq X$ Borel) with $\operatorname{graph}(f)\subseteq R$ can be extended (up to a null subset of $A$) to an a.e.-defined Borel automorphism $\widetilde{f}:X\to X$ with $\operatorname{graph}(f)\subseteq R$.
+	</p>
+</div>
+
+<p>
+For the next lemma, again consider finite sets $Y_n$ with $\#Y_n=n$. We need to check that the group of invertible elements of $\prod_\mathcal{U}\MEAS(Y_n^2)$ (that is, those elements $\sigma$ for which $\sigma\sigma^*=\sigma^*\sigma=1$) coincides with $\prod_\mathcal{U}\mathfrak{S}_n$.
+</p>
+
+<p>
+Recall that an element of the ultraproduct of metric structures $\prod_\mathcal{U}M_n$ is denoted as $(x_n)_\mathcal{U}$, where $x_n\in M_n$ for all $n$.
+</p>
+
+<!-- 2.4.13 -->
+<div class='lemma' id='lemmainvertibleinultraproduct'>
+	<p><span class='envidentifier'>Lemma 2.4.13</span>
+	If $\sigma=(\sigma_n)\in\prod_\mathcal{U}\MEAS(Y_n^2)$ is invertible, in the sense that $\sigma\sigma^*=(\id_{Y_n})_{\mathcal{U}}$, then there are $\widetilde{\sigma}_n\in\mathfrak{S}_n$ such that $\sigma=(\widetilde{\sigma}_n)_\mathcal{U}$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmainvertibleinultraproduct'>Proof</a>
+<div class='proof' id='proofoflemmainvertibleinultraproduct'>
+	<p>
+	Since $d_\#(\id_{Y_n},\sigma_n\sigma_n^*)=1-\mu_\#(\sigma_n^*\sigma_n)$ converges to $0$ along $\mathcal{U}$, then $\mu_\#(\sigma_n^*\sigma_n)$ converges to $1$. Simply extend each $\sigma_n$ arbitrarily to an element $\widetilde{\sigma}_n\in\mathfrak{S}_n$, so that
+	<div class='équation'>\[
+	d_\#(\widetilde{\sigma}_n,\sigma)=\mu(\widetilde{\sigma}_n^*\widetilde{\sigma}_n\setminus\sigma_n^*\sigma_n)=1-\mu_\#(\sigma_n^*\sigma_n),
+	\]</div>
+	which, again, converges to $0$ along $\mathcal{U}$, and therefore $(\sigma_n)_\mathcal{U}=(\widetilde{\sigma}_n)_\mathcal{U}$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+This way, the group of invertible elements of $\prod_\mathcal{U}\MEAS(Y_n^2)$ is naturally identified with $\prod_\mathcal{U}\mathfrak{S}_n$, whereas the idempotent lattice $E(\prod_\mathcal{U}\MEAS(Y_n^2))$ is identified with $\prod_\mathcal{U}\MAlg(Y_n)$ (because $E(\prod_\mathcal{U}\MEAS(Y_n^2))$ is simply the image of the idempotent lattice of $\prod_{n\in\mathbb{N}}\MEAS(Y_n^2)$ under the canonical quotient map; see <a href='../2.sg/2.1.uacl.html#subsectionultraproductsofbooleaninversemonoids'>Subsection 2.1.4</a>).
+</p>
+
+<!-- 2.4.14 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.4.14</span>
+	If $G_1$ and $G_2$ are groups acting on sets $X_1$ and $X_2$, respectively, $\theta:G_1\to G_2$ is a morphism and $\phi:X_1\to X_2$ is a function, we say that the pair $(\theta,\phi)$ is <em>covariant</em> if $\phi(g x)=\theta(g)\phi(x)$ for all $g\in G_1$ and $x\in X_1$. If $G_1=G_2=G$ and $\theta=\id_G$, we simply say that  $\phi$ is covariant.
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	Covariant pairs will be used also in <a href='../2.sg/2.5.sga.html'>Section 2.5</a> and in <a href='./4.paois/4.0.intro.html'>Chapter 4</a> (see Definition <span class='ref' data-tag='definitioncovariantrepresentation'></span>). In fact, covariant maps are a useful tool when constructing morphisms from structures which are "built from" both $G$ and a $G$-space $X$: In fact, the proofs of Theorems <span class='ref' data-tag='theoremfirstimportant'></span> and <span class='ref' data-tag='theoremuniversalpropertysteinberg'></span> follow similar general lines in different settings (however the fine details in each case differ substantially).
+	</p>
+</div>
+
+<!-- 2.4.15 -->
+<div class='definition' id='definitionactionofinvertibleones'>
+	<p><span class='envidentifier'>Definition 2.4.15</span>
+	Let $S$ be a Boolean inverse monoid and consider $S^\times$ the group of $g\in S$ such that $gg^*=g^*g=1$. We define an action of $S^\times$ on $E(S)$ as $g\cdot e=geg^*$. Note that if $\mu$ is an invariant mean on $S$ then for all $g\in S^\times$ and $e\in E(S)$,
+	<div class='équation'>\[
+	\mu(e)=\mu(eg^*ge)=\mu((ge)^*(ge))=\mu((ge)(ge)^*)=\mu(geg^*),
+	\]</div>
+	so this action is isometric and trace-preserving. In particular,
+	<ul>
+		<li> If $S=\MEAS(\mathcal{G})$ for a probability measure-preserving groupoid $\mathcal{G}$, then $[\mathcal{G}]$ acts on $\MAlg(\mathcal{G}^{(0)})$ via
+		<div class='équation'>\[
+		\gamma\cdot A=\ra(\gamma A),\qquad\text{for all }\gamma\in[\mathcal{G}]\text{ and }A\in\MAlg(\mathcal{G}^{(0)}).
+		\]</div></li>
+		<li> If $S=\prod_\mathcal{U}\MEAS(Y_n^2)$ (where $Y_n$ are finite sets with $n$ elements), then $\prod_\mathcal{U}\mathfrak{S}_n$ acts on $\prod_\mathcal{U}\MAlg(Y_n)$ via
+		<div class='équation'>\[
+		\left(\sigma_n\right)_\mathcal{U}\cdot\left(A_n\right)_\mathcal{U}=\left(\sigma_n(A_n)\right)_\mathcal{U}.
+		\]</div></li>
+	</ul>
+	</p>
+</div>
+
+<!-- 2.4.16 -->
+<div class='theorem' id='theoremfirstimportant'>
+	<p><span class='envidentifier'>Theorem 2.4.16</span>
+	A standard, $\ra$-discrete, aperiodic probability measure-preserving groupoid $(\mathcal{G},\mu)$ is sofic if and only if its full group $[\mathcal{G}]$ is metrically sofic. Moreover, every isometric group embedding of $[\mathcal{G}]$ into an ultraproduct $\prod_\mathcal{U}\mathfrak{S}_n$ extends uniquely to a sofic embedding of $\mathcal{G}$.
+	</p>
+</div>
+
+<p>
+Before starting, let us give an idea of the extension part of the proof (which is the hardest): Using the previous lemmas, every element of $\MEAS(\mathcal{G})$ can be written as $\alpha A$, where $\alpha\in[\mathcal{G}]$ and $A\in\MAlg(\mathcal{G}^{(0)})$, so if we have two semigroup embeddings $\theta:[\mathcal{G}]\to\prod_\mathcal{U}\mathfrak{S}_n$ and $\phi:\MAlg(\mathcal{G}^{(0)})\to\prod_\mathcal{U}\MAlg(Y_n)$, we may define $\Theta(\alpha A)=\theta(\alpha)\phi(A)$, which a priori might depend on the choice of $\alpha$ and $A$. To guarantee that $\Theta$ is a morphism, we $(\theta,\phi)$ to be covariant. To obtain this, we will define $\phi$ <em>from</em> $\theta$.
+</p>
+
+<a class='proofbutton' data-tag='theoremfirstimportant' style='display:inline;'>Proof</a> of Theorem <span class='ref' data-tag='theoremfirstimportant'></span>
+<div class='proof' id='proofoftheoremfirstimportant'>
+	<p>
+	If $\mathcal{G}$ is sofic, then any sofic embedding $\Theta:\MEAS(\mathcal{G})\to\prod_\mathcal{U}\MEAS(Y_n^2)$ restricts to an isometric group embedding of $[\mathcal{G}]$, which is therefore metrically sofic.
+	</p>
+
+	<p>
+	Let us prove the uniqueness first: If $\Theta:\MEAS(\mathcal{G})\to\prod_\mathcal{U}\MEAS(Y_n^2)$ is an isometric embedding, then for every $\gamma\in\MEAS(\mathcal{G})$ choose, by Lemmas <span class='ref' data-tag='lemmaaperiodicsupport'></span> and <span class='ref' data-tag='lemmaextensionfullsemigrouptofullgroup'></span>, $\widetilde{\gamma}$ and $\beta\in [\mathcal{G}]$ with $\supp(\beta)=\so(\gamma)$ and $\gamma\subseteq\widetilde{\gamma}$. By Theorem <span class='ref' data-tag='theoremtracepreservingisisometric'></span>, $\Theta$ is a unital morphism of Boolean inverse semigroups and in particular it preserves supports, so
+	<div class='équation'>\[
+		\Theta(\gamma)=\Theta(\widetilde{\gamma})\supp\Theta(\beta),
+	\]</div>
+	hence $\Theta$ is uniquely determined by its restriction to $[\mathcal{G}]$.
+	</p>
+
+	<p>
+	Now suppose $\theta:[\mathcal{G}]\to\prod_\mathcal{U}\mathfrak{S}_n$ is an isometric embedding, and let us use the ideas above to extend it to $\MEAS(\mathcal{G})$.
+	</p>
+
+	<p>
+	We define $\phi:\MAlg(\mathcal{G}^{(0)})\to\prod_\mathcal{U}\MAlg(Y_n)$ as follows: given $A\in\MAlg(\mathcal{G}^{(0)})$, choose, by Lemma <span class='ref' data-tag='lemmaaperiodicsupport'></span>, $\alpha\in[\mathcal{G}]$ such that $\supp(\alpha)=A$, and define $\phi(A)=\supp(\theta(A))$. By Lemma <span class='ref' data-tag='lemmasupportspreservedunderembeddings'></span>, $\phi(A)$ does not depend on the choice of $\alpha$. We need several steps to finish this proof.
+	</p>
+	<ol>
+		<li>
+			<p>
+			<b>$\phi$ preserves meets</b>:
+			</p>
+			
+			<p>
+			Let $A,B\in\MAlg(\mathcal{G}^{(0)})$, and consider $\alpha,\beta,\gamma\in[\mathcal{G}]$ with
+			<div class='équation'>\[
+				\supp(\gamma)=A\cap B,\quad \supp(\alpha)=A\setminus B,\quad\text{and}\quad\supp(\beta)=B\setminus A.
+			\]</div>
+			By Corollary <span class='ref' data-tag='corollarysupportssofic'></span>(b) and Lemma <span class='ref' data-tag='lemmasupportssofic'></span>(e), the supports of $\theta(\gamma)$ and $\theta(\alpha)$ are disjoint and
+			<div class='équation'>\[
+				\supp(\theta(\gamma\alpha))=\supp(\theta(\gamma)\theta(\alpha))=\supp(\theta(\gamma))\lor\supp(\theta(\alpha)),
+			\]</div>
+			and similarly for $\gamma$ and $\beta$. Lemma <span class='ref' data-tag='lemmasupportssofic'></span>(e) also implies that
+			<div class='équation'>\[
+				\supp(\gamma\alpha)=A\quad\text{and}\quad\supp(\gamma\beta)=B,
+			\]</div>
+			so again by Corollary <span class='ref' data-tag='corollarysupportssofic'></span>(b), and using distributivity of meets and joins,
+			<div class='equation'>\begin{align*}
+				\phi(A)\land\phi(B)&=\supp(\theta(\gamma\alpha))\land\supp(\theta(\gamma\beta))\\
+				&=\left(\supp(\theta(\gamma))\lor\supp(\theta(\alpha))\right)\land\left(\supp(\theta(\gamma))\lor\supp(\theta(\beta))\right)\\
+				&=\supp(\theta(\gamma))=\phi(A\cap B).
+			\end{align*}</div>
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<b>If $\alpha\in{[\mathcal{G}]}$, then $\phi(\Fix(\alpha))=\Fix(\theta(\alpha))$</b>:
+			</p>
+			
+			<p>
+			Choose again $\beta\in[\mathcal{G}]$ with $\supp(\beta)=\Fix(\alpha)$, so by Corollary <span class='ref' data-tag='corollarysupportssofic'></span>(a),
+			<div class='équation'>\[
+				\phi(\Fix(\alpha))=\phi(\supp(\beta))=\supp(\theta(\beta))=\Fix(\theta(\alpha)).
+			\]</div>
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<b>$\phi$ preserves the respective invariant means</b>:
+			</p>
+			
+			<p>
+			Since $\theta$ is isometric then it is trace-preserving, so $\phi$ preserves invariant means by item 2.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<b>$(\theta,\phi)$ is covariant</b>:
+			</p>
+
+			<p>
+			Let $A\in\MAlg(\mathcal{G}^{(0)})$ and $\alpha\in[\mathcal{G}]$. Take $\beta\in[\mathcal{G}]$ with $\supp\beta=A$. Using Lemma <span class='ref' data-tag='lemmasupportssofic'></span>(f),
+			<div class='equation'>\begin{align*}
+				\phi(\alpha\cdot A)&=\phi(\supp(\alpha\beta\alpha^*))=\supp(\theta(\alpha\beta\alpha^*))=\theta(\alpha)\cdot\supp(\theta(\beta))=\theta(\alpha)\cdot\phi(A).
+			\end{align*}</div>
+			</p>
+			
+			<p>
+			Recall that both $[\mathcal{G}]$ and $\MAlg(\mathcal{G}^{(0)})$ are subsemigroups of $\MEAS(\mathcal{G})$, and similarly for $\prod_\mathcal{U}\mathfrak{S}_n$ and $\prod_\mathcal{U}\MAlg(Y_n)$ inside $\prod_\mathcal{U}\MEAS(Y_n^2)$.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<b>If $\alpha,\beta\in[\mathcal{G}]$, $A\in\MAlg(\mathcal{G}^{(0)})$ satisfy $\alpha A=\beta A$, then $\theta(\alpha)\phi(A)=\theta(\beta)\phi(A)$</b>:
+			</p>
+			
+			<p>
+			Items 1. and 2. above imply
+			<div class='équation'>\[
+				\phi(A)\subseteq\Fix(\theta(\alpha^*\beta)),
+			\]</div>
+			which in turn yields
+			<div class='équation'>\[
+				\theta(\beta)\phi(B)=\theta(\alpha)\theta(\alpha^*\beta)(\phi(A)=\theta(\alpha)\phi(A).
+			\]</div>
+			</p>
+		</li>
+	</ol>
+
+	<p>
+	Now we define $\Theta:\MEAS(\mathcal{G})\to\prod_\mathcal{U}\MEAS(Y_n^2)$ as $\Theta(\alpha)=\theta(\widetilde{\alpha})\phi(\alpha^*\alpha)$, where $\widetilde{\alpha}\in[\mathcal{G}]$ is chosen, by Lemma <span class='ref' data-tag='lemmaextensionfullsemigrouptofullgroup'></span>, such that $\alpha\subseteq\widetilde{\alpha}$. Item 5. above implies that $\Theta(\alpha)$ does not depend on the choice of $\widetilde{\alpha}$.
+	</p>
+
+	<p>
+	Note that $\Theta$ extends both $\theta$ and $\phi$. Let us show that $\Theta$ is a sofic embedding.
+	</p>
+
+	<p>
+	Suppose $\alpha\subseteq\widetilde{\alpha}$, $\beta\subseteq\widetilde{\beta}$, where $\alpha,\beta\in\MEAS(\mathcal{G})$ and $\widetilde{\alpha},\widetilde{\beta}\in[\mathcal{G}]$. Then
+	<div class='équation'>\[
+	\alpha\beta=\widetilde{\alpha}\widetilde{\beta}\left(\beta^*\beta\cap(\beta^*\cdot\alpha^*\alpha)\right).
+	\]</div>
+	In fact, this formula holds independently of $\mathcal{G}$, so it will hold with $Y_n^2$ in place of $\mathcal{G}$ and on $\prod_\mathcal{U}\MEAS(Y_n^2)$ by &Lstrok;o&sacute;&apos; Theorem (<span class='ref' data-tag='lostheorem'></span>). This is enough to conclude that $\Theta(\alpha\beta)=\Theta(\alpha)\Theta(\beta)$, since both $(\theta,\phi)$ is a covariant pair of semigroup morphisms.
+	</p>
+
+	<p>
+	It remains only to check that $\Theta$ is trace-preserving. Let $\alpha\in\MEAS(\mathcal{G})$. If we show that $\Fix(\Theta(\alpha))=\phi(\Fix\alpha)$ we are done because $\phi$ preserves invariant means.
+	</p>
+
+	<p>
+	Given $\widetilde{\alpha}\in[\mathcal{G}]$ with $\alpha\subseteq\widetilde{\alpha}$, let $A=\Fix(\alpha)$ and $B=\Fix(\widetilde{\alpha})\setminus A$. Note that $A=\Fix(\widetilde{\alpha})\cap\alpha^*\alpha$, so
+	<div class='équation'>\[
+	\phi(A)=\Fix\left(\theta(\widetilde{\alpha})\right)\land (\phi(\alpha^*\alpha)).
+	\]</div>
+	Since $\Theta(\alpha)=\theta(\widetilde{\alpha})\phi(\alpha^*\alpha)\leq\theta(\widetilde{\alpha})$, then $\Theta(\alpha)^*\Theta(\alpha)=\phi(\alpha^*\alpha)$, so
+	<div class='équation'>\[
+	\Fix(\Theta(\alpha))=\Fix(\theta(\widetilde{\alpha}))\land (\phi(\alpha^*\alpha))=\phi(A)=\phi(\Fix(\alpha)),
+	\]</div>
+	and we conclude that $\Theta$ is a sofic embedding of $\mathcal{G}$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+We will now extend this result allowing $\mathcal{G}$ to have periodic points, however we still need that $\mathcal{G}_x$ is not a singleton for a.e. $x\in\mathcal{G}^{(0)}$. Set
+<div class='équation'>\[
+\operatorname{Per}_{\geq 2}(\mathcal{G})=\left\{x\in \mathcal{G}^{(0)}:2\leq\#(\mathcal{G}_x)\smallerthan\infty\right\}.
+\]</div>
+</p>
+
+<!-- 2.4.17 -->
+<div class='lemma' id='lemma2417'>
+	<p><span class='envidentifier'>Lemma 2.4.17</span>
+	There exists $\alpha\in[\mathcal{G}]$ with $\supp(\alpha)=\operatorname{Per}_{\geq 2}(\mathcal{G})$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemma2417'>Proof</a>
+<div class='proof' id='proofoflemma2417'>
+	<p>
+	Let $\mathcal{P}=\operatorname{Per}_{\geq 2}(\mathcal{G})$. Substituting $\mathcal{G}$ by the subgroupoid $\mathcal{P}\mathcal{G}\mathcal{P}$ if necessary, we may assume $\mathcal{P}=\mathcal{G}^{(0)}$. As in the proof of Lemma <span class='ref' data-tag='lemmaaperiodicsupport'></span>, decompose $\mathcal{G}$ as $\mathcal{G}=\mathcal{H}\sqcup \mathcal{K}$, where $\mathcal{H}$ and $\mathcal{K}$ are subgroupoids of $\mathcal{G}$, $\mathcal{H}_x$ is a  is principal, and $\#(\mathcal{K}^x_x)\geq 2$ for a.e. $x\in\mathcal{K}^{(0)}$.
+	</p>
+
+	<p>
+	The last part of Corollary <span class='ref' data-tag='corollarysurjectiveborelmapshavesections'></span> applied to the restriction of the source map
+	<div class='équation'>\[
+	\so:\left\{k\in\mathcal{K}:\so(k)=\ra(k)\right\}\setminus\mathcal{K}^{(0)}\to\mathcal{K}^{(0)}
+	\]</div>
+	provides $\beta\in\MEAS(\mathcal{K})$ with $\supp(\beta)=\mathcal{K}^{(0)}$.
+	</p>
+
+	<p>
+	Since $\mathcal{H}$ is principal it is (isomorphic to) an equivalence relation on $\mathcal{H}^{(0)}$. For each $n\geq 2$, let $\mathcal{H}_n=\left\{h\in\mathcal{H}:\#(\mathcal{H}_{\so(h)})=n\right\}$. Using the selection theorem for periodic relations [<span class='ref' data-tag='MR1321597'></span>, Theorem 12.16], decompose $\mathcal{H}_n^{(0)}$ into a Borel partition $X_1,\ldots,X_n$ such that each $X_i$ contains exactly one representative of each $\mathcal{H}$-class. The Borel subset
+	<div class='équation'>\[
+	\gamma_n=(X_1\times X_n)\cup \bigcup_{i=1}^{n-1}(X_{i+1}\times X_i)
+	\]</div>
+	is a bisection of $\mathcal{H}$. (Seen as a function, it maps each $x\in X_i$ to the unique element of $X_{i+1}$ (or $X_1$ if $i=n$) which is equivalent to $x$.) Then $\supp(\gamma_n)=\mathcal{H}^{(0)}_n$.
+	</p>
+
+	<p>
+	Therefore $\alpha=\beta\cup\bigcup_n\gamma_n\in\MEAS(\mathcal{G})$, and $\supp(\alpha)=\operatorname{Per}_{\geq 2}(\mathcal{G})$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 2.4.18 -->
+<div class='theorem' id='theoremsecondimportant'>
+<p><span class='envidentifier'>THeorem 2.4.18</span>
+Suppose $(\mathcal{G},\mu)$ is a (standard, $\ra$-discrete) probability measure-preserving groupoid such that for all $x\in\mathcal{G}^{(0)}$, $\#\mathcal{G}_x\geq 2$. Then $(\mathcal{G},\mu)$ is sofic if and only if $[\mathcal{G}]$ is metrically sofic.
+</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremsecondimportant'>Proof</a>
+<div class='proof' id='proofoftheoremsecondimportant'>
+	<p>
+	Let $P=\operatorname{Per}_{\geq 2}(\mathcal{G})$ and $\operatorname{Aper}=\mathcal{G}^{(0)}\setminus P$, and consider the subgroupoid $\mathcal{H}=\mathcal{G}\operatorname{Aper}$ of $\mathcal{G}$. We have already seen that the subgroupoid $\mathcal{G} P$ is sofic, since it is periodic, and since $\mathcal{G}$ is a convex combination of $\mathcal{G} P$ and $\mathcal{H}$, it suffices to show that $[\mathcal{H},\mu_{\mathcal{H}}]$ is metrically sofic. Fix any $\rho\in[\mathcal{G}]$ with $\supp\rho=P$. Let $\theta:[\mathcal{G}]\to\prod_{\mathcal{U}}\mathfrak{S}_n$ be an isometric embedding.
+	</p>
+
+	<p>
+	Consider the embedding $\iota:[\mathcal{H},\mu_{\mathcal{H}}]\to[\mathcal{G},\mu]$, $\alpha\mapsto \widetilde{\alpha}=\alpha\cup P$. Then for all $\alpha\in[\mathcal{H},\mu_{\mathcal{H}}]$,
+	<div class='équation'>\[
+	\tr_\mu(\iota(\alpha))=\mu(\operatorname{Aper})\tr_{\mathcal{H}}(\alpha).
+	\]</div>
+	</p>
+
+	<p>
+	By Corollary <span class='ref' data-tag='corollarysupportssofic'></span>(a), $\supp(\theta(\iota(\alpha)))\subseteq\Fix(\theta(\rho))$ whenever $\alpha\in[\mathcal{H},\mu_{\mathcal{H}}]$.
+	</p>
+
+	<p>
+	As in the proof of Theorem <span class='ref' data-tag='theorempermanencesofic'></span>(d), we can "restrict" $\theta(\iota(\alpha))$ to $\Fix(\theta(\rho))$ and obtain a new semigroup embedding $\eta:[\mathcal{H}]\to\prod_{\mathcal{U}}\mathfrak{S}_{m_n}$ (where $m_n\leq n$), in such a way that for all $\alpha\in[\mathcal{H},\mu_{\mathcal{H}}]$,
+	<div class='equation'>\begin{align*}
+	\tr(\eta(\alpha))&=\tr(\theta(\rho))^{-1}\tr(\theta(\iota(\alpha)))=\tr_\mu(\rho)^{-1}\tr_\mu(\iota(\alpha))\\
+	&=\mu(\operatorname{Aper})^{-1}\mu(\operatorname{Aper})\tr_{\mathcal{H}}(\alpha)\\
+	&=\tr_{\mathcal{H}}(\alpha)\mu(\theta(\rho),1)^{-1}=d(\rho,1)^{-1}=\mu(\operatorname{Aper})^{-1}
+	\end{align*}</div>
+	so $\eta$ is in fact a sofic embedding of $\mathcal{H}$.<span class='qed'></span>
+	</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

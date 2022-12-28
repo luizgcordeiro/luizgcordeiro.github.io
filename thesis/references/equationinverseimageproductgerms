@@ -1,0 +1,5 @@
+<a class='reflink' href='../4.paois/4.2.tappgog.html#equationinverseimageproductgerms'>4.2.5</a>
+
+	<div class='toload equation'>\[
+		m^{-1}([u,U])=\bigcup\left\{([s,X_{s^*}]\times [t,U\cap X_{t^*}])\cap (S\ltimes X)^{(2)}:s,t\in S\text{ and }st\leq u\right\}.\tag{4.2.5}
+	\]</div>

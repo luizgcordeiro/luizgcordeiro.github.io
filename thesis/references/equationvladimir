@@ -1,0 +1,5 @@
+<a class='reflink' href='../0.matters/appendix.html#equationvladimir'>A.1</a>
+
+<div class='toload equation'>\[
+	\phi_{x_0}:C(X,G)\to G\oplus C(X,x_0,G),\qquad \phi_{x_0}(f)=(f(x_0),f-f(x_0)).\tag{A.1}
+\]</div>

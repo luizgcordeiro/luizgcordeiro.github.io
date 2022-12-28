@@ -1,0 +1,7 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#footnoteinfimaofpreorders'>Footnote</a>
+
+<div class='toload footnote'>
+	<p>
+	Infima for preorders are defined the same way as for orders, namely if $A$ is a subset of a preordered space $(P,\leq)$, an element $x$ is called an infimum of $A$ if $x\leq a$ for all $a\in A$, and if for any other element $y$ such that $y\leq a$ for all $a\in A$, we have $y\leq x$.
+	</p>
+</div>

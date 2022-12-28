@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+<p>
+Sejam \(V\) um espaço vetorial. Dado um vetor \(v\in V\), lembre-se que um <em>oposto</em> de \(v\) é um vetor \(w\) tal que \(v+w=w+v=0_V\) (onde \(0_V\) é o vetor nulo). Um dos axiomas de espaço vetorial nos diz que que todo vetor admite ao menos um oposto.
+</p>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Todo vetor de \(V\) admite somente um oposto.
+</p>
+
+</div>
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Suponha que \(w\) e \(p\) sejam opostos do vetor \(v\). Devemos mostrar que \(w=p\). Por um lado, as definições de vetor nulo e de oposto implicam que
+<div>
+\begin{equation*}
+w=w+0_V=w+(v+p),
+\end{equation*}
+</div>
+pois \(p\) é um oposto de \(v\). Por outro lado,
+<div>
+\begin{equation*}
+p=0_V+p=(w+v)+p,
+\end{equation*}
+</div>
+pois \(w\) também é um oposto de \(v\). Pela propriedade associativa da soma, \((w+v)+p=w+(v+p)\), logo os termos nas equações acima coincidem. Portanto, \(w=p\), como queríamos demonstrar.
+</p>
+
+</div></body>
+</html>

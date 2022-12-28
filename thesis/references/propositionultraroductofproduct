@@ -1,0 +1,12 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#propositionultraroductofproduct'>2.1.15</a>
+
+<!-- 2.1.15 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 2.1.15</span>
+	If $\left\{(M_i,d^{M_i}):i\in I\right\}$ and $\left\{(N_i,d^N_i):i\in I\right\}$ are collections of metric spaces (of diameter at most $1$) and $\mathcal{U}$ is an ultrafilter of sets on $I$, then the map
+	<div class='equation'>\[
+	\prod_\mathcal{U}(M_i\times N_i)\to\left(\prod_\mathcal{U} M_i\right)\times\left(\prod_\mathcal{U}N_i\right),\qquad (m_i,n_i)_\mathcal{U}\mapsto ((m_i)_\mathcal{U},(n_i)_\mathcal{U})
+	\]</div>
+	is a well-defined isometry.
+	</p>
+</div>

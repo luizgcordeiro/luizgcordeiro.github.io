@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>2.1. Ultraproducts and continuous logic</h2>
+
+<h3 class='subsection'>2.1.1. Ultrafilters and ultralimits</h3>
+
+<p>
+Given a set $I$ and a collection of sets $\left\{X_i:i\in I\right\}$, an element of the product space $\prod_i X_i$ will be denoted by $(x_i)_{i\in I}$ or simply $(x_i)_i$, corresponding to a function $i\mapsto x_i$. In particular, an element of a function space $X^I$ will also be denoted as $(x_i)_i$.
+</p>
+
+<p>
+By <em>filters</em> and <em>ultrafilters of sets</em> on $I$ we mean filters and ultrafilters, according to Definition <span class='ref' data-tag='definitionfilter'></span>, on the power set $\mathcal{P}(I)$ of $I$, which is a poset under inclusion (more precisely, a unital Boolean algebra under intersection), so let us briefly recall these notions in this special case: a <em>filter of sets</em> on $I$ is a nonempty collection $\mathcal{U}$ of subsets of $I$ satisfying
+<ol class='roman'>
+	<li> If $F,G\in\mathcal{U}$, then $F\cap G\in\mathcal{U}$;</li>
+	<li> If $F\in\mathcal{U}$ and $F\subseteq G$ then $G\in\mathcal{U}$;</li>
+</ol>
+and we say $\mathcal{U}$ is <em>proper</em> if $\varnothing\not\in\mathcal{U}$, and an <em>ultrafilter of sets</em> if it is a maximal proper filter of sets. Equivalently, a filter of sets $\mathcal{U}$ is an ultrafilter if and only if it is <em>prime</em>:
+<style>
+ol.roman.three > li:before {
+  content: "(iii)";
+}
+</style>
+<ol class='roman three'>
+	<li> If $F\cup G\in\mathcal{U}$ then $F\in\mathcal{U}$ or $G\in\mathcal{U}$</li>
+</ol>
+</p>
+
+<p>
+An ultrafilter $\mathcal{U}$ (of sets) on $I$ is <em>free</em> if $\bigcap\mathcal{U}=\varnothing$, and <em>principal</em> otherwise. Every principal ultrafilter $\mathcal{U}$ on $I$ is of the form $I_x:=\left\{A\subseteq I:x\in A\right\}$ for some $x\in I$ (indeed, just choose $x\in\bigcap\mathcal{U}$, so maximality of $\mathcal{U}$ implies $\mathcal{U}=I_x$). In particular, an ultrafilter $\mathcal{U}$ is principal if and only if it contains some finite subset of $I$.
+</p>
+
+<p>
+We can think of filters of sets as providing a notion of "largeness" for subsets of $I$, that is, let $\mathcal{U}$ be a fixed filter on $I$, and let us temporarily call its elements <em>large</em>. The conditions above can be rewritten as
+<style>
+ol.roman.apostrophe > li:before {
+	content: "(" counter(roman,lower-roman) ")\0027";
+	}
+</style>
+<ol class='roman apostrophe'>
+	<li> If $F$ and $G$ are large then $F\cap G$ is large as well;</li>
+	<li> If $F$ is large and $F\subseteq G$ then $G$ is large as well.</li>
+</ol>
+This idea leads to an intuitive notion of convergence: $(x_i)_i$ converges to $x\in X$ if the set of all $i\in I$ for which $x_i$ is sufficiently close to $x$ is large. This can be formalized as follows:
+</p>
+
+<!-- 2.1.1 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.1.1</span>
+	Let $I$ be a set, $X$ a topological space, and $\mathcal{U}$ a filter of sets on $I$. We say that a family $(x_i)_i\in X^I$ <em>converges</em> to a point $x\in X$ <em>along $\mathcal{U}$</em> if for every neighbourhood $U$ of $x$, the set $\left\{i\in I:x_i\in U\right\}$ belongs to $\mathcal{U}$. We call $x$ a <em>limit point of $(x_i)_i$ along $\mathcal{U}$</em>, and if $\mathcal{U}$ is an ultrafilter of sets we call $x$ a <em>ultralimit</em>.
+	</p>
+</div>
+
+<p>
+This usage of filters can be thought of as a common generalization of both nets and the filters of subsets of a topological space $X$ (see [<span class='ref' data-tag='MR0264581'></span>, Section 12]):
+<ol>
+	<li> If $\Lambda$ is a directed set and $(x_\lambda)_\lambda$ is a net in $X$, then convergence of this net corresponds to convergence of $(x_\lambda)$ along the filter of subsets of $\Lambda$ which contain a tail of it.</li>
+	<li> If $\mathcal{U}$ is a filter of subsets of $X$, we take our index set $I=X$ and consider the identity thread $(x)_x\in X^X$. Then convergence of $\mathcal{U}$ ([<span class='ref' data-tag='MR0264581'></span>, 12.3]) coincides with the notion above of convergence of $(x)_x$ along $\mathcal{U}$.</li>
+</ol>
+</p>
+
+<p>
+As such, topological properties of $X$ can be characterized in terms of convergence of functions along ultrafilters. The following characterizations of compactness and the Hausdorff property in terms of ultralimits are analogues to those in terms of nets (see [<span class='ref' data-tag='MR0264581'></span>, 13.7 and 17.4]).
+</p>
+
+<!-- 2.1.2 -->
+<div class='theorem' id='theoremcompactultrafilters'>
+	<p><span class='envidentifier'>Theorem 2.1.2</span>
+	$X$ is compact if and only if for every set $I$ and every ultrafilter of sets $\mathcal{U}$ on $I$, every function $(x_i)_i\in X^I$ converges along $\mathcal{U}$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremcompactultrafilters'>Proof</a>
+
+<div class='proof' id='proofoftheoremcompactultrafilters'>
+	<p>
+	First suppose that some function $(x_i)_i$ does not converge along $\mathcal{U}$. Using compactness, we can find a finite open cover $U_1,\ldots,U_n$ of $X$ such that for $1\leq k\leq n$, the set $F_k=\left\{i\in I:x_i\in U_k\right\}$ does not belong to $\mathcal{U}$. But $I=F_1\cup\cdots\cup F_n$, which contradicts $\mathcal{U}$ being an ultrafilter.
+	</p>
+	
+	<p>
+	Conversely, suppose every function $(x_i)_i\in X^I$ converges along every ultrafilter on $I$. We will use the correspondence above between nets and filters of sets to prove that every net on $X$ has a cluster point, which is equivalent to $X$ being compact ([<span class='ref' data-tag='MR0264581'></span>, Theorem 17.4]). So suppose $(\Lambda,\leq)$ is a directed set and $(x_\lambda)_{\lambda\in\Lambda}$ is a net in $X$. Let $\mathcal{U}$ be any ultrafilter of sets on $\Lambda$ containing all nonempty, upwards closed subsets of $\Lambda$, which exists by Zorn's Lemma. Then $(x_\lambda)_\lambda$ converges along $\mathcal{U}$ to some $x\in X$, that is, if $U$ is a neighbourhood of $x$ and $\rho\in\Lambda$, then the set $\left\{\lambda\geq\rho:x_\lambda\in U\right\}$ belongs to $\mathcal{U}$ and is therefore nonempty, and this means that $(x_\lambda)_\lambda$ clusters at $x$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 2.1.3 -->
+<div class='theorem' id='theoremhausdorffultrafilters'>
+<p><span class='envidentifier'>Theorem 2.1.3</span>
+$X$ is Hausdorff if and only if ultralimits are unique.
+</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremhausdorffultrafilters'>Proof</a>
+
+<div class='proof' id='proofoftheoremhausdorffultrafilters'>
+	<p>
+	First assume $X$ is Hausdorff, and suppose a function $(x_i)_i$ converges to $x$ and $y$ along an ultrafilter $\mathcal{U}$ on $I$. For $z=x,y$, let $U_z$ be an open neighbourhood of $z$, so that $F_z=\left\{i\in I:x_i\in U_z\right\}\in\mathcal{U}$. Then $F_x\cap F_y\in\mathcal{U}$, and in particular there exists some $j\in F_x\cap F_y$, that is $x_j\in U_x\cap U_y\neq\varnothing$. This proves that every neighbourhood of $x$ intersects every neighbourhood of $y$, which means that $x=y$ by the Hausdorff property.
+	</p>
+	
+	<p>
+	Conversely, suppose that ultralimits are unique. To prove that $X$ is Hausdorff, we simply need to prove that nets on $X$ have at most one limit point ([<span class='ref' data-tag='MR0264581'></span>, Theorem 13.7]). Suppose that a net $(x_\lambda)_{\lambda\in\Lambda}$ converges to two points $x$ and $y$ in $X$. Again, choose an ultrafilter $\mathcal{U}$ of sets on $\Lambda$ containing all nonempty upwards closed subsets of $\Lambda$. Then $(x_\lambda)_\lambda$ converges along $\mathcal{U}$ to both $x$ and $y$, hence $x=y$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 2.1.4 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.1.4</span>
+	If a family $(x_i)_i$ has a unique ultralimit $x$ along an ultrafilter $\mathcal{U}$, we denote $x=\lim_{i\to\mathcal{U}} x_i$, or simply $x=\lim_{\mathcal{U}} x_i$.
+	</p>
+</div>
+
+<h3 class='subsection'>2.1.2. Metric signatures and structures</h3>
+
+<p>
+In this section we will introduce <em>ultraproducts</em>, whose main motivation comes from Model Theory. A classical and still very interesting reference for algebraic ultraproducts in this setting is [<span class='ref' data-tag='MR0269486'></span>]. One way to describe modelatibility in the algebraic setting is the following:
+</p>
+
+<p>
+Let $B$ be an algebra (or a ring, group, Boolean algebra, etc.) and let $\mathscr{A}$ be a collection of algebras (or rings, groups, etc.). We say that $B$ is <em>modelled</em> by $\mathscr{A}$ if for every finite subset $F\subseteq B$, there is $A\in\mathscr{A}$ and a map $\phi:B\to A$ which is injective on $F$, and which satisfies the usual properties of morphisms however only for elements of $F$. Ultraproducts are then certain algebras which allow us to verify modelability by $\mathscr{A}$ in terms of the existence of injective morphisms into ultraproducts.
+</p>
+
+<p>
+We should note, however, that ultraproducts are not unique up to isomorphism, and there are other algebras (groups, etc.) which can be used to check for modelability by $\mathcal{A}$. (In the metric case, see [<span class='ref' data-tag='MR2460675'></span>, 3.11-3.13] for examples related to hyperlinear groups, and [<span class='ref' data-tag='MR2178069'></span>, Section 2] for examples related to sofic groups.)
+</p>
+
+<p>
+However, we will be interested in analytical, or more precisely <em>metric</em> structures. These are similar to classical (algebraic) structures in the sense that they have constants and functions, however predicates become continuous functions as well, with values in $[0,1]$, instead of truth functions with values in $\left\{0,1\right\}$. This is actually of great interest, since it allows us to ask how "far" is a statement from being the truth. For example, two elements of a metric space $(M,d)$ are equal if and only if $d(x,y)=0$, and more generally they are precise at distance $d(x,y)$ from each other, so the distance map tell us how far are they from being the equal. With this, we can introduce a notion of "metric modelability" similar to the one (algebraic) above and construct ultraproducts with the analogue property. For more details, we refer to [<span class='ref' data-tag='MR2436146'></span>, <span class='ref' data-tag='MR2446304'></span>].
+</p>
+
+<div class='remark'>
+	<p>	<span class='envidentifier'>Convention</span>
+	If $(M,d^M)$ and $(N,d^N)$ are metric spaces, the product space $(M\times N,d^{M\times N})$ will be considered with the supremum metric: $d^{M\times N}((m_1,n_1),(m_2,n_2))=\max(d^M(m_1,m_2),d^N(n_1,n_2))$.
+	</p>
+</div>
+
+<p>
+Recall the definition of a <em>modulus of</em> (<em>uniform</em>) <em>continuity</em>.
+</p>
+
+<!-- 2.1.5 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.1.5</span>
+	Let $(M,d^M)$ and $(N,d^N)$ be (pseudo-)metric spaces and $f:M\to N$ a function. A <em>modulus of</em> (<em>uniform</em>) <em>continuity</em> for a $f$ is a function $\Delta:(0,\infty)\to(0,\infty)$ which satisfies
+	<div class='equation'>\[
+		\forall \epsilon>0, \text{ if }x,y\in M\text{ and }d^M(x,y)\smallerthan\Delta(\epsilon)\text{ then }d^N(f(x),f(y))\leq\epsilon.
+	\]</div>
+	</p>
+</div>
+
+<p>
+In other words, a modulus of continuity for a function $f$ described "how close two points in $M$ have to be in order for their images under $f$ to be close in $N$". The usage of strict and non-strict inequalities in the definition is necessary for the results that follow.
+</p>
+
+<!-- 2.1.6 -->
+<div class='definition' id='definitionmetricsignature'>
+	<p><span class='envidentifier'>Definition 2.1.6</span>
+	A <em>metric signature</em> is a collection $\sigma=\left(\mathscr{P},\mathscr{F},\mathscr{C}\right)$, where
+	<ul>
+		<li> $\mathscr{P}$ is a collection of triples $(P,n(P),\Delta_P)$, where $P$ is a <em>predicate symbol</em>, and $n(P)$ is a positive integer, called its <em>arity</em>, and $\Delta_P$ is a function $\Delta_P:(0,\infty)\to(0,\infty)$;</li>
+		<li> $\mathscr{F}$ is a collection of triples $(f,n(f),\Delta_f)$, where $f$ is a <em>function symbol</em>, $n(f)$ is a positive integer, called the <em>arity</em> of $f$, and $\Delta_f$ is a function $\Delta_f:(0,\infty)\to(0,\infty)$;</li>
+		<li> $\mathscr{C}$ is a collection of <em>constant symbols</em>.</li>
+	</ul>
+	We will usually identify elements of $\mathscr{P}$ and $\mathscr{F}$ with their predicate and function symbols, respectively.
+	</p>
+</div>
+
+<!-- 2.1.7 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.1.7</span>
+	A <em>$\sigma$-structure</em> consists of a metric space $L$ of diameter at most $1$ and an <em>interpretation function</em>, which associates:</p>
+	<ul>
+		<li> For every predicate symbol $P\in\mathscr{P}$, a function $P^L:L^{n(P)}\to [0,1]$ which has $\Delta_P$ as a modulus of continuity;</li>
+		<li> For every function symbol $f\in\mathscr{F}$, a function $f^L:L^{n(f)}\to L$ which has $\Delta_f$ as a modulus of continuity;</li>
+		<li> For every constant symbol $c\in\mathscr{C}$, a distinguished element $c^L\in L$.</li>
+	</ul>
+</div>
+
+<p>
+We will always assume that the metric structure $\sigma$ has a binary predicate $d$, with modulus of continuity the identity function of $(0,\infty)$, and whose interpretation is the metric $d^M$ of the $\sigma$-structure $M$. We also assume we are given an infinite set $\mathscr{V}_L$ of <em>variables</em>, and that $\mathscr{P},\mathscr{F},\mathscr{C},\mathscr{V}$ are pairwise disjoint.
+</p>
+
+<!-- 2.1.8 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.1.8</span>
+	An <em>embedding</em> of $\sigma$-structures $L$ and $M$ is a map $\phi:L\to M$ satisfying
+	<ul>
+		<li> $P^M(\phi(x))=P^L(x)$ for all $x\in L$ and $P\in\mathscr{P}$;</li>
+		<li> $f^M(\phi(x_1),\ldots,\phi(x_{n(f)}))=\phi(f^L(x_1,\ldots,x_{n(f)}))$ for all $x_1,\ldots,x_{n(f)}\in L$ and $f\in\mathscr{F}$;</li>
+		<li> $c^M=\phi(c^L)$ for all $c\in\mathscr{C}$.</li>
+	</ul>
+	(in particular, embeddings are always isometric since $d$ is a predicate interpreted as the metric).</p>
+</div>
+
+<!-- 2.1.9 -->
+<div class='example' id='examplesofmetricsignatures'>
+	<p><span class='envidentifier'>Example 2.1.9</span></p>
+	<ol class='arpar'>
+		<li> A bounded metric space is a structure with the trivial signature (containing only the distance symbol $d$)</li>
+		<li> Every classical structure, in the sense of first order logic (see [<span class='ref' data-tag='MR1221741'></span>]), is a metric structure when endowed with the discrete metric: $d(x,y)=0$ if $x=y$ and $1$ otherwise. The modulus of continuity for all function and predicate symbols is taken as $\Delta(\epsilon)=0$ for all $\epsilon>0$.</li>
+		<li> A group $G$ with a bi-invariant, bounded metric $d$ is a structure for the signature containing one binary function symbol (the product) and one unary function symbol (the inverse) and appropriate moduli of continuity.</li>
+	</ol>
+</div>
+
+<!-- 2.1.10 -->
+<div class='example' id='examplesignaturebooleaninversemonoids'>
+	<p><span class='envidentifier'>Example 2.1.10</span>
+	A Boolean inverse monoid $S$ with a normalized, faithful invariant mean $\mu$ is a metric structure for the signature containing binary function symbols $\land,\setminus$ and $\cdot$ (for the semigroup operation), a unary function symbol $(\ )^*$ (and appropriate moduli of continuity) and constant symbols $0,1$. We can also consider a unary predicate $E$ determining idempotents via $E(s)=d_\mu(s,s^*s)$.
+	</p>
+
+	<p>
+	One slightly more problematic operation is the "join", which is only defined for compatible elements. One way to remedy this is to define a new operation $\overset{\star}{\lor}$ on $S$ as
+	<div class='equation'>\[
+	s\overset{\star}{\lor}t=s\lor\left((tt^*\setminus ss^*)t(t^*t\setminus s^*s)\right),
+	\]</div>
+	so that $s\overset{\star}{\lor}t=s\lor t$ whenever $s$ and $t$ are compatible. This way we can add the symbol $\lor$ to the signature of Boolean inverse monoids, and interpret it as $\overset{\star}{\lor}$ in $S$.
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	The metric theory of unbounded metric spaces is also of interest in functional analysis (see [<span class='ref' data-tag='MR1967834'></span>], for example), however some modifications need to be made, usually either considering <em>pointed</em> metric spaces, or by considering many-sorted structures, which we will not do here.
+	</p>
+</div>
+
+<!-- 2.1.11 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.1.11</span>
+	Let $\sigma$ be a metric structure. The collection of <em>terms</em> of $\sigma$ is the smallest set containing all constant symbols and variables of $\sigma$, and such that if $t_1,\ldots,t_n$ are terms and $f$ is an $n$-ary function symbol then $f(t_1,\ldots,t_n)$ is also a term. In the same manner as classical model theory ([<span class='ref' data-tag='MR1221741'></span>]), we will write $t(v_1,\ldots,v_n)$ to denote that the variables of $t$ are among $v_1,\ldots,v_n$.
+	</p>
+</div>
+
+<h3 class='subsection'>2.1.3. Ultraproducts of metric structures and modelability</h3>
+
+<p>
+We will now construct ultraproducts of metric structures of a given signature following [<span class='ref' data-tag='MR2436146'></span>]. Let $\left\{(M_i,d^i):i\in I\right\}$ be a collection of metric spaces of diameter at most $1$ (<span class='ref' data-tag='footnote21differentdiam' id='footnote21differentdiam'></span>), and let $\mathcal{U}$ be an ultrafilter of sets on $I$. We first consider the product space $\prod_i (M_i,d^i)$, and define a pseudometric on it by setting
+<div class='equation'>\[
+	d^{\mathcal{U}}((x_i)_i,(y_i)_i)=\lim_{i\to\mathcal{U}}d^i(x_i,y_i).
+\]</div>
+Let $\prod_{\mathcal{U}} M_i$ (or $\prod_{\mathcal{U}}(M_i,d^i)$ if we need to make the metrics $d^i$ explicit) be the quotient metric space, whose metric we also denote, $d^{\mathcal{U}}$.
+</p>
+
+<!-- 2.1.12 -->
+<div class='definition' id='definitionultraproductmetricspaces'>
+	<p><span class='envidentifier'>Definition 2.1.12</span>
+	We call the metric space $\left(\prod_{\mathcal{U}} M_i,d^{\mathcal{U}}\right)$ the <em>ultraproduct</em> of the metric spaces $(M_i,d^i)$. We denote the class of an element $(x_i)_i\in\prod_i M_i$ in $\prod_{\mathcal{U}} M_i$ by $(x_i)_{\mathcal{U}}$.
+	</p>
+</div>
+
+<!-- 2.1.13 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 2.1.13</span>
+	If $\mathcal{U}=\left\{A\subseteq I:i_0\in A\right\}$ for some $i_0\in I$, then $\prod_\mathcal{U}M_i$ is isometric to $M_{i_0}$. More precisely, the map
+	<div class='equation'>\[
+	\prod_\mathcal{U}M_i\to M_{i_0},\qquad (x_i)_\mathcal{U}\mapsto x_{i_0}
+	\]</div>
+	is a (well-defined) isometry.
+	</p>
+</div>
+
+<p>
+The following proposition can be proven along the same lines as when one constructs a completion of a metric space. See [<span class='ref' data-tag='MR0385023'></span>, Exercise 3.24].
+</p>
+
+<!-- 2.1.14 -->
+<div class='proposition'>
+	<p><span class='envidentifier'>Proposition 2.1.14</span>
+	If $\mathcal{U}$ is a free ultrafilter, then $\prod_\mathcal{U}M_i$ is complete.
+	</p>
+</div>
+
+<p>
+The following "distributivity" of ultraproducts over products will be necessary, and it follows quite easily from the fact that if $(a_i)_i,(b_i)_i$ are bounded functions of real numbers on a set $I$ and $\mathcal{U}$ is a ultrafilter of sets on $I$, then
+<div class='equation'>\[
+	\lim_\mathcal{U}\left(\max(a_i,b_i)\right)=\max\left(\lim_\mathcal{U} a_i,\lim_\mathcal{U} b_i\right),
+\]</div>
+because, either the set $\left\{i\in I:a_i>b_i\right\}$ or its complement belongs to $\mathcal{U}$.
+</p>
+
+<!-- 2.1.15 -->
+<div class='proposition' id='propositionultraroductofproduct'>
+	<p><span class='envidentifier'>Proposition 2.1.15</span>
+	If $\left\{(M_i,d^{M_i}):i\in I\right\}$ and $\left\{(N_i,d^N_i):i\in I\right\}$ are collections of metric spaces (of diameter at most $1$) and $\mathcal{U}$ is an ultrafilter of sets on $I$, then the map
+	<div class='equation'>\[
+	\prod_\mathcal{U}(M_i\times N_i)\to\left(\prod_\mathcal{U} M_i\right)\times\left(\prod_\mathcal{U}N_i\right),\qquad (m_i,n_i)_\mathcal{U}\mapsto ((m_i)_\mathcal{U},(n_i)_\mathcal{U})
+	\]</div>
+	is a well-defined isometry.
+	</p>
+</div>
+
+<p>
+The next obvious course of work is to define a natural $\sigma$-structure on an ultraproduct of $\sigma$-structures, where $\sigma$ is a metric signature.
+</p>
+
+<!-- 2.1.16 -->
+<div class='proposition' id='propositionultraproductoffunctions'>
+	<p><span class='envidentifier'>Proposition 2.1.16</span>
+	Let $\left\{(M_i,d^{M_i}):i\in I\right\}$ and $\left\{(N_i,d^{N_i}):i\in I\right\}$ be two families of metric spaces of uniformly bounded diameters, over the same set $I$, and let $\mathcal{U}$ be an ultrafilter on $I$. If $\left\{f^i:M_i\to N_i:i\in I\right\}$ is a family of functions admitting a common modulus of continuity $\Delta$, then there exists a unique function $f^{\mathcal{U}}:\prod_{\mathcal{U}} M_i\to\prod_{\mathcal{U}} N_i$ satisfying $f^{\mathcal{U}}((x_i)_{\mathcal{U}})=(f^i(x_i))_{\mathcal{U}}$ for every $(x_i)_{\mathcal{U}}\in\prod_{\mathcal{U}} M_i$. Moreover, $\Delta$ is also a modulus of continuity for $f^{\mathcal{U}}$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionultraproductoffunctions'>Proof</a>
+
+<div class='proof' id='proofofpropositionultraproductoffunctions'>
+	<p>
+	Let $f=\prod_i f_i:\prod_i M_i\to\prod_i N_i$ be given by $f((x_i)_i)=(f_i(x_i))_i$. Given $\epsilon>0$, suppose $d^{\mathcal{U}}((x_i)_i,(y_i)_i)\smallerthan\Delta(\epsilon)$. This implies that $\left\{i\in I:d^{M_i}(x_i,y_i)\smallerthan\Delta(\epsilon)\right\}\in\mathcal{U}$, and since $\Delta$ is a common modulus of continuity for all $f_i$, then
+	<div class='equation'>\[
+	\left\{i\in I:d^{M_i}(x_i,y_i)\smallerthan\Delta(\epsilon)\right\}\subseteq\left\{i\in I:d^{N_i}(f_i(x_i),f_i(y_i))\leq\epsilon\right\}\in\mathcal{U},
+	\]</div>
+	which implies $d^{\mathcal{U}}(f((x_i)_i),f((y_i)_i))\leq \epsilon$. In other words, $\Delta$ is a modulus of continuity for the function $f$ with respect to the respective pseudometrics $d^{\mathcal{U}}$, and in particular if $d^{\mathcal{U}}((x_i)_i,(y_i)_i)=0$  then $d^{\mathcal{U}}(f((x_i)_i),f((y_i)_i))=0$, so $f$ factors uniquely to a function $f^{\mathcal{U}}:\prod_\mathcal{U}M_i\to\prod_\mathcal{U}N_i$ with all the desired properties.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 2.1.17 -->
+<div class='proposition' id='proposition2117'>
+	<p><span class='envidentifier'>Proposition 2.1.17</span>
+	If $\left\{(M_i,d^{M_i}):i\in I\right\}$ is a family of $\sigma$-structures and $\mathcal{U}$ is an ultrafilter of sets on $I$, then the ultrapower $\prod_\mathcal{U} M_i$ is also a $\sigma$-structure, where the interpretation is given by
+	<div class='equation'>\[
+	f^\mathcal{U}\left((m^1_i)_\mathcal{U},\ldots,(m^{n(f)}_i)_\mathcal{U}\right)=\left(f^{M_i}(m^i_i,\ldots,m^{n(f)}_i\right)_{\mathcal{U}},
+	\]</div>
+	<div class='equation'>\[
+	P^\mathcal{U}\left((m^1_i)_\mathcal{U},\ldots,(m^{n(P)}_i)_\mathcal{U}\right)=\lim_\mathcal{U}P^{M_i}\left(m^1_i,\ldots,m^{n(P)}_i\right),
+	\]</div>
+	and
+	<div class='equation'>\[
+	c^\mathcal{U}=(c^{M_i})_\mathcal{U},
+	\]</div>
+	for every function symbol $f$, every predicate symbol $P$ and every constant symbol $c$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='proposition2117'>Proof</a>
+
+<div class='proof' id='proofofproposition2117'>
+	<p>
+	The only non-trivial parts are to prove that the interpretation of functions and predicates have the correct moduli of continuity. This statement for functions follows from Propositions <span class='ref' data-tag='propositionultraroductofproduct'></span> and <span class='ref' data-tag='propositionultraproductoffunctions'></span>.
+	</p>
+
+	<p>
+	To prove that $P^\mathcal{U}$ has modulus of continuity $\Delta_P$ (given by $\sigma$), where $P$ is a predicate symbol, first note that the function $\lim_{\mathcal{U}}\prod_\mathcal{U}[0,1]\to[0,1]$, which associates any $(t_i)_\mathcal{U}$ to $\lim_\mathcal{U} t_i$, has the identity $\epsilon\mapsto\epsilon$ as a modulus of continuity. Using this fact with Propositions <span class='ref' data-tag='propositionultraroductofproduct'></span> and <span class='ref' data-tag='propositionultraproductoffunctions'></span> again, we see that the given interpretation $\mathcal{P}^\mathcal{U}$ has $\Delta_P$ as a modulus of continuity.<span class='qed'></span>
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	If $\left\{(M_i,d^{M_i}):i\in I\right\}$ is a family of $\sigma$-structures and $\mathcal{U},\mathcal{V}$ are distinct free ultrafilters of sets on $I$, the question of whether the ultraproducts $\prod_\mathcal{U} M_i$ and $\prod_\mathcal{V}M_i$ are isomorphic or not may depend on set-theoretic statements.
+	</p>
+
+	<p>
+	For example, if $\mathfrak{M}$ is a separable II$_1$ factor and $M_i$ is the unitary group of $\mathfrak{M}$ for all $i$ (endowed with the $L^2$-metric induced by the trace of $M$), then the Continuum Hypothesis holds if and only if any two ultraproducts over free ultrafilters are isomorphic -- See [<span class='ref' data-tag='MR3081550'></span>, Theorem 3.1].
+	</p>
+
+	<p>
+	A similar result, for ultrapowers of the real numbers, was proven in the classical setting in [<span class='ref' data-tag='MR0671717'></span>] (however in this case there exist <em>non-isomorphic</em> ultraproducts under the Continuum Hypothesis). For results not dealing with the Continuum Hypothesis, see Exercises 6.1.19 and 6.5.35 of [<span class='ref' data-tag='MR1059055'></span>].
+	</p>
+</div>
+
+<p>
+The following theorem then allows us to obtain a precise relationship between embeddings into ultraproducts of metric structures and "approximate embeddings" into certain metric structures.
+</p>
+
+<!-- 2.1.18 -->
+<div class='theorem' id='theoremequivalenceembeddingintoultraproductformetricstructures'>
+	<p><span class='envidentifier'>Theorem 2.1.18</span>
+	Let $\sigma=\left(\mathscr{P},\mathscr{F},\mathscr{C}\right)$ be a metric signature, let $\mathscr{M}$ be a collection of $\sigma$-structures and $L$ another $\sigma$-structure. Then the following are equivalent:</p>
+	<ol class='arpar'>
+		<li> $L$ embeds into an ultraproduct of elements of $\mathscr{M}$.</li>
+		<li> For every collection of finite subsets $\mathbf{A}\subseteq L$, $\mathbf{P}\subseteq\mathscr{P}$, $\mathbf{F}\subseteq\mathscr{F}$ and $\mathbf{C}\subseteq\mathscr{C}$ and every $\epsilon>0$, there exists $M\in\mathscr{M}$ and a map $\phi:L\to M$ such that
+		<div class='equation' id='equationembeddingmetricsignatureultraproductpredicates'>\[
+			\sup_{a_i\in \mathbf{A},P\in\mathbf{P}}|P^L(a_1,\ldots,a_{n(P)})-P^M(\phi(a_1),\ldots,\phi(a_{n(P)}))|<\epsilon,\tag{2.1.1}
+		\]</div>
+		<div class='equation' id='equationembeddingmetricsignatureultraproductfunctions'>\[
+			\sup_{a_i\in \mathbf{A},f\in\mathbf{F}}d^M\left(\phi(f^L(a_1,\ldots,a_{n(f)})),f^M(\phi(a_1),\ldots,\phi(a_{n(f)}))\right)<\epsilon,\tag{2.1.2}
+		\]</div>
+		and
+		<div class='equation' id='equationembeddingmetricsignatureultraproductconstants'>\[
+			\sup_{c\in\mathbf{C}}d^M(\phi(c^L),c^M)<\epsilon.\tag{2.1.3}
+		\]</div>
+		</li>
+	</ol>
+</div>
+
+<a class='proofbutton' data-tag='theoremequivalenceembeddingintoultraproductformetricstructures'>Proof</a>
+
+<div class='proof' id='proofoftheoremequivalenceembeddingintoultraproductformetricstructures'>
+	<p><u>(1)$\Rightarrow$(2)</u>: Assume  such $\theta$ exists. Let $\pi:\prod_i M_i\to\prod_\mathcal{U} M_i$ be the quotient map and take a section $\Theta=(\Theta_i):L\to\prod_i M_i$, $\Theta(x)=(\Theta_i(x))_i$, of $\theta$ along $\pi$:
+	<div class='equation'>\[
+	\xymatrix{
+	L\ar[r]^{\Theta}\ar[rd]_{\theta}&\prod_iM\ar[d]^{\pi}\\
+	&\prod_{\mathcal{U}}M_i
+	}
+	\]</div>
+	Note that $\Theta$ is not necessarily a $\sigma$-morphism. However, if $\mathbf{P}$ is a finite set of predicate symbols and $\mathbf{A}\subseteq L$ is finite, then
+	<div class='equation'>\[
+	P^L(x_1,\ldots,x_{n(P)})=\lim_\mathcal{U}P^{M_i}(\Phi_i(x_1),\ldots,\Phi_i(x_{n(P)}))
+	\]</div>
+	for all $x_1,\ldots,x_n\in \mathbf{A}$ and $P\in\mathbf{P}$, and similarly for function and constant symbols. But the definition of ultralimits, and the fact that $\mathcal{U}$ is closed under intersections, means that, given $(\mathbf{A},\mathbf{P},\mathbf{F},\mathbf{C},\epsilon)$ as in (2), the set of all $i$ for which (<span class='ref' data-tag='equationembeddingmetricsignatureultraproductpredicates'></span>), (<span class='ref' data-tag='equationembeddingmetricsignatureultraproductfunctions'></span>) and (<span class='ref' data-tag='equationembeddingmetricsignatureultraproductconstants'></span>) hold belongs to $\mathcal{U}$, and in particular it holds for any element of this set.
+	</p>
+	
+	<p><u>(2)$\Rightarrow$(1)</u>: Let $I$ be the collection of tuples $\overline{p}=(\mathbf{A},\mathbf{P},\mathbf{F},\mathbf{C},\epsilon)$ as in (2) above. We  order $I$ by
+	<div class='equation'>\[
+	(\mathbf{A},\mathbf{P},\mathbf{F},\mathbf{C},\epsilon)\leq(\mathbf{A}',\mathbf{P}',\mathbf{F}',\mathbf{C}',\epsilon')\iff \mathbf{A}\subseteq \mathbf{A}',\mathbf{P}\subseteq\mathbf{P}',\mathbf{F}\subseteq\mathbf{F}',\mathbf{C}\subseteq\mathbf{C}'\text{ and }\epsilon\geq \epsilon',
+	\]</div>
+	(note that the order is reversed in the last entry), which makes $I$ a directed set.
+	</p>
+	
+	<p>
+	For every $\overline{p}\in I$, take a map $\phi_{\overline{p}}:L\to M_{\overline{p}}$ satisfying the conditions (<span class='ref' data-tag='equationembeddingmetricsignatureultraproductpredicates'></span>), (<span class='ref' data-tag='equationembeddingmetricsignatureultraproductfunctions'></span>) and (<span class='ref' data-tag='equationembeddingmetricsignatureultraproductconstants'></span>) for that given $\overline{p}$. Then for every predicate symbol $P$ and every $x_1,\ldots,x_{n(P)}\in M$,
+	<div class='equation' id='equationultralimitsmorphism'>\[	\lim_{\overline{p}\to\infty}P^{M_{\overline{p}}}(\phi_{\overline{p}}(x_1),\ldots,\phi_{\overline{p}}(x_{n(P)}))=P^L(\phi(x_1),\ldots,\phi(x_{n(P)})))\tag{2.1.4},
+	\]</div>
+	and similarly for function and constant symbols, so letting $\mathcal{U}$ be an ultrafilter on $I$ (as a set) containing all upwards closed subsets of $I$, the same equation as in (<span class='ref' data-tag='equationultralimitsmorphism'></span>) with ultralimits along $\mathcal{U}$ instead of limits along $I$ and the function and constant symbol analogues still hold, which means that by composing $\Phi=\prod_{\overline{p}}:L\to \prod_{\overline{p}} M_{\overline{p}}$ with the quotient map onto $\prod_{\mathcal{U}} M_{\overline{p}}$ gives us a $\sigma$-morphism.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+The theorem above shows us that ultraproducts can be used to give a precise notion of modelability by a class of structures (of a given signature), so it is natural to ask whether all statements which are "true", in a suitable sense, in each of the factors $M_i$, will also be true in any ultraproduct $\prod_\mathcal{U}M_i$, and consequently on any structure modelled by those $M_i$.
+</p>
+
+<p>
+We will now prove that ultraproducts can be used as <em>models</em> of its terms, in a suitable sense. More precisely, the (truth) value of any sentence in the ultraproduct will be the same as the limit (along the given ultrafilter) of the (truth) values of the same sentence in each component. This is the content of &Lstrok;o&sacute;&apos; Theorem (<span class='ref' data-tag='lostheorem'></span>).
+</p>
+
+<!-- 2.1.19 -->
+<div class='definition' id='definitionmetricformula'>
+	<p><span class='envidentifier'>Definition 2.1.19</span>
+	An <em>atomic formula</em> of $\sigma$ is an expression (string of symbols) of the form $P(t_1,\ldots,t_n)$, where $t_1,\ldots,t_n$ are terms and $P$ is an $n$-ary predicate symbol. The collection of <em>formulas</em> of $\sigma$ is the smallest which satisfies the following properties:
+	<ol class='roman'>
+		<li> All atomic formulas are formulas;</li>
+		<li> If $u:[0,1]^n\to [0,1]$ is a continuous function and $\varphi_1,\ldots,\varphi_n$ are $L$-formulas, then $u(\varphi_1,\ldots,\varphi_n)$ is also a formula;</li>
+		<li> If $\varphi$ is a formula and $v$ is a variable then $\sup_v\varphi$ and $\inf_v\varphi$ are formulas.</li>
+	</ol>
+	<em>Free</em> and <em>bound</em> variables are defined the same way as in classical logic: A variable $v$ is <em>bound</em> if all occurrences of $v$ appear within $\sup_v$ or $\inf_v$, and $v$ is <em>free</em> otherwise. We write $\varphi(v_1,\ldots,v_n)$ to denote that $v_1,\ldots,v_n$ are the free variables of $\varphi$. A <em>sentence</em> is a formula without free variables.
+	</p>
+</div>
+
+<p>
+We will now define interpretations of terms and formulas in a $\sigma$-structure $M$. Intuitively, we simply interpret all predicates, constant and function symbols in $M$ with the given interpretation function of $M$, all continuous functions $[0,1]^n\to[0,1]$ as themselves, and the free variables as unspecified elements of $M$.
+</p>
+
+<!-- 2.1.20 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.1.20</span>
+	The <em>interpretation</em> of a term $t(v_1,\ldots,v_n)$ (i.e., $v_1,\ldots,v_n$ are the variables appearing in $t$) in a $\sigma$-structure $M$ is a function $t^M:M^n\to M$, which is defined inductively on the complexity of $t$:
+	<ul>
+		<li> Constants keep their original interpretation; The interpretation of a variable $v$ is simply the identity function: $v^M=\id_M$;</li>
+		<li> If $f$ is an $n$-ary function symbol and $t_1,\ldots,t_n$ are terms, all of whose variables are among $v_1,\ldots,v_k$, the interpretation of $f(t_1,\ldots,t_n)$ is the function
+		<div class='equation'>\[
+			M^k\to M,\qquad \overline{x}\mapsto f^M(t_1^M(\overline{x}),\ldots,t_n^M(\overline{x})),
+		\]</div>
+		where $t_i^M(\overline{x})=t_i^M(\overline{x}_i)$, $\overline{x}_i$ being obtained from $\overline{x}$ by disregarding any entries corresponding to variables not appearing in $t$.</li>
+	</ul>
+	In other words, the interpretation of a term $t(v_1,\ldots,v_n)$ at $(x_1,\ldots,x_n)\in M^n$ is the element of $M$ obtained by substituting each variable $v_i$ by the corresponding element $x_i$, and interpreting any function or constant symbol in $M$.
+	</p>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	By writing a term as $t(v_1,\ldots,v_n)$, we are considering a non-canonical ordering on the set of variables, so a more precise way of defining it would be as a function $t^M:M^{\mathscr{V}(t)}\to M$, where $\mathscr{V}(t)$ is the (unordered) set of variables in $t$, in a manner similar to above.
+	</p>
+
+	<p>
+	However, we will keep using the more common approach from [<span class='ref' data-tag='MR2436146'></span>] and [<span class='ref' data-tag='MR1221741'></span>].
+	</p>
+</div>
+
+<p>
+An analogous comment for formulas, considered below, also hold.
+</p>
+
+<!-- 2.1.21 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 2.1.21</span>
+	The <em>interpretation</em> of a formula $\varphi(v_1,\ldots,v_k)$ is a function $\varphi^M:M^k\to[0,1]$. If $\varphi$ does not have free variables (i.e., it is a sentence), we regard $M^{0}$ as a singleton so $\varphi^M$ is given by a single number, called the <em>value</em> of $\varphi$ in $M$.
+	<ul>
+		<li> The interpretation of an atomic formula $P(t_1,\ldots,t_n)$ at a tuple $\overline{x}\in M^k$ is $P^M(t_1(\overline{x}),\ldots,t_n(\overline{x}))$.</li>
+		<li> If $\varphi_1,\ldots,\varphi_n$ are formulas and $u:[0,1]^n\to[0,1]$ is a continuous function, the value of $u(\varphi_1,\ldots,\varphi_n)$ at $\overline{x}\in M^k$ is $u(\varphi_1^M(\overline{x}),\ldots,\varphi_n^M(\overline{x}))$.</li>
+		<li> If $\varphi(v,v_1,\ldots,v_n)$ is a formula, then the values of $\sup_v\varphi$ and $\inf_v\varphi$ at $\overline{x}\in M^k$ are $\sup_{n\in M}\varphi(n,\overline{x})$ and $\inf_{n\in M}\varphi(n,\overline{x})$, respectively.</li>
+	</ul>
+	(Again, $t(\overline{x})$ is obtained by disregarding entries corresponding to variables not appearing in $t$, and similarly for subformulas.)
+	</p>
+</div>
+
+<!-- 2.1.22 -->
+<div class='theorem' id='lostheorem'>
+	<p><span class='envidentifier'>Theorem 2.1.22 (Continuous &Lstrok;o&sacute;&apos; Theorem)
+	<span style='font-weight:normal'>[<span class='ref' data-tag='MR2436146'></span>, Theorem 5.4]</span></span>
+	If $\prod_{\mathcal{U}} M_i$ is an ultraproduct of $\sigma$-structures, then for every formula $\varphi(v_1,\ldots,v_n)$, and every $(x_i^1)_i,\ldots,(x_i^n)_i\in\prod_i M_i$,</p>
+	<div class='equation'>\[
+	\varphi^{\mathcal{U}}((x_i^1)_\mathcal{U},\ldots,(x_i^n)_\mathcal{U})=\lim_\mathcal{U}\varphi^{M_i}(x_i^1,\ldots,x_i^n).
+	\]</div>
+</div>
+
+<p>
+The proof can be done on the complexity of formulas (or more precisely, by proving that the collection of formulas for which this holds is closed under (i)-(iii) of Definition <span class='ref' data-tag='definitionmetricformula'></span>), however the notation during the proof gets somewhat cumbersome and so we simply sketch it: Property (i) is immediate from the interpretation we use on ultraproducts. Property (ii) uses the fact that whenever $u:[0,1]^n\to[0,1]$ is a continuous function and $(x_i)_i\in\left([0,1]^n\right)^I$,
+<div class='equation'>\[
+	\lim_{i\to\mathcal{U}} u(x_i)=u(\lim_{i\to\mathcal{U}} x_i),
+\]</div>
+which can be proven just as with the usual notion of limits.
+</p>
+
+<p>
+For property (iii) we need to use the fact that
+<div class='equation'>\[
+	\sup_{(n_i)_i\in\prod_i M_i}\left(\lim_{i\to\mathcal{U}} f^i(n_i)\right)=\lim_{i\to\mathcal{U}}\left(\sup_{n_i\in M_i}f^i(n_i)\right)
+\]</div>
+whenever we are given a collection of functions $f^i:M_i\to[0,1]$. This can be verified with the properties of ultralimits and real suprema. The case of infima is analogous.
+</p>
+
+<h3 class='subsection' id='subsectionultraproductsofbooleaninversemonoids'>2.1.4. Ultraproducts of Boolean inverse monoids</h3>
+
+<p>
+In this subsection, we review two constructions of ultraproducts of Boolean inverse monoids endowed with invariant means.
+</p>
+
+<h4 class='subsubsection'>First construction</h4>
+
+<p>
+Let $\left\{(S_i,\mu_i):i\in I\right\}$ be a collection of Boolean inverse monoids with faithful, normalized invariant means $\mu_i$, and let $d^i$ be the corresponding uniform metric on $S_i$, that is,
+<div class='equation'>\[
+	d^i(s,t)=\mu_i((s\setminus t)^*(s\setminus t)\lor(t\setminus s)^*(t\setminus s)).
+\]</div>
+Then $\prod_i S_i$ is also a Boolean inverse monoid with pointwise operations, and all the order-theoretical structure (the order itself, joins, meets, fixed idempotents, etc...) are also the pointwise ones.
+</p>
+
+<!-- 2.1.23 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 2.1.23</span>
+	We can interpret finite products as follow: If $\mathcal{G}$ and $\mathcal{H}$ are ample Hausdorff groupoids and $\mathcal{G}\sqcup\mathcal{H}$ is the coproduct groupoid with coproduct topology, then $\KB(\mathcal{G})\times\KB(\mathcal{H})$ is isomorphic to $\KB(\mathcal{G}\sqcup\mathcal{H})$, via
+	<div class='equation'>\[
+	\KB(\mathcal{G}\sqcup\mathcal{H})\to\KB(\mathcal{G})\times\KB(\mathcal{H}),\qquad A\mapsto (A\cap\mathcal{G},A\cap\mathcal{H}).
+	\]</div>
+	This is a particular instance of products being mapped to coproducts and vice-versa under categorical equivalences.
+	</p>
+</div>
+
+<p>
+Considering again the family $\left\{(S_i,\mu_i):i\in I\right\}$ as above, define a normalized mean $\mu^{\mathcal{U}}:E(\prod_i S_i)\to[0,1]$
+<div class='equation'>\[
+	\mu^{\mathcal{U}}((e_i)_i)=\lim_{\mathcal{U}}\mu_i(e_i),\qquad\text{for all }(e_i)_i\in E\left(\prod_{i\in I} S_i\right)=\prod_{i\in I}E(S_i),
+\]</div>
+so the uniform pseudometric (Definition <span class='ref' data-tag='definitionuniformmetric'></span>) $d^\mathcal{U}$ associated to $\mu^\mathcal{U}$ is precisely the ultralimit of the uniform metrics $d^i$ associated to $\mu_i$. Hence considering the ideal
+<div class='equation'>\[
+	\mathcal{N}=\left\{(s_i)_i\in \prod_i S_i:\mu_\mathcal{U}((s_i)_i)=0\right\},
+\]</div>
+the ultraproduct $\prod_\mathcal{U} S_i$ coincides, as a metric space, with the Boolean inverse monoid quotient $\left(\prod_i S_i\right)/\mathcal{N}$, endowed with the induced invariant mean and metric from $\mu_\mathcal{U}$ (see <span class='ref' data-tag='corollaryidealofnullsetsbooleaninversesemigroup'></span>).
+</p>
+
+<h4 class='subsubsection'>Second construction</h4>
+
+<p>
+Let $\left\{(S_i,\mu_i):i\in I\right\}$ and $d^i$ be as above. As in <span class='ref' data-tag='examplesignaturebooleaninversemonoids'></span>, for each $i\in I$, $d^i$ defines a metric structure on $S_i$, over the signature containing binary function symbols $\lor,\land,\setminus$ and $\cdot$ (where $\lor$ is interpreted appropriately), a unary function symbol $(\ )^*$ and constant symbols $0$, $1$. The moduli of continuity for these symbols can be obtained from Proposition <span class='ref' data-tag='propositionpropertiesofuniformmetric'></span>. The ultraproduct $\prod_\mathcal{U} S_i$ is therefore also a $\sigma$-structure, and one can verify that it is a Boolean inverse semigroup by repeated applications of &Lstrok;o&sacute;&apos; Theorem. For example:
+<ul>
+<li>Each $S_i$ is associative, which means that the sentence
+<div class='equation'>\[
+	\sup_x\sup_y\sup_z d((xy)z,x(yz))
+\]</div>
+has value zero in all $S_i$, so the same sentence has the same value on $\prod_\mathcal{U} S_i$, and this is precisely saying that it is associative;</li>
+</ul>
+Some other properties can be proven similarly, however conditional statement usually require more care. For example, if we want to prove that inverses are unique, this means that for all $s,t$, either $d(s,sts)>0$, $d(t,tst)>0$ or $d(t,s^*)=0$. However, the limit of positive numbers (along an ultrafilter) could be zero. Instead, we need to perform the following analysis:
+</p>
+
+<!-- 2.1.24 -->
+<div class='lemma' id='lemma2124'>
+	<p><span class='envidentifier'>Lemma 2.1.24</span>
+	$\prod_\mathcal{U}S_i$ is an inverse semigroup.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemma2124'>Proof</a>
+
+<div class='proof' id='proofoflemma2124'>
+	<p>
+	For all $s,t$ in a Boolean inverse semigroup $S$ with an invariant mean $\mu$, we have
+	<div class='equation'>\begin{align*}
+		s^*\setminus t
+			&=s^*\setminus(s^*s tss^*)\\
+			&=s^*(s\setminus sts)s^*,
+	\end{align*}</div>
+	and similarly for $t\setminus s^*$, and from this we can conclude that
+	<div class='equation'>\begin{align*}
+		d_\mu(s^*,t)
+			&=\mu((s^*\setminus t)^*(s^*\setminus t)\lor(t\setminus s^*)^*(t\setminus s^*))\\
+			&\leq d_\mu(s,sts)+d_\mu(t,sts).
+	\end{align*}</div>
+	Thus the formula $d(x^*,y)$ is always smaller than the formula $d(x,xyx)+d(y,xyx)$ (divide them by $2$, if you want to guarantee all numbers are between $0$ and $1$) in each of the components $S_i$, so by &Lstrok;o&sacute;&apos; Theorem the same is valid in $\prod_\mathcal{U} S_i$ as well: For every $s,t\mathcal{U}\in\prod_\mathcal{U} S_i$,
+	<div class='equation'>\[
+	d^{\mathcal{U}}(s^*,t)\leq d^\mathcal{U}(s,sts)+d^\mathcal{U}(t,tst),
+	\]</div>
+	and this guarantees that the only inverse of $s$ will be $s^*$.<span class='qed'></span>
+</p>
+</div>
+
+<p>
+To verify that the interpretations of $\land$, $\lor$ and $\setminus$ in the ultraproduct $\prod_\mathcal{U} S_i$ are indeed those of meets, joins (of compatible elements) and relative complements of inverse semigroups, a similar analysis is needed in principle. However, by construction, the structure of $\prod_\mathcal{U} S_i$ is the same as the semigroup structure given in the first construction above, so we omit these proofs.
+</p>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	Alternatively, Boolean inverse semigroups can be axiomatixed by equations (i.e., without conditional statements) in terms of "biases" (see [<span class='ref' data-tag='MR3700423'></span>, Section 3.4]). Using this axiomatization instead, we can easily conclude, by &Lstrok;o&sacute;&apos; Theorem, that an ultraproduct of Boolean inverse semigroups is also a Boolean inverse semigroup.
+	</p>
+</div>
+
+<p>
+We can restate the condition of modelability by a certain class of semigroups as follows:
+</p>
+
+<!-- 2.1.25 -->
+<div class='theorem' id='theoremequivalenceembeddingintroultraproduct'>
+	<p><span class='envidentifier'>Theorem 2.1.25</span>
+	Let $(S,\mu)$ be a Boolean inverse monoid with an invariant mean, and let $\mathscr{T}$ be another collection of Boolean inverse semigroups endowed with invariant means. Then the following are equivalent:
+	<ol class='arpar'>
+		<li> There exists a trace-preserving (equivalently, isometric) semigroup morphism $\theta:S\to\prod_\mathcal{U}(T_i,\mu_i)$, where $(T_i,\mu_i)\in\mathscr{T}$.</li>
+		<li> For every finite subset $F$ of $S$ and every $\epsilon>0$, there exists $(T,\nu)\in\mathscr{T}$ and a map $\phi:S\to T$ satisfying
+		<div class='equation'>\[
+			\sup_{s\in F}|\tr(s)-\tr(\phi(s))|\leq\epsilon\qquad\text{and}\qquad\sup_{s,t\in S}d_\nu(\phi(st),\phi(s)\phi(t))\leq\epsilon.
+		\]</div>
+		</li>
+	</ol>
+	Moreover, a map $\theta$ as in (1) is necessarily a morphism of Boolean inverse monoids. A map $\phi$ as in (2) is called a <em>$(F,\epsilon)$-approximate morphism</em>.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremequivalenceembeddingintroultraproduct'>Proof</a>
+<div class='proof' id='proofoftheoremequivalenceembeddingintroultraproduct'>
+	<p>
+	The equivalence of trace-preserving and isometric properties for $\theta$, as well as it being a morphism of Boolean inverse monoid, follow from Theorem <span class='ref' data-tag='theoremtracepreservingisisometric'></span> (and <span class='ref' data-tag='corollaryidealofnullsetsbooleaninversesemigroup'></span> if $\mu$ is not faithful). The equivalence is then just a particular case of Theorem <span class='ref' data-tag='theoremequivalenceembeddingintoultraproductformetricstructures'></span><span class='qed'></span>
+	</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

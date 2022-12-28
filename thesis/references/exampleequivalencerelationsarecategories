@@ -1,0 +1,8 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#exampleequivalencerelationsarecategories'>1.1.14</a>
+
+<!-- 1.1.14 -->
+<div class="toload example">
+<p><span class="envidentifier">Example 1.1.14</span>
+A preorder $R$ on a set $X$, regarded as a category as in Example <span class="ref" data-tag='examplepreordersarecategories'></span>, is a groupoid if and only if $R$ is an equivalence relation. (See <span class='ref' data-tag='definitionprincipalgroupoid'></span> below.)
+</p>
+</div>

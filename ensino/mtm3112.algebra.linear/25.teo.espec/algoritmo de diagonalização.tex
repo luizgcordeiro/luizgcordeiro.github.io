@@ -1,0 +1,42 @@
+Seja $A$ uma matriz complexa Hermitiana de ordem $n\times n$. Vamos descrever um algoritmo para diagonalizar $A$. Isto significa que conseguiremos encontrar uma matriz unitária $P$ tal que $P^HAP$ é uma matriz diagonal.
+
+\begin{enumerate}
+	\item Primeiro, calcule o polinômio característico de $A$, como
+		\[p_A(\lambda)=\det(\lambda I_n-A).\]
+	\item Então, calcule as raízes de $p_A$. Digamos que $\lambda_1,\ldots,\lambda_k$ são estas raízes. Estas raízes são os autovalores de $A$.
+	\item Para cada $i=1,\ldots,k$, encontre uma base para $\operatorname{Nul}(\lambda_i I_n-A)$ -- o autoespaço de $A$ associado ao autovalor $\lambda_i$ -- utilizando o Algoritmo para Encontrar Base para Espaço Nulo de uma Matriz.
+	
+	Seja $\left\{e_1^i,\ldots,e_{n_i}^i\right\}$ a base obtida por este processo.
+	\item Aplique o Processo de Ortonormalização de Gram-Schmidt para transformar cada base $\left\{e_1^i,\ldots,e_{n_i}^i\right\}$ em uma base ortonormal para $\operatorname{Nul}(\lambda_i I_n-A)$. Seja $\left\{f_1^i,\ldots,f_{n_i}^i\right\}$ a base ortonormal obtida.
+	\item Agora, considere a matriz $P$ cujas colunas são todos os vetores $f_j^i$.
+\end{enumerate}
+
+A matriz $P$ obtida no passo 5 será tal que $P^H A P$ é diagonal. As entradas diagonais de $P^{-1}AP$ serão $\lambda_1,\ldots,\lambda_k$ (possivelmente com repetição).
+
+No passo 5, os vetores $f_j^i$ podem ser postos em qualquer ordem como as colunas da matriz $P$, mas em geral é mais interessante que estes sejam dispostos de forma organizada para agrupar as entradas diagonais iguais de $P^{-1}AP$. Mais precisamente, suponha que as colunas de $P$ são dispostas em ordem como $f^1_1,\ldots,f^1_{n_1}, f^2_1,\ldots,f^2_{n_2},f^3_1,\ldots,f^3_{n_3},\ldots,f^k_1,\ldots,f^k_{n_k}$:
+\[
+P=\begin{bmatrix}
+|	&|	&|	&|	&|	&|	&|	&|	&|	&|\\
+f^1_1
+	&\cdots
+		&f^1_{n_1}
+			&f^2_1
+				&\cdots
+					&f^2_{n_2}
+						&\cdots
+							&f^k_1
+								&\cdots
+									&f^k_{n_k}\\
+|	&|	&|	&|	&|	&|	&|	&|	&|	&|
+\end{bmatrix}.\]
+
+Então a matriz $P^HAP$ terá suas entradas diagonais agrupadas, na forma
+\[P^HAP=\begin{bmatrix}
+\lambda_1\\
+	&\ddots\\
+	&	&\lambda_1\\
+	&	&	&\lambda_2\\
+	&	&	&	&\ddots\\
+	&	&	&	&	&\lambda_2\\
+	&	&	&	&	&   &\ddots\\
+	&	&	&	&	&	&   &\lambda_k\end{bmatrix}.\]

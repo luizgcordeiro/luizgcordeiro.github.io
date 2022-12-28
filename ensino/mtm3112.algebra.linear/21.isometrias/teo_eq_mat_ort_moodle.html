@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Seja \(A\in M_{n\times n}(\mathbb{R})\), uma matriz quadrada real. São equivalentes:
+</p>
+
+<ol>
+
+<li>
+<p>
+\(A\) é ortogonal.
+</p>
+
+</li>
+
+<li>
+<p>
+\(A^T\) é ortogonal.
+</p>
+
+</li>
+
+<li>
+<p>
+As colunas de \(A\) são ortonormais.
+</p>
+
+</li>
+
+<li>
+<p>
+As linhas de \(A\) são ortonormais.
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Primeiro, provamos que as afirmações 1 e 3 são equivalentes.
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Considere as colunas \(c_1,\ldots,c_n\) de \(A\):
+<div>
+\begin{equation*}
+A=\begin{bmatrix}
+| & | & & |\\
+c_1 & c_2 & \cdots & c_n\\
+| & | & & |
+
+\end{bmatrix}.
+\end{equation*}
+</div>
+Então a transposta de \(A\) é dada por
+<div>
+\begin{equation*}
+A^T=\begin{bmatrix}
+- & c_1 & -\\
+- & c_2 & -\\
+& \vdots & \\
+- & c_n & -
+
+\end{bmatrix}.
+\end{equation*}
+</div>
+<p>
+A matriz produto \(A^TA\) então é calculada como
+<div>
+\begin{align*}
+A^T A
+&=\begin{bmatrix}
+- & c_1 & -\\
+- & c_2 & -\\
+& \vdots & \\
+- & c_n & -
+
+\end{bmatrix}
+\begin{bmatrix}
+| & | & & |\\
+c_1 & c_2 & \cdots & c_n\\
+| & | & & |
+
+
+\end{bmatrix}\\
+&=\begin{bmatrix}
+\langle c_1,c_1\rangle & \langle c_1,c_2\rangle & \cdots & \langle c_1,c_n\rangle\\
+\langle c_2,c_1\rangle & \langle c_2,c_2\rangle & \cdots & \langle c_2,c_n\rangle\\
+\vdots & \vdots & \ddots & \vdots\\
+\langle c_n,c_1\rangle & \langle c_n,c_2\rangle & \cdots & \langle c_n,c_n\rangle
+
+
+\end{bmatrix}\\
+&=[\langle c_i,c_j\rangle]_{i,j},
+\end{align*}
+</div>
+onde \(\langle\cdot,\cdot\rangle\) denota o produto interno Euclidiano de \(\mathbb{R}^n\).
+</p>
+<p>
+Portanto, \(A^TA\) é a identidade se, e somente se, \(\langle c_i,c_j\rangle=1\) se \(i=j\) e \(0\) se \(i\neq j\), o que significa que as colunas \(c_1,\ldots,c_n\) são ortonormais.
+</p>
+
+</div>
+<p>
+A demonstração da equivalência das afirmações 2 e 4 é similar. Falta somente provar que 1 e 2 são equivalentes.
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+A matriz \(A\) é ortogonal se, e somente se, \(A^TA=I_{n\times n}\), o que significa que \(A^T\) é uma inversa à esquerda para \(A\). Mas como para matrizes quadradas inversas à esquerda, inversas à direita e inversas bilaterais coincidem, isto equivale a dizer que \(A A^T=I_{n\times n}\), ou que \((A^T)^T(A^T)=A^T\)(pois \((A^T)^T=A\)). Esta última afirmação significa que \(A^T\) é ortogonal.
+
+</div>
+
+</div></body>
+</html>

@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.7.im.html#definitionuniformmetric'>1.7.15</a>
+<!-- 1.7.15 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 1.7.15</span>
+	If $\mu$ is an invariant mean on a Boolean inverse semigroup $S$, we define the <em>uniform metric</em> (induced by $\mu$) as
+	<div class='equation'>\[
+	d_\mu(s,t)=\mu\left((s^*s\lor t^*t)\setminus\Fix(s^*t)\right),
+	\]</div>
+	and whenever $S$ is endowed with an invariant mean, this is the metric structure we will consider (see <span class='ref'data-tag='propositionpropertiesofuniformmetric'></span>(b)).
+	</p>
+</div>

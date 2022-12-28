@@ -1,0 +1,6 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#equationdiagonalsubalgebraforcrossedproducts1'>4.3.1</a>
+
+	<div class='toload equation'>\begin{align*}
+		0&=\sum_{i=1}^n\overline{\left((u-v)a_i\right)\delta_{e_i}}\\
+		&=\sum_{i=1}^n\overline{a_i\delta_{e_i}}-\sum_{i=1}^n\overline{(va_i)\delta_{e_i}}.\tag{4.3.1}
+	\end{align*}</div>

@@ -1,0 +1,50 @@
+Seja $f\colon X\to Y$ uma função entre dois conjuntos.
+
+\hrule
+
+Dado um subconjunto $A\subseteq X$, a \textbf{imagem direta} de $A$ por $f$ é o subconjunto de $Y$ dado por
+\[f(A)=\left\{f(a):a\in A\right\}.\]
+Em outros termos, os elementos de $f(A)$ são os elementos $y$ de $Y$ que podem ser escritos como $y=f(a)$ para algum $a\in A$.
+
+No caso que 
+\hrule
+
+Dado um subconjunto $B\subseteq Y$, a \textbf{pré-imagem} ou \textbf{imagem inversa} de $B$ por $f$ é o suconjunto de $X$ dado por
+\[f^{-1}(B)=\left\{x\in X:f(x)\in B\right\}.\]
+
+Imagens inversas de elementos de $Y$ são definidas como as imagens inversas dos respectivos conjuntos unitários. Precisamente, então a pré-imagem ou imagem inversa de um elemento $y$ de $Y$ é definida como
+\[f^{-1}(y)=f^{-1}(\left\{y\right\})=\left\{x\in X:f(x)=y\right\}.\]
+
+\hrule
+
+\textit{Propriedades de imagens diretas}:
+\begin{itemize}
+	\item Imagens diretas preservam inclusão de conjuntos: Se $A\subseteq A'$, então $f(A)\subseteq A'$.
+	\item Imagens diretas preservam uniões:
+	\[f(A_1\cup A_2)=f(A_1)\cup f(A_2).\]
+	O fato análogo para uniões de quantidades arbitrárias (possivelmente infinitas) de subconjuntos de $X$ é válido.
+	\item Em geral, imagens diretas \textbf{não preservam} intersecções nem complementos.
+\end{itemize}
+
+\hrule
+
+\textit{Propriedades de pré-imagens}:
+\begin{itemize}
+	\item Imagens inversas preservam inclusão de conjuntos: Se $B\subseteq B'$, então $f^{-1}(B)\subseteq f^{-1}(B')$.
+	\item Imagens inversas preservam uniões:
+	\[f^{-1}(B_1\cup B_2)=f^{-1}(B_1)\cup f^{-1}(B_2).\]
+	O fato análogo para uniões de quantidades arbitrárias (possivelmente infinitas) de subconjuntos de $Y$ é válido.
+	\item Imagens diretas preservam intersecções:
+	\[f^{-1}(B_1\cap B_2)=f^{-1}(B_1)\cap f(B_2).\]
+	O fato análogo para uniões de quantidades arbitrárias (possivelmente infinitas) de subconjuntos de $Y$ é válido.
+	\item Imagens diretas preservam complementos:
+	\[f(Y\setminus B)=X\cup f^{-1}(B).\]
+\end{itemize}
+
+\hrule
+
+\textit{Relações entre imagens diretas e pré-imagens}
+\begin{itemize}
+	\item $f(f^{-1}(B))\subseteq B$.
+	\item $A\subseteq f^{-1}(f(A))$.
+\end{itemize}

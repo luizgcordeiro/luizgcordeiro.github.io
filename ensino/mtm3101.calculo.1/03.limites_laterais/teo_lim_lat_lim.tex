@@ -1,0 +1,41 @@
+\begin{theorem}
+	Seja $f$ uma função real e $a\in\mathbb{R}$. Então o limite $\lim_{x\to a}f(x)$ existe se, e somente se, ambos os limites $\lim_{x\to a^-}f(x)$ e $\lim_{x\to a^+}f(x)$ existem e estes coincidem.
+	
+	Além disso, neste caso teremos que os três limites coincidem.
+\end{theorem}
+
+\begin{proof}
+	Primeiro, suponha que o limite $L=\lim_{x\to a}f(x)$ existe. Vamos mostrar que $L$ é o limite à esquerda de $f$ em $a$.
+	
+	Seja $\epsilon>0$. Como $L$ é o limite de $f$ em $a$, então existe $\delta>0$ tal $0<|x-a|<\delta$ implica que $|f(x)-L|<\epsilon$.
+	
+	Suponha agora que $a-\delta<x<a$. Estas desigualdades implicam, em particular, que $x\neq a$, e que $x$ está no intervalo $(a-\delta,a+\delta)$, ou seja, que a distância de $x$ a $a$ é menor do que $\delta$. Formalmente, temos que $0<|x-a|<\delta$. A própria escolha do $\delta$ então implica que $|f(x)-L|<\epsilon$.
+	
+	Acabamos de mostrar que para todo $\epsilon>0$, existe $\delta>0$ tal que $a-\delta<x<a$ implica que $|f(x)-L|<\epsilon$. Esta é exatamente a definição de $L$ ser o limite à esquerda de $f$ em $a$. Similarmente, se prova que $L$ também é o limite à direita de $f$ em $a$. Assim, já concluímos que $L=\lim_{x\to a}f(x)=\lim_{x\to a^-}f(x)=\lim_{x\to a^+}f(x)$.
+	
+	Agora vamos mostrar a recíproca: que se os limites laterais $\lim_{x\to a^-}f(x)$ e $\lim_{x\to a^+}f(x)$ existem e coincidem, então o limite $\lim_{x\to a}f(x)$ também existe.
+	
+	Suponha que os limites laterais existem e coincidem. Seja $L$ este valor em comum. Vamos mostrar que $L$ é o limite de $f$ em $a$.
+	
+	Tome $\epsilon>0$. Como $L$ é o limite à esquerda de $f$ em $a$, existe $\delta_1>0$ tal que $a-\delta_1<x<a$ implica que $|f(x)-L|<\epsilon$. Mas $L$ também é o limite à direita de $f$ em $a$, e portanto existe $\delta_2>0$ tal que $a<x<a+\delta_2$ implica que $|f(x)-L|<\epsilon$.
+	
+	Seja $\delta=\min\left\{\delta_1,\delta_2\right\}$, o mínimo entre $\delta_1$ e $\delta_2$. Este ainda é um número positivo, que depende de $\epsilon$. Vamos mostrar que $0<|x-a|<\delta$ implica que $|f(x)-L|<\epsilon$.
+	
+	Suponha que $0<|x-a|<\delta$. Em particular, $x\neq a$. Temos dois casos a considerar:
+	
+	\uline{Caso 1}: $a < x$.
+		
+	\begin{quote}
+		Neste caso, $|x-a|=x-a$. A nossa hipótese implica que $x-a<\delta\leq\delta_2$. Juntando as desigualdades, obtemos
+		$a < x < a+\delta_2$. Pela escolha do $\delta_2$, obtemos $|f(x)-L|<\epsilon$.
+	\end{quote}
+	
+	\uline{Caso 2}: $x < a$.
+		
+	\begin{quote}
+		Neste caso, $|x-a|=a-x$. A nossa hipótese implica que $a-x<\delta\leq\delta_1$. Juntando as desigualdades, obtemos
+		$a-\delta_1 < x < a$. Pela escolha do $\delta_1$, obtemos $|f(x)-L|<\epsilon$.
+	\end{quote}
+	
+	Em todo caso, provamos que $0<|x-a|<\delta$ implica que $|f(x)-L|<\epsilon$. Isto é precisamente a definição de limite. Portanto, $\lim_{x\to a}f(x)$ existe e é igual a $L$.
+\end{proof}

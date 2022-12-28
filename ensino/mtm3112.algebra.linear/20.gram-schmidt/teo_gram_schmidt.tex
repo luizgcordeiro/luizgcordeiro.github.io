@@ -1,0 +1,141 @@
+\begin{theorem}[Algoritmo de Gram--Schmidt]
+	Seja $V$ um espaço com produto interno de dimensão finita. Seja $\left\{v_1,\ldots,v_n\right\}$ um subconjunto finito e linearmente independente de $V$. O seguinte algoritmo permite encontrar uma base ortonormal do subespaço gerado por $v_1,\ldots,v_n$.
+	
+	Defina duas sequências $u_1,\ldots,u_n$ e $w_1,\ldots,w_n$ de vetores do seguinte modo:
+	\[\begin{array}{| l | l | l| }\hline
+	\bullet\ \text{Passo }1\text{:}
+		& u_1=v_1
+			& w_1=\frac{u_1}{\Vert u_1\Vert}\\\hline
+	\bullet\ \text{Passo }2\text{:}
+		& u_2=v_2-\langle v_2,w_1\rangle w_1
+			& w_2=\frac{u_2}{\Vert u_2\Vert}\\\hline
+	\bullet\ \text{Passo }3\text{:}
+		& u_3=v_3-\left(\langle v_3,w_1\rangle w_1+\langle v_3,w_2\rangle w_2\right)
+			& w_3=\frac{u_3}{\Vert u_3\Vert}\\\hline
+	\ldots &\ldots&\ldots\\\hline
+	\bullet\ \text{Passo }k+1\text{:}
+		& u_{k+1}=v_{k+1}-\left(\sum_{i=1}^k\langle v_{k+1},w_i\rangle w_i\right)
+			& w_{k+1}=\frac{u_{k+1}}{\Vert u_{k+1}\Vert}\\\hline
+	\ldots &\ldots&\ldots\\\hline
+	\bullet\ \text{Passo }n\text{:}
+		& u_n=v_n-\left(\sum_{i=1}^{n-1}\langle v_n,w_i\rangle w_i\right)
+			& w_n=\frac{u_n}{\Vert u_n\Vert}\\\hline\end{array}\]
+	
+	Então o procedimento acima pode ser realizado, e além disso, $\left\{w_1,\ldots,w_n\right\}$ é uma base ortonormal para $\langle v_1,\ldots,v_n\rangle$.
+\hrule
+
+\textit{Observação}: O processo de Gram-Schmidt também pode ser alterado de modo a permitir construir uma base ortogonal a partir de um conjunto possivelmente linearmente dependente. Essencialmente o mesmo algoritmo é realizado, porém se $u_k=0_V$ então ignoramos o $k$-ésimo passo.
+
+Mais precisamente, sejam $V$ um espaço vetorial com produto interno e dimensão finita, e sejam $v_1,\ldots,v_n$ vetores de $V$ (possivelmente linearmente dependentes). Defina também, para cada $k=1,\ldots,n$, $V_k=\langle v_1,\ldots,v_k\rangle$ o subespaço de $V$ gerado por $v_1,\ldots,v_n$.
+
+Então o seguinte algoritmo permitirá determinar uma base ortonormal do subespaço gerado por $v_1,\ldots,v_n$.
+\begin{itemize}
+	\item \uline{Passo $1$}: $u_1=v_1$. Se $u_1\neq 0_V$, definimos também $w_1=\frac{u_1}{\Vert u_1\Vert}$.
+	\item \uline{Passo $2$}: $u_2=v_2-\operatorname{proj}_{V_1}(v_2)$. Se $u_2\neq 0_V$, definimos também $w_2=\frac{u_2}{\Vert u_2\Vert}$.
+	\item \uline{Passo $3$}: $u_3=v_3-\operatorname{proj}_{V_2}(v_3)$. Se $u_3\neq 0_V$, definimos também $w_3=\frac{u_3}{\Vert u_3\Vert}$
+	\item \ldots
+	\item \uline{Passo $k+1$}: $u_{k+1}=v_{k+1}-\operatorname{proj}_{V_k}(v_k)$. Se $u_{k+1}\neq 0_V$, definimos também $w_{k+1}=\frac{u_{k+1}}{\Vert u_{k+1}\Vert}$
+	\item \ldots
+	\item \uline{Passo $n$}: $u_n=v_n-\operatorname{proj}_{V_{n-1}}(v_{n-1})$. Se $u_n\neq 0_V$, definimos também $w_n=\frac{u_n}{\Vert u_n\Vert}$.
+\end{itemize}
+Então para cada $k$, o conjunto $\left\{w_i:i\lt k\text{ e }w_i\text{ está definido}\right\}$ é uma base ortonormal para $V_k$. Além disso cada $w_i$ com $i\leq k$ é calculado em um passo anterior ao passo $k+1$, e
+\[\operatorname{proj}_{V_k}(v)=\sum_{i\leq k}\langle v,w_i\rangle w_i,\]
+o que permite calcular os vetores $u_{k+1}$ e $w_{k+1}$ no passo $k+1$ diretamente em função dos passos anteriores.
+\end{theorem}
+
+\begin{proof}
+	O teorema é feito pelo processo de \textit{indução}. Essencialmente, vamos aplicar o algoritmo de Gram--Schmidt para o conjunto linearmente independente $\left\{v_1\right\}$, e depois para $\left\{v_1,v_2\right\}$, para $\left\{v_1,v_2,v_3\right\}$, \ldots, sucessivamente até aplicar o algoritmo para $\left\{v_1,\ldots,v_n\right\}$.
+	
+	Para cada $k=1,\ldots,n$, considere o subespaço $V_k=\langle v_1,\ldots,v_k\rangle$. Note que $\left\{v_1,\ldots,v_k\right\}$ é linearmente independente, pois é um subconjunto do conjunto linearmente independente $\left\{v_1,\ldots,v_n\right\}$. Conforme descrito acima, vamos aplicar Gram--Schmidt passo-a-passo.
+	
+	\begin{itemize}
+		\item \uline{Passo $1$}: Temos que $u_1=v_1$. Por hipótese, $\left\{v_1,\ldots,v_n\right\}$ é linearmente independente, e em particular $v_1\neq 0$. Assim, podemos de fato definir $w_1=\frac{u_1}{\Vert u_1\Vert}$. Como $w_1$ é um múltiplo de $u_1$ e vice-versa, segue que $u_1$ e $w_1$ geram o mesmo subespaço vetorial de $V$. Portanto,
+		\[\langle w_1\rangle=\langle u_1\rangle=V_1.\]
+		Além disso, é claro que $\left\{w_1\right\}$ é linearmente independente e ortonormal, e portanto uma base ortonormal para $V_1$.
+		
+		\item \uline{Passo $2$}: Pelo passo anterior, $\left\{w_1\right\}$ é uma base ortonormal para $V_1$. Pelo teorema de projeções ortogonais em dimensão finita, temos que $\operatorname{proj}_{V_1}(v)=\langle v,w_1\rangle w_1$ para todo vetor $v\in V$. Em particular,
+		\begin{align*}
+			u_2
+				&=v_2-\langle v_2,w_1\rangle w_1\\
+				&=v_2-\operatorname{proj}_{V_1}(v_2).
+			\end{align*}
+		Uma das propriedades de projeções ortogonais diz especificamente que $v-\operatorname{proj}_{V_1}(v)$ é ortogonal a $V_1$ para todo vetor $v$. Em particular, $u_2$ é ortogonal a $V_1$. Vamos demonstrar que $u_2\neq 0_V$.
+		
+		\begin{quote}
+			De fato, se $u_2$ fosse igual a $0_V$, teríamos que $v_2=\operatorname{proj}_{V_1}(v_2)$, logo $v_2\in V_1=\langle v_1\rangle$ e portanto $v_2$ é um múltiplo de $v_1$, contradizendo o fato de que $\left\{v_1,v_2\right\}$ é linearmente independente.
+		\end{quote}
+		
+		Concluímos que $u_2\neq 0_V$, logo $w_2=\frac{u_2}{\Vert u_2\Vert}$ está bem-definido. Como $u_2$ é ortogonal a $V_1$, então $w_2$ também é ortogonal a $V_1$, e em particular a $v_1$. Portanto, os elementos de $\left\{w_1,w_2\right\}$ são ortogonais e têm norma $1$.
+		
+		Além disso, $w_2$ é uma combinação linear de $w_1$ e de $v_2$. Reciprocamente, $v_2$ é uma combinação linear de $w_2$ e $w_1$. Portanto $\langle w_1,w_2\rangle=\langle w_1,v_2\rangle$. Utilizando o teorema que identifica subespaços gerados por uniões e somas de subespaços, obtemos
+		\begin{align*}
+			\langle w_1,w_2\rangle
+				&=\langle w_1,v_2\rangle\\
+				&=\langle w_1\rangle +\langle v_2\rangle\\
+				&=V_1+\langle v_2\rangle\\
+				&=\langle v_1\rangle+\langle v_2\rangle\\
+				&=\langle v_1,v_2\rangle\\
+				&=V_2.
+		\end{align*}
+		
+		Assim, os elementos de $\left\{w_1,w_2\right\}$ são ortogonais (e em particula linearmente independentes), têm norma $1$, e geram $V_2$, de onde concluímos que $\left\{w_1,w_2\right\}$ é uma base ortonormal para $V_2$.
+		
+		\item \uline{Passo $3$}: Praticamente, vamos repetir os mesmos argumentos que no passo anterior. Já sabemos que $\left\{w_1,w_2\right\}$ é uma base ortonormal para $V_2$. Pelo teorema de projeções ortogonais em dimensão finita, temos que $\operatorname{proj}_{V_2}(v)=\langle v,w_1\rangle w_1+\langle v,w_2\rangle w_2$ para todo vetor $v\in V$. Em particular,
+		\begin{align*}
+			u_3
+				&=v_3-\left(\langle v_3,w_1\rangle w_1+\langle v_3,w_2\rangle w_2\right)\\
+				&=v_3-\operatorname{proj}_{V_2}(v_3).
+			\end{align*}
+		Uma das propriedades de projeções ortogonais diz especificamente que $v-\operatorname{proj}_{V_2}(v)$ é ortogonal a $V_2$ para todo vetor $v$. Em particular, $u_3$ é ortogonal a $V_2$. Vamos demonstrar que $u_3\neq 0_V$.
+		
+		\begin{quote}
+			De fato, se $u_3$ fosse igual a $0_V$, então $v_3$ seria uma combinação linear de $w_1$ e de $w_2$. Como ambos $w_1,w_2\in V_2=\langle v_1,v_2\rangle$, concluíriamos que $v_3$ é uma combinação linear de $v_1$ e de $v_2$, contradizendo o fato de que $\left\{v_1,v_2,v_3\right\}$ é linearmente independente.
+		\end{quote}
+		
+		Concluímos que $u_3\neq 0_V$, logo $w_3=\frac{u_3}{\Vert u_3\Vert}$ está bem-definido. Como $u_3$ é ortogonal a $V_2$, então $w_3$ também é ortogonal a $V_2$, e em particular a $w_1$ e a $w_2$. Portanto, os elementos de $\left\{w_1,w_2,w_3\right\}$ são dois-a-dois ortogonais e têm norma $1$.
+		
+		Além disso, $w_3$ é uma combinação linear de $w_1$, $w_2$ e $v_3$. Reciprocamente, $v_3$ é uma combinação linear de $w_3$, $w_1$ e $w_2$. Assim, obtemos $\langle w_1,w_2,v_3\rangle=\langle w_1,w_2,w_3\rangle$. Utilizando o teorema que identifica subespaços gerados por uniões e somas de subespaços, segue que
+		\begin{align*}
+			\langle w_1,w_2,w_3\rangle
+				&=\langle w_1,w_2,v_3\rangle\\
+				&=\langle w_1,w_2\rangle +\langle v_3\rangle\\
+				&=V_1+\langle v_3\rangle\\
+				&=\langle v_1,v_2\rangle+\langle v_3\rangle\\
+				&=\langle v_1,v_2,v_3\rangle\\
+				&=V_3.
+		\end{align*}
+		
+		Assim, os elementos de $\left\{w_1,w_2,w_3\right\}$ são dois-a-dois ortogonais, têm norma $1$, e geram $V_3$, de onde concluímos que $\left\{w_1,w_2\right\}$ é uma base ortonormal para $V_2$.
+		
+		\item \ldots
+		
+		\item \uline{Passo $k+1$}: No passo $k$, concluímos que $\left\{w_1,\ldots,w_k\right\}$ é uma base ortonormal para $V_k$. Pelo teorema de projeções ortogonais em dimensão finita, temos que $\operatorname{proj}_{V_k}(v)=\sum_{i=1}^k\langle v,w_i\rangle w_i$ para todo vetor $v\in V$. Em particular,
+		\begin{align*}
+			u_{k+1}
+				&=v_{k+1}-\sum_{i=1}^k\langle v_{k+1},w_i\rangle w_i\\
+				&=v_{k+1}-\operatorname{proj}_{V_k}(v_{k+1}).
+			\end{align*}
+		Uma das propriedades de projeções ortogonais diz especificamente que $v-\operatorname{proj}_{V_k}(v)$ é ortogonal a $V_k$ para todo vetor $v$. Em particular, $u_{k+1}$ é ortogonal a $V_k$. Vamos demonstrar que $u_{k+1}\neq 0_V$.
+		
+		\begin{quote}
+			De fato, se $u_k$ fosse igual a $0_V$, então $v_k$ seria uma combinação linear de $w_1,\ldots,w_k$. Como $w_1,\ldots,w_k\in V_k=\langle v_1,\ldots,v_k\rangle$, concluíriamos que $v_{k+1}$ é uma combinação linear de $v_1,\ldots,v_k$, contradizendo o fato de que $\left\{v_1,\ldots,v_{k+1}\right\}$ é linearmente independente.
+		\end{quote}
+		
+		Assin, concluímos que $u_{k+1}\neq 0_V$, logo $w_{k+1}=\frac{u_{k+1}}{\Vert u_{k+1}\Vert}$ está bem-definido. Como $u_{k+1}$ é ortogonal a $V_k$, então $w_{k+1}$ também é ortogonal a $V_k$, e em particular a $w_1,\ldots,w_k$. Portanto, os elementos de $\left\{w_1,\ldots,w_k,w_{k+1}\right\}$ são dois-a-dois ortogonais e têm norma $1$.
+		
+		Além disso, $w_{k+1}$ é uma combinação linear de $w_1,\ldots,w_k$ e $v_{k+1}$. Reciprocamente, $v_{k+1}$ é uma combinação linear de $w_1,\ldots,w_k$ e $w_{k+1}$. Assim, obtemos $\langle w_1,\ldots,w_k,v_{k+1}\rangle=\langle w_1,\ldots,w_k,w_{k+1}\rangle$. Utilizando o teorema que identifica subespaços gerados por uniões e somas de subespaços, segue que
+		\begin{align*}
+			\langle w_1,\ldots,w_k,w_{k+1}\rangle
+				&=\langle w_1,\ldots,w_k,v_{k+1}\rangle\\
+				&=\langle w_1,\ldots,w_k\rangle +\langle v_{k+1}\rangle\\
+				&=V_k+\langle v_{k+1}\rangle\\
+				&=\langle v_1,\ldots,v_{k+1}\rangle+\langle v_{k+1}\rangle\\
+				&=\langle v_1,\ldots,v_k,v_{k+1}\rangle\\
+				&=V_{k+1}.
+		\end{align*}
+		
+		Portanto, os elementos de $\left\{w_1,\ldots,w_k,w_{k+1}\right\}$ são dois-a-dois ortogonais, têm norma $1$, e geram $V_{k+1}$, de onde concluímos que $\left\{w_1,\ldots,w_k,w_{k+1}\right\}$ é uma base ortonormal para $V_{k+1}$.
+		
+		\item Quando $k+1=n$, obtemos precisamente a conclusão do teorema.	
+	\end{enumerate}
+\end{proof}

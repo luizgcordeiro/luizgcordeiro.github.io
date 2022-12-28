@@ -1,0 +1,294 @@
+Generalizations of homomorphisms, initially called $\lor$ and $\land$-\emph{prehomomorphisms}, were respectively introduced in \cite[Definition 1.1]{MR0424979} and \cite[Definition 4.1]{MR0470123} by McAlister and Reilly on their study of $E$-unitary inverse semigroups. We will focus on $\land$-prehomomorphisms, which are appropriate for the constructions of semidirect products.
+
+\begin{denv*}{Remark}
+    The terminology ``prehomomorphism'' has been used to describe  $\lor$-prehomomorphisms in \cite[p.\ 80]{MR1694900}, but used to describe $\land$-prehomomorphisms in \cite[VI.7.2]{MR752899} and \cite{Mikola2017}. In order to avoid confusion, we will use the original terminology of ``$\land$-prehomomorphism''.
+\end{denv*}
+
+A more specific case of $\land$-prehomomorphisms are \emph{partial homomorphisms}, whose study was initiated by Exel in \cite{MR1276163}, in order to describe the structure of C*-algebras endowed with an action of the circle. This turned out to be a rich area of research, with several applications in the theory of topological dynamical systems and C*-algebras (see \cite{MR2799098,MR3699795}). Let us mention that partial homomorphisms of general inverse semigroups were first defined in \cite{MR3231479}, while partial actions of groupoids (on rings) were defined in \cite{MR2982887}.
+
+We will now define $\land$-prehomomorphisms and partial homomorphisms in the context of semigroupoids, connecting in a precise manner all the notions described above. From them, we will construct semidirect products in a manner which generalizes semidirect products of groupoids (\cite[Exercise 11.5.1]{MR2273730}), transformation groupoids of partial group actions (\cite{MR2045419}), semidirect products of inverse semigroups acting on semilattices (see \cite[Lemma 1.1]{MR0357660.1} and \cite[VI.7.6-7]{MR752899}). Similarly, groupoids of germs of (partial) inverse semigroup actions are simply the underlying groupoids of the associated semidirect product (see Section \ref{sec:categoricalconstructions}).
+
+\begin{definition}\label{def:dualprehomomorphismandpartialhomomorphism}
+Let $\mathcal{S}$ and $\mathcal{T}$ be inverse semigroupoids and $\theta\colon\mathcal{S}\to\mathcal{T}$ a function. Consider the following statements:
+\begin{enumerate}[label=(\roman*)]
+\item\label{def:dualprehomomorphismandpartialhomomorphism1} For all $a\in\mathcal{S}$ we have $\theta(a^*)=\theta(a)^*$;
+\item\label{def:dualprehomomorphismandpartialhomomorphism2} For all $a,b\in\mathcal{S}^{(2)}$, we have $(\theta(a),\theta(b))\in\mathcal{T}^{(2)}$ and $\theta(a)\theta(b)\leq\theta(ab)$;
+\item\label{def:dualprehomomorphismandpartialhomomorphism3} If $a\leq b$ in $\mathcal{S}$, then $\theta(a)\leq\theta(b)$ in $\mathcal{T}$.
+\end{enumerate}
+If $\theta$ satisfies \ref{def:dualprehomomorphismandpartialhomomorphism1}-\ref{def:dualprehomomorphismandpartialhomomorphism2}, then $\theta$ is called a \emph{$\land$-prehomomorphism}. If $\theta$ satisfies all of \ref{def:dualprehomomorphismandpartialhomomorphism1}-\ref{def:dualprehomomorphismandpartialhomomorphism3}, then $\theta$ is called a \emph{partial homomorphism}.
+\end{definition}
+
+\begin{example}
+Let $\mathcal{S}$ be any inverse semigroupoid, $X$ any set, and consider $2^X$, the power set of $X$, as a semigroup under intersection.
+
+If $X$ has sufficiently large cardinality (e.g.\ $|X|\geq|\mathcal{S}|$), then there is a map $\theta\colon\mathcal{S}\to 2^X\setminus\left\{\varnothing\right\}$ such that $\theta(a)\cap\theta(b)=\varnothing$ if $a\neq b$. Then $\theta$ is a $\land$-prehomomorphism, but not a partial homomorphism as long as $\mathcal{S}$ is not a groupoid.
+\end{example}
+
+If $\theta\colon\mathcal{S}\to\mathcal{T}$ is a $\land$-prehomomorphism, then $\theta$ takes idempotents to idempotents. Indeed, if $e\in E(\mathcal{S})$, then $\theta(e)^*\theta(e)=\theta(e^*)\theta(e)\leq\theta(e^*e)=\theta(e)$. Applying the definition of the order of $\mathcal{T}$ implies $\theta(e)=\theta(e)^*\theta(e)$, which is idempotent.
+
+Following \cite[p.\ 12]{MR1694900}, two elements $a,b\in\mathcal{S}$ are \emph{compatible} if $a^*b$ and $ab^*$ are idempotent. Any $\land$-prehomomorphism $\theta\colon\mathcal{S}\to\mathcal{T}$ takes compatible elements to compatible elements, if $a,b\in\mathcal{S}$ are compatible, then $\theta(a)^*\theta(b)\leq\theta(a^*b)$, which is idempotent. Similarly, $\theta(a)\theta(b)^*$ is idempotent.
+
+The statements \ref{def:dualprehomomorphismandpartialhomomorphism}.\ref{def:dualprehomomorphismandpartialhomomorphism1}-\ref{def:dualprehomomorphismandpartialhomomorphism3} are independent, that is, there exist maps $\theta\colon\mathcal{S}\to\mathcal{T}$ between inverse semigroupoids which satisfy any two of them but not the third one. In fact, we can obtain such examples for inverse semigroups, which we present for the sake of reference.
+
+\begin{example}
+Let $G=\left\{1,g\right\}$ be the cyclic group of order $2$ and $X=\left\{a,b\right\}$. Define $\theta\colon G\to\mathcal{I}(X)$ as $\theta_1=\id_X$ and \[\theta_g\colon\left\{a\right\}\to\left\{b\right\},\qquad\theta_g(a)=b.\]
+Then $\theta$ satisfies \ref{def:dualprehomomorphismandpartialhomomorphism}\ref{def:dualprehomomorphismandpartialhomomorphism2} and \ref{def:dualprehomomorphismandpartialhomomorphism3}, but not \ref{def:dualprehomomorphismandpartialhomomorphism1}.
+\end{example}
+
+\begin{example}
+Let $G=\left\{1\right\}$ be the trivial group, and $H=\left\{1,g\right\}$ the cyclic group of order $2$. The map $\theta\colon G\to H$, $1\mapsto g$ satisfies  \ref{def:dualprehomomorphismandpartialhomomorphism}\ref{def:dualprehomomorphismandpartialhomomorphism1} and \ref{def:dualprehomomorphismandpartialhomomorphism3}, but not \ref{def:dualprehomomorphismandpartialhomomorphism2}.
+\end{example}
+
+\begin{example}\label{ex:landprehomomorphismnotpartialaction}
+Let $L_2=\left\{0,1\right\}$ be the lattice with two elements, $0<1$, and define $\theta\colon L_2\to L_2$ as $\theta(a)=b$ and $\theta(b)=\theta(a)$. Then \ref{def:dualprehomomorphismandpartialhomomorphism}\ref{def:dualprehomomorphismandpartialhomomorphism1} and \ref{def:dualprehomomorphismandpartialhomomorphism2} are satisfied, but \ref{def:dualprehomomorphismandpartialhomomorphism3} is not (i.e., $\theta$ is a $\land$-prehomomorphisms but not a partial homomorphism).
+\end{example}
+
+We should remark that $\land$-prehomomorphisms are not stable under composition.
+
+\begin{example}
+Let $S=\left\{a,b\right\}$ and $\theta$ be as in Example \ref{ex:landprehomomorphismnotpartialaction}. Let $G=\left\{1,g\right\}$ be the group with two elements and $\eta\colon G\to S$ be given by $\eta(1)=b$, $\eta(g)=a$. Then $\theta$ is a $\land$-prehomomorphism and $\eta$ is a partial homomorphism, however $\theta\circ\eta$ is not a $\land$-prehomomorphism since
+\[\theta(\eta(g))\theta(\eta(g))=\theta(a)\theta(a)=bb=b\qquad\text{and}\qquad\theta(\eta(gg))=\theta(\eta(1))=\theta(b)=a.\]
+\end{example}
+
+On the other hand, it is easy to verify that if $\eta$ is a $\land$-prehomomorphism and $\theta$ is a partial homomorphism, then $\theta\circ\eta$ is a $\land$-prehomomorphism, and also that the composition of two partial homomorphisms is a partial homomorphism.
+
+We may now define $\land$-preactions and partial actions. In particular from property \ref{def:dualprehomomorphismandpartialhomomorphism}\ref{def:dualprehomomorphismandpartialhomomorphism2}, we may apply Proposition \ref{prop:vertexmap} to obtain a unique map $\phi^{(0)}\colon\mathcal{S}^{(0)}\to\mathcal{T}^{(0)}$ such that $(\phi^{(0)},\phi)$ is a graph homomorphism.
+
+\begin{definition}\label{def:partialactiononset}
+    A \emph{$\land$-preaction} of an inverse semigroupoid $\mathcal{S}$ on a set $X$ consists of an \emph{anchor map} $\pi\colon X\to\mathcal{S}^{(0)}$ and a $\land$-prehomomorphism $\theta\colon \mathcal{S}\to\mathcal{I}(\pi)$ such that the vertex map $\theta^{(0)}$ is the identity of $\mathcal{S}^{(0)}$. If $\theta$ is a partial homomorphism, we call $(\pi,\theta)$ a \emph{partial action}. We say that $(\pi,\theta)$ is \emph{non-degenerate} if $X=\bigcup_{a\in\mathcal{S}}\dom(\theta_a)$.
+    
+    We use the notation $(\pi,\theta)\colon\mathcal{S}\curvearrowright X$ to denote a $\land$-preaction of $\mathcal{S}$ on $X$.
+\end{definition}
+
+As $\land$-prehomomorphisms take idempotents to idempotents, then whenever $(\pi,\theta)\colon\mathcal{S}\curvearrowright X$ is a $\land$-preaction and $e\in E(\mathcal{S})$, the map $\theta_e$ is the identity of its domain. Moreover, if $a\in\mathcal{S}$, then
+\[\theta_a=\theta_a\theta_a^{-1}\theta_a\leq\theta_a\theta_{a^*a}\]
+which implies that $\dom(\theta_a)\subseteq\dom(\theta_{a^*a})$.
+
+If $a\leq b$ and $x\in\dom(a^*a)\cap\dom(b)$, then we may compute
+\[\theta_b(x)=\theta_b(\theta_{a^*a}(x))=\theta_{ba^*a}(x)=\theta_a(x).\ntag\label{eq:changepreactionbygreater}\]
+Note, however, that we do not necessarily have $\dom(\theta_a)\subseteq\dom(\theta_b)$ (unless $(\pi,\theta)$ is a partial action), so we need some care with these computations.
+
+These notions extend, simultaneously, those of (global) actions and partial actions which have commonly appeared throughout the literature.
+
+\begin{example}\label{ex:actionofsemigroup}
+	Let $S$ be an inverse semigroup, so $S^{(0)}=\left\{\ast\right\}$ is a singleton. Given any set $X$, there is a unique map $\pi\colon X\to S^{(0)}$. Therefore, partial and global actions of $S$ on $X$, as an inverse semigroupoid, are the same as partial and global actions of $S$ on $X$ in the usual sense of inverse semigroups (see e.g.\ \cite[Definition 5.1]{MR2565546} and \cite[Definition 3.3]{MR3231479}).
+\end{example}
+
+\begin{example}\label{ex:groupoidnondegenerateaction}
+	If $\mathcal{G}$ is a groupoid, then a non-degenerate global action $(\pi,\theta)\colon\mathcal{G}\curvearrowright X$ is the same as a groupoid action as in \cite[Definition 3.6]{MR2969047} or \cite[Exercise 11.2.1]{MR2273730}, i.e., it satisfies $\dom(\theta_a)=\pi^{-1}(a)$ for all $a\in\mathcal{S}$.
+	
+	Indeed, as $\theta$ is a global action then $\dom(\theta_a)=\dom(\theta_{a^*a})=\dom(\theta_{\so(a)})$ for all $a\in\mathcal{S}$. That is, $\dom(\theta_a)$ depends only on $\so(a)$, so if $\so(a)=\so(b)$ then $\dom(\theta_a)=\dom(\theta_b)$. Non-degeneracy of $(\pi,\theta)$ means precisely that for all $a\in A$, $\pi^{-1}(\so(a))=\bigcup_{b\in\so^{-1}(\so(a))}\dom(\theta_b)=\dom(\theta_a)$, as we wanted.
+\end{example}
+
+In order to construct semidirect products, we will need to consider $\land$-preactions which preserve the structure of semigroupoids. This notion will be used to connect the topological and algebraic settings (i.e., when considering appropriate actions of semigroupoids on topological spaces and on algebras).
+
+\begin{definition}
+A \emph{left ideal} of a semigroupoid $\Lambda$ is a subset $I\subseteq\Lambda$ such that $\Lambda I\subseteq I$. Right ideals are defined similarly. An \emph{ideal} is a subset of $\Lambda$ which is simultaneously a left and a right ideal.
+\end{definition}
+
+\begin{example}
+Let $\mathcal{G}$ be a groupoid. The map $I\mapsto\so(I)$ is an order isomorphism from the set of ideals of $\mathcal{G}$ to the set of invariant subsets of $\mathcal{G}^{(0)}$ (a subset $A\subseteq\mathcal{G}^{(0)}$ is \emph{invariant} if $A=\ra(\so^{-1}(A))$).
+\end{example}
+
+Every set $X$ is regarded as a groupoid in the trivial manner: $X^{(0)}=X$, and for all $x\in X$, $\so(x)=\ra(x)=x$, and the product is defined as $xx=x$. The groupoids constructed in this manner are called \emph{unit groupoids}. Ideals of $X$ are precisely its subsets.
+
+If $\Lambda$ is an Exel semigroupoid, a homomorphism $\phi\colon\Lambda\to X$ is a function such that, if $(a,b)\in\Lambda^{[2]}$, then $\phi(a)=\phi(b)$. In particular, functions between sets are the same as their (semi)groupoid homomorphisms.
+
+In the definition below, we regard the vertex set $\mathcal{S}^{(0)}$ as a unit groupoid. This is an adaptation of \cite[p. 3660]{MR2982887}
+
+\begin{definition}\label{def:partialactiononsemigroupoid}
+    A $\land$-preaction (resp.\ partial, global action) $(\pi,\theta$) of an inverse semigroupoid $\mathcal{S}$ on a semigroupoid $\Lambda$ is a $\land$-preaction (resp.\ partial, global action) of $\mathcal{S}$ on $\Lambda$, as a set, which further satisfies:
+    \begin{enumerate}[label=(\roman*)]
+        \item\label{def:partialactiononsemigroupoid1} The anchor map $\pi\colon\Lambda\to\mathcal{S}^{(0)}$ is a homomorphism.
+        \item\label{def:partialactiononsemigroupoid2} For every $x\in\mathcal{S}^{(0)}$, $\pi^{-1}(x)$ is an ideal of $\Lambda$;
+        \item\label{def:partialactiononsemigroupoid3} For every $a\in\Lambda$, $\dom(\theta_a)$ is an ideal of $\pi^{-1}(\so(a))$;
+        \item\label{def:partialactiononsemigroupoid4} For every $a\in\mathcal{S}$, $\theta_a$ is a semigroupoid isomorphism from $\dom(\theta_a)$ to $\ran(\theta_a)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{denv*}{Remark}
+\begin{enumerate}
+    \item Alternatively to \ref{def:partialactiononsemigroupoid2} and \ref{def:partialactiononsemigroupoid3}, we could adopt the simpler (and slightly stronger) assumption that $\dom(\theta_a)$ is an ideal of $\Lambda$ for all $a\in\mathcal{S}$. This is the case, for example, when all such ideals $\dom(\theta_a)$ are \emph{idempotent} (see Definition \ref{def:idempotentsemigroupoid}).
+    \item If $\Lambda$ is a set/unit groupoid, then this definition coincides with \ref{def:partialactiononset}, since the additional properties of Definition \ref{def:partialactiononsemigroupoid} become trivial. Accordingly, by a $\land$-preaction we will always mean one in the sense of Definition \ref{def:partialactiononsemigroupoid}.
+\end{enumerate}
+\end{denv*}
+
+As we will be more interested in \emph{continuous $\land$-preactions of topological semigroupoids}, we refer to Subsection \ref{subsec:continuouslandpreactions} for examples. In fact, every $\land$-preaction $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$ may be ``extended'' to a partial action, in the sense that partial action $(\pi,\overline{\theta})\colon\mathcal{S}\curvearrowright\Lambda$ (with same anchor map) such that $\theta_a\leq\overline{\theta}_a$ for all $a\in\mathcal{S}$. See Proposition \ref{prop:extensionoflandpreactiontopartialaction}
+
+Let us finish this subsection by proving that any $\land$-preaction may be ``extended'' to a partial action.
+
+\begin{proposition}\label{prop:extensionoflandpreactiontopartialaction}
+Let $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$ be a $\land$-preaction. Then there exists a partial action $(\pi,\overline{\theta})\colon\mathcal{S}\curvearrowright\Lambda$ such that $\theta_a\leq\overline{\theta}_a$ for all $a\in\mathcal{S}$.
+\end{proposition}
+\begin{proof}
+    As the only (possible) problem with is that $\theta$ does not necessarily satisfy $\theta_b\leq\theta_a$ when $b\leq a$, we simply ``glue'' $\theta_b$ to $\theta_a$ in this case.
+    
+    More precisely: Let $a\in\mathcal{S}$. If $b_1,b_2\leq a$. Then $b_1$ and $b_2$ are compatible, so $\theta_{b_1}$ and $\theta_{b_2}$ are compatible (see the paragraphs after Definition \ref{def:dualprehomomorphismandpartialhomomorphism}), which means that $\theta_{b_1}$ and $\theta_{b_2}$ coincide on the intersection of their domains, as do $\theta_{b_1}^{-1}$ and $\theta_{b_2}^{-1}$.
+    
+    Thus we set $\overline{\theta}_a=\bigvee_{b\leq a}\theta_b$, the join taken in $\mathcal{I}(\Lambda)$ i.e., $\overline{\theta}_a(x)$ is defined if and only if $\theta_b(x)$ is defined for some $b\leq a$, in which case $\overline{\theta}_a(x)=\theta_b(x)$. This defines an isomorphism between the ideals $\bigcup_{b\leq a}\dom(\theta_b)$ of $\pi^{-1}(\so(a))$ and $\bigcup_{b\leq a}\ran(\theta_b)$ of $\pi^{-1}(\ra(a))$. It is clear that $\overline{\theta}_{a^*}=\overline{\theta}_a^{-1}$, and that $\overline{\theta}$ is order preserving, and the verification that it is a $\land$-preaction, and thus a partial action, is straightforward.\qedhere
+\end{proof}
+
+Note that the partial action $(\pi,\overline{\theta})$ constructed above is minimal, in the sense that any other partial action $(\pi,\gamma)$ extending $(\pi,\theta)$ satisfies $\overline{\theta}_a\leq\gamma_a$ for all $a\in\mathcal{S}$.
+
+\subsection{Semidirect products}
+
+Throughout this subsection, we fix a $\land$-preaction $(\pi,\theta)\colon\mathcal{S}\curvearrowright \Lambda$. Consider the set
+\[\mathcal{S}\ltimes\Lambda=\left\{(a,x)\in\mathcal{S}\times X:x\in\dom(\theta_a)\right\}.\]
+We will endow $\mathcal{S}\ltimes\Lambda$ with a product, and call the resulting semigroupoid the \emph{semidirect product} of $(\pi,\theta)$. If $(a,x)$ and $(b,y)\in\mathcal{S}\ltimes\Lambda$, $ab$ and $x\theta_b(y)$ are defined (in $\mathcal{S}$ and $\Lambda$, respectively), we set
+\[(a,x)(b,y)=(ab,\theta_{b^*}(x\theta_b(y))).\ntag\label{eq:semidirectproduct}\]
+(Compare this formula with the product on partial crossed product algebras; see \cite{arxiv1804.00396,MR1456588,MR1331978}.)
+
+To check that the right-hand side of \eqref{eq:semidirectproduct} is a well-defined element of $\mathcal{S}\ltimes\Lambda$, first note that $\theta_b(y)$ belongs to the ideal $\dom(\theta_{b^*})$ of $\Lambda$, so $\theta_{b^*}(x\theta_b(y))$ is an element of $\dom(\theta_b)$. We have
+\[\theta_b(\theta_{b^*}(x\theta_b(y)))=x\theta_b(y).\]
+Since $x$ belongs to the ideal $\dom(\theta_a)$, then $\theta_{b^*}(x\theta_b(y))$ belongs to $\dom(\theta_a\circ\theta_b)$, which is contained in $\dom(\theta_{ab})$ because $\theta$ is a $\land$-prehomomorphism. Therefore $(ab,\theta_{b^*}(x\theta_b(y)))\in\mathcal{S}\ltimes\Lambda$.
+
+However, the product \eqref{eq:semidirectproduct} is not associative in general, even when considering global actions of inverse semigroups on semigroups. The example below is a slight modification of \cite[Example 3.5]{MR2115083}.
+
+\begin{example}
+Let $G=\left\{1,g\right\}$ be the cyclic group of order $2$, and $S$ the inverse semigroup obtained by adjoining a new unit $x$ to $G$.
+
+Let $T=\left\{0,t,u,v\right\}$ be the semigroup with product defined by
+\[tv=vt=u\qquad\text{and}\qquad ab=0\quad\text{if}\quad(a,b)\not\in\left\{(t,v),(v,t)\right\}.\]
+Consider the ideal $I=\left\{0,u,v\right\}$ of $T$, and define an action $\theta\colon S\curvearrowright T$ as $\theta_x=\id_T$, $\quad\theta_1=\id_I$ and $\theta_g\colon I\to I$ as
+\[\theta_g(0)=0,\qquad\theta_g(u)=v\qquad\text{and}\qquad\theta_g(v)=u.\]
+
+Then $(1,t)((g,u)(1,t))=(g,0)$, but $((1,t)(g,u))(1,t)=(g,u)$.
+\end{example}
+
+\begin{definition}
+	We call $\mathcal{S}\ltimes\Lambda$ with the product \eqref{eq:semidirectproduct} the \emph{semidirect product semigroupoid} (induced by the $\land$-preaction $(\pi,\theta)$), whenever the product \eqref{eq:semidirectproduct} is associative.
+\end{definition}
+
+We will therefore need to consider conditions on the $\land$-preaction $\theta\colon\mathcal{S}\curvearrowright\Lambda$ which make the product in \eqref{eq:semidirectproduct} associative, so that we obtain a semigroupoid structure on $\mathcal{S}\ltimes\Lambda$. The same ideas as in \cite[Section 3]{MR2115083}, which lie in the context of partial actions of groups on algebras, may be easily adapted to the context of semigroupoid actions and show that the product \eqref{eq:semidirectproduct} is in fact associative for a large class of inverse semigroupoid actions. See the paragraph after Proposition \ref{prop:idempotentornondegenerateimpliesLRassociative}
+
+\begin{definition}
+A \emph{multiplier} of a semigroupoid $\Lambda$ is a pair $(L,R)$, of partially defined maps $L$ and $R$ on $\Lambda$ satisfying
+\begin{enumerate}[label=(\roman*)]
+\item $\dom(L)$ is a right ideal of $\Lambda$ and $\dom(R)$ is a left ideal of $\Lambda$;
+\item $L(ab)=L(a)b$;
+\item $R(ab)=aR(b)$;
+\item $R(a)b=aL(b)$,
+\end{enumerate}
+in the sense that each side of these equations is defined if and only if the other side is defined, in which case they coincide. $L$ and $R$ are called, respectively, a \emph{left} and a \emph{right multipliers}.
+\end{definition}
+
+\begin{example}\label{ex:multipliersofmultiplication}
+Given $x\in\Lambda$, we let $L_x\colon\Lambda^x\to x\Lambda^x$ and $R_x\colon \Lambda_x\to\Lambda_xx$ be given by $L_x(a)=xa$ and $R_x(a)=ax$. Then $(L_x,R_x)$ is a multiplier. If $I$ is an ideal of $\Lambda$, then the restrictions of $L_x$ and $R_x$ to $I$ form a multiplier of $I$.
+\end{example}
+
+\begin{definition}
+	$\Lambda$ is \emph{non-degenerate} if the map $a\mapsto (L_a,R_a)$ is injective.
+\end{definition}
+
+Moreover, the associative property of $\Lambda$ may be rewritten in terms of multipliers as follows: For all $a,b\in\Lambda$,
+\[\dom(L_a)\cap\dom(R_b)\subseteq\dom(L_a\circ R_b)\qquad\text{and}\qquad L_a\circ R_b=R_b\circ L_a.\]
+
+\begin{definition}
+A semigroupoid $\Lambda$ is \emph{$(L,R)$-associative} if for any two multipliers $(L,R)$ and $(L',R')$ of $\Lambda$, we have
+\[\dom(L)\cap\dom(R')\subseteq\dom(L\circ R')\qquad\text{and}\qquad L\circ R'=R'\circ L\]
+\end{definition}
+
+\begin{theorem}\label{thm:semidirectproductisassociativeifLRassociative}
+The product of $\mathcal{S}\ltimes\Lambda$ is associative if $\dom(\theta_a)$ is $(L,R)$-associative for all $a\in\mathcal{S}$.
+\end{theorem}
+\begin{proof}
+Let $(a,r),(b,s),(c,t)\in \mathcal{S}\ltimes\Lambda$. As long as it makes sense, we compute
+\[\left((a,r)(b,s)\right)(c,t)=\left(ab,\theta_{b}^{-1}(r\theta_{b}(s))\right)(c,t)=(abc,\theta_{c}^{-1}(\theta_{b}^{-1}(r\theta_{b}(s))\theta_{c}(t)))\]
+and
+\[(a,r)\left((b,s),(c,t)\right)=(a,r)\left(bc,\theta_{c}^{-1}(s\theta_{c}(t))\right)=(abc,\theta_{bc}^{-1}(r\theta_{bc}(\theta_{c}^{-1}(s\theta_{c}(t)))))\]
+Thus, we need to prove that for all $(a,b,c)\in\mathcal{S}^{(3)}$,
+\[\theta_{c}^{-1}(\theta_{b}^{-1}(r\theta_{b}(s))\theta_{c}(t))=\theta_{bc}^{-1}(r\theta_{bc}(\theta_{c}^{-1}(s\theta_{c}(t))))\]
+in the sense that either side is defined if and only if the other one is, and in which case the equation holds. As $\theta_c(t)$ runs through all of $\ran(\theta_c)$, let us rewrite it as $\theta_c(t)=w$. Let us first rewrite the right-hand side. We have
+\[\theta_{bc}(\theta_c^{-1}(sw)=\theta_{bcc^*}(sw)\]
+and the element $sw$ belongs to the domains of both $\theta_{bcc^*}$ and of $\theta_b$. As $bcc^*\leq b$ then $\theta_{bcc^*}(sw)=\theta_b(sw)$ (see Equation \eqref{eq:changepreactionbygreater}), thus we need instead to prove
+\[\theta_{c}^{-1}(\theta_{b}^{-1}(r\theta_{b}(s))w)=\theta_{bc}^{-1}(r\theta_b(sw))\ntag\label{eq:equationwhichdeterminesassociativity1}.\]
+
+To further simplify the expression above we would need to rewrite the term ``$\theta_{bc}^{-1}$'', at the beggining of the right-hand side above, as ``$\theta_c^{-1}\circ\theta_b^{-1}$'', however this is not so immediate. If this is the case, Equation \eqref{eq:equationwhichdeterminesassociativity1} implies
+\[\theta_{b}^{-1}(r\theta_{b}(s))w=\theta_{b}^{-1}(r\theta_{b}(sw)).\ntag\label{eq:equationwhichdeterminesassociativity2}\]
+
+Let us postpone the proof of the equivalence \eqref{eq:equationwhichdeterminesassociativity1}$\iff$\eqref{eq:equationwhichdeterminesassociativity2} and instead finish the proof of the theorem. Then \eqref{eq:equationwhichdeterminesassociativity2} may be rewritten as
+\[R_{w}\circ \theta_{b}^{-1}\circ L_{r}\circ\theta_{b}=\theta_{b}^{-1}\circ L_{r}\circ \theta_{b}\circ R_{w}\ntag\label{eq:prop:semidirectproductisassociativeifLRassociative}\]
+on $\dom(\theta_{b})$. Here we regard $L_r$ as a left multiplier of $\ran(\theta_b)$, as in Example \ref{ex:multipliersofmultiplication}, thus $\theta_{b}^{-1}\circ L_{r}\circ\theta_{b}$ is a left multiplier of $\dom(\theta_{b})$. Similarly, we regard $R_w$ as a right multiplier of $\dom(\theta_{b})$. As we assume that $\dom(\theta_{b})$ is $(L,R)$-associative, then Equation \eqref{eq:prop:semidirectproductisassociativeifLRassociative} holds.
+
+In particular, this also proves that $((a,r)(b,s))(c,t)$ is defined if and only if $(a,r)((b,s)(c,t))$ is defined, which is equivalence \ref{def:semigroupoiditem2}$\iff$\ref{def:semigroupoiditem3} of Definition \ref{def:semigroupoid}. We still need to prove that these terms are defined when both $(a,r)(b,s)$ and $(b,s)(c,t)$ are defined..
+
+Indeed, in this case, $\theta_b^{-1}(r\theta_b(s))$ and $s\theta_c(t)$ are defined, which means that
+\[s\in\dom(\theta_b^{-1}\circ L_r\circ\theta_b)\cap\dom(R_{\theta_c(t)})\subseteq\dom(R_{\theta_c(t)}\circ(\theta_b^{-1}\circ  L_r\circ\theta_{b^{-1}}))\]
+because $\theta_b^{-1}\circ L_r\circ\theta_b$ and $R_{\theta_c(t)}$ are left and a right multipliers on $\dom(\theta_b)$, respectively. Then
+\[\theta_b^{-1}(r\theta_b(s))\theta_c(t)\]
+is defined, thus $((a,r)(b,s))(c,t)$ is also defined.\qedhere
+\end{proof}
+
+\begin{proof}[Proof of the equivalence of Equations \eqref{eq:equationwhichdeterminesassociativity1} and \eqref{eq:equationwhichdeterminesassociativity2}]
+First assume that \eqref{eq:equationwhichdeterminesassociativity1} holds. We may apply $\theta_c$ on the left-hand side, and hence on the right-hand side as well, to obtain
+\[\theta_b^{-1}(r\theta_b(s))w=\theta_c(\theta_{(bc)^*}(r\theta_b(sw)))=\theta_{cc^*b^*}(r\theta_b(sw))=\theta_b^{-1}(r\theta_b(sw)),\]
+where the last equality follows from the fact that $cc^*b^*\leq b^*$ and $r\theta_b(sw)$ belongs to $\dom(\theta_{cc^*b^*})\cap\dom(\theta_b^*)$. This is precisely \eqref{eq:equationwhichdeterminesassociativity2}.
+
+In the other direction, note that the left-hand side of \eqref{eq:equationwhichdeterminesassociativity2} is $\theta_b^{-1}(r\theta_b(s))w$, and $w\in\ran(\theta_c)=\dom(\theta_{c^*})$. Thus we may apply $\theta_c^{-1}$ on both sides and use $\theta_c^{-1}\circ\theta_b^{-1}\leq\theta_{bc}^{-1}$ to obtain \eqref{eq:equationwhichdeterminesassociativity1}.\qedhere
+\end{proof}
+
+Proposition \ref{prop:idempotentornondegenerateimpliesLRassociative} below yields a large class of $(L,R)$-associative semigroupoids.
+
+\begin{definition}\label{def:idempotentsemigroupoid}
+	$\Lambda$ is \emph{idempotent} if $\Lambda=\Lambda\Lambda$, that is, if every $a\in\Lambda$ may be rewritten as a product $a=a_1a_2$, where $a_1,a_2\in\Lambda$.
+\end{definition}
+
+\begin{proposition}\label{prop:idempotentornondegenerateimpliesLRassociative}
+A semigroupoid $\Lambda$ is $(L,R)$-associative if any of the following two conditions below holds.
+\begin{enumerate}[label=(\roman*)]
+	\item\label{prop:idempotentornondegenerateimpliesLRassociative1} $\Lambda$ is idempotent;
+	\item\label{prop:idempotentornondegenerateimpliesLRassociative2} $\Lambda$ is non-degenerate, and for every $a\in\Lambda$ we have $\Lambda_a\neq\varnothing$.
+	\item\label{prop:idempotentornondegenerateimpliesLRassociative3} $\Lambda$ is non-degenerate, and for every $a\in\Lambda$ we have $\Lambda^a\neq\varnothing$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Let $(L,R)$ and $(L',R')$ be multipliers of $\Lambda$.
+
+First assume that $a=a_1a_2$ in $\Lambda$. Then
+\[L(R'(a))=L(R'(a_1a_2))=L(a_1R'(a_2))=L(a_1)R'(a_2)=R'(L(a_1)a_2)=R'(L(a_1a_2))=R'(L(a)).\]
+Thus if $\Lambda$ is idempotent, then $L\circ R'=R'\circ L$ as well.
+
+Alternatively, for all $a,b$ we have
+\[L(R'(a))b=L(R'(a)b)=L(aL'(b))=L(a)L'(b)=R'(L(a))b,\]
+and
+\[bL(R'(a))=R(b)R'(a)=R'(R(b)a)=R'(bL(a))=bR'(L(a)),\]
+in the sense that, in each of these chains of equalities, one of the terms is defined if and only if the other ones are, in which case they coincide. If $\Lambda$ is non-degenerate, this implies that $L(R'(a))=R'(L(a))$ for all $a\in\Lambda$, i.e., $L\circ R'=R'\circ L$.
+
+It remains only to prove that, under either of the hypotheses \ref{prop:idempotentornondegenerateimpliesLRassociative1} or \ref{prop:idempotentornondegenerateimpliesLRassociative2} above, we have $\dom(L)\cap\dom(R')\subseteq\dom(L\circ R')$. Fix $a\in\dom(L)\cap\dom(R')$.
+
+First assume that $\Lambda$ is idempotent, and write $a=a_1a_2$. Then we may compute
+\[L(a)=L(a_1a_2)=L(a_1)a_2\qquad\text{and}\qquad R'(a)=R'(a_1a_2)=a_1R'(a_2).\]
+In particular, $a_1\in\dom(L)$, which is a right ideal and thus $a_1R'(a_2)\in\dom(L)$, so we may compute
+\[L(a_1R'(a_2))=L(R'(a_1a_2))=L(R'(a)),\]
+and so $a\in\dom(L\circ R')$.
+
+Now assume that condition \ref{prop:idempotentornondegenerateimpliesLRassociative2} holds, and take $x\in\Lambda_{L(a)}$, so $xL(a)=R(x)a$ is defined. Since $a$ belongs to the left ideal $\dom(R')$, we may compute
+\[R'(R(x)a)=R(x)R'(a)=xL(R'(a)),\]
+and in particular $a\in\dom(L\circ R')$. The proof that condition \ref{prop:idempotentornondegenerateimpliesLRassociative3} implies $(L,R)$-associativity is similar.\qedhere
+\end{proof}
+
+We could also adapt the terminology ``$s$-unital'' from ring theory (see \cite{MR0419511}) to the setting of semigroupoids: A semigroupoid $\Lambda$ is \emph{left $s$-unital} if for every $t\in\Lambda$ there exists $u\in\Lambda_t$ such that $ut=t$. Of course every left $s$-unital semigroupoid is idempotent (and also non-degenerate). Examples of left $s$-unital semigroupoids include regular semigroupoids and categories -- in particular sets, groupoids, regular semigroups, multiplicative semigroups of $s$-unital rings, monoids, lattices etc\ldots
+
+Note that if $\Lambda$ is a regular semigroupoid, $I$ is an ideal of $\Lambda$, $x\in I$ and $y$ is an inverse of $x$ in $\Lambda$, then $y=yxy\in I$. It follows that $I$ itself is a regular semigroupoid. In particular, a $\land$-preaction $(\pi,\theta)\colon\mathcal{S}\curvearrowright\Lambda$ of an inverse semigroupoid $\mathcal{S}$ on a regular semigroupoid $\Lambda$ will always have the product \eqref{eq:semidirectproduct} associative. In this case, $\mathcal{S}\ltimes\Lambda$ is also a regular semigroupoid, and in fact the converse implication is also true.
+
+\begin{proposition}\label{prop:semidirectproductisinverseiffsemigroupoidisinverse}
+Suppose that the $\land$-preaction $(\pi,\theta)$ is non-degenerate and $\mathcal{S}\ltimes\Lambda$ is a semigroupoid. Then $\mathcal{S}\ltimes\Lambda$ is regular (resp.\ inverse) if and only if $\Lambda$ is regular (resp.\ inverse).
+\end{proposition}
+\begin{proof}
+We may simply prove that the inverses of $(a,x)\in\mathcal{S}\ltimes X$ are precisely the elements of the form $(a^*,\theta_a(x))$, where $y$ is an inverse of $x$ in $\Lambda$.
+
+First assume that $(a,x)\in\mathcal{S}\ltimes\Lambda$, and that $x$ has an inverse $y$. Then as $y=yxy$ is defined, so $y\in p^{-1}(\so(a))$, and as $\dom(\theta_a)$ is an ideal of $p^{-1}(\so(a))$ then $y\in\dom(\theta_a)$. It is easy to verify that $(a^*,\theta_a(y))$ is an inverse of $(a,x)$.
+
+Conversely, suppose that $(a,x)$ has an inverse $(b,z)$ in $\mathcal{S}\ltimes\Lambda$. This means that
+\[(a,x)=(aba,\theta_{a^*}(\theta_{b^*}(x\theta_b(z))\theta_a(x)))\qquad\text{and}\qquad (z,y)=(zaz,\theta_{b^*}(\theta_{a^*}(z\theta_a(x))\theta_b(z))),\]
+so $b=a^*$. In particular $\theta_b=\theta_a^{-1}$, so using the fact that $\theta_a$ is a semigroupoid homomorphism, the equations above mean that
+\[(a,x)=(a,x\theta_{a^*}(z)x)\qquad\text{and}\qquad (a^*,z)=(a^*,z\theta_a(x)z).\ntag\label{eq:prop:semidirectproductisinverseiffsemigroupoidisinverse}\]
+The second equation above implies that
+\[\theta_{a^*}(z)=\theta_{a^*}(z\theta_a(x)z)=\theta_{a^*}(z)x\theta_{a^*}(z).\]
+Together with the first equation of \eqref{eq:prop:semidirectproductisinverseiffsemigroupoidisinverse}, this means that the element $y=\theta_{a^*}(z)$ is an inverse of $x$ in $\Lambda$, and $z=\theta_a(y)$.\qedhere
+\end{proof}
+
+\subsubsection*{The graphed case}
+
+If $\mathcal{T}$ is a graphed semigroupoid and $(\pi,\theta)\colon\mathcal{S}\curvearrowright\mathcal{T}$ is a $\land$-preaction, the semidirect product $\mathcal{S}\ltimes\mathcal{T}$ has a natural graphed structure over $\mathcal{T}^{(0)}$ (or more precisely, its subset $\bigcup_{a\in\mathcal{S}}\dom(\theta_a)$. Namely, the source and range maps of $\mathcal{S}\ltimes\mathcal{T}$ are defined as
+\[\so(a,x)=\so(x)\qquad\text{ and }\ra(a,x)=\ra(\theta_a(x)).\]

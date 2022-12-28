@@ -1,0 +1,11 @@
+\begin{theorem}
+	Se $T\colon V\to W$ é linear e injetiva, então $T$ leva conjuntos linearmente independentes de $V$ em conjuntos linearmente independentes de $W$. Mais precisamente, se $A$ é um subconjunto linearmente independente de $V$, então sua imagem direta $T(A)=\left\{T(a):a\in A\right\}$ é linearmente independente em $W$.
+\end{theorem}
+
+\begin{proof}
+	Dado $A$ como no enunciado, suponha que tenhamos uma combinação linear nula com elementos de $T(A)$:
+	\[\sum_{i=1}^n\lambda_i w_i=0_W,\]
+	onde os $w_i$ são elementos distintos de $T(A)$ são elementos de $T(A)$ e os $\lambda_i$ são escalares. Podemos escrever cada $w_i$ como $w_i=T(a_i)$ para certos $a_i\in A$. Então a equação acima se reescreve como
+	\[T\left(\sum_{i=1}^n\lambda_i a_i\right)=0_W.\]
+	Como $T$ é injetiva, isto significa que $\sum_{i=1}^n\lambda_i a_i=0_V$, e além disso que os $a_i$ são dois-a-dois distintos. Como $A$ é linearmente independente, então cada coeficiente $\lambda_i$ é nulo, o que prova que $T(A)$ é linearmente independente.
+\end{proof}

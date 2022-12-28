@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands"></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2>Acknowledgements</h2>
+<p>
+First of all, I sincerely and deeply thank my supervisors, professors Thierry Giordano and Vladimir Pestov, who accepted me as their student and provided all the conditions necessary for a successful Ph.D. program. I am grateful for the innumerous hours of discussions, for introducing me to several different topics of research and for providing an abundance of questions and comments which always pushed my work forward. I also acknowledge and thank them for the financial support they provided, which allowed me to attend a large number of workshops and conferences throughout my studies, and in particular to get in contact with several research groups and people from different countries.
+</p>
+<p>
+I would also like to express my gratitude to the Analysis group at Ottawa-Carleton for providing a fertile ground of ideas, and in particular Charles Starling for organizing the weekly seminar and for the insightful - even if not many - discussions.
+</p>
+<p>
+I'm also grateful to the MSGSA (Mathematics and Statistics Graduate Student Association at the University of Ottawa), which counted me as an active member for two years, for all the work put on organizing social events and keeping a high morale among the graduate students of the Department, as well as for providing spaces for students to develop their academic skills - such as the annual OMC (Ottawa Math Conference).
+</p>
+<p>
+I also wish to thank my former professors at UFSC, in special professor Ruy Exel, who introduced me to the subject of $C^*$-algebras and helped me through my Ph.D. applications. No less, I thank my undergraduate supervisor, professor Ivan Pontual Costa e Silva, for all the help which prepared me to pursue a Ph.D.
+</p>
+<p>
+I thank my family for the continued strong support at a distance throughout these years, and for always being available when needed.
+</p>
+<p>
+I gratefully acknowledge the financial support provided to me by CAPES - Coordenação de Aperfeiçoamento de Pessoal de Nível Superior, who sponsored me during my studies at the University of Ottawa. (Ciência Sem Fronteiras Ph.D. scholarship 012035/2013-00)
+</p>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

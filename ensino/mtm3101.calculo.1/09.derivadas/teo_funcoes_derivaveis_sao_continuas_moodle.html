@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Se uma função \(f\) é derivável em um ponto \(a\) de seu domínio, então \(f\) é contínua no ponto \(a\).
+</p>
+<p>
+Em particular, se \(f\) é derivável em todo o seu domínio, então \(f\) é contínua.
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Temos os seguintes limites:
+<div>
+\begin{equation*}
+\lim_{x\to a}\frac{f(x)-f(a)}{x-a}=f'(a)
+\end{equation*}
+</div>
+e
+<div>
+\begin{equation*}
+\lim_{x\to a}x-a=0.
+\end{equation*}
+</div>
+</p>
+<p>
+Além disso, para \(x\neq a\) temos que
+<div>
+\begin{equation*}
+f(x)-f(a)=\left(\frac{f(x)-f(a)}{x-a}\right)(x-a).
+\end{equation*}
+</div>
+</p>
+<p>
+Portanto, o limite de \(f(x)-f(a)\) quando \(x\) tende a \(a\) existe, e é dado por
+<div>
+\begin{align*}
+\lim_{x\to a}\left(f(x)-f(a)\right)
+&=\left(\lim_{x\to a}\frac{f(x)-f(a)}{x-a}\right)\left(\lim_{x\to a}(x-a)\right)\\
+&=f'(a)\cdot 0\\
+&=0.
+\end{align*}
+</div>
+</p>
+<p>
+Obtemos \(\lim_{x\to a}f(x)-f(a)=0\). Isto é equivalente a dizer que \(\lim_{x\to a}f(x)=f(a)\), o que significa precisamente que \(f\) é contínua em \(a\).
+</p>
+
+</div></body>
+</html>

@@ -1,0 +1,30 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#conditionnormallatticel2'>L2</a>
+
+<style>
+ol.lkap {
+    counter-reset: lkap;
+	position:relative;
+}
+ol.lkap > li {
+    list-style: none;
+}
+ol.lkap > li:before {
+  counter-increment: lkap;
+  content: "(L" counter(lkap) ")";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+</style>
+<ol class='toload lkap'>
+	<li>
+		For all $f,g\in\mathcal{A}$, $\overline{[f\neq g]}$ is compact;
+	</li>
+	
+	<li>
+		For all $f\in\mathcal{A}$, every open set $U\subseteq X$, every $x\in U$ and $\alpha\in R$, there exists $g\in\mathcal{A}$ such that $g(x)=\alpha$ and $[g\neq f]\subseteq U$.
+	</li>
+</ol>

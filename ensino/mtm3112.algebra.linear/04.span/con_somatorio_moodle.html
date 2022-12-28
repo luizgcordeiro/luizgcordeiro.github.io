@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+<p>
+Sejam \(x_m,x_{m+1},\ldots,x_n\) objetos cuja soma está definida (por exemplo, números reais, ou vetores de um espaço vetorial). Então a soma de todos estes números é denotada por
+<div>
+\begin{equation*}
+\sum_{i=m}^n x_i=x_m+x_{m+1}+\cdots+x_n.
+\end{equation*}
+</div>
+Esta notação é chamada de <span>&#8220;</span>somatório<span>&#8221;</span>. O símbolo <span>&#8220;</span>\(\sum\)<span>&#8221;</span> é um <span>&#8220;</span>sigma<span>&#8221;</span> grego maiúsculo. O <i>índice</i> <span>&#8220;</span>\(i\)<span>&#8221;</span> é simplesmente uma variável, escolhida arbitrariamente. As escolhas mais usuais para índices são as letras \(i\), \(j\), e \(k\).
+</p>
+<p>
+Essencialmente, <span>&#8220;</span>\(x_i\)<span>&#8221;</span> denota algum termo que depende de um número inteiro \(i\). Este é chamado de <i>termo geral</i> do somatório. Uma mudança de índices não altera o valor do somatório, pois ele indica somente que <span>&#8220;</span>devemos calcular o termo geral em todos para todas as escolhas de \(i\) entre \(m\) e \(n\). Assim,
+<div>
+\begin{equation*}
+\sum_{i=m}^n x_i=x_m+x_{m+1}+\cdots+x_n=\sum_{k=m}^n x_k.
+\end{equation*}
+</div>
+</p>
+<p>
+Mais geralmente, se \(B\) é um conjunto de números reais, ou de vetores de um certo espaço vetorial, denotamos por
+<div>
+\begin{equation*}
+\sum_{x\in B} x
+\end{equation*}
+</div>
+a soma de todos os elementos de \(B\).
+</p>
+<p>
+Por exemplo:
+</p>
+
+<ul>
+
+<li>
+<p>
+A soma dos \(13\) primeiros números naturais (exceto o zero) pode ser denotada por
+<div>
+\begin{equation*}
+\sum_{i=1}^13 i=1+2+\cdots+13.
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Os números ímpares são aqueles que têm a forma \(2k-1\) para algum número inteiro \(k\). Assim, a soma dos \(57\) primeiros números ímpares (não-negativos) pode ser determinada como
+<div>
+\begin{equation*}
+\sum_{k=1}^{57}(2k-1).
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+A soma de todos os números pares entre \(-55\) e \(29\) pode ser escrita como
+<div>
+\begin{equation*}
+(-54)+(-52)+(-50)+\cdots+(26)+(28)=\sum_{k=-27}^{14} 2k
+\end{equation*}
+</div>.
+</p>
+
+</li>
+
+<li>
+<p>
+O traço \(\operatorname{tr}(A)\) de uma matriz \(A=[a_{ij}]_{ij}\) de ordem \(n\times n\) é a soma dos elementos da diagonal de \(A\), que são exatamente as entradas da forma \(a_{jj}\) para algum \(j\in\left\{1,\ldots,n\right\}\). Assim, o traço de \(A\) é
+<div>
+\begin{equation*}
+\operatorname{tr}(A)=a_{11}+a_{22}+\cdots+a_{nn}=\sum_{j=1}^n a_{jj}.
+\end{equation*}
+</div>
+</p>
+
+</li>
+</ul>
+<p>
+Algumas propriedades de somatórios (para mais, veja a <a href='https://pt.wikipedia.org/wiki/Somatório'>página da Wikipedia</a>):
+</p>
+
+<ul>
+
+<li>
+<p>
+Um somatório cujo termo geral é constante é simplesmente o produto deste termo com quantas vezes ele é somado consigo mesmo:
+<div>
+\begin{equation*}
+\sum_{i=m}^n c=(n-m+1)c.
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Uma soma de números inteiros consecutivos é a média destes números, multiplicado pelo número de elementos que foram somados:
+<div>
+\begin{equation*}
+\sum_{j=m}^n j=(n-m+1)\frac{m+n}{2}
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Se reordenarmos os índices do somatório, o seu valor não é alterado. Mas precisamente, se \(\sigma\colon\left\{m_1,\ldots,n_1\right\}\to\left\{m_2,\ldots,n_2\right\}\) é uma bijeção, então
+<div>
+\begin{equation*}
+\sum_{i=m_1}^{n_1}x_{\sigma(i)}=\sum_{j=m_2}^{n_2}x_j.
+\end{equation*}
+</div>
+(esta <span>&#8220;</span>troca de variáveis<span>&#8221;</span> é feita ao definir o índice \(j\) em termos do índice inicial \(i\) como \(j=\sigma(i)\).
+</p>
+<p>
+Por exemplo,
+<div>
+\begin{equation*}
+\sum_{i=1}^N x_n=\sum_{j=0}^{N-1} x_{j+1}.
+\end{equation*}
+</div>
+(Para transformar o somatório da esquerda no da direita, definimos \(j=i-1\). Os <span>&#8220;</span>extremos<span>&#8221;</span> do somatório da esquerda são de \(i=1\) até \(i=N\), que viram \(j=1-1=0\) até \(j=N-1\)).
+</p>
+
+</li>
+
+<li>
+<p>
+Um somatório pode ser divido em <span>&#8220;</span>sub-somatórios<span>&#8221;</span>: Se \(m\lt p\lt n\), então
+<div>
+\begin{equation*}
+\sum_{i=m}^n x_i=\left(\sum_{i=m}^p x_i\right)+\left(\sum_{i=p+1}^n x_i\right).
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Somatórios com índices independentes podem ser comutados:
+<div>
+\begin{equation*}
+\sum_{i=m_1}^{n_1}\left(\sum_{j=m_2}^{n_2} x_{ij}\right)=\sum_{j=m_2}^{n_2}\left(\sum_{i=m_1}^{n_1} x_{ij}\right).
+\end{equation*}
+</div>
+(Você pode pensar que ambos os lados denotam, simplesmente, a soma de todas as entradas de uma matriz cujas entradas são dadas pelos \(x_{ij}\).)
+</p>
+
+</li>
+</ul>
+
+</body>
+</html>

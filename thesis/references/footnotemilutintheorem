@@ -1,0 +1,7 @@
+<a class='reflink' href='../3.dcf/3.0.intro.html#footnotemilutintheorem'>Footnote</a>
+
+<div class='toload footnote'>
+	<p>
+	This is a consequence of Milutin's Theorem, which states that for any two uncountable compact metrizable spaces $X$ and $Y$, $C(X)$ and $C(Y)$, with their respective uniform norms, are isomorphic as topological vector spaces. See [<span class='ref' data-tag='MR1999613'></span>, Chapter 36, Theorem 2.1] or [<span class='ref' data-tag='MR0206695'></span>, <span class='ref' data-tag='MR0227751'></span>].
+	</p>
+</div>

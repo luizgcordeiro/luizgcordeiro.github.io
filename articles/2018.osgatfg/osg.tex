@@ -1,0 +1,334 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[brazil]{babel}		%portuguese hyphenation
+\usepackage[includeheadfoot, margin=1in]{geometry}
+\usepackage{ifthen}
+
+\usepackage[bookmarksnumbered]{hyperref}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{eucal}			%\CMcal for original cal
+%\usepackage{nicefrac}  %nice fractions: \nicefrak[<fontcmd>]{<num>}{<den>}
+\usepackage{tensor}
+
+%\usepackage{wrapfig}			%figures surrounded by text
+%\usepackage{graphicx}			%figures
+%\usepackage{multicol}		%Multicolumn environment, \begin{multicols}{# of columns}\end{multicols}
+
+\usepackage{amsthm}
+\usepackage{enumitem}  %Options for enumerate environment
+\usepackage[normalem]{ulem} %Better underlines
+
+%\everymath{\displaystyle}
+%\usepackage{tikz-cd}			%\usetikzlibrary{matrix}	%diagramas
+\usepackage{tikz}  \usetikzlibrary{arrows,positioning}
+%\usepackage[vcentermath]{youngtab}			%Young diagrams and tableaux
+
+\usepackage[numbers]{natbib}
+\usepackage{doi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{generalnumbering}   \numberwithin{generalnumbering}{section}
+
+\theoremstyle{plain}    \newtheorem{theorem}[generalnumbering]{Theorem}
+\theoremstyle{plain}    \newtheorem{corollary}[generalnumbering]{Corollary}
+\theoremstyle{definition}   \newtheorem{definition}[generalnumbering]{Definition}
+\theoremstyle{definition}   \newtheorem{example}[generalnumbering]{Example}
+\theoremstyle{plain}    \newtheorem{proposition}[generalnumbering]{Proposition}
+\theoremstyle{plain}    \newtheorem{lemma}[generalnumbering]{Lemma}
+
+\newcommand{\namefordifferentenvironment}{}
+
+\theoremstyle{plain}    \newtheorem{plainstyle}[generalnumbering]{\namefordifferentenvironment}
+\theoremstyle{plain}    \newtheorem*{plainstyle*}{\namefordifferentenvironment}
+\theoremstyle{definition}    \newtheorem{definitionstyle}[generalnumbering]{\namefordifferentenvironment}
+\theoremstyle{definition}    \newtheorem*{definitionstyle*}{\namefordifferentenvironment}
+
+\newenvironment{penv}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{plainstyle}}{\end{plainstyle}}
+\newenvironment{penv*}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{plainstyle*}}{\end{plainstyle*}}
+\newenvironment{denv}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{definitionstyle}}{\end{definitionstyle}}
+\newenvironment{denv*}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{definitionstyle*}}{\end{definitionstyle*}}
+
+\newenvironment{remark}{\begin{denv*}{Remark}}{\end{denv*}}
+
+\newcommand{\ntag}{\tag{\thegeneralnumbering}\stepcounter{generalnumbering}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%New commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt\hbox{\scriptsize.}\hbox{\scriptsize.}}}=}
+\newcommand*{\eqdef}{=\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt\hbox{\scriptsize.}\hbox{\scriptsize.}}}}
+
+\makeatletter
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareMathAlphabet{\mathfancy}{LS1}{stixscr}{m}{n}
+\makeatother
+
+\newcommand{\cat}[1]{\normalfont{\textsc{\textbf{#1}}}}
+\DeclareMathOperator{\IG}{\mathfancy{I\mkern-2mu G}\mkern-1mu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%AUTHOR INFO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{On sofic groupoids and their full groups\\\ \\Sur les groupoïdes sofiques et leur groupes pleins}
+\author{Luiz Cordeiro$\hspace{0pt}^\dagger$}
+
+%Thanks should be given separately for AMSART
+\thanks{$\hspace{0pt}^\dagger$Supported by CAPES/Ciência Sem Fronteiras PhD scholarship 012035/2013-00.}
+%\thanks{Thanks 2}
+
+\address{University of Ottawa, Canada}
+\email{lcord081@uottawa.ca}				%AMSART
+
+\subjclass[2010]%		%AMSART
+{Primary 37A15;
+Secondary 28D15
+}
+
+\keywords{Groupoids, sofic, full groups, finite index}
+
+\begin{document}
+
+\begin{abstract}
+	We prove that the class of sofic groupoids is stable under several measure-theoretic constructions; In particular, we show that virtually sofic groupoids are sofic. We answer a question of Conley, Kechris and Tucker-Drob by proving that an aperiodic pmp groupoid is sofic if and only if its full group is metrically sofic.
+\end{abstract}
+
+\renewcommand{\abstractname}{Résumé}
+
+\begin{abstract}
+	Dans cette note nous démontrons que plusieurs constructions de théorie de la mesure préservent la classe des groupoïdes sofiques. En particulier, nous montrons qu'un souis-groupoïde virtuellement sofique est sofique. Nous répondons aussi à une question de Conley, Kechris et Tucker-Drob en démontrant que pour qu'un groupoïde apériodique munie d'une mesure de probabilité invariante soit sofique il est nécessaire et suffisant que son groupe plein soit métriquement sofique.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+The notion of soficity for groups was introduced by Gromov \cite{MR1694588} in his work on symbolic dynamics. In 2010, Elek and Lippner \cite{MR2566316} introduced soficity for equivalence relations in the same spirit as Gromov's original definition, i.e., an equivalence relation $R$, induced by some action of the free group $\mathbb{F}_\infty$, is sofic if the Schreier graph of the $\mathbb{F}_\infty$-space $X$ can be approximated, in a suitable sense, by Schreier graphs of finite $\mathbb{F}_\infty$-spaces.
+
+Alternative definitions by Ozawa \cite{ozawasoficnotes} and P\v{a}unescu \cite{MR2826401} describe soficity at the level of the so-called full semigroup of $R$, which can be immediately generalized to groupoids. We will describe general elementary techniques to deal with (abstract) sofic groupoids.
+
+\subsection{Probability measure-preserving groupoids and full semigroups}
+
+We will follow the notations of \cite{MR3130315}: Given a groupoid $G$, the source and range maps will be, respectively, $s(g)=g^{-1}g$ and $r(g)=gg^{-1}$ for $g\in G$, and the unit space of $G$ will be denoted $G^{(0)}$.
+
+A \emph{discrete measurable groupoid} is a groupoid $G$ endowed with a standard Borel space structure such that the product and inversion maps are Borel, and such that $s^{-1}(x)$ is countable for every $x\in G^{(0)}$.
+
+The \emph{Borel full semigroup} of a discrete measurable groupoid $G$ is the set $[[G]]_B$ of Borel subsets $\alpha\subseteq G$ such that the restrictions $s|_\alpha$ and $r|_\alpha$ of the source and range maps are injections, and thus Borel isomorphisms onto their respective images (\cite[Theorem 15.2]{MR1321597}).% Such subsets of $G$ are called \emph{bisections} of $G$. Bisections can be thought as transformations on the unit space via the action $\alpha(x)=r(s|_{\alpha}^{-1}(x))$.
+
+$[[G]]_B$ is an inverse monoid with the usual product and inverse of sets, namely
+\[\alpha\beta=\left\{ab:(a,b)\in (\alpha\times\beta)\cap G^{(2)}\right\},\qquad \alpha^{-1}=\left\{a^{-1}:a\in\alpha\right\}\]
+and $G^{(0)}$ is the unit of $[[G]]_B$, which we will instead denote by $G^{(0)}=1$ when no confusion arises.
+
+A \emph{probability measure-preserving} (\emph{pmp}) groupoid is a discrete measurable groupoid $G$ with a Borel probability measure $\mu$ on $G^{(0)}$ satisfying $\mu(s(\alpha))=\mu(r(\alpha))$ for all $\alpha\in[[G]]_B$. We write $(G,\mu)$ for a pmp groupoid when we need the measure $\mu$ to be explicit. The measure $\mu$ induces a pseudometric $d_{\mu}$ on $[[G]]_B$ via
+\[d_{\mu}(\alpha,\beta)=\mu(s(\alpha\triangle\beta))=\mu(r(\alpha\triangle\beta)).\]
+
+The \emph{trace} of $\alpha\in[[G]]_B$ is defined as $\operatorname{tr}(\alpha)=\mu(\alpha\cap G^{(0)})$. In fact, the trace and the pseudometric above, along with the semigroup operation, determine each other: For example, the unit $1$ of $[[G]]_B$ is the only element of trace $1$, and
+\[d_\mu(\alpha,\beta)=\operatorname{tr}(\alpha^{-1}\alpha)+\operatorname{tr}(\beta^{-1}\beta)-\operatorname{tr}(\alpha^{-1}\alpha\beta^{-1}\beta)-\operatorname{tr}(\beta^{-1}\alpha)\]
+and similarly one can write the trace in terms of the pseudometric $d_\mu$.
+
+The (measured) \emph{full semigroup} of a pmp groupoid $(G,\mu)$ is the quotient metric space $[[G]]$ (or $[[G]]_\mu$ to make $\mu$ explicit) of $[[G]]_B$ under the pseudometric $d_\mu$. The semigroup operation and the trace factor through $[[G]]$, which determines its (canonical) semigroup structure.
+
+The \emph{Borel full group} $[G]_B$ of a discrete measurable groupoid $G$ is the set of those $\alpha\in[[G]]_B$ with $s(\alpha)=r(\alpha)=G^{(0)}$, and, when $G$ is pmp, the image of $[G]_B$ in $[[G]]$, denoted $[G]$ or $[G]_\mu$, is called the (measured) \emph{full group} of $G$.
+
+\begin{definition}
+A subset $A$ of a pmp groupoid $(G,\mu)$ is called \emph{null} if $\mu(s(A))=0$ (equivalently, $\mu(r(A))=0$), and \emph{conull} if its complement $G\setminus A$ is null. A property of the points of $G$ is said to hold a.e.\ (almost everywhere) if it holds on a conull subset.
+\end{definition}
+
+\begin{example}
+Let $R$ be a countable Borel equivalence relation on a standard probability space $(X,\mu)$, and suppose $\mu$ is invariant (see \cite{MR0578656}). We can see $R$ as a pmp groupoid as follows: the product is defined by $(x,y)(y,z)=(x,z)$. The unit space of $R$ is the diagonal $\left\{(x,x):x\in X\right\}$, which we identify with $X$ and endow with the probability measure $\mu$. The Borel full semigroup of $R$ can be identified with the semigroup of partial Borel isomorphisms $f:A\to B$, $A,B\subseteq X$, for which $(f(x),x)\in R$ for all $x\in A$, by associating such $f$ to the inverse of its graph, $\left\{(f(x),x):x\in X\right\}$. The pmp groupoids which are isomorphic (in the measure-theoretic sense) to one constructed this way are called \emph{principal groupoids}.
+\end{example}
+
+\begin{example}\label{examplefinite}
+Let $Y$ be a finite set and $Y^2$ the largest equivalence relation on $Y$, endowed with the usual (discrete) Borel structure. The only probability measure on $Y$ which makes $Y^2$ pmp is the normalized counting measure: $\mu_\#(A)=|A|/|Y|$. We denote the associated metric by $d_\#$ and call it the \emph{normalized Hamming distance}.
+
+Note that if $Y$ and $Z$ are finite sets, then the map $[[Y^2]]\ni\alpha\mapsto \alpha\times(Z^2)^{(0)}\in[[Y^2\times Z^2]]$ is a trace-preserving embedding. The map $(y_1,y_2,z_1,z_2)\mapsto (y_1,z_1,y_2,z_2)$ is a measure-preserving isomorphism between the groupoids $Y^2\times Z^2$ and $(Y\times Z)^2$, which induces a trace-preserving isomorphism between the respective two full semigroups. Therefore if $Y$ and $Z$ are finite sets, there are a finite set $W$ and trace-preserving embeddings from $[[Y^2]]$ and $[[Z^2]]$ into $[[W^2]]$
+\end{example}
+
+\begin{definition}\label{definitionsoficapproximation}
+A \emph{sofic approximation} of a pmp groupoid $G$ is a sequence of maps $\pi=\left\{\pi_k:[[G]]\to[[Y_k^2]]\right\}$, where $Y_k$ are finite sets, such that for all $\alpha,\beta\in[[G]]$,
+\begin{enumerate}[label=(\roman*)]
+\item $\lim_{k\to\infty}\operatorname{tr}(\pi_k(\alpha))=\operatorname{tr}(\alpha)$;
+\item $\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+\end{enumerate}
+A pmp groupoid $G$ is \emph{sofic} if it admits a sofic approximation.
+\end{definition}
+
+We'd like to note that this definition of sofic approximation differs from that of Bowen \cite{MR3286052}, where aditional properties are required of the sequence $\pi$ in order to study the entropy of sofic groupoids. However, the existence of a sofic approximation in the stronger sense of \cite{MR3286052} is actually equivalent to the existence of a sofic approximation as in the definition above.
+
+\section{Permanence Properties}
+
+Our first permanence result deals with products of pmp groupoids:
+
+\begin{theorem}\label{theoremproducts}
+Two pmp groupoids $(G,\mu)$ and $(H,\nu)$ are sofic if and only if $(G\times H,\mu\times\nu)$ is sofic.
+\end{theorem}
+\begin{proof}[Sketch of proof]
+The main point of the proof is to show that the subsemigroup $M$ of $[[G\times H]]$ containing elements which can be written as $\bigcup_{i=1}^n\alpha_i\times\beta_i$, such that $\alpha_i\in[[G]]$, $\beta_i\in[[H]]$
+\begin{enumerate}[label=(\roman*)]
+\item if $s(\alpha_i)\cap s(\alpha_j)$ and $s(\beta_i)\cap s(\beta_j)$ are both nonempty then $i=j$;
+\item if $r(\alpha_i)\cap r(\alpha_j)$ and $r(\beta_i)\cap r(\beta_j)$ are both nonempty then $i=j$.
+\end{enumerate}
+is dense in $[[G\times H]]$. Common measure-theoretic arguments allow us to approximate any $\phi\in[[G\times H]]$ by subsets of the form $\bigcup_{i=1}^n\alpha_i\times\beta_i$, $\alpha_i\in[[G]]$, $\beta_i\in[[H]]$, and $\alpha_i\times\beta_i$ pairwise disjoint, however (i) and (ii) are not necessarily satisfied, so to deal with this one substitutes $\alpha_i\times\beta_i$ by $\alpha_i\times\beta_i\setminus\left(\bigcup_{j\neq i}\alpha_is(\alpha_j)\times\beta_is(\beta_j)\right)$, which deals with (i), and do a similar procedure for (ii).
+
+After that, take sofic approximations $\pi=\left\{\pi_k:[[G]]\to[[Y_k^2]]\right\}$ and $\theta=\left\{\theta_k:[[H]]\to[[Z_k^2]]\right\}$ and define $\pi\otimes\theta=\left\{(\pi\otimes\theta)_k\right\}$ as $(\pi\otimes\theta)_k(\bigcup\alpha_i\times\beta_i)=\bigcup\pi_k(\alpha_i)\times\theta_k(\beta_i)$. This is a subset of $Y_k^2\times Z_k^2$, but not necessarily an element of its full semigroup since $\pi_k$ and $\theta_k$ do not necessarily preserve properties (i) and (ii). However, these are preserved in the limit, so we can modify $(\pi\otimes\theta)_k$ appropriately on small sets and assume $(\phi\otimes\theta)_k(\alpha)\in[[Y_k^2\times Z_k^2]]\simeq[[(Y_k\times Z_k)^2]]$ for all $\alpha\in M$. Since $M$ is dense in $[[G\times H]]$ we can extend $\pi\otimes\theta$ to a sofic approximation of $G\times H$.\qedhere
+\end{proof}
+
+Now we deal with extensions of groupoids, and for this we need to use a notion of \emph{finite index}.
+\begin{definition}
+A subgroupoid $H\subseteq G$ has \emph{finite index} in $G$ if there exist $\psi_1,\ldots,\psi_n\in[G]$ such that $\left\{\psi_iH:i=1\ldots n\right\}$ is a partition of $G$ (up to null sets). We call $\psi_1,\ldots,\psi_n$ \emph{left transversals} of $H$ in $G$. Note that if $H$ has finite index in $G$ then $H^{(0)}=G^{(0)}$ (up to null sets).
+\end{definition}
+
+\begin{denv*}{Remark}
+In \cite{MR3229595}, Kida introduced and studied the \emph{index map} of a subgroupoid $H$ of a pmp groupoid $G$ with $H^{(0)}=G^{(0)}$ as follows: For all $x\in G{(0)}$, define an equivalence relation $\sim_x$ on $r^{-1}(x)$ by setting $g\!\sim_x\! h\!\iff\! g^{-1}h\in H$ for all $g,h\in r^{-1}(x)$. The index $I(x)$ at $x$ is defined as the number of $\sim_x$-equivalence classes. If $H$ is ergodic, then $H$ has finite index in $G$ if an only if the index map is finite a.e. In this case the index map is a.e.\ equal to the cardinality of any set of left transversals of $H$ in $G$ (this follows from Theorem \ref{theoremindexgroupoidisotropyrelations} below).
+\end{denv*}
+
+If $G$ is a groupoid and $x\in G^{(0)}$, define the \emph{isotropy group} $G_x^x=s^{-1}(x)\cap r^{-1}(x)$, which is in fact a group with the operation inherited from $G$, and the the \emph{orbit relation} $(r,s)(G)=\left\{(r(g),s(g)):g\in G\right\}$ on the unit space $G^{(0)}$.
+
+A common question is how much of the structure of a pmp groupoid $G$ can be described by the structures of $(r,s)(G)$ and the isotropy groups $G_x^x$; for example, $G$ is amenable if and only if $(r,s)(G)$ is amenable and a.e.\ isotropy group $G_x^x$ is amenable (see \cite[Theorem 4.2.7]{MR1799683}). This naturally leads to the question: If $H$ is a subgroupoid of a pmp group $G$ with $H^{(0)}=G^{(0)}$, how does finite index of $H\subseteq G$ relates to the index of the relations $(r,s)(H)\subseteq (r,s)(G)$, as defined in \cite{MR1007409}, and the index of the isotropy groups $H_x^x\subseteq G_x^x$?
+
+\begin{theorem}\label{theoremindexgroupoidisotropyrelations}
+Suppose $H$ is an ergodic subgroupoid of a pmp groupoid $G$ with $H^{(0)}=G^{(0)}$. Then $H$ has finite index in $G$ if and only if $(r,s)(H)$ has finite index in $(r,s)(G)$ and $H_x^x$ has finite index in $G_x^x$ for $\mu$-a.e.\ $x\in G^{(0)}$.
+\end{theorem}
+\begin{proof}
+We prove only the harder implication: If the latter condition is satisfied, take invertible choice functions $\psi_1,\ldots,\psi_n$ for $(r,s)(H)\subseteq(r,s)(G)$ \cite[Lemma 1.3]{MR1007409}, and an application of the Lusin-Novikov Theorem \cite[Theorem 18.10]{MR1321597} yields $\phi_1,\ldots,\phi_n\in[G]$ such that $(r,s)(\phi_i)=\left\{(x,\psi_i(x)):x\in G^{(0)}\right\}$. The index $[G_x^x:H_x^x]$ is $(r,s)(H)$-invariant, so it is equal a.e.\ to a number $m$. Using the selection theorem for periodic relations \cite[Theorem 12.16]{MR1321597}, one can take elements $\theta_1,\ldots,\theta_m\in[G]$ such that $s(g)=r(g)$ for all $g\in\theta_j$, and such that for a.e.\ $x\in G^{(0)}$, $\left\{\theta_j H_x^x\right\}$ is a partition of $G_x^x$. Then $\phi_i\theta_j$ are left transversal for $H$ in $G$.\qedhere
+\end{proof}
+
+\begin{theorem}\label{theoremfiniteindexgroupoids}
+Suppose $(G,\mu)$ is a pmp groupoid and $H\subseteq G$ is a subgroupoid of finite index (in particular, $H^{(0)}=G^{(0)}$). If $(H,\mu)$ is sofic, so is $(G,\mu)$.
+\end{theorem}
+\begin{proof}[Sketch of proof]
+Suppose that $\psi_1,\ldots,\psi_N$ are left transversals for $H\subseteq G$. For each $\alpha\in [[G]]$, let $\alpha_{i,j}=\psi_i^{-1}\alpha\psi_j\cap H$, and note that $\alpha_{i,j}\in[[H]]$. Let $\pi=\left\{\pi_k:[[H]\to[[Y_k^2]]\right\}$ be a sofic approximation of $H$. Define $\phi_k(\alpha)=\bigcup_{i,j}\pi(\alpha_{i,j})\times\left\{(i,j)\right\}$ so that up to modifications on small sets (as in the proof of \ref{theoremproducts}), we can assume assume $\phi_k(\alpha)\in[[Y_k^2\times\left\{1,\ldots,N\right\}^2]]$. This gives us a sequence of maps $\phi=\left\{\phi_k:[[G]]\to[[Y_k^2\times\left\{1,\ldots,N\right\}^2]]\right\}$.
+
+To check that $\Xi=\left\{\Xi_k\right\}$ is a sofic approximation, use its definition and the fact that $\bigcup_j\alpha_{i,j}\beta_{j,l}=(\alpha\beta)_{i,l}$ to show it asymptotically preserves products, and to show that $\Xi$ is asymptotically trace-preserving note that $\operatorname{tr}\Xi(\alpha)=\frac{1}{N}\sum_{i=1}^N\operatorname{tr}(\alpha_{i,i})$. Since $\alpha_{i,i}\cap G^{(0)}=\psi_i^{-1}\alpha\psi_i\cap G^{(0)}$, $\psi_i\in[G]$ and $G$ is pmp, one obtains $\operatorname{tr}(\alpha_{i,i})=\operatorname{tr}(\alpha)$ and we are done.\qedhere
+\end{proof}
+
+In the next theorem we will deal mostly with distinct measures on a given discrete measurable groupoid, and how soficity is preserved under some measure-theoretic constructions. We will simply say that a measure $\mu$ on a discrete measurable groupoid $G$ is sofic if $(G,\mu)$ is sofic.
+
+If $H$ is a non-null subgroupoid of a pmp groupoid $G$, denote by $\mu_H$ the normalized measure on $H^{(0)}$, $\mu_H(A)=\mu(A)/\mu(H^{(0)})$ for $A\subseteq H^{(0)}$, which makes $H$ a pmp groupoid in its own right.
+
+\begin{theorem}\label{theorempermanence}
+Let $G$ be a discrete measurable groupoid.
+\begin{enumerate}
+\item A strong limit\footnote{Recall that a net $\left\{\mu_i\right\}_i$ of probability measures on a measurable space $(X,\mathcal{A})$ \emph{converges strongly} to a measure $\mu$ on $(X,\mathcal{A})$ if $\mu_i(A)\to\mu(A)$ for all $A\in\mathcal{A}$.} of sofic measures is sofic as well.
+\item A convex combination of sofic measures is sofic.
+\item If $\mu$ has a disintegration $\mu=\int_{G^{(0)}} p_xd\nu(x)$, where $\nu$-a.e. $p_x$ is a sofic measure, then $(G,\mu)$ is sofic.
+\item\label{theorempermanenceitemsubgroupoid} If $(G,\mu)$ is sofic and $H$ is a non-null subgroupoid of $G$ then $(H,\mu_H)$ is sofic.
+\item If $\nu\ll\mu$, where $(G,\nu)$ is pmp, and $\mu$ is sofic, then $\nu$ is sofic.
+\item If $\left\{H_n\right\}$ is a countable Borel partition of $G$ by non-null subgroupoids, then $G$ is sofic if and only if each $H_n$ is sofic.
+\end{enumerate}
+\end{theorem}
+Hence, by (4) and Theorem \ref{theoremfiniteindexgroupoids}, a pmp groupoid is virtually sofic (i.e., it contains a finite index sofic subgroupoid) if and only if it is sofic. As a particular case of (3), if a.e.\ ergodic component of $(G,\mu)$ is sofic, so is $(G,\mu)$, but at present we do not know if the converse statement is true.
+
+Let's introduce some notation which will be useful in the proof of the theorem above:
+
+\begin{definition}
+If $\left\{(G_i,\mu_i)\right\}_i$ is a sequence (finite or infinite) of pmp groupoids and $\left\{t_i\right\}_i$ is a sequence of nonnegative numbers with $\sum_i t_i=1$, we define the \emph{convex combination groupoid} $(G,\mu)$ as follows: As a measurable groupoid, $G$ is the coproduct $G=\coprod G_i$, i.e., $G$ is the disjoint union of all $G_i$, the operation on $G$ is the smallest one extending those of each $G_i$, and the Borel structure of $G$ is generated by those of each $G_i$. Each measure $\mu_i$ can be regarded as a measure on $G^{(0)}$ by the formula $\mu_i(A)=\mu_i(A\cap G_i^{(0)})$, $A\subseteq G^{(0)}$, and so we endow $G$ with the convex combination of those measures: $\mu=\sum_i t_i\mu_i$. We will use the notation $G=\sum_i t_iG_i$ in this case.
+\end{definition}
+
+\begin{proof}[Proof of \ref{theorempermanence}]
+\begin{enumerate}
+\item is clear since soficity is an approximation property for the measure.
+\item The technique is similar to that employed in \cite{MR3227158}: Suppose first $\nu,\rho$ are sofic measures and $\mu=t\nu+(1-t)\rho$, where $t=p/q$ is rational, $p,q\in\mathbb{Z}$, $0<p<q$. We can take sofic approximations $\pi=\left\{\pi_k:[[G]]_\nu\to[[Y_k^2]]\right\}$ and $\theta=\left\{\theta_k:[[G]]_\rho\to[[Y_k^2]]\right\}$ of $(G,\mu)$ and $(G,\nu)$, \textbf{on the same sets} $Y_k$ (see Example \ref{examplefinite}), and define a sofic approximation $t\pi\oplus(1-t)\rho=\left\{\xi_k:[[G]]_\mu\to[[Y_k^2\times\left\{1,\ldots,q\right\}^2]]\right\}$ by $\xi_k(\alpha)=\pi_k(\alpha)\times\left\{1,\ldots,p\right\}\cup\theta_k(\alpha)\times\left\{p+1,\ldots,q\right\}$. The general case follows from (1).
+%
+\item This follows from the previous items, since standard arguments show that in this case $\mu$ is a strong limit of convex combinations of sofic $p_x$.
+%
+\item This is trivial if $H^{(0)}=G^{(0)}$, since any sofic approximation of $G$ restricts to a sofic approximation of $H$. On the other hand, if $G$ is a convex combination $G=tH+(1-t)K$ then $H^{(0)}$ and $K^{(0)}$ are disjoint idempotents whose sum of traces is $1$. Sofic approximations preserve this information (in the limit), which allows us to decompose, up to negligible errors, a sofic approximation $\xi$ of $G$ as a convex combination of sofic approximations of $H$ and $K$, similarly to how $\xi$ was constructed in item (1). In the general case one uses that the convex combination groupoid ${\mu(H)H+(1-\mu(H))(G^{(0)}\setminus H^{(0)})G(G^{(0)}\setminus H^{(0)})}$ is contained in $G$ and has full unit space.
+%
+\item By doing appropriate approximations one may assume that the derivative $f=d\nu/d\mu$ is simple, say $f=\sum_i f_i 1_{X_i}$ where $1_X$ denotes the characteristic function of $X\subseteq G^{(0)}$. In this case, $\nu=\sum_i\left(\frac{f_i}{\sum_j f_j}\right)\mu_i$ where $\mu_i(A)=\mu(A\cap X_i)/\mu(X_i)$. The result then follows from (1), (2) and (4).
+\item Apply items (4) and (2) with the fact that $G=\sum_j \mu(H_j^{(0)})H_j$.\qedhere
+\end{enumerate}
+\end{proof}
+
+Let us make a small detour on the structure of finite groupoids in order to obtain a new description of soficity.
+
+\begin{proposition}\label{propositionfinitegroupoids}
+Every finite pmp groupoid $(G,\mu)$ is a convex combination of groupoids of the form $Y^2\times\Gamma$, where $Y$ is a finite set and $\Gamma$ is a finite group. (In particular every finite groupoid is a coproduct of those of the form $Y^2\times\Gamma$.)
+\end{proposition}
+\begin{proof}[Sketch of proof]
+Letting $Y_1,\ldots,Y_n$ be the equivalence classes of the orbit relation $(r,s)(G)$, we obtain $G=\sum\mu(Y_i)(Y_iGY_i)$, where each $Y_iGY_i$ is endowed with the normalized counting measure on $(Y_iGY_i)^{(0)}\simeq Y_i$. For a fixed $i$, choose an arbitrary point $x\in Y_i$, and for each $y\in Y_i$ choose $h(y)\in G$ with $s(h(y))=x$, $r(h(y))=y$. The map
+\[Y_i^2\times G_x^x\to Y_iGY_i,\qquad (y_1,y_2,\gamma)\mapsto h(y_1)\gamma h(y_2)^{-1}\]
+is a measure-preserving groupoid isomorphism.\qedhere
+\end{proof}
+
+We can apply the previous results in order to show that finite groupoids are sofic: By Proposition \ref{propositionfinitegroupoids} and Theorem \ref{theorempermanence}(6), it suffices to show that groupoids of the form $Y^2\times\Gamma$, where $Y$ is a finite set and $\Gamma$ is a finite group, are sofic. Of course $Y^2$ is sofic, and either Theorem \ref{theoremfiniteindexgroupoids} or \ref{theoremproducts} imply that $Y^2\times\Gamma$ is sofic as well, so we obtain:
+
+\begin{corollary}
+Every finite groupoid is sofic. Therefore we may modify the definition of sofic approximation \ref{definitionsoficapproximation} by considering arbitrary finite pmp groupoids instead of those of the form $Y^2$, and obtain the same notion.
+\end{corollary}
+
+\section{Soficity and the full group}
+
+Given a pmp groupoid $G$, the unit space $G^{(0)}$ is a subgroupoid, and the full semigroup $[[G^{(0)}]]$ coincides with the measure algebra $\operatorname{MAlg}(G^{(0)})$, with product given by intersection. In fact, $\operatorname{MAlg}(G^{(0)})$ coincides with the set of idempotents of $[[G]]$, and every $\alpha\in[[G]]$ can be decomposed as $\alpha=\widetilde{\alpha}A$, where $\widetilde{\alpha}\in[G]$ and $A\in\operatorname{MAlg}(G^{(0)})$ (which corresponds to the fact that every partial isometry in a finite von Neumann algebra can be extended to a unitary). Given $\alpha\in[[G]]$, define $\operatorname{supp}(\alpha)=s(\alpha\setminus G^{(0)})$.
+
+A well-known theorem of Dye \cite{MR0158048} states that an aperiodic equivalence relation is determined by its full group, and from that one may ask how do properties of the relation correspond to properties of the full group; for example, in \cite[Theorem 5.7]{MR2311665} the authors prove that amenability of an ergodic equivalence relation is equivalent to amenability of its full group (as a topological group). We prove that a pmp groupoid $G$ is sofic if and only if $[G]$ is \emph{metrically sofic} (initially defined as \emph{sofic metric groups} in \cite{arxiv1206.5473v3}), which solves a question posed by Conley, Kechris and Tucker-Drob in \cite{MR3035288} in this case. This can also be seen as a partial answer to the following question asked in Vladimir Pestov's reviewer's report for \cite{MR2566316}: Is a pmp equivalence relation sofic if and only its full group is sofic? (One direction was already answered positively in \cite{MR3314104}.)
+
+\begin{definition}\label{definitionmetricallysofic}
+A separable group $\Gamma$ with an bi-invariant metric $d$ is \emph{metrically sofic} if it admits a sequence of maps $\pi=\left\{\pi_k:\Gamma \to[[Y_k^2]]\right\}$, called a \emph{sofic approximation} of $\Gamma$, satisfying, for all $\alpha,\beta\in\Gamma$,
+\begin{enumerate}[label=(\roman*)]
+\item $\lim_{k\to\infty}d(\pi_k(\alpha),\pi_k(\beta))=d(\alpha,\beta)$;
+\item $\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+\end{enumerate}
+\end{definition}
+
+For example, if $\pi=\left\{\pi_k:[[G]]\to[[Y_k^2]]\right\}$ is a sofic approximation of a pmp groupoid $G$, then $\pi|_{[G]}=\left\{\pi_k|_{[G]}:[G]\to[[Y_k^2]]\right\}$ is a sofic approximation of $[G]$ (with respect to the metric $d_\mu$).
+
+One of the main points of Dye's proof is to recover $\operatorname{MAlg}(G^{(0)})$ from $[G]$, by looking at the classes of elements of $[G]$ whose support is a given $A\in\operatorname{MAlg}(G^{(0)})$, and this is also an important point in our proof. In fact, the metric of $[G]$ allows us to recover the order of $\operatorname{MAlg}(G^{(0)})$ by the following lemma.
+
+\begin{lemma}\label{lemmasupports}
+Let $(G,\mu)$ be a pmp groupoid and $\alpha,\beta\in[G]$ then $\operatorname{supp}\alpha\cap\operatorname{supp}\beta=\varnothing$ if and only if $d_\mu(\alpha,\beta)=d_\mu(1,\alpha)+d_\mu(1,\beta)$.
+\end{lemma}
+
+\begin{definition}
+A pmp groupoid $G$ is \emph{aperiodic} if $|s^{-1}(x)|=\infty$ for a.e.\ $x\in G^{(0)}$.
+\end{definition}
+
+Just as in the case of equivalence relations, if $G$ is aperiodic then there are sufficiently many elements in $[G]$ so as to recover $\operatorname{MAlg}(G^{(0)})$, by noting that for a.e.\ $x\in G^{(0)}$, at least one of the sets $r(s^{-1}(x))$ or $G_x^x$ is infinite. The former can be dealt with as in \cite[Lemma 4.10]{MR2583950}, and the latter by the Lusin-Novikov Theorem. We obtain:
+
+\begin{lemma}\label{lemmaaperiodicsupport}
+Suppose $G$ is an aperiodic pmp groupoid. Then for all $A\in\operatorname{MAlg}(G^{(0)})$, there exists $\alpha\in[G]$ such that $\operatorname{supp}\alpha=A$.
+\end{lemma}
+
+\begin{theorem}\label{theoremfirstimportant}
+An aperiodic pmp groupoid $G$ is sofic if and only if the full group $[G]$ is metrically sofic.
+\end{theorem}
+\begin{proof}[Sketch of proof]
+If $G$ is sofic then $[G]$ is metrically sofic by the comment after Definition \ref{definitionmetricallysofic}.
+
+Conversely, let $\theta=\left\{\theta_k:[G]\to[[Y_k^2]]\right\}$ be a sofic approximation of $[G]$. Lemma \ref{lemmaaperiodicsupport} allows us to define a sequence of maps $\phi=\left\{\phi_k:\operatorname{MAlg}(G^{(0)})\to\operatorname{MAlg}(Y_k)\right\}$ by $\phi_k(A)=\operatorname{supp}\theta_k(\alpha)$, where $\alpha\in[G]$ is any element with $\operatorname{supp}\alpha=A$. This way, $\phi(A)$ is independent of the choice of $\alpha$ up to null sets, which are disconsidered in sofic approximations. The pair $(\theta,\phi)$ is asymptotically covariant, in the sense that for all $\alpha\in[G]$ and $A\in\operatorname{MAlg}(X)$, the distance between $\phi_k(r(\alpha A))$ and $\theta_k(\alpha)(\phi(A))$ converges to zero. After verifying that $\phi$ is moreover asymptotically order and measure-preserving, we simply define a sofic approximation $\pi=\left\{\pi_k\right\}$ of $G$ by $\pi(\alpha)=\theta(\widetilde{\alpha})\theta(s(\alpha))$, where $\widetilde{\alpha}\in[G]$ is chosen so that $\alpha\subseteq\widetilde{\alpha}$.\qedhere
+\end{proof}
+
+By using similar techniques, Theorem \ref{theoremfirstimportant} can be extended to all pmp groupoids $G$ such that $|s^{-1}(x)|\geq 2$ for a.e.\ $x\in G^{(0)}$.
+
+\section*{Acknowledgements}
+The results in this note are part of the author's Ph.D.\ thesis at the University of Ottawa, written under supervision of Thierry Giordano and Vladimir Pestov. The author also thanks the referee for the valuable comments.
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+\end{document}

@@ -1,0 +1,57 @@
+No teorema abaixo nós provaremos uma igualdade entre dois conjuntos, e portanto vale a pena relembrar o modo como que isto deve ser feito.
+
+Sejam $A$ e $B$ dois conjuntos. Então denotamos ``$A\subseteq B$'' se todo elemento de $A$ também é um elemento de $B$, ou em outras palavras se uma pertinência do tipo ``$x\in A$'' implica que ``$x\in B$''.
+
+O ``Axioma da extensão'' nos diz que ``dois conjuntos são iguais se, e somente se, os dois conjuntos contêm exatamente os mesmos elemento''. 
+
+\begin{theorem}
+	Sejam $V$ um espaço vetorial e $S$ um subconjunto de $V$. Então $\operatorname{span}(S)=\langle S\rangle$.
+\end{theorem}
+\begin{proof}
+	Temos que demonstrar uma igualdade de dois conjuntos. Para isto, devemos demonstrar que um conjunto está contido no outro e vice-versa.
+	
+	Primeiro, vamos demonstrar que $\operatorname{span}(S)\subseteq\langle S\rangle$. Consideremos um elemento arbitrário $x$ de $\operatorname{span}(S)$. Pela definição de span, $x$ é uma combinação linear de elementos de $S$, i.e.,
+	\[x=\lambda_1 s_1+\lambda_2 s_2+\cdots+\lambda_n s_n\]
+	onde $\lambda_1,\ldots,\lambda_n\in\mathbb{R}$, $s_1,\ldots,s_n\in S$.
+	
+	Para demonstrar que $x$ pertence a $\langle S\rangle$, considere um subespaço vetorial arbitrário $W$ de $V$ que contenha $S$. Como combinações lineares de elementos de $W$ resultam em elementos de $W$, então em particular
+	\[x=\lambda_1s_1+\cdots+\lambda_n s_n\in W,\]
+	visto que $s_i\in S\subseteq W$ para todo $i$.
+	
+	Isto mostra que $x$ está em qualquer subespaço de $V$ que contenha $S$. Como $\langle S\rangle$ é, por definição, a intersecção destes subespaços, então $x$ pertence a $\langle S\rangle$.
+	
+	Assim, demonstramos que todo elemento de $\operatorname{span}(S)$ pertence a $\langle S\rangle$. Isto significa que $\operatorname{span}(S)\subseteq\langle S\rangle$.
+	
+	Agora vamos demonstrar que $\langle S\rangle\subseteq\operatorname{span}(S)$. Para isto, demonstraremos que $\operatorname{span}(S)$ é um subespaço de $V$ que contém $S$. 
+	
+	Temos dois casos a considerar: Se $S$ é vazio então temos (conforme as convenções usuais) que $\operatorname{span}(\varnothing)=\left\{0\right\}$ é um subespaço que contém $\varnothing$. Consideremos então o caso em que $S$ é não-vazio:
+	
+	\begin{enumerate}
+		\item \uline{$S\subseteq\operatorname{span}(S)$.}
+		
+		De fato, seja $s\in S$. Temos que $s=1\cdot s$ é uma combinação linear de elementos de $S$, e portanto pertence a $\operatorname{span}(S)$.
+		
+		Logo \uline{$S\subseteq \operatorname{span}(S)$.}
+		\item $\operatorname{span}(S)$ é não-vazio.
+		
+		De fato, pelo item acima temos que $S\subseteq\operatorname{span}(S)$. Como $S$ é não-vazio por hipótese então $\operatorname{span}(S)$ também é não-vazio.
+		
+		\item \uline{Se $x,y\in\operatorname{span}(S)$ então $x+y\in\operatorname{span}(S)$.}
+		
+		Como $x$ e $y$ são combinações lineares de elementos de $S$, podemos reescrever
+		\[x=\alpha_1 s_1+\cdots+\alpha_n s_n\]
+		e
+		\[y=\beta_1 t_1+\cdots+\beta_m t_m\]
+		para certos escalares $\alpha_i,\beta_j$ e elementos $s_i,t_j$ de $S$. Assim,
+		\[x+y=\alpha_1 s_1+\cdots+\alpha_n s_n+\beta_1 t_1+\cdots+\beta_m t_m\]
+		também é uma combinação linear de elementos de $S$, e portanto um elemento de $\operatorname{span}(S)$.
+		
+		\item \uline{Se $x\in\operatorname{span}(S)$ e $\lambda\in\mathbb{R}$, então $\lambda x\in\operatorname{span}(S)$.}
+		
+		O argumento é similar ao do item anterior, e será omitido.
+	\end{enumerate}
+
+	Os items 2.-4. acima mostram que $\operatorname{span}(S)$ é um subespaço vetorial de $V$, e que contém $S$ pelo item 1. Como $\langle S\rangle$ é definido como a intersecção de todos os subespaços com esta propriedade, então em particular concluímos que $\langle S\rangle\subseteq\operatorname{span}(S)$.
+	
+	Resumindo, nós demonstramos que $\operatorname{span}(S)\subseteq\langle S\rangle$, e reciprocamente que $\langle S\rangle\subseteq\operatorname{span}(S)$. Isto significa que $\operatorname{span}(S)=\langle S\rangle$.
+	\end{enumerate}

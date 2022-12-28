@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class="section">1.1. Groupoids</h2>
+
+<h3 class="subsection">1.1.1. Groupoids as directed graphs</h3>
+
+<!-- 1.1.1 -->
+<div class="definition">
+	<p><span class="envidentifier">Definition 1.1.1
+	<span style="font-weight:normal;">([<span class='ref' data-tag='MR1724106'></span>])</span></span>
+	A <em>directed graph</em> is a tuple $\mathcal{G}=(\mathcal{G}^{(0)},\mathcal{G}^{(1)},\so,\ra)$, where $\mathcal{G}^{(0)}$ is a set whose elements are called <em>vertices</em>, $\mathcal{G}^{(1)}$ is a set whose elements are called <em>edges</em> or <em>arrows</em>, and $\mathfrak{s}$ and $\mathfrak{r}$ are maps from $\mathcal{G}^{(1)}$ to $\mathcal{G}^{(0)}$, called respectively the <em>source</em> and <em>range</em> maps.</p>
+</div>
+
+<p>
+Directed graphs can be depicted as points, representing the vertices, and arrows, representing the edges, pointing from its <em>source</em> to its <em>range</em>. 
+<div class="equation">\[
+	\xymatrix{
+	\so(a)\ar[rr]^a&&\ra(a)
+	}
+	\qquad
+	\xymatrix{
+	\bullet\ar@/_1em/[rr]\ar@<2pt>[rd]\ar@<-2pt>[rd]&&\bullet\ar@/^-1em/[ll]\\
+	&\bullet&
+	}
+\]</div>
+It should be noted that the directed graphs we consider here are sometimes called <em>multigraphs</em> or <em>pseudographs</em>, since we allow loops and multiple edges between two vertices.
+</p>
+
+<!-- 1.1.2 -->
+<div class="example" id="examplegraphtriangle">
+<p>
+<span class="envidentifier">Example 1.1.2</span> Let $X$ be a set and $R$ any binary relation on $X$, i.e., a subset of $X^2$. Define a directed graph $\mathcal{G}$ by letting $\mathcal{G}^{(0)}=X$, $\mathcal{G}^{(1)}=R$, $\mathfrak{s}(y,x)=x$ and $\mathfrak{r}(y,x)=y$ for all $(y,x)\in R$.
+</p>
+<p>
+As a sub-example, let $X=\left\{a,b,c\right\}$ and $R=\left\{(b,a),(c,b),(a,c)\right\}$. The associated graph can be depicted as
+<div class="equation">\[
+	\xymatrix{
+	&b\ar[rd]&\\
+	a\ar[ur]&&c\ar[ll]
+	}
+\]</div></p>
+</div>
+
+<!-- 1.1.3 -->
+<div class="example" id="examplegraphintegers">
+<p>
+<span class="envidentifier">Example 1.1.3</span> Let $\mathcal{G}^{(0)}=\mathcal{G}^{(1)}=\mathbb{Z}$, $\mathfrak{s}(n)=n$ and $\mathfrak{r}(n)=n+1$. This directed graph can be depicted as
+<div class="equation">\[
+\xymatrix{
+\cdots\ar[r]&-2\ar[r]&-1\ar[r]&0\ar[r]&1\ar[r]&2\ar[r]&\cdots\ar[r]&n\ar[r]&n+1\ar[r]&\cdots
+}
+\]</div></p>
+</div>
+
+
+<!-- 1.1.4 -->
+<div class="example" id="examplegraphdynamicalsystem">
+<p>
+<span class="envidentifier">Example 1.1.4</span> Generally, a discrete-time dynamical system consists of a set $X$ and a collection $\mathcal{F}$ of partial functions of $X$, that is, functions $f:\dom(f)\to X$ where $\dom(f)\subseteq X$. Given such data, we define a directed graph $\mathcal{G}$ by letting $\mathcal{G}^{(0)}=X$, $\mathcal{G}^{(1)}=\left\{(f,x):f\in\mathcal{F},x\in\dom(f)\right\}$, $\so(f,x)=x$ and $\ra(f,x)=f(x)$.
+</p>
+<p>	
+This directed graph $\mathcal{G}$ is depicted by drawing elements of $X$ as points and arrows from points of $X$ to their image under elements of $\mathcal{F}$, whenever defined.
+</p>
+<p>
+As a sub-example, let $X=\mathbb{Z}$, and $f_i(n)=n+i$ for $i=0,1,2$. The associated graph is depicted as
+<div class="equation">\[
+\xymatrix{
+\cdots\ar[r]\ar@/_2ex/[rr]&
+	-2\ar[r]\ar@/_2ex/[rr]\ar@(ul,ur)[]&
+		-1\ar[r]\ar@/_2ex/[rr]\ar@(ul,ur)[]&
+			0\ar[r]\ar@/_2ex/[rr]\ar@(ul,ur)[]&
+				1\ar[r]\ar@/_2ex/[rr]\ar@(ul,ur)[]&
+					2\ar[r]\ar@(ul,ur)[]&
+						\cdots\\
+						&&&&&
+}
+\]</div>
+</p>
+</div>
+
+<p>
+In order to obtain a suitable notion for the composition of arrows, we need to introduce the concept of a <em>category</em>.
+</p>
+
+<!-- 1.1.5 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.1.5</span><!--\nomenclature[G]{$\mathcal{G}_x$, $\mathcal{G}^y$, $\mathcal{G}_x^y$}{Arrows with specified source and range}--> Let $\mathcal{G}=(\mathcal{G}^{(0)},\mathcal{G}^{(1)},\so,\ra)$ be a directed graph. Given vertices $x,y\in\mathcal{G}^{(0)}$, denote by
+<ul>
+	<li> $\mathcal{G}_x=\mathfrak{s}^{-1}(x)$, the set of arrows leaving from $x$;</li>
+	<li> $\mathcal{G}^y=\mathfrak{r}^{-1}(y)$, the set of arrows arriving at $y$;</li>
+	<li> $\mathcal{G}_x^y=\mathcal{G}^y\cap\mathcal{G}_x$, the set of arrows from $x$ to $y$.</li>
+</ul></p>
+</div>
+
+<!-- 1.1.6 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.1.6</span> A <em>small category</em> consists of a directed graph $\mathcal{C}=(\mathcal{C}^{(0)},\mathcal{C}^{(1)},\mathfrak{s},\mathfrak{r})$ together with the set $\mathcal{C}^{(2)}=\left\{(a,b)\in\mathcal{C}^{(1)}\times\mathcal{C}^{(1)}:\mathfrak{s}(a)=\mathfrak{r}(b)\right\}$ and a <em>composition</em> map $\mathcal{C}^{(2)}\to \mathcal{C}^{(1)}$, $(a,b)\mapsto ab$, satisfying the following properties:
+<ol class="roman">
+	<li id="definitionsmallcategoryassociativity"> If $(a,b)$ and $(b,c)\in\mathcal{C}^{(2)}$, then $(a,bc),(ab,c)\in\mathcal{C}^{(2)}$ and $a(bc)=(ab)c$.</li>
+	<li id="definitionsmallcategoryidentities"> For every $x\in\mathcal{C}^{(0)}$, there exists $\operatorname{id}_x\in \mathcal{C}_x^x$ such that if $a\in\mathcal{C}_x$ and $b\in\mathcal{C}^ x$, then $a\operatorname{id}_x=a$ and $\operatorname{id}_xb=b$.</li>
+</ol>
+The set $\mathcal{C}^{(2)}$ is called the set of <em>composable pairs</em>.<!--\index{Composable}-->
+</p>
+</div>
+
+<p>
+General categories are defined in the same manner, however we allow $\mathcal{C}^{(0)}$ and $\mathcal{C}^{(1)}$ to be general classes instead of sets, however we will restrict our study to sets.
+</p>
+
+<p>
+Note that $\mathcal{C}^{(2)}=\bigcup_{x\in\mathcal{C}^{(0)}}\mathcal{C}_x\times\mathcal{C}^x$, and so the pair $(a,b)$ of arrows in a category $\mathcal{C}$ is <em>composable</em> if they meet "tip-to-tail":
+<div class="equation">\[
+\xymatrix{
+\underset{\so(b)}{\bullet}\ar[r]^b\ar@/_4ex/[rr]_{ab}
+	&{\underset{\ra(b)=\so(a)}{\bullet}}\ar[r]^b
+		&{\underset{\ra(a)}{\bullet}}
+}
+\]</div>
+</p>
+
+<p>
+The arrow $\operatorname{id}_x\in\mathcal{C}_x^x$ in item (<span class='ref' data-tag='definitionsmallcategoryidentities'></span>) is unique for each $x\in\mathcal{C}^{(0)}$, and it is called the <em>unit</em> at $x$. It is customary to identify each $x\in\mathcal{C}^{(0)}$ with its respective unit, thus viewing $\mathcal{C}^{(0)}$ as a subset of $\mathcal{C}^{(1)}$. This allows us, moreover, to identify a category with its set of arrows.
+</p>
+
+<p>
+Moreover, from item (<span class='ref' data-tag='definitionsmallcategoryassociativity'></span>) we obtain, whenever $(a,b)\in\mathcal{C}^{(2)}$, $(ab,\id_{\so(b)})\in\mathcal{C}^{(2)}$, and so $\so(ab)=\ra(\id_{\so(b)})=\so(b)$ and similarly $\ra(ab)=\ra(a)$.
+</p>
+
+<!-- 1.1.7 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.1.7</span> A <em>functor</em> between categories $\mathcal{C}$ and $\mathcal{D}$ is a map $\phi:\mathcal{C}\to\mathcal{D}$ satisfying:
+<ol class="roman">
+	<li> $\phi(\mathcal{C}^{(0)})\subseteq\mathcal{D}^{(0)}$.</li>
+	<li> If $(a,b)\in\mathcal{C}^{(2)}$, then $(\phi(a),\phi(b))\in\mathcal{D}^{(2)}$ and $\phi(ab)=\phi(a)\phi(b)$.</li>
+</ol>
+A functor $\phi$ is an <em>isomorphism</em> if it is bijective and $\phi^{-1}$ is also a functor.</p>
+</div>
+
+<!-- 1.1.8 -->
+<div class="example" id="examplepreordersarecategories">
+	<p><span class="envidentifier">Example 1.1.8</span>
+	Let $X$ be a set and $\leq$ be a preorder on $X$ (i.e., a reflexive and transitive relation), and $R=\left\{(y,x):x\leq y\right\}$ the associated subset of $X^2$. Let $\mathcal{G}$ be the directed graph associated with this pair $(X,R)$ as in Example <span class='ref' data-tag='examplegraphtriangle'></span>. In this case, we have $\mathcal{G}^{(2)}=\left\{((z,y),(y,x)):(y,x),(z,y)\in R\right\}$, so defining composition by $(z,y)(y,x)=(z,x)$ we obtain a category structure on $\mathcal{G}$.
+	</p>
+
+	<p>
+	In fact, since $R$ is the set of arrows of $\mathcal{G}$ we identify $\mathcal{G}$ and $R$, and moreover, $R^{(0)}=\left\{(x,x):x\in X\right\}$ can be obviously identified with $X$ via $x\mapsto (x,x)$.
+	</p>
+
+	<p>
+	The categories $\mathcal{C}$ obtained in this manner (up to isomorphism) are precisely those such that, for every $x,y\in\mathcal{C}^{(0)}$, $\mathcal{C}_x^y$ has at most one arrow.
+</p>
+</div>
+
+<!-- 1.1.9 -->
+<div class="example" id="examplemonoidsarecategories">
+	<p><span class="envidentifier">Example 1.1.9</span>
+	Let $M$ be a monoid (see Definition <span class='ref' data-tag='definitioninversesemigroup'></span>).
+	<script>
+		var e = $("<div></div>");
+		$( "body").append(e);
+		e.attr("id", "refdefinitioninversesemigroup");
+		(e span).removeattr("id");
+		e.attr("class", "a");
+		$("#refdefinitioninversesemigroup").load( 'is.html #definitioninversesemigroup' );
+	</script>
+	Let $M^{(0)}=\left\{\ast\right\}$ be a singleton set, $M^{(1)}=M$ and $\so(m)=\ra(m)=\ast$ for every $m\in M$. In this case $M^{(2)}=M\times M$, and define composition as the monoid operation of $M$. This allows us to see $M$ as a category.
+	</p>
+	
+	<p>
+	Conversely, if $\mathcal{C}$ is any category and $x\in\mathcal{C}^{(0)}$, then $\mathcal{C}_x^x$ is a monoid. If $\mathcal{C}^{(0)}=\left\{x\right\}$ is a singleton, then $\mathcal{C}$ is the category associated with the monoid $\mathcal{C}_x^x$ as above.
+	</p>
+</div>
+
+<!-- 1.1.10 -->
+<div class="example" id="monoidactioncategory">
+	<p><span class="envidentifier">Example 1.1.10</span>
+	Let $\theta$ be a global action (see Definition <span class='ref' data-tag='definitionactionspartialandglobal'></span>) of a monoid $M$ on a set $X$, denoted by concatenation. We define the category $M\ltimes_\theta X$ whose underlying graph is similar to the one as in Example <span class='ref' data-tag='examplegraphdynamicalsystem'></span>.
+	</p>
+
+	<p>
+	Namely, let $(M\ltimes_\theta X)^{(0)}=X$, $(M\ltimes_\theta X)^{(1)}=M\times X$, $\mathfrak{s}(m,x)=x$, $\mathfrak{r}(m,x)=mx$. In this case, $(M\ltimes_\theta X)^{(2)}=\left\{((m,nx),(n,x)):x\in X,m,n\in M\right\}$, so we define the composition as $(m,nx)(n,x)=(mn,x)$.
+	</p>
+
+	<p>
+	Note that if $X$ is a singleton $X=\left\{*\right\}$ and $M$ acts on $X$ trivially, we recover Example <span class='ref' data-tag='examplemonoidsarecategories'></span>.
+	</p>
+</div>
+
+<p>
+We say that an arrow $a$ of a category $\mathcal{C}$ is <em>invertible</em> if there exists another arrow $b$ such that $(a,b),(b,a)\in \mathcal{C}^{(2)}$, $ba=\mathfrak{s}(a)$ and $ab=\mathfrak{r}(a)$. In this case, the arrow $b$ is unique and it is denoted by $a^{-1}$, we call $a^{-1}$ the <em>inverse</em> of $a$, and $a$ is called <em>invertible</em>.
+</p>
+<p>
+It is standard fact that $(a^{-1})^{-1}=a$ and $(ab)^{-1}=b^{-1}a^{-1}$ whenever $a$ and $b$ are invertible and $(a,b)\in\mathcal{C}^{(2)}$.
+</p>
+
+<!-- 1.1.11 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.1.11
+<span style="font-weight:normal;">([<span class='ref' data-tag='MR1724106'>135</span>])</span></span>
+A <em>groupoid</em> $\mathcal{G}$ is a small category in which all arrows are invertible.
+</p>
+</div>
+
+<!-- 1.1.12 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.1.12</span>
+Every group is a groupoid, in the same way as Example <span class='ref' data-tag='examplemonoidsarecategories'></span>.
+</p>
+</div>
+
+<!-- 1.1.13 -->
+<div class="example" id="exampletransformationgroupoid">
+<p><span class="envidentifier">Example 1.1.13</span>
+If $\theta$ is an action of a group $G$ on a set $X$ (as usual, denoted by concatenation), then the category $G\ltimes_\theta X$ (as in Example <span class='ref' data-tag='monoidactioncategory'></span>) is a groupoid, which we call a <em>transformation groupoid</em>. The inverse of an arrow $(g,x)\in G\ltimes_\theta X$ is $(g^{-1},gx)$.
+<div class="equation">\[
+\xymatrix{
+x\ar[r]^g\ar@/_2ex/[rr]_{hg}
+	&gx\ar[r]^h
+		&(hg)x
+}
+\]</div>
+When there is no risk of confusion, we will drop the index $\theta$ and denote this groupoid simply as $G\ltimes X$.
+</p>
+</div>
+
+<!-- 1.1.14 -->
+<div class="example" id="exampleequivalencerelationsarecategories">
+<p><span class="envidentifier">Example 1.1.14</span>
+A preorder $R$ on a set $X$, regarded as a category as in Example <span class="ref" data-tag='examplepreordersarecategories'></span>, is a groupoid if and only if $R$ is an equivalence relation. (See Definition <span class='ref' data-tag='definitionprincipalgroupoid'></span> below.)
+</p>
+</div>
+
+<!-- 1.1.15 -->
+<div class="example" id="exampleorbitgroupoid">
+<p><span class="envidentifier">Example 1.1.15</span>
+If $\mathcal{G}$ is a groupoid, then the image of the map $(\ra,\so):\mathcal{G}\to\mathcal{G}^{(0)}\times\mathcal{G}^{(0)}$, $(\ra,\so)(a)=(\ra(a),\so(a))$, is an equivalence relation on $\mathcal{G}^{(0)}$, called the <em>orbit equivalence relation</em>, which we will denote by $\mathcal{R}(\mathcal{G})$. An $\mathcal{R}(\mathcal{G})$-equivalence class is called an <em>orbit</em>.
+</p>
+<ul>
+	<li> If $\theta$ is an action of a group $G$ on a space $X$, then $\mathcal{R}(G\ltimes_\theta X)$ is the usual orbit equivalence relation of the action $\theta$, so orbits of $G\ltimes_\theta X$ coincide with orbits of $\theta$. We will abuse notation and denote, in this case, the <em>orbit groupoid</em> as $\mathcal{R}(\theta)=\mathcal{R}(G\ltimes_\theta X)$.</li>
+	<li> If $R$ is an equivalence relation on a set $X$, then the orbit of an element $x\in X$ is the $R$-equivalence class of $x$.</li>
+</ul>
+</div>
+
+<p>
+In fact, it is possible to determine the groupoids which are isomorphic to an equivalence relation, in the sense above, and those are called the <em>principal groupoids</em>.
+</p>
+
+<!-- 1.1.16 -->
+<div class="definition" id="definitionisotropygroup">
+<p><span class="envidentifier">Definition 1.1.16</span>
+If $\mathcal{G}$ is a groupoid and $x\in\mathcal{G}^{(0)}$, we call the set $\mathcal{G}_x^x$ the <em>isotropy group</em> of $\mathcal{G}$ at $x$.
+</p>
+</div>
+
+<p>
+Note that $\mathcal{G}_x^x$ is indeed a group with the operation inherited from $\mathcal{G}$.
+</p>
+
+<!-- 1.1.17 -->
+<div class="definition" id="definitionprincipalgroupoid">
+<p><span class="envidentifier">Definition 1.1.17</span>
+A groupoid $\mathcal{G}$ is <em>principal</em> if $\mathcal{G}_x^x$ is a trivial group for all $x\in\mathcal{G}^{(0)}$.
+</p>
+</div>
+
+<!-- 1.1.18 -->
+<div class="example" id="examplewhentransformationgroupoidisprincipal">
+<p><span class="envidentifier">Example 1.1.18</span>
+If $\theta$ is an action of a group $G$ on a set $X$, then the transformation groupoid $G\ltimes_\theta X$ is principal if, and only if, the action $\theta$ is free: Indeed, for all $x\in X$, let $G_x=\left\{g\in G:gx=x\right\}$ be the stabilizer of $x$, so the map
+\[G_x\to (G\ltimes_\theta X)_x^x,\qquad g\mapsto (g,x)\]
+is a group isomorphism. Thus $G\ltimes_\theta X$ is principal if and only if $G_x$ is trivial for all $x\in X$, i.e., $\theta$ is free.
+</p></div>
+
+<!-- 1.1.19 -->
+<div class="proposition" id="principalequalequivalencerelation">
+<p><span class="envidentifier">Proposition 1.1.19</span>
+A groupoid $\mathcal{G}$ is principal if and only if there exists an equivalence relation $R$ on a set $X$ which is isomorphic to $\mathcal{G}$ as a groupoid.
+</p>
+</div>
+
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofofprincipalequalequivalencerelation');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofprincipalequalequivalencerelation">
+	<p>
+	Every equivalence relation, regarded as a groupoid, is principal, and conversely if $\mathcal{G}$ is a principal groupoid then the map $(\ra,\so):\mathcal{G}\to\mathcal{R}(\mathcal{G})$ is a groupoid isomorphism.<span class="qed"></span>
+	</p>
+</div>
+
+<p>
+In the following sections and chapters, we will consider topological versions of these constructions, and generalize the transformation groupoids to <em>groupoids of germs</em> of partial actions of inverse semigroups.
+</p>
+
+<h3 class="subsection">1.1.2 Groupoids as algebraic structures</h3>
+
+<p>
+A groupoid can be alternatively (algebraically) defined as a set $\mathcal{G}$ endowed with a partial binary map $\mathcal{G}^{(2)}\to\mathcal{G}$, $(a,b)\mapsto ab$, where $\mathcal{G}^{(2)}$ is a subset of the product $\mathcal{G}\times\mathcal{G}$, satisfying
+<!-- list style -->
+<style>
+ol.gnumber {
+    counter-reset: gnumber;
+	position:relative;
+}
+ol.gnumber > li {
+    list-style: none;
+}
+ol.gnumber > li:before {
+  counter-increment: gnumber;
+  content: "(G" counter(gnumber) ")";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+</style>
+<!-- end list style -->
+<ol class="gnumber">
+	<li id="algebraicdefinitiongroupoid1">If $(a,b)$ and $(b,c)\in\mathcal{G}^{(2)}$, then $(ab,c)$ and $(a,bc)\in\mathcal{G}^{(2)}$ and $(ab)c=a(bc)$;</li>
+	<li id="algebraicdefinitiongroupoid2">For all $a\in\mathcal{G}$, there is $p\in\mathcal{G}$ such that $(p,a)\in\mathcal{G}^{(2)}$ and if $(a,b)\in\mathcal{G}^{(2)}$, then $(pa)b=b$;</li>
+	<li id="algebraicdefinitiongroupoid3">For all $a\in\mathcal{G}$, there is $q\in\mathcal{G}$ such that $(a,q)\in\mathcal{G}^{(2)}$ and if $(c,a)\in\mathcal{G}^{(2)}$, then $c(aq)=c$.</li>
+</ol>
+(note that the equations at the end of (<span class='ref' data-tag='algebraicdefinitiongroupoid2'></span>) and (<span class='ref' data-tag='algebraicdefinitiongroupoid3'></span>) make sense by (<span class='ref' data-tag='algebraicdefinitiongroupoid1'></span>).
+</p>
+
+<p>
+Indeed, any groupoid, in the categorical sense, already comes with the structure described above. Conversely, if $\mathcal{G}$ is a groupoid as described above, the elements $p$ and $q$ in (<span class='ref' data-tag='algebraicdefinitiongroupoid2'></span>) and (<span class='ref' data-tag='algebraicdefinitiongroupoid3'></span>) are unique with those properties, and in fact they are equal so we denote $p=q=a^{-1}$. Define the source and range maps as $\so(a)=a^{-1}a$ and $\ra(a)=aa^{-1}$, and let $\mathcal{G}^{(0)}=\ra(\mathcal{G})=\so(\mathcal{G})$, $\mathcal{G}^{(1)}=\mathcal{G}$. This gives us all the remaining graph-theoretical structure.
+</p>
+
+<p>
+Therefore, in order to describe a groupoid $\mathcal{G}$, it is enough to simply describe a partial binary operation on $\mathcal{G}$, which we identify with $\mathcal{G}$ as a set, satisfying (<span class='ref' data-tag='algebraicdefinitiongroupoid1'></span>)-(<span class='ref' data-tag='algebraicdefinitiongroupoid3'></span>) above, so the remaining structure is uniquely determined.
+</p>
+
+<!-- 1.1.20 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.1.20</span>
+A map $\phi:\mathcal{G}\to\mathcal{H}$ between two groupoids $\mathcal{G}$ and $\mathcal{H}$ is a <em>morphism</em> if $(a,b)\in\mathcal{G}^{(2)}$ implies $(\phi(a),\phi(b))\in\mathcal{H}^{(2)}$, and $\phi(ab)=\phi(a)\phi(b)$.
+</p>
+</div>
+
+<!-- 1.1.21 -->
+<div class="proposition" id ="propositiongroupoidmorphism">
+<p><span class="envidentifier">Proposition 1.1.21</span>
+Let $\phi:\mathcal{G}\to\mathcal{H}$ be a groupoid morphism. Then
+<ol class="alphpar">
+	<li> $\phi(a^{-1})=\phi(a)^{-1}$ for all $a\in\mathcal{G}$;</li>
+	<li> $\phi(\mathcal{G}^{(0)})\subseteq\mathcal{H}^{(0)}$;</li>
+	<li> $\phi(\mathfrak{s}(a))=\mathfrak{s}(\phi(a))$ and $\phi(\mathfrak{r}(a))=\mathfrak{r}(\phi(a))$ for all $a\in\mathcal{G}$;</li>
+	<li> If $\phi$ is invertible then $\phi^{-1}$ is also a morphism.</li>
+</ol>
+(In particular, groupoids morphisms are precisely their functors.)</p>
+</div>
+
+<!-- For some reason the margin is really big here... -->
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofofpropositiongroupoidmorphism');event.preventDefault();">Proof</a>
+<div class="proof" id="proofofpropositiongroupoidmorphism">
+<ol class="alphpar">
+	<li> Since $\phi(a)=\phi(a)\phi(a^{-1})\phi(a)$, we can multiply both sides on the left and on the right by $\phi(a)^{-1}$ and obtain $\phi(a)^{-1}=\phi(a^{-1})$.</li>
+	<li> readily follows from (a).</li>
+	<li> also immediatelly follows from (a).</li>
+	<li> Suppose $\phi$ is invertible and $(\phi(a),\phi(b))\in\mathcal{H}^{(2)}$. From (c),
+\[\phi(\mathfrak{s}(a))=\mathfrak{s}(\phi(a))=\mathfrak{r}(\phi(b))=\phi(\mathfrak{r}(b))\]
+so $\mathfrak{s}(a)=\mathfrak{r}(b)$ and thus $\phi^{-1}(\phi(a)\phi(b))=\phi^{-1}(\phi(ab))=ab=\phi^{-1}(\phi(a))\phi^{-1}(\phi(b))$, therefore $\phi^{-1}$ is a morphism.</li>
+</ol><span class="qed"></span>
+</div>
+
+<!-- 1.1.22 -->
+<div class="example" id="exampleunitgroupoid">
+<p><span class="envidentifier">Example 1.1.22</span>
+Every set $X$ can be regarded as a groupoid by setting $X^{(2)}=\left\{(x,x):x\in X\right\}$ and the product $xx=x$ for all $x\in X$.
+</p>
+<p>
+Alternatively, let $X^{(2)}$ be the identity equivalence relation on $X$, regarded as a groupoid as in Example <span class='ref' data-tag='exampleequivalencerelationsarecategories'></span>, or let $\left\{1\right\}$ be the trivial group acting (trivially) on $X$ and consider the transformation groupoid $\left\{1\right\}\ltimes X$ as in <span class='ref' data-tag='exampletransformationgroupoid'></span>. Any of the two bijections
+\[\begin{array}{rcl}
+X&\longrightarrow&X^{(2)}\\
+x&\longmapsto&(x,x)
+\end{array}\qquad\text{or}\qquad\begin{array}{rcl}
+X&\longrightarrow&\left\{1\right\}\ltimes X\\
+x&\longmapsto&(1,x)
+\end{array}
+\]
+induces the same groupoid structure on $X$ as above.
+</p>
+<p>
+In any case, the groupoids constructed in this manner are precisely the groupoids $\mathcal{G}$ satisfying $\mathcal{G}^{(0)}=\mathcal{G}$, and these are called the <em>unit groupoids</em>.
+</p>
+</div>
+
+<p>
+The next two examples show that the groupoid structure of a transformation groupoid is not enough to recover the initial group action.
+</p>
+
+<!-- 1.1.23 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.1.23</span>
+Let $G$ be a group acting on two sets $X$ and $Y$. We say that the $G$-spaces $X$ and $Y$ are <em>conjugate</em> if there exist a bijection $F:X\to Y$ satisfying $F(gx)=g F(x)$ for all $g\in G$ and $x\in X$.
+</p>
+<p>
+Clearly, if $X$ and $Y$ are conjugate, then the groupoids $G\ltimes X$ and $G\ltimes Y$ are isomorphic -- namely, $(g,x)\mapsto(g, F(x))$ is an isomorphism -- however the converse is not true.
+</p>
+
+<p>
+Let $G=(\mathbb{Z}/2\mathbb{Z})^2=\langle a,b|a^2=b^2=[a,b]=1\rangle$ and $X=\left\{1,2,3,4\right\}$. We define two actions  $\alpha$ and $\beta$ of $G$ on $X$ on the generators in the following way:
+<div class="equation">\[
+\alpha(a)=(1\ 2),\quad\alpha(b)=(3\ 4),\quad\beta(a)=(1\ 2)(3\ 4)\quad\text{and}\quad\beta(b)=\operatorname{id}_X,
+\]</div>
+where $(i_1\cdots i_n)$ denotes the cycle taking $i_j\mapsto i_{j+1}$. These actions are not conjugate, because $\alpha(a)$ is faithful but $\beta$ is not (even more strongly, there is no automorphism $\zeta$ of $G$ for which $\alpha$ is conjugate to $\beta\zeta$), but the respective transformation groupoids are isomorphic, and the isomorphism can be deduced from the usual depictions of these groupoids:
+<div class="equation">\[
+G\ltimes_\alpha X:\xymatrix{
+\bullet\ar@(dl,ul)[]^b\ar@/^1ex/[r]^a\ar@/^4ex/[r]^{ab}
+	&\bullet\ar@(ur,dr)[]^b\ar@/^1ex/[l]^a\ar@/^4ex/^{ab}[l]
+		&&\bullet\ar@(dl,ul)[]^a\ar@/^1ex/[r]^b\ar@/^4ex/[r]^{ab}
+			&\bullet\ar@(ur,dr)[]^a\ar@/^1ex/[l]^b\ar@/^4ex/^{ab}[l]
+}
+\]</div>
+<div class="equation">\[
+G\ltimes_\beta X:\xymatrix{
+\bullet\ar@(dl,ul)[]^b\ar@/^1ex/[r]^a\ar@/^4ex/[r]^{ab}
+	&\bullet\ar@(ur,dr)[]^b\ar@/^1ex/[l]^a\ar@/^4ex/^{ab}[l]
+		&&\bullet\ar@(dl,ul)[]^b\ar@/^1ex/[r]^a\ar@/^4ex/[r]^{ab}
+			&\bullet\ar@(ur,dr)[]^b\ar@/^1ex/[l]^a\ar@/^4ex/^{ab}[l]
+}
+\]</div>
+</p>
+</div>
+
+<!-- 1.1.24 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.1.24</span>
+Following the previous example, suppose that two groups $G_1$ and $G_2$ act on spaces $X_1$ and $X_2$, respectively, and that the groupoids $G_1\ltimes X_1$ and $G_2\ltimes X_2$ are isomorphic. This clearly implies that $X_1$ and $X_2$ are in bijection, since they are the unit spaces of the respective groupoids, but it is not necessary that $G_1$ and $G_2$ are isomorphic.
+</p>
+<p>
+Let $X=\left\{x,y\right\}$,
+<div class="equation">\[
+G_1=\mathbb{Z}/4\mathbb{Z}=\langle g|g^4=1\rangle\quad\text{and}\quad G_2=(\mathbb{Z}/2\mathbb{Z})^2=\langle a,b|a^2=b^2=[a,b]=1\rangle,
+\]</div>
+and consider actions of $\alpha_1$ of $G_1$ and $\alpha_2$ of $G_2$ on $X$ as
+<div class="equation">\[
+\alpha_1(g)=(x\ y),\qquad \alpha_2(a)=(x\ y),\qquad \alpha_2(b)=\operatorname{id}_X.
+\]</div>
+The map $\Phi:G_1\ltimes X\to G_2\ltimes X$ given by
+<div class="equation">\[
+\Phi(1,x)=(1,x),\quad\Phi(g,x)=(a,x),\quad\Phi(g^2,x)=(b,x),\quad\Phi(g^3,x)=(ab,x),
+\]</div>
+<div class="equation">\[
+\Phi(1,y)=(1,y),\quad\Phi(g,y)=(a,y),\quad\Phi(g^2,y)=(b,y),\quad\Phi(g^3,y)=(ab,y)
+\]</div>
+is an isomorphism, even though $G_1$ and $G_2$ are not isomorphic.
+<div class="equation">\[
+G_1\ltimes_{\alpha_1} X:\xymatrix{
+\bullet\ar@(dl,ul)[]^{g^2}\ar@/^1ex/[r]^g\ar@/^4ex/[r]^{g^3}
+	&\bullet\ar@(ur,dr)[]^{g^2}\ar@/^1ex/[l]^g\ar@/^4ex/^{g^3}[l]
+},\qquad
+G_2\ltimes_{\alpha_2} X:\xymatrix{
+\bullet\ar@(dl,ul)[]^{b}\ar@/^1ex/[r]^a\ar@/^4ex/[r]^{ab}
+	&\bullet\ar@(ur,dr)[]^{b}\ar@/^1ex/[l]^a\ar@/^4ex/^{ab}[l]
+}.
+\]</div></p>
+</div>
+
+<h3 class="subsection">1.1.3. Constructions with groupoids</h3>
+
+<!-- 1.1.25 -->
+<div class="definition" id="definitiongroupoidcoproduct">
+<p><span class="envidentifier">Definition 1.1.25</span>
+Let $\left\{\mathcal{G}_i:i\in I\right\}$ be a family of groupoids. We endow the disjoint union $\mathcal{G}=\sqcup_i \mathcal{G}_i$ with the set of composable pairs $\mathcal{G}^{(2)}=\sqcup_i \mathcal{G}_i^{(2)}$ and the operations which restrict to the initial operation in each $\mathcal{G}_i$. We call this the <em>coproduct</em> of the groupoids $\mathcal{G}_i$.
+</p>
+</div>
+
+<p>
+From the definition of the coproduct we can readily see that $\sqcup \mathcal{G}_i$ satisfies the following universal property: There are canonical morphisms $\iota_i:\mathcal{G}_i\hookrightarrow\mathcal{G}$ (namely, the inclusion maps) such that for every groupoid $\mathcal{H}$ and every family of morphisms $\phi_i:\mathcal{G}_i\to\mathcal{H}$, there exists a unique morphism $\Phi:\mathcal{G}\to\mathcal{H}$ for which $\phi_i=\Phi\circ\iota_i$ for all $i$.
+</p>
+
+<!-- 1.1.26 -->
+<div class="definition">
+<p><span class="envidentifier">Definition 1.1.26</span>
+The <em>product</em> of a family $\left\{\mathcal{G}_i\right\}$ of groupoids is the usual Cartesian product $\prod_i\mathcal{G}_i$ endowed with the partial operation $(a_i)_{i\in I}(b_i)_{i\in I}=(a_ib_i)_{i\in I}$, which is defined when every term $a_ib_i$ is defined.
+</p>
+</div>
+
+<p>
+The product $\prod_i\mathcal{G}_i$ also satisfies the usual universal property: There are canonical morphisms $\pi_j:\prod_i\mathcal{G}_i\to\mathcal{G}_j$ (namely, the $j$-th projection map) such that for every groupoid $\mathcal{H}$ and family of morphisms $\phi_j:\mathcal{H}\to\mathcal{G}_j$, there exists a unique morphism $\Phi:\mathcal{H}\to\prod_i\mathcal{G}_i$ such that $\phi_j=\pi_j\circ \Phi$ for all $j$.
+</p>
+
+<!-- 1.1.27 -->
+<div class="definition">
+<span class="envidentifier">Definition 1.1.27
+<span style="font-weight:normal;">([<span class='ref' data-tag="MR1712872"></span>,
+<span class="ref" data-tag="MR0244443"></span>])</span></span>
+A groupoid is <em>connected</em> or <em>transitive</em> if it has only one orbit (Example <span class='ref' data-tag='exampleorbitgroupoid'></span>), or equivalently if the map $(\ra,\so):\mathcal{G}\to\mathcal{G}^{(0)}\times\mathcal{G}^{(0)}$ is surjective.
+</div>
+
+<!-- 1.1.28 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.1.28</span>
+The only connected equivalence relation on a set $X$ is $X^2$.
+</p></div>
+
+<!-- 1.1.29 -->
+<div class="example">
+<p><span class="envidentifier">Example 1.1.29</span>
+If $\theta$ is an action of a group $G$ on a set $X$, then $G\ltimes_\theta X$ is connected if and only if $\theta$ is transitive.
+</p></div>
+
+<!-- 1.1.30 -->
+<div class="proposition" id="propositioneverygroupoidisacoproductofconnected">
+<p><span class="envidentifier">Proposition 1.1.30</span>
+Every groupoid $\mathcal{G}$ is a coproduct of connected groupoids.
+</p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('proofpropositioneverygroupoidisacoproductofconnected');event.preventDefault();">Proof</a>
+<div class="proof" id="proofpropositioneverygroupoidisacoproductofconnected">
+<p>
+Let us denote by $\operatorname{orb}(\mathcal{G})$ the collection of orbits of elements of $\mathcal{G}^{(0)}$. If $A\in\operatorname{orb}(\mathcal{G})$ then the set $\mathcal{G}_A^A:=\so^{-1}(A)\cap\ra^{-1}(A)$ is a connected subgroupoid of $\mathcal{G}$, and it should be clear that $\mathcal{G}=\sqcup_{A\in\operatorname{orb}(\mathcal{G})}\mathcal{G}_A^A$.<span class="qed"></span>
+</p>
+</div>
+
+<p>
+The next theorem shows that transformation groupoids - or groups and principal groupoids - can be seen as the "building blocks" for general groupoids.
+</p>
+
+<!-- 1.1.31 -->
+<div class="theorem" id="theoremclassificationofgroupoids">
+<p><span class="envidentifier">Theorem 1.1.31</span>
+<ol class="alphpar">
+	<li>Every connected groupoid $\mathcal{G}$ is isomorphic to one of the form $G\times(X^2)$, where $G$ is a group, $X$ is a set and $X^2$ is the coarsest equivalence relation on $X$ as in Example <span class='ref' data-tag='exampleequivalencerelationsarecategories'></span>.</li>
+	<li>Every connected groupoid $\mathcal{G}$ is isomorphic to a transformation groupoid (of a transitive group action).</li>
+	<li>Every groupoid $\mathcal{G}$ is isomorphic to a coproduct of transformation groupoids (of transitive group actions).</li>
+</ol></p>
+</div>
+<a class='proofbutton' href="#" onclick="toggle_visibility('prooftheoremclassificationofgroupoids');event.preventDefault();">Proof</a>
+<div class="proof" id="prooftheoremclassificationofgroupoids">
+<ol class="alphpar">
+	<li><p>Let $v\in\mathcal{G}^{(0)}$ be an arbitrary element, and let $G=\mathcal{G}_v^v$, which is a group with the operation endowed from $\mathcal{G}$. For every $x\in\mathcal{G}^{(0)}$, choose $t_x\in\mathcal{G}_v^x$.
+	</p>
+	<p>
+	The map $G\times(\mathcal{G}^{(0)})^2\to\mathcal{G}$ given by $(g,(y,x))\mapsto t_yg t_x^{-1}$ is a groupoid isomorphism, and its inverse is $a\mapsto(t_{\ra(a)}^{-1}at_{\so(a)},(\mathfrak{r}(a),\mathfrak{s}(a)))$.
+	</p></li>
+	<li><p>By item (a) we just need to consider a groupoid of the form $\mathcal{G}=G\times(X^2)$, where $G$ is a group and $X$ is a set. Endow $X$ with a group structure (<span class='ref' data-tag='footnote1'></span>) and consider the action of $G\times X$ on $X$ as $(g,x)y=xy$.
+	</p>
+	<p>
+	Then the map $(G\times X)\ltimes X\to G\times(X^2)$, $((g,x),y)\mapsto(g,(xy,y))$ is a groupoid isomorphism, and its inverse is $(g,(x,y))\mapsto\left((g,xy^{-1}),y\right).$
+	</p></li>
+	<li> follows immediately from item (b) and the previous proposition.<span class="qed"></span></li>
+</ol>
+
+</div>
+
+</div>
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

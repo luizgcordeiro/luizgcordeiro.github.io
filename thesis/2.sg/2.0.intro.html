@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h1 class='chapter'>Chapter 2. Sofic groupoids</h1>
+
+<p>
+The notion of soficity for groups was introduced by Gromov ([<span class='ref' data-tag='MR1694588'></span>]) in his work on the Gottschalk Surjunctivity Conjecture in Symbolic Dynamics, as a common generalization of both amenable and LEF ("locally embeddable into finite") groups. The terminology "sofic" was later coined by Weiss ([<span class='ref' data-tag='MR1803462'></span>]), and it comes from the Hebrew word for "finite". This class of groups quickly showed its importance, due to both its tractability as well as its generality - In fact, at the moment no group has been shown to be non-sofic.
+</p>
+
+<p>
+Sofic groups can be thought, in a broad sense, as those which obey all formulas which are "almost true" for finite groups. This allows one to prove, with the appropriate care, that several open conjectures for general countable groups actually hold in the sofic case. To list a few:
+<ul>
+	<li> The Gottschalk Surjunctivity Conjecture ([<span class='ref' data-tag='MR1694588'></span>, <span class='ref' data-tag='MR1803462'></span>]);</li>
+	<li> Connes' Embedding Conjecture for their von Neumann algebras ([<span class='ref' data-tag='MR2460675'></span>]);</li>
+	<li> Kaplansky's Direct Finiteness Conjecture ([<span class='ref' data-tag='MR2089244'></span>]);</li>
+	<li> Algebraic Eigenvalues Conjecture ([<span class='ref' data-tag='MR2417890'></span>])</li>
+</ul>
+For a more detailed introduction to soficity and the closely related class of <em>hyperlinear groups</em>, see [<span class='ref' data-tag='MR3408561'></span>].
+</p>
+
+<p>
+More recently, Lewis Bowen ([<span class='ref' data-tag='MR2552252'></span>, <span class='ref' data-tag='MR2901354'></span>]) introduced the notion of <em>sofic entropy</em>, later improved by David Kerr and Hanfeng Li ([<span class='ref' data-tag='MR2813530'></span>, <span class='ref' data-tag='MR2854085'></span>, <span class='ref' data-tag='MR3068400'></span>]), and which can be used to prove that large classes of Bernoulli shifts are non-isomorphic. This direction of work also points to interesting dynamical properties that sofic groups should have, and in particular a precise definition of a soficity for dynamical systems becomes of interest.
+</p>
+
+<p>
+In 2010, Elek and Lippner [<span class='ref' data-tag='MR2566316'></span>] introduced the notion of soficity for equivalence relations in the same spirit as Gromov's original definition - namely, if $\alpha$ is an action of the free group $\mathbb{F}_\infty$ (on infinitely many generators) by measure-preserving automorphisms of a standard probability space $(X,\mu)$, then the orbit equivalence relation $\mathcal{R}(\alpha)$ is sofic if the Schreier graph of the $\mathbb{F}_\infty$-space $X$ can be approximated, in a suitable sense, by Schreier graphs of finite $\mathbb{F}_\infty$-spaces.
+</p>
+
+<p>
+Alternative definitions by Ozawa ([<span class='ref' data-tag='ozawasoficnotes'></span>]) and P&abreve;unescu ([<span class='ref' data-tag='MR2826401'></span>]) describe soficity at the level of the measured semigroup of $R$ or in terms of the action of the <em>full group</em> of $R$ on the measure algebra of the base space. These formulations have the advantages of being easily generalized to probability measure-preserving groupoids, and not depending on group actions. (See Definition <span class='ref' data-tag='definitionsoficgroupoid'></span>.)
+</p>
+
+<p>
+The main goal of this chapter is to describe soficity for probability measure-preserving groupoids in full details, closely relating it to how finite models can be used to describe the given sofic groupoid. We will prove several closure properties for the class of sofic groupoids in <a href='../2.sg/2.3.sg.html'>Section 2.3</a>. The main results of this chapter (Theorems <span class='ref' data-tag='theoremfirstimportant'></span> and <span class='ref' data-tag='theoremsecondimportant'></span>) provide a weakening in the definition of soficity, and answer a question posed in [<span class='ref' data-tag='MR3035288'></span>], using ideas similar to those in Dye's recovery theorem of an equivalence relation from its full group ([<span class='ref' data-tag='MR0131516'></span>]). In the last section we study soficity of transformation groupoids of probability measure-preserving actions of countable groups.
+</p>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+</html>

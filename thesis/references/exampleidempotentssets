@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.2.is.html#exampleidempotentssets'>1.2.14</a>
+<!-- 1.2.14 -->
+<div class="toload example">
+<p><span class="envidentifier">Example 1.2.14</span>
+Given a set $A$, let $\id_A:A\to A$ be the identity function of $A$. Then if $X$ is a set, the idempotent set of $\mathcal{I}(X)$ is
+<div class="equation">\[
+E(\mathcal{I}(X))=\left\{\id_A:A\subseteq X\right\}.
+\]</div>
+Also note that $\id_{A\cap B}=\id_A\id_B$ whenever $A,B\subseteq X$, so by identifying subsets of $X$ with their respective identity functions, the semigroup operation of $\mathcal{I}(X)$ corresponds to intersection of sets. Moreover, $f^*f=\id_{\dom(f)}$ and $ff^*=\id_{\ran(f)}$, so $f^*f$ corresponds to the domain of $f$ and $ff^*$ corresponds to the range of $f$.
+</p>
+</div>

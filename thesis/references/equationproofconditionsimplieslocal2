@@ -1,0 +1,9 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#equationproofconditionsimplieslocal2'>4.4.4</a>
+
+	<div class='toload equation'>\begin{align*}
+		f^*1_Uf(b)
+			&=\begin{cases}
+					1,&\text{if }b=x,\\
+					0,&\text{otherwise.}
+				\end{cases}\tag{4.4.4}
+	\end{align*}</div>

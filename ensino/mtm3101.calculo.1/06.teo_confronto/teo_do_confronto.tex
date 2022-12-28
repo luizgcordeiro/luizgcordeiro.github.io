@@ -1,0 +1,27 @@
+\begin{theorem}
+	Suponha que $f$, $m$ e $M$ são funções, todas definidas em intervalos ao redor de um ponto $a$, e satisfazendo
+	\(m(x)\leq f(x)\leq M(x)\)]
+	para todo $x$ suficientemente próximo de $a$, e que
+	\[\lim_{x\to a}m(x)=\lim_{x\to a}M(x)=L.\]
+	Então $\lim_{x\to a}f(x)=L$.
+\end{theorem}
+
+\begin{proof}
+	Dado $\epsilon>0$, tome $\delta_m,\delta_M>0$ tais que
+	\[0<|x-a|<\delta_m\quad\text{implica que}\quad |m(x)-L|<\epsilon\]
+	e
+	\[0<|x-a|<\delta_M\quad \text{implica que}\quad |M(x)-L|<\epsilon.\]
+	
+	Seja $\delta_1=\min(\delta_m,\delta_M)$. Se $0<|x-a|<\delta$, então
+	\[|m(x)-L|<\epsilon\quad\text{e}\quad|M(x)-L|<\epsilon,\]
+	ou equivalentemente
+	\[L-\epsilon < m(x) < L+\epsilon\quad\text{e}\quad L-\epsilon < M(x) < L+\epsilon.\]
+	Como $m(x)\leq f(x)\leq M(x)$ para $x$ suficientemente próximo de $a$, então existe $\delta_2>0$ tal que $0<|x-a|<\delta_2$ implica nestas desigualdades.
+	
+	Concluímos que se $0<|x-a|<\min(\delta_1,\delta_2)$, então
+	\[L-\epsilon < m(x)\leq f(x)\leq M(x) < L+\epsilon,\]
+	e portanto
+	\[|f(x)-L|<\epsilon.\]
+	
+	Isto prova que $L=\lim_{x\to a}f(x)$.
+\end{proof}

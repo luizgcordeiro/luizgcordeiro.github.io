@@ -1,0 +1,14 @@
+<a class='reflink' href='../1.gis/1.2.is.html#theoremorder'>1.2.22</a>
+<!-- 1.2.22 -->
+<div class="toload theorem">
+<p><span class="envidentifier">Theorem 1.2.22
+<span style="font-weight:normal;">(See [<span class='ref' data-tag='MR0466355'></span>, Section 5.2])</span></span>
+Let $S$ be an inverse semigroup. Then
+<ol class="alphpar">
+	<li> $s\leq t$ if and only if $s^*\leq t^*$;</li>
+	<li> If $s\leq t$ and $z\in S$ then  $sz\leq tz$ and $zs\leq zt$;</li>
+	<li> If $s\in S$, $e\in E(S)$ and $s\leq e$ then $s\in E(S)$;</li>
+	<li> If $s\leq t$ then $s^*s=t^*s=s^*t$ and $ss^*=st^*=ts^*$;</li>
+	<li> If $s\leq t$ and $s^*s=t^*t$ then $s=t$.</li>
+</ol></p>
+</div>

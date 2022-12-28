@@ -1,0 +1,4 @@
+<a class='reflink' href='../1.gis/1.2.is.html#equationpartialisometriesinversesemigroup'>1.2.1</a>
+<div class="toload equation">\[
+\Vert x\Vert=\Vert u(x)\Vert=\Vert u(v(u(x)))\Vert\leq\Vert v(u(x))\Vert\leq\Vert u(x)\Vert\leq\Vert x\Vert\tag{1.2.1}
+\]</div>

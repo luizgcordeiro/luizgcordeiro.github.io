@@ -1,0 +1,33 @@
+<a class='reflink' href='../4.paois/4.8.it.html#theorem484'>4.8.4</a>
+
+<!-- 4.8.4 -->
+<div class='toload theorem'>
+	<p>
+		Let $R$ be an indecomposable ring, $\theta$ and $\gamma$ be ample, topologically free partial actions of inverse semigroups $S$ and $T$ on $X$ and $Y$, respectively, and suppose that the groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are Hausdorff. Then the following are equivalent:
+		<div class='arpar'>
+			<li>
+				The partial actions $\theta$ and $\gamma$ are continuously orbit equivalent.
+			</li>
+			
+			<li>
+				The groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are topologically isomorphic
+			</li>
+			
+			<li>
+				The inverse semigroups $\KB(S\ltimes_\theta X)$ and $\KB(T\ltimes_\gamma Y)$ are isomorphic.
+			</li>
+			
+			<li>
+				The inverse semigroups $[[S\ltimes_\theta X]]$ and $[[T\ltimes_\gamma Y]]$ are isomorphic/
+			</li>
+			
+			<li>
+				There exists a diagonal-preserving algebra (or ring) isomorphism between the Steinberg algebras $A_R(S\ltimes_\theta X)$ and $A_R(T\ltimes_\gamma Y)$.
+			</li>
+			
+			<li>
+				There exists a diagonal-preserving algebra (or ring) isomorphism between the crossed products $A_R(X)\rtimes S$ and $A_R(Y)\rtimes T$ (with respect to the algebraic partial actions induced by $\theta$ and $\gamma$).
+			</li>
+		</div>
+	</p>
+</div>

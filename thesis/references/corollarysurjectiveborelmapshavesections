@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#corollarysurjectiveborelmapshavesections'>1.6.12</a>
+<!-- 1.6.12 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 1.6.12</span>
+	If $X$ and $Y$ are standard Borel spaces and $f:X\to Y$ is a countable-to-one surjective Borel map, then there is a Borel map $g:Y\to X$ such that $fg=\id_Y$, that is, $f$ admits a <em>Borel section</em> (equivalently, there is a Borel subset $X'$ of $X$ such that the restriction $f|_{X'}$ is a Borel isomorphism onto $Y$).
+	</p>
+</div>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço vetorial e \(I\subseteq G\subseteq V\), onde \(V\) é um espaço vetorial, \(G\) é um conjunto gerador para \(V\) e \(I\) é linearmente independente. Então existe uma base \(\mathcal{B}\) de \(V\) tal que \(I\subseteq\mathcal{B}\subseteq G\).
+</p>
+
+</div>
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Nós precisaremos utilizar um teorema <span>&#8220;</span>difícil<span>&#8221;</span>, chamado de <span>&#8220;</span>Lema de Zorn<span>&#8221;</span>. Por simplicidade, primeiro vamos considerar o caso em que \(G\) é finito. Neste caso, \(I\) também é finito. Neste caso, vamos escrever \(G=\left\{g_1,\ldots,g_n\right\}\). Procedemos do seguinte modo:
+</p>
+
+<ul>
+
+<li>
+<p>
+Caso \(I\neq G\) e \(I\cup\left\{g_i\right\}\) seja linearmente independente para algum \(i\), trocamos \(I\) por este conjunto.
+</p>
+
+</li>
+
+<li>
+<p>
+Repetimos o argumento anterior com \(I\cup\left\{g_i\right\}\) no lugar de \(g_i\).
+</p>
+
+</li>
+</ul>
+<p>
+O processo acima vai terminar em algum momento, pois \(G\) é finito. Deste modo, vamos encontrar \(I'\) linearmente independente com \(I\subseteq I'\subseteq G\) tal que \(I'\) é linearmente independente e tal que se \(g\in G\setminus I\), então \(I'\cup\left\{g\right\}\) é linearmente dependente. Neste caso, basta provar que \(I'\) é gerador de \(V\). Ora, para isso, basta provar que todo elemento de \(G\) é uma combinação linear de elementos de \(I'\). O único caso de interesse é caso exista algum elemento \(g\in G\setminus I'\).
+</p>
+<p>
+Neste caso, \(I'\cup\left\{g\right\}\) é linearmente dependente. Assim, existe uma combinação linear nula não-trivial
+<div>
+\begin{equation*}
+\lambda_g g+\sum_{i\in I'}\lambda_i i=0.
+\end{equation*}
+</div>
+Por outro lado, \(I'\) é linearmente independe, por construção. Se \(\lambda_g\) fosse zero, obteríamos uma combinação linear nula não-trivial com elementos de \(I'\), o que não é possível. Portanto, \(\lambda_g\neq 0\), e assim
+<div>
+\begin{equation*}
+g=\sum_{i\in I'}\lambda_g^{-1}\lambda_i i,
+\end{equation*}
+</div>
+de onde segue que \(g\in\langle I'\rangle\), exatamente como queríamos.
+</p>
+<p>
+No caso geral, o Lema de Zorn garante que existe um conjunto \(I'\) que é maximal (com relação à inclusão de conjuntos) que é maximal com respeito às seguintes propriedades:
+</p>
+
+<ol>
+
+<li>
+<p>
+\(I'\) é linearmente independente;
+</p>
+
+</li>
+
+<li>
+<p>
+\(I\subseteq I'\subseteq G\).
+</p>
+
+</li>
+</ol>
+<p>
+Esencialmente o mesmo argumento que no caso finito mostra que \(I'\) é gerador para \(V\), e portanto uma base.
+</p>
+
+</div></body>
+</html>

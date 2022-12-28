@@ -1,0 +1,21 @@
+\begin{theorem}
+	Sejam $V$ e $W$ dois espaços vetoriais de dimensões finitas e iguais, $\dim(V)=\dim(W)$. Dada uma transformação linear $T\colon V\to W$, as seguintes afirmações são equivalentes:
+	\begin{enumerate}
+		\item $T$ é injetiva.
+		\item $T$ é sobrejetiva.
+		\item $T$ é um isomorfismo.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Seja $n=\dim(V)=\dim(W)$. Pelo Teorema do Núcleo e da Imagem, temos que
+	\[n=\dim(\ker(T))+\dim(\operatorname{Im}(T)).\tag{NI}\]
+	
+	Suponhamos então que $T$ é injetiva. Isto significa que $\ker(T)=\left\{0_V\right\}$, ou equivalentemente que $\dim(\ker(T))=0$. Da Equação (NI), obtemos $\dim(\operatorname{Im}(T))=n=\dim(W)$, e portanto $\operatorname{Im}(T)=W$, o que significa que $T$ é sobrejetiva.
+	
+	A recíproca é similar: Se supormos que $T$ é sobrejetiva, então $\dim(\operatorname{Im}(T))=n$, e da Equação (NI) segue que $\dim(\ker(T))=0$, o que significa que $T$ é injetiva.
+	
+	Portanto, $T$ é injetiva se, e somente se, $T$ é sobrejetiva, e neste caso $T$ acaba sendo na verdade bijetiva -- um isomorfismo linear. Reciprocamente, isomorfismos lineares são, pro definição, tanto injetivos quanto sobrejetivos.
+	
+	Isto mostra que qualquer uma das afirmações do teorema implica em qualquer outra, e portanto são todas equivalentes.
+\end{proof}

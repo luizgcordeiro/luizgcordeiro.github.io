@@ -1,0 +1,72 @@
+\begin{definition}
+	Sejam $V$ e $W$ dois espaços vetoriais de dimensão finita. Considere bases ordenadas $\mathcal{B}=\left\{v_1,\ldots,v_n\right\}$ de $V$ e $\mathcal{C}=\left\{w_1,\ldots,w_m\right\}$ de $W$.
+
+	Dada uma transformação linear $T\colon V\to W$, escrevemos cada $T(v_i)$ como uma combinação linear dos elementos de $\mathcal{C}$:
+
+	\[\left\{\begin{array}{c c c c c c c c c}
+			T(v_1)
+				&=&t_{11}w_1
+					&+&t_{21}w_2
+						&+&\cdots
+							&+&t_{m1}w_m\\
+			T(v_2)
+				&=&t_{12}w_1
+					&+&t_{22}w_2
+						&+&\cdots
+							&+&t_{m2}w_m\\
+				&\vdots&
+					& &
+						& &
+							& &\\
+			T(v_j)
+				&=&t_{1j}w_1
+					&+&t_{2j}w_2
+						&+&\cdots
+							&+&t_{mj}w_m\\
+				&\vdots&
+					& &
+						& &
+							& &\\
+			T(v_n)
+				&=&t_{1n}w_1
+					&+&t_{2n}w_2
+						&+&\cdots
+							&+&t_{mn}w_m
+		\end{array}\right.
+		.\]
+
+	A matriz de $T$ em relação às bases $\mathcal{B}$ e $\mathcal{C}$ é definida como a transposta da matriz dos coeficientes $t_{ij}$ acima, e é denotada por $[T]_{\mathcal{B}}^{\mathcal{C}}$:
+	\[[T]_{\mathcal{B}}^{\mathcal{C}}=
+		\begin{bmatrix}
+			t_{11}
+				&t_{12}
+					&\cdots
+						&t_{1n}\\
+			t_{21}
+				&t_{22}
+					&\cdots
+						&t_{2n}\\
+			\vdots
+				&\vdots
+					&\ddots
+						&\vdots\\
+			t_{m1}
+				&t_{m2}
+					&\cdots
+						&t_{mn}
+		\end{bmatrix}.\]
+
+	\hrule
+	
+	Equivalentemente:
+	\begin{itemize}
+		\item A $(i,j)$-ésima entrada de $[T]_{\mathcal{B}}^{\mathcal{C}}$ contém a $i$-ésima coordenada em $\mathcal{C}$ da "$j$-ésima imagem" $T(v_j)$.
+		\item Se escrevermos $[T]_{\mathcal{B}}^{\mathcal{C}}$ em função de suas colunas temos que
+		\[[T]_{\mathcal{B}}^{\mathcal{C}}=
+			\begin{bmatrix}|&&|\\
+			[T(v_1)]^{\mathcal{C}}&\cdots&[T(v_n)]^{\mathcal{C}}\\
+			|&&|\end{bmatrix},
+			\]
+			onde cada vetor coluna ``$[T(v_j)]^{\mathcal{C}}$'' é o vetor coluna das coordenadas de $T(v_j)$ na base $\mathcal{C}$.
+	\end{itemize}
+\end{definition}

@@ -1,0 +1,26 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#lemmaforuniversalpropertyofcrossedproducts'>4.3.14</a>
+
+<!-- 4.3.14 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.3.14</span>
+	Let $(\theta,\phi)$ be a covariant representation of an algebraic partial action $\alpha:S\to\mathcal{I}(A)$.
+	<ol class='alphpar'>
+		<li>
+		If $a_s\in A_s$ then
+		<div class='equation'>\[
+			\phi(a_s)=\theta(s)\theta(s^*)\phi(a_s)=\phi(a_s)\theta(s)\theta(s^*).\tag{4.3.2}
+		\]</div>
+		</li>
+		
+		<li>
+		If $s\leq t$ and $a_s\in A_s$ then $\phi(a_s)\theta(s)=\phi(a_s)\theta(t)$.
+		</li>
+		
+		<li>
+		If $A_s$ has a unit $1_s$ and $(\theta,\phi)$ is non-degenerate, then
+		<div class='equation'>\[
+			\phi(1_s)\theta(s)=\theta(s)\qquad\text{and}\qquad\theta(s^*)\phi(1_s)=\theta(s^*).
+		\]</div>
+	</ol>
+	</p>
+</div>

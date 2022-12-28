@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço com produto interno e \(\mathcal{B}\) uma base ortonormal para \(V\). Então para cada vetor \(v\in V\) e cada vetor \(b\in\mathcal{B}\), a \(b\)-ésima coordenada de \(v\) na base \(\mathcal{B}\) é dada por \(\langle v,b\rangle\). Em outros termos, cada vetor \(v\in V\) é representado na base \(\mathcal{B}\) do modo
+<div>
+\begin{equation*}
+v=\sum_{b\in\mathcal{B}}\langle v,b\rangle b.
+\end{equation*}
+</div>
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Dado \(v\in V\), representamos
+<div>
+\begin{equation*}
+v=\sum_{x\in\mathcal{B}}\alpha_x x\tag{$*$}
+\end{equation*}
+</div>
+(onde somente uma quantidade finita dos coeficients \(\alpha_b\) são não-nulos).
+</p>
+<p>
+Basta então provar que \(\alpha_b=\langle v,b\rangle\) para cada \(b\in\mathcal{B}\). Vamos tomar produtos escalares com \(b\) à direita em ambos os lados da equação (\(*\)).
+<div>
+\begin{align*}
+\langle v,b\rangle
+&=\left\langle \sum_{x\in\mathcal{B}}\alpha_x x,b\right\rangle\\
+&=\sum_{x\in\mathcal{B}}\alpha_x\langle x,b\rangle,\tag{$**$}
+\end{align*}
+</div>
+onde a segunda igualdade é obtida pela linearidade do produto interno na primeira entrada. Como \(\mathcal{B}\) é uma base ortonormal contendo \(b\), então para cada \(x\in\mathcal{B}\) temos que
+<div>
+\begin{equation*}
+\langle x,b\rangle=\begin{cases}1,&\text{se } x=b\\0,&\text{se }x\neq b.
+
+\end{cases}
+\end{equation*}
+</div>
+Isto significa que o único termo não-nulo na soma em (\(**\)) é dado pelo índice \(x=b\). Portanto (\(**\)) se reescreve como
+<div>
+\begin{equation*}
+\langle v,b\rangle=\alpha_b\langle b,b\rangle=\alpha_b,
+\end{equation*}
+</div>
+exatamente como queríamos provar.
+</p>
+
+</div></body>
+</html>

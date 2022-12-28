@@ -1,0 +1,37 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#definitionsigma'>3.1.1</a>
+
+<!-- 3.1.1 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 3.1.1</span>
+	Given $f\in C(X,H)$, we define the (<em>$\theta$-</em>)<em>support</em> of $f$ as
+	<div class='equation'>\[
+		\supp^\theta(f)=\overline{[f\neq\theta]}.
+	\]</div>
+	We also denote by $\sigma^\theta(f)$ the interior of $\supp^\theta(f)$, and $Z^\theta(f)$ the complement of $\supp^\theta(f)$:
+	<div class='equation'>\[
+		\sigma^\theta(f)=\operatorname{int}\supp^\theta(f)\qquad\text{and}\qquad Z^\theta(f)=X\setminus\supp^\theta(f).
+	\]</div>
+	Let $C_c(X,\theta)$ be the set of continuous functions from $X$ to $H$ with compact ($\theta$-)support. Whenever there is no risk of confusion, we will drop $\theta$ from the notation and write simply $\supp(f)$, $\sigma(f)$, $Z(f)$ and $C_c(X)$.
+	</p>
+
+	<p>
+	For any two functions $f,g\in C(X,H)$, we define
+	<ol>
+		<li>
+			$f\perp g$: if $[f\neq\theta]\cap[g\neq\theta]=\varnothing$; we say that $f$ and $g$ are <em>disjoint</em>;
+		</li>
+		
+		<li>
+			$f\perpp g$: if $\supp(f)\cap\supp(g)=\varnothing$; we say that $f$ and $g$ are <em>strongly disjoint</em>;
+		</li>
+		
+		<li>
+			$f\subseteq g$: if $\sigma(f)\subseteq\sigma(g)$;
+		</li>
+		
+		<li>
+			$f\Subset g$: if $\supp(f)\subseteq\sigma(g)$.
+		</li>
+	</ol>
+	</p>
+</div>

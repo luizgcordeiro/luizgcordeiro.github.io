@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.1.grpds.html#footnote1'>Footnote</a>
+
+<div class='toload footnote'>
+	<p>
+	The statement that every set $X$ can be endowed with a group structure (in fact, abelian) is equivalent to the Axiom of Choice. If $X$ is finite this is clear enough, and if $X$ is infinite then it has the same cardinality as the set of its finite subsets, which is an abelian group under symmetric difference. For the converse, see [<span class='ref' data-tag='MR0329895'></span>].
+	</p>
+</div>

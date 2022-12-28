@@ -1,0 +1,21 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#lemmaidealsofclopens'>4.4.40</a>
+
+<!-- 4.4.40 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.4.40</span>
+	Let $R$ be an indecomposable ring, $X$ a zero-dimensional, locally compact Hausdorff space and $U$ an open subset of $X$. Then the following are equivalent:
+	<ol class='arpar'>
+		<li>
+			$U$ is clopen.
+		</li>
+		
+		<li>
+			There exists a conditional expectation of $A_R(X)$ onto $\mathbf{I}(U)$.
+		</li>
+		
+		<li>
+			There exists an ideal $J$ of $A_R(X)$ such that $A_R(X)=\mathbf{I}(U)\oplus J$ as $R$-modules.
+		</li>
+	</ol>
+	</p>
+</div>

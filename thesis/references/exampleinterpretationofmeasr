@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#exampleinterpretationofmeasr'>1.6.23</a>
+<!-- 1.6.23 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 1.6.23</span>
+	If $R$ is a $\ra$-discrete, probability measure-preserving Borel equivalence relation on a a standard probability space $(X,\mu)$ (see Example <span class='ref' data-tag='exampleborelstructureequivalencerelationisunique'></span>) then $\MEAS(R)$ is isomorphic to the semigroup of partial Borel automorphisms of $X$ preserving $R$-equivalence classes, modulo identifying functions which are defined and coincide a.e.\ on the union of their domains.
+	</p>
+</div>

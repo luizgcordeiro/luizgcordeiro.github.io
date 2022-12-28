@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b> (Regra da cadeia).
+<p>
+Sejam \(g\) uma função diferenciável num ponto \(a\), e \(f\) uma função diferenciável em \(g(a)\). Então a função composta \(f\circ g\) é diferenciável em \(a\), e
+<div>
+\begin{equation*}
+(f\circ g)'(a)=f'(g(a))g'(a).
+\end{equation*}
+</div>
+</p>
+
+</div>
+<p>
+Vamos prover duas demonstrações deste fato. Na primeira, vamos utilizar diretamente a definição de derivada como um limite. Na segunda, vamos utilizar funções auxiliares e propriedade de funções contínuas, o que permite simplificar vários cálculos.
+</p>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Primeira demonstração</i>.
+<p>
+Para calcular \((f\circ g)'(a)\), precisamos garantir que \(\left|\frac{f(g(x))-f(g(a))}{x-a}-f'(g(a))g'(a)\right|\) é pequeno quando \(x\) está próximo a \(a\). Para isso, vamos reescrever esta expressão em termos de \(f'(g(a))\) e \(g'(a)\). Podemos reescrever
+<div>
+\begin{align*}
+&\frac{f(g(x)-f(g(a))}{x-a}-f'(g(a))g'(a)\\
+
+&\hspace{100pt}=\frac{f(g(x))-f(g(a))}{g(x)-g(a)}\cdot\frac{g(x)-g(a)}{x-a}\\
+&\hspace{100pt}\qquad-f'(g(a))g'(a)\\
+& \\
+&\hspace{100pt}=\frac{f(g(x))-f(g(a))}{g(x)-g(a)}\cdot\frac{g(x)-g(a)}{x-a}\\
+&\hspace{100pt}\qquad-f'(g(a))\cdot\frac{g(x)-g(a)}{x-a}\\
+&\hspace{100pt}\qquad +f'(g(a))\cdot\frac{g(x)-g(a)}{x-a}\\
+&\hspace{100pt}\qquad-f'(g(a))g'(a)\\
+& \\
+&\hspace{100pt}=\left(\frac{f(g(x))-f(g(a))}{g(x)-g(a)}-f'(g(a))\right)\frac{g(x)-g(a)}{x-a}\\
+&\hspace{100pt}\qquad +f'(g(a))\left(\frac{g(x)-g(a)}{x-a}-g'(a)\right),\tag{$\ast$}
+\end{align*}
+</div>
+desde que \(g(x)\neq g(a)\). Neste caso, os termos que aparecem na expressão final podem ser feitos tão pequenos quanto se queira, desde que tenhamos \(x\) suficientemente próximo a \(a\). Porém, este cálculo não pode ser feito caso existam muitos pontos \(x\) próximos a \(a\) tais que \(g(x)=g(a)\), e temos que considerar estes pontos com mais cautela.
+</p>
+
+<hr/>
+<p>
+Seja \(\epsilon>0\). Como \(f'(g(a))=\lim_{y\to g(a)}\frac{f( y )-f(g(a))}{y-g(a)}\), então existe \(\eta>0\) tal que
+<div>
+\begin{equation*}
+\left|\frac{f( y )-f(g(a))}{y-g(a)}-f'(g(a))\right| < \frac{\epsilon}{2(|g'(a)|+1)}\tag{1}
+\end{equation*}
+</div>
+sempre que \(0 < |y-g(a)| < \eta\).
+</p>
+<p>
+Como \(g'(a)=\lim_{x\to a}\frac{g(x)-g(a)}{x-a}\) e \(\eta>0\), então existe \(\delta_1>0\) tal que
+<div>
+\begin{equation*}
+\left|\frac{g(x)-g(a)}{x-a}-g'(a)\right| < \min\left\{\frac{\epsilon}{2(|f'(g(a))|+1)},1\right\}\tag{2}
+\end{equation*}
+</div>
+sempre que \(0 < |x-a| < \delta_1\).
+</p>
+<p>
+Além disso, \(g\) é contínua em \(a\), portanto existe \(\delta_2>0\) tal que
+<div>
+\begin{equation*}
+\left|g(x)-g(a)\right| < \eta\tag{3}
+\end{equation*}
+</div>
+sempre que \(|x-a| < \delta_2\).
+</p>
+<p>
+Seja \(\delta=\min\left\{\delta_1,\delta_2\right\}\). Vamos provar que \(\left|\frac{f(g(x)-f(g(a))}{x-a}-f'(g(a))g'(a)\right|\) sempre que \(0 < |x-a| < \delta\). Temos dois casos a considerar:
+</p>
+<p>
+<b>Caso 1</b>: \(g(x)=g(a)\).
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+Substituindo \(g(x)=g(a)\), obtemos
+<div>
+\begin{align*}
+\left|\frac{f(g(x))-f(g(a))}{x-a}-f'(g(a))g'(a)\right|
+&=|f'(g(a))|\cdot|g'(a)|
+\end{align*}
+</div>
+<p>
+Mas substituindo \(g(x)=g(a)\) em (2), obtemos que \(|g'(a)| < \frac{\epsilon}{2(|f'(g(a))|+1)}\), logo
+<div>
+\begin{align*}
+\left|\frac{f(g(x))-f(g(a))}{x-a}-f'(g(a))g'(a)\right|
+&\leq |f'(g(a))|\cdot\frac{\epsilon}{2(|f'(g(a))+1)}\\
+& < \frac{\epsilon}{2}\\
+& < \epsilon.
+\end{align*}
+</div>
+</p>
+
+</div>
+<p>
+<b>Caso 2</b>: \(g(x)\neq g(a)\).
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+De (3) e da hipótese acima, obtemos \(0 < |g(x)-g(a)| < \eta\). De (1) com \(y=g(x)\), obtemos
+<div>
+\begin{equation*}
+\left|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}\right| < \frac{\epsilon}{2(|g'(a)|+1)}.
+\end{equation*}
+</div>
+De (2), obtemos
+<div>
+\begin{equation*}
+\left|\frac{g(x)-g(a)}{x-a}-g'(a)\right| < \min\left\{\frac{\epsilon}{2(|f'(g(a))|+1)},1\right\}
+\end{equation*}
+</div>
+Disto também segue que
+<div>
+\begin{equation*}
+\left|\frac{g(x)-g(a)}{x-a}\right| <  1+|g'(a)|.
+\end{equation*}
+</div>
+Portanto, de (\(\ast\)) concluímos que
+<div>
+\begin{align*}
+&\left|\frac{f(g(x)-f(g(a))}{x-a}-f'(g(a))g'(a)\right|\\
+&\hspace{100pt}\leq\left|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}-f'(g(a))\right|\cdot\left|\frac{g(x)-g(a)}{x-a}\right|\\
+&\hspace{100pt}\qquad +\left|f'(g(a))\right|\cdot\left|\frac{g(x)-g(a)}{x-a}-g'(a)\right|\\
+& \\
+&\hspace{100pt} < \frac{\epsilon}{2(|g'(a)|+1)}\cdot(1+|g'(a)|)\\
+&\hspace{100pt}\qquad +\left|f'(g(a))\right|\cdot\frac{\epsilon}{2(|f'(g(a))|+1)}\\
+& \\
+&\hspace{100pt} < \epsilon,
+\end{align*}
+</div>
+sempre que \(0 < |x-a| < \delta\).
+
+</div>
+<p>
+Isto prova que
+<div>
+\begin{equation*}
+\lim_{x\to a}\frac{f(g(x))-f(g(a))}{x-a}=f'(g(a))g'(a),
+\end{equation*}
+</div>
+ou seja, \(f\circ g\) é diferenciável em \(a\) e \((f\circ g)'(a)=f'(g(a))g'(a)\), como queríamos.
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Segunda demonstração</i>.
+<p>
+Dadas uma função \(h\), um ponto \(\alpha\) de seu domínio e um valor \(L\), definimos uma nova função \(\Phi_{h,\alpha,L}\) por
+<div>
+\begin{equation*}
+\Phi_{h,\alpha,L}(x)=\begin{cases}\frac{h(x)-h(\alpha)}{x-\alpha},&\text{se }x\neq\alpha\\L,&\text{se }x=\alpha
+
+\end{cases}.
+\end{equation*}
+</div>
+</p>
+<p>
+Deste modo, as seguintes duas afirmações são equivalentes, para todas \(h\), \(\alpha\) e \(L\):
+</p>
+
+<ol>
+
+<li>
+<p>
+\(h\) é diferenciável em \(\alpha\) e \(h'(\alpha)=L\);
+</p>
+
+</li>
+
+<li>
+<p>
+\(\Phi_{h,\alpha,L}\) é contínua em \(\alpha\).
+</p>
+
+</li>
+</ol>
+<p>
+Dadas duas funções \(h\) e \(k\), um ponto \(\alpha\) e valores \(L\) e \(M\), vamos verificar que a seguinte igualdade é válida, para todo \(x\):
+<div>
+\begin{equation*}
+\Phi_{h\circ k,\alpha,LM}(x)=\Phi_{h,k(\alpha),L}(k(x))\cdot\Phi_{k,\alpha,M}(x).\tag{$\star$}
+\end{equation*}
+</div>
+De fato, temos três casos a verificar:
+</p>
+<p>
+<b>Caso 1</b>: \(x=\alpha\).
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+Neste caso, também teremos \(k(x)=k(\alpha)\), e assim pelas definições temos que
+<div>
+\begin{align*}
+\Phi_{h\circ k,\alpha,LM}(x)&=LM\text{,}\\
+\Phi_{h,k(\alpha),L}(k(x))&=L\text{, e}\\
+\Phi_{k,\alpha,M}(x)&=M\text{,}
+\end{align*}
+</div>
+e a igualdade (\(\star\)) é válida.
+
+</div>
+<p>
+<b>Caso 2</b>: \(x\neq \alpha\) e \(k(x)=k(\alpha)\).
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+Neste caso, \(h(k(x))=h(k(\alpha))\), e assim
+<div>
+\begin{align*}
+\Phi_{h\circ k,\alpha,LM}(x)
+&=\frac{h(k(x))-h(k(\alpha))}{x-\alpha}\\
+&=0
+\end{align*}
+</div>
+e
+<div>
+\begin{align*}
+\Phi_{k,\alpha,M}(x)
+&=\frac{k(x)-k(\alpha)}{x-\alpha}\\
+&=0.
+\end{align*}
+</div>
+Portanto,
+<div>
+\begin{align*}
+\Phi_{h\circ k,\alpha,LM}(x)
+&=0\\
+&=\Phi_{h,k(\alpha),L}(k(x))\cdot 0\\
+&=\Phi_{h,k(\alpha),L}(k(x))\cdot \Phi_{k,\alpha,M}(x).
+\end{align*}
+</div>
+
+</div>
+<p>
+<b>Caso 3</b>: \(x\neq \alpha\) e \(k(x)\neq k(\alpha)\).
+
+</p>
+
+<div style='margin: 10px 5px 10px 30px'>
+Neste caso, temos que
+<div>
+\begin{align*}
+\Phi_{h\circ k,\alpha,LM}(x)&=\frac{h(k(x))-h(k(\alpha))}{x-\alpha}\text{,}\\
+\Phi_{h,k(\alpha),L}(k(x))&=\frac{h(k(x))-h(k(\alpha))}{k(x)-k(\alpha)}\text{, e}\\
+\Phi_{k,\alpha,M}(x)&=\frac{k(x)-k(\alpha)}{x-\alpha}.
+\end{align*}
+</div>
+Assim,
+<div>
+\begin{align*}
+\Phi_{h\circ k,\alpha,LM}(x)&=\frac{h(k(x))-h(k(\alpha))}{x-\alpha}\\
+&=\frac{h(k(x))-h(k(\alpha))}{k(x)-k(\alpha)}\cdot\frac{k(x)-k(\alpha)}{x-\alpha}\\
+&=\Phi_{h,k(\alpha),L}(k(x))\cdot \Phi_{k,\alpha,M}(x).
+\end{align*}
+</div>
+
+</div>
+<p>
+A igualdade (\(\star\)) significa que temos a igualdade de funções (no domínio de \(h\circ k\))
+<div>
+\begin{equation*}
+\Phi_{h\circ k,\alpha,LM}=\left(\Phi_{h,k(\alpha),L}\circ k\right)\cdot \Phi_{k,\alpha,M}\tag{$\clubsuit$}.
+\end{equation*}
+</div>
+</p>
+
+<hr/>
+<p>
+Vamos utilizar a igualdade (\(\clubsuit\)) com \(h=f\), \(k=g\), \(\alpha=a\), \(L=f'(g(a))\) e \(M=g'(a)\), e a relação entre continuidade e diferenciabilidade satisfeita pelas funções \(\Phi_{\ast,\ast,\ast}\).
+</p>
+<p>
+Temos que
+<div>
+\begin{equation*}
+\Phi_{f\circ g,g(a),f'(g(a))g'(a)}=\left(\Phi_{f,g(a),f'(g(a))}\circ g\right)\cdot \Phi_{g,a,g'(a)}.
+\end{equation*}
+</div>
+</p>
+<p>
+Como a função \(g\) é diferenciável em \(a\), então \(\Phi_{g,a,g'(a)}\) é contínua em \(a\).
+</p>
+<p>
+Além disso, <a href='../09.derivadas/teo_funcoes_derivaveis_sao_continuas_moodle.html'>\(g\) também é contínua em \(a\)</a>. Como \(f\) é diferenciável em \(g(a)\), então \(\Phi_{f,g(a),f'(g(a))}\) é contínua em \(g(a)\). Como <a href='../07.fun_cont/teo_comp_cont_moodle.html'>continuidade é preservada por composição</a>, então \(\Phi_{f,g(a),f'(g(a))}\circ g\) é contínua em \(a\).
+</p>
+<p>
+Como <a href='../07.fun_cont/teo_prop_fun_cont_moodle.html'>continuidade é preservada por produtos</a>, então \(\left(\Phi_{f,g(a),f'(g(a))}\circ g\right)\cdot \Phi_{g,a,g'(a)}\) é contínua em \(a\), ou seja, \(\Phi_{f\circ g,g(a),f'(g(a))g'(a)}\) é contínua em \(a\). Isto significa que \(f\circ g\) é diferenciável em \(a\), e \((f\circ g)'(a)=f'(g(a))g'(a)\), exatamente como queríamos.
+</p>
+
+</div></body>
+</html>

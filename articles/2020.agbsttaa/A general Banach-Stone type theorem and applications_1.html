@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<script src="../../src/jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="../../src/style.css">
+
+<title>A general Banach&#8212;Stone type theorem and applications</title>
+
+</head>
+<body>
+
+<div style='display: none' id='latexcommands'>
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+
+\DeclareMathOperator{\KB}{\mathbf{KB}}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+\end{equation*}
+</div>
+
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>A general Banach&#8212;Stone type theorem and applications</h1>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_front.html'>Front page</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_0_2.html'>Introduction</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_1.html'>1. Disjointness and $\perpp$-isomorphisms</a></h1>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_1.html#5'>1.1. Disjointness relations</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_1.html#50'>1.2. $\perpp$-ideals</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_1.html#70'>1.3. The main theorems</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_2.html'>2. Basic maps</a></h1>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#124'>2.1. Algebraic signatures and basic maps</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#127'>2.2. Group-valued maps</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#130'>2.3. Continuity</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_2.html#154'>2.4. Non-vanishing bijections</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_3.html'>3. Consequences</a></h1>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#175'>3.1. Milgram's Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#195'>3.2. Group-Valued functions; the Hernández&#8210;Ródenas Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#203'>3.3. Kaplansky's Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#234'>3.4. Li&#8210;Wong Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#243'>3.5. Jarosz' Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#246'>3.6. Banach&#8210;Stone Theorem</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#250'>3.7. $L^1$-spaces</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#260'>3.8. Measured groupoid convolution algebras</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#292'>3.9. $(I,\ra)$-Groupoid convolution algebras</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#306'>3.10. Steinberg Algebras</a></h2>
+<h2 class='sidebar-subsection'><a href='A general Banach-Stone type theorem and applications_3.html#342'>3.11. Groups of circle-valued functions</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='A general Banach-Stone type theorem and applications_3_361.html'>Acknowledgements</a></h1>
+</div>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section' id='3'>1. Disjointness and $\perpp$-isomorphisms</h2>
+<p>
+Throughout this section, $X$ will always denote a locally compact and Hausdorff space, $H$ will denote a Hausdorff space, and $\theta\colon X\to H$ is a fixed continuous function. We denote by $C(X,H)$ the set of continuous functions from $X$ to $H$. For two functions $f,g\colon X\to H$, we denote
+<div class='equation' id='4'>
+\begin{equation*}
+[f\neq g]=\left\{x\in X:f(x)\neq g(x)\right\}\quad\text{and}\quad[f=g]=X\setminus[f\neq g].
+\end{equation*}
+</div>
+</p>
+
+<h3 class='subsection' id='5'>1.1. Disjointness relations</h3>
+<p>
+The main idea is that any manageable algebraic structure on $H$ will naturally lead us to consider a specific function $\theta$, which behaves as a <span>&#8220;</span>neutral element<span>&#8221;</span>, and which will be used to separate points of $X$. See Example <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#16'>1.3</a> for the classical setting. We first generalize the notion of support, in the obvious manner.
+</p>
+
+<!-- 1.1 -->
+<div class='definition' id='6'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.1</span>.
+<p>
+Given $f\in C(X,H)$, we define the <em>$\theta$-support</em> of $f$ as
+<div class='equation' id='7'>
+\begin{equation*}
+\supp^\theta(f)=\overline{[f\neq\theta]}.
+\end{equation*}
+</div>
+We define $\sigma^\theta(f)$ as the interior of $\supp^\theta(f)$, and $Z^\theta(f)$ as the complement of $\supp^\theta(f)$:
+<div class='equation' id='8'>
+\begin{equation*}
+\sigma^\theta(f)=\operatorname{int}\supp^\theta(f)\qquad\text{and}\qquad Z^\theta(f)=X\setminus\supp^\theta(f).
+\end{equation*}
+</div>
+</p>
+<p>
+Let $C_c(X,\theta)$ be the set of continuous functions from $X$ to $H$ with compact $\theta$-support. Whenever there is no risk of confusion, we will drop $\theta$ from the notation and write simply $\supp(f)$, $\sigma(f)$, $Z(f)$ and $C_c(X)$.
+</p>
+<p>
+Now we define the following relations: Given $f,g\in C(X,H)$,
+</p>
+
+<style>ol.altlist9 > li:before {
+content:  '(' counter(listcounter) ')';
+}
+</style>
+<ol class='alt altlist9'>
+
+<li id='10'>
+<p>
+$f\perp g$: if $[f\neq\theta]\cap[g\neq\theta]=\varnothing$; we say that $f$ and $g$ are <em>weakly disjoint</em>;
+</p>
+
+</li>
+
+<li id='11'>
+<p>
+$f\perpp g$: if $\supp(f)\cap\supp(g)=\varnothing$; we say that $f$ and $g$ are <em>strongly disjoint</em>;
+</p>
+
+</li>
+
+<li id='12'>
+<p>
+$f\subseteq g$: if $\sigma(f)\subseteq\sigma(g)$;
+</p>
+
+</li>
+
+<li id='13'>
+<p>
+$f\Subset g$: if $\supp(f)\subseteq\sigma(g)$.
+</p>
+
+</li>
+</ol>
+
+</div>
+<p>
+Note that $Z^\theta(f)$ is the complement of $\sigma^\theta(f)$ in the lattice of regular open sets of $X$ (see [<a class='reference' href='../../HTML citations/MR2466574.html' target='_blank'>MR2466574</a>, Chapter 10]). Also, $\sigma^\theta(f)$ is the regularization of $[f\neq\theta]$, and thus it follows immediately that
+<div class='equation' id='14'>
+\begin{equation*}
+f\perp g\iff \sigma(f)\cap\sigma(g)=\varnothing,
+\end{equation*}
+</div>
+even though $[f\neq \theta]$ and $\sigma^\theta(f)$ are not equal in general.
+</p>
+
+<!-- 1.2 -->
+<div class='example' id='15'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>1.2</span>.
+<p>
+Suppose $X=H=[0,1]$, $\theta=0$ (the zero map $[0,1]\to[0,1]$) and $f=\id_{[0,1]}$, the identity map of $[0,1]$. Then $[f\neq\theta]=(0,1]$ but $\sigma^\theta(f)=[0,1]$.
+</p>
+
+</div>
+<p>
+As stated above, when $H$ comes with additional structure, a particular choice of $\theta$ generally yields a suitable notion of support, and the relations above may be described in terms of this structure. This is the general technique used in the  applications in Section <a class='reference' href='A general Banach-Stone type theorem and applications_3.html#166'>3</a>.
+</p>
+
+<!-- 1.3 -->
+<div class='example' id='16'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>1.3</span>.
+<p>
+If $H=\mathbb{R}$ or $\mathbb{C}$, and $\theta=0$ is the constant zero function, we obtain the usual notion of support. We may describe $\perp$ in terms of the multiplicative structure of $C_c(X)=C_c(X,0)$: $f\perp g$ if and only if $fg=0$, which is the only absorbing element of $C_c(X)$.
+</p>
+
+</div>
+
+<!-- 1.4 -->
+<div class='example' id='17'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>1.4</span> <span class='envop'>(Kania&#8210;Rmoutil, [<a class='reference' href='../../HTML citations/MR3813611.html' target='_blank'>MR3813611</a>])</span>.
+<p>
+Let $X$, $H$ and $\theta$ as in the beginning of this <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#3'>section</a>. Define the <em>compatibility ordering</em> on $C_c(X,\theta)$ by
+<div class='equation' id='18'>
+\begin{equation*}
+f\preceq g\iff g|_{\supp^\theta(f)}=f|_{\supp^\theta(f)}.
+\end{equation*}
+</div>
+Then $\theta$ is the minimum of $\preceq$ in $C_c(X,\theta)$. We can describe weak disjointness in $C_c(X,\theta)$ by
+<div class='equation' id='19'>
+\begin{equation*}
+f\perp g\iff\inf_{\preceq}\left\{f,g\right\}=\theta\text{ and }\left\{f,g\right\}\text{ has a }\preceq\text{-upper bound.}
+\end{equation*}
+</div>
+</p>
+
+</div>
+<p>
+We will, moreover, be interested in recovering $X$ not from the whole set $C_c(X)$, but instead from a subcollection $\mathcal{A}\subseteq C_c(X)$. We will need to assume, however, that there are enough functions in $\mathcal{A}$ in order to separate points of $X$, and this is attained by assuming that an appropriate version of Urysohn's Lemma is valid. (This is the same type of assumption as made in [<a class='reference' href='../../HTML citations/MR0020715.html' target='_blank'>MR0020715</a>] and in [<a class='reference' href='../../HTML citations/MR2324919.html' target='_blank'>MR2324919</a>].)
+</p>
+
+<!-- 1.5 -->
+<div class='definition' id='20'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.5</span>.
+<p>
+Let $\mathcal{A}\subseteq C_c(X)$ be a subset containing $\theta$. Denote $\sigma(\mathcal{A})=\left\{\sigma(f):f\in\mathcal{A}\right\}$. We say that $(X,\theta,\mathcal{A})$ (or simply $\mathcal{A}$) is
+</p>
+
+<style>ol.altlist21 > li:before {
+content:  '(' counter(listcounter) ')';
+}
+</style>
+<ol class='alt altlist21'>
+
+<li id='22'>
+<p>
+<em>weakly regular</em> if $\sigma(\mathcal{A})$ is a basis for the topology of $X$.
+</p>
+
+</li>
+
+<li id='23'>
+<p>
+<em>regular</em> if for every $x\in X$, every neighbourhood $U$ of $x$ and every $c\in H$ there is $f\in\mathcal{A}$ with $f(x)=c$ and $\supp(f)\subseteq U$.
+</p>
+
+</li>
+</ol>
+
+</div>
+<p>
+We will need to analyze relations between $\subseteq,\Subset,\perp$ and $\perpp$. In order to deal with finitely many functions simultaneously, we will need to adapt the notion of <em>open cover</em> of a set to this language.
+</p>
+
+<!-- 1.6 -->
+<div class='definition' id='24'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.6</span>.
+<p>
+Suppose $\mathcal{A}\subseteq C_c(X)$ is weakly regular. A family $A\subseteq\mathcal{A}$ is a <em>cover</em> of an element $b\in\mathcal{A}$ if the implication
+<div class='equation' id='25'>
+\begin{equation*}
+h\perp a\text{ for all }a\in A\Longrightarrow h\perp b.
+\end{equation*}
+</div>
+is valid for all $h\in\mathcal{A}$.
+</p>
+
+</div>
+
+<!-- 1.7 -->
+<div class='lemma' id='26'>
+<span class='envidentifier'>Lemma</span> <span class='envcounter'>1.7</span>.
+<p>
+Suppose $\mathcal{A}$ is weakly regular, and let $A\subseteq\mathcal{A}$ and $b\in\mathcal{A}$. The following are equivalent:
+</p>
+
+<style>ol.altlist27 > li:before {
+content:  '(' counter(listcounter) ')';
+}
+</style>
+<ol class='alt altlist27'>
+
+<li id='28'>
+<p>
+$A$ is a cover of $b$;
+</p>
+
+</li>
+
+<li id='29'>
+<p>
+The closure of $\bigcup_{a\in A}[a\neq\theta]$ contains $\supp(b)$.
+</p>
+
+</li>
+</ol>
+
+</div>
+<div class='proof' id='30'>
+<span class='envidentifier'>Proof</span>.
+
+<a class='reference' href='A general Banach-Stone type theorem and applications_1.html#28'>(1)</a>$\Rightarrow$<a class='reference' href='A general Banach-Stone type theorem and applications_1.html#29'>(2)</a>: Let $x\in\supp(b)$. Take an open neighbourhood of $x$ of the form $\sigma(h)$, $h\in\mathcal{A}$. Since $\supp(b)=\overline{\sigma(b)}$, the intersection $\sigma(h)\cap\sigma(b)$ is nonempty and thus $h$ and $b$ are not weakly disjoint. From $A$ being a cover, $h$ is not weakly disjoint to some $a\in A$, which means that $\sigma(h)\cap[a\neq\theta]$ is nonempty. Since $\mathcal{A}$ is weakly regular, then $x$ is in the closure of $\bigcup_{a\in A}[a\neq\theta]$.
+
+<a class='reference' href='A general Banach-Stone type theorem and applications_1.html#29'>(2)</a>$\Rightarrow$<a class='reference' href='A general Banach-Stone type theorem and applications_1.html#28'>(1)</a>: Suppose $h\in\mathcal{A}$ is such that $h\perp a$ for all $a\in A$. This means that
+<div class='equation' id='31'>
+\begin{equation*}
+(\bigcup_{a\in A}[a\neq\theta])\cap[h\neq\theta]=\varnothing.
+\end{equation*}
+</div>
+Taking the closure of the first term and using <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#29'>(2)</a> we conclude that $[b\neq\theta]\cap[h\neq\theta]\subseteq\supp(b)\cap[h\neq\theta]=\varnothing$, so $h\perp b$.
+
+</div>
+<p>
+If $\mathcal{A}\subseteq C_c(X)$ and $\theta\in\mathcal{A}$, note that $\subseteq$ is a preorder on $\mathcal{A}$, whose minimum is $\theta$. Alternatively, $\theta$ is the only element of $\mathcal{A}$ such that $\theta\perp\theta$. Thus the function $\theta$ is uniquely determined in terms of either $\perp$ or $\subseteq$. We now proceed to prove that $\subseteq$ and $\perp$ <span>&#8220;</span>carry the same information<span>&#8221;</span>, as do $\Subset$ and $\perpp$.
+</p>
+
+<!-- 1.8 -->
+<div class='proposition' id='32'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>1.8</span>.
+<p>
+Suppose $\mathcal{A}$ is weakly regular. If $f,g\in\mathcal{A}$, then
+</p>
+
+<style>ol.altlist33 > li:before {
+content:  '(' counter(listcounter,lower-alpha) ')';
+}
+</style>
+<ol class='alt altlist33'>
+
+<li id='34'>
+<p>
+$f\subseteq g\iff\forall h(h\perp g\Rightarrow h\perp f)$;
+</p>
+
+</li>
+
+<li id='35'>
+<p>
+$f\perp g\iff$ The $\subseteq$-infimum of $\left\{f,g\right\}$ is $\theta$;
+</p>
+
+<style>ol.altlist36 > li:before {
+content:  counter(listcounter,lower-alpha);
+}
+</style>
+<ol class='alt altlist36'>
+
+</li>
+
+<li id='37'>
+<p>
+yeah
+</p>
+
+</li>
+</ol>
+
+<li id='38'>
+<p>
+$f\subseteq g\iff\forall h(h\Subset f\Rightarrow h\Subset g)$;
+</p>
+
+</li>
+
+<li id='39'>
+<p>
+$f\subseteq g\iff\forall h(h\perpp g\Rightarrow h\perpp f)$;
+</p>
+
+</li>
+
+<li id='40'>
+<p>
+$f\perpp g\iff\exists h_1,k_1,\ldots,h_n,k_n\in\mathcal{A}$ such that $\left\{h_1,\ldots,h_n\right\}$ is a cover of $f$, $h_i\Subset k_i$ and $\phantom{f\perpp g\iff...}k_i\perp g$ for all $i$;
+</p>
+
+</li>
+
+<li id='41'>
+<p>
+$f\Subset g\iff\forall b\in\mathcal{A}$, $\exists h_1,\ldots,h_n\in\mathcal{A}$ such that $\left\{h_1,\ldots,h_n,g\right\}$ is a cover of $b$ and $h_i\perpp f$.
+</p>
+
+</li>
+</ol>
+<p>
+By items <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#34'>(a)</a> and <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#35'>(b)</a>, $\perp$ and $\subseteq$ are equi-expressible (i.e., each one is completely determined by the other). By <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#38'>(c)</a> and <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#39'>(d)</a> one can recover $\subseteq$ (and hence $\perp$) from either $\Subset$ or $\perpp$, which in turn implies, from <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#40'>(e)</a> and <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#41'>(f)</a>, that $\Subset$ and $\perpp$ are also equi-expressible.
+</p>
+
+</div>
+<div class='proof' id='42'>
+<span class='envidentifier'>Proof</span>.
+<p>
+Items <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#34'>(a)</a>-<a class='reference' href='A general Banach-Stone type theorem and applications_1.html#39'>(d)</a> are easy consequences of weak regularity of $\mathcal{A}$, and $X$ being a regular topological space for items <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#38'>(c)</a>-<a class='reference' href='A general Banach-Stone type theorem and applications_1.html#39'>(d)</a>.
+</p>
+
+<style>ol.altlist43 {counter-reset: listcounter 4;}</style><style>ol.altlist43 > li:before {
+content:  '(' counter(listcounter,lower-alpha) ')';
+}
+</style>
+<ol class='alt altlist43'>
+
+<li id='44'>
+<p>
+$\Rightarrow$: Suppose $f\perpp g$. Given $x\in \supp(f)$, weak regularity of $\mathcal{A}$ and regularity of the topological space $X$ give us $h_x,k_x\in\mathcal{A}$ such that $x\in\sigma(h_x)$, $h_x\Subset k_x$ and $k_x\perp g$. Compactness of $\supp(f)$ allows us to find the elements $h_i,k_i$ we need, by going to a subcover of $\left\{\sigma(h_x):x\in\supp(f)\right\}$.
+</p>
+<p>
+$\Leftarrow$: Suppose such $h_i,k_i$ exist. Then by Lemma <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#26'>1.7</a>,
+<div class='equation' id='45'>
+\begin{equation*}
+\supp(f)\subseteq\bigcup_{i=1}^n\supp(h_i)\subseteq\bigcup_{i=1}^n\sigma(k_i)\subseteq X\setminus\supp(g),
+\end{equation*}
+</div>
+and so $f\perpp g$.
+</p>
+
+</li>
+
+<li id='46'>
+<p>
+$\Rightarrow$: Suppose $f\Subset g$ and take any $b\in\mathcal{A}$. Since $\supp(b)\setminus\sigma(g)$ is compact and does not intersect $\supp(f)$, we can take $h_1,\ldots,h_n\in\mathcal{A}$ such that $h_i\perpp f$ and $\supp(b)\setminus\sigma(g)\subseteq\bigcup_i\sigma(h_i)$, which implies that $\left\{h_1,\ldots,h_n,g\right\}$ is a cover of $b$.
+</p>
+<p>
+$\Leftarrow$: By compactness os $\supp(f)$ and $\supp(g)$, take $b_1,\ldots,b_M$ in $\mathcal{A}$ such that $\supp(f)\cup\supp(g)\subseteq\bigcup_{k=1}^M\sigma(b_k)$. For each $k$ take functions $h_i^k$ satisfying the right-hand side of <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#41'>(f)</a>, relative to $b_k$.
+</p>
+<p>
+Given $k$, we have $\sigma(b_k)\subseteq\bigcup_i\supp(h_i^k)\cup\supp(g)$, so by taking complements we obtain $\bigcap_iZ(h_i^k)\cap Z(g)\cap\sigma(b_k)=\varnothing$, or equivalently $\bigcap_iZ(h_i^k)\cap\sigma(b_k)\subseteq\sigma(b_k)\setminus Z(g)\subseteq\supp(g)$. Taking interiors on both sides yields $\bigcap_iZ(h_i^k)\cap\sigma(b_k)\subseteq\sigma(g)$.
+</p>
+<p>
+Now from $h_i^j\perpp f$ we obtain
+<div class='equation' id='47'>
+\begin{align*}
+\supp(f)&\subseteq\bigcap_{i,j}Z(h_i^j)\cap\bigcup_{k=1}^M\sigma(b_k)\subseteq\bigcup_{k=1}^M\left[\bigcap_i Z(h_i^k)\cap\sigma(b_k)\right]\subseteq \sigma(g),
+\end{align*}
+</div>
+so $f\Subset g$.
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<div class='alt' id='48'>
+<span class='envidentifier'>Remark</span>
+<p>
+One should be careful with the connections between the pairs of relations $(\perp,\perpp)$ and $(\subseteq,\Subset)$. For example, $\perp$ and $\perpp$ may coincide but $\subseteq$ and $\Subset$ may not and vice-versa. See the example below.
+</p>
+
+</div>
+
+<!-- 1.9 -->
+<div class='example' id='49'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>1.9</span>.
+<p>
+Let $X=H=\mathbb{R}$ and $\theta=0$, so that we are dealing with the usual notion of support. Let $\left\{(a_n,b_n):n\in\mathbb{N}\right\}$ (where $a_n\smallerthan b_n$) be a countable basis of open intervals for the usual topology of $\mathbb{R}$. Up to small modifications, we may assume that all the numbers $a_n$, $b_n$ and $b_n+1$ are distinct. In particular, the sets $U_n:=(a_n,b_n)$ have pairwise disjoint boundaries.
+</p>
+<p>
+For each $n$, let $f_n\in C_c(\mathbb{R})$ with $\sigma(f_n)=U_n$, e.g. $f_n(x)=\max(0,(x-\widetilde{a_n})(\widetilde{b_n}-x))$,
+and let $\mathcal{A}=\left\{f_n:n\in\mathbb{N}\right\}$, which is weakly regular. Then $\perp$ and $\perpp$ coincide on $\mathcal{A}$, as do $\subseteq$ and $\Subset$, since the boundaries of all $U_n$ are pairwise disjoint.
+</p>
+<p>
+Letting $V=(\widetilde{a_1},\widetilde{b_1}+1)$ and $g_V$ be a continuous function with $\sigma(g_V)=V$, then $\perp$ and $\perpp$ still coincide in $\mathcal{A}\cup\left\{g_V\right\}$, however $\subseteq$ and $\Subset$ do not, since $f_1\subseteq g_V$ but not $f_1\Subset g_V$.
+</p>
+<p>
+Alternatively, set $W=(\widetilde{b_1},\widetilde{b_1}+1)$ and let $g_W$ be any continuous function with $\sigma(g_W)=W$. Then $\subseteq$ and $\Subset$ still coincide in $\mathcal{A}\cup\left\{g_W\right\}$, however $\perp$ and $\perpp$ do not, because $f_1\perp g$ but not $f_1\perpp g$.
+</p>
+
+</div>
+
+<h3 class='subsection' id='50'>1.2. $\perpp$-ideals</h3>
+<p>
+Recall that $X$, $H$ and $\theta\in C(X,H)$ are fixed, as in the beginning of the <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#3'>section</a>. We fix also a weakly regular family $\mathcal{A}\subseteq C_c(X,\theta)$.
+</p>
+<p>
+One technique that is commonly used in the proofs of Banach&#8210;Stone type theorems is to describe an order-isomorphism between $X$ and <span>&#8220;</span>maximal ideals<span>&#8221;</span> of $\mathcal{A}$, where the notion of an <span>&#8220;</span>ideal<span>&#8221;</span> depends on whatever kinds of algebraic signature one is working. See for example [<a class='reference' href='../../HTML citations/MR0029476.html' target='_blank'>MR0029476</a>, Lemma 2.2], [<a class='reference' href='../../HTML citations/MR2324919.html' target='_blank'>MR2324919</a>, Proposition 2.7], [<a class='reference' href='../../HTML citations/MR0020715.html' target='_blank'>MR0020715</a>, Lemma 3]. This idea also appears in some manner in the proofs of the main results of [<a class='reference' href='../../HTML citations/MR3162258.html' target='_blank'>MR3162258</a>] and [<a class='reference' href='../../HTML citations/MR1060366.html' target='_blank'>MR1060366</a>], and of [<a class='reference' href='../../HTML citations/MR1357166.html' target='_blank'>MR1357166</a>, p. 170, Théorème 3].
+</p>
+<p>
+We will follow this idea by considering <em>$\perpp$-ideals</em>. Although their definition (<a class='reference' href='A general Banach-Stone type theorem and applications_1.html#56'>1.12</a>) is given simply in terms of the relation $\perpp$, Theorem <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#59'>1.14</a> provides a much more manageable description of them.
+</p>
+<p>
+A strengthening of the notion of cover will be necessary (see Lemma <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#55'>1.11</a> for the intuition).
+</p>
+
+<!-- 1.10 -->
+<div class='definition' id='51'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.10</span>.
+<p>
+A finite family $B\subseteq\mathcal{A}$ is said to be a <em>strong cover</em> of an element $a\in\mathcal{A}$ if there is another finite family $\widetilde{B}\subseteq\mathcal{A}$ such that:
+</p>
+
+<style>ol.altlist52 > li:before {
+content:  '(' 'S' 'C' counter(listcounter) ')';
+}
+</style>
+<ol class='alt altlist52'>
+
+<li id='53'>
+<p>
+For all $\widetilde{b}\in\widetilde{B}$, there is some $b\in B$ with $\widetilde{b}\Subset b$;
+</p>
+
+</li>
+
+<li id='54'>
+<p>
+$\widetilde{B}$ is a cover of $a$ (see Definition <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#24'>1.6</a>).
+</p>
+
+</li>
+</ol>
+
+</div>
+<p>
+The following proposition shows that strong covers encode information about the closures of sets. It is a direct consequence of the definition of $\Subset$ and Lemma <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#26'>1.7</a>.
+</p>
+
+<!-- 1.11 -->
+<div class='lemma' id='55'>
+<span class='envidentifier'>Lemma</span> <span class='envcounter'>1.11</span>.
+<p>
+A finite family $B\subseteq\mathcal{A}$ is a strong cover of $a\in\mathcal{A}$ if and only if $\supp(a)\subseteq\bigcup_{b\in B}\sigma(b)$.
+</p>
+
+</div>
+
+<!-- 1.12 -->
+<div class='definition' id='56'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.12</span>.
+<p>
+A <em>$\perpp$-ideal</em> in $\mathcal{A}$ is a subset $I\subseteq\mathcal{A}$ such that, for all $a\in\mathcal{A}$,
+<div class='equation' id='57'>
+\begin{equation*}
+a\in I\iff \text{there is a finite subset }B\subseteq I\text{ which is a strong cover of }a.
+\end{equation*}
+</div>
+</p>
+
+</div>
+<p>
+Note that every $\perpp$-ideal of $\mathcal{A}$ contains $\theta$ (since the empty set is a strong cover of $\theta$).
+</p>
+<p>
+We will now prove that the lattice of open subsets of a space $X$ is order-isomorphic to the lattice of $\perpp$-ideals of a weakly regular tuple $(X,\theta,\mathcal{A})$.
+</p>
+
+<!-- 1.13 -->
+<div class='definition' id='58'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.13</span>.
+<p>
+Suppose $(X,\theta,\mathcal{A})$ is weakly regular. Given an open set $U\subseteq X$, denote $\mathbf{I}(U)=\left\{f\in\mathcal{A}:\supp(f)\subseteq U\right\}$, and , given a $\perpp$-ideal $I\subseteq\mathcal{A}$, denote $\mathbf{U}(I)=\bigcup_{f\in I}\sigma(f)$.
+</p>
+
+</div>
+<p>
+Lemma <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#55'>1.11</a> and weak regularity of $\mathcal{A}$ imply that $\mathbf{I}(U)$ is a $\perpp$-ideal of $\mathcal{A}$ for any open $U\subseteq X$.
+</p>
+
+<!-- 1.14 -->
+<div class='theorem' id='59'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>1.14</span>.
+<p>
+Suppose $(X,\theta,\mathcal{A})$ is weakly regular.
+</p>
+
+<style>ol.altlist60 > li:before {
+content:  '(' counter(listcounter,lower-alpha) ')';
+}
+</style>
+<ol class='alt altlist60'>
+
+<li id='61'>
+<p>
+For every $\perpp$-ideal $I$ of $\mathcal{A}$, $I=\mathbf{I}(\mathbf{U}(I))$;
+</p>
+
+</li>
+
+<li id='62'>
+<p>
+For every open subset $U\subseteq X$, $U=\mathbf{U}(\mathbf{I}(U))$;
+</p>
+
+</li>
+
+<li id='63'>
+<p>
+The map $U\mapsto\mathbf{I}(U)$ is an order isomorphism between the lattices of open sets of $X$ and $\perpp$-ideals of $\mathcal{A}$.
+</p>
+
+</li>
+</ol>
+
+</div>
+<div class='proof' id='64'>
+<span class='envidentifier'>Proof</span>.
+
+<style>ol.altlist65 > li:before {
+content:  '(' counter(listcounter,lower-alpha) ')';
+}
+</style>
+<ol class='alt altlist65'>
+
+<li id='66'>
+<p>
+Let $I$ be a $\perpp$-ideal. The inclusion $I\subseteq \mathbf{I}(\mathbf{U}(I))$ follows easily from the definition of $\perpp$-ideals: if $f\in I$, then take a finite strong cover $B\subseteq I$ of $f$, so that $\supp(f)\subseteq\bigcup_{b\in B}\sigma(b)\subseteq\mathbf{U}(I)$.
+</p>
+<p>
+Conversely, if $f\in\mathbf{I}(\mathbf{U}(I))$ then $\supp(f)\subseteq\mathbf{U}(I)=\bigcup_{b\in I}\sigma(b)$. Using compactness of $\supp(f)$ we find a finite family $B\subseteq I$ with $\supp(f)\subseteq\bigcup_{b\in B}\sigma(b)$, so $B$ is a strong cover of $f$ (Lemma <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#55'>1.11</a>) and therefore $f\in I$.
+</p>
+
+</li>
+
+<li id='67'>
+<p>
+Suppose $U\subseteq X$ is open. By weak regularity of $(X,\theta,\mathcal{A})$ and since $X$ is regular, we have
+<div class='equation' id='68'>
+\begin{equation*}
+U=\bigcup_{\substack{f\in\mathcal{A}\\\supp(f)\subseteq U}}\sigma(f)=\bigcup_{f\in\mathbf{I}(U)}\sigma(f)=\mathbf{U}(\mathbf{I}(U)).
+\end{equation*}
+</div>
+</p>
+
+</li>
+
+<li id='69'>
+<p>
+The previous items prove that $U\mapsto\mathbf{I}(U)$ is a bijection, with inverse $I\mapsto\mathbf{U}(I)$. It is clear that both maps are order-preserving.
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<h3 class='subsection' id='70'>1.3. The main theorems</h3>
+The main theorem (<a class='reference' href='A general Banach-Stone type theorem and applications_1.html#75'>1.17</a>) now follows easily from the previous subsection. Fix two locally compact Hausdorff spaces $X$ and $Y$, and for $Z\in\left\{X,Y\right\}$ a Hausdorff space $H_Z$, a continuous map $\theta_Z\colon Z\to H_Z$, and a subset $\mathcal{A}(Z)\subseteq C_c(Z,\theta_Z)$.
+
+<!-- 1.15 -->
+<div class='definition' id='71'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.15</span>.
+<p>
+We call a map $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$ a <em>$\perpp$-morphism</em> if $f\perpp g$ implies $Tf\perpp Tg$; $T$ is a <em>$\perpp$-isomorphism</em> if it is bijective and both $T$ and $T^{-1}$ are $\perpp$-morphisms. $\perp$, $\subseteq$ and $\Subset$-isomorphisms are define analogously.
+</p>
+
+</div>
+<p>
+By Proposition <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#32'>1.8</a><a class='reference' href='A general Banach-Stone type theorem and applications_1.html#34'>(a)</a>, $\perp$-morphisms coincide with $\subseteq$ morphisms. We obtain:
+</p>
+
+<!-- 1.16 -->
+<div class='theorem' id='72'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>1.16</span>.
+<p>
+Suppose $(X,\theta_X,\mathcal{A}(X))$ and $(Y,\theta_Y,\mathcal{A}(Y))$ are weakly regular and $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$ is a $\perp$-isomorphism. Let $f,g\in\mathcal{A}(X)$. Then $\sigma(f)\subseteq \sigma(g)$ if and only if $\sigma(Tf)\subseteq \sigma(Tg)$. In particular, $Z(f)=\varnothing$ if and only if $Z(Tf)=\varnothing$.
+</p>
+
+</div>
+<p>
+Assume $(X,\theta,\mathcal{A}(X))$ is weakly regular. Let $\widehat{\mathcal{A}(X)}$ be the collection of maximal $\perpp$-ideals of $\mathcal{A}$, and endow it with the topology generated by the sets
+<div class='equation' id='73'>
+\begin{equation*}
+U(f)=\left\{I\in\widehat{\mathcal{A}(X)}:\exists g\Subset f\text{ such that }g\not\in I\right\},\qquad f\in\mathcal{A}(X).
+\end{equation*}
+</div>
+By Theorem <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#59'>1.14</a>, we obtain a bijection $\kappa_X\colon X\to\widehat{\mathcal{A}(X)}$, $\kappa_X(x)=\mathbf{I}(X\setminus\left\{x\right\})$. Since for all $x\in X$ and $f\in\mathcal{A}(X)$,
+<div class='equation' id='74'>
+\begin{equation*}
+x\in\sigma(f)\iff\exists g\Subset f\text{ such that } x\in\supp(g)\iff\kappa_X(x)\in U(f),
+\end{equation*}
+</div>
+then $\kappa_X(\sigma(f))=U(f)$, which proves that $\kappa_X$ is a homeomorphism. Performing a similar procedure  with $Y$ and using standard duality arguments, we obtain our main theorem:
+</p>
+
+<!-- 1.17 -->
+<div class='theorem' id='75'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>1.17</span>.
+<p>
+If $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are weakly regular and $T\colon\mathcal{A}(X)\to\mathcal{A}(Y)$ is a $\perpp$-isomorphism then there is a unique homeomorphism $\phi\colon Y\to X$ such that $\phi(\supp(Tf))=\supp(f)$ for all $f\in \mathcal{A}(X)$ (equivalently, $\phi(\sigma(Tf))=\sigma(f)$, or $\phi(Z(Tf))=Z(f)$, for all $f\in\mathcal{A}(X)$).
+</p>
+
+</div>
+
+<!-- 1.18 -->
+<div class='definition' id='76'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.18</span>.
+<p>
+The unique homeomorphism $\phi$ associated with $T$ as in <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#75'>1.17</a> will be called the <em>$T$-homeomorphism</em>.
+</p>
+
+</div>
+<p>
+We finish this section by proving that Theorem <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#75'>1.17</a> is sharp, in the sense that the analogous result for $\perp$-isomorphisms is not true in general. We can even be more bold and find counter-examples in settings which are usually regarded as <span>&#8220;</span>well-behaved<span>&#8221;</span>; namely, we will consider only real-valued functions and the usual notion of support (i.e., $C_c(X)=C_c(X,0)$ for a space $X$), and compact spaces.
+</p>
+<p>
+Moreover, we will provide two examples: one where the underlying topological spaces do not have the same small inductive dimension (Corollary <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#92'>1.23</a>), and one where they do (Corollary <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#95'>1.25</a>).
+</p>
+<p>
+Let us fix some notation, and recall some basic facts about Stone duality. We refer to [<a class='reference' href='../../HTML citations/MR1507106.html' target='_blank'>MR1507106</a>], <a class='reference' href='../../HTML citations/dml124080.html' target='_blank'>dml124080</a>] for details (see also [<a class='reference' href='../../HTML citations/MR861951.html' target='_blank'>MR861951</a>, II.4.4])
+</p>
+
+<div class='alt' id='77'>
+<span class='envidentifier'>Notation</span>
+<p>
+Given a Hausdorff space $X$, denote by $\operatorname{RO}_K(X)$ the generalized Boolean algebra of regular open subsets of $X$ with compact closure, and by $\operatorname{KO}(X)$ the generalized Boolean algebra of compact-open subsets of $X$. Given $A\in \operatorname{RO}_K(X)$, we define $\Sigma_X(A)=\left\{f\in C_c(X):\sigma(f)=A\right\}$.
+</p>
+<p>
+Given a generalized Boolean algebra $B$, let $\operatorname{Spec}(B)$ be the spectrum of $B$, i.e., the space of non-trivial lattice homomorphisms from $B$ to the two-element lattice $\left\{0,1\right\}$, with the topology of pointwise convergence. (Equivalently, it may be regarded as the space of ultrafilters of $B$.)
+</p>
+
+</div>
+
+<div class='alt' id='78'>
+<span class='envidentifier'>Stone duality</span>
+<p>
+The usual form of Stone duality states that the category of Stone (i.e., zero-dimensional, compact Hausdorff) spaces is dual to that of Boolean algebras. This extends to the <em>locally</em> compact spaces and <em>generalized</em> Boolean algebras, and in particular we obtain: Every zero-dimensional, locally compact Hausdorff space $X$ is (naturally) homeomorphic to $\operatorname{Spec}(\operatorname{KO}(X))$, and every generalized Boolean algebra $B$ is (naturally) isomorphic to $\operatorname{KO}(\operatorname{Spec}(B))$. For a more general version, see [<a class='reference' href='../../HTML citations/bicestarlinglcsd.html' target='_blank'>bicestarlinglcsd</a>].
+</p>
+
+</div>
+<p>
+In order to find non-homeomorphic spaces $X$ and $Y$ such that $C_c(X)$ and $C_c(Y)$ are $\perp$-isomorphic, we need the following result:
+</p>
+
+<!-- 1.19 -->
+<div class='proposition' id='79'>
+<span class='envidentifier'>Proposition</span> <span class='envcounter'>1.19</span>.
+<p>
+Suppose that:
+</p>
+
+<style>ol.altlist80 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist80'>
+
+<li id='81'>
+<p>
+$X$ and $Y$ are separable, locally compact Hausdorff spaces;
+</p>
+
+</li>
+
+<li id='82'>
+<p>
+For all nonempty $A\in\operatorname{RO}_K(X)$ and $B\in\operatorname{RO}_K(Y)$, $\Sigma_X(A)$ and $\Sigma_Y(B)$ are nonempty;
+</p>
+
+</li>
+
+<li id='83'>
+<p>
+$\varphi\colon\operatorname{RO}_K(X)\to\operatorname{RO}_K(Y)$ is an order isomorphism (with respect to set inclusion).
+</p>
+
+</li>
+</ol>
+<p>
+Then $C_c(X)$ and $C_c(Y)$ are $\perp$-isomorphic.
+</p>
+
+</div>
+<div class='proof' id='84'>
+<span class='envidentifier'>Proof</span>.
+<p>
+Given $A\in\operatorname{RO}_K(X)$, the sets  $\Sigma_X(A)$ and $\Sigma_Y(\varphi(A))$ have the same cardinality: They are either singletons if $A=\varnothing$, or have cardinality $2^{\aleph_0}$ otherwise, by <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#82'>(ii)</a> and since $X$ and $Y$ are separable. Consider any bijection $T_A\colon\Sigma_X(A)\to\Sigma_Y(\varphi(A))$. Then the map
+<div class='equation' id='85'>
+\begin{equation*}
+T\colon C_c(X)\to C_c(Y),\qquad T(f)=T_{\sigma(f)}(f)
+\end{equation*}
+</div>
+is a $\perp$-isomorphism.
+</p>
+
+</div>
+<p>
+The following are two technical lemmas which will allow us to construct spaces $X$ and $Y$ satisfying the hypotheses of the theorem above.
+</p>
+
+<!-- 1.20 -->
+<div class='lemma' id='86'>
+<span class='envidentifier'>Lemma</span> <span class='envcounter'>1.20</span>.
+<p>
+Suppose that $\mathfrak{C}$ is a zero-dimensional, locally compact Hausdorff space and $\operatorname{KO}(\mathfrak{C})$ is conditionally complete (i.e., every <em>bounded</em> family has a supremum). Then $\operatorname{RO}_K(\mathfrak{C})=\operatorname{KO}(\mathfrak{C})$.
+</p>
+
+</div>
+<div class='proof' id='87'>
+<span class='envidentifier'>Proof</span>.
+<p>
+The only non-trivial part is proving $\operatorname{RO}_K(\mathfrak{C})\subseteq\operatorname{KO}(\mathfrak{C})$. Given $A\in\operatorname{RO}_K(\mathfrak{C})$, the family $\left\{V\in\operatorname{KO}(\mathfrak{C}):V\subseteq A\right\}$ is bounded in $\operatorname{KO}(\mathfrak{C})$, so let $U$ be its supremum in $\operatorname{KO}(\mathfrak{C})$. As $\mathfrak{C}$ is zero-dimensional we have $A\subseteq U$. To prove the reverse inclusion, we first show that $U\setminus\overline{A}=\varnothing$.
+</p>
+<p>
+If $W\in\operatorname{KO}(\mathfrak{C})$ and $W\subseteq U\setminus\overline{A}$, then $A\subseteq  U\setminus W$, from which it follows that $U\subseteq U\setminus W$, so $W=\varnothing$. This proves that $U\setminus\overline{A}=\varnothing$, because $\mathfrak{C}$ is zero-dimensional, and so $U\subseteq\overline{A}$. However, $U$ is clopen and $A$ is regular open, which implies $A=U$.
+</p>
+
+</div>
+
+<!-- 1.21 -->
+<div class='lemma' id='88'>
+<span class='envidentifier'>Lemma</span> <span class='envcounter'>1.21</span>.
+<p>
+If $X$ is a separable locally compact Hausdorff space, then $\mathfrak{C}=\operatorname{Spec}(\operatorname{RO}_K(X))$ is separable as well.
+</p>
+
+</div>
+<div class='proof' id='89'>
+<span class='envidentifier'>Proof</span>.
+<p>
+Let $\left\{x_n:n\in\mathbb{N}\right\}$ be a countable dense subset of $X$. For each $n$, Zorn's Lemma implies that exists $\phi_n\in\mathfrak{C}$ such that $\phi_n(U)=1$ whenever $x_n\in U$. Then $\left\{\phi_n\right\}_n$ is easily seen to be dense in $\mathfrak{C}$.
+</p>
+
+</div>
+
+<!-- 1.22 -->
+<div class='lemma' id='90'>
+<span class='envidentifier'>Lemma</span> <span class='envcounter'>1.22</span>.
+<p>
+If $X$ is a second-countable locally compact Hausdorff space and $A\in\operatorname{RO}_K(X)$, then there is $f\in C_c(X)$ such that $\sigma(f)=A$.
+</p>
+
+</div>
+<div class='proof' id='91'>
+<span class='envidentifier'>Proof</span>.
+<p>
+First choose a countable family of compact subsets $K_n\subseteq A$ such that $\bigcup_nK_n=A$. For each $n$ we can, by Urysohn's Lemma and regularity of $X$, find a continuous function $f_n\colon X\to[0,1]$ such that $f_n(k)=1$ for all $k\in K_n$ and $\supp(f_n)\subseteq A$. Letting $f=\sum_{n=1}^\infty 2^{-n}f_n$ we obtain $[f\neq 0]=\sigma(f)=A$, because $A$ is regular.
+</p>
+
+</div>
+<p>
+Given locally compact Hausdorff $X$, let $\mathfrak{C}=\operatorname{Spec}(\operatorname{RO}_K(X))$. The generalized Boolean algebra $\operatorname{RO}_K(X)$ is conditionally complete, so by Stone duality, $\operatorname{KO}(\mathfrak{C})$ is also conditionally complete, and hence coincides with $\operatorname{RO}_K(\mathfrak{C})$. As a consequence of Lemmas <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#86'>1.20</a>, <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#88'>1.21</a> and <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#90'>1.22</a> and Proposition <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#79'>1.19</a> when $X=[0,1]$, we conclude:
+</p>
+
+<!-- 1.23 -->
+<div class='corollary' id='92'>
+<span class='envidentifier'>Corollary</span> <span class='envcounter'>1.23</span>.
+<p>
+There exists a zero-dimensional, compact Hausdorff topological space $\mathfrak{C}$ (namely, $\mathfrak{C}=\operatorname{Spec}(\operatorname{RO}_K([0,1]))$) &#8210; which is, in particular, not homeomorphic to $[0,1]$ &#8210; such that $C(\mathfrak{C})$ and $C([0,1])$ are $\perp$-isomorphic.
+</p>
+
+</div>
+<p>
+For our second example, we will consider only second-countable spaces. The next lemma is again a technical lemma which can be proven by elementary topological considerations, so we omit its proof.
+</p>
+
+<!-- 1.24 -->
+<div class='lemma' id='93'>
+<span class='envidentifier'>Lemma</span> <span class='envcounter'>1.24</span>.
+<p>
+Let $X$ be a topological space and $U$ a dense open subset of $X$. Then the map
+<div class='equation' id='94'>
+\begin{equation*}
+\varphi_U\colon \operatorname{RO}(X)\to\operatorname{RO}(U),\qquad \varphi_U(A)=A\cap U
+\end{equation*}
+</div>
+is an order isomorphism.
+</p>
+
+</div>
+<p>
+Let $\mathbb{S}^1=\left\{z\in\mathbb{C}:|z|=1\right\}$ be the complex unit circle.
+</p>
+
+<!-- 1.25 -->
+<div class='corollary' id='95'>
+<span class='envidentifier'>Corollary</span> <span class='envcounter'>1.25</span>.
+<p>
+$C([0,1])$ and $C(\mathbb{S}^1)$ are $\perp$-isomorphic.
+</p>
+
+</div>
+<div class='proof' id='96'>
+<span class='envidentifier'>Proof</span>.
+<p>
+Let $X=(0,1)$ and $Y=\mathbb{S}^1\setminus\left\{1\right\}$. Then $X$ and $Y$ are homeomorphic, and two applications of Lemma <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#93'>1.24</a> imply that $\operatorname{RO}([0,1])$ and $\operatorname{RO}(\mathbb{S}^1)$ are order-isomorphic. Lemmas <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#88'>1.21</a> and <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#90'>1.22</a>, and Proposition <a class='reference' href='A general Banach-Stone type theorem and applications_1.html#79'>1.19</a>, imply that $C([0,1])$ and $C(\mathbb{S}^1)$ are $\perp$-isomorphic.
+</p>
+
+</div>
+
+</body>
+</html>

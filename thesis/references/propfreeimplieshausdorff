@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.6.tfpa.html#propfreeimplieshausdorff'>4.6.8</a>
+
+<!-- 4.6.8 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 4.6.8</span>
+	If $\theta=\left(\theta_s:X_{s^*}\to X_s\right)_{s\in S}$ is a free partial action of an inverse semigroup $S$ on a locally compact Hausdorff space $X$ then $S\ltimes X$ is Hausdorff.
+	</p>
+</div>

@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#examplebugeyed'>1.4.13</a>
+<!-- 1.4.13 -->
+<div class='toload example'>
+<p><span class='envidentifier'>Example 1.4.13</span>
+It is not necessarily true that the product of two compact-open bisections of an étale, non-Hausdorff groupoid, is compact-open as well. For example, let $X=\mathbb{N}\cup\left\{\infty_1,\infty_2\right\}$, where $\infty_1\neq\infty_2$ are two "points at infinity", be the following "bug-eyed" compactification of $\mathbb{N}$: a subset $A\subseteq X$ is open if and only if it is either cofinite or contained in $\mathbb{N}$.
+</p>
+
+<p>
+If we see $X$ as a compact, ample, non-Hausdorff unit groupoid (Example <span class='ref' data-tag='exampleunitgroupoid'></span>), so bisections of $X$ are simply its subsets and the product of bisections is their intersection. Then $A=\mathbb{N}\cup\left\{\infty_1\right\}$ and $B=\mathbb{N}\cup\left\{\infty_2\right\}$ are compact-open subsets of $X$, however their intersection $A\cap B=\mathbb{N}$ is not compact.
+</p>
+</div>

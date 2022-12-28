@@ -1,0 +1,13 @@
+<a class='reflink' href='../1.gis/1.8.nclst.html#propositionsigmadistributivitisigmacomplete'>1.8.11</a>
+<!-- 1.8.11 -->
+<div class='toload proposition'>
+<p><span class='envidentifier'>Proposition 1.8.11</span>
+Any $\sigma$-complete Boolean inverse semigroup $S$ admits meets of countable compatible subsets $F\subseteq S$. Moreover, if $F\subseteq S$ is a countable compatible subset and $z\in S$ then
+<ol class='alphpar'>
+	<li> $z\left(\bigvee F\right)=\bigvee(zF)$ and $\left(\bigvee F\right)z=\bigvee(Fz)$; Thus $S$ is $\aleph_1$-distributive.</li>
+	<li> $z\land\left(\bigvee F\right)=\bigvee_{f\in F}(z\land f)$.</li>
+	<li> $\left(\bigvee F\right)\setminus z=\bigvee_{f\in F}(f\setminus z)$.</li>
+	<li> $z\setminus(\bigvee F)=\bigwedge_{f\in F}(z\setminus f)$.</li>
+</ol>
+</p>
+</div>

@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#propositiondisjointopensets'>3.3.12</a>
+
+<!-- 3.3.12 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 3.3.12</span>
+	If $F$ is an infinite subset of a regular Hausdorff space $X$, then there exists a countable infinite subset $\left\{y_1,y_2,\ldots\right\}\subseteq F$ and open sets $U_n$ such that $y_n\in U_n$ for all $n$ and $U_n\cap U_m=\varnothing$ if $n\neq m$.
+	</p>
+</div>

@@ -1,0 +1,18 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#definitionalgebraicpartialaction'>4.3.1</a>
+
+<!-- 4.3.1 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.3.1
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR2115083'></span>])</span></span>
+	If $R$ is a commutative unital ring, $S$ is an inverse semigroup and $A$ is an associative algebra over $R$, a (non-degenerate) <em>algebraic partial action</em> of $S$ on $A$ is a partial action $\alpha:S\to\mathcal{I}(A)$ such that:
+	<ol class='roman'>
+		<li>
+			For all $s\in S$, $A_s$ is an ideal of $A$ and $\alpha_s:A_{s^*}\to A_s$ is an $R$-isomorphism;
+		</li>
+		
+		<li>
+			$A=\operatorname{span}\bigcup_{s\in S}A_s$.
+		</li>
+	</ol>
+	Partial actions on rings are defined in the same way (e.g. by regarding rings as $\mathbb{Z}$-algebras in the natural way). All partial actions on algebras will be assumed algebraic, in the sense described here.
+</div>

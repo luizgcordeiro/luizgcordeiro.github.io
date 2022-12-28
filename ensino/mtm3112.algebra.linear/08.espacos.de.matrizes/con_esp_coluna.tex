@@ -1,0 +1,26 @@
+\begin{definition}
+	Dada uma matriz $A\in M_{m\times n}(\mathbb{R})$, as colunas de $A$ podem ser vistas como elementos de $\mathbb{R}^m$. O \textbf{espaço coluna} de $A$ é o subespaço de $\mathbb{R}^m$ gerado pelas colunas de $A$. Vamos denotá-lo por $\operatorname{Col}(A)$.
+
+	Mais precisamente, se a matriz $A$ é dada por
+	\[A=\begin{bmatrix}
+		a_{11}
+			&a_{12}
+				&\cdots
+					&a_{1n}\\
+		a_{21}
+			&a_{22}
+				&\cdots
+					&a_{2n}\\
+		\vdots
+			&\vdots
+				&\ddots
+					&\vdots\\
+		a_{m1}
+			&a_{m2}
+				&\cdots
+					&a_{mn}
+		\end{bmatrix},\]
+	então consideramos cada coluna $c_j=(a_{1j},a_{2j},\ldots,a_{mj})$, e definimos $\operatorname{Col}(A)=\langle c_1,\ldots,c_m\rangle$.
+\end{definition}
+
+\textit{Observação}: O espaço coluna de $A$ coincide com o \href{http://mtm.ufsc.br/~cordeiro/ensino/mtm3112.algebra.linear/08.espacos.de.matrizes/con_esp_linha_moodle.html}{espaço linha} de $A^T$, isto é, $\operatorname{Col}(A)=\operatorname{Lin}(A^T)$.

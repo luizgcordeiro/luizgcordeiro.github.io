@@ -1,0 +1,52 @@
+\begin{theorem}
+	Sejam $V$ e $W$ espaços vetoriais com produtos internos $\langle \cdot,\cdot\rangle_V$ e $\langle\cdot,\cdot\rangle_W$, respectivamente. Considere também $T\colon V\to W$ uma transformação linear.
+	
+	Então $T$ é uma isometria se, e somente se, $T$ preserva produtos internos, no sentido de que
+	\[\langle T(v),T(w)\rangle_W=\langle v,w\rangle_V\tag{$*$}\]
+	para todos $v,w\in V$.
+	
+	Em particular, isometrias lineares também preservam ângulos entre vetores.
+\end{theorem}
+
+\begin{proof}
+	Se $T$ preservar produtos internos, então em particular a igualdade ($*$) será válida com $w=v$, de onde segue que
+	\begin{align*}
+		\Vert T(v)\Vert_W^2
+			&=\langle T(v),T(v)\rangle_W\\
+			&=\langle v,v\rangle_V\\
+			&=\Vert v\Vert_V^2
+	\end{align*}
+	e portanto $\Vert T(v)\Vert_W=\Vert v\Vert_V$ para todo $v\in V$, o que significa que $T$ é uma isometria.
+	
+	Suponha agora que $T$ é uma isometria. Dados $v,w\in V$, podemos calcular
+	\begin{align*}
+		\Vert v+w\Vert_V^2
+			&=\langle v+w,v+w\rangle_V\\
+			&=\langle v,v\rangle+\langle v,w\rangle+\langle w,v\rangle+\langle w,w\rangle\\
+			&=\Vert v\Vert_V^2+2\langle v,w\rangle_V+\Vert w\Vert_V^2,\tag{1}
+	\end{align*}
+	e similarmente
+	\begin{align*}
+		\Vert T(v+w)\Vert_W^2
+			&=\Vert T(v)+T(w)\Vert_W^2\\
+			&=\Vert T(v)\Vert_W^2+2\langle T(v),T(w)\rangle_W+\Vert T(w)\vert_W^2.\tag{2}
+	\end{align*}
+	
+	Como $T$ é uma isometria, então $\Vert T(v+w)\Vert_W=\Vert v+w\Vert_V$, $\Vert T(v)\Vert_W=\Vert v\Vert_V$ e $\Vert T(w)\Vert_W=\Vert w\Vert_V$. Assim, obtemos de (1) e (2) que
+	\begin{align*}
+		\Vert v\Vert_V^2+2\langle v,w\rangle_V+\Vert w\Vert_V^2
+			&=\Vert v+w\Vert_V^2\\
+			&=\Vert T(v+w)\Vert_W^2\\
+			&=\Vert T(v)\Vert_W^2+2\langle T(v),T(w)\rangle_W+\Vert T(w)\Vert_W^2\\
+			&=\Vert v\Vert_V^2+2\langle T(v),T(w)\rangle_W+\Vert w\Vert_V^2.\tag{3}
+	\end{align*}
+	Simplificando os termos em comum no primeiro e no último termo de (3), concluímos que
+	\[\langle v,w\rangle_V=\langle T(v),T(w)\rangle_W\]
+	para todos $v,w\in V$. Isto significa que $T$ preserva produtos internos.
+	
+	Quanto a $T$ preservar ângulos, lembre-se que o ângulo entre dois vetores não-nulos $v,w\in V$ é dado por
+	\[\theta=\arccos\left(\frac{\langle v,w\rangle_V}{\Vert v\Vert_V\Vert w\Vert_V}\right)\]
+	Como $T$ preserva norma e produto interno, então
+	\[\theta=\arccos\left(\frac{\langle T(v),T(w)\rangle_W}{\Vert T(v)\Vert_W\Vert T(w)\Vert_W}\right),\]
+	e o valor à direita é o ângulo entre $T(v)$ e $T(w)$.
+\end{proof}

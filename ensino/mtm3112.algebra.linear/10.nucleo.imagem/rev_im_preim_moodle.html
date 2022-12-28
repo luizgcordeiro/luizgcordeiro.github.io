@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+<p>
+Seja \(f\colon X\to Y\) uma função entre dois conjuntos.
+</p>
+
+<hr/>
+<p>
+Dado um subconjunto \(A\subseteq X\), a <b>imagem direta</b> de \(A\) por \(f\) é o subconjunto de \(Y\) dado por
+<div>
+\begin{equation*}
+f(A)=\left\{f(a):a\in A\right\}.
+\end{equation*}
+</div>
+Em outros termos, os elementos de \(f(A)\) são os elementos \(y\) de \(Y\) que podem ser escritos como \(y=f(a)\) para algum \(a\in A\).
+</p>
+<p>
+No caso que
+<hr/>
+</p>
+<p>
+Dado um subconjunto \(B\subseteq Y\), a <b>pré-imagem</b> ou <b>imagem inversa</b> de \(B\) por \(f\) é o suconjunto de \(X\) dado por
+<div>
+\begin{equation*}
+f^{-1}(B)=\left\{x\in X:f(x)\in B\right\}.
+\end{equation*}
+</div>
+</p>
+<p>
+Imagens inversas de elementos de \(Y\) são definidas como as imagens inversas dos respectivos conjuntos unitários. Precisamente, então a pré-imagem ou imagem inversa de um elemento \(y\) de \(Y\) é definida como
+<div>
+\begin{equation*}
+f^{-1}( y )=f^{-1}(\left\{y\right\})=\left\{x\in X:f(x)=y\right\}.
+\end{equation*}
+</div>
+</p>
+
+<hr/>
+<p>
+<i>Propriedades de imagens diretas</i>:
+</p>
+
+<ul>
+
+<li>
+<p>
+Imagens diretas preservam inclusão de conjuntos: Se \(A\subseteq A'\), então \(f(A)\subseteq A'\).
+</p>
+
+</li>
+
+<li>
+<p>
+Imagens diretas preservam uniões:
+<div>
+\begin{equation*}
+f(A_1\cup A_2)=f(A_1)\cup f(A_2).
+\end{equation*}
+</div>
+O fato análogo para uniões de quantidades arbitrárias (possivelmente infinitas) de subconjuntos de \(X\) é válido.
+</p>
+
+</li>
+
+<li>
+<p>
+Em geral, imagens diretas <b>não preservam</b> intersecções nem complementos.
+</p>
+
+</li>
+</ul>
+
+<hr/>
+<p>
+<i>Propriedades de pré-imagens</i>:
+</p>
+
+<ul>
+
+<li>
+<p>
+Imagens inversas preservam inclusão de conjuntos: Se \(B\subseteq B'\), então \(f^{-1}(B)\subseteq f^{-1}(B')\).
+</p>
+
+</li>
+
+<li>
+<p>
+Imagens inversas preservam uniões:
+<div>
+\begin{equation*}
+f^{-1}(B_1\cup B_2)=f^{-1}(B_1)\cup f^{-1}(B_2).
+\end{equation*}
+</div>
+O fato análogo para uniões de quantidades arbitrárias (possivelmente infinitas) de subconjuntos de \(Y\) é válido.
+</p>
+
+</li>
+
+<li>
+<p>
+Imagens diretas preservam intersecções:
+<div>
+\begin{equation*}
+f^{-1}(B_1\cap B_2)=f^{-1}(B_1)\cap f(B_2).
+\end{equation*}
+</div>
+O fato análogo para uniões de quantidades arbitrárias (possivelmente infinitas) de subconjuntos de \(Y\) é válido.
+</p>
+
+</li>
+
+<li>
+<p>
+Imagens diretas preservam complementos:
+<div>
+\begin{equation*}
+f(Y\setminus B)=X\cup f^{-1}(B).
+\end{equation*}
+</div>
+</p>
+
+</li>
+</ul>
+
+<hr/>
+<p>
+<i>Relações entre imagens diretas e pré-imagens</i>
+</p>
+
+<ul>
+
+<li>
+<p>
+\(f(f^{-1}(B))\subseteq B\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(A\subseteq f^{-1}(f(A))\).
+</p>
+
+</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#theoremquotientfrommeasuredgroupoidtoorbitrelation'>1.6.18</a>
+<!-- 1.6.18 -->
+<div class='toload theorem'>
+<p><span class='envidentifier'>Theorem 1.6.18</span>
+Let $\mathcal{G}$ be an $\ra$-discrete  Borel groupoid. Let $R=\mathcal{R}(\mathcal{G})=(\ra,\so)(\mathcal{G})=\left\{(\ra(a),\so(a)):a\in\mathcal{G}\right\}$ be the orbit equivalence relation on $\mathcal{G}^{(0)}$, endowed with the $\sigma$-algebra coming from the product $\sigma$-algebra of $\mathcal{G}^{(0)}\times\mathcal{G}^{(0)}$. Then $R$ is also $\ra$-discrete and standard Borel, hence an $\ra$-discrete Borel groupoid on its own right. Moreover, there is a map $\rho:\BOR(R)\to\BOR(\mathcal{G})$ such that $(\ra,\so)\circ\rho=\id_{\BOR(R)}$.
+</p>
+</div>

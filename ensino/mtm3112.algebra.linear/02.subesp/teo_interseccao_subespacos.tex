@@ -1,0 +1,23 @@
+\begin{theorem}
+	Sejam $V$ um espaço vetorial e $U$ e $W$ dois subespaços vetoriais de $V$. Então $U\cap W$ é um subespaço vetorial de $V$.
+\end{theorem}
+
+Um resultado análogo é válido também para intersecções de quantidades arbitrárias (possivelmente infinitas) de subespaços, com essencialmente a mesma demonstração. Mas vamos nos concentrar no caso de somente dois conjuntos por simplicidade.
+
+\begin{proof}
+	Temos 3 condições a verificar:
+	\begin{enumerate}
+	\item \uline{$U\cap W$ é não-vazio.}
+	
+	De fato, como $U$ e $W$ são subespaços, então o vetor nulo pertence a ambos $U$ e $W$. Segue que o vetor nulo também pertence à intersecção de $U$ e $W$. Isto significa que $U\cap W$ é não-vazio.
+	\item \uline{Se $x\in U\cap W$ e $y\in U\cap W$, então $x+y\in U\cap W$.}
+	
+	De fato, nestas condições, teremos que, em particular, $x\in U$ e $y\in U$. Como $U$ é subespaço, então $x+y\in U$. Um argumento similar mostra que também $x+y\in W$. Daí concluímos que $x+y\in U\cap W$.
+	
+	\item \uline{Se $x\in U\cap W$ e $\lambda$ é um escalar, então $\lambda x\in U\cap W$}.
+	
+	A demonstração deste fato é feita de modo inteiramente análogo à demonstração do item anterior, e portanto a omitiremos.
+	\end{enumerate}
+	
+	Como as 3 condições que definem subespaços vetoriais são satisfeitas por $U\cap W$, isto significa que $U\cap W$ é, enfim, um subespaço vetorial de $V$.
+\end{proof}

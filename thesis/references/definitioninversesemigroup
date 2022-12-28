@@ -1,0 +1,12 @@
+<a class='reflink' href='../1.gis/1.2.is.html#definitioninversesemigroup'>1.2.1</a>
+<!-- 1.2.1 -->
+<div class="toload definition">
+<p><span class="envidentifier">Definition 1.2.1</span>
+A <em>semigroup</em> is a set $S$ endowed with an associative binary operation $(s,t)\mapsto st$. A semigroup is
+<ol>
+	<li> <em>regular</em> if for every $s\in S$ there exists an element $t\in S$, called an <em>inverse</em> of $s$, satisfying $sts=s$ and $tst=t$.</li>
+	<li> an <em>inverse semigroup</em> if it is regular and every $s\in S$ admits a unique inverse. In this case we denote it as $s^*$.</li>
+	<li> a <em>monoid</em> if it has an <em>identity</em> or <em>unit</em>, that is, an element $1\in S$ (necessarily unique) satisfying $1s=s1=s$ for all $s\in S$.</li>
+</ol>
+A <em>subsemigroup</em> of a semigroup $S$ is a subset $T\subseteq S$ which is closed under the semigroup operation. A <em>sub-inverse semigroup</em> of an inverse semigroup is a subsemigroup which is closed under inverses.</p>
+</div>

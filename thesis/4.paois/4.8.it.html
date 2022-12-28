@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>4.8. Isomorphism theorems</h2>
+
+<p>
+In this short section we connect all the isomorphism theorems we have proved. But first, let us consider another semigroup associated to a groupoid.
+</p>
+
+<p>
+We will use the terminology of [<span class='ref' data-tag='MR2876963'></span>]. For each compact-open bisection $U$ of an ample groupoid $\mathcal{G}$, we denote by $\tau_U$ the homeomorphism given by the canonical action of $\KB(\mathcal{G})$ on $\mathcal{G}^{(0)}$, namely $\tau_U=\ra\circ (\so|_U^{-1}):\so(U)\to\ra(U)$. Recall from Example <span class='ref' data-tag='examplecanonicalaction'></span> that $U\mapsto\tau_U$ is a morphism from $\KB(\mathcal{G})$ to $\mathcal{I}(\mathcal{G}^{(0)})$.
+</p>
+
+<!-- 4.8.1 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 4.8.1</span>
+	The <em>topological full pseudogroup</em> of an ample groupoid is the semigroup
+	<div class='equation'>\[
+		[[\mathcal{G}]]=\left\{\tau_U:U\in\KB(\mathcal{G})\right\}.
+		\]</div>
+	</p>
+</div>
+
+<!-- 4.8.2 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 4.8.2</span>
+	If $\theta$ is an action of an inverse semigroup $S$ on a zero-dimensional, locally compact Hausdorff space $X$, then the topological full pseudogroup $[[S\ltimes_\theta X]]$ is the set of all partial homeomorphisms $\varphi:U\to V$ for which there are $s_1,\ldots,s_n\in S$ and compact-open $U_1,\ldots,U_n$ such that
+	<ol class='roman'>
+		<li>
+			$U=\bigcup_{i=1}^n U_i$;
+		</li>
+		
+		<li>
+			$U_i\subseteq X_{s_i^*}$ for all $i$;
+		</li>
+		
+		<li>
+			$\varphi|_{U_i}=\theta_{s_i}|_{U_i}$.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<p>
+The analogue to the theorem below was proven in [<span class='ref' data-tag='MR2460017'></span>, Corollary 3.3] when one considers open bisections instead of compact-open ones. In any case, we provide a short and direct proof of it.
+</p>
+
+<!-- 4.8.3 -->
+<div class='proposition' id='propbisectionsemigroupfullsemigroup'>
+	<p><span class='envidentifier'>Proposition 4.8.3</span>
+	Suppose $\mathcal{G}$ is an ample (possibly non-Hausdorff) groupoid. Then the morphism $\tau:\KB(\mathcal{G})\to [[\mathcal{G}]]$ is an isomorphism if and only if $\mathcal{G}$ is effective.
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='propbisectionsemigroupfullsemigroup'>Proof</a>
+</p>
+
+<div class='proof' id='proofofpropbisectionsemigroupfullsemigroup'>
+	<p>
+	First assume that $\mathcal{G}$ is effective, that is, $\mathcal{G}^{(0)}=\operatorname{int}(\operatorname{Iso}(\mathcal{G}))$, and assume $\tau_U=\tau_V$. Then
+	<div class='equation' id='equationpropbisectionsemigroupfullsemigroupproof'>\[
+		\tau_{V^*U}=\tau_{V^*}\circ\tau_U=\id_{\so(V)},\tag{4.8.1},
+	\]</div>
+	which means that $V^*U\subseteq \operatorname{Iso}(\mathcal{G})$. Since $V^*U$ is open then $V^*U\subseteq\mathcal{G}^{(0)}$. Using this and comparing the domains in Equation (<span class='ref' data-tag='equationpropbisectionsemigroupfullsemigroupproof'></span>) we obtain
+	<div class='equation'>\[
+		V^*U=\so(V^*U)=\so(V),
+	\]</div>
+	thus $V=VV^*U\subseteq U$, and symmetrically we obtain $U\subseteq V$.
+	</p>
+	
+	<p>
+	Conversely, suppose $\operatorname{int}(\operatorname{Iso}(\mathcal{G}))\neq\mathcal{G}^{(0)}$. Take any nonempty compact-open bisection $U\subseteq\operatorname{int}(\operatorname{Iso}(\mathcal{mathcal{G}}))$ which is not contained in $\mathcal{G}^{(0)}$. Then $U\neq\so(U)$ but $\tau_U=\tau_{\so(U)}$, so $\tau$ is not injective.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+We can now describe the equivalence between continuous orbit equivalence for partial actions, isomorphisms of groupoids of germs, isomorphisms of topological full pseudogroups and diagonal-preserving isomorphisms of Steinberg algebras, consequently diagonal-preserving isomorphisms of crossed products..
+</p>
+
+<!-- 4.8.4 -->
+<div class='theorem' id='theorem484'>
+	<p><span class='envidentifier'>Theorem 4.8.4</span>
+		Let $R$ be an indecomposable ring, $\theta$ and $\gamma$ be ample, topologically free partial actions of inverse semigroups $S$ and $T$ on $X$ and $Y$, respectively, and suppose that the groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are Hausdorff. Then the following are equivalent:
+		<div class='arpar'>
+			<li>
+				The partial actions $\theta$ and $\gamma$ are continuously orbit equivalent.
+			</li>
+			
+			<li>
+				The groupoids of germs $S\ltimes_\theta X$ and $T\ltimes_\gamma Y$ are topologically isomorphic
+			</li>
+			
+			<li>
+				The inverse semigroups $\KB(S\ltimes_\theta X)$ and $\KB(T\ltimes_\gamma Y)$ are isomorphic.
+			</li>
+			
+			<li>
+				The inverse semigroups $[[S\ltimes_\theta X]]$ and $[[T\ltimes_\gamma Y]]$ are isomorphic/
+			</li>
+			
+			<li>
+				There exists a diagonal-preserving algebra (or ring) isomorphism between the Steinberg algebras $A_R(S\ltimes_\theta X)$ and $A_R(T\ltimes_\gamma Y)$.
+			</li>
+			
+			<li>
+				There exists a diagonal-preserving algebra (or ring) isomorphism between the crossed products $A_R(X)\rtimes S$ and $A_R(Y)\rtimes T$ (with respect to the algebraic partial actions induced by $\theta$ and $\gamma$).
+			</li>
+		</div>
+	</p>
+</div>
+
+<p>
+<a class='proofbutton' data-tag='theorem484'>Proof</a>
+</p>
+
+<div class='proof' id='proofoftheorem484'>
+	<p>
+	(1)$\iff$(2) follows from Theorems <span class='ref' data-tag='theocoegroupoidgermiso'></span> and <span class='ref' data-tag='theogroupoidgermscoe'></span>.
+	</p>
+
+	<p>
+	(2)$\iff$(3) follows from non-commutative Stone duality (Theorem <span class='ref' data-tag='theoremnoncommutativestoneduality'></span>).
+	</p>
+
+	<p>
+	(3)$\iff$(4) follows from Proposition <span class='ref' data-tag='propbisectionsemigroupfullsemigroup'></span>.
+	</p>
+
+	<p>
+	(2)$\iff$(5) follows from Theorem <span class='ref' data-tag='theoremsteinbergalgebras'></span>.
+	</p>
+
+	<p>
+	(5)$\iff$(6) follows from Theorem <span class='ref' data-tag='theoremsteinbergiscrossed'></span>.<span class='qed'></span>
+	</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

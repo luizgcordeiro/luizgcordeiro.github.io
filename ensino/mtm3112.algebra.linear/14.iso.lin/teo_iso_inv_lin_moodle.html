@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Seja \(T\colon V\to W\) um isomorfismo linear entre espaços vetoriais \(V\) e \(W\). Então a função inversa \(T^{-1}\colon W\to V\) também é linear.
+</p>
+
+</div>
+<p>
+Vamos prover duas provas distintas pra este teorema.
+</p>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova usual</i>.
+<p>
+Sejam \(w_1,w_2\in W\) e \(\lambda\in\mathbb{R}\). Devemos provar que \(T^{-1}(w_1+\lambda w_2)=T^{-1}(w_1)+\lambda T^{-1}(w_2)\).
+</p>
+<p>
+Sejam \(v_1=T^{-1}(w_1)\) e \(v_2=T^{-1}(w_2)\). Como \(T\) é linear, temos que
+<div>
+\begin{align*}
+T(v_1+\lambda v_2)
+&=T(v_1)+\lambda T(v_2)\\
+&=w_1+\lambda w_2.
+\end{align*}
+</div>
+</p>
+<p>
+Aplicando \(T^{-1}\) no primeiro e no último termos acima, obtemos a igualdade
+<div>
+\begin{equation*}
+v_1+\lambda v_2=T^{-1}(w_1+\lambda w_2),
+\end{equation*}
+</div>
+ou seja,
+<div>
+\begin{equation*}
+T^{-1}(w_1)+\lambda T^{-1}(w_2)=T^{-1}(w_1+\lambda w_2),
+\end{equation*}
+</div>
+como queríamos demonstrar.
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova alternativa</i>.
+<p>
+Como \(T\) é injetiva, então <a href='http://mtm.ufsc.br/~cordeiro/ensino/mtm3112.algebra.linear/13.trans.lin.comp/teo_inj_inv_esq_moodle.html'>\(T\) admite uma inversa linear à esquerda</a>. Isto é, existe uma função linear \(L\colon W\to V\) tal que
+<div>
+\begin{equation*}
+L\circ T=\operatorname{id}_V.
+\end{equation*}
+</div>
+</p>
+<p>
+Porém, como \(T\) é inversível então esta função inversa à esquerda de \(T\) é na verdade a própria inversa de \(T\). De fato,
+<div>
+\begin{align*}
+L
+&=L\circ \operatorname{id}_W\\
+&=L\circ (T\circ T^{-1})\\
+&=(L\circ T)\circ T^{-1}\\
+&=\operatorname{id}_V\circ T^{-1}\\
+&=T^{-1}.
+\end{align*}
+</div>
+</p>
+<p>
+Isto mostra que \(T^{-1}=L\), que é linear por construção.
+</p>
+
+</div></body>
+</html>

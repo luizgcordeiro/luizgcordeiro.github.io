@@ -1,0 +1,12 @@
+<a class='reflink' href='../1.gis/1.2.is.html#propositioncompatibility'>1.2.30</a>
+<!-- 1.2.30 -->
+<div class="toload proposition">
+<p><span class="envidentifier">Proposition 1.2.30</span>
+Let $S$ be an inverse semigroup, $s,t\in S$ two compatible elements and $z\in S$. Then
+<ol class="alphpar">
+	<li> $s^*$ and $t^*$ are compatible;</li>
+	<li> $zs$ and $zt$ are compatible;</li>
+	<li> $s\land t$ exists, and $s\land t=st^*t=tt^*s=ts^*s=ss^*t$.</li>
+</ol>
+</p>
+</div>

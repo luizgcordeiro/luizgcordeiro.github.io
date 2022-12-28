@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço vetorial e \(A,B\subseteq V\) dois subconjuntos de \(V\). Então
+<div>
+\begin{equation*}
+\langle A\cup B\rangle=\langle A\rangle+\langle B\rangle.
+\end{equation*}
+</div>
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Temos duas inclusões de conjuntos a demonstrar
+</p>
+<p>
+\(\langle A\cup B\rangle\subseteq\langle A\rangle+\langle B\rangle\):
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Primeiro, note que
+<div>
+\begin{equation*}
+A\subseteq\langle A\rangle\subseteq\langle A\rangle+\langle B\rangle,
+\end{equation*}
+</div>
+e similarmente
+<div>
+\begin{equation*}
+B\subseteq\langle B\rangle\subseteq\langle A\rangle+\langle B\rangle.
+\end{equation*}
+</div>
+Então obtemos
+<div>
+\begin{equation*}
+A\cup B\subseteq\langle A\rangle+\langle B\rangle.
+\end{equation*}
+</div>
+Isto mostra que \(\langle A\rangle+\langle B\rangle\) é um subespaço de \(V\) que contém \(A\cup B\). Como \(\langle A\cup B\rangle\) é, por definição, o menor subespaço de \(V\) que contém \(A\cup B\), então \(\langle A\cup B\rangle\) está contido em \(\langle A\rangle+\langle B\rangle\), ou seja,
+<div>
+\begin{equation*}
+\langle A\cup B\rangle\subseteq\langle A\rangle+\langle B\rangle.
+\end{equation*}
+</div>
+
+</div>
+<p>
+\(\langle A\rangle+\langle B\rangle\subseteq\langle A\cup B\rangle\):
+</p>
+
+
+
+<div style='margin: 10px 5px 10px 30px'>
+Para concluir o teorema, devemos mostrar que \(\langle A\rangle+\langle B\rangle\) está contido em \(\langle A\cup B\rangle\). Tome um elemento qualquer
+<div>
+\begin{equation*}
+x\in\langle A\rangle+\langle B\rangle.
+\end{equation*}
+</div>
+Então \(x\) pode ser reescrito como
+<div>
+\begin{equation*}
+x=a+b,\tag{1}
+\end{equation*}
+</div>
+onde \(a\in\langle A\rangle\) e \(b\in\langle B\rangle\). Pelo Teorema Span e subespaço gerado coincidem, os elementos de \(\langle A\rangle\) são exatamente as combinações lineares de elementos de \(A\). Assim, podemos reescrever
+<div>
+\begin{equation*}
+a=\mu_1a_1+\cdots+\mu_na_n
+\end{equation*}
+</div>
+para certos \(a_1,\ldots,a_n\in A\) e escalares \(\mu_1,\ldots,\mu_n\). Similarmente,
+<div>
+\begin{equation*}
+b=\lambda_1b_1+\cdots+\lambda_m b_m
+\end{equation*}
+</div>
+para certos \(b_1,\ldots,b_m\in B\) e escalares \(\lambda_1,\ldots,\lambda_m\). Assim, a Equação (1) pode ser reescrita como
+<div>
+\begin{equation*}
+x=\mu_1a_1+\cdots+\mu_na_n+\lambda_1b_1+\cdots+\lambda_mb_m.
+\end{equation*}
+</div>
+Todos os elementos \(a_i,b_j\) pertencem a \(A\cup B\). Isto mostra que \(x\) é uma combinação linear de elementos de \(A\cup B\). Novamente utilizando o Teorema Span e subespaço gerado coincidem, concluímos que \(x\in\langle A\cup B\rangle\).
+
+</div>
+<p>
+Concluímos que \(\langle A\rangle+\langle B\rangle\) está contido em \(\langle A\cup B\rangle\) e vice-versa, o que mostra que estes dois conjuntos na verdade coincidem.
+</p>
+
+</div></body>
+</html>

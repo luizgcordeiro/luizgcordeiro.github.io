@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Considere matrizes diagonais \(A\) e \(B\) de mesma ordem:
+<div>
+\begin{align*}
+A&=\begin{bmatrix}
+a_{1}&0&\cdots&0\\
+0&a_{2}&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots
+0&0&\cdots&a_{n}
+
+
+\end{bmatrix},\\
+B&=\begin{bmatrix}
+b_{1}&0&\cdots&0\\
+0&b_{2}&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots
+0&0&\cdots&b_{n}
+
+
+\end{bmatrix}.
+\end{align*}
+</div>
+Então
+</p>
+
+<ol>
+
+<li>
+<p>
+\(A+\lambda B=\begin{bmatrix}
+a_1+\lambda b_{1}&0&\cdots&0\\
+0&a_2+\lambda b_{2}&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots
+0&0&\cdots&a_n+\lambda b_{n}
+
+
+\end{bmatrix}\), para todo \(\lambda\in\mathbb{R}\).
+</p>
+
+</li>
+
+<li>
+<p>
+\(AB=\begin{bmatrix}
+a_1b_{1}&0&\cdots&0\\
+0&a_2b_{2}&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots
+0&0&\cdots&a_nb_{n}
+
+
+\end{bmatrix}\).
+</p>
+
+</li>
+
+<li>
+<p>
+Seja \(\operatorname{Diag}_n(\mathbb{R})\) o subespaço de \(M_n(\mathbb{R})\) consistindo das matrizes diagonais de ordem \(n\times n\). Então a função
+<div>
+\begin{equation*}
+\operatorname{diag}\colon\mathbb{R}^n\to\oepratorname{Diag}_n(\mathbb{R})
+\end{equation*}
+</div>
+dada por
+<div>
+\begin{equation*}
+\operatorname{diag}(a_1,\ldots,a_n)=\begin{bmatrix}a_1&0&\cdots&0\\
+0&a_2&\cdots&0\\\vdots&\vdots&\ddots&\vdots\\0&0&\cdots&a_n
+
+\end{bmatrix}
+\end{equation*}
+</div>
+é um isomorfismo linear.
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Os itens 1 e 2 são imediatos das definições das operações com matrizes. A linearidade da função \(\operatorname{diag}\) no item 3 segue do item 1, e é claro que \(\operatorname{diag}\) é bijetiva, logo um isomorfismo linear.
+</p>
+
+</div></body>
+</html>

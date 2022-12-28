@@ -1,0 +1,29 @@
+\begin{theorem}
+	Sejam $A$ uma matrix $m\times n$ e $R$ a forma reduzida por linhas de $A$.
+	
+	Então o espaço nulo de $A$ coincide com o espaço nulo de $R$, e é possível obter uma base para $\operatorname{Nul}(A)$ de modo algorítmico. (O algoritmo é realizado na demonstração abaixo.)
+	
+	Mais especificamente, suponha que $R=[r_{ij}]_{ij}$ possua $k$ pivôs, que estejam nas posições $(1,p_1),(2,p_2),\ldots,(k,p_k)$. Considere também a base canônica $e_1,\ldots,e_n$ de $\mathbb{R}^n$ (i.e., $e_i$ tem a $i$-ésima entrada igual a $1$, e suas outras entradas iguais a $0$). Então os vetores $e_j-\sum_{i=1}^k-r_{ij}e_{p_i}$, onde $j\neq p_1,\ldots,p_k$, formam uma base de $\operatorname{Nul}(A)$, que portanto tem dimensão $n-k$.
+\end{theorem}
+\begin{proof}
+	Como $R$ pode ser obtida a partir de operações elementares sobre linhas de $A$, então existe uma matriz inversível $I$ tal que $R=IA$. Assim, dado um vetor $x\in\mathbb{R}^n$ (escrito como um matriz coluna), temos que
+	\[Ax=0\text{ se, e somente se, }Rx=0.\]
+	Portanto, $\operatorname{Nul}(A)=\operatorname{Nul}(R)$.
+	
+	Escrevamos $x=(x_1,\ldots,x_n)$. Vamos assumir que todos os pivôs de $R$ têm valor $1$ (caso contrário, basta multiplicar as linhas por números não-nulos). Então a equação
+	\[Rx=0\]
+	corresponde ao sistema de equações lineares
+	\[x_{p_i}+\sum_{j\neq p_1,\ldots,p_k}r_{ij}x_j=0\]
+	para $i=1,\ldots,k$. Isto permite escrever cada $x_{p_i}$, a entrada de $x$ correspondente a uma coluna contendo um pivô de $R$, como uma combinação das entradas que não correspondem a colunas contendo pivôs de $R$.
+	
+	Agora utilizamos os sistema acima para reescrever $x$ tal que $Rx=0$. Vamos separar as entradas de $x$ correspondentes aos pivôs de $R$ utilizando a base canônica de $\mathbb{R}^n$:
+	\begin{align*}
+		x&=\sum_{i=1}^k x_{p_i}e_{p_i}+\sum_{j\neq p_1,\ldots,p_k}x_je_j\\
+			&=\sum_{i=1}^k\left(-\sum_{j\neq p_1,\ldots,p_k}r_{ij}x_je_{p_i}\right)+\sum_{j\neq p_1,\ldots,p_k}x_je_j\\
+			&=\sum_{j\neq p_1,\ldots,p_k}x_j\left(\sum_{i=1}^k-r_{ij}e_{p_i}+e_j\right)\tag{1}
+	\end{align*}
+	
+	Resumindo, um vetor $x$ pertence ao espaço nulo de $A$ se, e somente se, existirem escalares $x_j$ tais que
+	\[x=\sum_{j\neq p_1,\ldots,p_k}x_j\left(e_j-\sum_{i=1}^kr_{ij}e_{p_i}\right).\]
+	Isto mostra que os vetores $e_j-\sum_{i=1}^k-r_{ij}e_{p_i}$, $j\neq p_1,\ldots,p_k$, geram o espaço nulo de $\operatorname{Nul}(R)=\operatorname{Nul}(A)$. É fácil verificar que estes vetores são linearmente independentes.
+\end{proof}

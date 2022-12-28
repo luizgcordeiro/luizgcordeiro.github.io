@@ -1,0 +1,30 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#theorembasicisomorphisms'>3.3.14</a>
+
+<!-- 3.3.14 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.3.14</span>
+	Let $X$ and $Y$ be locally compact Hausdorff and for $Z\in\left\{X,Y\right\}$, $H_Z$ a Hausdorff space and $\theta_Z\in C(Z,H_Z)$ be given such that $(Z,\theta_Z,C_c(Z,\theta_Z))$ is regular.
+	</p>
+	
+	<p>
+	Suppose that $T:C_c(X,\theta_X)\to C_c(Y,\theta_Y)$ is a $\perpp$-isomorphism, that $\phi:Y\to X$ is the $T$-homeomorphism $\phi$, and that that $T$ is $\phi$-basic. Let $\chi:Y\times H_X\to H_Y$ be the corresponding $(\phi,T)$-transform. Consider the following statements:
+	<ol class='arpar'>
+		<li>
+			$\chi$ is continuous.
+		</li>
+		
+		<li>
+			Each section $\chi(y,\cdot)$ is a continuous.
+		</li>
+		
+		<li>
+			$T$ is continuous with respect to the topologies of pointwise convergence.
+		</li>
+	</ol>
+	Then the implications (1)$\Longrightarrow$(2)$\iff$(3) always hold.
+	</p>
+	
+	<p>
+	If $X$, $Y$ and $H_X$ are first countable, $H_X$ is locally path-connected and $\theta_X$ is constant, then $(2)\Longrightarrow (1)$ as well, so all three statements are equivalent.
+	</p>
+</div>

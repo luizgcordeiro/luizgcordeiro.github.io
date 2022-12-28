@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+<p>
+Lembre-se da nossa convenção: se \(f=f(x)\) é uma função, só poderemos falar de limites de \(f\) num ponto \(a\) caso \(a\) <span>&#8220;</span>possa ser aproximado por pontos do domínio de \(f\)<span>&#8221;</span> &#8210; formalmente, caso para todo \(\delta>0\) existir \(d\) no domínio de \(f\) tal que \(0<|d-a|<\delta\).
+</p>
+
+<hr/>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b> (Unicidade de limites).
+<p>
+Uma função \(f\) possui no máximo um limite num ponto \(a\).
+</p>
+<p>
+Mais precisamente, se \(L\) e \(M\) são limites de \(f=f(x)\) em \(a\), então \(L=M\).
+</p>
+
+</div>
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+A prova é feita por <span>&#8220;</span><a href='https://pt.wikipedia.org/wiki/Reductio_ad_absurdum'>redução ao absurdo</a><span>&#8221;</span>. Vamos supor que a tese é falsa, de onde deduziremos uma contradição, o que mostrará que a tese é verdadeira.
+</p>
+<p>
+Suponha que \(L\) e \(M\) fossem dois limites <em>diferentes</em> de \(f\) em \(a\). Isto significa que a distância de \(L\) a \(M\) é positiva:
+<div>
+\begin{equation*}
+|L-M|>0.
+\end{equation*}
+</div>
+Agora lembre-se o que significa dizer que \(L\) é o limite de \(f\) em \(a\): Para todo \(\epsilon>0\), existe \(\delta=\delta(f,a,L,\epsilon)>0\) (dependendo de \(f\), de \(a\), de \(L\) e de \(\epsilon\)) tal que para todo \(x\) no domínio de \(f\),
+<div>
+\begin{equation*}
+\text{se }0<|x-a|<\delta\qquad\text{então }|f(x)-L|<\epsilon.
+\end{equation*}
+</div>
+Como isto é válido para <u>todo</u> número positivo \(\epsilon\), é válido para qualquer escolha mais específica. Por exemplo, podemos usar esta propriedade para \(\epsilon=\frac{|L-M|}{2}\): Existe \(\delta_1>0\) tal que para todo \(x\) no domínio de \(f\),
+<div>
+\begin{equation*}
+\text{se }0<|x-a|<\delta_1\qquad\text{então }|f(x)-M|<\frac{|L-M|}{2}.
+\end{equation*}
+</div>
+Similarmente, como \(M\) também é limite de \(f\) em \(a\), então existe \(\delta_2>0\) tal que para todo \(x\) no domínio de \(f\),
+<div>
+\begin{equation*}
+\text{se }0<|x-a|<\delta_2\text{ então }|f(x)-M|<\frac{|L-M|}{2}.
+\end{equation*}
+</div>
+Os números \(\delta_1\) e \(\delta_2\) podem ser diferentes, mas o importante é que nós só nos concentramos nos pontos \(x\) com \(|x-a|\) pequeno.
+</p>
+<p>
+Consideremos então \(\delta=\min\left\{\delta_1,\delta_2\right\}\), o menor entre \(\delta_1\) e \(\delta_2\). Como ambos são positivos, \(\delta\) também é positivo.
+</p>
+<p>
+Agora nós usamos nossa convenção técnica: Considere qualquer ponto \(d\) no domínio de \(f\) tal que \(0<|d-a|<\delta\). Então em particular teremos que que
+<div>
+\begin{equation*}
+0<|d-a|<\delta_1,
+\end{equation*}
+</div>
+pois \(\delta\leq\delta_1\). A escolha de \(\delta_1\) implica que
+<div>
+\begin{equation*}
+|f(d)-L|<\frac{|L-M|}{2}.
+\end{equation*}
+</div>
+Similarmente, \(0<|d-a|<\delta_2\), o que implica também que
+<div>
+\begin{equation*}
+|f(d)-M|<\frac{|L-M|}{2}.
+\end{equation*}
+</div>
+Agora podemos utilizar estes dois fatos e deduzir a seguinte sequência de desigualdades:
+<div>
+\begin{align*}
+|L-M|&=|L-f(d)+f(d)-M|\\
+&\overset{(\star)}{\leq} |L-f(d)|+|f(d)-M|\\
+&\overset{(\star\star)}{=}|f(d)-L|+|f(d)-M|\\
+&<\frac{|L-M|}{2}+\frac{|L-M|}{2}\\
+&=|L-M|
+\end{align*}
+</div>
+onde a desigualdade (\(\star\)) segue da <em>desigualdade triangular</em>, e a igualdade (\(\star\star\)) segue da simetria do módulo. Na penúltima linha temos uma desigualdade estrita. Comparando o primeiro e o último termos, concluímos que
+<div>
+\begin{equation*}
+|L-M|<|L-M|,
+\end{equation*}
+</div>
+um absurdo, pois um número real não pode ser estritamente menor do que ele mesmo.
+</p>
+<p>
+Portanto, os limites \(L\) e \(M\) não podem ser distintos; em outras palavras, \(L=M\), como queríamos.
+</p>
+
+</div></body>
+</html>

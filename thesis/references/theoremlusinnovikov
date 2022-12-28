@@ -1,0 +1,12 @@
+<a class='reflink' href='../1.gis/1.6.pmpg.html#theoremlusinnovikov'>1.6.10</a>
+<!-- 1.6.10 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 1.6.10
+	<span style='font-weight:normal;'>[<span class='ref' data-tag='MR1321597'></span>, Theorem 18.10]</span></span>
+	Let $X,Y$ be standard Borel spaces and $P\subseteq X\times Y$ a Borel subset such that for all $x\in X$, the <em>section</em>
+	<div class='equation'>\[
+	P_y=\left\{x\in X:(x,y)\in P\right\}
+	\]</div>
+	is (at most) countable. Then $P$ is a countable union of Borel graphs.
+	</p>
+</div>

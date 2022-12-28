@@ -1,0 +1,12 @@
+<a class='reflink' href='../3.dcf/3.3.bpi.html#propositionuniquemapwhichmakesbasicisthomeomorphism'>3.3.7</a>
+
+<!-- 3.3.7 -->
+<div class='toload proposition'>
+	<p><span class='envidentifier'>Proposition 3.3.7</span>
+	Let $X$ and $Y$ be locally compact Hausdorff spaces, $H_X$ and $H_Y$ be Hausdorff spaces, $\theta_X\in C(X,H_X)$, $\theta_Y\in C(Y,H_Y)$ and $\mathcal{A}(X)\subseteq C_c(X,\theta_X)$ and $\mathcal{A}(Y)\subseteq C_c(Y,\theta_Y)$ be two regular classes of functions.
+	</p>
+	
+	<p>
+	Suppose that $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ is a $\perpp$-isomorphism which is $\phi$-basic for some map $\phi:Y\to X$, and such that $T^{-1}:\mathcal{A}(Y)\to\mathcal{A}(X)$ is $\psi$-basic for some map $\psi:X\to Y$. Then $\phi$ is invertible, $\psi=\phi^{-1}$ and $\phi$ is the $T$-homeomorphism.
+	</p>
+</div>

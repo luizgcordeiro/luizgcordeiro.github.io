@@ -1,0 +1,15 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#theoremrenault'>3.5.14</a>
+
+<!-- 3.5.14 !-->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.5.14</span>
+	Let $\mathcal{G}$ and $\mathcal{H}$ be locally compact Hausdorff étale groupoids with continuous fully supported left Haar systems $\lambda_G$ and $\lambda_H$, respectively, and $T:C_c(\mathcal{G})\to C_c(\mathcal{H})$ a diagonal-preserving algebra isomorphism, isometric with respect to the $(I,\ra)$-norms. Then there is a (unique) topological groupoid isomorphism $\phi:\mathcal{H}\to\mathcal{G}$ and a continuous morphism $p:\mathcal{H}\to\mathbb{S}^1$ such that
+	<div class='equation'>\[
+		Tf(h)=p(h)D(\phi(h))f(\phi(h)),
+	\]</div>
+	where $D$ is a continuous instance of the Radon-Nikodym derivative
+	<div class='equation'>\[
+		D(a)=\frac{d\lambda_{\mathcal{G}}^{\ra(a)}}{d(\phi_*\lambda_{\mathcal{H}}^{\phi^{-1}(\ra(a))})}(a).
+	\]</div>
+	</p>
+</div>

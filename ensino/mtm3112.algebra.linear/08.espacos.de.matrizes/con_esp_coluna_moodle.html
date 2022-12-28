@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Definição</b>.
+<p>
+Dada uma matriz \(A\in M_{m\times n}(\mathbb{R})\), as colunas de \(A\) podem ser vistas como elementos de \(\mathbb{R}^m\). O <b>espaço coluna</b> de \(A\) é o subespaço de \(\mathbb{R}^m\) gerado pelas colunas de \(A\). Vamos denotá-lo por \(\operatorname{Col}(A)\).
+</p>
+<p>
+Mais precisamente, se a matriz \(A\) é dada por
+<div>
+\begin{equation*}
+A=\begin{bmatrix}
+a_{11}
+&a_{12}
+&\cdots
+&a_{1n}\\
+a_{21}
+&a_{22}
+&\cdots
+&a_{2n}\\
+\vdots
+&\vdots
+&\ddots
+&\vdots\\
+a_{m1}
+&a_{m2}
+&\cdots
+&a_{mn}
+
+
+\end{bmatrix},
+\end{equation*}
+</div>
+então consideramos cada coluna \(c_j=(a_{1j},a_{2j},\ldots,a_{mj})\), e definimos \(\operatorname{Col}(A)=\langle c_1,\ldots,c_m\rangle\).
+</p>
+
+</div>
+<p>
+<i>Observação</i>: O espaço coluna de \(A\) coincide com o <a href='http://mtm.ufsc.br/~cordeiro/ensino/mtm3112.algebra.linear/08.espacos.de.matrizes/con_esp_linha_moodle.html'>espaço linha</a> de \(A^T\), isto é, \(\operatorname{Col}(A)=\operatorname{Lin}(A^T)\).</body>
+</html>

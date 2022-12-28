@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.1.dpapi.html#maintheorem'>3.1.13</a>
+
+<!-- 3.1.13 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.1.13</span>
+	If $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are weakly regular and $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ is a $\perpp$-isomorphism then there is a unique homeomorphism $\phi:Y\to X$ such that $\phi(\supp(Tf))=\supp(f)$ for all $f\in \mathcal{A}(X)$ (equivalently, $\phi(\sigma(Tf))=\sigma(f)$, or $\phi(Z(Tf))=Z(f)$, for all $f\in\mathcal{A}(X)$).
+	</p>
+</div>

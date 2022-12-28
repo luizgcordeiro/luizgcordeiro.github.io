@@ -1,0 +1,14 @@
+<a class='reflink' href='../1.gis/1.3.tg.html#theoremequivalenceetale'>1.3.11</a>
+<!-- 1.3.11 -->
+<div class='toload theorem'>
+<p><span class='envidentifier'>Theorem 1.3.11
+<span style='font-weight: normal;'>[<span class='ref' data-tag='MR2304314'></span>, Theorem 5.18]</span></span>
+Let $\mathcal{G}$ be a topological groupoid and let $m:\mathcal{G}^{(2)}\to G$, $m(a,b)=ab$ be the product map. The following are equivalent:
+<ol class='arpar'>
+	<li> $\mathcal{G}$ is étale.</li>
+	<li> $\mathcal{G}^{(0)}$ is open and $m$ is a local homeomorphism.</li>
+	<li> $\mathcal{G}^{(0)}$ is open in $\mathcal{G}$ and $m$ is an open map (or equivalently, the product of open sets in $\mathcal{G}$ is open).</li>
+	<li> $\mathcal{G}^{(0)}$ is open and the source map $\mathfrak{s}:\mathcal{G}\to\mathcal{G}^{(0)}$ is an open map.</li>
+</ol>
+</p>
+</div>

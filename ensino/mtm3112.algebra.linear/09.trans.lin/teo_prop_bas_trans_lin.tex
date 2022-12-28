@@ -1,0 +1,25 @@
+\begin{theorem}
+	Seja $T\colon V\to W$ uma transformação linear entre dois espaços vetoriais. Então
+	\begin{enumerate}
+		\item $T(0_V)=0_W$.
+		\item $T(-v)=-T(v)$ para todo $v\in V$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Primeira prova]
+	Basta utilizar a propriedade de que $T$ preserva produtos por escalares e as Regras de Sinal. Calculamos
+	\[T(0_V)=T(0\cdot 0_V)=0\cdot T(0_V)=0_W.\]
+	Similarmente,
+	\[T(-v)=T((-1)\cdot v)=(-1)\cdot T(v)=-T(v)\]
+	para qualquer $v\in V$.
+\end{proof}
+
+\begin{proof}[Segunda prova]
+	Podemos também utilizar somente a propriedade de que $T$ preserva somas e as Leis de Cancelamento. Por um lado
+	\[T(0_V)=T(0_V+0_V)=T(0_V)+T(0_V).\]
+	Somando $-T(0_V)$ em ambos os lados da igualdade acima, concluímos que $0_W=T(0_V)$.
+	
+	Similarmente, dado $v\in V$, temos
+	\[T(v)+T(-v)=T(v+(-v))=T(0_V)=0_W,\]
+	onde a última igualdade foi verificada acima. Assim, $T(-v)$ somado com $T(v)$ resulta no vetor nulo. Esta é precisamente a propriedade que determina o oposto de $T(v)$, Portanto, $T(-v)=-T(v)$.
+\end{proof}

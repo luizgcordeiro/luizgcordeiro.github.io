@@ -1,0 +1,6 @@
+<a class='reflink' href='../4.paois/4.6.tfpa.html#equationdefinitionlambda'>4.6.1</a>
+
+	<div class='toload equation'>\begin{align*}
+		\Lambda(\theta)
+			&=\left\{x\in X:\text{if }s\in S_x\text{ and }x\text{ is fixed by }s\text{ then }x\text{ is trivially fixed by }s\right\}.\tag{4.6.1}
+	\end{align*}</div>

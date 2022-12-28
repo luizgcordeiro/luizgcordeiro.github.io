@@ -1,0 +1,15 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#lemmabisectionsgs'>1.4.19</a>
+<!-- 1.4.19 -->
+<div class='toload lemma'>
+<p><span class='envidentifier'>Lemma 1.4.19
+<span style='font-weight:normal;'>[<span class='ref' data-tag='MR2827424'></span>, Lemma 2.21(2)-(8)]</span></span>
+Let $S$ be a Boolean inverse semigroup. Then for all $s,t\in S$,</p>
+<ol class='alphpar'>
+	<li> $[st]=[s][t]$.</li>
+	<li> $s\leq t$ if and only if $[s]\subseteq[t]$.</li>
+	<li> $[s\land t]=[s]\cap[t]$.</li>
+	<li> If $s$ and $t$ are compatible then $[s\lor t]=[s]\cup[t]$.</li>
+	<li> $[s^*]=[s]^{-1}$ for all $s\in S$.</li>
+	<li> If $s,t\in S$ and $[s]\cup[t]$ is a bisection then $s$ and $t$ are compatible.</li>
+</ol>
+</div>

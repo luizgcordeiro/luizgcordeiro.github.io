@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.4.rkr.html#theoremadditivekaplansky'>3.4.13</a>
+
+<!-- 3.4.13 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 3.4.13</span>
+	Suppose $R=\mathbb{R}$, and $T:C_c(X)\to C_c(Y)$ is an additive lattice isomorphism. Then there are a unique homeomorphism $\phi:Y\to X$ and a unique positive continuous function $p:Y\to (0,\infty)$ such that $Tf(y)=p(y)f(\phi(y))$ for all $f\in C_c(X)$ and $y\in Y$.
+	</p>
+</div>

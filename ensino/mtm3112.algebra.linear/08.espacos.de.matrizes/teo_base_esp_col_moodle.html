@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(A\) uma matrix \(m\times n\) e \(R\) a forma reduzida por linhas de \(A\).
+</p>
+<p>
+Então as colunas de \(A\) que correspondem às colunas que contêm os pivôs de \(R\) formam uma base para o espaço coluna de \(A\).
+</p>
+
+</div>
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+A demonstração deste teorema é extremamente simplificada utilizando alguns resultados simples acerca de transformações lineares, que serão tratadas mais à frente no curso.
+</p>
+<p>
+Note que as colunas de \(R\) que contêm seus pivôs são elementos da base canônica de \(\mathbb{R}^m\), e portanto são linearmente independentes. Além disso, as únicas entradas não-nulas das outras colunas de \(R\) estão em alguma linha que contém um pivô, e portanto as colunas que contêm pivôs geram o espaço coluna de \(R\).
+</p>
+<p>
+Como \(R\) é obtida a partir de \(A\) por operações elementares sobre linhas, então existe uma matriz inversível \(I\) tal que \(IR=A\).
+</p>
+<p>
+Vamos reescrever as matrizes \(R\) e \(A\) em função de suas colunas:
+<div>
+\begin{equation*}
+R=\begin{bmatrix}|&&|\\
+r_1&\cdots&r_n\\
+|&&|
+
+\end{bmatrix}
+\end{equation*}
+</div>
+e
+<div>
+\begin{equation*}
+A=\begin{bmatrix}|&&|\\
+a_1&\cdots&a_n\\
+|&&|
+
+\end{bmatrix}.
+\end{equation*}
+</div>
+Então
+<div>
+\begin{align*}
+\begin{bmatrix}|&&|\\
+a_1&\cdots&a_n\\
+|&&|
+
+\end{bmatrix}&=A\\
+&=IR\\
+&=I\begin{bmatrix}|&&|\\
+r_1&\cdots&r_n\\
+|&&|
+
+\end{bmatrix}\\
+&=\begin{bmatrix}|&&|\\
+Ir_1&\cdots&Ir_n\\
+|&&|
+
+\end{bmatrix}.
+\end{align*}
+</div>
+Isto significa que \(a_i=Ir_i\) para todo \(i\), e que \(\operatorname{Col}(A)=\langle Ir_1,\ldots,Ir_n\rangle=I(\operatorname{col}(R))\).
+</p>
+<p>
+Consideremos agora as colunas \(r_{i_1},\ldots,r_{i_k}\) que contêm pivôs de \(R\). Como já vimos, \(r_{i_1},\ldots,r_{i_k}\) formam uma base para \(\operatorname{Col}(R)\). Portanto, \(a_{i_1}=Ir_{i_1}\),&#8230; \(a_{i_k}=Ir_{i_k}\) formam uma base para \(\operatorname{Col}(A)\), visto que \(I\) é inversível. Estas colunas de \(A\) são exatamente as colunas correspondentes às colunas que contêm pivôs de \(R\).
+</p>
+
+</div></body>
+</html>

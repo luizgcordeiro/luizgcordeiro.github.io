@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.3.tg.html#definitionetalegroupoid'>1.3.6</a>
+<!-- 1.3.6 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 1.3.6</span>
+A groupoid is <em>étale</em> if the source map $\mathfrak{s}:\mathcal{G}\to\mathcal{G}^{(0)}$ map is a local homeomorphism.
+</p>
+</div>

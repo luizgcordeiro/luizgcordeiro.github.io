@@ -1,0 +1,8 @@
+<a class='reflink' href='../3.dcf/3.5.nr.html#lemmaproduct'>3.5.9</a>
+
+<!-- 3.5.9 !-->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 3.5.9</span>
+	Given a topological groupoid $\mathcal{G}$ with $\mathcal{G}^{(0)}$ Hausdorff and $a,b\in\mathcal{G}$, we have $\so(a)=\ra(b)$ if and only if for every pair of neighbourhoods $U$ of $a$ and $V$ of $b$ the product $UV$ is nonempty.
+	</p>
+</div>

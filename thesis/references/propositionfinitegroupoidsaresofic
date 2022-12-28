@@ -1,0 +1,13 @@
+<a class='reflink' href='../2.sg/2.2.fpmpg.html#propositionfinitegroupoidsaresofic'>2.2.3</a>
+
+<!-- 2.2.3 -->
+<div class='toload proposition'>
+<p><span class='envidentifier'>Proposition 2.2.3</span>
+<ol class='alphpar'>
+	<li> If $(\mathcal{G},\mu)$ is a connected finite probability measure-preserving groupoid, then there exists a finite set $X$ and an isometric semigroup embedding
+	<div class='equation'>\[
+		\theta:\MEAS(\mathcal{G},\mu)\to\MEAS(X^2,\mu_\#).
+	\]</div></li>
+	<li> If $\mathcal{G}$ is a finite probability measure-preserving groupoid, then there are finite sets $X_n$, $n\in\mathbb{N}$ and an isometric semigroup embedding $\Theta:\MEAS(\mathcal{G})\to\prod_\mathcal{U}\MEAS(X_n^2)$, where $\mathcal{U}$ is any free ultrafilter on $\mathbb{N}$.</li>
+</ol>
+</div>

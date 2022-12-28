@@ -1,0 +1,27 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#theoremuniversalpropertyofcrossedproducts'>4.3.15</a>
+
+<!-- 4.3.15 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.3.15</span>
+	Suppose that $\alpha$ is an algebraic partial action of an inverse semigroup $S$ on an algebra $A$ with local units, and such that $A_s$ has a unit $1_s$ for all $s\in S$. Define
+	<div class='equation'>\[
+		\sigma:S\to A\rtimes S\quad\text{by}\quad \sigma(s)=\overline{1_s\delta_s}.
+	\]</div>
+	</p>
+	
+	<p>
+	Let $\iota:A\to A\rtimes S$ be the embedding of $A$ as the diagonal subalgebra of $A\rtimes S$. Then $(\sigma,\iota)$ is a universal non-degenerate covariant representations of $\alpha$ in the following sense:
+	<ol class='roman'>
+		<li>
+		$(\sigma,\iota)$ is a non-degenerate covariant representation;
+		</li>
+		
+		<li>
+		If $(\theta,\phi)$ is any other non-degenerate covariant representation of $\alpha$ on an algebra $B$, then there exists a unique algebra morphism $\Phi:A\rtimes S\to B$ such that
+		<div class='equation'>\[
+			\phi=\Phi\circ\iota\quad\text{and}\quad\theta=\Phi\circ\sigma.
+		\]</div>
+		</li>
+	</ol>
+	</p>
+</div>

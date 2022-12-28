@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Se \(T\colon V\to W\) é linear e injetiva, então \(T\) leva conjuntos linearmente independentes de \(V\) em conjuntos linearmente independentes de \(W\). Mais precisamente, se \(A\) é um subconjunto linearmente independente de \(V\), então sua imagem direta \(T(A)=\left\{T(a):a\in A\right\}\) é linearmente independente em \(W\).
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Dado \(A\) como no enunciado, suponha que tenhamos uma combinação linear nula com elementos de \(T(A)\):
+<div>
+\begin{equation*}
+\sum_{i=1}^n\lambda_i w_i=0_W,
+\end{equation*}
+</div>
+onde os \(w_i\) são elementos distintos de \(T(A)\) são elementos de \(T(A)\) e os \(\lambda_i\) são escalares. Podemos escrever cada \(w_i\) como \(w_i=T(a_i)\) para certos \(a_i\in A\). Então a equação acima se reescreve como
+<div>
+\begin{equation*}
+T\left(\sum_{i=1}^n\lambda_i a_i\right)=0_W.
+\end{equation*}
+</div>
+Como \(T\) é injetiva, isto significa que \(\sum_{i=1}^n\lambda_i a_i=0_V\), e além disso que os \(a_i\) são dois-a-dois distintos. Como \(A\) é linearmente independente, então cada coeficiente \(\lambda_i\) é nulo, o que prova que \(T(A)\) é linearmente independente.
+</p>
+
+</div></body>
+</html>

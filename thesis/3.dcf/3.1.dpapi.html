@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>3.1. Disjointness, $\perp$ and $\perpp$-isomorphisms</h2>
+
+<p>
+Let $X$ be a locally compact Hausdorff space and $H$ be a Hausdorff space. We denote by $C(X,H)$ the set of continuous functions from $X$ to $H$. We also fix for the remainder of this section a function $\theta\in C(X,H)$. For two functions $f,g:X\to H$, we denote
+<div class='equation'>\[
+	[f\neq g]=\left\{x\in X:f(x)\neq g(x)\right\}\quad\text{and}\quad[f=g]=X\setminus[f\neq g].
+\]</div>
+</p>
+
+<!-- 3.1.1 -->
+<div class='definition' id='definitionsigma'>
+	<p><span class='envidentifier'>Definition 3.1.1</span>
+	Given $f\in C(X,H)$, we define the (<em>$\theta$-</em>)<em>support</em> of $f$ as
+	<div class='equation'>\[
+		\supp^\theta(f)=\overline{[f\neq\theta]}.
+	\]</div>
+	We also denote by $\sigma^\theta(f)$ the interior of $\supp^\theta(f)$, and $Z^\theta(f)$ the complement of $\supp^\theta(f)$:
+	<div class='equation'>\[
+		\sigma^\theta(f)=\operatorname{int}\supp^\theta(f)\qquad\text{and}\qquad Z^\theta(f)=X\setminus\supp^\theta(f).
+	\]</div>
+	Let $C_c(X,\theta)$ be the set of continuous functions from $X$ to $H$ with compact ($\theta$-)support. Whenever there is no risk of confusion, we will drop $\theta$ from the notation and write simply $\supp(f)$, $\sigma(f)$, $Z(f)$ and $C_c(X)$.
+	</p>
+
+	<p>
+	For any two functions $f,g\in C(X,H)$, we define
+	<ol>
+		<li>
+			$f\perp g$: if $[f\neq\theta]\cap[g\neq\theta]=\varnothing$; we say that $f$ and $g$ are <em>disjoint</em>;
+		</li>
+		
+		<li>
+			$f\perpp g$: if $\supp(f)\cap\supp(g)=\varnothing$; we say that $f$ and $g$ are <em>strongly disjoint</em>;
+		</li>
+		
+		<li>
+			$f\subseteq g$: if $\sigma(f)\subseteq\sigma(g)$;
+		</li>
+		
+		<li>
+			$f\Subset g$: if $\supp(f)\subseteq\sigma(g)$.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<p>
+Note that if $f\in C_c(X)$, then $f\Subset g$ if and only if $\sigma(f)\Subset\sigma(g)$, where $\Subset$ is the <em>compact containment</em> relation (Definition <span class='ref' data-tag='definitioncompactcontainment'></span>).
+</p>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	In general, $\sigma(f)$ is the regularization (<span class='ref' data-tag='footnoteregularization' id='footnoteregularization'></span>) of $[f\neq\theta]$, and so $\sigma(f)$ may "forget" some points on which $f(x)=\theta(x)$. For example, if $X=H=[0,1]$, $\theta=0$ and $f(x)=x$, then $\sigma(f)=X$ even though $f(0)=0$.
+	</p>
+	
+	<p>
+	Also, $Z(f)$ is the complement of $\sigma(f)$ in the lattice of regular open sets of $X$ (see [<span class='ref' data-tag='MR2466574'></span>, Chapter 10]), and note that $\overline{\sigma(f)}=\supp(f)$.
+	</p>
+</div>
+
+<!-- 3.1.2 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.1.2</span>
+	If $H=\mathbb{R}$ or $\mathbb{C}$, and $\theta=0$ is the constant zero function, we obtain the usual notions of support, and $f\perp g$ if and only if $fg=0$.
+	</p>
+</div>
+
+<!-- 3.1.3 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.1.3</span>
+	If $H=X$ and $\theta=\operatorname{id}_X$, then $\supp(f)=\overline{\left\{x\in X:f(x)\neq x\right\}}$.
+	</p>
+</div>
+
+<p>
+We will be interested in relations between $\subseteq,\Subset,\perp$ and $\perpp$.
+</p>
+
+<!-- 3.1.4 -->
+<div class='lemma' id='lemmadisjointnessintermsofsigma'>
+	<p><span class='envidentifier'>Lemma 3.1.4</span>
+	$f\perp g$ if and only if $\sigma(f)\cap\sigma(g)=\varnothing$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmadisjointnessintermsofsigma'>Proof</a>
+<div class='proof' id='proofoflemmadisjointnessintermsofsigma'>
+	<p>
+	By definition, $f\perp g\iff[f\neq\theta]\cap[g\neq\theta]=\varnothing$. Since both $[f\neq\theta]$ and $[g\neq\theta]$ are open (because $H$ is Hausdorff), we can take closures and interiors of $[f\neq\theta]$ and obtain
+	<div class='equation'>\[
+		f\perp g\iff\sigma(f)\cap[g\neq\theta]=\varnothing,
+	\]</div>
+	and repeating the argument with $[g\neq\theta]$ yields the result.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+We will, moreover, be interested in recovering a locally compact Hausdorff topological space $X$ not from the whole set $C_c(X)$, but instead from a subcollection $\mathcal{A}\subseteq C_c(X)$. We will need to assume, however, that there are enough functions in $\mathcal{A}$ in order to separate points of $X$.
+</p>
+
+<!-- 3.1.5 -->
+<div class='definition' id='definitionregularperpp'>
+	<p><span class='envidentifier'>Definition 3.1.5</span>
+	Let $\mathcal{A}\subseteq C_c(X)$ be a subset containing $\theta$. Denote $\sigma(\mathcal{A})=\left\{\sigma(f):f\in\mathcal{A}\right\}$. We say that $(X,\theta,\mathcal{A})$ (or simply $\mathcal{A}$) is
+	<ol>
+		<li>
+			<em>weakly regular</em> if $\sigma(\mathcal{A})$ is a basis for the topology of $X$.
+		</li>
+		
+		<li>
+			<em>regular</em> if for every $x\in X$, every neighbourhood $U$ of $x$ and every $c\in H$ there is $f\in\mathcal{A}$ with $f(x)=c$ and $\supp(f)\subseteq U$.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<!-- 3.1.6 -->
+<div class='definition' id='definitiondisjointcover'>
+	<p><span class='envidentifier'>Definition 3.1.6</span>
+	Suppose $\mathcal{A}\subseteq C_c(X)$ is weakly regular. A family $A\subseteq\mathcal{A}$ is a <em>cover</em> of an element $b\in\mathcal{A}$ if given $h\in\mathcal{A}$, $h\perp a$ for all $a\in A$ implies $h\perp b$.
+	</p>
+</div>
+
+<p>
+By Lemma <span class='ref' data-tag='lemmadisjointnessintermsofsigma'></span>, $A$ is a cover for $b$ if and only if $\left\{\sigma(f):f\in A\right\}$ is a cover for $\sigma(b)$, in the sense of Definition <span class='ref' data-tag='definitioncoverinposet'></span>.
+</p>
+
+<!-- 3.1.7 -->
+<div class='lemma' id='lemmacovers'>
+	<p><span class='envidentifier'>Lemma 3.1.7</span>
+	Suppose $\mathcal{A}$ is weakly regular, and let $A\subseteq\mathcal{A}$ and $b\in\mathcal{A}$. The following are equivalent:
+	<ol class='arpar'>
+		<li>
+			$A$ is a cover of $b$.
+		</li>
+		
+		<li>
+			The closure of $\bigcup_{a\in A}[a\neq\theta]$ contains $\supp(b)$.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmacovers'>Proof</a>
+<div class='proof' id='proofoflemmacovers'>
+	<p>
+	<u>(1)$\Rightarrow$(2)</u>: Let $x\in\supp(b)$. Take an open neighbourhood of $x$ of the form $\sigma(h)$, $h\in\mathcal{A}$. Since $\supp(b)=\overline{\sigma(b)}$, the intersection $\sigma(h)\cap\sigma(b)$ is nonempty and thus $h$ and $b$ are not disjoint. From $A$ being a cover, $h$ is not disjoint to some $a\in A$, which means that $\sigma(h)\cap[a\neq\theta]$ is nonempty. Since $A$ is weakly regular then $x$ is in the closure of $\bigcup_{a\in A}[a\neq\theta]$.
+	</p>
+
+	<p>
+	<u>(2)$\Rightarrow$(1)</u>: Suppose $h\in\mathcal{A}$ is such that $h\perp a$ for all $a\in A$. This means that $(\bigcup_{a\in A}[a\neq\theta])\cap[h\neq\theta]=\varnothing$. Taking the closure of the first term and using (2) we conclude that $[b\neq\theta]\cap[h\neq\theta]\subseteq\supp(b)\cap[h\neq\theta]=\varnothing$, so $h\perp b$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+If $\mathcal{A}\subseteq C_c(X)$ and $\theta\in\mathcal{A}$, note that $\subseteq$ is a preorder on $\mathcal{A}$, and the only infimum (<span class=' ref'  data-tag='footnoteinfimaofpreorders' id='footnoteinfimaofpreorders'></span>) of $\mathcal{A}$ is $\theta$. Alternatively, $\theta$ is the only element of $\mathcal{A}$ such that $\theta\perp\theta$. This shows that the function $\theta$ is uniquely determined in terms of either $\perp$ or $\subseteq$. 
+</p>
+
+<!-- 3.1.8 -->
+<div class='theorem' id='theoremrelationsrelations'>
+	<p><span class='envidentifier'>Theorem 3.1.8</span>
+	Suppose $\mathcal{A}$ is weakly regular. If $f,g\in\mathcal{A}$, then
+	<ol class='alphpar'>
+		<li>
+			$f\subseteq g\iff\forall h(h\perp g\Rightarrow h\perp f)$;
+		</li>
+		
+		<li>
+			$f\perp g\iff$ The $\subseteq$-infimum of $\left\{f,g\right\}$ is $\theta$ (which is the $\subseteq$-infimum of $\mathcal{A}$);
+		</li>
+		
+		<li>
+			$f\subseteq g\iff\forall h(h\Subset f\Rightarrow h\Subset g)$;
+		</li>
+		
+		<li>
+			$f\subseteq g\iff\forall h(h\perpp g\Rightarrow h\perpp f)$;
+		</li>
+		
+		<li>
+			$f\perpp g\iff\exists h_1,k_1,\ldots,h_n,k_n\in\mathcal{A}$ such that $\left\{h_1,\ldots,h_n\right\}$ is a cover of $f$, $h_i\Subset k_i$ and $k_i\perp g$;
+		</li>
+		
+		<li>
+			$f\Subset g\iff\forall b\in\mathcal{A}$, $\exists h_1,\ldots,h_n\in\mathcal{A}$ such that $\left\{h_1,\ldots,h_n,g\right\}$ is a cover of $b$ and $h_i\perpp f$.
+		</li>
+	</ol>
+	By items (a) and (b), $\perp$ and $\subseteq$ are equi-expressible (i.e., each one is completely determined by the other). By (c) and (d) one can recover $\subseteq$ (and hence $\perp$) from either $\Subset$ or $\perpp$, which in turn implies, from (e) and (f), that $\Subset$ and $\perpp$ are also equi-expressible.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremrelationsrelations'>Proof</a>
+<div class='proof' id='proofoftheoremrelationsrelations'>
+	<ol class='alphpar'>
+		<li>
+			<p>
+			<u>$\Rightarrow$</u>: If $f\subseteq g$ and $h\perp g$, then $\sigma(f)\cap\sigma(h)\subseteq\sigma(g)\cap\sigma(h)=\varnothing$, thus $h\perp f$.
+			</p>
+			
+			<p>
+			<u>$\Leftarrow$</u>: Suppose $\sigma(f)$ is not contained in $\sigma(g)$. Since $\sigma(f)=\operatorname{int}([f\neq g])$ and $\sigma(g)$ is regular, this means that $[f\neq\theta]$ is not contained in $\overline{\sigma(g)}=\supp(g)$, so there is an open  set $U$ such that $f\neq\theta$ on $U$ but $g=\theta$ on $U$. By weak regularity, there is some $h$ such that $\varnothing\neq[h\neq\theta]\subseteq U$, so $f$ and $h$ are not disjoint but $g$ and $h$ are.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<u>$\Rightarrow$</u>: If $h\subseteq f,g$, then $\sigma(h)\subseteq\sigma(f)\cap\sigma(g)=\varnothing$, so $h=\theta$.
+			</p>
+			
+			<p>
+			<u>$\Leftarrow$</u>: If $f$ and $g$ are not disjoint, then there is some $h$ with $\varnothing\neq\sigma(h)\subseteq\sigma(f)\cap\sigma(g)$, by weak regularity, so $h\subseteq f,g$ and $h\neq\theta$.
+			</p>
+		</li>
+		
+		<li>
+			This is immediate since $X$ is locally compact Hausdorff and $\mathcal{A}$ is weakly regular, so $\sigma(f)=\bigcup\left\{\sigma(h):h\Subset f\right\}$ for all $f$.
+		</li>
+		
+		<li>
+			The proof is essentially the same as (a), so we omit it.
+		</li>
+		
+		<li>
+			<p>
+			<u>$\Rightarrow$</u>: Suppose $f\perpp g$. For every $x\in\supp(f)$, take $h_x,k_x\in\mathcal{A}$ such that $x\in\sigma(h_x)$, $h_x\Subset k_x$ and $k_x\perp g$. By compactness, we can take finitely many points $x_1,\ldots,x_n$, and associated functions $h_1,k_1,\ldots,h_n,k_n$, such that $\left\{h_1,\ldots,h_n\right\}$ covers $f$.
+			</p>
+			
+			<p>
+			<u>$\Leftarrow$</u>: Suppose such $h_i,k_i$ exist. Then
+			<div class='equation'>\[
+				\supp(f)\subseteq\bigcup_{i=1}^n\supp(h_i)\subseteq\bigcup_{i=1}^n\sigma(k_i)\subseteq X\setminus\supp(g),
+			\]</div>
+			and so $f\perpp g$.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<u>$\Rightarrow$</u>: Suppose $f\Subset g$ and take any $b\in\mathcal{A}$. Since $\supp(b)\setminus\sigma(g)$ is compact and does not intersect $\supp(f)$, we can take $h_1,\ldots,h_n\in\mathcal{A}$ such that $h_i\perpp f$ and $\supp(b)\setminus\sigma(g)\subseteq\bigcup_i\sigma(h_i)$, which implies that $\left\{h_1,\ldots,h_n,g\right\}$ is a cover of $b$.
+			</p>
+			
+			<p>
+			<u>$\Leftarrow$</u>: Suppose the second condition holds. Again by compactness, take $b_1,\ldots,b_M$ in $\mathcal{A}$ such that $\supp(f)\cup\supp(g)\subseteq\bigcup_{k=1}^M\sigma(b_k)$. For each $k$ take functions $h_i^k$ as in the given condition for $b_k$.
+			</p>
+			
+			<p>
+			Given $k$, we have $\sigma(b_k)\subseteq\bigcup_i\supp(h_i^k)\cup\supp(g)$, so taking complements,
+			<div class='equation'>\[
+				\bigcap_iZ(h_i^k)\cap Z(g)\cap\sigma(b_k)=\varnothing,
+			\]</div>
+			or equivalently $\bigcap_iZ(h_i^k)\cap\sigma(b_k)\subseteq\sigma(b_k)\setminus Z(g)\subseteq\supp(g)$. Taking interiors on both sides yields $\bigcap_iZ(h_i^k)\cap\sigma(b_k)\subseteq\sigma(g)$.
+			</p>
+			
+			<p>
+			Now from $h_i^j\perpp f$ we obtain
+			<div class='equation'>\begin{align*}
+				\supp(f)&\subseteq\bigcap_{i,j}Z(h_i^j)\cap\bigcup_{k=1}^M\sigma(b_k)\\
+					&=\bigcup_{k=1}^M\left[\bigcap_{i,j}Z(h_i^j)\cap\sigma(b_k)\right]\\
+					&\subseteq\bigcup_{k=1}^M\left[\bigcap_i Z(h_i^k)\cap\sigma(b_k)\right]\\
+					&\subseteq \sigma(g),
+			\end{align*}</div>
+			so $f\Subset g$.<span class='qed'></span>
+			</p>
+		</li>
+	</ol>
+</div>
+
+<div class='remark'>
+	<p><span class='envidentifier'>Remark</span>
+	One should be careful with the connections between the pairs of relations $(\perp,\perpp)$ and $(\subseteq,\Subset)$. For example, $\perp$ and $\perpp$ can coincide but $\subseteq$ and $\Subset$ may not and vice-versa. See the example below.
+	</p>
+</div>
+
+<!-- 3.1.9 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.1.9</span>
+	Let $X=H=\mathbb{R}$ and $\theta=0$, so that we are dealing with the usual notion of support. Let $\left\{(a_n,b_n):n\in\mathbb{N}\right\}$ ($a_n\smallerthan b_n$) be a basis of open intervals for the usual topology of $\mathbb{R}$ with $|b_n-a_n|\to 0$. Let $\left\{p_n:n\in\mathbb{N}\right\}$ be an one-to-one enumeration of the prime numbers.
+	</p>
+
+	<p>
+	For each $n$, let $\widetilde{a_n}$ and $\widetilde{b_n}$ be, respectively, the largest and smallest rational numbers with denominators $p_n$ as reduced fractions, and which satisfy
+	<div class='equation'>\[
+		\widetilde{a}_n\leq a_n\smallerthan b_n\leq \widetilde{b}_n.
+	\]</div>
+	Namely,
+	<div class='equation'>\[
+		\widetilde{a}_n=\frac{\lfloor a_np_n\rfloor}{p_n}\qquad\text{and}\qquad\widetilde{b}_n=\frac{\lceil b_np_n\rceil}{p_n},
+	\]</div>
+	where $\lfloor\cdot\rfloor$ and $\lceil\cdot\rceil$ are the usual <em>floor</em> and <em>ceiling</em> functions. In particular, $|\widetilde{a_n}-a_n|+|\widetilde{b_n}-b_n|\leq 2/p_n\to 0$ (since the enumeration of the primes is one-to-one), and thus the sets $U_n=(\widetilde{a_n},\widetilde{b_n})$ also form a basis of $\mathbb{R}$.
+	</p>
+
+	<p>
+	For each $n$, let $f_n\in C_c(\mathbb{R})$ with $\sigma(f_n)=U_n$, e.g.
+	<div class='equation'>\[
+		f_n(x)=\max(0,(x-\widetilde{a_n})(\widetilde{b_n}-x)),
+	\]</div>
+	and let $\mathcal{A}=\left\{f_n:n\in\mathbb{N}\right\}$. Then $\perp$ and $\perpp$ coincide on $\mathcal{A}$, as do $\subseteq$ and $\Subset$, since the boundaries of all $U_n$ are pairwise disjoint.
+	</p>
+
+	<p>
+	Letting $V=(\widetilde{a_1},\widetilde{b_1}+1)$ and $g_V$ be a continuous function with $\sigma(g_V)=V$, then $\perp$ and $\perpp$ still coincide in $\mathcal{A}\cup\left\{g_V\right\}$, however $\subseteq$ and $\Subset$ do not, since $f_1\subseteq g_V$ but $f_1\not\Subset g_V$.
+	</p>
+
+	<p>
+	Alternatively, set $W=(\widetilde{b_1},\widetilde{b_1}+1)$ and let $g_W$ be any continuous function with $\sigma(g_W)=W$. Then $\subseteq$ and $\Subset$ still coincide in $\mathcal{A}\cup\left\{g_W\right\}$, however $\perp$ and $\perpp$ do not, because $f_1\perp g$ but not $f_1\perpp g$.
+	</p>
+</div>
+
+<!-- 3.1.10 -->
+<div class='example' id='examplekaniarmoutil'>
+	<p><span class='envidentifier'>Example 3.1.10
+	<span style='font-weight:normal'>(Kania-Rmoutil, [<span class='ref' data-tag='MR3813611'></span>])</span></span>
+	Suppose that $X$ is a Stone space (Definition <span class='ref' data-tag='definitionstonespace'></span>) and that $H$ is a Hausdorff space with at least two points. Let $\mathcal{A}$ consist of all continuous $H$-valued functions with finite range and $\theta$ be any element of $\mathcal{A}$. Regularity of $\mathcal{A}$ is an immediate consequences of $X$ being zero-dimensional (and $H$ containing more than one point). Define the <em>compatibility ordering</em> on $C(X)$ by
+	<div class='equation'>\[
+		f\preceq g\iff g|_{\supp^\theta(f)}=f|_{\supp^\theta(f)}.
+	\]</div>
+	Then $\perp$ coincides with $\perpp$, and it can be described in terms of $\preceq$ by
+	<div class='equation'>\[
+		f\perp g\iff f\perpp g\iff\inf_{\preceq}(f,g)=\theta(=\inf_{\preceq}\mathcal{A})\text{ and }\left\{f,g\right\}\text{ has a }\preceq\text{-upper bound.}
+	\]</div>
+	</p>
+</div>
+
+<p>
+We now state and prove the two main theorems of this chapter. Fix two locally compact Hausdorff spaces $X$ and $Y$, and for $Z\in\left\{X,Y\right\}$ a Hausdorff space $H_Z$, a continuous map $\theta_Z:Z\to H_Z$, and a subset $\mathcal{A}(Z)\subseteq C_c(Z,\theta_Z)$.
+</p>
+
+<!-- 3.1.11 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 3.1.11</span>
+	We call a map $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ a <em>$\perpp$-morphism</em> if $f\perpp g$ implies $Tf\perpp Tg$; $T$ is a <em>$\perpp$-isomorphism</em> if it is bijective and both $T$ and $T^{-1}$ are $\perpp$-morphisms. $\perp$, $\subseteq$ and $\Subset$-isomorphisms are define analogously.
+	</p>
+</div>
+
+<!-- 3.1.12 -->
+<div class='theorem' id='theoremdisjoint'>
+	<p><span class='envidentifier'>Theorem 3.1.12</span>
+	Suppose $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are weakly regular and $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ is a $\perp$-isomorphism. Let $f,g\in\mathcal{A}(X)$. Then $\sigma(f)\subseteq \sigma(g)$ if and only if $\sigma(Tf)\subseteq \sigma(Tg)$. In particular, $Z(f)=\varnothing$ if and only if $Z(Tf)=\varnothing$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremdisjoint'>Proof</a>
+<div class='proof' id='proofoftheoremdisjoint'>
+	<p>
+	Immediate from Theorem <span class='ref' data-tag='theoremrelationsrelations'></span>(a), because every $\perp$-isomorphism is a $\subseteq$-isomorphism (and vice-versa).<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 3.1.13 -->
+<div class='theorem' id='maintheorem'>
+	<p><span class='envidentifier'>Theorem 3.1.13</span>
+	If $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are weakly regular and $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ is a $\perpp$-isomorphism then there is a unique homeomorphism $\phi:Y\to X$ such that $\phi(\supp(Tf))=\supp(f)$ for all $f\in \mathcal{A}(X)$ (equivalently, $\phi(\sigma(Tf))=\sigma(f)$, or $\phi(Z(Tf))=Z(f)$, for all $f\in\mathcal{A}(X)$).
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='maintheorem'>Proof</a>
+<div class='proof' id='proofofmaintheorem'>
+	<p>
+	By Theorem <span class='ref' data-tag='theoremrelationsrelations'></span>, $\perpp$-isomorphisms coincide with $\Subset$-isomorphisms, so the result is an easy application of Theorem <span class='ref' data-tag='theoremrecoverxfromultrafilters'></span>. We add the details for the sake of completeness.
+	</p>
+	
+	<p>
+	Let $\Phi:\sigma(\mathcal{A}(X))\to\sigma(\mathcal{A}(Y))$ be the map given by $\Phi(\sigma(f))=\sigma(Tf)$ for all $f\in\mathcal{A}(X)$, which is well-defined by Theorem <span class='ref' data-tag='theoremdisjoint'></span>. This is a $\Subset$-isomorphism, so, using the same notation as in Theorem <span class='ref' data-tag='theoremrecoverxfromultrafilters'></span>, we induce a homeomorphism
+	<div class='equation'>\[
+		\Phi^*:\widehat{\sigma(\mathcal{A}(Y))}^{\Subset}\to\widehat{\sigma(\mathcal{A}(X))}^{\Subset},\quad\Phi^*(F)=\Phi^{-1}(F).
+	\]</div>
+	For $Z\in\left\{X,Y\right\}$, let $\kappa_Z:Z\to\widehat{\sigma(\mathcal{A}(Z))}^{\Subset}$ be the homeomorphism given by $\kappa_Z(z)=\left\{\sigma(f):z\in\sigma(f)\right\}$. We then define $\phi=\kappa_X^{-1}\circ\Phi^*\circ\kappa_Y:Y\to X$, which is a homeomorphism. For all $y\in Y$,
+	<div class='equation'>\[
+		\kappa_X(\phi(y))=\Phi^{-1}(\kappa_Y(y))=\left\{\sigma(f):y\in\sigma(Tf)\right\},
+	\]</div>
+	which means that for each $f\in\mathcal{A}(X)$, $y\in\sigma(Tf)$ if and only if $\phi(y)\in\sigma(f)$. Therefore $\phi(\sigma(Tf))=\sigma(f)$, or equivalently taking closures we obtain $\phi(\supp(Tf))=\supp(f)$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+For an alternative proof, see the end of <a href='../3.dcf/3.2.pi.html'>Section 3.2</a>.
+</p>
+
+<!-- 3.1.14 -->
+<div class='definition' id='definitionthomeomorphism'>
+	<p><span class='envidentifier'>Definition 3.1.14</span>
+	The unique homeomorphism $\phi$ associated with $T$ as in Theorem <span class='ref' data-tag='maintheorem'></span> will be called the <em>$T$-homeomorphism</em>.
+	</p>
+</div>
+
+<h3 class='subsection'>Non-homeomorphic spaces may admit $\perp$-isomorphic spaces of functions</h3>
+
+<p>
+We finish this section by proving that the hypothesis that $T$ is a $\perpp$-isomorphism in Theorem <span class='ref' data-tag='maintheorem'></span> cannot be weakened to a $\perp$-isomorphism in general (Corollaries <span class='ref' data-tag='corollary01stoneperp'></span> and <span class='ref' data-tag='corollary01circleperp'></span>).
+</p>
+
+<p>
+Let $X$ and $Y$ be locally compact Hausdorff spaces. We will consider only real-valued functions and $\theta_X$ and $\theta_Y$ the respective zero functions on $X$ and $Y$, so that supports of continuous functions are the usual ones. By Theorem <span class='ref' data-tag='theoremdisjoint'></span>, any $\perp$-isomorphism $T:C_c(X)\to C_c(Y)$ induces an order isomorphism between collections of regular open sets of $X$ and $Y$, respectively. So in order to find $\perp$-isomorphisms, we will look at spaces with isomorphic collections of regular open sets.
+</p>
+
+<!-- 3.1.15 -->
+<div class='definition'>
+	<p><span class='envidentifier'>Definition 3.1.15</span>
+	Let $X$ be a topological space. We denote by $\operatorname{RO}(X)$ the collection of regular open subsets of $X$, and by $\operatorname{RO}_K(X)$ the collection of regular open subsets of $X$ with compact closure. Given $A\in \operatorname{RO}_K(X)$, we define $\Sigma_X(A)=\left\{f\in C_c(X):\sigma(f)=A\right\}$.
+	</p>
+</div>
+
+<p>
+A generalized Boolean algebra is <em>conditionally complete</em> if every bounded family admits a join. In the case of unital Boolean algebras we just call these <em>complete</em> (see [<span class='ref' data-tag='MR1975381'></span>, Definition I-4.5]).
+</p>
+
+<p>
+It is well-known that the family of regular open subsets of a topological space is a complete unital Boolean algebra (see [<span class='ref' data-tag='MR2466574'></span>, Theorem 10.1]). Similarly, one can prove that $\operatorname{RO}_K(X)$ is a conditionally complete generalized Boolean algebra for any Hausdorff space $X$.
+</p>
+
+<p>
+In order to find non-homeomorphic spaces $X$ and $Y$ such that $C_c(X)$ and $C_c(Y)$ are $\perp$-isomorphic, we need the following lemma:
+</p>
+
+<!-- 3.1.16 -->
+<div class='lemma' id='lemmacardinalityofbigsigma'>
+	<p><span class='envidentifier'>Lemma 3.1.16</span>
+	Let $X$ be a separable, locally compact Hausdorff space and $A\in\operatorname{RO}_K(x)$. If $A\neq\varnothing$ and the set $\Sigma_X(A)=\left\{f\in C_c(X):\sigma(f)=A\right\}$ is nonempty, then it has the cardinality of the continuum, $|\Sigma_X(A)|=2^{\aleph_0}$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmacardinalityofbigsigma'>Proof</a>
+<div class='proof' id='proofoflemmacardinalityofbigsigma'>
+	<p>
+	If $f\in\Sigma_X(A)$ then $f\neq 0$, and the continuum-many functions $\lambda f$, $\lambda\in\mathbb{R}$, also belong to $\Sigma_X(A)$, so $|\Sigma_X(A)|\geq 2^{\aleph_0}$. Conversely, if $D\subseteq X$ is a dense countable subset of $X$ then the map $C(X)\to\mathbb{R}^D$, $f\mapsto f|_D$ is injective, so
+	<div class='equation'>\[
+		|\Sigma_X(A)|\leq|C(X)|\leq|\mathbb{R}^D|=|\mathbb{R}|^{|D|}=\left(2^{\aleph_0}\right)^{\aleph_0}=2^{\aleph_0\times\aleph_0}=2^{\aleph_0}.
+	\]<span class='qed'></span></div>
+	</p>
+</div>
+
+<!-- 3.1.17 -->
+<div class='theorem' id='theoremperpisnotenough'>
+	<p><span class='envidentifier'>Theorem 3.1.17</span>
+	Suppose that:
+	<ol>
+		<li>
+			$X$ and $Y$ are separable, locally compact Hausdorff spaces;
+		</li>
+		
+		<li>
+			For all nonempty $A\in\operatorname{RO}_K(X)$ and $B\in\operatorname{RO}_K(Y)$, $\Sigma_X(A)$ and $\Sigma_Y(B)$ are nonempty;
+		</li>
+		
+		<li>
+			$\varphi:\operatorname{RO}_K(X)\to\operatorname{RO}_K(Y)$ is an order isomorphism (with respect to set inclusion).
+		</li>
+	</ol>
+	Then $C_c(X)$ and $C_c(Y)$ are $\perp$-isomorphic.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremperpisnotenough'>Proof</a>
+<div class='proof' id='proofoftheoremperpisnotenough'>
+	<p>
+	Given $A\in\operatorname{RO}_K(X)$, the sets  $\Sigma_X(A)$ and $\Sigma_Y(\varphi(A))$ have the same cardinality, by Lemma <span class='ref' data-tag='lemmacardinalityofbigsigma'></span>, so consider any bijection $T_A:\Sigma_X(A)\to\Sigma_Y(\varphi(A))$. Then the map
+	<div class='equation'>\[
+		T:C_c(X)\to C_c(Y),\qquad T(f)=T_{\sigma(f)}(f)
+	\]</div>
+	is a $\perp$-isomorphism.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+For our first example we employ the theory of Stone spaces and Stone duality as in Section <span class='ref' data-tag='sectionstoneduality'></span>. Recall that
+<ul>
+	<li>
+		Given a zero-dimensional, locally compact Hausdorff space $\mathfrak{C}$, $\KB(\mathfrak{C})$ is the collection of compact-open subsets of $\mathfrak{C}$.
+	</li>
+	
+	<li>
+		Given a generalized Boolean algebra $B$, $\GP(B)$ is the topological space (unit groupoid) of ultrafilters on $B$, with the topology generated by the sets $[a]=\left\{F\in\GP(B):a\in F\right\}$, $a\in B$.
+	</li>
+</ul>
+</p>
+
+<!-- 3.1.18 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.1.18</span>
+	In general, arbitrary joins do not correspond to unions under Stone duality. Let $X$ be an infinite set, and consider the complete unital Boolean algebra $\mathcal{P}(X)$ of subsets of $X$, and $\mathfrak{C}=\GP(\mathcal{P}(X))$. By Proposition <span class='ref' data-tag='propositionnaturaltransformationsncsd'></span>, the map $\mathcal{P}(X)\ni A\mapsto[A]\in\KB(\mathfrak{C})$ is an order isomorphism so $\KB(\mathfrak{C})$ is complete.
+	</p>
+	
+	<p>
+	Given $a\in X$, let us denote by $\left\{a\right\}^\uparrow=\left\{A\subseteq X:a\in A\right\}$ the (principal) ultrafilter generated by the element $\left\{a\right\}$ of $\mathcal{P}(X)$.
+	</p>
+	
+	<p>
+	Let $F\in\mathfrak{C}$ be any ultrafilter which does not contain finite subsets of $X$, and whose existence is guaranteed by Zorn's Lemma. Given a basic neighbourhood $[A]$ of $F$ in $\mathfrak{C}$, where $A\subseteq X$, choose any $a\in A$ and note that $\left\{a\right\}^\uparrow\in [A]\setminus\left\{F\right\}$, and therefore $F$ is non-isolated in $\mathfrak{C}$.
+	</p>
+	
+	<p>
+	Since $\mathfrak{C}$ is Hausdorff then $\bigcup\left\{[A]:F\not\in[A]\right\}=\mathfrak{C}\setminus\left\{F\right\}$, and as $F$ is non-isolated then this set is not clopen. Therefore the join of $\left\{[A]:F\not\in[A]\right\}$ in $\KB(\mathfrak{C})$ is actually $\mathfrak{C}$.
+	</p>
+	
+	<p>
+	More explicitly, in $\mathcal{P}(X)$ we have
+	<div class='equation'>\[
+		\bigvee\left\{A:F\not\in[A]\right\}=\bigvee\left\{A:A\not\in F\right\}\supseteq\bigvee_{x\in X}\left\{x\right\}=X,
+	\]</div>
+	and thus $\bigvee\left\{[A]:F\not\in[A]\right\}=[X]=\mathfrak{C}$ in $\KB(\mathfrak{C})$.
+	</p>
+</div>
+
+<!-- 3.1.19 -->
+<div class='lemma' id='lemmawhenregularcompactopenareclopen'>
+	<p><span class='envidentifier'>Lemma 3.1.19
+	<span style='font-weight:normal;'>(Compare with [<span class='ref' data-tag='MR1351251'></span>, Lemma 6.10])</span></span>
+	Let $\mathfrak{C}$ be a zero-dimensional, locally compact Hausdorff space and suppose that the Boolean algebra $\KB(\mathfrak{C})$ is conditionally complete. Then $\KB(\mathfrak{C})=\operatorname{RO}_K(\mathfrak{C})$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmawhenregularcompactopenareclopen'>Proof</a>
+<div class='proof' id='proofoflemmawhenregularcompactopenareclopen'>
+	<p>
+	The inclusion $\KB(\mathfrak{C})\subseteq\operatorname{RO}_K(\mathfrak{C})$ is immediate, so let us deal with the converse.
+	</p>
+	
+	<p>
+	Let $A\in\operatorname{RO}_K(\mathfrak{C})$, so in particular $A$ is contained in some element of $\KB(\mathfrak{C})$ and the family $\left\{V\in\KB(\mathfrak{C}):V\subseteq A\right\}$ is bounded. Let
+	<div class='equation'>\[
+		U=\bigvee\left\{V\in\KB(\mathfrak{C}):V\subseteq A\right\},
+	\]</div>
+	where the join is taken in $\KB(\mathfrak{C})$. We have
+	<div class='equation'>\[
+		A=\bigcup\left\{V\in\KB(A):V\subseteq A\right\}\subseteq U.
+	\]</div>
+	If $W\in\KB(\mathfrak{C})$ and $W\subseteq U\setminus\overline{A}$, then $A\subseteq  U\setminus W$ and so
+	<div class='equation'>\[
+		U=\bigvee\left\{V\in\KB(\mathfrak{C}):V\subseteq A\right\}\subseteq U\setminus W,
+	\]</div>
+	hence $W=\varnothing$. This proves that $U\setminus\overline{A}=\varnothing$ and so $U\subseteq\overline{A}$. However, $U$ is clopen and $A$ is regular open, which imply $A=U\in\KB(\mathfrak{C})$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 3.1.20 -->
+<div class='lemma' id='gprokseparableisseparable'>
+	<p><span class='envidentifier'>Lemma 3.1.20</span>
+	If $X$ is a separable locally compact Hausdorff space, then $\mathfrak{C}=\GP(\operatorname{RO}_K(X))$ is separable.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='gprokseparableisseparable'>Proof</a>
+<div class='proof' id='proofofgprokseparableisseparable'>
+	<p>
+	Let $\left\{x_n:n\in\mathbb{N}\right\}$ be a countable dense subset of $X$. For each $n$, by Zorn's Lemma there exists $G_n\in\mathfrak{C}$ such that
+	<div class='equation'>\[
+		\left\{U\in\operatorname{RO}_K(X):x_n\in U\right\}\subseteq G_n.
+	\]</div>
+	Let us prove that $\left\{G_n:n\in\mathbb{N}\right\}$ is dense in $\mathfrak{C}$. Given a basic open subset $[A]$ of $\mathfrak{C}$, where $A\in\operatorname{RO}_K(X)$, find $n\in\mathbb{N}$ with $x_n\in A$, so $A\in G_n$ and therefore $G_n\in[A]$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 3.1.21 -->
+<div class='lemma' id='lemmaregularopeninsecondcountableissigma'>
+	<p><span class='envidentifier'>Lemma 3.1.21</span>
+	If $X$ is a second-countable locally compact Hausdorff space and $A\in\operatorname{RO}_K(X)$, then there is $f\in C_c(X)$ such that $\sigma(f)=A$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmaregularopeninsecondcountableissigma'>Proof</a>
+<div class='proof' id='proofoflemmaregularopeninsecondcountableissigma'>
+	<p>
+	First choose a countable family of compact subsets $K_n\subseteq A$ such that $\bigcup_nK_n=A$. For each $n$ we can, by Urysohn's Lemma and regularity of $X$, find a continuous function $f_n:X\to[0,1]$ such that $f_n(k)=1$ for all $k\in K_n$ and $\supp(f_n)\subseteq A$. Letting $f=\sum_{n=1}^\infty 2^{-n}f_n$ we obtain $[f\neq 0]=\sigma(f)=A$, because $A$ is regular.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+As a consequence of Lemmas <span class='ref' data-tag='lemmawhenregularcompactopenareclopen'></span>, <span class='ref' data-tag='gprokseparableisseparable'></span> and <span class='ref' data-tag='lemmaregularopeninsecondcountableissigma'></span>, and Theorem <span class='ref' data-tag='theoremperpisnotenough'></span>, we conclude:
+</p>
+
+<!-- 3.1.22 -->
+<div class='corollary' id='corollary01stoneperp'>
+	<p><span class='envidentifier'>Corollary 3.1.22</span>
+	There exists a  zero-dimensional, compact Hausdorff topological space $\mathfrak{C}$ (namely, $\mathfrak{C}=\GP(\operatorname{RO}_K([0,1]))$) - which is, in particular, not homeomorphic to $[0,1]$ - such that $C(\mathfrak{C})$ and $C([0,1])$ are $\perp$-isomorphic.
+	</p>
+</div>
+
+<p>
+Note that, in the corollary above, the Boolean algebra $\operatorname{RO}([0,1])$ is uncountable, thus $\mathfrak{C}=\GP(\operatorname{RO}_K([0,1]))$ is not second-countable.
+</p>
+
+<p>
+For our second example, we will consider only second-countable spaces. In the next lemma, we denote by $\operatorname{int}_Z$ and $\operatorname{cl}_Z$ the interior and closure operators on subsets of a topological space $Z$.
+</p>
+
+<!-- 3.1.23 -->
+<div class='lemma' id='lemmamorphismregularopenofsubset'>
+	<p><span class='envidentifier'>Lemma 3.1.23</span>
+	Let $X$ be a topological space and $U$ an open set of $X$. Then
+	<ol class='alphpar'>
+		<li>
+			If $A\in\operatorname{RO}(X)$ then $A\cap U\in\operatorname{RO}(U)$.
+		</li>
+		
+		<li>
+			The map
+			<div class='equation'>\[
+				\varphi_U:\operatorname{RO}(X)\to\operatorname{RO}(U),\qquad \varphi_U(A)=A\cap U
+			\]</div>
+			is order-preserving and surjective; The map $\zeta_U:A\mapsto \operatorname{int}_X(\operatorname{cl}_X(A))$ is an order-preserving right inverse to $\varphi_U$;
+		</li>
+		
+		<li>
+			$\varphi_U$ is an order isomorphism if and only if $U$ is dense in $X$.
+		</li>
+	</ol>
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmamorphismregularopenofsubset'>Proof</a>
+<div class='proof' id='proofoflemmamorphismregularopenofsubset'>
+	<ol class='alphpar'>
+		<li>
+			Given $A\in\operatorname{RO}(X)$, since $U$ is open, we have
+			<div class='equation'>\[
+				\operatorname{int}_U(\operatorname{cl}_U(A\cap U))=\operatorname{int}_U(\operatorname{cl}_X(A)\cap U)=\operatorname{int}_X(\operatorname{cl}_X(A))\cap U=A\cap U,
+			\]</div>
+			and this proves that $A\cap U\in\operatorname{RO}(U)$.
+		</li>
+		
+		<li>
+			The last statement is the only non-trivial part. If $A\in\operatorname{RO}(U)$, we again use the fact that $U$ is open, as in item (a), to obtain
+			<div class='equation'>\[
+				\varphi_U(\zeta_U(A)))=\operatorname{int}_X(\operatorname{cl}_X(A))\cap U=\operatorname{int}_U(\operatorname{cl}_X(A)\cap U)=\operatorname{int}_U(\operatorname{cl}_U(A))=A,
+			\]</div>
+			as desired.
+		</li>
+		
+		<li>
+			<p>
+			If $U$ is not dense in $X$, then there exists a nonempty set $A\in\operatorname{RO}(X)$ which is disjoint with $U$, so
+			<div class='equation'>\[
+				\varphi_U(A)=\varnothing=\varphi_U(\varnothing),
+			\]</div>
+			and thus $\varphi_U$ is not injective.
+			</p>
+			
+			<p>
+			Now assume that $U$ is dense in $X$, so let us prove that the map $\zeta_U$ of item (b) is a left inverse of $\varphi_U$. Given $A\in\operatorname{RO}(X)$, since $U$ is dense in $X$,
+			<div class='equation'>\[
+				\zeta_U(\varphi_U(A))=\operatorname{int}_X(\operatorname{cl}_X(A\cap U))=\operatorname{int}_X(\operatorname{cl}_X(A))=A.
+			\]<span class='qed'></span></div>
+			</p>
+		</li>
+	</ol>
+</div>
+
+<p>
+Let $\mathbb{S}^1=\left\{z\in\mathbb{C}:|z|=1\right\}$ be the complex unit circle.
+</p>
+
+<!-- 3.1.24 -->
+<div class='corollary' id='corollary01circleperp'>
+	<p><span class='envidentifier'>Corollary 3.1.24</span>
+	$C([0,1])$ and $C(\mathbb{S}^1)$ are $\perp$-isomorphic.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='corollary01circleperp'>Proof</a>
+<div class='proof' id='proofofcorollary01circleperp'>
+	<p>
+	Let $X=(0,1)$ and $Y=\mathbb{S}^1\setminus\left\{1\right\}$. Then $X$ and $Y$ are homeomorphic, and two applications of Lemma <span class='ref' data-tag='lemmamorphismregularopenofsubset'></span> imply that $\operatorname{RO}([0,1])$ and $\operatorname{RO}(\mathbb{S}^1)$ are order-isomorphic. Lemmas <span class='ref' data-tag='gprokseparableisseparable'></span> and <span class='ref' data-tag='lemmaregularopeninsecondcountableissigma'></span>, and Theorem <span class='ref' data-tag='theoremperpisnotenough'></span>, imply that $C([0,1])$ and $C(\mathbb{S}^1)$ are $\perp$-isomorphic.
+	</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

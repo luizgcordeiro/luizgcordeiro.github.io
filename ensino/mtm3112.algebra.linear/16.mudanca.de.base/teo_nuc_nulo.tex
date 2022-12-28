@@ -1,0 +1,22 @@
+\begin{theorem}
+	Sejam $V$ e $W$ espaços vetoriais de dimensão finita, e $\mathcal{B}=\left\{b_1,\ldots,b_n\right\}$ e $\mathcal{C}=\left\{c_1,\ldots,c_m\right\}$ bases ordenadas de $V$ e $W$, respectivamente.
+	
+	Então para todo $v\in V$, temos que $v\in\ker(T)$ se, e somente se, $[v]^{\mathcal{B}}\in\operatorname{Nul}(\left[T\right]_{\mathcal{B}}^\mathcal{C})$.
+	
+	\hrule
+	
+	Em termos mais familiares, ao representarmos vetores e transformações lineares com relação às bases de $V$ e $W$, também estaresmos identificando núcleos de transformações lineares com espaços nulos de matrizes.
+\end{theorem}
+
+\begin{proof}
+	Pelo teorema de representações matriciais de transformações lineares, temos que
+	\[\left[T(v)\right]^{\mathcal{C}}=\left[T\right]_{\mathcal{B}}^{\mathcal{C}}[v]^{\mathcal{B}}\]
+	para todo $v\in V$. Assim, obtemos as equivalências
+	\begin{align*}
+	v\in\ker(T)
+		&\iff T(v)=0_W\\
+		&\iff \left[T(v)\right]^{\mathcal{C}}=0_{m\times 1}\\
+		&\iff \left[T\right]_{\mathcal{B}}^{\mathcal{C}}[v]^{\mathcal{B}}=0_{m\times 1}\\
+		&\iff [v]^{\mathcal{B}}\in\operatorname{Nul}(\left[\right]_{\mathcal{B}}^\mathcal{C}).
+	\end{align*}
+\end{proof}

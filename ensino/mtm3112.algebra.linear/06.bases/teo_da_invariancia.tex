@@ -1,0 +1,47 @@
+\begin{theorem}
+Quaisquer duas bases $\mathcal{B}$ e $\mathcal{C}$ de um espaço vetorial $V$ têm a mesma cardinalidade.
+\end{theorem}
+
+\begin{proof}[Prova no caso finitamente gerado]
+A ideia principal é a de ``transformar'' uma base na outra. Vamos considerar primeiro o caso em que o espaço é finitamente gerado. Suponha que a base $\mathcal{B}=\left\{v_1,\ldots,v_n\right\}$ é finita.
+
+Primeiro, vamos mostrar que $\mathcal{C}$ é finita (este passo não é extremamente necessário, mas simplifica a notação). Cada elemento $v_i$ de $\mathcal{B}$ é uma combinação linear de elementos de $\mathcal{C}$. Digamos
+\[v_i=\sum_{j=1}^{N_i}\lambda_{i,j}c_{i,j},\]
+para certos escalares $\lambda_{i,1},\ldots,\lambda_{i,N_i}$ e certos elementos $c_{i,1},\ldots,c_{i,N_i}\in\mathcal{C}$.
+
+Considere o subconjunto finito de $\mathcal{C}$
+\[\mathcal{C}'=\left\{c_{i,j}:i=1,\ldots,n,j=1,\ldots,N_i\right\}.\]
+Note que, por definição $\mathcal{B}\subseteq\langle\mathcal{C}'\rangle$, e portanto, como $\mathcal{B}$ é gerador, então $\mathcal{C}'$ também é gerador. Disto decorre que $\mathcal{C}=\mathcal{C}'$: de fato, se $\mathcal{C}'$ estivesse estritamente contido em $\mathcal{C}$, poderíamos tomar $c\in\mathcal{C}\setminus\mathcal{C}'$. Como $\mathcal{C}'$ é gerador, então
+\[c=\sum_{x\in\mathcal{C}'}\lambda_x x,\]
+onde nem todos os $\lambda_x$ são distintos. Isto nos dá uma combinação linear nula não-trivial de elementos de $\mathcal{C}$:
+\[c-\sum_{x\in\mathcal{C}'}\lambda_x x=0,\]
+o que é uma contradição pois $\mathcal{C}$ é linearmente independente.
+
+Portanto $\mathcal{C}=\mathcal{C}'$ é finito. Vamos ordenar os elementos de $\mathcal{C}=\left\{c_1,\ldots,c_m\right\}$.
+
+Se necessário, vamos assumir que $n\leq m$. Caso contrário, basta trocar os papéis de $\mathcal{B}$ e $\mathcal{C}$.
+
+Primeiro, escrevermos $v_1$ como uma combinação linear de elementos de $\mathcal{C}$:
+\[v_1=\sum_{i=1}^m\lambda_i c_i.\]
+Como $v_1\neq 0$, então pelo menos um $\lambda_i$ é diferente de $0$. A menos de uma reordenação dos $c_i$, digamos que $\lambda_1\neq 0$. Então $\mathcal{C}_1=\left\{v_1,c_2,\ldots,c_m\right\}$ é uma base de $V$.
+
+Fazemos o processo similar com $v_2$, e reescrevemos $v_2$ como uma combinação linear de elementos de $\mathcal{C}_1$:
+\[v_2=\lambda_1v_1+\sum_{i=2}^m\lambda_2c_i.\]
+Novamente, como $v_2\neq 0$, então pelo menos um dos $\lambda_i$ é diferente de $0$. Como $v_1$ e $v_2$ são linearmente independentes (pois $\mathcal{B}$ é base), então de fato existe $i\geq 2$ com $\lambda_i\neq 0$. A menos de uma nova reordenação, digamos que $\lambda_2\neq 0$. Defina a nova base $\mathcal{C}_2=\left\{v_1,v_2,c_3,\ldots,c_m\right\}$.
+
+Vamos continuar repetindo esse processo para $k=3,4,\ldots,n-1$: Temos uma base $\mathcal{C}_k=\left\{v_1,\ldots,v_k,c_{k+1},\ldots,c_m\right\}$. Escreva $v_{k+1}$ nesta base:
+\[v_{k+1}=\lambda_1v_1+\cdots+\lambda_k v_k+\sum_{i=k+1}^m\lambda_i c_i.\]
+Como $v_{k+1}\neq 0$ então pelo menos um dos $\lambda_i$ é diferente de $0$. Como $v_1,\ldots,v_{k+1}$ são linearmente independentes, então de fato pelo menos um dos $\lambda_i$ com $i\geq k+1$ é diferente de $0$. A menos de uma reordenação, suponhamos que $\lambda_{k+1}\neq 0$. Assim, obtemos uma base $\mathcal{C}_{k+1}=\left\{v_1,\ldots,v_k,v_{k+1},c_{k+2},\ldots,c_m\right\}$.
+
+Após $n$ passos, teremos uma base $\mathcal{C}_n=\left\{v_1,\ldots,v_n,c_{n+1},\ldots,c_m\right\}$, que contém a base $\mathcal{B}$. Segue que $\mathcal{B}=\mathcal{C}_n$. Como $\mathcal{C}_n$ tem, por construção, a mesma cardinalidade que $\mathcal{C}$, então $\mathcal{C}$ tem a mesma cardinalidade que $\mathcal{B}$.
+\end{proof}
+
+\begin{proof}[Prova no caso geral]
+O caso geral pode ser provado similarmente ao caso anterior, utilizando técnicas de Teoria de Conjuntos (a saber, indução transfinita e o Teorema da Boa Ordem). Porém, o caso infinitamente gerado também tem uma demonstração mais simples, utilizando o seguinte fato de cálculo cardinal: Se $I$ é um conjunto infinito e $\left\{N_i:i\in I\right\}$ é uma coleção de conjuntos finitos indexados por $I$, então $\left|\bigcup_{i\in I}N_i\right|\leq|I|$ (onde $|A|$ denota a cardinalidade de um conjunto $A$).
+
+Isto pode ser provado do seguinte modo (assumindo o Axioma da Escolha): Tome uma sobrejeção $I\times\mathbb{N}\to\bigcup_{i\in I}N_i$. Então $|I|=|I\times\mathbb{N}|\geq \left|\bigcup_{i\in I}N_i\right|$.
+
+Suponha que $V$ não é finitamente gerado, e que $\mathcal{B}$ e $\mathcal{C}$ são bases de $V$. Em particular, $\mathcal{B}$ e $\mathcal{C}$ são conjuntos infinitos. Para cada $b\in\mathcal{B}$, existe uma subcoleção finita $\mathcal{C}(b)$ de $\mathcal{C}$ tal que $b\in\langle\mathcal{C}(b)\rangle$. Claramente, $\mathcal{B}\subseteq\langle\bigcup_{b\in\mathcal{B}}\mathcal{C}(b)\rangle$, por construção, de onde segue que $\bigcup_{b\in\mathcal{B}}\mathcal{C}(b)$ é um subconjunto de $\mathcal{C}$ que gera o espaço $V$ inteiro. Como $\mathcal{C}$ é base, então $\mathcal{C}$ não contém subconjuntos geradores próprios. Portanto, $\mathcal{C}=\bigcup_{b\in\mathcal{B}}\mathcal{C}(b)$. Pelo fato descrito acima, concluímos que $|\mathcal{C}|\leq|\mathcal{B}|$.
+
+Simetricamente, obtemos $|\mathcal{B}|\leq|\mathcal{C}|$.
+\end{proof}

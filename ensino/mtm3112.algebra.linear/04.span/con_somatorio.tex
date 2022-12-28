@@ -1,0 +1,43 @@
+Sejam $x_m,x_{m+1},\ldots,x_n$ objetos cuja soma está definida (por exemplo, números reais, ou vetores de um espaço vetorial). Então a soma de todos estes números é denotada por
+\[\sum_{i=m}^n x_i=x_m+x_{m+1}+\cdots+x_n.\]
+Esta notação é chamada de ``somatório''. O símbolo ``$\sum$'' é um ``sigma'' grego maiúsculo. O \textit{índice} ``$i$'' é simplesmente uma variável, escolhida arbitrariamente. As escolhas mais usuais para índices são as letras $i$, $j$, e $k$.
+
+Essencialmente, ``$x_i$'' denota algum termo que depende de um número inteiro $i$. Este é chamado de \textit{termo geral} do somatório. Uma mudança de índices não altera o valor do somatório, pois ele indica somente que ``devemos calcular o termo geral em todos para todas as escolhas de $i$ entre $m$ e $n$. Assim,
+\[\sum_{i=m}^n x_i=x_m+x_{m+1}+\cdots+x_n=\sum_{k=m}^n x_k.\]
+
+Mais geralmente, se $B$ é um conjunto de números reais, ou de vetores de um certo espaço vetorial, denotamos por
+\[\sum_{x\in B} x\]
+a soma de todos os elementos de $B$.
+
+Por exemplo:
+\begin{itemize}
+	\item A soma dos $13$ primeiros números naturais (exceto o zero) pode ser denotada por
+		\[\sum_{i=1}^13 i=1+2+\cdots+13.\]
+	\item Os números ímpares são aqueles que têm a forma $2k-1$ para algum número inteiro $k$. Assim, a soma dos $57$ primeiros números ímpares (não-negativos) pode ser determinada como
+		\[\sum_{k=1}^{57}(2k-1).\]
+	\item A soma de todos os números pares entre $-55$ e $29$ pode ser escrita como
+	\[(-54)+(-52)+(-50)+\cdots+(26)+(28)=\sum_{k=-27}^{14} 2k\].
+	\item O traço $\operatorname{tr}(A)$ de uma matriz $A=[a_{ij}]_{ij}$ de ordem $n\times n$ é a soma dos elementos da diagonal de $A$, que são exatamente as entradas da forma $a_{jj}$ para algum $j\in\left\{1,\ldots,n\right\}$. Assim, o traço de $A$ é
+	\[\operatorname{tr}(A)=a_{11}+a_{22}+\cdots+a_{nn}=\sum_{j=1}^n a_{jj}.\]
+\end{itemize}
+
+Algumas propriedades de somatórios (para mais, veja a \href{https://pt.wikipedia.org/wiki/Somatório}{página da Wikipedia}):
+
+\begin{itemize}
+	\item Um somatório cujo termo geral é constante é simplesmente o produto deste termo com quantas vezes ele é somado consigo mesmo:
+	\[\sum_{i=m}^n c=(n-m+1)c.\]
+	\item Uma soma de números inteiros consecutivos é a média destes números, multiplicado pelo número de elementos que foram somados:
+	\[\sum_{j=m}^n j=(n-m+1)\frac{m+n}{2}\]
+	\item Se reordenarmos os índices do somatório, o seu valor não é alterado. Mas precisamente, se $\sigma\colon\left\{m_1,\ldots,n_1\right\}\to\left\{m_2,\ldots,n_2\right\}$ é uma bijeção, então
+	\[\sum_{i=m_1}^{n_1}x_{\sigma(i)}=\sum_{j=m_2}^{n_2}x_j.\]
+	(esta ``troca de variáveis'' é feita ao definir o índice $j$ em termos do índice inicial $i$ como $j=\sigma(i)$.
+	
+	Por exemplo,
+	\[\sum_{i=1}^N x_n=\sum_{j=0}^{N-1} x_{j+1}.\]
+	(Para transformar o somatório da esquerda no da direita, definimos $j=i-1$. Os ``extremos'' do somatório da esquerda são de $i=1$ até $i=N$, que viram $j=1-1=0$ até $j=N-1$).
+	\item Um somatório pode ser divido em ``sub-somatórios'': Se $m<p<n$, então
+	\[\sum_{i=m}^n x_i=\left(\sum_{i=m}^p x_i\right)+\left(\sum_{i=p+1}^n x_i\right).\]
+	\item Somatórios com índices independentes podem ser comutados:
+	\[\sum_{i=m_1}^{n_1}\left(\sum_{j=m_2}^{n_2} x_{ij}\right)=\sum_{j=m_2}^{n_2}\left(\sum_{i=m_1}^{n_1} x_{ij}\right).\]
+	(Você pode pensar que ambos os lados denotam, simplesmente, a soma de todas as entradas de uma matriz cujas entradas são dadas pelos $x_{ij}$.)
+\end{itemize}

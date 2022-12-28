@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#lemmacompatibilitypartialaction'>4.5.10</a>
+
+<!-- 4.5.10 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 4.5.10</span>
+	Suppose $\theta$ is a  partial action of an inverse semigroup $S$ on a set $X$. If $s,t\in S$ are compatible, then $\theta_s,\theta_t\in\mathcal{I}(X)$ are compatible.
+	</p>
+</div>

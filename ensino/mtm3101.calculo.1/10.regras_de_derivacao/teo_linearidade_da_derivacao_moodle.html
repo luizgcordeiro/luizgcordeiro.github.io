@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(f\) e \(g\) funções diferenciáveis em um ponto \(a\) e \(\lambda\) um número real. Então \(f+g\) e \(\lambda f\) são diferenciáveis em \(a\), e
+</p>
+
+<ol>
+
+<li>
+<p>
+\((f+g)'(a)=f'(a)+g'(a)\).
+</p>
+
+</li>
+
+<li>
+<p>
+\((\lambda f)'(a)=\lambda f'(a)\).
+</p>
+
+</li>
+</ol>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Basta utilizar a <a href='../09.derivadas/con_der_em_pt_moodle.html'>definição de derivada como um limite</a> e as <a href='../02.limites_elementares/teo_regras_lim_moodle.html'>regras de limites</a>.
+</p>
+
+<ol>
+
+<li>
+<p>
+Primeiro, consideramos a função soma \(f+g\).
+<div>
+\begin{align*}
+(f+g)'(a)
+&=\lim_{x\to a}\frac{(f+g)(x)-(f+g)(a)}{x-a}\\
+&\qquad\text{(definição de derivada)}\\
+&=\lim_{x\to a}\frac{\left(f(x)+g(x)\right)-\left(f(a)+g(a)\right)}{x-a}\\
+&\qquad\text{(definição de soma de função)}\\
+&=\lim_{x\to a}\frac{\left(f(x)-f(a)\right)+\left(g(x)-g(a)\right)}{x-a}\\
+&\qquad\text{(reorganização dos termos)}\\
+&=\lim_{x\to a}\left(\frac{f(x)-f(a)}{x-a}+\frac{g(x)-g(a)}{x-a}\right)\\
+&\qquad\text{(reorganização dos termos)}\\
+&=\left(\lim_{x\to a}\frac{f(x)-f(a)}{x-a}\right)+\left(\lim_{x\to a}\frac{g(x)-g(a)}{x-a}\right)\\
+&\qquad\text{(regras de limites)}\\
+&=f'(a)+g'(a).\\
+&\qquad\text{(definição de derivada)}
+\end{align*}
+</div>
+</p>
+
+</li>
+
+<li>
+<p>
+Agora consideramos o produto de \(f\) pelo escalar \(\lambda\).
+<div>
+\begin{align*}
+(\lambda f)'(a)
+&=\lim_{x\to a}\frac{(\lambda f)(x)-(\lambda f)(a)}{x-a}\\
+&\qquad\text{(definição de derivada)}\\
+&=\lim_{x\to a}\frac{\left(\lambda f(x)\right)-\left(\lambda f(a)\right)}{x-a}\\
+&\qquad\text{(definição de soma de função)}\\
+&=\lim_{x\to a}\left(\lambda \frac{f(x)-f(a)}{x-a}\right)\\
+&\qquad\text{(reorganização dos termos)}\\
+&=\lambda\left(\lim_{x\to a}\frac{f(x)-f(a)}{x-a}\right)\\
+&\qquad\text{(regras de limites)}\\
+&=\lambda f'(a).\\
+&\qquad\text{(definição de derivada)}
+\end{align*}
+</div>
+</p>
+
+</li>
+</ol>
+
+</div></body>
+</html>

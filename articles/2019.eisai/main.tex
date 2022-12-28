@@ -1,0 +1,196 @@
+\documentclass[a4paper]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[brazil]{babel}		%portuguese hyphenation
+\usepackage[includeheadfoot, margin=1in]{geometry}
+\usepackage{ifthen}
+
+\usepackage[bookmarksnumbered]{hyperref}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{eucal}			%\CMcal for original cal
+%\usepackage{nicefrac}  %nice fractions: \nicefrak[<fontcmd>]{<num>}{<den>}
+\usepackage{tensor}
+
+%\usepackage{wrapfig}			%figures surrounded by text
+%\usepackage{graphicx}			%figures
+%\usepackage{multicol}		%Multicolumn environment, \begin{multicols}{# of columns}\end{multicols}
+
+\usepackage{amsthm}
+\usepackage{enumitem}  %Options for enumerate environment
+\usepackage[normalem]{ulem} %Better underlines
+
+%\everymath{\displaystyle}
+%\usepackage{tikz-cd}			%\usetikzlibrary{matrix}	%diagramas
+\usepackage{tikz}  \usetikzlibrary{arrows,positioning}
+%\usepackage[vcentermath]{youngtab}			%Young diagrams and tableaux
+
+\usepackage[numbers]{natbib}
+\usepackage{doi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{generalnumbering}   \numberwithin{generalnumbering}{section}
+
+\theoremstyle{plain}    \newtheorem{theorem}[generalnumbering]{Theorem}
+\theoremstyle{plain}    \newtheorem{corollary}[generalnumbering]{Corollary}
+\theoremstyle{definition}   \newtheorem{definition}[generalnumbering]{Definition}
+\theoremstyle{definition}   \newtheorem{example}[generalnumbering]{Example}
+\theoremstyle{plain}    \newtheorem{proposition}[generalnumbering]{Proposition}
+\theoremstyle{plain}    \newtheorem{lemma}[generalnumbering]{Lemma}
+
+\newcommand{\namefordifferentenvironment}{}
+
+\theoremstyle{plain}    \newtheorem{plainstyle}[generalnumbering]{\namefordifferentenvironment}
+\theoremstyle{plain}    \newtheorem*{plainstyle*}{\namefordifferentenvironment}
+\theoremstyle{definition}    \newtheorem{definitionstyle}[generalnumbering]{\namefordifferentenvironment}
+\theoremstyle{definition}    \newtheorem*{definitionstyle*}{\namefordifferentenvironment}
+
+\newenvironment{penv}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{plainstyle}}{\end{plainstyle}}
+\newenvironment{penv*}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{plainstyle*}}{\end{plainstyle*}}
+\newenvironment{denv}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{definitionstyle}}{\end{definitionstyle}}
+\newenvironment{denv*}[1]{\renewcommand{\namefordifferentenvironment}{#1}\begin{definitionstyle*}}{\end{definitionstyle*}}
+
+\newcommand{\ntag}{\tag{\thegeneralnumbering}\stepcounter{generalnumbering}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%New commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt\hbox{\scriptsize.}\hbox{\scriptsize.}}}=}
+\newcommand*{\eqdef}{=\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt\hbox{\scriptsize.}\hbox{\scriptsize.}}}}
+
+\makeatletter
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareMathAlphabet{\mathfancy}{LS1}{stixscr}{m}{n}
+\makeatother
+
+\newcommand{\cat}[1]{\normalfont{\textsc{\textbf{#1}}}}
+\DeclareMathOperator{\IG}{\mathfancy{I\mkern-2mu G}\mkern-1mu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%AUTHOR INFO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Étale inverse semigroupoids - the fundamentals}
+\author{Luiz Gustavo Cordeiro%\thanks{Thanks 1} \thanks{Thanks 2} \thanks{Thanks 3} \thanks{Thanks 4}
+}
+%Thanks should be given separately for AMSART
+\thanks{The author was supported by the ANR project GAMME (ANR-14-CE25-0004)}
+%\thanks{Thanks 2}
+
+\address{UMPA, UMR 5669 CNRS -- École Normale Supérieure de Lyon\\
+46 allée d'Italie, 69364 Lyon Cedex 07, France}
+\email{luizgc6@gmail.com, luis-gustavo.cordeiro@ens-lyon.fr}				%AMSART
+
+\subjclass[2010]%		%AMSART
+{Primary 18B40; %Groupoids, semigroupoids, semigroups, groups (viewed as categories) [See also 20Axx, 20L05, 20Mxx]
+Secondary 06F05,  %Ordered semigroups and monoids
+08A55, %Partial algebras
+20M30  %Representation of semigroups; actions of semigroups on sets
+}
+
+%\keywords{}		%AMSART
+
+\begin{document}
+
+%See \cite{MR854149} for twists, and the paper by Renault, probably
+
+\begin{abstract}
+    In this article we will study semigroupoids, and more specifically inverse semigroupoids. These are a common generalization to both inverse semigroups and groupoids, and provide a natural language on which several types of dynamical structures may be described. Moreover, this theory allows us to precisely compare and simultaneously generalize aspects of both the theories of inverse semigroups and groupoids.
+    
+    We begin by comparing and settling the differences between two notions of semigroupoids which appear in the literature (one by Tilson and another by Exel). We specialize this study to inverse semigroupoids, and in particular an analogue of the Vagner-Preston Theorem is obtained. This representation theorem leads to natural notions of actions, and more generally $\land$-preactions and partial actions, of étale inverse semigroupoids, which generalize topological actions of inverse semigroups and continuous actions of étale groupoids. Many constructions which are commonplace in the theories of inverse semigroups and groupoids are also generalized, and their categorical properties made explicit. We finish this paper with a version of non-commutative Stone duality for ample inverse semigroupoids, which utilizes several of the aforementioned constructions.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Groups, semigroups and categories are ubiquitous in Mathematics. The dynamical systems associated with such structures are usually assumed to satisfy some form of associativity, roughly stating that ``performing certain related operations in any order will always yield the same result''. This is clearly the case, for example, when considering group actions. Moreover, different components of a given system play different roles: Given a left action of a group $G$ on a set $X$, the elements of $G$ can be composed both with elements of $G$ (on either side) and with elements of $X$ on their right (via the action), however elements of $X$ can only be composed with elements of $G$ on their left. This leads us to consider partially defined operations.
+
+Semigroupoids are an algebraic abstraction of these concepts: they are sets with partially defined binary operations with are associative in a precise way. In particular, the two most prominent examples of semigroupoids are categories and semigroups.
+
+Whereas the most common categories one first encounters consist of unrelated objects of a given signature, such as the categories of rings, topological spaces, posets, etc\ldots and certain structure-preserving maps between them, we consider a more algebraic-geometric approach: categories (and semigroupoids) ought to be regarded as collections of transformations between subobjects of a single object. The classical version of this approach is well-established, where one seeks to understand a given object by looking at its automorphism group. This is the first motivation for this work.
+
+This approach -- to study an object by analyzing its ``partial automorphisms'' -- has been popularized in the contexts of Topological Dynamics and Operator Algebras mainly after the introduction of \emph{partial actions} of groups by Exel on his study of the structure of $C^*$-algebras endowed with circle actions in \cite{MR1276163}. This turned out to be a rich an fruitful research direction, since it allows one to consider algebras and topological dynamical systems which are not induced (in any natural fashion) by a group action, but rather from transformations among its subsets (see \cite{arxiv1804.00396,MR3789176,MR2645883}, for example).
+
+A variation on the ``partial transformation'' approach was taken by Sieben in \cite{MR1671944,MR1456588}, who instead considered \emph{actions of inverse semigroups} on topological spaces and algebras. Inverse semigroups have been thoroughly studied in the last century, which provides solid foundation for this approach.
+
+Another approach to Topological Dynamics and Operator Algebras, and which in fact predates the works above, is the usage of \emph{groupoids}, which have played a central role in the theory of $C^*$-algebras since Renault's seminal work \cite{MR584266}, since they provide a geometric counterpart to a large class of (non-commutative) $C^*$-algebras. In simple terms, and as an interpretation of \cite[Theorem 5.9]{MR2460017}, groupoids are the ``non-commutative spectra'' of ``non-commutative, dynamical $C^*$-algebras''.
+
+Groupoids, partial actions of groups, and actions of inverse semigroups -- or more generally \emph{partial actions of inverse semigroups} -- are related via the constructions of ``groupoids of germs'' and ``crossed products''. We refer to \cite{MR2045419,arxiv1804.00396,MR3743184,MR3851326,MR2799098,MR1724106,MR1671944,MR2565546}. In fact, groupoids and inverse semigroups may be seen as dual to each other, via the \emph{non-commutative Stone duality} of Lawson-Lenz, \cite{MR3077869}. We also refer to \cite{MR2969047,MR2644910,MR2304314} for related studies.
+
+Actions of groupoids have also appeared throughout the literature, in the context of Lie theory (\cite{MR2012261}), algebraic topology (\cite{MR2273730}), operator algebras and topological dynamics (\cite{MR2982887,MR2969047,MR2941279}). A generalization of groupoids and inverse monoids, called \emph{inverse categories}, were initially introduced in \cite{MR0506554} and have been considered in recent work, e.g.\ in the study of \emph{tilings} (\cite{MR1736698}), logic and recursion theory (\cite{MR1871071,MR3605681}) and crossed product algebras (\cite{MR2959793}).
+
+The main goal of this article is to study the structure of \emph{inverse semigroupoids}, which are a common generalization of both inverse semigroups and groupoids. First we begin by comparing the notions of semigroupoid used in \cite{MR3597709,MR915990} to that of \cite{MR2754831}, which is more general. After that, we introduce inverse semigroupoids and prove some basic facts about their structure (some which had already been proven in \cite{MR3597709}). We follow with a representation theorem, which is an analogue of Cayley's Theorem for groups and the Vagner-Preston theorem for inverse semigroups. It motivates a notion of actions -- and more generally $\land$-preactions and partial actions -- of inverse semigroupoids on semigroupoids, in a manner which covers previously used notions for inverse semigroups and for groupoids. These are used to construct ``semidirect products'' which generalize transformation groupoids of partial group actions, semidirect products of inverse semigroups, semidirect products of groupoids, among others.
+
+In the third section we look at \emph{topological semigroupoids}, specializing to the \emph{étale inverse semigroupoid} case, and generalize some results known for topological groupoids to this setting. The fourth section generalizes some constructions from the theory of inverse semigroups, and we describe their categorical properties explicitly. The fifth and last section contains a generalization of non-commutative Stone duality to the context of inverse semigroupoids.
+
+\subsection*{Notation and running conventions}
+
+The \emph{domain} and \emph{codomain} of a map $f$ are denoted by $\dom(f)$ and $\cod(f)$, respectively. The image of a subset $A\subseteq\dom(f)$ is denoted as $f(A)$, and the range of $f$ is $\ran(f)\defeq f(\dom(f))$. Note that $\cod(f)=\ran(f)$ if and only if $f$ is surjective.
+
+Given maps $f_i\colon X_i\to Y_i$ ($i=1,2$), we define $f_1\times f_2\colon X_1\times X_2\to Y_2\times Y_2$ as $(f_1\times f_2)(x_1,x_2)=(f_1(x_1),f_2(x_2))$. If $X_1=X_2\eqdef X$, we define $(f_1,f_2)\colon X\to Y_1\times Y_2$ as $(f_1,f_2)(x)=(f_1(x),f_2(x))$.
+The identity map of a set $X$ is denoted as $\id_X$, and more generally $\id_{\mathcal{C}}$ stands for the identity functor of a category $\mathcal{C}$.
+
+We denote as $\mathbb{N}=\left\{0,1,2,\ldots,\right\}$ the set of non-negative integers, and as $\mathbb{N}_{\geq 1}=\mathbb{N}\setminus\left\{0\right\}$ the set of positive integers.
+
+We assume familiarity with inverse semigroups and étale groupoids. The main references are \cite{MR1694900,MR1724106} (see also the author's PhD thesis \cite{cordeirothesis}). A \emph{semilattice} is a poset $(P,\leq)$ admiting binary meets (infima), and is always regarded as an inverse semigroup under meets: $ab=a\land b=\inf\left\{a,b\right\}$ for all $a,b\in P$.
+
+\subsection{Setoids, bundles and partitions}
+    \input{setoids.tex}
+
+\subsection{Graphs}
+    \input{graphs.tex}
+    
+\section{Inverse semigroupoids}
+
+\subsection{Exel and graphed semigroupoids}
+\input{semigroupoids.tex}
+
+\subsection{Inverse semigroupoids}
+\input{inverse.tex}
+
+\subsection{A representation theorem}
+\input{representation.tex}
+
+\subsection{\texorpdfstring{$\land$}{∧}-prehomomorphisms, partial homomorphisms, and actions}\label{sec:dualprehomomorphisms}
+
+\input{prehomomorphisms.tex}
+
+\section{Topological and étale inverse semigroupoids}
+\input{etale.tex}
+
+\section{Constructions with inverse semigroupoids}\label{sec:categoricalconstructions}
+\input{constructions.tex}
+
+\section{Duality}\label{sec:duality}
+\input{duality.tex}
+
+\bibliographystyle{amsplain}
+\bibliography{library}
+
+\end{document}

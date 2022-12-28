@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#definitionsoficgroupoid'>2.3.1</a>
+
+<!-- 2.3.1 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 2.3.1</span>
+	A probability measure-preserving groupoid $\mathcal{G}$ is <em>sofic</em> if there {exists} a collection $\left\{\mathcal{G}_i:i\in I\right\}$ of finite probability measure-preserving groupoids and an isometric (equivalently, trace-preserving) semigroup morphism $\Theta:\MEAS(\mathcal{G})\to\prod_{\mathcal{U}}\MEAS(\mathcal{G}_i^2)$ for some ultrafilter $\mathcal{U}$ on $I$. We call $\theta$ a <em>sofic embedding</em> of $\mathcal{G}$.
+	</p>
+</div>

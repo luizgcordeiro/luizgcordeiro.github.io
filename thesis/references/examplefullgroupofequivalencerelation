@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.3.sg.html#examplefullgroupofequivalencerelation'>2.3.8</a>
+
+<!-- 2.3.8 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 2.3.8</span>
+	If $R$ is a $\ra$-discrete, probability measure-preserving Borel equivalence relation on a a standard probability space $(X,\mu)$, and we identify $\MEAS(R)$ with the semigroup of partial Borel automorphisms of $X$ (modulo functions which differ on null sets) which preserve $R$-equivalence classes, then the full group $[R]$ consists of the elements of $\MEAS(R)$ with conull domain.
+	</p>
+</div>

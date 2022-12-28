@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.5.qods.html#theoremquotientmapofsemigroupisverygood'>1.5.6</a>
+<!-- 1.5.6 -->
+<div class='toload theorem'>
+<p><span class='envidentifier'>Theorem 1.5.6</span>
+Let $I$ be a $\lor$-ideal of a distributive inverse semigroup $S$. Then $S/I$ is as inverse semigroup and $(\tildeoveri{a})^*=(a^*)^{\sim I}$ for all $a\in S$. The quotient map $\pi_I:S\to S/I$ is a $\lor$ and a $\land$-morphism. Moreover, $S/I$ has a zero if and only if $I$ is downwards directed, in which case $I=\pi_I^{-1}(0)$.
+</p>
+</div>

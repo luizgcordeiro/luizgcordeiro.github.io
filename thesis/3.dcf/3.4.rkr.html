@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<title>Soficity and other dynamical aspects of groupoids and inverse semigroups</title>
+
+	<script src="../../jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+
+	<title>
+		Soficity and other dynamical aspects of groupoids and inverse semigroups
+	</title>
+</head>
+<body>
+
+<div style="display: none" id="latexcommands" style=""></div>
+<script>
+$( "#latexcommands" ).load( "../src/latexcommands" );
+	</script>
+
+<div id="sidebar" class="sidebar"></div>
+
+<script>
+$( "#sidebar" ).load( "../src/sidebar" );
+</script>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section'>3.4. Recovering known results</h2>
+
+<p>
+In this section we will recover several known results, some in greater generality than in their original statements, dealing with different algebraic structures on classes of continuous functions and their isomorphisms.
+</p>
+
+<p>
+The general procedure we will use is the following: Suppose that $X$ and $Y$ are locally compact Hausdorff spaces, $H_X$ and $H_Y$ are Hausdorff spaces, $\theta_X\in C(X,H_X)$, $\theta_Y\in C(Y,H_Y)$ and $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ regular subcollections of $C_c(X,\theta_X)$ and $C_c(Y,\theta_Y)$, respectively.
+<ol id='generalprocedureforclassification'>
+	<li> Describe the relation $\perpp$ with the algebraic structure at hand. In general, we will first describe $\perp$ and use it in order to describe $\perpp$.</li>
+	<li> Given an algebraic isomorphism $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ for appropriate classes of functions $\mathcal{A}(X)$ and $\mathcal{A}(Y)$, the first item ensures that $T$ is a $\perpp$-isomorphism, so let $\phi:Y\to X$ be the $T$-homeomorphism.</li>
+	<li> Prove that $T$ is $\phi$-basic. Let $\chi$ be the $(\phi,T)$-transform.</li>
+	<li> Items 1.-3. also apply to $T^{-1}$, which is thus also a basic $\perpp$-isomorphism.</li>
+	<li> Items 3. and 4. imply, by Proposition <span class='ref' data-tag='propositionbasicisomorphisms'></span>(a) and (b), that the sections $\chi(y,\cdot)$ are injective and in the case that $\mathcal{A}(Y)$ is regular, Proposition <span class='ref' data-tag='propositionbasicisomorphisms'></span>(d) implies that $\chi(y,\cdot)$ is also surjective.</li>
+	<li> If we have a classification of algebraic isomorphisms between $H_X$ and $H_Y$, this classification will apply to each section $\chi(y,\cdot)$ of the $(\phi,T)$-transform, by Proposition <span class='ref' data-tag='propositionmodelmorphism'></span>. This will in turn describe $T$ completely.</li>
+</ol>
+</p>
+
+<h3 class='subsection'>3.4.1. Milgram's Theorem</h3>
+
+<p>
+In this subsection, we will always assume that $X$ is a locally compact Hausdorff space, $H=\mathbb{R}$ and $\theta=0$ (the zero map from $X$ to $\mathbb{R}$). We denote $C_c(X,\mathbb{R})=C_c(X,0)$ (as in Definition <span class='ref' data-tag='definitionsigma'></span>). If $Y$ is another locally compact space then $C_c(Y,\mathbb{R})$ is treated similarly. Note that $C_c(X,\mathbb{R})$ is regular by Urysohn's Lemma.
+</p>
+
+<p>
+First, we present a well-known classification of continuous multiplicative isomorphisms of $\mathbb{R}$ (see [<span class='ref' data-tag='MR0029476'></span>, Lemma 4.3], for example). We present its proof for the sake of completeness. Given $t\in\mathbb{R}$, $\operatorname{sgn}(t)$ denotes the sign of $t$ (the sign of $0$ is $\operatorname{sgn}(0)=0$).
+</p>
+
+<!-- 3.4.1 -->
+<div class='proposition' id='propositionclassificationmultiplicativeisomorphismsofr'>
+	<p><span class='envidentifier'>Proposition 3.4.1</span>
+	Let $\tau:\mathbb{R}\to\mathbb{R}$ be a multiplicative isomorphism. Then
+	<ol class='alphpar'>
+		<li>
+			Given $x\in\mathbb{R}$, $x\geq 0$ if and only if $\tau(x)\geq 0$;
+		</li>
+		
+		<li>
+			$\tau(-x)=-\tau(x)$ for all $x\in\mathbb{R}$;
+		</li>
+		
+		<li>
+			The following are equivalent:
+			<ol class='arpar'>
+				<li>
+					$\tau$ is continuous.
+				</li>
+				
+				<li>
+					$\tau$ is continuous at $0$.
+				</li>
+				
+				<li>
+					If $0\smallerthan x\smallerthan 1$ then $0\smallerthan \tau(x)\smallerthan 1$.
+				</li>
+				
+				<li>
+					$\tau$ is increasing.
+				</li>
+				
+				<li>
+					$\tau$ has the form $\tau(x)=\operatorname{sgn}(x)|x|^p$ for some $p>0$.
+				</li>
+			</ol>
+		</li>
+	</ol>
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='propositionclassificationmultiplicativeisomorphismsofr'>Proof</a>
+<div class='proof' id='proofofpropositionclassificationmultiplicativeisomorphismsofr'>
+	<ol class='alphpar'>
+		<li>
+			Simply note that $x\geq 0$ if and only if $x=y^2$ for some $y$.
+		</li>
+		
+		<li>
+			If $x=0$ this is trivial. If $x\neq 0$, then $-x$ is the only number satisfying $(-x)^2=x^2$ and $-x\neq x$.
+		</li>
+		
+		<li>
+			<p>
+			The implications (5)$\Rightarrow$(1)$\Rightarrow$(2) are trivial.
+			</p>
+			
+			<p>
+			<u>(2)$\Rightarrow$(3)</u>:
+			If $0\smallerthan x\smallerthan 1$ then $x^n\to 0$, so $\tau(x)^n\to \tau(0)=0$ which implies $\tau(x)\smallerthan 1$.
+			</p>
+			
+			<p>
+			<u>(3)$\Rightarrow$(4)</u> is immediate from (a) and (b).
+			</p>
+			
+			<p>
+			<u>(4)$\Rightarrow$(5)</u>: Letting $p=\log_2(\tau(2))>0$ (because $\tau(2)>\tau(1)=1$), we have $\tau(2^q)=(2^q)^p$ for all $q\in\mathbb{Q}$. Thus the restriction of $\tau$ to $[0,\infty)$ is an increasing map with dense image, hence surjective and continuous. Moreover, $\tau$ coincides with $x\mapsto x^p$ on a dense set of $[0,\infty)$, thus $\tau(x)=x^p$ for all $x\geq 0$ and thus for all $x$ by (b).<span class='qed'></span>
+			</p>
+		</li>
+	</ol>
+</div>
+
+<p>
+We will now classify multiplicative isomorphisms from $C_c(X,\mathbb{R})$ and $C_c(Y,\mathbb{R})$. Following the <span class='ref' data-tag='generalprocedureforclassification'></span> outlined at the beggining of this section, we first describe $\perpp$ in multiplicative terms.
+</p>
+
+<!-- 3.4.2 -->
+<div class='lemma' id='lemmamilgram'>
+	<p><span class='envidentifier'>Lemma 3.4.2</span>
+	If $f,g\in C_c(X,\mathbb{R})$, then
+	<div class='equation' id='conditionmilgram'>\[
+		f\perpp g\iff \exists h\in C_c(X,\mathbb{R})\text{ such that }hf=f\text{ and }hg=0\tag{3.4.1}
+	\]</div>
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmamilgram'>Proof</a>
+<div class='proof' id='proofoflemmamilgram'>
+	<p>
+	Indeed, first assume $f\perpp g$, i.e., $\supp(f)\cap\supp(g)=\varnothing$. By Urysohn's Lemma, there exists $h\in C_c(X,\mathbb{R})$ such that $h=1$ on $\supp(f)$ and $\supp(h)\subseteq X\setminus\supp(g)$. Then $h$ satisfies the condition (<span class='ref' data-tag='conditionmilgram'></span>).
+	</p>
+	
+	<p>
+	Conversely, if there is $h\in C_c(X,\mathbb{R})$ satisfying (<span class='ref' data-tag='conditionmilgram'></span>), then $h=1$ on $\supp(f)$ and so $f\Subset h$. As $hg=0$ if and only if $h\perp g$, we conclude that $f\perpp g$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 3.4.3 -->
+<div class='theorem' id='theorem343'>
+	<p><span class='envidentifier'>Theorem 3.4.3
+	<span style='font-weight:normal;'>(Milgram's Theorem, [<span class='ref' data-tag='MR0029476'></span>, Theorem A], for locally compact spaces)</span></span>
+	Let $X$ and $Y$ be locally compact Hausdorff spaces and let $T:C_c(X,\mathbb{R})\to C_c(Y,\mathbb{R})$ be a multiplicative isomorphism. Then there exists a homeomorphism $\phi:Y\to X$, a subset $F\subseteq Y$ whose points are isolated in $Y$ and such that $F\cap K$ is finite for any compact $K\subseteq Y$, and a continuous positive function $p:Y\setminus F\to(0,\infty)$ satisfying
+	<div class='equation'>\[
+		Tf(y)=\operatorname{sgn}(f(\phi(y)))|f(\phi (y))|^{p(y)}
+	\]</div>
+	for all $f\in C_c(X,\mathbb{R})$ and $y\in Y\setminus F$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theorem343'>Proof</a>
+<div class='proof' id='proofoftheorem343'>
+	<p>
+	By Lemma <span class='ref' data-tag='lemmamilgram'></span>, $T$ is a $\perpp$-isomorphism, so let $\phi$ be the $T$-homeomorphism. We prove that $T$ is $\phi$-basic in a few steps:
+	<ol>
+		<li>
+			<p>
+			<u>If $f,h\in C_c(X,\mathbb{R})$, then $f=1$ on $\supp(h)$ if and only if $Tf=1$ on $\supp(Th)$</u>:
+			</p>
+
+			<p>
+			To verify this, simply note that $f=1$ on $\supp(h)$ if and only if $fh=h$, and similarly for $Tf$. Since $T$ is multiplicative we are done.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<u>If $f,h\in C_c(X,\mathbb{R})$, then $f\neq 0$ on $\supp(h)$ if and only if $Tf\neq 0$ on $\supp(Th)$</u>:
+			</p>
+			
+			<p>
+			If $f\neq 0$ on $\supp(h)$, we can find $g\in C_c(X,\mathbb{R})$ such that $g=\frac{1}{f}$ on $\supp(h)$. Item 1. implies that $TfTg=1$ on $\supp(Th)$, and in particular $Tf\neq 0$ on $\supp(Th)$.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<u> If $f\in C_c(X,\mathbb{R})$ and $y\in Y$, then $f(\phi(y))\neq 0$ if and only if $Tf(y)\neq 0$</u>:
+			</p>
+			
+			<p>
+			Assume $f(\phi(y))\neq 0$. Choose $h\in C_c(X)$ such that $\phi(y)\in\supp(h)\subseteq[f\neq 0]$. Then item 2. implies that $Tf\neq 0$ on $\supp(Th)$, which contains $y$.
+			</p>
+		</li>
+		
+		<li>
+			<p>
+			<u>If $f,g,h\in C_c(X,\mathbb{R})$, then $f$ and $g$ coincide and are nonzero on $\supp(h)$ if and only if $Tf$ and $Tg$ coincide and are nonzero on $\supp(h)$</u>:
+			</p>
+			
+			<p>
+			This is an immediate consequence of item 1.
+			</p>
+		</li>
+		
+		<li>
+			In particular, from 3., $f(\phi(y))=0$ if and only if $Tf(y)=0$.
+		</li>
+		
+		<li>
+			<p>
+			<u>If $f\in C_c(X,\mathbb{R})$ and $y\in Y$, then $f(\phi(y))=1$ if and only if $Tf(y)=1$</u>:
+			</p>
+		
+			<p>
+			Suppose this was not the case, say $f(\phi(y))=1$ but $Tf(y)\neq 1$, and let us deduce a contradiction. Take a neighbourhood $Y'$ of $y$ with compact closure. In particular from 1., $f$ is not constant on any neighbourhood of $\phi(y)$, so there is a sequence of distinct points $y_n\in Y'$ and $r>0$ such that
+			<ol class='romanpar'>
+				<li>
+					$f(y_n)^n\to 1$;
+				</li>
+				
+				<li>
+					$|Tf(y_n)-1|>r$ for all $n$.
+				</li>
+			</ol>
+			</p>
+			
+			<p>
+				By Propositions <span class='ref' data-tag='propositiondisjointopensets'></span> and <span class='ref' data-tag='propositionconstructfunction'></span>(b), we can consider a subsequence of $\left\{y_n\right\}_n$, if necessary, and take a continuous function $g:X\to\mathbb{R}$ which coincides with $f^n$ on a neighbourhood of $\phi(y_n)$ for each $n$. Property (i) allows us to consider another tail of the sequence $\left\{y_n\right\}_n$, if necessary, and change $g$ by $\max(g,\frac{1}{2})$, so we may assume that $g\neq 0$ everywhere. Let $u\in C_c(X,\mathbb{R})$ be a function with $u=1$ on $\phi(Y')$, so $ug\in C_c(X,\mathbb{R})$ and $ug=f^n$ on a neighbourhood of $\phi(y_n)$ for all $n$.
+			</p>
+			
+			<p>
+				Let $z$ be a cluster point of the sequence $\left\{y_n\right\}_n$, so in particular $T(ug)(z)$ is a cluster point of the sequence $T(ug)(y_n)=Tf(y_n)^n$, where this equality follows from 4. Since $|Tf(y_n)-1|>r>0$, the only possibility is $T(ug)(z)=0$, and by 5. this means that $0=(ug)(\phi(z))=g(\phi(z))$ (because $z\in\overline{Y'}$), contradicting the fact that $g$ is nonzero.
+			</p>
+		</li>
+	</ol>
+	</p>
+	
+	<p>
+	We conclude, from 5. and 6., that $T$ is $\phi$-basic. Let $\chi:Y\times\mathbb{R}\to\mathbb{R}$ be the $T$-transform.
+	</p>
+	
+	<p>
+	Let $F=\left\{y\in Y:\chi(y,\cdot)\text{ is discontinuous}\right\}$. We will now prove that $F\cap K$ is finite for any compact subset $K\subseteq Y$. Otherwise there would be distinct $y_1,y_2,\ldots\in K$ such that $\chi(y_n,\cdot)$ is unbounded on every neighbourhood of $0$, so we can consider a strictly decreasing sequence $t_n\to 0$ such that $\chi(y_n,t_n)>n$. Going to a subsequence if necessary, we can construct, by Proposition <span class='ref' data-tag='propositionconstructfunction'></span>, $f\in C_c(X,\mathbb{R})$ with $f(\phi(y_n))=t_n$, so $Tf(y_n)>n$ for all $n$, a contradiction to the boundedness of $Tf$.
+	</p>
+	
+	<p>
+	Now we show that $F$ is open: If $z\in F$, then there is $t\in(0,1)$ with $\chi(z,t)>1$. Take $f\in C_c(X,\mathbb{R})$ such that $f=t$ on a neighbourhood $U$ of $\phi(z)$. In particular $Tf(z)>1$, so there is a neighbourhood $W$ of $z$ such that $Tf>1$ on $W$. Then for all $y\in\phi^{-1}(U)\cap W$, $\chi(y,t)=Tf(y)>1$, so $y\in F$.
+	</p>
+	
+	<p>
+	Therefore, $F$ consists of isolated points, since $Y$ is locally compact. For $y\not\in F$, Proposition <span class='ref' data-tag='propositionmodelmorphism'></span> and Proposition <span class='ref' data-tag='propositionclassificationmultiplicativeisomorphismsofr'></span> imply that $\chi(y,\cdot)$ has the form $\chi(y,t)=\operatorname{sgn}(t)|t|^{p(y)}$ for some $p(y)>0$. Let $U$ be any open subset of $Y$ not intersecting $F$ and with compact closure. Take any function $f\in C_c(X,\mathbb{R})$ with $f=2$ on $\phi(U)$. Then for $y\in U$,
+	<div class='equation'>\[
+		2^{p(y)}=\chi(y,2)=\chi(y,f(\phi(y)))=Tf(y),
+	\]</div>
+	so $p(y)=\log_2(Tf(y))$ for $y\in U$, showing that $p$ is continuous on $U$. Since $Y\setminus F$ is the union of such $U$ we are done.<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection'>3.4.2. Group-Valued functions; Hernández-Ródenas Theorem</h3>
+
+<p>
+Given topological groups $G$ and $H$, denote by $\operatorname{AbsIso}(G,H)$ the set of algebraic group isomorphisms from $G$ to $H$, and by $\operatorname{TopIso}(G,H)$ the set of topological (i.e., homeomorphisms which are) group isomorphisms.
+</p>
+
+<p>
+Let $X$ and $Y$ be compact Hausdorff spaces and $G$ a Hausdorff topological group. In [<span class='ref' data-tag='MR2324919'></span>, Theorem 3.7], Hernández and Ródenas classified non-vanishing group morphisms (not necessarily <em>isomorphisms</em>) $T:C(X,G)\to C(Y,G)$ which satisfy the following properties:
+<ol class='roman'>
+	<li>
+		There exists a continuous group morphism $\psi:G\to C(X,G)$, where $C(X,G)$ is endowed with the topology of pointwise convergence, such that for all $\alpha\in G$ and all $y\in Y$, $T(\psi(\alpha))(y)=\alpha$;
+	</li>
+	
+	<li>
+		For every continuous endomorphism $\theta:G\to G$ and every $f\in C(X,G)$, $T(\theta\circ f)=\theta\circ (Tf)$.
+	</li>
+</ol>
+If $T$ is a group isomorphism and $T^{-1}$ is continuous (with respect to uniform convergence) then condition (i) is immediately satisfied, however this is not true for (ii): For example, if $\operatorname{TopIso}(G,G)$ is non-abelian and $\rho\in\operatorname{TopIso}(G,G)$ is any non-central element, then the map $T:C(X,G)\to C(X,G)$ given by $Tf=\rho\circ f$ is a group isomorphism, and a self-homeomorphism of $C(X,G)$ with the topology of uniform convergence, which does not satisfy (ii).
+</p>
+
+<p>
+In the next theorem we obtain the same type of classification as in [<span class='ref' data-tag='MR2324919'></span>, Theorem 3.7], without assuming condition (ii), however we consider only non-vanishing group isomorphisms. Given a compact Hausdorff space $X$, a topological group $G$ and $\alpha\in G$, denote by $\overline{\alpha}$ the constant function $X\to G$, $x\mapsto \alpha$. We endow $C(X,G)$ with the topology of pointwise convergence.
+</p>
+
+<!-- 3.4.4 -->
+<div class='theorem' id='theorem344'>
+	<p><span class='envidentifier'>Theorem 3.4.4</span>
+	Suppose that $G$ and $H$ are Hausdorff topological groups, and $X$ and $Y$ are compact Hausdorff spaces for which $(X,\overline{1_G},C(X,G))$ and $(Y,\overline{1_H},C(Y,H))$ are regular.
+	</p>
+	
+	<p>
+	Let $T:C(X,G)\to C(Y,H)$ be a non-vanishing group isomorphism (Definition <span class='ref' data-tag='definitionnonvanishingbijection'></span>). Then there exist a homeomorphism $\phi:Y\to X$ and a map $w:Y\to\operatorname{AbsIso}(H,G)$ such that $Tf(y)=w(y)(f(\phi(y))$ for all $y\in Y$ and $f\in C(X,G)$.
+	</p>
+	
+	<p>
+	If $T$ is continuous on the constant functions then each $w(y)$ is continuous and $T$ is continuous on $C(X,G)$. If both $T$ and $T^{-1}$ are continuous on the constant functions then $w(y)\in\operatorname{TopIso}(H,G)$ and $T$ is a homeomorphism for the topologies of pointwise convergence.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theorem344'>Proof</a>
+<div class='proof' id='proofoftheorem344'>
+	<p>
+	By Theorem <span class='ref' data-tag='theoremnonvanishing'></span> and Proposition <span class='ref' data-tag='propositionbasicnessofgroupvalued'></span>, there is a homeomorphism $\phi:Y\to X$ such that $T$ is $\phi$-basic, and the sections $\chi(y,\cdot):G\to H$ of the $(\phi,T)$-transform $\chi$ are group morphisms by Proposition <span class='ref' data-tag='propositionmodelmorphism'></span>. Similar facts hold for $T^{-1}$, so Proposition <span class='ref' data-tag='propositionbasicisomorphisms'></span> implies that each section $\chi(y,\cdot)$ is bijective. Letting $w(y)=\chi(y,\cdot)$ we are done with the first part.
+	</p>
+	
+	<p>
+	Now note that for all $\alpha\in G$ and $y\in Y$,
+	<div class='equation'>\[
+		w(y)(\alpha)=w(y)(\overline{\alpha}(\phi(y)))=T\overline{\alpha}(y),
+	\]</div>
+	which implies that every $w(y)$ is continuous if and only if $T$ is continuous on the constant functions (because the map
+	<div class='equation'>\[
+		G\to\left\{\overline{\alpha}:\alpha\in G\right\}\subseteq C(X,G),\qquad\alpha\mapsto\overline{\alpha}
+	\]</div>
+	is a homeomorphism). In this case, from the equality
+	<div class='equation'>\[
+		Tf(y)=w(y)(f(\phi(y))\qquad\text{for all}\quad f\in C(X,G)\quad\text{and}\quad y\in Y,
+	\]</div>
+	we can readily see that $T$ is continuous. The last part, assuming also that $T^{-1}$ is continuous on the constant functions, is similar, using $T^{-1}$ and $w(y)^{-1}$ in place of $T$ and $w(y)$.<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection'>3.4.3. Kaplansky's Theorem</h3>
+
+<p>
+Let $R$ be a totally ordered set without supremum or infimum, considered as a topological space with the order topology, and let $X$ be a locally compact Hausdorff space. We consider the pointwise order on $C(X,R)$: $f\leq g$ if and only if $f(x)\leq g(x)$ for all $x$, which makes $C(X,R)$ a lattice: for all $f,g\in C(X,R)$ and $x\in X$,
+<div class='equation'>\[
+	(f\lor g)(x)=\max(f(x),g(x)),\qquad\text{and}\qquad(f\land g)(x)=\min(f(x),g(x)).
+\]</div>
+Denote by $C_b(X,R)$ the sublattice of bounded continuous functions from $X$ to $R$.
+</p>
+
+<p>
+We will consider sublattices $\mathcal{A}$ of $C_b(X,R)$ which satisfy:
+<style>
+ol.lkap {
+    counter-reset: lkap;
+	position:relative;
+}
+ol.lkap > li {
+    list-style: none;
+}
+ol.lkap > li:before {
+  counter-increment: lkap;
+  content: "(L" counter(lkap) ")";
+  position: absolute;
+  left: 0em;
+  display: inline-block;
+  text-align: right;
+  width: 2em;
+  font-style: normal;
+}
+</style>
+<ol class='lkap'>
+	<li id='conditionnormallatticel1'>
+		For all $f,g\in\mathcal{A}$, $\overline{[f\neq g]}$ is compact;
+	</li>
+	
+	<li id='conditionnormallatticel2'>
+		For all $f\in\mathcal{A}$, every open set $U\subseteq X$, every $x\in U$ and $\alpha\in R$, there exists $g\in\mathcal{A}$ such that $g(x)=\alpha$ and $[g\neq f]\subseteq U$.
+	</li>
+</ol>
+</p>
+
+<!-- 3.4.5 -->
+<div class='example' id='examplekaplanskyisl1l2'>
+	<p><span class='envidentifier'>Example 3.4.5
+	<span style='font-weight:normal;'>(Kaplansky, [<span class='ref' data-tag='MR0020715'></span>])</span></span>
+	Suppose that $X$ is compact and $\mathcal{A}$ is an $R$-normal (<span class='ref' data-tag='footnoternormal' id='footnoternormal'></span>) sublattice of $C(X,R)$. Condition <span class='ref' data-tag='conditionnormallatticel1'></span> is trivial, so let us check that $\mathcal{A}$ satisfies <span class='ref' data-tag='conditionnormallatticel2'></span>: Suppose $f$, $U$, $x$ and $\alpha$ are as in that condition. For the sake of the argument we can assume $f(x)\leq\alpha$. Let $\beta$ be any lower bound of $f(X)$, and from $R$-normality find $h\in\mathcal{A}$ such that $h(x)=\alpha$ and $h=\beta$ outside $U$. Then $g=f\lor h$ has the desired properties.
+	</p>
+</div>
+
+<!-- 3.4.6 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.4.6
+	<span style='font-weight:normal;'>(Li-Wong, [<span class='ref' data-tag='MR3162258'></span>])</span></span>
+	Suppose that $X$ is compact, $R=\mathbb{R}$, and $\mathcal{A}$ is a regular additive subgroup of $C(X,\mathbb{R})$, so <span class='ref' data-tag='conditionnormallatticel1'></span> is also trivial and again we need to verify condition <span class='ref' data-tag='conditionnormallatticel2'></span>: Let $f$, $U$, $x$ and $\alpha$ be as in <span class='ref' data-tag='conditionnormallatticel2'></span>. By regularity, take $h$ such that $\supp(h)\subseteq U$ and $h(x)=\alpha-f(x)$. Then $g=f+h$ has the desired properties.
+	</p>
+</div>
+
+<p>
+We will now recover the main result of [<span class='ref' data-tag='MR0020715'></span>], The following lemma is based on [<span class='ref' data-tag='MR0052760'></span>].
+</p>
+
+<!-- 3.4.7 -->
+<div class='lemma' id='importantlemmakaplansky'>
+	<p><span class='envidentifier'>Lemma 3.4.7</span>
+	Let $\mathcal{A}$ be a sublattice of $C_b(X,R)$ satisfying <span class='ref' data-tag='conditionnormallatticel1'></span> and <span class='ref' data-tag='conditionnormallatticel2'></span>, and let $f_0$ be any element of $\mathcal{A}$. Let $\mathcal{A}_{\geq f_0}=\left\{f\in\mathcal{A}:f\geq f_0\right\}$. Then $(X,f_0,\mathcal{A}_{\geq f_0})$ is weakly regular and for $f,g\in\mathcal{A}_{\geq f_0}$,
+	<ol class='alphpar'>
+		<li>
+			$f\perp g\iff f\land g=f_0$ (which is the minimum of $\mathcal{A}_{\geq f_0})$;
+		</li>
+		
+		<li>
+			$f\Subset g$ is equivalent to the following statement:
+			<div class='equation'>\[
+			\begin{split}
+				\text{for every bounded subset $\mathcal{H}\subseteq\mathcal{A}$ such that $h\subseteq f$ for all $h\in \mathcal{H}$,}\\
+				\text{there is an upper bound $k$ of $\mathcal{H}$ such that $k\subseteq g$.}
+			\end{split}\tag{K}
+			\]</div>
+		</li>
+	</ol>
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='importantlemmakaplansky'>Proof</a>
+<div class='proof'id='proofofimportantlemmakaplansky'>
+	<p>
+	Weak regularity is immediate from <span class='ref' data-tag='conditionnormallatticel2'></span> and the fact that $R$ does not have a supremum, and item (a) is trivial. Let us prove (b). First suppose $f\Subset g$ and $\mathcal{H}\subseteq\mathcal{A}$ is a bounded subset such that $h\subseteq f$ for all $h\in\mathcal{H}$. Let $\alpha\in R$ be an upper bound of $\bigcup_{h\in\mathcal{H}}h(X)$. From weak regularity and compactness of $\supp(f)$, we can take finitely many functions $k_1,\ldots,k_n$ such that $k_i\Subset g$, and for every $x\in\supp(f)$ there is some $i$ with $k_i(x)>\alpha$. Letting $k=\bigvee_{i=1}^n k_i$ we obtain the desired properties.
+	</p>
+	
+	<p>
+	Conversely, suppose that condition (K) holds. Let $\alpha$ be any upper bound of $f_0(X)$ and again take $\beta>\alpha$. Let $\mathcal{H}=\left\{h\in\mathcal{A}_{\geq f_0}:h\leq \beta, h\subseteq f\right\}$. Let $k$ be an upper bound of $\mathcal{H}$ with $k\subseteq g$. By Property <span class='ref' data-tag='conditionnormallatticel2'></span>, we have $\sigma(f)=\bigcup_{h\in\mathscr{H}}\sigma(h)$, so $k\geq\beta$ on $\sigma(f)$ and thus also on $\supp(f)$, which implies $f\Subset k$. Since $k\subseteq g$ then $f\Subset g$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+As an immediate consequence of Lemma <span class='ref' data-tag='importantlemmakaplansky'></span> and Theorem <span class='ref' data-tag='maintheorem'></span> we have the following generalization of Kaplansky's Theorem:
+</p>
+
+<!-- 3.4.8 -->
+<div class='theorem' id='theoremkaplansky'>
+	<p><span class='envidentifier'>Theorem 3.4.8
+	<span style='font-weight:normal'>Kaplansky [<span class='ref' data-tag='MR0020715'></span>])</span></span>
+	Suppose $R$ has no supremum nor infimum, $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ are sublattices of $C_b(X,R)$ and $C_b(Y,R)$, respectively, satisfying conditions <span class='ref' data-tag='conditionnormallatticel1'></span> and <span class='ref' data-tag='conditionnormallatticel2'></span>, and $T:\mathcal{A}(X)\to\mathcal{A}(Y)$ is a lattice isomorphism. Then for any $f_0\in\mathcal{A}$, $T$ restricts to a $\perpp$-isomorphism of the regular sublattices $\mathcal{A}(X)_{\geq f_0}$ and $\mathcal{A}(Y)_{\geq Tf_0}$. In particular, $X$ and $Y$ are homeomorphic.
+	</p>
+</div>
+
+<p>
+Our immediate goal is to prove that the homeomorphism between $X$ and $Y$ given by Theorem <span class='ref' data-tag='theoremkaplansky'></span> does not depend on the choice of function $f_0$ in Lemma <span class='ref' data-tag='importantlemmakaplansky'></span>.
+</p>
+
+<!-- 3.4.9 -->
+<div class='lemma' id='lemmarestrictionoflatticeisomorphismisbasic'>
+	<p><span class='envidentifier'>Lemma 3.4.9</span>
+	Under the conditions of Theorem <span class='ref' data-tag='theoremkaplansky'></span>, let $\phi:Y\to X$ be the $T|_{\mathcal{A}(X)_{\geq f_0}}$-homeomorphism. If $f,g\in\mathcal{A}(X)_{\geq{f_0}}$ then $\phi^{-1}(\operatorname{int}([f=g]))=\operatorname{int}([Tf=Tg])$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='lemmarestrictionoflatticeisomorphismisbasic'>Proof</a>
+<div class='proof' id='proofoflemmarestrictionoflatticeisomorphismisbasic'>
+	<p>
+	We will use the superscript "$f_0$" as in Definition <span class='ref' data-tag='definitionsigma'></span>, that is, for all $f\geq f_0$.
+	<div class='equation'>\[
+		\sigma^{f_0}(f)=\operatorname{int}(\overline{[f\neq f_0]}),\qquad\text{and}\qquad Z^{f_0}(f)=\operatorname{int}([f=f_0]).
+	\]</div>
+	and similarly with $Tf_0$ in place of $f_0$. Then $\phi$ is the only homeomorphism satisfying $\sigma^{f_0}(f)=\phi(\sigma^{Tf_0}(Tf))$, or equivalently $Z^{f_0}(f)=\phi(Z^{Tf_0}(Tf))$, for all $f\geq f_0$.
+	</p>
+	
+	<p>
+	First, assume that $f\leq g$, and let $U=\operatorname{int}([f=g])$. For all $x\in[f\smallerthan g]$, choose a function $k_x\in\mathcal{A}(X)_{\geq f_0}$ such that
+	<ul>
+		<li>
+			$\sigma^{f_0}(k_x)\cap [f=g]=\varnothing$;
+		</li>
+		
+		<li>
+			$k_x(x)=g(x)$;
+		</li>
+		
+		<li>
+			$k_x\leq g$.
+		</li>
+	</ul>
+	</p>
+	
+	<p>
+	Then $g=\sup\left\{f,k_x:x\in[f\smallerthan g]\right\}$, and since $T$ is a lattice isomorphism we obtain $Tg=\sup\left\{Tf,Tk_x:x\in[f\smallerthan g]\right\}$.
+	</p>
+	
+	<p>
+	Let us prove that $Tf(x)=Tg(x)$ for all $x\in\phi^{-1}(U)$.
+	</p>
+
+	<p>
+	Since $U\subseteq\bigcap_{x\in[f\smallerthan g]}Z^{f_0}(k_x)$, then $\phi^{-1}(U)\subseteq\bigcap_{x\in[f\smallerthan g]}Z^{Tf_0}(Tk_x)$.
+	</p>
+	
+	<p>
+	Given $y\in\phi^{-1}(U)$, use property <span class='ref' data-tag='conditionnormallatticel2'></span> to find $h\in\mathcal{A}(Y)$ such that $h(y)=Tf(y)$ and $h=Tg$ outside of $\phi^{-1}(U)$. Then $h'=(Tf\lor h)\land Tg$ is an upper bound of $\left\{Tf,Tk_x:x\in[f\smallerthan g]\right\}$, so it is also an upper bound of $Tg$, and in particular,
+	<div class='equation'>\begin{align*}
+		Tg(y)\leq ((h\lor Tf)\land Tg)(y)=Tf(y)\land Tg(y)\leq Tf(y),
+	\end{align*}</div>
+	so $Tg(y)=Tf(y)$.
+	</p>
+	
+	<p>
+		In the general case, if $f=g$ on an open set $U$ then $f=f\land g=g$ on $U$, so the previous case implies that $Tf$ and $Tg$ coincide with $T(f\land g)$ on $\phi^{-1}(U)$.<span class='qed'></span>
+	</p>
+</div>
+
+<!-- 3.4.10 -->
+<div class='theorem' id='theoremkaplanskywithoutlowerbound'>
+	<p><span class='envidentifier'>Theorem 3.4.10</span>
+	Under the conditions of Theorem <span class='ref' data-tag='theoremkaplansky'></span>, there exists a unique homeomorphism $\phi:Y\to X$ such that $\phi(\operatorname{int}([Tf=Tg]))=\operatorname{int}([f=g])$ for all $f,g\in\mathcal{A}(X)$. (In this case we will still call $\phi$ the <em>$T$-homeomorphism</em>.)
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremkaplanskywithoutlowerbound'>Proof</a>
+<div class='proof' id='proofoftheoremkaplanskywithoutlowerbound'>
+	<p>
+	For all $f_0\in \mathcal{A}(X)$, let $\phi^{f_0}:Y\to X$ be the $T|_{\mathcal{A}(X)_{\geq f_0}}$-homeomorphism. Given $f_0,g_0\in\mathcal{A}(X)$, Lemma <span class='ref' data-tag='lemmarestrictionoflatticeisomorphismisbasic'></span> implies that $\phi^{f_0\land g_0}$ satisfies the property of the $T|_{\mathcal{A}(X)_{\geq f_0}}$-homeomorphism, which uniquely defines $\phi^{f_0}$, and similarly for $\phi^{g_0}$, so $\phi^{f_0}=\phi^{f_0\land g_0}=\phi^{g_0}$. We are done by letting $\phi=\phi^{f_0}$ for some arbitrary $f_0\in\mathcal{A}(X)$.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+A natural goal now is to classify the lattice isomorphisms as given in Theorem <span class='ref' data-tag='theoremkaplanskywithoutlowerbound'></span>. Although at the moment we cannot prove that all lattice isomorphisms as above are basic, this is true in some cases. A similar argument to the one used in the proof of Theorem <span class='ref' data-tag='propositionbasicisomorphisms'></span> appears in [<span class='ref' data-tag='MR2995073'></span>], although in a different context (considering lattices of possibly unbounded real-valued continuous functions on complete metric spaces). See also [<span class='ref' data-tag='MR2999998'></span>, <span class='ref' data-tag='MR3404615'></span>].
+</p>
+
+<!-- 3.4.11 -->
+<div class='theorem' id='theoremclassificationlatticemorphismfirstcountable'>
+	<p><span class='envidentifier'>Theorem 3.4.11</span>
+	Suppose that $X$ and $Y$ are first-countable (and locally compact Hausdorff), that $R=\mathbb{R}$ with the usual order, and that $T:C_c(X,0)\to C_c(Y,0)$ is a lattice isomorphism. Then there are a unique homeomorphism $\phi:Y\to X$ and a continuous function $\chi:Y\times\mathbb{R}\to\mathbb{R}$ such that
+	<div class='equation' id='equationclassificationoforderkaplanskyisomorphismsforfirstcountble'>\[
+		Tf(y)=\chi(y,f(\phi(y)))\qquad\text{ for all }y\in Y\text{ and }f\in C_c(X,0)\tag{3.4.1}
+	\]</div>
+	and $\chi(y,\cdot):\mathbb{R}\to\mathbb{R}$ is an increasing bijection for all $y\in Y$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremclassificationlatticemorphismfirstcountable'>Proof</a>
+<div class='proof' id='proofoftheoremclassificationlatticemorphismfirstcountable'>
+	<p>
+	Suppose $x\in X$ and $f(x)=g(x)$. Using Propositions <span class='ref' data-tag='propositiondisjointopensets'></span> and <span class='ref' data-tag='propositionconstructfunction'></span>(b), we can find a sequence $\left\{x_n\right\}_n$ of points in $X$ converging to $x$ and a function $h\in C_c(X,0)$ such that, for all $n$, $h=f$ on some neighbourhood of $x_{2n}$ and $h=g$ on some neighbourhood of $x_{2n+1}$. Therefore, $Tf$ will coincide with $Th$ on some neighbourhood of $\phi^{-1}(x_{2n})$ for all $n\in\mathbb{N}$,
+	<div class='equation'>\[
+		Th(\phi^{-1}(x))=\lim_{n\to\infty}Th(\phi^{-1}(x_{2n}))=\lim_{n\to\infty}Tf(\phi^{-1}(x_{2n}))= Tf(\phi^{-1}(x)),
+	\]</div>
+	and similarly $Tg(\phi^{-1}(x))=Th(\phi^{-1}(x))=Tf(\phi^{-1}(x))$, which proves that $T$ is basic.
+	</p>
+	
+	<p>
+	Therefore, there is a function $\chi:Y\times \mathbb{R}\to\mathbb{R}$ such that Equation (<span class='ref' data-tag='equationclassificationoforderkaplanskyisomorphismsforfirstcountble'></span>) is satisfied. Every section $\chi(y,\cdot):\mathbb{R}\to\mathbb{R}$ is surjective, since $C_c(Y,0)$ is regular, and the same argument with $T^{-1}$, and Proposition <span class='ref' data-tag='propositionbasicisomorphisms'></span> imply that $\chi(y,\cdot)$ is also injective, hence a bijection.
+	</p>
+	
+	<p>
+	Proposition <span class='ref' data-tag='propositionmodelmorphism'></span>, applied to the signature of lattices (with the binary symbol "$\lor$" interpreted as "join") implies that the sections $\chi(y,\cdot)$ are lattice isomorphisms of $\mathbb{R}$ for all $n$, and in particular homeomorphisms. Theorem <span class='ref' data-tag='theorembasicisomorphisms'></span> implies that $\chi$ is continuous (and $T$ is a homeomorphism for the topologies of pointwise convergence.)
+	</p>
+</div>
+
+<!-- 3.4.12 -->
+<div class='example'>
+	<p><span class='envidentifier'>Example 3.4.12</span>
+	There are non-first countable spaces for which the conclusion of Theorem <span class='ref' data-tag='propositionbasicisomorphisms'></span> holds.
+	</p>
+	
+	<p>
+	Let $\Omega=\omega_1\cup\left\{\omega_1\right\}$ be the successor of the first uncountable ordinal. We extend (<span class='ref' data-tag='footnoteomega1notinitself' id='footnoteomega1notinitself'></span>) the order of $\omega_1$ to $\Omega$ by setting $\alpha\smallerthan\omega_1$ for all $\alpha\in\omega_1$, and $\Omega$ is a compact Hausdorff space with the order topology. If $Z$ is any first-countable space, then any continuous function $f:\Omega\to Z$ is constant on a neighbourhood of $\omega_1$: Indeed, for every $n\in\mathbb{N}$ choose $\alpha_n\smallerthan\omega_1$ such that $|f(\beta)-f(\omega_1)|\smallerthan n^{-1}$ whenever $\beta\geq\alpha_n$. Letting $\alpha=\sup_n\alpha_n$, we have $\alpha\smallerthan\omega_1$ and $f(\beta)=f(\omega_1)$ for all $\beta\in[\alpha,\omega_1]$
+	</p>
+
+	<p>
+	Now suppose that $R=\mathbb{R}$ and $T:C(\Omega)\to C(\Omega)$ is a lattice isomorphism, and let $\phi:\Omega\to\Omega$ be the $T$-homeomorphism. Since $\omega_1$ is the only non-$G_\delta$ point of $\Omega$, we have $\phi(\omega_1)=\omega_1$. The previous paragraph allows us to identify the lattices
+	<div class='equation'>\[
+		C_c(\omega_1)\cong\left\{f\in C(\Omega):f(\omega_1)=0\right\},
+	\]</div>
+	which then induces a lattice isomorphism $T|_{\omega_1}:C_c(\omega_1)\to C_c(\omega_1)$. In this case, note that $\phi|_{\omega_1}$ is the $T|_{\omega_1}$-homeomorphism. We can now prove that $T$ is basic with respect to $\phi$.
+	</p>
+	
+	<p>
+	Let $f,g\in C(\Omega)$. If $f(\omega_1)=g(\omega_1)$, then the first paragraph implies that $f=g$ on some neighbourhood of $\omega_1$ and thus $Tf(\omega_1)=Tg(\omega_1)$. If $f(\alpha)=g(\alpha)$ for some $\alpha\smallerthan\omega_1$, consider $\widetilde{f}\in C_c(\omega_1,0)$ given by
+	<div class='equation'>\[
+		\widetilde{f}(x)=\begin{cases}
+			f(x),&\text{if }x\leq\alpha,\\
+			0,&\text{otherwise,}
+		\end{cases}
+	\]</div>
+	and define $\widetilde{g}$ similarly. Since $(-\infty,\alpha]$ is open in $\Omega$, then
+	<div class='equation'>\[
+		Tf(\phi^{-1}(\alpha))=T\widetilde{f}(\phi^{-1}(\alpha))\qquad\text{and}\qquad Tg(\phi^{-1}(\alpha))=T\widetilde{g}(\phi^{-1}(\alpha)),
+	\]</div>
+	and since $\omega_1$ is first-countable, we use the previous example to conclude that
+	<div class='equation'>\[
+		T\widetilde{f}(\phi^{-1}(\alpha))=T\widetilde{g}(\phi^{-1}(\alpha)),
+	\]</div>
+	so $Tf(\phi^{-1}(\alpha))=Tg(\phi^{-1}(\alpha))$. Therefore $T$ is basic (with respect to $\phi$).
+	</p>
+</div>
+
+<p>
+In the case of additive lattice isomorphisms of spaces of real-valued functions, we do not require the first-countability hypothesis.
+</p>
+
+<!-- 3.4.13 -->
+<div class='theorem' id='theoremadditivekaplansky'>
+	<p><span class='envidentifier'>Theorem 3.4.13</span>
+	Suppose $R=\mathbb{R}$, and $T:C_c(X)\to C_c(Y)$ is an additive lattice isomorphism. Then there are a unique homeomorphism $\phi:Y\to X$ and a unique positive continuous function $p:Y\to (0,\infty)$ such that $Tf(y)=p(y)f(\phi(y))$ for all $f\in C_c(X)$ and $y\in Y$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremadditivekaplansky'>Proof</a>
+<div class='proof' id='proofoftheoremadditivekaplansky'>
+	<p>
+	First note that for all $f\in C_c(X)$, $|f|=(f\lor 0)-(f\land 0)$, so $T|f|=|Tf|$. Let $\phi:Y\to X$ be the $T$-homeomorphism, given by Theorem <span class='ref' data-tag='theoremkaplanskywithoutlowerbound'></span>.
+	</p>
+	
+	<p>
+	Now suppose $f(x)=0$ but $Tf(\phi^{-1}(x))\neq 0$. First take a compact neighbourhood $U$ of $x$ and $r>0$ such that $|Tf|>r$ on $\phi^{-1}(U)$. Moreover, $f$ is not constant on any neighbourhood of $x$, so there is a sequence of distinct points $x_n\in U$ such that $|f(x_n)|\smallerthan n^{-2}$.
+	</p>
+	
+	<p>
+	Using Propositions <span class='ref' data-tag='propositiondisjointopensets'></span> and <span class='ref' data-tag='propositionconstructfunction'></span>(b), we can take a subsequence if necessary and consider $g\in C_c(X)$ such that for all $n$, $g=nf$ on a neighbourhood of $x_n$. Then $Tg=nTf$ on a neighbourhood of $\phi^{-1}(x_n)$, however
+	<div class='equation'>\[
+		nr\smallerthan nTf(\phi^{-1}x_n)=nTg(\phi^{-1}x_n),
+	\]</div>
+	which contradicts the fact that $g$ is bounded.
+	</p>
+	
+	<p>
+	Therefore $T$ is basic with respect to $\phi$, so let $\chi$ be the $T$-transform. Each section $\chi(y,\cdot)$ is an additive order-preserving bijection (Propositions <span class='ref' data-tag='propositionmodelmorphism'></span> and <span class='ref' data-tag='propositionbasicisomorphisms'></span>) and hence has the form $\chi(y,t)=p(y)t$ for some $p(y)>0$. If $Tf(y)\neq 0$, then $f(\phi(y))\neq 0$ as well and $p=\frac{Tf}{(f\circ \phi)}$ on a neighbourhood of $y$, thus $p$ is continuous.<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection' id'subsectionliwong'>3.4.4. Li-Wong Theorem</h3>
+
+<p>
+In [<span class='ref' data-tag='MR3162258'></span>], Li and Wong proved Theorem <span class='ref' data-tag='theoremliwong'></span>, which can be seen as a generalization of Theorem <span class='ref' data-tag='theoremadditivekaplansky'></span>. We will proceed in the opposite direction, i.e., by proving their result (or more precisely, the specific case where the domains are compact) instead as a consequence of the more general Theorem <span class='ref' data-tag='theoremkaplansky'></span>.
+</p>
+
+<!-- 3.4.14 -->
+<div class='theorem' id='theoremliwong'>
+	<p><span class='envidentifier'>Theorem 3.4.14
+	<span style='font-weight:normal;'>([<span class='ref' data-tag='MR3162258'></span>])</span></span>
+	Let $X$ and $Y$ be compact Hausdorff spaces, and $\mathcal{A}(X)$ and $\mathcal{A}(Y)$ be two regular vector sublattices of $C(X,\mathbb{R})$ and $C(Y,\mathbb{R})$, respectively. Suppose that $T:\mathcal{A}(X)\to \mathcal{A}(Y)$ is a linear isomorphism which preserves non-vanishing functions, that is, for all $f\in\mathcal{A}(X)$,
+	<div class='equation'>\[
+		0\in f(X)\iff 0\in Tf(Y).
+	\]</div>
+	Then there is a homeomorphism $\phi:Y\to X$ and a continuous non-vanishing function $p:Y\to\mathbb{R}$ such that $Tf(y)=p(y)f(\phi(y))$ for all $f\in\mathcal{A}(X)$ and $y\in Y$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremliwong'>Proof</a>
+<div class='proof' id='proofoftheoremliwong'>
+	<p>
+	In order to apply Theorem <span class='ref' data-tag='theoremkaplansky'></span>, we need to modify $T$ to obtain a lattice isomorphism. Since $\mathcal{A}(X)$ is a sublattice, then for all $f\in\mathcal{A}(X)$,
+	<div class='equation'>\[
+		f^+=\max(f,0),\quad f^-=\max(-f,0)\quad\text{and}\quad|f|=f^++f^-\text{ belong to }\mathcal{A}(X).
+	\]</div>
+	</p>
+	
+	<p>
+	As $\mathcal{A}(X)$ is regular, we can take finitely many functions $f_1,\ldots,f_n\in\mathcal{A}(X)$ such that for all $x\in X$, $f_i(x)\neq 0$ for some $i$, and therefore $F=\sum_{i=1}^n|f_i|\in\mathcal{A}(X)$ and $F$ is non-vanishing, so $TF$ is also non-vanishing. We define new classes of functions
+	<div class='equation'>\[
+		\mathcal{B}(X)=\left\{\frac{f}{F}:f\in\mathcal{A}(X)\right\},\qquad\text{and}\qquad\mathcal{B}(Y)=\left\{\frac{g}{TF}:f\in\mathcal{A}(Y)\right\}.
+	\]</div>
+	It is immediate to see that $\mathcal{B}(X)$ and $\mathcal{B}(Y)$ are regular, and that $\mathcal{B}(X)$ is a sublattice of $C(X,\mathbb{R})$ because $F>0$. However we need to prove that $\mathcal{B}(Y)$ is a sublattice of $C(Y,\mathbb{R})$.
+	</p>
+	
+	<p>
+	Let $U=[TF>0]$ and $V=[TF\smallerthan 0]$, which are complementary clopen sets in $Y$, and $1_U$ and $1_V$ their respective characteristic functions. We first prove that for all $f\in\mathcal{A}(Y)$, we have $f1_U\in\mathcal{A}(Y)$. Let $k=\sup_{y\in Y}|f(y)|$.
+	</p>
+	
+	<p>
+	Use regularity of $\mathcal{A}(Y)$, compactness of $U$ and the fact that $\mathcal{A}(Y)$ is a sublattice to find a function $u\in\mathcal{A}(X)$ such that $u>k$ on $U$ and $u=0$ on $V$, and similarly $v\in\mathcal{A}(Y)$ with $v\smallerthan-k$ on $V$ and $v=0$ on $U$. Then
+	<div class='equation'>\[
+		f1_U=(f\land (u-v))\lor 0\in\mathcal{A}(Y).
+	\]</div>
+	It also follows that $f1_V=f-f1_U\in\mathcal{A}(Y)$. Therefore if $b\in\mathcal{B}(Y)$ then $b(TF)$, $b(TF)1_U$ and $b(TF)1_V$ belong to $\mathcal{A}(Y)$, thus
+	<div class='equation'>\[
+		(b\lor 0)=\frac{(b(TF)1_U\lor 0)}{TF}+\frac{(b(TF)1_V\land 0)}{TF}\in\mathcal{B}(Y).
+	\]</div>
+	In general, if $b,c\in\mathcal{B}(Y)$ then
+	<div class='equation'>\[
+		b\lor c=b+((c-b)\lor 0)\in\mathcal{B}(Y),
+	\]</div>
+	and therefore $\mathcal{B}(Y)$ is a sublattice of $C(Y,\mathbb{R})$.
+	</p>
+	
+	<p>
+	Now define a linear isomorphism $S:\mathcal{B}(X)\to\mathcal{B}(Y)$, $S(f)=\frac{T(fF)}{TF}$, which preserves non-vanishing functions. Note that in this case, the constant functions at $1$ on $X$ and $Y$ belong to $\mathcal{B}(X)$ and $\mathcal{B}(Y)$, and that $S(1)=1$. Given a scalar $\lambda$, linearity and the non-vanishing property of $S$ imply that, for all $f\in\mathcal{B}(X)$,
+	<div class='equation'>\begin{align*}
+		\lambda\not\in f(X)&\iff f-\lambda\text{ is non-vanishing}\\
+			&\iff Sf-\lambda\text{ is non-vanishing}\iff \lambda\not\in Sf(Y),
+	\end{align*}</div>
+	so $f(X)=Sf(Y)$ and in particular $f\geq 0$ if and only if $Sf\geq 0$. Therefore $S$ is a lattice isomorphism, and we can apply Kaplansky's Theorem (<span class='ref' data-tag='theoremkaplanskywithoutlowerbound'></span>) to find the $S$-homeomorphism $\phi:Y\to X$. Now we need to prove that $S$ is $\phi$-basic.
+	</p>
+	
+	<p>
+	Suppose $f(x)\neq 0$ for a given $x\in X$, and let us assume, without loss of generality, that $f(x)>0$. Then $f>0$ on some neighbourhood $U$ of $x$. Again using compactness of $X\setminus U$ and regularity of the sublattice $\mathcal{B}(X)$ we can construct a function $g\in\mathcal{B}(X)$ such that $g=0$ on some neighbourhood of $x$ and $g>0$ on $X\setminus U$. Letting $\widetilde{f}=f\lor g$, we have $\widetilde{f}=f$ on some neighbourhood of $x$, so $S\widetilde{f}=Sf$ on some neighbourhood of $\phi^{-1}(x)$. But $\widetilde{f}$ is non-vanishing, so $S\widetilde{f}$ is also non vanishing and in particular $Sf(\phi^{-1}(x))\neq 0$. This proves that $S$ is basic with respect to $\phi$. Letting $\chi:Y\times\mathbb{R}\to\mathbb{R}$ be the $S$-transform, we have that all sections $\chi(y,\cdot)$ are linear and increasing (Theorem <span class='ref' data-tag='propositionmodelmorphism'></span>), hence of the form
+	<div class='equation'>\[
+		\chi(y,t)=P(y)t
+	\]</div>
+	for a certain $P(y)>0$. Denoting the constant function $x\mapsto 1$ by $1$ (either on $X$ or $Y$), then
+	<div class='equation'>\[
+		P(y)=\chi(y,1)=\chi(y,1(\phi(y)))=S1(y)=1(y)=1.
+	\]</div>
+	that is, $\chi(y,t)=t$ for all $t\in\mathbb{R}$.
+	</p>
+	
+	<p>
+	Finally, for all $f\in\mathcal{A}(X)$ and $y\in Y,$
+	<div class='equation'>\[
+		Tf(y)=(TF)(y)\left[S\left(\frac{f}{F}\right)(y)\right]=(TF)(y)\chi\left(y,\frac{f}{F}(\phi(y))\right)=\frac{TF(y)}{F(\phi(y))}f(\phi(y)),
+	\]</div>
+	as we wanted.<span class='qed'></span>
+	</p>
+</div>
+
+<p>
+We can extend this result to the complex case as follows:
+</p>
+
+<!-- 3.4.15 -->
+<div class='corollary' id='corollaryliwongcomplex'>
+	<p><span class='envidentifier'>Corollary 3.4.15</span>
+		Suppose $T:C(X,\mathbb{C})\to C(Y,\mathbb{C})$ is a linear isomorphism which preserves non-vanishing functions. Then there is a homeomorphism $\phi:Y\to X$ and a continuous non-vanishing function $p:Y\to\mathbb{C}$ such that $Tf(y)=p(y)f(\phi(y))$ for all $f\in C(X,\mathbb{C})$ and $y\in Y$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='corollaryliwongcomplex'>Proof</a>
+<div class='proof' id='proofofcorollaryliwongcomplex'>
+	<p>
+	Substituting $T$ by $S=\frac{T}{T(1)}$ if necessary, we may assume $T(1)=1$. The same argument as in the proof above implies $Tf(Y)=f(X)$ for all $f\in C(X,\mathbb{C})$, and in particular the restriction of $T$ to $C(X,\mathbb{R})$ gives us a linear isomorphism $T|_{C(X,\mathbb{R})}:C(X,\mathbb{R})\to C(Y,\mathbb{R})$ preserving non-vanishing functions. We apply Theorem <span class='ref' data-tag='theoremliwong'></span> to this case to obtain $p$ and $\phi$ satisfying $Tf=p\cdot (f\circ\phi)$ for all $f\in C(X,\mathbb{R})$. Since $C(X,\mathbb{R})$ generates $C(X,\mathbb{C})$ then the same formula is valid for all $f\in C(X,\mathbb{C})$.<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection'>3.4.5. Jarosz' Theorem</h3>
+
+<p>
+Throughout this subsection, we fix $\mathbb{K}=\mathbb{R}$ or $\mathbb{C}$. Given a locally compact Hausdorff space $X$, we let $C_c(X)$ be the Banach space of $\mathbb{K}$-valued, compactly supported, continuous function on $X$, where supports are the usual ones, i.e., $\supp(f)=\overline{[f\neq 0]}$.
+</p>
+
+<!-- 3.4.16 -->
+<div class='theorem' id='theoremjarosz'>
+	<p><span class='envidentifier'>Theorem 3.4.16
+	<span style='font-weight:normal;'>(Jarosz [<span class='ref' data-tag='MR1060366'></span>])</span></span>
+	If $T:C_c(X)\to C_c(Y)$ is a linear $\perp$-isomorphism, then there exist a homeomorphism $\phi:Y\to X$ and a continuous non-vanishing function $p:Y\to\mathbb{K}$ such that $Tf(y)=p(y)f(\phi(y))$ for all $f\in C_c(X)$ and $y\in Y$.
+	</p>
+</div>
+
+<a class='proofbutton' data-tag='theoremjarosz'>Proof</a>
+<div class='proof' id='proofoftheoremjarosz'>
+	<p>
+	<u>First assume that $X$ and $Y$ are compact</u>}, and let us show that $f\neq 0$ everywhere if and only if $Tf\neq 0$ everywhere. Suppose otherwise, say $f(x)=0$, and we have two cases: first, if $f$ is constant on a neighbourhood of $x$, this means that $Z(f)\neq \varnothing$, and Theorem <span class='ref' data-tag='theoremdisjoint'></span> implies that $Z(Tf)\neq \varnothing$, and in particular $Tf(y)=0$ for any $y\in Z(Tf)$.
+	</p>
+	
+	<p>
+	In the second case, if $f$ is not constant on any neighbourhood of $x$, we proceed in the same manner as in Theorem <span class='ref' data-tag='theoremadditivekaplansky'></span>: first find a sequence of distinct point $x_n\in X$ such that $0<|f(x_n)|<n^{-2}$. Propositions <span class='ref' data-tag='propositiondisjointopensets'></span> and <span class='ref' data-tag='propositionconstructfunction'></span>(b) allows us to take a subsequence if necessary and construct $g\in C(X)$ which coincides with $nf$ on a neighbourhood of $x_n$ for all $n$. However, linearity and the $\perp$-preserving property imply that $Tg=nTf$ on some open set as well (Theorem <span class='ref' data-tag='theoremdisjoint'></span>), which contradicts $Tf$ being bounded because $\sup_{y\in Y}|Tf(y)|>0$.
+	</p>
+	
+	<p>
+	The result follows in this case from the Li-Wong Theorem (Theorem <span class='ref' data-tag='theoremliwong'></span> or Corollary <span class='ref' data-tag='corollaryliwongcomplex'></span>).
+	</p>
+	
+	<p>
+	<u>Now let $X$ and $Y$ be arbitrary locally compact Hausdorff</u>. Given $b\in C_c(X)$, set $T_b:C(\supp(b))\to C(\supp(Tb))$ as $T_bf=(Tf')|_{\supp(Tb)}$, where $f'$ is any element of $C_c(X)$ extending $f$. Note that $T_bf$ does not depend on the choice of $f'$, since, for all $f',g'\in C_c(X)$,
+	<div class='equation'>\begin{align*}
+		f'|_{\supp(b)}=g'|_{\supp(b)}&\iff\sigma(b)\subseteq [f'=g']\iff\sigma(b)\subseteq Z(f'-g')\\
+		&\iff\sigma(b)\cap\sigma(f'-g')=\varnothing\iff b\perp(f'-g'),
+	\end{align*}</div>
+	and the last condition is preserved by $T$ since it is an additive $\perp$-isomorphism (Theorem <span class='ref' data-tag='theoremdisjoint'></span>).
+	</p>
+	
+	<p>
+	Since $f\perpp g$ if and only if $f|_{\supp(b)}\perpp g|_{\supp(b)}$ for all $b$, the previous case allows us to obtain functions $p^b$ and $\phi^b$ such that $Tf(y)=p^b(y)f(\phi^b(y))$ for all $y\in\supp(Tb)$. Clearly, if $b\subseteq b'$ then $p^{b'}|_{\supp(b)}=p^b$ and $\phi^{b'}|_{\supp(b)}=\phi^{b'}$. Thus defining $p$ and $\phi$ as $p(y)=p^b(y)$ and $\phi(y)=\phi^b(y)$ where $b\in C_c(X)$ is such that $y\in\supp(b)$ we obtain the desired maps.<span class='qed'></span>
+	</p>
+</div>
+
+<h3 class='subsection'>3.4.6. Banach-Stone Theorem</h3>
+
+<p>
+We use the same notation as in the previous subsection. Given a locally compact Hausdorff space $X$, endow $C_c(X)$ with the supremum norm: $\Vert f\Vert_\infty=\sup_{x\in X}|f(x)|$.
+</p>
+
+<p>
+Recall that, by the Riesz-Markov-Kakutani Representation Theorem ([<span class='ref' data-tag='MR924157'></span>, Theorem 2.14]), continuous linear functionals on $C_c(X)$ correspond to regular Borel measures on $X$. As a consequence, the extremal points $T$ of the unit ball of the dual of $C_c(X)$ have the form $T(f)=\lambda f(x)$ for some $x\in X$ and $|\lambda|=1$.
+</p>
+
+<p>
+Given $f\in C_c(X)$, denote by $N(f)$ the set of extremal points $T$ in the unit ball of the dual space $C_c(X)^*$ such that $T(f)\neq 0$. From the previous paragraph we obtain
+<div class='equation'>\[
+	f\perp g\iff N(f)\cap N(g)=\varnothing\tag{BS},
+\]</div>
+and the Banach-Stone Theorem is an immediate consequence of Jarosz' Theorem.
+</p>
+
+<!-- 3.4.17 -->
+<div class='theorem' id='theorembanachstone'>
+	<p><span class='envidentifier'>Theorem 3.4.17
+	<span class='font-weight='normal'>(Banach-Stone [<span class='ref' data-tag='MR1501905'></span>])</span></span>
+	Let $X$ and $Y$ be locally compact Hausdorff spaces and let $T:C_c(X)\to C_c(Y)$ be an isometric linear isomorphism. Then there exists a homeomorphism $\phi:Y\to X$ and a continuous function $p:Y\to\mathbb{S}^1$ for which
+	<div class='equation'>\[
+		Tf(y)=p(y)f(\phi(y))\qquad\forall f\in C(X),\ \forall y\in Y.
+	\]</div>
+	</p>
+</div>
+
+</div>
+
+</body>
+
+<script>
+$('.ref').each( function(){
+	$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+});
+</script>
+<script>
+$('.ref').hover(function(){
+	$('#closerightbar').show();
+	$('#rightbar').load('../references/' + $(this).data('tag') + ' .toload', function () {
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "rightbar"]);
+		
+		$('#rightbar .ref').each( function(){
+			$(this).load('../references/' + $(this).data('tag') + ' .reflink');
+			});
+		});
+	},function(){}); // added empty function for when mouse gets out to avoid reloading mathjax
+	// this does just creates links inside the right bar. Does not set the hover function for them
+</script>
+
+<script>
+$('.proofbutton').each(function() {
+  var target = $(this).data('tag');
+  $(this).attr('href', 'javascript:void(0)');
+  $(this).click(function() {
+      $('#proofof' + target).toggle();
+  });
+});
+</script>
+
+<script>
+function closerightbar(){
+	$('#closerightbar').hide();
+	$('#rightbar').empty();
+}
+</script>
+
+</html>

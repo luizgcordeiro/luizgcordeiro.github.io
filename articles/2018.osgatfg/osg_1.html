@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<script src="../../src/jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="src/style.css">
+
+<title>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</title>
+
+</head>
+<body>
+
+<div style='display: none' id='latexcommands'>
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+\end{equation*}
+</div>
+
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</h1>
+<h1 class='sidebar-section'><a href='osg_front.html'>Front page</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='osg_1.html'>1. Introduction</a></h1>
+<h2 class='sidebar-subsection'><a href='osg_1.html#2'>1.1. Probability measure-preserving groupoids and full semigroups</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='osg_2.html'>2. Permanence Properties</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='osg_3.html'>3. Soficity and the full group</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='osg_3_54.html'>Acknowledgements</a></h1>
+</div>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section' id='1'>1. Introduction</h2>
+<p>
+The notion of soficity for groups was introduced by Gromov [<a class='reference' href='../../HTML citations/MR1694588.html' target='_blank'>MR1694588</a>] in his work on symbolic dynamics. In 2010, Elek and Lippner [<a class='reference' href='../../HTML citations/MR2566316.html' target='_blank'>MR2566316</a>] introduced soficity for equivalence relations in the same spirit as Gromov's original definition, i.e., an equivalence relation $R$, induced by some action of the free group $\mathbb{F}_\infty$, is sofic if the Schreier graph of the $\mathbb{F}_\infty$-space $X$ can be approximated, in a suitable sense, by Schreier graphs of finite $\mathbb{F}_\infty$-spaces.
+</p>
+<p>
+Alternative definitions by Ozawa [<a class='reference' href='../../HTML citations/ozawasoficnotes.html' target='_blank'>ozawasoficnotes</a>] and P&#462;unescu [<a class='reference' href='../../HTML citations/MR2826401.html' target='_blank'>MR2826401</a>] describe soficity at the level of the so-called full semigroup of $R$, which can be immediately generalized to groupoids. We will describe general elementary techniques to deal with (abstract) sofic groupoids.
+</p>
+
+<h3 class='subsection' id='2'>1.1. Probability measure-preserving groupoids and full semigroups</h3>
+<p>
+We will follow the notations of [<a class='reference' href='../../HTML citations/MR3130315.html' target='_blank'>MR3130315</a>]: Given a groupoid $G$, the source and range maps will be, respectively, $s(g)=g^{-1}g$ and $r(g)=gg^{-1}$ for $g\in G$, and the unit space of $G$ will be denoted $G^{(0)}$.
+</p>
+<p>
+A <em>discrete measurable groupoid</em> is a groupoid $G$ endowed with a standard Borel space structure such that the product and inversion maps are Borel, and such that $s^{-1}(x)$ is countable for every $x\in G^{(0)}$.
+</p>
+<p>
+The <em>Borel full semigroup</em> of a discrete measurable groupoid $G$ is the set $[[G]]_B$ of Borel subsets $\alpha\subseteq G$ such that the restrictions $s|_\alpha$ and $r|_\alpha$ of the source and range maps are injections, and thus Borel isomorphisms onto their respective images ([<a class='reference' href='../../HTML citations/MR1321597.html' target='_blank'>MR1321597</a>]).
+</p>
+<p>
+$[[G]]_B$ is an inverse monoid with the usual product and inverse of sets, namely
+<div class='equation' id='3'>
+\begin{equation*}
+\alpha\beta=\left\{ab:(a,b)\in (\alpha\times\beta)\cap G^{(2)}\right\},\qquad \alpha^{-1}=\left\{a^{-1}:a\in\alpha\right\}
+\end{equation*}
+</div>
+and $G^{(0)}$ is the unit of $[[G]]_B$, which we will instead denote by $G^{(0)}=1$ when no confusion arises.
+</p>
+<p>
+A <em>probability measure-preserving</em> (<em>pmp</em>) groupoid is a discrete measurable groupoid $G$ with a Borel probability measure $\mu$ on $G^{(0)}$ satisfying $\mu(s(\alpha))=\mu(r(\alpha))$ for all $\alpha\in[[G]]_B$. We write $(G,\mu)$ for a pmp groupoid when we need the measure $\mu$ to be explicit. The measure $\mu$ induces a pseudometric $d_{\mu}$ on $[[G]]_B$ via
+<div class='equation' id='4'>
+\begin{equation*}
+d_{\mu}(\alpha,\beta)=\mu(s(\alpha\triangle\beta))=\mu(r(\alpha\triangle\beta)).
+\end{equation*}
+</div>
+</p>
+<p>
+The <em>trace</em> of $\alpha\in[[G]]_B$ is defined as $\operatorname{tr}(\alpha)=\mu(\alpha\cap G^{(0)})$. In fact, the trace and the pseudometric above, along with the semigroup operation, determine each other: For example, the unit $1$ of $[[G]]_B$ is the only element of trace $1$, and
+<div class='equation' id='5'>
+\begin{equation*}
+d_\mu(\alpha,\beta)=\operatorname{tr}(\alpha^{-1}\alpha)+\operatorname{tr}(\beta^{-1}\beta)-\operatorname{tr}(\alpha^{-1}\alpha\beta^{-1}\beta)-\operatorname{tr}(\beta^{-1}\alpha)
+\end{equation*}
+</div>
+and similarly one can write the trace in terms of the pseudometric $d_\mu$.
+</p>
+<p>
+The (measured) <em>full semigroup</em> of a pmp groupoid $(G,\mu)$ is the quotient metric space $[[G]]$ (or $[[G]]_\mu$ to make $\mu$ explicit) of $[[G]]_B$ under the pseudometric $d_\mu$. The semigroup operation and the trace factor through $[[G]]$, which determines its (canonical) semigroup structure.
+</p>
+<p>
+The <em>Borel full group</em> $[G]_B$ of a discrete measurable groupoid $G$ is the set of those $\alpha\in[[G]]_B$ with $s(\alpha)=r(\alpha)=G^{(0)}$, and, when $G$ is pmp, the image of $[G]_B$ in $[[G]]$, denoted $[G]$ or $[G]_\mu$, is called the (measured) <em>full group</em> of $G$.
+</p>
+
+<!-- 1.1 -->
+<div class='definition' id='6'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.1</span>.
+<p>
+A subset $A$ of a pmp groupoid $(G,\mu)$ is called <em>null</em> if $\mu(s(A))=0$ (equivalently, $\mu(r(A))=0$), and <em>conull</em> if its complement $G\setminus A$ is null. A property of the points of $G$ is said to hold a.e. (almost everywhere) if it holds on a conull subset.
+</p>
+
+</div>
+
+<!-- 1.2 -->
+<div class='example' id='7'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>1.2</span>.
+<p>
+Let $R$ be a countable Borel equivalence relation on a standard probability space $(X,\mu)$, and suppose $\mu$ is invariant (see [<a class='reference' href='../../HTML citations/MR0578656.html' target='_blank'>MR0578656</a>]). We can see $R$ as a pmp groupoid as follows: the product is defined by $(x,y)(y,z)=(x,z)$. The unit space of $R$ is the diagonal $\left\{(x,x):x\in X\right\}$, which we identify with $X$ and endow with the probability measure $\mu$. The Borel full semigroup of $R$ can be identified with the semigroup of partial Borel isomorphisms $f:A\to B$, $A,B\subseteq X$, for which $(f(x),x)\in R$ for all $x\in A$, by associating such $f$ to the inverse of its graph, $\left\{(f(x),x):x\in X\right\}$. The pmp groupoids which are isomorphic (in the measure-theoretic sense) to one constructed this way are called <em>principal groupoids</em>.
+</p>
+
+</div>
+
+<!-- 1.3 -->
+<div class='example' id='8'>
+<span class='envidentifier'>Example</span> <span class='envcounter'>1.3</span>.
+<p>
+Let $Y$ be a finite set and $Y^2$ the largest equivalence relation on $Y$, endowed with the usual (discrete) Borel structure. The only probability measure on $Y$ which makes $Y^2$ pmp is the normalized counting measure: $\mu_\#(A)=|A|/|Y|$. We denote the associated metric by $d_\#$ and call it the <em>normalized Hamming distance</em>.
+</p>
+<p>
+Note that if $Y$ and $Z$ are finite sets, then the map $[[Y^2]]\ni\alpha\mapsto \alpha\times(Z^2)^{(0)}\in[[Y^2\times Z^2]]$ is a trace-preserving embedding. The map $(y_1,y_2,z_1,z_2)\mapsto (y_1,z_1,y_2,z_2)$ is a measure-preserving isomorphism between the groupoids $Y^2\times Z^2$ and $(Y\times Z)^2$, which induces a trace-preserving isomorphism between the respective two full semigroups. Therefore if $Y$ and $Z$ are finite sets, there are a finite set $W$ and trace-preserving embeddings from $[[Y^2]]$ and $[[Z^2]]$ into $[[W^2]]$
+
+</p>
+
+</div>
+
+<!-- 1.4 -->
+<div class='definition' id='9'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>1.4</span>.
+<p>
+A <em>sofic approximation</em> of a pmp groupoid $G$ is a sequence of maps $\pi=\left\{\pi_k:[[G]]\to[[Y_k^2]]\right\}$, where $Y_k$ are finite sets, such that for all $\alpha,\beta\in[[G]]$,
+</p>
+
+<style>ol.altlist10 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist10'>
+
+<li id='11'>
+<p>
+$\lim_{k\to\infty}\operatorname{tr}(\pi_k(\alpha))=\operatorname{tr}(\alpha)$;
+</p>
+
+</li>
+
+<li id='12'>
+<p>
+$\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+</p>
+
+</li>
+</ol>
+<p>
+A pmp groupoid $G$ is <em>sofic</em> if it admits a sofic approximation.
+</p>
+
+</div>
+<p>
+We'd like to note that this definition of sofic approximation differs from that of Bowen [<a class='reference' href='../../HTML citations/MR3286052.html' target='_blank'>MR3286052</a>], where aditional properties are required of the sequence $\pi$ in order to study the entropy of sofic groupoids. However, the existence of a sofic approximation in the stronger sense of [<a class='reference' href='../../HTML citations/MR3286052.html' target='_blank'>MR3286052</a>] is actually equivalent to the existence of a sofic approximation as in the definition above.
+</p>
+
+</body>
+</html>

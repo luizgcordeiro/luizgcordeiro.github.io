@@ -1,0 +1,7 @@
+<a class='reflink' href='../1.gis/1.7.im.html#uniformmetriconkbg'>1.7.16</a>
+<!-- 1.7.16 -->
+<div class='toload example'>
+	<p><span class='envidentifier'>Example 1.7.16</span>
+	If $S=\KB(\mathcal{G})$ and $\mu$ is an invariant measure on $\mathcal{G}^{(0)}$, regarded as an invariant mean on $E(S)$ as in Example <span class='ref'data-tag='exampleinvariantmeansaremeasures'></span>, then $d_\mu(A,B)=\mu(\so(A\triangle B))$, where $A\triangle B=(A\cup B)\setminus (A\cap B)$ is the symmetric difference of $A$ and $B$.
+	</p>
+</div>

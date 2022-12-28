@@ -1,0 +1,5 @@
+<a class='reflink' href='../2.sg/2.1.uacl.html#equationembeddingmetricsignatureultraproductpredicates'>2.1.1</a>
+
+		<div class='toload equation'>\[
+			\sup_{a_i\in \mathbf{A},P\in\mathbf{P}}|P^L(a_1,\ldots,a_{n(P)})-P^M(\phi(a_1),\ldots,\phi(a_{n(P)}))|<\epsilon\tag{2.1.1}
+		\]</div>

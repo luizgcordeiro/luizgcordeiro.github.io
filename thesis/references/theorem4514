@@ -1,0 +1,9 @@
+<a class='reflink' href='../4.paois/4.5.pafagais.html#theorem4514'>4.5.14</a>
+
+<!-- 4.5.14 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.5.14
+	<span style='font-weight:normal;>([<span class='ref' data-tag='MR1469405'></span>, Theorem 4.2])
+	Let $G$ be a group. If $\theta$ is a topological partial action of $G$ on a topological space $X$, then there is a unique topological global action $\widetilde{\theta}$ of $\mathbf{S}(G)$ on $X$ such that $\widetilde{\theta}_{[t]}=\theta_t$ for all $t\in G$.
+	</p>
+</div>

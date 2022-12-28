@@ -1,0 +1,12 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#theoremsteinbergalgebras'>4.4.27</a>
+
+<!-- 4.4.27 -->
+<div class='toload theorem'>
+	<p><span class='envidentifier'>Theorem 4.4.27</span>
+	Let $\mathcal{G}$ and $\mathcal{H}$ be ample Hausdorff groupoids. Let $R$ and $S$ be two indecomposable (commutative, unital) rings such that $(\mathcal{G},R)$ and $(\mathcal{H},S)$ satisfy the local bisection hypothesis. Let $T:A_R(\mathcal{G})\to A_S(\mathcal{H})$ be a diagonal-preserving ring isomorphism, that is, $T(D_R(\mathcal{G}))=D_S(\mathcal{H})$.
+	</p>
+	
+	<p>
+	Then there exists a unique topological groupoid isomorphism $\phi:\mathcal{H}\to\mathcal{G}$ and a continuous cocycle $\chi:\mathcal{H}\to\operatorname{Iso}_+(R,S)$ such that $Tf(a)=\chi(a)(f(\phi(a)))$ for all $a\in\mathcal{H}$ and $f\in A_R(\mathcal{G})$.
+	</p>
+</div>

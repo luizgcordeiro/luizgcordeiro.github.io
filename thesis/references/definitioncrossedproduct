@@ -1,0 +1,15 @@
+<a class='reflink' href='../4.paois/4.3.apaacp.html#definitioncrossedproduct'>4.3.8</a>
+
+<!-- 4.3.8 -->
+<div class='toload definition'>
+	<p><span class='envidentifier'>Definition 4.3.8</span>
+	Given an (algebraic) partial action $\alpha$ of $S$ on an algebra $A$, the (algebraic) <em>crossed product</em> $A\rtimes_\alpha S$ is the quotient algebra
+	<div class='equation'>\[
+		A\rtimes_\alpha S=\mathscr{L}(\alpha)/\mathscr{N}(\alpha).
+	\]</div>
+	As usual, we will simply write $\mathscr{L}$, $\mathscr{N}$ and $A\rtimes S$ when there is no risk of confusion.
+	</p>
+	<p>
+	The class of an element $x\in\mathscr{L}(\alpha)$ in $\Skew$ will be denoted by $\overline{x}$.
+	</p>
+</div>

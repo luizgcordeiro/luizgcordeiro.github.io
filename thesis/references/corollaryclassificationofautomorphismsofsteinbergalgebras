@@ -1,0 +1,8 @@
+<a class='reflink' href='../4.paois/4.4.sa.html#corollaryclassificationofautomorphismsofsteinbergalgebras'>4.4.28</a>
+
+<!-- 4.4.28 -->
+<div class='toload corollary'>
+	<p><span class='envidentifier'>Corollary 4.4.28</span>
+	If $(\mathcal{G},R)$ satisfies the local bisection hypothesis, then the group $\operatorname{Aut}(A_R(\mathcal{G}),D_R(\mathcal{G}))$ is isomorphic to the semidirect product $\operatorname{Coc}(\mathcal{G},R)\rtimes\operatorname{Aut}(\mathcal{G})$.
+	</p>
+</div>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+<p>
+No teorema abaixo nós provaremos uma igualdade entre dois conjuntos, e portanto vale a pena relembrar o modo como que isto deve ser feito.
+</p>
+<p>
+Sejam \(A\) e \(B\) dois conjuntos. Então denotamos <span>&#8220;</span>\(A\subseteq B\)<span>&#8221;</span> se todo elemento de \(A\) também é um elemento de \(B\), ou em outras palavras se uma pertinência do tipo <span>&#8220;</span>\(x\in A\)<span>&#8221;</span> implica que <span>&#8220;</span>\(x\in B\)<span>&#8221;</span>.
+</p>
+<p>
+O <span>&#8220;</span>Axioma da extensão<span>&#8221;</span> nos diz que <span>&#8220;</span>dois conjuntos são iguais se, e somente se, os dois conjuntos contêm exatamente os mesmos elemento<span>&#8221;</span>.
+</p>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) um espaço vetorial e \(S\) um subconjunto de \(V\). Então \(\operatorname{span}(S)=\langle S\rangle\).
+</p>
+
+</div>
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Temos que demonstrar uma igualdade de dois conjuntos. Para isto, devemos demonstrar que um conjunto está contido no outro e vice-versa.
+</p>
+<p>
+Primeiro, vamos demonstrar que \(\operatorname{span}(S)\subseteq\langle S\rangle\). Consideremos um elemento arbitrário \(x\) de \(\operatorname{span}(S)\). Pela definição de span, \(x\) é uma combinação linear de elementos de \(S\), i.e.,
+<div>
+\begin{equation*}
+x=\lambda_1 s_1+\lambda_2 s_2+\cdots+\lambda_n s_n
+\end{equation*}
+</div>
+onde \(\lambda_1,\ldots,\lambda_n\in\mathbb{R}\), \(s_1,\ldots,s_n\in S\).
+</p>
+<p>
+Para demonstrar que \(x\) pertence a \(\langle S\rangle\), considere um subespaço vetorial arbitrário \(W\) de \(V\) que contenha \(S\). Como combinações lineares de elementos de \(W\) resultam em elementos de \(W\), então em particular
+<div>
+\begin{equation*}
+x=\lambda_1s_1+\cdots+\lambda_n s_n\in W,
+\end{equation*}
+</div>
+visto que \(s_i\in S\subseteq W\) para todo \(i\).
+</p>
+<p>
+Isto mostra que \(x\) está em qualquer subespaço de \(V\) que contenha \(S\). Como \(\langle S\rangle\) é, por definição, a intersecção destes subespaços, então \(x\) pertence a \(\langle S\rangle\).
+</p>
+<p>
+Assim, demonstramos que todo elemento de \(\operatorname{span}(S)\) pertence a \(\langle S\rangle\). Isto significa que \(\operatorname{span}(S)\subseteq\langle S\rangle\).
+</p>
+<p>
+Agora vamos demonstrar que \(\langle S\rangle\subseteq\operatorname{span}(S)\). Para isto, demonstraremos que \(\operatorname{span}(S)\) é um subespaço de \(V\) que contém \(S\).
+</p>
+<p>
+Temos dois casos a considerar: Se \(S\) é vazio então temos (conforme as convenções usuais) que \(\operatorname{span}(\varnothing)=\left\{0\right\}\) é um subespaço que contém \(\varnothing\). Consideremos então o caso em que \(S\) é não-vazio:
+</p>
+
+<ol>
+
+<li>
+<p>
+<u>\(S\subseteq\operatorname{span}(S)\).</u>
+</p>
+<p>
+De fato, seja \(s\in S\). Temos que \(s=1\cdot s\) é uma combinação linear de elementos de \(S\), e portanto pertence a \(\operatorname{span}(S)\).
+</p>
+<p>
+Logo <u>\(S\subseteq \operatorname{span}(S)\).</u>
+</p>
+
+</li>
+
+<li>
+<p>
+\(\operatorname{span}(S)\) é não-vazio.
+</p>
+<p>
+De fato, pelo item acima temos que \(S\subseteq\operatorname{span}(S)\). Como \(S\) é não-vazio por hipótese então \(\operatorname{span}(S)\) também é não-vazio.
+</p>
+
+</li>
+
+<li>
+<p>
+<u>Se \(x,y\in\operatorname{span}(S)\) então \(x+y\in\operatorname{span}(S)\).</u>
+</p>
+<p>
+Como \(x\) e \(y\) são combinações lineares de elementos de \(S\), podemos reescrever
+<div>
+\begin{equation*}
+x=\alpha_1 s_1+\cdots+\alpha_n s_n
+\end{equation*}
+</div>
+e
+<div>
+\begin{equation*}
+y=\beta_1 t_1+\cdots+\beta_m t_m
+\end{equation*}
+</div>
+para certos escalares \(\alpha_i,\beta_j\) e elementos \(s_i,t_j\) de \(S\). Assim,
+<div>
+\begin{equation*}
+x+y=\alpha_1 s_1+\cdots+\alpha_n s_n+\beta_1 t_1+\cdots+\beta_m t_m
+\end{equation*}
+</div>
+também é uma combinação linear de elementos de \(S\), e portanto um elemento de \(\operatorname{span}(S)\).
+</p>
+
+</li>
+
+<li>
+<p>
+<u>Se \(x\in\operatorname{span}(S)\) e \(\lambda\in\mathbb{R}\), então \(\lambda x\in\operatorname{span}(S)\).</u>
+</p>
+<p>
+O argumento é similar ao do item anterior, e será omitido.
+</p>
+
+</li>
+</ol>
+<p>
+Os items 2.-4. acima mostram que \(\operatorname{span}(S)\) é um subespaço vetorial de \(V\), e que contém \(S\) pelo item 1. Como \(\langle S\rangle\) é definido como a intersecção de todos os subespaços com esta propriedade, então em particular concluímos que \(\langle S\rangle\subseteq\operatorname{span}(S)\).
+</p>
+<p>
+Resumindo, nós demonstramos que \(\operatorname{span}(S)\subseteq\langle S\rangle\), e reciprocamente que \(\langle S\rangle\subseteq\operatorname{span}(S)\). Isto significa que \(\operatorname{span}(S)=\langle S\rangle\).
+</p>
+
+</li>
+</ol>
+
+</body>
+</html>

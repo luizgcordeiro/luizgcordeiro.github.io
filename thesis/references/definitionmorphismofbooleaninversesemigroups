@@ -1,0 +1,11 @@
+<a class='reflink' href='../1.gis/1.4.sdfahg.html#definitionmorphismofbooleaninversesemigroups'>1.4.22</a>
+<!-- 1.4.22 -->
+<div class='toload definition'>
+<p><span class='envidentifier'>Definition 1.4.22</span>
+A <em>morphism of Boolean inverse semigroups</em> is an inverse semigroup morphism $\theta:S\to T$ which is both a $\land$ and a $\lor$-morphism, and which satisfies $\theta(0)=0$. We say that $\theta$ is <em>proper</em> if for all $t\in T$, there are $t_1,\ldots,t_n\in T$ and $s_1,\ldots,s_n\in S$ such that
+<div class='equation'>\[
+t=\bigvee_{i=1}^n t_i\qquad\text{and}\qquad t_i\leq\theta(s_i)\quad\text{for all }i.
+\]</div>
+(Note that semigroup isomorphisms of Boolean inverse semigroups are proper morphisms of Boolean inverse semigroups.)
+</p>
+</div>

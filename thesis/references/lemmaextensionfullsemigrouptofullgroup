@@ -1,0 +1,8 @@
+<a class='reflink' href='../2.sg/2.4.satfg.html#lemmaextensionfullsemigrouptofullgroup'>2.4.11</a>
+
+<!-- 2.4.11 -->
+<div class='toload lemma'>
+	<p><span class='envidentifier'>Lemma 2.4.11</span>
+	If $\gamma\in\MEAS(\mathcal{G})$, then there exists $\widetilde{\gamma}\in[\mathcal{G}]$ with $\gamma\subseteq\widetilde{\gamma}$.
+	</p>
+</div>

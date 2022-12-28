@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Suponha que duas funções reais \(f\) e \(g\) sejam diferenciáveis em um ponto \(a\) e \(g(a)\neq 0\). Então a função quociente \(\frac{f}{g}\) é diferenciável em \(a\), e
+<div>
+\begin{equation*}
+\left(\frac{f}{g}\right)'(a)=\frac{f'(a)g(a)-f(a)g'(a)}{[g(a)]^2}.
+\end{equation*}
+</div>
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Primeiro, vamos considerar o caso em que \(f(x)=1\), ou seja, que a função \(f\) é constante, igual a \(1\). Isto nos permitirá calcular a derivada da função \(\frac{1}{g}\) em \(a\).
+</p>
+<p>
+Vamos calcular
+<div>
+\begin{align*}
+\left(\frac{1}{g}\right)'(a)
+&=\lim_{x\to a}\frac{\left[\frac{1}{g(x)}-\frac{1}{g(a)}\right]}{x-a}\\
+&\qquad\text{(definição de derivada)}\\
+&=\lim_{x\to a}\frac{\left[\frac{g(a)-g(x)}{g(x)g(a)}\right]}{x-a}\\
+&\qquad\text{(reorganizacão)}\\
+&=\lim_{x\to a}\frac{g(a)-g(x)}{g(x)g(a)}\cdot\frac{1}{x-a}\\
+&\qquad\text{(reorganizacão)}\\
+&=\lim_{x\to a}-\frac{g(x)-g(a)}{x-a}\cdot\frac{1}{g(x)}\frac{1}{g(a)}\\
+&\qquad\text{(reorganizacão)}\\
+&=\left(-\lim_{x\to a}\frac{g(x)-g(a)}{x-a}\right)\left(\frac{1}{\lim_{x\to a}g(x)}\right)\left(\frac{1}{g(a)}\right).\\
+&\qquad\text{(regras de limites)}\\
+\end{align*}
+</div>
+Como a função \(g\) é diferenciável no ponto \(a\), <a href='../09.derivadas/teo_funcoes_derivaveis_sao_continuas_moodle.html'>então \(g\) é contínua em \(a\)</a>, o que significa que \(\lim_{x\to a}g(x)=g(a)\). Substituindo este limite \(g'(a)\) nos primeiro limite acima, obtemos
+<div>
+\begin{align*}
+\left(\frac{1}{g}\right)'(a)
+&=-g'(a)\frac{1}{g(a)}\frac{1}{g(a)}\\
+&=-\frac{g'(a)}{[g(a)]^2}.\tag{$*$}
+\end{align*}
+</div>
+</p>
+<p>
+Agora, no caso geral, vamos calcular \(\left(\frac{f}{g}\right)'(a)\) utilizando a fórmula acima para \(\left(\frac{1}{g}\right)'(a)\) e a <a href='teo_regra_do_produto_moodle.html'>regra do produto</a>. Note que \(\frac{f}{g}=f\cdot\frac{1}{g}\). Assim,
+<div>
+\begin{align*}
+\left(\frac{f}{g}\right)'(a)
+&=\left(f\cdot\frac{1}{g}\right)'(a)\\
+&=f'(a)\left(\frac{1}{g}\right)(a)+f(a)\left(\frac{1}{g}\right)'(a)\\
+&\qquad\text{(regra do produto)}\\
+&=\frac{f'(a)}{g(a)}-f(a)\frac{g'(a)}{[g(a)]^2}\\
+&\qquad\text{(Equação ($*$))}\\
+&=\frac{f'(a)g(a)-f(a)g'(a)}{[g(a)]^2}\\
+&\qquad\text{(reorganizacão).}\\
+\end{align*}
+</div>
+</p>
+
+</div></body>
+</html>

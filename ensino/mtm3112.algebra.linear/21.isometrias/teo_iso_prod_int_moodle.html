@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width'>
+<script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
+<script id='MathJax-script' async
+src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'>
+</script>
+</head>
+<body>
+
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<b>Teorema</b>.
+<p>
+Sejam \(V\) e \(W\) espaços vetoriais com produtos internos \(\langle \cdot,\cdot\rangle_V\) e \(\langle\cdot,\cdot\rangle_W\), respectivamente. Considere também \(T\colon V\to W\) uma transformação linear.
+</p>
+<p>
+Então \(T\) é uma isometria se, e somente se, \(T\) preserva produtos internos, no sentido de que
+<div>
+\begin{equation*}
+\langle T(v),T(w)\rangle_W=\langle v,w\rangle_V\tag{$*$}
+\end{equation*}
+</div>
+para todos \(v,w\in V\).
+</p>
+<p>
+Em particular, isometrias lineares também preservam ângulos entre vetores.
+</p>
+
+</div>
+
+<div style='margin-bottom: 5px; margin-top: 5px; padding: 5px 5px 0 5px; border: 1px solid gray; border-radius: 5px;'>
+<i>Prova</i>.
+<p>
+Se \(T\) preservar produtos internos, então em particular a igualdade (\(*\)) será válida com \(w=v\), de onde segue que
+<div>
+\begin{align*}
+\Vert T(v)\Vert_W^2
+&=\langle T(v),T(v)\rangle_W\\
+&=\langle v,v\rangle_V\\
+&=\Vert v\Vert_V^2
+\end{align*}
+</div>
+e portanto \(\Vert T(v)\Vert_W=\Vert v\Vert_V\) para todo \(v\in V\), o que significa que \(T\) é uma isometria.
+</p>
+<p>
+Suponha agora que \(T\) é uma isometria. Dados \(v,w\in V\), podemos calcular
+<div>
+\begin{align*}
+\Vert v+w\Vert_V^2
+&=\langle v+w,v+w\rangle_V\\
+&=\langle v,v\rangle+\langle v,w\rangle+\langle w,v\rangle+\langle w,w\rangle\\
+&=\Vert v\Vert_V^2+2\langle v,w\rangle_V+\Vert w\Vert_V^2,\tag{1}
+\end{align*}
+</div>
+e similarmente
+<div>
+\begin{align*}
+\Vert T(v+w)\Vert_W^2
+&=\Vert T(v)+T(w)\Vert_W^2\\
+&=\Vert T(v)\Vert_W^2+2\langle T(v),T(w)\rangle_W+\Vert T(w)\vert_W^2.\tag{2}
+\end{align*}
+</div>
+</p>
+<p>
+Como \(T\) é uma isometria, então \(\Vert T(v+w)\Vert_W=\Vert v+w\Vert_V\), \(\Vert T(v)\Vert_W=\Vert v\Vert_V\) e \(\Vert T(w)\Vert_W=\Vert w\Vert_V\). Assim, obtemos de (1) e (2) que
+<div>
+\begin{align*}
+\Vert v\Vert_V^2+2\langle v,w\rangle_V+\Vert w\Vert_V^2
+&=\Vert v+w\Vert_V^2\\
+&=\Vert T(v+w)\Vert_W^2\\
+&=\Vert T(v)\Vert_W^2+2\langle T(v),T(w)\rangle_W+\Vert T(w)\Vert_W^2\\
+&=\Vert v\Vert_V^2+2\langle T(v),T(w)\rangle_W+\Vert w\Vert_V^2.\tag{3}
+\end{align*}
+</div>
+Simplificando os termos em comum no primeiro e no último termo de (3), concluímos que
+<div>
+\begin{equation*}
+\langle v,w\rangle_V=\langle T(v),T(w)\rangle_W
+\end{equation*}
+</div>
+para todos \(v,w\in V\). Isto significa que \(T\) preserva produtos internos.
+</p>
+<p>
+Quanto a \(T\) preservar ângulos, lembre-se que o ângulo entre dois vetores não-nulos \(v,w\in V\) é dado por
+<div>
+\begin{equation*}
+\theta=\arccos\left(\frac{\langle v,w\rangle_V}{\Vert v\Vert_V\Vert w\Vert_V}\right)
+\end{equation*}
+</div>
+Como \(T\) preserva norma e produto interno, então
+<div>
+\begin{equation*}
+\theta=\arccos\left(\frac{\langle T(v),T(w)\rangle_W}{\Vert T(v)\Vert_W\Vert T(w)\Vert_W}\right),
+\end{equation*}
+</div>
+e o valor à direita é o ângulo entre \(T(v)\) e \(T(w)\).
+</p>
+
+</div></body>
+</html>

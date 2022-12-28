@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!-------------------------------------------------------
+The beggining should be equal for all files
+--------------------------------------------------------->
+<html>
+<head>
+
+	<script src="../../src/jquery-3.4.1.min.js"></script> 
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ['input/TeX','output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']]
+				},
+			TeX: {extensions: ['xypic.js','AMSmath.js', 'AMSsymbols.js', 'AMScd.js', ]}
+		});
+	</script>
+	
+	<script type="text/javascript" src="../../mathjax/MathJax.js?config=default"></script>
+
+	<script type="text/javascript">
+	   function toggle_visibility(id) {
+		   var e = document.getElementById(id);
+		   if(e.style.display == 'block')
+			  e.style.display = 'none';
+		   else
+			  e.style.display = 'block';
+	   }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="src/style.css">
+
+<title>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</title>
+
+</head>
+<body>
+
+<div style='display: none' id='latexcommands'>
+\begin{equation*}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\DeclareMathOperator{\so}{\mathfrak{s}}
+\DeclareMathOperator{\ra}{\mathfrak{r}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\cod}{cod}
+\newcommand{\smallerthan}{<}
+\newcommand{\greaterthan}{>}
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\DeclareMathOperator{\IG}{\mathscr{IG}}
+
+\end{equation*}
+</div>
+
+<div id='sidebar'class='sidebar'><h1 class='sidebar-title'>On sofic groupoids and their full groups<br><br> <br>Sur les groupoïdes sofiques et leur groupes pleins</h1>
+<h1 class='sidebar-section'><a href='osg_front.html'>Front page</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='osg_1.html'>1. Introduction</a></h1>
+<h2 class='sidebar-subsection'><a href='osg_1.html#2'>1.1. Probability measure-preserving groupoids and full semigroups</a></h2>
+<hr>
+<h1 class='sidebar-section'><a href='osg_2.html'>2. Permanence Properties</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='osg_3.html'>3. Soficity and the full group</a></h1>
+<hr>
+<h1 class='sidebar-section'><a href='osg_3_54.html'>Acknowledgements</a></h1>
+</div>
+
+<!-------------------------------------------------------
+RIGHT BAR
+-------------------------------------------------------->
+
+<div class="fullrightbar">
+<div id="closerightbar" style='margin-bottom:1em;display:none;'>
+	[<a href='javascript:void(0)' onclick='closerightbar()'>Close</a>]
+</div>
+<div id='rightbar'></div>
+</div>
+
+<!-------------------------------------------------------
+MAIN
+-------------------------------------------------------->
+
+<div class="main">
+
+<h2 class='section' id='44'>3. Soficity and the full group</h2>
+<p>
+Given a pmp groupoid $G$, the unit space $G^{(0)}$ is a subgroupoid, and the full semigroup $[[G^{(0)}]]$ coincides with the measure algebra $\operatorname{MAlg}(G^{(0)})$, with product given by intersection. In fact, $\operatorname{MAlg}(G^{(0)})$ coincides with the set of idempotents of $[[G]]$, and every $\alpha\in[[G]]$ can be decomposed as $\alpha=\widetilde{\alpha}A$, where $\widetilde{\alpha}\in[G]$ and $A\in\operatorname{MAlg}(G^{(0)})$ (which corresponds to the fact that every partial isometry in a finite von Neumann algebra can be extended to a unitary). Given $\alpha\in[[G]]$, define $\operatorname{supp}(\alpha)=s(\alpha\setminus G^{(0)})$.
+</p>
+<p>
+A well-known theorem of Dye [<a class='reference' href='../../HTML citations/MR0158048.html' target='_blank'>MR0158048</a>] states that an aperiodic equivalence relation is determined by its full group, and from that one may ask how do properties of the relation correspond to properties of the full group; for example, in [<a class='reference' href='../../HTML citations/MR2311665.html' target='_blank'>MR2311665</a>] the authors prove that amenability of an ergodic equivalence relation is equivalent to amenability of its full group (as a topological group). We prove that a pmp groupoid $G$ is sofic if and only if $[G]$ is <em>metrically sofic</em> (initially defined as <em>sofic metric groups</em> in [<a class='reference' href='../../HTML citations/arxiv1206.5473v3.html' target='_blank'>arxiv1206.5473v3</a>]), which solves a question posed by Conley, Kechris and Tucker-Drob in [<a class='reference' href='../../HTML citations/MR3035288.html' target='_blank'>MR3035288</a>] in this case. This can also be seen as a partial answer to the following question asked in Vladimir Pestov's reviewer's report for [<a class='reference' href='../../HTML citations/MR2566316.html' target='_blank'>MR2566316</a>]: Is a pmp equivalence relation sofic if and only its full group is sofic? (One direction was already answered positively in [<a class='reference' href='../../HTML citations/MR3314104.html' target='_blank'>MR3314104</a>].)
+</p>
+
+<!-- 3.1 -->
+<div class='definition' id='45'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>3.1</span>.
+<p>
+A separable group $\Gamma$ with an bi-invariant metric $d$ is <em>metrically sofic</em> if it admits a sequence of maps $\pi=\left\{\pi_k:\Gamma \to[[Y_k^2]]\right\}$, called a <em>sofic approximation</em> of $\Gamma$, satisfying, for all $\alpha,\beta\in\Gamma$,
+</p>
+
+<style>ol.altlist46 > li:before {
+content:  '(' counter(listcounter,lower-roman) ')';
+}
+</style>
+<ol class='alt altlist46'>
+
+<li id='47'>
+<p>
+$\lim_{k\to\infty}d(\pi_k(\alpha),\pi_k(\beta))=d(\alpha,\beta)$;
+</p>
+
+</li>
+
+<li id='48'>
+<p>
+$\lim_{k\to\infty}d_\#(\pi_k(\alpha\beta),\pi_k(\alpha)\pi_k(\beta))=0$.
+</p>
+
+</li>
+</ol>
+
+</div>
+<p>
+For example, if $\pi=\left\{\pi_k:[[G]]\to[[Y_k^2]]\right\}$ is a sofic approximation of a pmp groupoid $G$, then $\pi|_{[G]}=\left\{\pi_k|_{[G]}:[G]\to[[Y_k^2]]\right\}$ is a sofic approximation of $[G]$ (with respect to the metric $d_\mu$).
+</p>
+<p>
+One of the main points of Dye's proof is to recover $\operatorname{MAlg}(G^{(0)})$ from $[G]$, by looking at the classes of elements of $[G]$ whose support is a given $A\in\operatorname{MAlg}(G^{(0)})$, and this is also an important point in our proof. In fact, the metric of $[G]$ allows us to recover the order of $\operatorname{MAlg}(G^{(0)})$ by the following lemma.
+</p>
+
+<!-- 3.2 -->
+<div class='lemma' id='49'>
+<span class='envidentifier'>Lemma</span> <span class='envcounter'>3.2</span>.
+<p>
+Let $(G,\mu)$ be a pmp groupoid and $\alpha,\beta\in[G]$ then $\operatorname{supp}\alpha\cap\operatorname{supp}\beta=\varnothing$ if and only if $d_\mu(\alpha,\beta)=d_\mu(1,\alpha)+d_\mu(1,\beta)$.
+</p>
+
+</div>
+
+<!-- 3.3 -->
+<div class='definition' id='50'>
+<span class='envidentifier'>Definition</span> <span class='envcounter'>3.3</span>.
+<p>
+A pmp groupoid $G$ is <em>aperiodic</em> if $|s^{-1}(x)|=\infty$ for a.e. $x\in G^{(0)}$.
+</p>
+
+</div>
+<p>
+Just as in the case of equivalence relations, if $G$ is aperiodic then there are sufficiently many elements in $[G]$ so as to recover $\operatorname{MAlg}(G^{(0)})$, by noting that for a.e. $x\in G^{(0)}$, at least one of the sets $r(s^{-1}(x))$ or $G_x^x$ is infinite. The former can be dealt with as in [<a class='reference' href='../../HTML citations/MR2583950.html' target='_blank'>MR2583950</a>], and the latter by the Lusin-Novikov Theorem. We obtain:
+</p>
+
+<!-- 3.4 -->
+<div class='lemma' id='51'>
+<span class='envidentifier'>Lemma</span> <span class='envcounter'>3.4</span>.
+<p>
+Suppose $G$ is an aperiodic pmp groupoid. Then for all $A\in\operatorname{MAlg}(G^{(0)})$, there exists $\alpha\in[G]$ such that $\operatorname{supp}\alpha=A$.
+</p>
+
+</div>
+
+<!-- 3.5 -->
+<div class='theorem' id='52'>
+<span class='envidentifier'>Theorem</span> <span class='envcounter'>3.5</span>.
+<p>
+An aperiodic pmp groupoid $G$ is sofic if and only if the full group $[G]$ is metrically sofic.
+</p>
+
+</div>
+<div class='proof' id='53'>
+<span class='envidentifier'>Sketch of proof</span>.
+<p>
+If $G$ is sofic then $[G]$ is metrically sofic by the comment after Definition <a class='reference' href='osg_3.html#45'>3.1</a>.
+</p>
+<p>
+Conversely, let $\theta=\left\{\theta_k:[G]\to[[Y_k^2]]\right\}$ be a sofic approximation of $[G]$. Lemma <a class='reference' href='osg_3.html#51'>3.4</a> allows us to define a sequence of maps $\phi=\left\{\phi_k:\operatorname{MAlg}(G^{(0)})\to\operatorname{MAlg}(Y_k)\right\}$ by $\phi_k(A)=\operatorname{supp}\theta_k(\alpha)$, where $\alpha\in[G]$ is any element with $\operatorname{supp}\alpha=A$. This way, $\phi(A)$ is independent of the choice of $\alpha$ up to null sets, which are disconsidered in sofic approximations. The pair $(\theta,\phi)$ is asymptotically covariant, in the sense that for all $\alpha\in[G]$ and $A\in\operatorname{MAlg}(X)$, the distance between $\phi_k(r(\alpha A))$ and $\theta_k(\alpha)(\phi(A))$ converges to zero. After verifying that $\phi$ is moreover asymptotically order and measure-preserving, we simply define a sofic approximation $\pi=\left\{\pi_k\right\}$ of $G$ by $\pi(\alpha)=\theta(\widetilde{\alpha})\theta(s(\alpha))$, where $\widetilde{\alpha}\in[G]$ is chosen so that $\alpha\subseteq\widetilde{\alpha}$.
+</p>
+
+</div>
+<p>
+By using similar techniques, Theorem <a class='reference' href='osg_3.html#52'>3.5</a> can be extended to all pmp groupoids $G$ such that $|s^{-1}(x)|\geq 2$ for a.e. $x\in G^{(0)}$.
+</p>
+
+</body>
+</html>
