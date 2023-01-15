@@ -1,0 +1,1057 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2.3 Designing algorithms &#8212; CLRS - Introduction to Algorithms, 4&lt;sup&gt;th&lt;/sup&gt; edition&lt;br/&gt;Solutions and implementations in C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Problems" href="clrs_ita_2.P.html" />
+    <link rel="prev" title="2.2 Analyzing algorithms" href="clrs_ita_2.2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../clrs_ita_main.html">
+                    CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch1/clrs_ita_1.html">
+   Chapter 1 - The Role of Algorithms in Computing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.1.html">
+     1.1 Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.2.html">
+     1.2 Algorithms as a technology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="clrs_ita_2.html">
+   Chapter 2 - Getting Started
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_2.1.html">
+     2.1 Insertion sort
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_2.2.html">
+     2.2 Analyzing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.3 Designing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_2.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch3/clrs_ita_3.html">
+   Chapter 3 - Characterizing Running Times
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.1.html">
+     3.1
+     <span class="math notranslate nohighlight">
+      \(O\)
+     </span>
+     -notation,
+     <span class="math notranslate nohighlight">
+      \(\Omega\)
+     </span>
+     -notation, and
+     <span class="math notranslate nohighlight">
+      \(\Theta\)
+     </span>
+     -notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.2.html">
+     3.2 Asymptotic notation: formal definitions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.3.html">
+     3.3 Standard notations and common functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://luizgcordeiro.github.coms"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://luizgcordeiro.github.coms/issues/new?title=Issue%20on%20page%20%2Fjupyter_files/ch2/clrs_ita_2.3.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/jupyter_files/ch2/clrs_ita_2.3.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2.3-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.3-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.3-3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   2.3-4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   2.3-5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-id-exercise-2-3-6-span">
+   2.3-6
+   <span id="exercise_2.3-6">
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-id-exercise-2-3-7-span">
+   2.3-7
+   <span id="exercise_2.3-7">
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   2.3-8
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2.3 Designing algorithms</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2.3-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.3-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.3-3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   2.3-4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   2.3-5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-id-exercise-2-3-6-span">
+   2.3-6
+   <span id="exercise_2.3-6">
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-id-exercise-2-3-7-span">
+   2.3-7
+   <span id="exercise_2.3-7">
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   2.3-8
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="designing-algorithms">
+<h1>2.3 Designing algorithms<a class="headerlink" href="#designing-algorithms" title="Permalink to this headline">#</a></h1>
+<p>Let us implement <code class="docutils literal notranslate"><span class="pre">MERGE-SORT</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#include &lt;string.h&gt;
+
+void print_int_array(int *v, int n); //Prints an n-sized integer array v
+int * random_int_array(size_t n); // Randomly creates an n-sized integer array
+
+void merge(int *A, int p, int q, int r) {
+  // Merges A[p:q] and A[q+1:r], where p&lt;=q&lt;r
+
+  int i,j,k; // Loop indices
+  int n1 = q - p + 1; // Length of A[p:q]
+  int n2 = r - q;     // Length of A[q+1:r]
+  
+  int * L = malloc(n1*sizeof(int));
+  int * R = malloc(n2*sizeof(int));
+
+  // Copy A[p:q] and A[q+1:r] to L and R
+  memcpy(L,A+p,n1*sizeof(int));
+  memcpy(R,A+q+1,n2*sizeof(int));
+
+  i = 0; // Index of L
+  j = 0; // Index of R
+  k = p; // Index of A[p:q]
+  while (i &lt; n1 &amp;&amp; j &lt; n2) {
+    if (L[i] &lt;= R[j]) {
+      A[k++] = L[i++];
+    } else {
+      A[k++] = R[j++];
+    }
+  }
+
+  // Copy the remainders of L or R to A
+  while (i &lt; n1) {
+    A[k++] = L[i++];
+  }
+
+  while (j &lt; n2) {
+    A[k++] = R[j++];
+  }
+
+  free(L);
+  free(R);
+
+  return;
+}
+
+void merge_sort(int *A, int p, int r) {
+  // Merge-sort on A[p:r]
+  if (p == r) {
+    return;
+  }
+
+  // Break A[p:q] in two
+  int q = (p + r) / 2;
+  merge_sort(A, p, q);
+  merge_sort(A, q + 1, r);
+  merge(A, p, q, r);
+}
+
+// Test
+
+int main() {
+    int n=10; // Test size
+
+    int * A = random_int_array(n);
+    
+    printf(&quot;Array created:\n  &quot;);
+    print_int_array(A,n);
+    printf(&quot;\n\n&quot;);
+    
+    merge_sort( A , 0 , n-1 );
+    printf(&quot;Ordered array:\n  &quot;);
+    print_int_array(A,n);
+    printf(&quot;\n&quot;);
+
+    free(A);
+    
+    return 0;
+}
+
+///////////////////////////////
+
+void print_int_array(int *v, int n) {
+  // Prints an n-sized integer array v
+
+  int i;
+  for (i=0;i&lt;n-1;i++) {
+        printf(&quot;%d , &quot;,v[i]);
+  }
+  printf(&quot;%d&quot;,v[i]);
+  return;
+}
+
+int * random_int_array(size_t n) {
+  // Randomly creates an n-sized integer array v
+
+  srand(time(NULL));
+
+  int * A = malloc(n*sizeof(int));
+  for (int i = 0; i &lt; n; i++) {
+    A[i] = rand() % 100;
+  }
+
+  return A;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array created:
+  66 , 3 , 81 , 54 , 38 , 33 , 23 , 33 , 9 , 21
+
+Ordered array:
+  3 , 9 , 21 , 23 , 33 , 33 , 38 , 54 , 66 , 81
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2>2.3-1<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Using Figure 2.4 as a model, illustrate the operation of merge sort on an array initially containing the sequence <span class="math notranslate nohighlight">\(\langle 3,41,52,26,38,57,9,49\rangle\)</span>.</p>
+</div></blockquote>
+<p><img alt="compiled image for exercise 2.3-1" src="../../_images/2.3-1.png" /></p>
+<p>The image above was created by the TikZ code in <span class="xref myst">2.3-1_tikz</span>.</p>
+</section>
+<section id="id2">
+<h2>2.3-2<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>The test in line 1 of the <code class="docutils literal notranslate"><span class="pre">MERGE-SORT</span></code> procedure reads “<strong>if</strong> <span class="math notranslate nohighlight">\(p\geq r\)</span>” rather than “<strong>if</strong> <span class="math notranslate nohighlight">\(p\neq r\)</span>”. If <code class="docutils literal notranslate"><span class="pre">MERGE-SORT</span></code> is called with <span class="math notranslate nohighlight">\(p&gt;r\)</span>, then the subarray <span class="math notranslate nohighlight">\(A[p:r]\)</span> is empty. Argue that as long as the initial call of <code class="docutils literal notranslate"><span class="pre">MERGE-SORT(A,1,n)</span></code> has <span class="math notranslate nohighlight">\(n\geq 1\)</span>, the test “<strong>if</strong> <span class="math notranslate nohighlight">\(p\neq r\)</span>” suffices to ensure that no recursive call has <span class="math notranslate nohighlight">\(p&gt;r\)</span>.</p>
+</div></blockquote>
+<p>This question is not well stated. It is meant to say that instead of returning trivially if <span class="math notranslate nohighlight">\(p\geq r\)</span>, we sould modify the algorithms to perform the remainder of the procedure if <span class="math notranslate nohighlight">\(p\neq r\)</span>. Note that this is equivalent to inverting the conditional <code class="docutils literal notranslate"><span class="pre">if-else</span></code> (with the <code class="docutils literal notranslate"><span class="pre">else</span></code> part being implicit between lines 2 and 3).</p>
+<p>For consistency, let us keep the original structure of the procedure. The modified version reads as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MERGE-SORT(A,p,r)
+1   if p==r             // one element?
+2   return        
+3   q= (p+r)/2          // midpoint of A[p:r]; integer division.
+4   MERGE-SORT(A,p,q)   // recursively sort A[p:q]
+5   MERGE-SORT(A,q+1,r) // recursively sort A[q+1:r]
+6   MERGE(A,p,q,r)
+</pre></div>
+</div>
+<p>If we make a call of <code class="docutils literal notranslate"><span class="pre">MERGE-SORT(A,p,r)</span></code> with <span class="math notranslate nohighlight">\(p\leq r\)</span>, then either the procedure above returs the list <span class="math notranslate nohighlight">\(A[p:r]\)</span> unchanged (if <span class="math notranslate nohighlight">\(p=r\)</span>), or it calls <code class="docutils literal notranslate"><span class="pre">MERGE-SORT(A,p,q)</span></code> and <code class="docutils literal notranslate"><span class="pre">MERGE-SORT(A,q+1,r)</span></code> if <span class="math notranslate nohighlight">\(p&lt;r\)</span>, where <span class="math notranslate nohighlight">\(q=\lfloor (p+r)/2\rfloor\)</span>. In this case, we have <span class="math notranslate nohighlight">\(p\leq q\)</span> and <span class="math notranslate nohighlight">\(q+1\leq r\)</span>, as <span class="math notranslate nohighlight">\(p&lt;r\)</span>. Moreover, the subarrays <span class="math notranslate nohighlight">\(A[p:q]\)</span> and <span class="math notranslate nohighlight">\(A[q+1,r]\)</span> are strictly shorter than the initial array <span class="math notranslate nohighlight">\(A[p:r]\)</span></p>
+<p>Thus, any call of <code class="docutils literal notranslate"><span class="pre">MERGE-SORT(A,p,r)</span></code> with <span class="math notranslate nohighlight">\(p\leq r\)</span> will be computed by making calls of the same sort, which will in turn be computed by making calls of the same sort, and so on, and no calls with <span class="math notranslate nohighlight">\(p&gt;r\)</span> will be made throughout the recursion. This applies, in particular, to a call of the form <code class="docutils literal notranslate"><span class="pre">MERGE-SORT(A,1,n)</span></code> with <span class="math notranslate nohighlight">\(1\leq n\)</span>.</p>
+</section>
+<section id="id3">
+<h2>2.3-3<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>State a loop invariant for the <strong>while</strong> loop of lines 12-18 of the <code class="docutils literal notranslate"><span class="pre">MERGE</span></code> procedure. Show how to use it, along with the <strong>while</strong> loops of lines 20-23 and 24-27, to prove that the <code class="docutils literal notranslate"><span class="pre">MERGE</span></code> procedure is correct.</p>
+</div></blockquote>
+<p>Let us recall what is the <code class="docutils literal notranslate"><span class="pre">MERGE</span></code> procedure as in the book.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MERGE(A,p,q,r)
+1   n_L = q-p+1             // length of A[p:q]
+2   n_R = r-q               // length of A[q+1:r]
+3   let L[0:n_L-1] and R[0:n_R-1] be new arrays
+4   for i = 0 to n_L-1      // copy A[p:q] into L[0:n_L-1]
+5       L[i] = A[p+i] 
+6   for j = 0 to n_R-1      // copy A[q+1:r] into R[0:n_R-1]
+7       R[j] = A[q+j+1] 
+8   i = 0                   // i indexes the smallest remaining element in L
+9   j = 0                   // j indexes the smallest remaining element in R
+10  k = 0                   // k indexes the location in A to ûll
+11  // As long as each of the arrays L and R contains an unmerged element,
+    // copy the smallest unmerged element back into A[p:r]
+12  while i &lt; n_L and j &lt; n_R
+13      if L[i] &lt;= R[j]
+14          A[k] = L[i]
+15          i = i+1
+16      else A[k] = R[j]
+17          j = j+1
+18      k=k+1
+19  // Having gone through one of L and R entirely, copy the
+    // remainder of the other to the end of A[p:r].
+20  while i &lt; n_L
+21      A[k] = L[i]
+22      i = i+1
+23      k = k+1
+24  while j &lt; n_R
+25      A[k] = R[j]
+26      j = j+1
+27      k = k+1
+</pre></div>
+</div>
+<p><strong>Loop invariant</strong>: At the start of each iteration, the first <span class="math notranslate nohighlight">\(i\)</span> elements of <span class="math notranslate nohighlight">\(L\)</span> and the first <span class="math notranslate nohighlight">\(j\)</span> elements of <span class="math notranslate nohighlight">\(R\)</span> coincide with the smallest <span class="math notranslate nohighlight">\(k\)</span> elements of <span class="math notranslate nohighlight">\(A[p:r]\)</span> originally, including repetitions (so, in particular, <span class="math notranslate nohighlight">\(i+j=k\)</span>), and these <span class="math notranslate nohighlight">\(k\)</span> elements are placed in order at the beginning of <span class="math notranslate nohighlight">\(A[p:r]\)</span>.</p>
+<p>Moreover, throughout the iterations, the elements in <span class="math notranslate nohighlight">\(L\)</span> are the same as those of <span class="math notranslate nohighlight">\(A[p:q]\)</span>, and the elements of <span class="math notranslate nohighlight">\(R\)</span> are the same as those of <span class="math notranslate nohighlight">\(A[q+1:r]\)</span>, oroginally, and both <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(R\)</span> are ordered (which is a condition to apply the algorithm).</p>
+<p>Even though the exercise does not ask us to prove all usual properties of the loop invariant, let us do it anyways: Initialization is trivial (vacuous), as usual. If the loop invariant holds at the start of an iteration, then the <span class="math notranslate nohighlight">\((k+1)\)</span>-th smallest element originally in <span class="math notranslate nohighlight">\(A[p:r]\)</span> has to be either <span class="math notranslate nohighlight">\(L[i]\)</span> or <span class="math notranslate nohighlight">\(R[j]\)</span>. The conditional in lines 13-17 checks which case holds, puts this <span class="math notranslate nohighlight">\((k+1)\)</span>-th smallest element in the <span class="math notranslate nohighlight">\((k+1)\)</span>-th position of <span class="math notranslate nohighlight">\(A[p:r]\)</span>, and increments <span class="math notranslate nohighlight">\(i\)</span> or <span class="math notranslate nohighlight">\(j\)</span> accordingly, to update the number of elements of <span class="math notranslate nohighlight">\(L\)</span> or <span class="math notranslate nohighlight">\(R\)</span> which have been taken into account. Thus the loop property is maintained</p>
+<p>The loop terminates when either <span class="math notranslate nohighlight">\(i=n_L\)</span> or <span class="math notranslate nohighlight">\(j=n_R\)</span>. Let us say that <span class="math notranslate nohighlight">\(i=n_L\)</span>. Then the originally <span class="math notranslate nohighlight">\(n_L+j\)</span> smallest elements of <span class="math notranslate nohighlight">\(A[p:r]\)</span> have been placed in its initial positions in an ordered fashion, as the loop invariant states, and these are comprised of the initial <span class="math notranslate nohighlight">\(n_L\)</span> elements of <span class="math notranslate nohighlight">\(L\)</span> (that is, all of <span class="math notranslate nohighlight">\(L\)</span>) and the first <span class="math notranslate nohighlight">\(j\)</span> elements of <span class="math notranslate nohighlight">\(R\)</span>. The remaining <span class="math notranslate nohighlight">\(n_R-j\)</span> original elements of <span class="math notranslate nohighlight">\(A\)</span> - which are all larger than the <span class="math notranslate nohighlight">\(n_L+j\)</span> smallest elements already at the start of <span class="math notranslate nohighlight">\(A\)</span>, and so should be placed in order at the end of <span class="math notranslate nohighlight">\(A\)</span> - appear at the end of <span class="math notranslate nohighlight">\(R\)</span> in order. The loop in lines 20-23 does nothing, while the loop in lines 24-27 puts these <span class="math notranslate nohighlight">\(n_R-j\)</span> remaining elements at the end <span class="math notranslate nohighlight">\(A\)</span>, just as we want.</p>
+</section>
+<section id="id4">
+<h2>2.3-4<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Use mathematical induction to show that when <span class="math notranslate nohighlight">\(n\geq 2\)</span> is an exact power of <span class="math notranslate nohighlight">\(2\)</span>, the solution of the recurrence</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n)=\begin{cases}2&amp;\text{if }n=2,\\2T(n/2)+n&amp;\text{if }n&gt;2\end{cases}\end{equation*}\]</div>
+<p>is <span class="math notranslate nohighlight">\(T(n)=n\lg n\)</span>.</p>
+</div></blockquote>
+<p>The exact powers of <span class="math notranslate nohighlight">\(2\)</span> are those numbers of the form <span class="math notranslate nohighlight">\(n=2^k\)</span>.</p>
+<ul class="simple">
+<li><p>For <span class="math notranslate nohighlight">\(k=1\)</span>:</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+T(n)
+    &amp;=   T(2^k)\\
+    &amp;=   T(2^1)\\
+    &amp;=   T(2)\\
+    &amp;=   2\\
+    &amp;=   2*1\\
+    &amp;=   2 \cdot \lg(2)\\
+    &amp;=   2^1 \cdot \lg(2^1)\\
+    &amp;=   2^k \cdot \lg(2^k)\\
+    &amp;=   n \cdot \lg(n)
+\end{align*}\]</div>
+<ul class="simple">
+<li><p>Suppose that <span class="math notranslate nohighlight">\(T(2^k)=(2^k) \lg (2^k)\)</span> and <span class="math notranslate nohighlight">\(n=2^{k+1}\)</span>. Then</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+T(n)    
+    &amp;=   T(2^{k+1})\\
+    &amp;= 2 T(2^k)+2^{k+1}\\
+    &amp;= 2\cdot(2^k \lg(2^k)) + 2^{k+1}\\
+    &amp;= 2^{k+1} \cdot (\lg(2^k) + 1)\\
+    &amp;= 2^{k+1} \cdot {k+1}\\
+    &amp;= n \cdot \lg(2^{k+1})\\
+    &amp;= n \cdot \lg(n)
+\end{align*}\]</div>
+<p>so the result also holds for <span class="math notranslate nohighlight">\(k+1\)</span>.</p>
+<p>Note that an alternative to this proof by induction would be to simply show that <span class="math notranslate nohighlight">\(T(n)=n\lg n\)</span> satisfies the given recursion.</p>
+</section>
+<section id="id5">
+<h2>2.3-5<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>You can also think of insertion sort as a recursive algorithm. In order to sort <span class="math notranslate nohighlight">\(A[1:n]\)</span>, recursively sort <span class="math notranslate nohighlight">\(A[1:n-1]\)</span> and then insert <span class="math notranslate nohighlight">\(A[n]\)</span> into the sorted subarray <span class="math notranslate nohighlight">\(A[1:n-1]\)</span>. Write pseudocode for this recursive version of insertion-sort. Give a recurrence for its worst-case running time.</p>
+</div></blockquote>
+<p>The recursive version of insertion sort and its running time (up to <span class="math notranslate nohighlight">\(\Theta\)</span>) are given by</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>INSERTION-SORT-RECURSIVE(A)              times   unitary cost
+1  if n&lt;=1                               1       1
+2      return                            1       1
+3  INSERTION-SORT-RECURSIVE(A[1:n-1])    1       T(n-1)
+4  key = A[n]
+5  i=n-1                                 1       1
+6  while i&gt;0 and A[i]&gt;key                t       1
+7      A[i+1] = A[i]                     t-1     1
+8      i=i-1                             t-1     1
+9  A[i+1]=key                            1       1
+</pre></div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(t = n\)</span> in the worst case. So the worst-case running time satisfies <span class="math notranslate nohighlight">\(T(n) = T(n-1) + \Theta(n)\)</span>.</p>
+<p>(<strong>Remark</strong>: Exercise <a class="reference external" href="#exercise_2.3-7">2.3-7</a> deals with what is usually called <code class="docutils literal notranslate"><span class="pre">BINARY-INSERTION-SORT</span></code>, which looks like it would be an improvement on binary search but is not.)</p>
+<p>The recursive version of insertion-sort is implemented below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+void insertion_sort_recursive(int *A, size_t n) {
+    if (n&lt;=1) return;
+
+    insertion_sort_recursive(A,n-1);
+
+    int key = A[n];
+    int i = n-1;     // Index
+    while (i &gt;= 0 &amp;&amp; A[i] &gt; key) {
+      A[i + 1] = A[i];
+      i--;
+    }
+
+    A[i + 1] = key;
+}
+
+// Test code below
+
+int main() {
+    int i; // Index
+    int n=10; // Test size
+
+    srand(time(NULL));
+    
+    // Dinamically allocate random integer array
+    int * A = malloc(n*sizeof(int));
+    for (i=0;i&lt;n;i++) {
+        A[i] = rand()%21 - 10;
+    }
+    
+    printf(&quot;Array created:\n  &quot;);
+    for (i=0;i&lt;n-1;i++) {
+        printf(&quot;%d, &quot;,A[i]);
+    }
+    printf(&quot;%d.\n\n&quot;,A[i]);
+    
+    insertion_sort_recursive( A , n );
+    printf(&quot;Ordered array:\n  &quot;);
+    for (i=0;i&lt;n-1;i++) {
+        printf(&quot;%d, &quot;,A[i]);
+    }
+    printf(&quot;%d.\n&quot;,A[i]);
+
+    free(A);
+    
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array created:
+  -7, -3, 4, -5, -5, -1, -10, -6, -1, -3.
+
+Ordered array:
+  -10, -7, -6, -5, -5, -3, -3, -1, -1, 4.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="span-id-exercise-2-3-6-span">
+<h2>2.3-6<span id="exercise_2.3-6"></span><a class="headerlink" href="#span-id-exercise-2-3-6-span" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Referring back to the searching problem (see Exercise 2.1-4), observe that if the subarray being searched is already sorted, the searching algorithm can check the midpoint of the subarray against <span class="math notranslate nohighlight">\(x\)</span><span id="cite_ref-1"><a class="reference external" href="#cite_note-1"><sup>[1]</sup></a></span> and eliminate half of the subarray from further consideration. The <em><strong>binary search</strong></em> algorithm repeats this procedure, halving the size of the remaining portion of the subarray each time. Write pseudocode, either iterative or recursive, for binary search. Argue that the worst-case running time of binary search is <span class="math notranslate nohighlight">\(\Theta(\lg n)\)</span>.</p>
+</div></blockquote>
+<p><span id="cite_note-1"><a class="reference external" href="#cite_ref-1">[1]</a></span>: The questions was stated with “<span class="math notranslate nohighlight">\(v\)</span>” for the value being searched for, which is what was used in previous editions of the book. However, question 2.1-4 uses “<span class="math notranslate nohighlight">\(x\)</span>” for this value.</p>
+<p>For completeness, let us write several versions of <code class="docutils literal notranslate"><span class="pre">BINARY-SEARCH</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BINARY-SEARCH(x,A), iterative version
+1   // Searches for x in A[1:n]
+2   l=1                     // left limit
+3   r=A.length              // upper limit
+4   while l&lt;=r
+5       // search for x in A[l:r]
+6       m = floor((l+r)/2)  // midpoint of A[l:r]
+7       if A[m]==x
+8           return m
+9       else if A[m]&lt;x
+10           l=m+1
+11       else                // A[m]&gt;x
+12          r=m-1
+13  // Each iteration of while loop makes r-l decrease by at least 1.
+    // Loop terminates if x was not found
+14  return NIL
+
+BINARY-SEARCH(x,A,p,q), recursive version 1
+1   // Searches for x in A[p:q]
+2   m = floor((p+q)/2)
+3   if p&gt;q
+4       return NIL
+5   if A[m]==x
+6       return m
+7   if A[m]&lt;x
+8       return BINARY-SEARCH(v,A,m+1,q)
+9   return BINARY-SEARCH(v,A,p,m-1)
+</pre></div>
+</div>
+<p>To find the index index <span class="math notranslate nohighlight">\(m\)</span> for which <span class="math notranslate nohighlight">\(A[m]=x\)</span>, call <code class="docutils literal notranslate"><span class="pre">BINARY-SEARCH(x,A,1,A.length)</span></code>.</p>
+<p>Let us analyse the worst-case running time for the iterative version. In the first iteration of the “while” loop, the difference <span class="math notranslate nohighlight">\(R-L\)</span> starts as being <span class="math notranslate nohighlight">\(n-1\)</span>. At each iteration, the new value of <span class="math notranslate nohighlight">\(R-L\)</span> is strictly smaller than half of what it was in the previous iteration. In the worst case (when there is no return in any iteration), the loop exists when <span class="math notranslate nohighlight">\(R&lt;L\)</span>. If the loop is run through <span class="math notranslate nohighlight">\(k=\lg n\)</span> times, then at the end we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}R-L \leq (n-1)/2^k &lt; n/2^k = n/n = 1,\end{equation*}\]</div>
+<p>so <span class="math notranslate nohighlight">\(R-L&lt;=0\)</span>. The loop will run at most one more time, after which it will necessarily terminate. Each other line in the code has constant time, so the final cost will be <span class="math notranslate nohighlight">\(\Theta(\lg n) + \Theta(1) = \Theta(lg n)\)</span>.</p>
+<p>Alternatively, looking at any of the recursive versions, we see that the cost satisfies the recursion</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n)=T(n/2)+c,\qquad T(1)=c\end{equation*}\]</div>
+<p>for some cost <span class="math notranslate nohighlight">\(c\)</span>, in a manner similar to the the book’s analysis of <code class="docutils literal notranslate"><span class="pre">MERGE-SORT</span></code>. If <span class="math notranslate nohighlight">\(n=2^k\)</span>, then by induction we obtain</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n)=T(2^k)=(k+1)c = c\lg n + c = \Theta(\lg n).\end{equation*}\]</div>
+<p><strong>Remark</strong>: Here is another recursive version, with the same worst-case running time as the one above:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BINARY-SEARCH(x,A) recursive version 2
+// We assume k + NIL = NIL for any integer k
+1  n=A.length // Could also be a parameter
+2  if n0=0
+3    return NIL
+4  m=floor((1+n)/2)
+5  if A[m]=v
+6      return m
+7  if A[m]&lt;v
+8      return m + BINARY-SEARCH(v,A[(m+1):n])
+9  return BINARY-SEARCH(v,A[1:(m-1)])
+</pre></div>
+</div>
+</section>
+<section id="span-id-exercise-2-3-7-span">
+<h2>2.3-7 <span id="exercise_2.3-7"></span><a class="headerlink" href="#span-id-exercise-2-3-7-span" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>The <strong>while</strong> loop of lines 5-7 of the <code class="docutils literal notranslate"><span class="pre">INSERTION-SORT</span></code> procedure in Section 2.1 uses a linear search to scan (backward) through the sorted subarray <span class="math notranslate nohighlight">\(A[1:j-1]\)</span>. What is insertion sort used a binary search (see <a class="reference external" href="#exercise_2.3-6">Exercise 2.3-6</a>) instead of a linear search? Would that improve the overall worst-case running time of insertion sort to <span class="math notranslate nohighlight">\(\Theta(n\lg n)\)</span>?</p>
+</div></blockquote>
+<p>An implementation of the proposed algorithm follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BINARY-INSERTION-SORT(A,n):
+1   for i=2 to n
+2       key = A[i]
+3       // Find correct position of key in A[1:i-1]
+       // with a binary search
+4       if A[1]&gt;key
+5           pos = 1
+6       else if A[i-1]&lt;key
+7           pos = i
+8       else
+9           low = 1
+10           high = i-1
+11          while low+1 &lt; high
+12              m = floor((low+high) / 2)
+13              if A[m]&gt;key
+14                  high = m
+15              else
+16                  low = m
+17          pos = m
+18      // shift elements above pos to the right and place the key
+19      for j=i-1 down to pos
+20          A[j+1]=A[j]
+21      A[pos]=key
+</pre></div>
+</div>
+<p>Lines 3-17 find above the right position on which the key <span class="math notranslate nohighlight">\(A[i]\)</span> should be places, which indeed adds upt to a total cost of <span class="math notranslate nohighlight">\(\Theta(n\lg n)\)</span>. However, we still need to shift all elements above this position to the right, which is done in lines 19-20, and is basically the same as the <strong>while</strong> loop in lines 5-7 of the original algorithm. In the worst case, this still has quadratic cost.</p>
+<p><strong>Remark</strong>: One could even try to implement this procedure on a linked list (seem later in the book) to get rid of the linear cost associated with shifting. However, this would make it so that binary search has linear or quadratic cost (depending on how one takes care of accessing elements of the linked list).</p>
+</section>
+<section id="id6">
+<h2>2.3-8<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Describe an algorithm that, given a set <span class="math notranslate nohighlight">\(S\)</span> of <span class="math notranslate nohighlight">\(n\)</span> integers and another integer <span class="math notranslate nohighlight">\(x\)</span>, determines whether <span class="math notranslate nohighlight">\(S\)</span> contains two elements that sum to exactly <span class="math notranslate nohighlight">\(x\)</span>. Your algorithm should take <span class="math notranslate nohighlight">\(\Theta(n \lg n)\)</span> time in the worst case.</p>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1   MERGE-SORT(S)
+2   a=1
+3   b=n
+4   while a&lt;b
+5       if S[a]+S[b]==x
+6           return TRUE
+7       if S[a]+S[b]&lt;x
+8           // Since S is ordered, S[a]+S[i]&lt;x for any i,
+            // So we may discard a
+9           a=a+1
+10       else
+11          // Similarly, in this case, S[i]+S[b]&gt;x
+            // for any i, and we discard b
+12          b=b-1
+13  return FALSE
+</pre></div>
+</div>
+<p>Line 1 takes time <span class="math notranslate nohighlight">\(\Theta(n \lg n)\)</span> and all others are constant, with
+the while loop running at most <span class="math notranslate nohighlight">\(n\)</span> times, so we have cost
+$<span class="math notranslate nohighlight">\(\Theta(n \lg n) + \Theta(n) = \Theta(n \lg n)\)</span>$</p>
+<p>This algorithm can be modified to an algorithm which solves an equation
+of the form <span class="math notranslate nohighlight">\(f(S[a],S[b])=x\)</span>, with <span class="math notranslate nohighlight">\(f\)</span> entrywise monotonic:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1   MERGE-SORT(S)
+2   a=1
+3   b=n
+4   while a&lt;b
+5       if f(S[a],S[b])==x
+6           return TRUE
+7       if f(S[a],S[b])&lt;x
+8           // Since S is ordered, f(S[a],S[i])&lt;x for any i,
+            // So we may discard a
+9           a=a+1
+10       else
+11          // Similarly, in this case, f(S[i],S[b])&gt;x
+            // for any i, and we discard b
+12          b=b-1
+13  return FALSE
+</pre></div>
+</div>
+<p>Note that the <strong>while</strong> loop in lines 4-17 takes linear time. We could substitute it by a collection of binary searches, which itself would take take <span class="math notranslate nohighlight">\(\Theta(n\lg n)\)</span>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>4   for a=1 to n
+5       create the list f(S[a],S[1:n]) // = [f (S[a],S[1]), f(S[a],S[2]), ..., f(S[a],S[n]) ]
+6       b = BINARY-SEARCH(x,f(S[a],S[1:n]) )
+7       if b != NIL
+8           return TRUE
+9   return FALSE
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "c"
+        },
+        kernelOptions: {
+            kernelName: "c",
+            path: "./jupyter_files/ch2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'c'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="clrs_ita_2.2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2.2 Analyzing algorithms</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="clrs_ita_2.P.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Problems</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luiz Gustavo Cordeiro<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

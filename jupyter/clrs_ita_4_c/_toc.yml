@@ -1,0 +1,23 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: jupyter_files/clrs_ita_main
+chapters:
+- file: jupyter_files/ch1/clrs_ita_1
+  sections:
+  - file: jupyter_files/ch1/clrs_ita_1.1
+  - file: jupyter_files/ch1/clrs_ita_1.2
+  - file: jupyter_files/ch1/clrs_ita_1.P
+- file: jupyter_files/ch2/clrs_ita_2
+  sections:
+  - file: jupyter_files/ch2/clrs_ita_2.1
+  - file: jupyter_files/ch2/clrs_ita_2.2
+  - file: jupyter_files/ch2/clrs_ita_2.3
+  - file: jupyter_files/ch2/clrs_ita_2.P
+- file: jupyter_files/ch3/clrs_ita_3
+  sections:
+  - file: jupyter_files/ch3/clrs_ita_3.1
+  - file: jupyter_files/ch3/clrs_ita_3.2
+  - file: jupyter_files/ch3/clrs_ita_3.3
+  - file: jupyter_files/ch3/clrs_ita_3.P

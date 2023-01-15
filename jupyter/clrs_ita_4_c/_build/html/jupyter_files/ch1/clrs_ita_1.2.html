@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.2 Algorithms as a technology &#8212; CLRS - Introduction to Algorithms, 4&lt;sup&gt;th&lt;/sup&gt; edition&lt;br/&gt;Solutions and implementations in C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Problems" href="clrs_ita_1.P.html" />
+    <link rel="prev" title="1.1 Algorithms" href="clrs_ita_1.1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../clrs_ita_main.html">
+                    CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="clrs_ita_1.html">
+   Chapter 1 - The Role of Algorithms in Computing
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_1.1.html">
+     1.1 Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.2 Algorithms as a technology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_1.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch2/clrs_ita_2.html">
+   Chapter 2 - Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.1.html">
+     2.1 Insertion sort
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.2.html">
+     2.2 Analyzing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.3.html">
+     2.3 Designing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch3/clrs_ita_3.html">
+   Chapter 3 - Characterizing Running Times
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.1.html">
+     3.1
+     <span class="math notranslate nohighlight">
+      \(O\)
+     </span>
+     -notation,
+     <span class="math notranslate nohighlight">
+      \(\Omega\)
+     </span>
+     -notation, and
+     <span class="math notranslate nohighlight">
+      \(\Theta\)
+     </span>
+     -notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.2.html">
+     3.2 Asymptotic notation: formal definitions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.3.html">
+     3.3 Standard notations and common functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://luizgcordeiro.github.coms"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://luizgcordeiro.github.coms/issues/new?title=Issue%20on%20page%20%2Fjupyter_files/ch1/clrs_ita_1.2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/jupyter_files/ch1/clrs_ita_1.2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.2-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.2-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.2-3
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>1.2 Algorithms as a technology</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.2-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.2-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.2-3
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="algorithms-as-a-technology">
+<h1>1.2 Algorithms as a technology<a class="headerlink" href="#algorithms-as-a-technology" title="Permalink to this headline">#</a></h1>
+<section id="id1">
+<h2>1.2-1<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Give an example of an application that requires algorithmic content at the application level, and discuss the function of the algorithms involved.</p>
+</div></blockquote>
+<p>An application which gives GPS directions. The algorithms involved need to analyse average speed on each part of the route, distance, total time spent, tolls, as well as solving the routing problem itself.</p>
+</section>
+<section id="id2">
+<h2>1.2-2<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Suppose that for inputs of size <span class="math notranslate nohighlight">\(n\)</span> on a particular computer, insertion sort runs in <span class="math notranslate nohighlight">\(8n^2\)</span> steps and merge sort runs in <span class="math notranslate nohighlight">\(64n\lg n\)</span> steps. For which values of <span class="math notranslate nohighlight">\(n\)</span> does insertion sort beat merge sort?</p>
+</div></blockquote>
+<p>We need to solve the inequality</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+8n^2 &lt; 64n \lg n
+\end{equation*}\]</div>
+<p>Note that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    8n^2 &lt; 64n \lg n
+        &amp;\iff n &lt; \lg(n^8)\\
+        &amp;\iff 2^n &lt; n^8,\tag{1.2-2.1}
+\end{align*}\]</div>
+<p>and similar equivalencies hold with reversed inequalities.</p>
+<p>Of course, we consider only <span class="math notranslate nohighlight">\(n\geq 2\)</span> (otherwise there is nothing to order). Let us implement C code to find the first <span class="math notranslate nohighlight">\(n\geq 2\)</span> for which these inequalities do not hold.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+
+unsigned long long pow_long(int m,unsigned int n) {
+    // Returns m^n for m,n integers, n positive
+    int i; // index
+    unsigned long long int p=1; // m^0
+    for (i=0;i&lt;n;i++) {
+        p*=m;
+    }
+    
+    return p;
+}
+
+int main() {
+    int n=2;
+    while (pow_long(2,n) &lt; pow_long(n,8)) n++;
+    
+    printf(&quot;The first n for which 2^n&gt;n^8 is n=%d.\nIn this case, 2^n = %lld and n^8=%lld.\n&quot;,n,pow_long(2,n),pow_long(n,8));
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The first n for which 2^n&gt;n^8 is n=44.
+In this case, 2^n = 17592186044416 and n^8=14048223625216.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us prove that <span class="math notranslate nohighlight">\(8n^2&gt;64 n \lg n\)</span> for all <span class="math notranslate nohighlight">\(n\leq 44\)</span>. Equivalently, this is to say (as in Equation (eq.1.2-2.1)) that <span class="math notranslate nohighlight">\(2^{n/8}&gt;n\)</span>. We already know that this holds for <span class="math notranslate nohighlight">\(n=44\)</span>. Taking the (continuous) derivative of the left-hand side gives us</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    2^{n/8}\dfrac{log 2}{8}
+        &amp; &gt; 2^5 \dfrac{log 2}{8}\qquad\text{(because $n\geq 44$)}\\
+        &amp; &gt; \dfrac{2^5}{16}\qquad\text{(because $\log 2 &gt;1/2$)}\\
+        &amp; = 2,
+\end{align*}\]</div>
+<p>which is greater than <span class="math notranslate nohighlight">\(1\)</span>, the derivative of <span class="math notranslate nohighlight">\(n\)</span>. So <span class="math notranslate nohighlight">\(2^{n/8}\)</span> grows faster than <span class="math notranslate nohighlight">\(n\)</span> for <span class="math notranslate nohighlight">\(n\geq 44\)</span> and the inequality <span class="math notranslate nohighlight">\(2^{n/8}&gt;n\)</span> is preserved for all <span class="math notranslate nohighlight">\(n\geq 44\)</span>.</p>
+<p>In summary we have shown that <span class="math notranslate nohighlight">\(8n^2&lt;64 n \lg n\)</span> if, and only if, <span class="math notranslate nohighlight">\(n\leq 43\)</span>, and these are the only values of <span class="math notranslate nohighlight">\(n\)</span> for which insertion sort beats merge sort (as in the question at hand).</p>
+</section>
+<section id="id3">
+<h2>1.2-3<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>What is the smallest value of <span class="math notranslate nohighlight">\(n\)</span> such that an algorithm whose running time is <span class="math notranslate nohighlight">\(100n^2\)</span> runs faster than an algorithm whose running time is <span class="math notranslate nohighlight">\(2^n\)</span> on the same machine?</p>
+</div></blockquote>
+<p>We need to solve the inequality</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}100n^2 &lt; 2^n,\end{equation*}\]</div>
+<p>which can be done by inspection. Again, note taht the problem is only interesting for <span class="math notranslate nohighlight">\(n\geq 1\)</span>. For simplicity, let us again write C code for this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+
+int main() {
+    printf(&quot;  n | 100n^2 |   2^n\n&quot;
+           &quot;---------------------\n&quot;);
+    int n=1;
+    long long lhs = 100;
+    long long rhs = 2; // 2^1
+    while (lhs&gt;rhs) {
+        printf(&quot; %2lld | %6lld | %5lld \n&quot;,n,lhs,rhs);
+        n++;
+        lhs = 100 * n * n;
+        rhs *= 2;
+    }
+    printf(&quot; %2lld | %6lld | %5lld \n&quot;,n,lhs,rhs);
+    
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  n | 100n^2 |   2^n
+---------------------
+  1 |    100 |     2 
+  2 |    400 |     4 
+  3 |    900 |     8 
+  4 |   1600 |    16 
+  5 |   2500 |    32 
+  6 |   3600 |    64 
+  7 |   4900 |   128 
+  8 |   6400 |   256 
+  9 |   8100 |   512 
+ 10 |  10000 |  1024 
+ 11 |  12100 |  2048 
+ 12 |  14400 |  4096 
+ 13 |  16900 |  8192 
+ 14 |  19600 | 16384 
+ 15 |  22500 | 32768 
+</pre></div>
+</div>
+</div>
+</div>
+<p>To finish the question, we simply need to verify that <span class="math notranslate nohighlight">\(100n^2&lt;2^n\)</span> for all <span class="math notranslate nohighlight">\(n\geq 15\)</span>. Taking logarithms, this is equivalent to verifying that <span class="math notranslate nohighlight">\(\log 100 + 2\log n &lt; n \log 2\)</span>. We already know (by the table above) that this is true for <span class="math notranslate nohighlight">\(n=15\)</span>, so we can again compare derivatives: On one hand, for <span class="math notranslate nohighlight">\(n\geq 15\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\dfrac{d}{dn}(\log 100 + 2\log n)=\dfrac{2}{n}&lt;\dfrac{1}{4}\end{equation*}\]</div>
+<p>whereas</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\dfrac{d}{dn}(n\log 2)=\log 2&gt;\dfrac{1}{2}&gt;\dfrac{1}{4}.\end{equation*}\]</div>
+<p>Therefore, for <span class="math notranslate nohighlight">\(n&gt;=1\)</span> integer, the inequality <span class="math notranslate nohighlight">\(100n^2&lt;2^n\)</span> holds if, and only if, <span class="math notranslate nohighlight">\(n\geq 15\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "c"
+        },
+        kernelOptions: {
+            kernelName: "c",
+            path: "./jupyter_files/ch1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'c'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="clrs_ita_1.1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">1.1 Algorithms</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="clrs_ita_1.P.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Problems</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luiz Gustavo Cordeiro<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

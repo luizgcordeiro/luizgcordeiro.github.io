@@ -1,0 +1,1060 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Problems &#8212; CLRS - Introduction to Algorithms, 4&lt;sup&gt;th&lt;/sup&gt; edition&lt;br/&gt;Solutions and implementations in C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter 3 - Characterizing Running Times" href="../ch3/clrs_ita_3.html" />
+    <link rel="prev" title="2.3 Designing algorithms" href="clrs_ita_2.3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../clrs_ita_main.html">
+                    CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch1/clrs_ita_1.html">
+   Chapter 1 - The Role of Algorithms in Computing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.1.html">
+     1.1 Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.2.html">
+     1.2 Algorithms as a technology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="clrs_ita_2.html">
+   Chapter 2 - Getting Started
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_2.1.html">
+     2.1 Insertion sort
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_2.2.html">
+     2.2 Analyzing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_2.3.html">
+     2.3 Designing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch3/clrs_ita_3.html">
+   Chapter 3 - Characterizing Running Times
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.1.html">
+     3.1
+     <span class="math notranslate nohighlight">
+      \(O\)
+     </span>
+     -notation,
+     <span class="math notranslate nohighlight">
+      \(\Omega\)
+     </span>
+     -notation, and
+     <span class="math notranslate nohighlight">
+      \(\Theta\)
+     </span>
+     -notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.2.html">
+     3.2 Asymptotic notation: formal definitions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.3.html">
+     3.3 Standard notations and common functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://luizgcordeiro.github.coms"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://luizgcordeiro.github.coms/issues/new?title=Issue%20on%20page%20%2Fjupyter_files/ch2/clrs_ita_2.P.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/jupyter_files/ch2/clrs_ita_2.P.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#insertion-sort-on-small-arrays-in-merge-sort">
+   2-1 Insertion sort on small arrays in merge sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correctness-of-bubblesort">
+   2-2 Correctness of bubblesort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correctness-of-horner-s-rule">
+   2-3 Correctness of Horner’s rule
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inversions">
+   2-4 Inversions
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Problems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#insertion-sort-on-small-arrays-in-merge-sort">
+   2-1 Insertion sort on small arrays in merge sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correctness-of-bubblesort">
+   2-2 Correctness of bubblesort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correctness-of-horner-s-rule">
+   2-3 Correctness of Horner’s rule
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inversions">
+   2-4 Inversions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="problems">
+<h1>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">#</a></h1>
+<section id="insertion-sort-on-small-arrays-in-merge-sort">
+<h2>2-1 Insertion sort on small arrays in merge sort<a class="headerlink" href="#insertion-sort-on-small-arrays-in-merge-sort" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Although merge sort runs in <span class="math notranslate nohighlight">\(\Theta(n \lg n))\)</span> worst-case time and insertion sort runs in <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span> worst-case time, the constant factors in insertion sort can make it faster in practice for small problem sizes on many machines. Thus, it makes sense to <em><strong>coarsen</strong></em> the leaves of the recursion by using insertion sort within merge sort when subproblems become sufficiently small. Consider a modification to merge sort in which <span class="math notranslate nohighlight">\(n/k\)</span> sublists of length <span class="math notranslate nohighlight">\(k\)</span> are sorted using insertion sort and then merged using the standard mergin mechanism, where <span class="math notranslate nohighlight">\(k\)</span> is a value to be determined.</p>
+<ol style="list-style-type: lower-alpha;">
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;li&gt;Show that insertion sort can sort the $n/k$ sublists, each of length $k$,
+</pre></div>
+</div>
+<p>in <span class="math notranslate nohighlight">\(\Theta(nk)\)</span> worst-case time.</li>
+<li>Show how to merge the sublists in <span class="math notranslate nohighlight">\(\Theta(n \lg(n/k))\)</span> worst-case time.</li>
+<li>Given that the modified algorithm runs in <span class="math notranslate nohighlight">\(\Theta(nk + n \lg(n/k))\)</span> worst-case time, what is the largest value of <span class="math notranslate nohighlight">\(k\)</span> as a function of <span class="math notranslate nohighlight">\(n\)</span> for which the modified algorithm has the same running time as standard merge sort, in terms of <span class="math notranslate nohighlight">\(\Theta\)</span>-notation?</li>
+<li>How should we choose <span class="math notranslate nohighlight">\(k\)</span> in practice?</li></p>
+</ol><p>(<strong>Remark</strong>: A proper justification of <span class="math notranslate nohighlight">\(\Theta\)</span> arithmetic requires its proper definition, which is only given in the next chapter)</p>
+<ol style="list-style-type: lower-alpha;">
+<li>Insertion sort is $\Theta(l^2)$ for length l, so for $n/k$ lists of length $l=k$ we have time $(n/k)\cdot \Theta(k^2)=\Theta((n/k)k^2)=\Theta(nk)$</li>
+<li>
+We know merge is $\Theta(l)$, with $l$ being the sum of the lengths of the lists being merged. So if the sublists are $A_1$, $A_2$, $\ldots$, $A_{n/k}$, all of them being of length $k$, we merge them in pairs ($A_1$ and $A_2$, $A_3$ and $A_4$ etc. up to $A_{n/k-1}$ and $A_{n/k}$), then we merge the results (of length $2k$) in pairs. Then we merge the results (of length $4k$) in pairs and so on.
+<p>So, assuming <span class="math notranslate nohighlight">\((n/k)=2^p\)</span>, we have</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2^{p-1}\)</span> pairs of lists of length <span class="math notranslate nohighlight">\(k =2^0 k\)</span> to be merged;</p></li>
+<li><p>Then we have <span class="math notranslate nohighlight">\(2^{p-2}\)</span> pairs of lists of length <span class="math notranslate nohighlight">\(2k\)</span> to be merged;</p></li>
+<li><p>then <span class="math notranslate nohighlight">\(2^{p-3}\)</span> pairs of lists of length <span class="math notranslate nohighlight">\((2^2)k\)</span> to be merged;</p></li>
+</ul>
+<p>and so on, up to <span class="math notranslate nohighlight">\(1=2^{p-p}\)</span> pairs of lists of length <span class="math notranslate nohighlight">\(2^{p-1}k\)</span> to be merged. This yields cost</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \sum_{i=1}^p 2^{p-i}\Theta(2\cdot 2^{i-1}k)
+        &amp;=\sum_{i=1}^p\Theta(2^pk)\\
+        &amp;=p\Theta(n)\\
+        &amp;=\Theta(np)\\
+        &amp;=\Theta(n\lg (n/k))
+\end{align*}\]</div>
+</li>
+<li>Since $nk + n \lg(n/k)$ is greater than $nk$, for the modified algorithm to be faster than original merge sort we need that $\Theta(nk)\leq\Theta(n \lg n)$ so, $\Theta(k)\leq\Theta(n)$. But for this limit we actually have
+\begin{equation*}\Theta( n \lg n + n \lg (n/\lg n)) =\Theta(2n \lg n - \lg(\lg n)) =\Theta(n \lg n),\end{equation*}
+so choosing $k=k(n)$ (in terms of $n$) in a way that $k\leq \Theta(\lg n)$ yields the same running time as standard merge-sort. In particular, any constant choice for $k$ yields the same
+asymptotic running time up to $\Theta$-equivalence.</li>
+<li>In practice, we could simply take $k$ to be the largest list length on which insertion sort is faster than merge sort on a given implementation, which can be tested for
+small-ish values of $k$. As usual merge sort is simply the given algorithm with $k=1$, this ought to be faster than regular merge sort.
+<p>This could be seen as being in contradiction with the previous item, which seems to state that different <span class="math notranslate nohighlight">\(n\)</span> would have different optimal <span class="math notranslate nohighlight">\(k\)</span>. However, this is not the case: The running time (worst case) of the modified algorithm is of the form <span class="math notranslate nohighlight">\(c_1nk + c_2n\lg (n/k)\)</span> for certain constants hidden by the <span class="math notranslate nohighlight">\(\Theta\)</span> notation (as long as we allow ourselves to ignore further lower-order terms). Taking derivatives to find the minimum on <span class="math notranslate nohighlight">\(k\)</span> yields</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}0 = c_1n + c_2n\dfrac{k}{(\ln 2) n}\left(-\dfrac{n}{k^2}\right) = c_1n - \dfrac{c_2n}{(\ln 2)k},\end{equation*}\]</div>
+<p>which gives a constant optimal <span class="math notranslate nohighlight">\(k=\dfrac{c_2}{c_1\ln 2}\)</span> (which - we reiterate - depends on specifics of the implementation, including compilers, operating system, etc.).</p>
+</li></ol></section>
+<section id="correctness-of-bubblesort">
+<h2>2-2 Correctness of bubblesort<a class="headerlink" href="#correctness-of-bubblesort" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Bubblesort is a popular, but inefficient, sorting algorithm. It works by repeatedly swapping adjacent elements that are out of order. The procedure <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code> sorts array <span class="math notranslate nohighlight">\(A[1:n]\)</span>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BUBBLESORT(A,n)
+1   for i=1 to n-1
+2       for j=n downto i+1
+3           if A[j]&lt;A[j-1]
+4               exchange A[j] with A[j-1]
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>(a) Let <span class="math notranslate nohighlight">\(A'\)</span> denote the array after <code class="docutils literal notranslate"><span class="pre">BUBBLESORT(A,n)</span></code> is executed. To prove that <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code> is correct, you need to prove that it terminates and that<p>
+<span id="eq.2.5"></span>\begin{equation*}A’[1]\leq A’[2]\leq \cdots\leq A’[n].\tag{2.5}\end{equation*}
+In order to show that <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code> actually sorts, what else do you need to prove?</p></li>
+</ul>
+<p>The next two parts prove inequality <a class="reference external" href="#eq.2.5">(2.5)</a>.</p>
+<ul class="simple">
+<li><p>(b) State precisely a loop invariant for the <strong>for</strong> loop in lines 2-4, and prove that this loop invariant holds. Your proof should use the structure of the loop-invariant proof presented in this chapter.</p></li>
+<li><p>(c) Using the termination condition of the loop invariant proved in part (b), state a loop invariant for the <strong>for</strong> loop in lines 1-4 that allows you to prove inequality <a class="reference external" href="#eq.2.5">(2.5)</a>. Your proof should use the structure of the loop-invariant proof presented in this chapter.</p></li>
+<li><p>(d) What is the worst-case running time of <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code>? How does it compare with the running time of <code class="docutils literal notranslate"><span class="pre">INSERTION-SORT</span></code>?</p></li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p>(a) That the elements of <span class="math notranslate nohighlight">\(A'\)</span> are the same as the elements of <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p>(b)</p>
+<ul>
+<li><p><strong>Loop invariant</strong> (in lines 2-4): At the start of the <span class="math notranslate nohighlight">\(j\)</span>-th iteration, the subarray <span class="math notranslate nohighlight">\(A[1:(j-1)]\)</span> is not modified at all, and <span class="math notranslate nohighlight">\(A[j:n]\)</span> is reordered in such a way that <span class="math notranslate nohighlight">\(A[j]\)</span> is the smallest among them.</p></li>
+<li><p><strong>Initialization</strong>: We start with <span class="math notranslate nohighlight">\(j=n\)</span>. In this case, <span class="math notranslate nohighlight">\(A[1:(n-1)]\)</span> has not been modified, and <span class="math notranslate nohighlight">\(A[n:n]\)</span> is a singleton list, with <span class="math notranslate nohighlight">\(A[n]\)</span> being its smallest element (trivially).</p></li>
+<li><p><strong>Maintenance</strong>: Suppose that the loop invariant is true at the beginning of the <span class="math notranslate nohighlight">\(j\)</span>-th iteration (counting down).</p>
+<p>In particular, <span class="math notranslate nohighlight">\(A[1:(j-1)]\)</span> was not modified at all, so the same is true for <span class="math notranslate nohighlight">\(A[1:(j-2)]\)</span>. The code in the loop keeps this part of the array unchanged, i.e., <span class="math notranslate nohighlight">\(A[1:(j-2)]\)</span> stays unmodified.</p>
+<p>Moreover, <span class="math notranslate nohighlight">\(A[j:n]\)</span> has only been reordered before the loop, with <span class="math notranslate nohighlight">\(A[j]\)</span> being its smallest element. The code in the loop keeps <span class="math notranslate nohighlight">\(A[j+1:n]\)</span> unchanged, and possibly swaps <span class="math notranslate nohighlight">\(A[j]\)</span> and <span class="math notranslate nohighlight">\(A[j-1]\)</span>, putting the smallest one first. So, after this iteration, <span class="math notranslate nohighlight">\(A[j-1]\)</span> will be smaller than or equal to <span class="math notranslate nohighlight">\(A[j]\)</span> and all the elements in <span class="math notranslate nohighlight">\(A[j+1:n]\)</span>. So <span class="math notranslate nohighlight">\(A[j-1]\)</span> is the smallest elements of <span class="math notranslate nohighlight">\(A[j-1:n]\)</span> at the end of the iteration.</p>
+<p>The two paragraphs above state precisely the loop invariant for the next iteration, with index <span class="math notranslate nohighlight">\((j-1)\)</span>.</p>
+</li>
+<li><p><strong>Termination</strong>: At the end of the loop we have <span class="math notranslate nohighlight">\(j=i\)</span>, and the loop invariant states that <span class="math notranslate nohighlight">\(A[1:(i-1)]\)</span> was not modified and <span class="math notranslate nohighlight">\(A[i:n]\)</span> was reordered in such a way that <span class="math notranslate nohighlight">\(A[i]\)</span> is its smallest element.</p></li>
+</ul>
+</li>
+<li><p>(c)</p>
+<ul>
+<li><p><strong>Loop invariant</strong>: At the start of each iteration, the list elements are the original ones, but <span class="math notranslate nohighlight">\(A[1:(i-1)]\)</span> is sorted and contains the <span class="math notranslate nohighlight">\(i-1\)</span> smallest elements in
+the original list.</p></li>
+<li><p><strong>Initialization</strong>:: Vacuous.</p></li>
+<li><p><strong>Maintenance</strong>: Suppose the loop invariant is satisfied at the beginning of the <span class="math notranslate nohighlight">\(i\)</span>-th iteration.</p>
+<p>The termination condition of the inner loop obtained in part (b) states that, at the end of this iteration, the subarray <span class="math notranslate nohighlight">\(A[1:(i-1)]\)</span> was not modified, so it still contains the smallest original <span class="math notranslate nohighlight">\(i-1\)</span> elements in order, and also that <span class="math notranslate nohighlight">\(A[i]\)</span> is smaller than the next elements.Th</p>
+<p>This means that the list <span class="math notranslate nohighlight">\(A\)</span> contains the original elements, with A<span class="math notranslate nohighlight">\([1:i]\)</span> consisting of the <span class="math notranslate nohighlight">\(i\)</span> smallest in order, which is the loop invariant for the next iteration.</p>
+</li>
+<li><p><strong>Termination</strong>: The loop terminates when <span class="math notranslate nohighlight">\(i=n\)</span>, so - as per the loop invariant - <span class="math notranslate nohighlight">\(A\)</span> consists of the original elements with <span class="math notranslate nohighlight">\(A[1:(n-1)]\)</span> containing the <span class="math notranslate nohighlight">\((n-1)\)</span> smallest ones in order, that is, <span class="math notranslate nohighlight">\(A[1]\leq A[2]\leq\cdots\leq A[n-1]\leq A[p]\)</span> for <span class="math notranslate nohighlight">\(p&gt;n-1\)</span>. Taking <span class="math notranslate nohighlight">\(p=n\)</span>, we see that <span class="math notranslate nohighlight">\(A\)</span> is ordered.</p></li>
+</ul>
+</li>
+<li><p>(d) Bubblesort pseudocode with cost (up to <span class="math notranslate nohighlight">\(\Theta\)</span>) is</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BUBBLESORT(A,n)                             cost
+1   for i=1 to n-1                          n
+2       for j=n downto i+1                  sum from i=1 to (n-1) of (n-i+1)
+3           if A[j]&lt;A[j-1]                  sum from i=1 to (n-1) of (n-i)
+4               exchange A[j] with A[j-1]   sum from i=1 to (n-1) of
+                                               sum from j=n downto (i+1) of t_ij
+</pre></div>
+</div>
+<p>with <span class="math notranslate nohighlight">\(t_{ij}=0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>. In any case, the number of times that lines 2 and 3 is ran already covers for that in <span class="math notranslate nohighlight">\(\Theta\)</span>-notation, which yields cost <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>.</p>
+</li>
+</ul>
+<p>Let us implement <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code> for completeness.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+void bubble_sort(int *A, size_t n) {
+    // Bubblesort
+
+    int i, j, x;
+    for (i = 0; i &lt; n - 1; i++) {
+        for (j = n - 1; j &gt; i; j--) {
+            if (A[j] &lt; A[j - 1]) {
+                x = A[j];
+                A[j] = A[j - 1];
+                A[j - 1] = x;
+            }
+        }
+    }
+}
+
+// Test code below
+
+int main() {
+    srand(time(NULL));
+
+    int i; // Index
+    int n=10; // Test size
+
+    
+    // Dinamically allocate random integer array
+    int * A = malloc(n*sizeof(int));
+    for (i=0;i&lt;n;i++) {
+        A[i] = rand()%11 - 5;
+    }
+    
+    printf(&quot;Array created:\n  &quot;);
+    for (i=0;i&lt;n-1;i++) {
+        printf(&quot;%d, &quot;,A[i]);
+    }
+    printf(&quot;%d.\n\n&quot;,A[i]);
+    
+    bubble_sort(A,n);
+
+    printf(&quot;Ordered array:\n  &quot;);
+    for (i=0;i&lt;n-1;i++) {
+        printf(&quot;%d, &quot;,A[i]);
+    }
+    printf(&quot;%d.\n\n&quot;,A[i]);
+    
+    free(A);
+    
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array created:
+  4, -2, 0, 1, -5, 2, 5, -1, -1, -3.
+
+Ordered array:
+  -5, -3, -2, -1, -1, 0, 1, 2, 4, 5.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="correctness-of-horner-s-rule">
+<h2>2-3 Correctness of Horner’s rule<a class="headerlink" href="#correctness-of-horner-s-rule" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>You are given the coefficients <span class="math notranslate nohighlight">\(a_0,a_1,a_2,\ldots,a_n\)</span> of a polynomial</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}P(x) &amp;= \sum_{k=0}^n a_k x^k \\&amp;= a_0 + a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}+a_nx^n\end{align*}\]</div>
+<p>and you want to evaluate this polynomial for a given value of <span class="math notranslate nohighlight">\(x\)</span>. <em><strong>Horner’s rule</strong></em> says to evaluate the polynomial according to this parenthesization:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}P(x)=a_0+x\left(a_1+x\left(a_2+\cdots+x\left(a_{n-1}+xa_n\right)\right)\right).\end{equation*}\]</div>
+<p>The procedure <code class="docutils literal notranslate"><span class="pre">HORNER</span></code> implements Horner’s rule to evaluate <span class="math notranslate nohighlight">\(P(x)\)</span>, given the coefficients <span class="math notranslate nohighlight">\(a_0,a_1,a_2,\ldots,a_n\)</span> in an array <span class="math notranslate nohighlight">\(A[0:n]\)</span> and the value of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HORNER(A,x)
+1   p = 0
+2   for i = n downto 0
+3       p = A[i] + x*p
+4   return p
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>(a) In terms of <span class="math notranslate nohighlight">\(\Theta\)</span>-notation, what is the running time of this code fragment for Horner’s rule?</p></li>
+<li><p>(b) Write pseudocode to implement the naive polynomial-evaluation algorithm that computes each term of the polynomial from scratch. What is the running time of this algorithm? How does it compare with <code class="docutils literal notranslate"><span class="pre">HORNER</span></code>?</p></li>
+<li><p>(c) Consider the following loop invariant for the procedure <code class="docutils literal notranslate"><span class="pre">HORNER</span></code>:</p></li>
+</ul>
+</div></blockquote>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}&amp;\text{At the start of each iteration of the }\mathbf{\text{for}}\text{ loop of lines 2-3,}\\
+    &amp;p=\sum_{k=0}^{n-(i+1)}A[k+i+1]x^k.\end{align*}\]</div>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Interpret a summation with no terms as equaling $0$. Following the structure of the loop-invariant proof presented in this chapter, use this loop invariant to show that, at termination, $p=\sum_{k=0}^nA[k]x^k$.
+</pre></div>
+</div>
+</div></blockquote>
+<ul>
+<li><p>(a) <span class="math notranslate nohighlight">\(\Theta(n)\)</span>.</p></li>
+<li><p>(b) The following pseudocode implements naive polynomial evaluation, with the same input as in Horner’s rule:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  NAIVEPOLEVAL(A,x)          total cost
+  1    y=0                   Theta(1)
+  2    for k=0 to n          Theta(n)
+  3      //Evaluate A[k]*x^k
+  4      s=A[k]              Theta(n)
+  5      for i=1 to k        Theta(n^2)
+  6        s=s*x             Theta(n^2)
+  7      //Add result to y
+  8      y=y+x             Theta(n)
+</pre></div>
+</div>
+<p>The running time is <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>, strictly worse than Horner’s rule.</p></p>
+</li>
+<li><p>(c)</p>
+<ul>
+<li><p><strong>Initialization</strong>: When <span class="math notranslate nohighlight">\(i=n\)</span>, the sum in the loop ivariant is empty, so its value is zero and coincides with the value of <span class="math notranslate nohighlight">\(p\)</span> given in line 1.</p></li>
+<li><p><strong>Maintenance</strong>: Assuming that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}p=\sum_{k=0}^{n-(i+1)} A[k+i+1]x^k,\end{equation*}\]</div>
+<p>the next iteration of the loop updates <span class="math notranslate nohighlight">\(p\)</span> to</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+        A[i] + x\cdot p
+            &amp;= A[i]+x\sum_{k=0}^{n-(i+1)} A[k+i+1]x^k\\
+            &amp;=A[i]+x\sum_{j=1}^{n-i} A[j+i]x^{j-1}\qquad\text{(substitute )j=k+1}\\
+            &amp;=A[0+i]x^0 + \sum_{j=1}^{n-i} A[j+i]x^j\\
+            &amp;=\sum_{j=0}^{n-i} A[j+(i-1)+1]x^j,
+        \end{align*}\]</div>
+<p>which is the same as the loop invariant for the next iteration (with <span class="math notranslate nohighlight">\(i-1\)</span> in place of <span class="math notranslate nohighlight">\(i\)</span>, and index <span class="math notranslate nohighlight">\(j\)</span> in the summation instead of <span class="math notranslate nohighlight">\(k\)</span>).</p>
+</li>
+<li><p><strong>Termination</strong>: The loop terminates when i=-1, which substituting in the loop invariant yields <span class="math notranslate nohighlight">\(p=P(x)\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Let us test Horner’s rule below (restricted to integers for simplicity).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int Horner(int n, int *a, int x) {
+  /*
+    Implements Horner&#39;s rule to evaluate
+    a[0]+a[1]*x_+a[2]*x^2+...+a[n]x^n
+    Note that array a has length n+1!
+  */
+  int y = 0;
+  int i;
+  for (i = n; i &gt;= 0; i--) {
+    y = a[i] + x * y;
+  }
+  return y;
+}
+
+int main() {
+    srand(time(NULL));
+    int i;
+    
+    int n=rand()%3+2;     // random number between 2 and 4
+    
+    int * a = malloc((n+1)*sizeof(int));  // random coefficients
+    int x = rand()%7-3;  // random between -3 and 3
+    for (i=0;i&lt;=n;i++) {
+        a[i] = rand()%7-3; // random between -3 and 3
+        printf(&quot;+(%d)*(%d)^%d&quot;,a[i],x,i);
+    }
+    printf(&quot; = %d\n&quot;,Horner(n,a,x));
+    
+    free(a);
+    
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+(0)*(2)^0+(-1)*(2)^1+(0)*(2)^2+(3)*(2)^3+(0)*(2)^4 = 22
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inversions">
+<h2>2-4 Inversions<a class="headerlink" href="#inversions" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(A[1:n]\)</span> be an array of <span class="math notranslate nohighlight">\(n\)</span> distinct numbers. If <span class="math notranslate nohighlight">\(i&lt;j\)</span> and <span class="math notranslate nohighlight">\(A[i]&gt;A[j]\)</span>, then the pair <span class="math notranslate nohighlight">\((i,j)\)</span> is called an <em><strong>inversion</strong></em> of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<ul class="simple">
+<li><p>(a) List the five inversions of the array <span class="math notranslate nohighlight">\(\langle 2,3,8,6,1\rangle\)</span>.</p></li>
+<li><p>(b) What array with elements from the set <span class="math notranslate nohighlight">\(\left\{1,2,\ldots,n\right\}\)</span> has the most inversions? How many does it have?</p></li>
+<li><p>(c) What is the relationship between the running time of insertion sort and the number of inversions in the input array? Justify you answer.</p></li>
+<li><p>(d) Give an algorithm that determines the number of inversions in any permutation on <span class="math notranslate nohighlight">\(n\)</span> elements in <span class="math notranslate nohighlight">\(\Theta(n lg n)\)</span> worst-case time. (<em>Hint</em>: Modify merge-sort.)</p></li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p>(a) <span class="math notranslate nohighlight">\((1,5)\)</span>, <span class="math notranslate nohighlight">\((2,5)\)</span>, <span class="math notranslate nohighlight">\((3,4)\)</span>, <span class="math notranslate nohighlight">\((3,5)\)</span> and <span class="math notranslate nohighlight">\((4,5)\)</span>.</p></li>
+<li><p>(b) We need to e assume that the array is simply a permutation of the elements of the set. Otherwise, awways of the form <span class="math notranslate nohighlight">\([2,1,1,\ldots]\)</span> would have as many permutations as wanted .
+Given an array <span class="math notranslate nohighlight">\(A[1:n]\)</span> with elements from <span class="math notranslate nohighlight">\(\left\{1,\ldots,n\right\}\)</span>, for each <span class="math notranslate nohighlight">\(i\)</span> there are at most <span class="math notranslate nohighlight">\((n-i)\)</span> inversions of the form <span class="math notranslate nohighlight">\((i,j)\)</span>. This is attained for (and only for) the array <span class="math notranslate nohighlight">\(A=[n,n-1,n-2,\ldots,1]\)</span> which has</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\sum_{k=0}^{n-1}k = \dfrac{n\cdot (n-1)}{2}\end{equation*}\]</div>
+<p>inversions.</p>
+</li>
+<li><p>(c) Note that the <span class="math notranslate nohighlight">\(j\)</span>-th iteration of the for loop in insertion sort leaves <span class="math notranslate nohighlight">\(A[j+1:n]\)</span> unmodified. As per the loop invariant, <span class="math notranslate nohighlight">\(A[1:(j-1)]\)</span> is ordered. So to count how many inversions of the form <span class="math notranslate nohighlight">\((i,j)\)</span> there are for a given <span class="math notranslate nohighlight">\(j\)</span>, we need only to check how many of the elements in <span class="math notranslate nohighlight">\(A[1:(j-1)]\)</span> are greater than <span class="math notranslate nohighlight">\(A[j]\)</span>. Each of these elements corresponds to an iteration of the while loop in lines 5-7 of <code class="docutils literal notranslate"><span class="pre">INSERTION-SORT</span></code>.</p>
+<p>Thus, the number of inversions of an array is exactly the number of iterations of the while loop in lines 5-7 of <code class="docutils literal notranslate"><span class="pre">INSERTION-SORT</span></code>.</p>
+</li>
+<li><p>(d) The part of <code class="docutils literal notranslate"><span class="pre">MERGE-SORT</span></code> that compares and swaps elements is the merge procedure, which only looks at a subarray of the form <span class="math notranslate nohighlight">\(A[p:q]\)</span>. So let us see how we can keep track of inversions in this manner.</p>
+<p>Suppose that we have subarrays <span class="math notranslate nohighlight">\(A[p:q]\)</span> and <span class="math notranslate nohighlight">\(A[q+1:r]\)</span>  and that we do know how many inversions there are inner to <span class="math notranslate nohighlight">\(A[p:q]\)</span> and to <span class="math notranslate nohighlight">\(A[q+1:r]\)</span> originally; call these numbers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, respectively.</p>
+<p>If we want to count how many inversions there are in the (original) array <span class="math notranslate nohighlight">\(A[p:r]\)</span>, we just need to check how many inversions there are which involve an elemento f <span class="math notranslate nohighlight">\(A[p,q]\)</span> and an element of <span class="math notranslate nohighlight">\(A[q+1:p]\)</span> - i.e., an inversion of the form <span class="math notranslate nohighlight">\((i,j)\)</span> with <span class="math notranslate nohighlight">\(p\leq i\leq q&lt;j\leq r\)</span>. These inversions corresponds to the “else” statement in line 16 of the <code class="docutils literal notranslate"><span class="pre">MERGE</span></code> procedure being run. However, if we find such <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> then in fact we have found several inversions, since <span class="math notranslate nohighlight">\(A[p:q]\)</span> is ordered: <span class="math notranslate nohighlight">\((i,j)\)</span>, <span class="math notranslate nohighlight">\((i+1,j)\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span>, <span class="math notranslate nohighlight">\((q,j)\)</span>. In any case, in this manner, we can obtain how many inversions there are originally in the subarray <span class="math notranslate nohighlight">\(A[p:r]\)</span>.</p>
+<p>However, the strength of <code class="docutils literal notranslate"><span class="pre">MERGE-SORT</span></code> (which makes it cost <span class="math notranslate nohighlight">\(\Theta(n\lg n)\)</span> instead of <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>) is that it sorts an array <span class="math notranslate nohighlight">\(A[p:r]\)</span> <em>which is broken into two <strong>ordered</strong> subarrays</em>, as this can be done in linear time. So to count the number of permutation with the same running time as <code class="docutils literal notranslate"><span class="pre">MERGE-SORT</span></code>, we will still need to order the initial array.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  MERGE-INVERSIONS(A,p,q,r)
+  1   n_L = q-p+1                                 // length of A[p:q]
+  2   n_R = r-q                                   // length of A[q+1:r]
+  3   let L[0:n_L-1] and R[0:n_R-1] be new arrays
+  4   for i=0 to n_L-1                            // copy A[p:q] into L[0:n_L-1]
+  5       L[i] = A[p+i]
+  6   for j=0 to n_R-1                            // copy A[q+1:r] into R[0:n_R-1]
+  7       R[j] = A[q+j+1]
+  8   i=0                                         // i indexes the smallest remaining element in L
+  9   j=0                                         // j indexes the smallest remaining element in R
+  10  k=p                                         // k indexes the location in A to fill
+  11  inversions = 0                              // counts how many inversions involving elements of A[p:q] and of A[q+1:r] there are
+  12  while i&lt;n_L and j&lt;n_R
+  13      if L[i] &lt;= R[j]
+  14          A[k] = L[i]
+  15          i = i+1
+  16      else
+  17          A[k] = R[j]
+  18          inversions = inversions + (q-i+1)
+  19          j = j+1
+  20      k = k+1
+  21  // copy the remainders of L and R to the end of A
+  22  while i&lt;n_L
+  23      A[k] = L[i]
+  24      i = i+1
+  25      k = k+1
+  26  while j&lt;n_R
+  27      A[k]=R[j]
+  28      j = j+1
+  29      k = k+1
+  30  return inversions
+
+
+  MERGE-SORT-INVERSIONS(A,p,r)
+  1   inversions = 0
+  2   if p&lt;r
+  3       q = floor((p+r)/2)
+  4       inversions = inversions + MERGE-SORT-INVERSIONS(A,p,q)    // count inversions in A[p:q]
+  5       inversions = inversions + MERGE-SORT-INVERSIONS(A,q+1,r)  // count inversions in A[q+1:r]
+  6       inversions = inversions + MERGE-INVERSIONS(A,p,q,r)  // count remaining inversions
+  7   return inversions
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#include &lt;string.h&gt;
+
+void print_int_array(int *v, int n); //Prints an n-sized integer array v
+int * random_int_array(size_t n); // Randomly creates an n-sized integer array
+
+int merge_inversions(int *A, int p, int q, int r) {
+  // Merges A[p:q] and A[q+1:r], where p&lt;=q&lt;r, and returns the number of inversions
+
+  int i,j,k; // Loop indices
+  int inversions=0;  // number of inversions
+  int n1 = q - p + 1; // Length of A[p:q]
+  int n2 = r - q;     // Length of A[q+1:r]
+  
+  int * L = malloc(n1*sizeof(int));
+  int * R = malloc(n2*sizeof(int));
+
+  // Copy A[p:q] and A[q+1:r] to L and R
+  memcpy(L,A+p,n1*sizeof(int));
+  memcpy(R,A+q+1,n2*sizeof(int));
+
+  i = 0; // Index of L
+  j = 0; // Index of R
+  k = p; // Index of A[p:q]
+  while (i &lt; n1 &amp;&amp; j &lt; n2) {
+    if (L[i] &lt;= R[j]) {
+      A[k++] = L[i++];
+    } else {
+      A[k++] = R[j++];
+      inversions+=(n1-i); // (last index)-i+1 = (n1-1)-i+1
+    }
+  }
+
+  // Copy the remainders of L or R to A
+  while (i &lt; n1) {
+    A[k++] = L[i++];
+  }
+
+  while (j &lt; n2) {
+    A[k++] = R[j++];
+  }
+
+  free(L);
+  free(R);
+
+  return inversions;
+}
+
+int merge_sort_inversions(int *A, int p, int r) {
+  // Merge-sort and inversion counting on A[p:r]
+  int inversions = 0;
+  
+  if (p == r) {
+    return 0;
+  }
+
+  // Break A[p:q] in two
+  int q = (p + r) / 2;
+  inversions += merge_sort_inversions(A, p, q);
+  inversions += merge_sort_inversions(A, q + 1, r);
+  inversions += merge_inversions(A, p, q, r);
+    
+  return inversions;
+}
+
+// Test
+
+int main() {
+    int n=10; // Test size
+
+    int * A = random_int_array(n);
+    
+    printf(&quot;Array created:\n  &quot;);
+    print_int_array(A,n);
+    printf(&quot;\n\n&quot;);
+    
+    // Count inversions by brute force
+    printf(&quot;Brute-force listing of all inversions:\n&quot;);
+    int i,j;
+    int inversions=0;
+    for (i=0;i&lt;n;i++) {
+        for (j=i+1;j&lt;n;j++) {
+            if (A[i]&gt;A[j]) {
+                printf(&quot;  Inversion %d: indexes (%d,%d); values %d &gt; %d\n&quot;,(++inversions),i,j,A[i],A[j]);
+            }
+        }
+    }
+    printf(&quot;\n&quot;);
+    inversions=merge_sort_inversions( A , 0 , n-1 );
+    
+    printf(&quot;Number of inversions counted by modified MERGE-SORT: %d\n\n&quot;,inversions);
+    printf(&quot;Ordered array:\n\n  &quot;);
+    print_int_array(A,n);
+    printf(&quot;\n&quot;);
+
+    free(A);
+    
+    return 0;
+}
+
+///////////////////////////////
+
+void print_int_array(int *v, int n) {
+  // Prints an n-sized integer array v
+
+  int i;
+  for (i=0;i&lt;n-1;i++) {
+        printf(&quot;%d , &quot;,v[i]);
+  }
+  printf(&quot;%d&quot;,v[i]);
+  return;
+}
+
+int * random_int_array(size_t n) {
+  // Randomly creates an n-sized integer array v
+
+  srand(time(NULL));
+
+  int * A = malloc(n*sizeof(int));
+  for (int i = 0; i &lt; n; i++) {
+    A[i] = rand() % 100;
+  }
+
+  return A;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array created:
+  17 , 44 , 22 , 90 , 10 , 96 , 37 , 58 , 65 , 92
+
+Brute-force listing of all inversions:
+  Inversion 1: indexes (0,4); values 17 &gt; 10
+  Inversion 2: indexes (1,2); values 44 &gt; 22
+  Inversion 3: indexes (1,4); values 44 &gt; 10
+  Inversion 4: indexes (1,6); values 44 &gt; 37
+  Inversion 5: indexes (2,4); values 22 &gt; 10
+  Inversion 6: indexes (3,4); values 90 &gt; 10
+  Inversion 7: indexes (3,6); values 90 &gt; 37
+  Inversion 8: indexes (3,7); values 90 &gt; 58
+  Inversion 9: indexes (3,8); values 90 &gt; 65
+  Inversion 10: indexes (5,6); values 96 &gt; 37
+  Inversion 11: indexes (5,7); values 96 &gt; 58
+  Inversion 12: indexes (5,8); values 96 &gt; 65
+  Inversion 13: indexes (5,9); values 96 &gt; 92
+
+Number of inversions counted by modified MERGE-SORT: 13
+
+Ordered array:
+
+  10 , 17 , 22 , 37 , 44 , 58 , 65 , 90 , 92 , 96
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "c"
+        },
+        kernelOptions: {
+            kernelName: "c",
+            path: "./jupyter_files/ch2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'c'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="clrs_ita_2.3.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2.3 Designing algorithms</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ch3/clrs_ita_3.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 3 - Characterizing Running Times</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luiz Gustavo Cordeiro<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

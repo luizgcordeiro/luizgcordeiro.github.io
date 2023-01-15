@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Problems &#8212; CLRS - Introduction to Algorithms, 4&lt;sup&gt;th&lt;/sup&gt; edition&lt;br/&gt;Solutions and implementations in C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter 2 - Getting Started" href="../ch2/clrs_ita_2.html" />
+    <link rel="prev" title="1.2 Algorithms as a technology" href="clrs_ita_1.2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../clrs_ita_main.html">
+                    CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="clrs_ita_1.html">
+   Chapter 1 - The Role of Algorithms in Computing
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_1.1.html">
+     1.1 Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_1.2.html">
+     1.2 Algorithms as a technology
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch2/clrs_ita_2.html">
+   Chapter 2 - Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.1.html">
+     2.1 Insertion sort
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.2.html">
+     2.2 Analyzing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.3.html">
+     2.3 Designing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch3/clrs_ita_3.html">
+   Chapter 3 - Characterizing Running Times
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.1.html">
+     3.1
+     <span class="math notranslate nohighlight">
+      \(O\)
+     </span>
+     -notation,
+     <span class="math notranslate nohighlight">
+      \(\Omega\)
+     </span>
+     -notation, and
+     <span class="math notranslate nohighlight">
+      \(\Theta\)
+     </span>
+     -notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.2.html">
+     3.2 Asymptotic notation: formal definitions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.3.html">
+     3.3 Standard notations and common functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://luizgcordeiro.github.coms"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://luizgcordeiro.github.coms/issues/new?title=Issue%20on%20page%20%2Fjupyter_files/ch1/clrs_ita_1.P.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/jupyter_files/ch1/clrs_ita_1.P.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparison-of-running-times">
+   1-1 Comparison of running times
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Problems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparison-of-running-times">
+   1-1 Comparison of running times
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="problems">
+<h1>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">#</a></h1>
+<section id="comparison-of-running-times">
+<h2>1-1 Comparison of running times<a class="headerlink" href="#comparison-of-running-times" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>For each function <span class="math notranslate nohighlight">\(f(n)\)</span> and time <span class="math notranslate nohighlight">\(t\)</span> in the following table, determine the largest size <span class="math notranslate nohighlight">\(n\)</span> of a problem that can be solved in time <span class="math notranslate nohighlight">\(t\)</span>, assuming that the algorithm to solve the problem takes <span class="math notranslate nohighlight">\(f(n)\)</span> microseconds.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>1 second</p></th>
+<th class="head"><p>1 minute</p></th>
+<th class="head"><p>1 hour</p></th>
+<th class="head"><p>1 day</p></th>
+<th class="head"><p>1 month</p></th>
+<th class="head"><p>1 year</p></th>
+<th class="head"><p>1 century</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\lg n\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sqrt{n}\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(n\lg n\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n^2\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(n^3\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(2^n\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(n!\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>We assume that a month has 30 days and a year has 365 days. Note that <span class="math notranslate nohighlight">\(1\text{ second}=10^6\text{ microseconds}\)</span>. So each time (column) can be rewritten in terms of microseconds.</p>
+<p>Thus, for each function <span class="math notranslate nohighlight">\(f(n)\)</span> and each time <span class="math notranslate nohighlight">\(t\)</span>, we need to find the largest <span class="math notranslate nohighlight">\(n\)</span> for which <span class="math notranslate nohighlight">\(f(n)\leq t\)</span>. The first three rows can be solved analitically:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lg n \leq t\iff n\leq 2^t\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sqrt{n} \leq t \iff n \leq t^2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\leq t\)</span> is already solved.</p></li>
+</ul>
+<p>The other rows need to be solved computationally. We implement C code to complete the table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+unsigned long long int pow2( int n ) {
+    if (n==0) {
+        return 1;
+    }
+    return 2*pow2(n-1);
+}
+
+unsigned long long int Pow10( int n ) {
+    if (n==0) {
+        return 1;
+    }
+    return 10*Pow10(n-1);
+}
+
+unsigned long long fact( int n ) {
+    if (n==1) {
+        return 1;
+    }
+    return n*fact(n-1);
+}
+
+int main () {
+    int i,j; // index
+    unsigned long long times[7] = {Pow10(6), // 1 second = 10^6 usec
+                                   Pow10(6)*60, // 1 minute = 6*10^7 usec
+                                   Pow10(6)*60*60, // 1 hour = 36 * 10^8 usec
+                                   Pow10(6)*60*60*24, // 1 day = 864 * 10^8 usec
+                                   Pow10(6)*60*60*24*30, // 1 month = 2592 * 10^9 usec
+                                   Pow10(6)*60*60*24*365, // 1 year = 31536 * 10^9 usec
+                                   Pow10(6)*60*60*24*365*100 // 1 century = 31536 * 10^11 usec
+                                   };
+    unsigned long long t;
+    char format_string[20];
+    int col_widths[7] = {16,17,19,20,22,23,25};
+    int first_col_width = 10;
+    
+    char initial_rows[5][8][30]={
+            {&quot;&quot;,&quot;1 second&quot;,&quot;1 minute&quot;,&quot;1 hour&quot;,&quot;1 day&quot;,&quot;1 month&quot;,&quot;1 year&quot;,&quot;1 century&quot;},
+            {&quot;---&quot;,&quot;---&quot;,&quot;---&quot;,&quot;---&quot;,&quot;---&quot;,&quot;---&quot;,&quot;---&quot;,&quot;---&quot;},
+            {&quot;$\\lg n$&quot;},
+            {&quot;$\\sqrt{n}$&quot;},
+            {&quot;$n$&quot;},
+        };
+    
+    for (i=1;i&lt;8;i++) {
+        sprintf(initial_rows[2][i],&quot;$2^{%llu}$&quot;,times[i-1]);
+        sprintf(initial_rows[3][i],&quot;$\\sqrt{%llu}$&quot;,times[i-1]);
+        sprintf(initial_rows[4][i],&quot;$%llu$&quot;,times[i-1]);
+    }
+    for (i=0;i&lt;5;i++) {
+        printf(&quot;|&quot;);
+        // Little trick to allow printing formatted string with parameters in a variable
+        sprintf(format_string,&quot; %c%ds |&quot;,&#39;%&#39;,first_col_width);
+        printf(format_string,initial_rows[i][0]);
+        for (j=1;j&lt;8;j++) {
+            sprintf(format_string,&quot; %c%ds |&quot;,&#39;%&#39;,col_widths[j-1]);
+            printf(format_string,initial_rows[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+    
+    // For the next ones, the largest n for which f(n)&lt;=t will be found with the bisection method.
+    // We can use the interval [0,t], as the functions always satisfy f(t)&gt;t&gt;f(0)=1 or 0
+    unsigned long long n_l,n_u,mi; //lower n, upper n, middle
+    
+    // Solve n lg n &lt;=t
+    
+    sprintf(format_string,&quot;| %c%ds |&quot;,&#39;%&#39;,first_col_width);
+    printf(format_string,&quot;$n\\lg n$&quot;);
+    for (i=0;i&lt;7;i++) {
+        t=  times[i];
+        n_l = 0;
+        n_u = t;
+        while (n_l+1&lt;n_u) {
+            mi = (n_l+n_u)/2;
+             if (mi * log2((double)mi) &lt;= t) {
+                n_l=mi;
+            } else {
+                n_u=mi;
+            }
+        }
+        
+        sprintf(format_string,&quot; %c%dllu |&quot;,&#39;%&#39;,col_widths[i]);
+        printf(format_string,n_l);
+    }
+    
+    printf(&quot;\n&quot;);
+        
+    // Solve n^2 &lt;=t
+    
+    sprintf(format_string,&quot;| %c%ds |&quot;,&#39;%&#39;,first_col_width);
+    printf(format_string,&quot;$n^2$&quot;);
+    for (i=0;i&lt;7;i++) {
+        t=  times[i];
+        n_l = 0;
+        n_u = t;
+        while (n_l+1&lt;n_u) {
+            mi = (n_l+n_u)/2;
+             if (mi * mi &lt;= t) {
+                n_l=mi;
+            } else {
+                n_u=mi;
+            }
+        }
+        
+        sprintf(format_string,&quot; %c%dllu |&quot;,&#39;%&#39;,col_widths[i]);
+        printf(format_string,n_l);
+    }
+    
+    printf(&quot;\n&quot;);
+        
+    // Solve n^3 &lt;=t
+    
+    sprintf(format_string,&quot;| %c%ds |&quot;,&#39;%&#39;,first_col_width);
+    printf(format_string,&quot;$n^3$&quot;);
+    for (i=0;i&lt;7;i++) {
+        t=  times[i];
+        n_l = 0;
+        n_u = t;
+        while (n_l+1&lt;n_u) {
+            mi = (n_l+n_u)/2;
+             if (mi * mi * mi&lt;= t) {
+                n_l=mi;
+            } else {
+                n_u=mi;
+            }
+        }
+        
+        sprintf(format_string,&quot; %c%dllu |&quot;,&#39;%&#39;,col_widths[i]);
+        printf(format_string,n_l);
+    }
+    
+    printf(&quot;\n&quot;);
+        
+    // Solve 2^n &lt;=t
+    
+    sprintf(format_string,&quot;| %c%ds |&quot;,&#39;%&#39;,first_col_width);
+    printf(format_string,&quot;$2^n$&quot;);
+    for (i=0;i&lt;7;i++) {
+        t=  times[i];
+        n_l = 0;
+        /*
+            Here, taking n_u = t would entail calculating 2^t, which is too large.
+            We can choose a smaller upper bound: The largest t is
+                t = 10^6*60*60*24*365*100
+                  = (2^6 * 5^6) *(3 * 5 * 2^2) * (3 * 5 * 2^2) * (2^3 * 3) * (73 * 5) * (2^2 * 5^2)
+                  = 2^15 * 3^3 * 5^11 * 73
+                  &lt; 2^15 * 3^3 * (5^3)^4 * 73
+                  = 2^15 * 27 * (125)^4 * 73
+                  &lt; 2^15 * 32 * (128)^4 * 128
+                  = 2^15 * 2^5 * (2^7)^4 * 2^7
+                  = 2^55
+            so taking n_u=55 is more than enough.
+        */
+        n_u = 55;
+        while (n_l+1&lt;n_u) {
+            mi = (n_l+n_u)/2;
+             if (pow2(mi)&lt;= t) {
+                n_l=mi;
+            } else {
+                n_u=mi;
+            }
+        }
+        
+        sprintf(format_string,&quot; %c%dllu |&quot;,&#39;%&#39;,col_widths[i]);
+        printf(format_string,n_l);
+    }
+    
+    printf(&quot;\n&quot;);
+    
+    // Solve n! &lt;=t
+    
+    sprintf(format_string,&quot;| %c%ds |&quot;,&#39;%&#39;,first_col_width);
+    printf(format_string,&quot;$n!$&quot;);
+    
+    /*
+        In this case, as factorials grow extremely fast, we can simply do a linear search starting at 1.
+        
+        Compiling the previous row already lets us know that n&lt;=51 (as we also know that 51!&gt;2^51, clearly).
+        
+        We could also implement factorials implicity here for better performance, but the code below is more readable.
+    */
+    n_l=1;
+    
+    for (i=0;i&lt;7;i++) {
+        t = times[i];
+        
+        while (fact(n_l)&lt;=t) n_l++;
+        sprintf(format_string,&quot; %c%dllu |&quot;,&#39;%&#39;,col_widths[i]);
+        printf(format_string,n_l-1);
+    }
+    
+    printf(&quot;\n&quot;);
+    
+    return 0;
+}     
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|            |         1 second |          1 minute |              1 hour |                1 day |                1 month |                  1 year |                 1 century |
+|        --- |              --- |               --- |                 --- |                  --- |                    --- |                     --- |                       --- |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|    $\lg n$ |    $2^{1000000}$ |    $2^{60000000}$ |    $2^{3600000000}$ |    $2^{86400000000}$ |    $2^{2592000000000}$ |    $2^{31536000000000}$ |    $2^{3153600000000000}$ |
+| $\sqrt{n}$ | $\sqrt{1000000}$ | $\sqrt{60000000}$ | $\sqrt{3600000000}$ | $\sqrt{86400000000}$ | $\sqrt{2592000000000}$ | $\sqrt{31536000000000}$ | $\sqrt{3153600000000000}$ |
+|        $n$ |        $1000000$ |        $60000000$ |        $3600000000$ |        $86400000000$ |        $2592000000000$ |        $31536000000000$ |        $3153600000000000$ |
+|   $n\lg n$ |            62746 |           2801417 |           133378058 |           2755147513 |            71870856404 |            797633893349 |            68610956750570 |
+|      $n^2$ |             1000 |              7745 |               60000 |               293938 |                1609968 |                 5615692 |                  56156922 |
+|      $n^3$ |              100 |               391 |                1532 |                 4420 |                  13736 |                   31593 |                    146645 |
+|      $2^n$ |               19 |                25 |                  31 |                   36 |                     41 |                      44 |                        51 |
+|       $n!$ |                9 |                11 |                  12 |                   13 |                     15 |                      16 |                        17 |
+</pre></div>
+</div>
+</div>
+</div>
+<p>Thus, the completed table is</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>1 second</p></th>
+<th class="head"><p>1 minute</p></th>
+<th class="head"><p>1 hour</p></th>
+<th class="head"><p>1 day</p></th>
+<th class="head"><p>1 month</p></th>
+<th class="head"><p>1 year</p></th>
+<th class="head"><p>1 century</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\lg n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{1000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{60000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{3600000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{86400000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{2592000000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{31536000000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{3153600000000000}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sqrt{n}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{1000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{60000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{3600000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{86400000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{2592000000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{31536000000000}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{3153600000000000}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1000000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(60000000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3600000000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(86400000000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2592000000000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(31536000000000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3153600000000000\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(n\lg n\)</span></p></td>
+<td><p>62746</p></td>
+<td><p>2801417</p></td>
+<td><p>133378058</p></td>
+<td><p>2755147513</p></td>
+<td><p>71870856404</p></td>
+<td><p>797633893349</p></td>
+<td><p>68610956750570</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n^2\)</span></p></td>
+<td><p>1000</p></td>
+<td><p>7745</p></td>
+<td><p>60000</p></td>
+<td><p>293938</p></td>
+<td><p>1609968</p></td>
+<td><p>5615692</p></td>
+<td><p>56156922</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(n^3\)</span></p></td>
+<td><p>100</p></td>
+<td><p>391</p></td>
+<td><p>1532</p></td>
+<td><p>4420</p></td>
+<td><p>13736</p></td>
+<td><p>31593</p></td>
+<td><p>146645</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(2^n\)</span></p></td>
+<td><p>19</p></td>
+<td><p>25</p></td>
+<td><p>31</p></td>
+<td><p>36</p></td>
+<td><p>41</p></td>
+<td><p>44</p></td>
+<td><p>51</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(n!\)</span></p></td>
+<td><p>9</p></td>
+<td><p>11</p></td>
+<td><p>12</p></td>
+<td><p>13</p></td>
+<td><p>15</p></td>
+<td><p>16</p></td>
+<td><p>17</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "c"
+        },
+        kernelOptions: {
+            kernelName: "c",
+            path: "./jupyter_files/ch1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'c'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="clrs_ita_1.2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">1.2 Algorithms as a technology</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ch2/clrs_ita_2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 2 - Getting Started</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luiz Gustavo Cordeiro<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
