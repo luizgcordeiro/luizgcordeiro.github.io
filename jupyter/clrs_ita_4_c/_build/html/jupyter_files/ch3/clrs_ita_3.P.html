@@ -1,0 +1,1480 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Problems &#8212; CLRS - Introduction to Algorithms, 4&lt;sup&gt;th&lt;/sup&gt; edition&lt;br/&gt;Solutions and implementations in C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="3.3 Standard notations and common functions" href="clrs_ita_3.3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../clrs_ita_main.html">
+                    CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch1/clrs_ita_1.html">
+   Chapter 1 - The Role of Algorithms in Computing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.1.html">
+     1.1 Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.2.html">
+     1.2 Algorithms as a technology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch2/clrs_ita_2.html">
+   Chapter 2 - Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.1.html">
+     2.1 Insertion sort
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.2.html">
+     2.2 Analyzing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.3.html">
+     2.3 Designing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="clrs_ita_3.html">
+   Chapter 3 - Characterizing Running Times
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_3.1.html">
+     3.1
+     <span class="math notranslate nohighlight">
+      \(O\)
+     </span>
+     -notation,
+     <span class="math notranslate nohighlight">
+      \(\Omega\)
+     </span>
+     -notation, and
+     <span class="math notranslate nohighlight">
+      \(\Theta\)
+     </span>
+     -notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_3.2.html">
+     3.2 Asymptotic notation: formal definitions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_3.3.html">
+     3.3 Standard notations and common functions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/luizgcordeiro//master?urlpath=tree/docs/jupyter_files/ch3/clrs_ita_3.P.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/luizgcordeiro/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/luizgcordeiro//issues/new?title=Issue%20on%20page%20%2Fjupyter_files/ch3/clrs_ita_3.P.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/jupyter_files/ch3/clrs_ita_3.P.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asymptotic-behavior-of-polynomials">
+   3-1 Asymptotic behavior of polynomials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relative-asymptotic-growths">
+   3-2 Relative asymptotic growths
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ordering-by-asymptotic-growth-rates">
+   3-3 Ordering by asymptotic growth rates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asymptotic-notation-properties">
+   3-4 Asymptotic notation properties
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manipulating-asymptotic-notation">
+   3-5 Manipulating asymptotic notation.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variations-on-o-and-omega">
+   3-6 Variations on
+   <span class="math notranslate nohighlight">
+    \(O\)
+   </span>
+   and
+   <span class="math notranslate nohighlight">
+    \(\Omega\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iterated-functions">
+   3-7 Iterated functions
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Problems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asymptotic-behavior-of-polynomials">
+   3-1 Asymptotic behavior of polynomials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relative-asymptotic-growths">
+   3-2 Relative asymptotic growths
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ordering-by-asymptotic-growth-rates">
+   3-3 Ordering by asymptotic growth rates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asymptotic-notation-properties">
+   3-4 Asymptotic notation properties
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manipulating-asymptotic-notation">
+   3-5 Manipulating asymptotic notation.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variations-on-o-and-omega">
+   3-6 Variations on
+   <span class="math notranslate nohighlight">
+    \(O\)
+   </span>
+   and
+   <span class="math notranslate nohighlight">
+    \(\Omega\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iterated-functions">
+   3-7 Iterated functions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="problems">
+<h1>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">#</a></h1>
+<style>
+ol>li {
+  counter-increment: mycounter;
+ }
+
+ol {
+  list-style: none;
+}
+    
+ol>li::marker {
+  font-weight: bold;
+  content: counter(mycounter,lower-alpha) ". ";
+}
+
+ol:first-of-type {
+  counter-reset: mycounter;
+}
+
+.resetol {
+  counter-reset: mycounter;
+}
+.incrementol {
+  counter-increment: mycounter;
+  /* display:none;*/
+  content: counter(mycounter);
+}
+</style><section id="asymptotic-behavior-of-polynomials">
+<span id="problem3-1"></span><h2>3-1 Asymptotic behavior of polynomials<a class="headerlink" href="#asymptotic-behavior-of-polynomials" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Let</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}p(n) = \sum_{i=0}^d a_i n^i,\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_d&gt;0\)</span>, be a degree-<span class="math notranslate nohighlight">\(d\)</span> polynomial in <span class="math notranslate nohighlight">\(n\)</span>, and let <span class="math notranslate nohighlight">\(k\)</span> be a constant. Use the definitions of the asymptotic notations to prove the following properties.</p>
+<ul class="simple">
+<li><p>(a) If <span class="math notranslate nohighlight">\(k\geq d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = O(n^k)\)</span>.</p></li>
+<li><p>(b) If <span class="math notranslate nohighlight">\(k\leq d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = \Omega(n^k)\)</span>.</p></li>
+<li><p>(c) If <span class="math notranslate nohighlight">\(k=d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = \Theta(n^k)\)</span>.</p></li>
+<li><p>(d) If <span class="math notranslate nohighlight">\(k&gt;d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = o(n^k)\)</span>.</p></li>
+<li><p>(e) If <span class="math notranslate nohighlight">\(k&lt;d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = \omega(n^k)\)</span>.</p></li>
+</ul>
+</div></blockquote>
+<p>Elementary Calculus exercise.</p>
+</section>
+<section id="relative-asymptotic-growths">
+<span id="problem3-2"></span><h2>3-2 Relative asymptotic growths<a class="headerlink" href="#relative-asymptotic-growths" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Indicate, for each pair <span class="math notranslate nohighlight">\((A,B)\)</span> in the table below whether <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(O\)</span>, <span class="math notranslate nohighlight">\(o\)</span>, <span class="math notranslate nohighlight">\(\Omega\)</span>, <span class="math notranslate nohighlight">\(\omega\)</span>, or <span class="math notranslate nohighlight">\(\Theta\)</span> of <span class="math notranslate nohighlight">\(B\)</span>. Assume that <span class="math notranslate nohighlight">\(k\geq 1\)</span>, <span class="math notranslate nohighlight">\(\epsilon&gt;0\)</span>, and <span class="math notranslate nohighlight">\(c&gt;1\)</span> are constants. Write your answer in the form of the table with “yes” or “no” written in each box</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(A\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(B\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(O\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(o\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\Omega\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\omega\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\Theta\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>a.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lg^k n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^\epsilon\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>b.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^k\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(c^n\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>c.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{n}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^{\sin n}\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>d.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{n/2}\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>e.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^{\lg c}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(c^{\lg n}\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>f.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lg(n!)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lg (n^n)\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><span class="resetol"></span></p>
+<ol>
+<li><p>As logarithms grow slower than polynomials,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lim_{n\to\infty}\dfrac{\lg^k n}{n^\epsilon}=\left(\lim_{n\to\infty}\dfrac{\lg n}{n^{\epsilon/k}}\right)^k=0^k=0.\end{equation*}\]</div>
+</li>
+<li><p>Similar to item (a), as exponentials (of base <span class="math notranslate nohighlight">\(c&gt;1\)</span>) grow faster than polynomials.</p></li>
+<li><p>This requires some elementary topology. Since all intervals of the form <span class="math notranslate nohighlight">\(\left[2k\pi+\dfrac{\pi}{4},2k\pi+\dfrac{3\pi}{4}\right]\)</span> (<span class="math notranslate nohighlight">\(k\in\mathbb{Z}\)</span>) have length <span class="math notranslate nohighlight">\(pi/2\)</span> (which is greater than <span class="math notranslate nohighlight">\(1\)</span>), then they all contain at least one integer <span class="math notranslate nohighlight">\(n_k\)</span>. Of course, the sequence <span class="math notranslate nohighlight">\(\left\{n_k\right\}_{k=1}^\infty\)</span> is increasing. For all <span class="math notranslate nohighlight">\(k\)</span>, we have <span class="math notranslate nohighlight">\(\sin(n_k)\geq \sqrt(2)/2\)</span>, so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{\sqrt{n_k}}{n_k^{\sin n_k}}\leq n_k^{\left(1-\sqrt{2}\right)/2},\end{equation*}\]</div>
+<p>which goes to <span class="math notranslate nohighlight">\(0\)</span> as <span class="math notranslate nohighlight">\(k\)</span> increases. This shows that <span class="math notranslate nohighlight">\(\sqrt{n}\)</span> is not <span class="math notranslate nohighlight">\(\Omega\)</span> (and, in particular, nor <span class="math notranslate nohighlight">\(\omega\)</span> nor <span class="math notranslate nohighlight">\(\Theta\)</span>) of <span class="math notranslate nohighlight">\(n^{\sin n}\)</span>.</p>
+<p>A similar argument, with intervals of the form <span class="math notranslate nohighlight">\(\left[2k\pi-\dfrac{3\pi}{4},2k\pi-\dfrac{\pi}{4}\right]\)</span> shows that <span class="math notranslate nohighlight">\(\sqrt{n}\)</span> is also not <span class="math notranslate nohighlight">\(O\)</span> nor <span class="math notranslate nohighlight">\(o\)</span> of <span class="math notranslate nohighlight">\(n^{\sin n}\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\lim_{n\to\infty}\dfrac{2^n}{2^{n/2}}=\lim_{n\to\infty}2^{n/2}=\infty\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n^{\lg c} = c^{\lg n}\)</span> by Equation (3.21).</p></li>
+<li><p>By Equation (3.28), <span class="math notranslate nohighlight">\(\lg(n!)=\Theta(n\lg n)=\Theta(\lg (n^n))\)</span>.</p></li>
+</ol>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(A\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(B\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(O\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(o\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\Omega\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\omega\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\Theta\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>a.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lg^k n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^\epsilon\)</span></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>b.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^k\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(c^n\)</span></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>c.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{n}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^{\sin n}\)</span></p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>d.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{n/2}\)</span></p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>e.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^{\lg c}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(c^{\lg n}\)</span></p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>f.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lg(n!)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lg (n^n)\)</span></p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+</tbody>
+</table>
+<p><span class="resetol"></span></p>
+</section>
+<section id="ordering-by-asymptotic-growth-rates">
+<span id="problem3-3"></span><h2>3-3 Ordering by asymptotic growth rates<a class="headerlink" href="#ordering-by-asymptotic-growth-rates" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><ol>
+<li><p>Rank the following functions by order of growth. That is, find an arrangement <span class="math notranslate nohighlight">\(g_1,g_2,\ldots,g_{30}\)</span> of the functions satisfying <span class="math notranslate nohighlight">\(g_1=\Omega(g_2),g_2=\Omega(g_3),\ldots,g_{29}=\Omega(g_{30})\)</span>. Partition your list into equivalence classes such that functions <span class="math notranslate nohighlight">\(f(n)\)</span> and <span class="math notranslate nohighlight">\(g(n)\)</span> belong to the same class if and only if <span class="math notranslate nohighlight">\(f(n)=\Theta(g(n))\)</span>.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\begin{array}{cccccc}
+ \lg(\lg^* n)
+     &amp; 2^{\lg^* n}a
+         &amp; \left(\sqrt{2}\right)^{\lg n}
+             &amp; n^2
+                 &amp; n!
+                     &amp; (\lg n)!\\
+ (3/2)^n
+     &amp; n^3
+         &amp; \lg^2 n
+             &amp; \lg(n!)
+                 &amp; 2^{2^n}
+                     &amp; n^{1/\lg n}\\
+ \ln \ln n
+     &amp; \lg^* n
+         &amp; n\cdot 2^n
+             &amp; n^{\lg \lg n}
+                 &amp; \ln n
+                     &amp; 1\\
+ 2^{\lg n}
+     &amp; (\lg n)^{\lg n}
+         &amp; e^n
+             &amp; 4^{\lg n}
+                 &amp; (n+1)!
+                     &amp; \sqrt{\lg n}\\
+ \lg^*(\lg n)
+     &amp; 2^{\sqrt{2\lg n}}
+         &amp; n
+            &amp; 2^n
+                 &amp; n\lg n
+                     &amp; 2^{2^{n+1}}
+\end{array}\end{equation*}\]</div>
+</li>
+<li><p>Give an example of a single nonnegative function <span class="math notranslate nohighlight">\(f(n)\)</span> such that for all functions <span class="math notranslate nohighlight">\(g_i(n)\)</span> in part <strong>(a)</strong>, <span class="math notranslate nohighlight">\(f(n)\)</span> is neither <span class="math notranslate nohighlight">\(O(g_i(n))\)</span> nor <span class="math notranslate nohighlight">\(\Omega(g_i(n))\)</span>.</p></li>
+</ol>
+</div></blockquote>
+<p><span class="resetol"></span></p>
+<ol>
+<li><p>Let us group the given functions in their respective <span class="math notranslate nohighlight">\(\Theta\)</span> classes, in increasing order of growth (the reverse of what the Exercise originally asks for). In fact, the functions listed in each item below are of class <span class="math notranslate nohighlight">\(\omega\)</span> with respect of the functions listed in the previous item.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(n^{1/\lg n}\)</span></p>
+<p>Indeed, by change of basis, <span class="math notranslate nohighlight">\(n^{1/\lg n}=n^{\log_n(2)}=2=\Theta(1)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\lg(\lg^* n)\)</span></p>
+<p>This function is monotonically increasing, so <span class="math notranslate nohighlight">\(\lg(\lg^* n)=\omega(1)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\lg^*(\lg n)\)</span>, <span class="math notranslate nohighlight">\(\lg^*n\)</span></p>
+<p>By the remark at the start of the solution to Problem 3-7, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg^*(\lg n)=\lg^* n - 1=\Theta(\lg^*n).\end{equation*}\]</div>
+<p>We also have already shown in <a class="reference internal" href="clrs_ita_3.3.html#exercise3-3-6"><span class="std std-ref">Exercise 3.3-6</span></a> that <span class="math notranslate nohighlight">\(\lg^*(\lg n)=\omega(\lg(\lg^*(n)))\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(2^{\lg^*n}\)</span></p>
+<p>Indeed, making the substitution <span class="math notranslate nohighlight">\(m=\lg^* n\)</span> we obtain</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lim_{n\to\infty}\dfrac{2^{\lg^* n}}{\lg^*n}=\lim_{m\to\infty}\dfrac{2^m}{m}=\infty.\end{equation*}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(2^{\lg^* n}=\omega(\lg^* n)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\ln \ln n\)</span></p>
+<p>First, note that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+            \lg^{(2)} n &amp;=\dfrac{\ln\ln n}{\ln 2}- \lg\ln 2 = \Theta(\ln\ln n).
+        \end{align*}\]</div>
+<p>Thus, we may simply prove that <span class="math notranslate nohighlight">\(\lg^{(2)}n=\omega(2^{\lg^* n})\)</span>. To this end, let <span class="math notranslate nohighlight">\(x_1 = 1\)</span>  and  <span class="math notranslate nohighlight">\(x_{k+1} = 2^{x_k}\)</span>, just as in Exercise 3.3-6. Then on each interval of the form <span class="math notranslate nohighlight">\(X_k=\left[x_k,x_{k+1}\right)\)</span> the function <span class="math notranslate nohighlight">\(2^{\lg^* n}\)</span> is constant, equal to <span class="math notranslate nohighlight">\(2^k\)</span>, whereas <span class="math notranslate nohighlight">\(\lg^{(2)}n\geq\lg^{(2)}x_k=x_{k-2}\)</span>.</p>
+<p>The numbers <span class="math notranslate nohighlight">\(x_k\)</span> grow extremely fast, much more so than any exponential. For example, we may compare it to <span class="math notranslate nohighlight">\(4^k\)</span>:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(4^k\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(x_k\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^6\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^2=4\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^4=16\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{10}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{16}=65536\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Hence <span class="math notranslate nohighlight">\(x_5&gt;4^5&gt;4\)</span>. It is also an easy calculus exercise to prove that <span class="math notranslate nohighlight">\(2^x&gt;4x\)</span> for <span class="math notranslate nohighlight">\(x&gt;4\)</span> (or it can also be proven by induction for integer <span class="math notranslate nohighlight">\(x\)</span>), so inductively for <span class="math notranslate nohighlight">\(k\geq 5\)</span> we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}x_{k+1}=2^{x_k}&gt;4x_k&gt;4\cdot 4^k=4^{k+1}.\end{equation*}\]</div>
+<p>Thus, on each interval <span class="math notranslate nohighlight">\(X_k=\left[x_k,x_{k+1}\right)\)</span> (<span class="math notranslate nohighlight">\(k\geq 7\)</span>) we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{\lg^{(2)}n}{2^{\lg^* n}}\geq\dfrac{x_{k-2}}{2^k} &gt; \dfrac{4^{k-2}}{2^k}=2^{k-4}.\end{equation*}\]</div>
+<p>As <span class="math notranslate nohighlight">\(n\)</span> grows, the index <span class="math notranslate nohighlight">\(k\)</span> for which <span class="math notranslate nohighlight">\(n\)</span> lies in the interval <span class="math notranslate nohighlight">\(X_k\)</span> also grows, so <span class="math notranslate nohighlight">\(\dfrac{\lg^{(2)}n}{2^{\lg^* n}}\)</span> tends to infinity.</p>
+<p>Therefore, <span class="math notranslate nohighlight">\(\ln \ln n = \omega(2^{\lg^* n})\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\sqrt{\lg n}\)</span></p>
+<p>Indeed, setting <span class="math notranslate nohighlight">\(y = \lg n\)</span>, and usign the well known fact that logarithms are of class <span class="math notranslate nohighlight">\(o\)</span> with respect to polynomials (Equation 3.24), we see that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\sqrt{\lg n}=y^{1/2}=\omega(\lg y)=\omega(\lg \lg n).\end{equation*}\]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\ln n\)</span></p>
+<p>First, note that <span class="math notranslate nohighlight">\(\ln n = \lg n / \lg e = \Theta(\lg n)\)</span>, and then that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lim_{n\to\infty}\dfrac{\lg n}{\sqrt{\lg n}}=\lim_{n\to\infty}\sqrt{\lg n}=\infty,\end{equation*}\]</div>
+<p>thus <span class="math notranslate nohighlight">\(\ln n = \omega(\sqrt{\lg n})\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\lg^2 n\)</span></p>
+<p>Indeed,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lim_{n\to\infty}\dfrac{\lg^2 n}{\lg n}=\lim_{n\to\infty}\lg n=\infty,\end{equation*}\]</div>
+<p>therefore <span class="math notranslate nohighlight">\(\lg^2 n = \omega(\lg n)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(2^{\sqrt{2\lg n}}\)</span></p>
+<p>Let <span class="math notranslate nohighlight">\(y=\sqrt{2\lg n}\)</span>. Then <span class="math notranslate nohighlight">\(\lg n = y^2/2\)</span>. In this manner,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}2^{\sqrt{2\lg n}}=2^y\end{equation*}\]</div>
+<p>has a higher order of growth than</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg^2 n = y^4/4\end{equation*}\]</div>
+<p>(as in Equation 3.13).</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\left(\sqrt{2}\right)^{\lg n}\)</span></p>
+<p>This is the same as <span class="math notranslate nohighlight">\(\sqrt{n}\)</span>. Putting <span class="math notranslate nohighlight">\(y=\sqrt{\lg n}\)</span> we obtain <span class="math notranslate nohighlight">\(n=2^{y^2}\)</span>, so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{\left(\sqrt{2}\right)^{\lg n}}{2^{\sqrt{2\lg n}}}=\dfrac{\sqrt{n}}{2^{\sqrt{2\lg n}}} = 2^{\frac{y^2}{2} - y},\end{equation*}\]</div>
+<p>therefore <span class="math notranslate nohighlight">\(\sqrt{n}=\omega(2^{\sqrt{2\lg n}})\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(2^{\lg n}\)</span></p>
+<p>As we just noticed, the function in the previous item is <span class="math notranslate nohighlight">\(\sqrt{n}\)</span>, so simply note that <span class="math notranslate nohighlight">\(2^{\lg n}=n=\omega(\sqrt{n})\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(n \lg n\)</span>, <span class="math notranslate nohighlight">\(\lg(n!)\)</span></p>
+<p>We already know that <span class="math notranslate nohighlight">\(\lg(n!)=\Theta(n\lg n)\)</span> by Equation (3.28), and clearly <span class="math notranslate nohighlight">\(n\lg n=\omega(n)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(n^2\)</span>, <span class="math notranslate nohighlight">\(4^{\lg n}\)</span></p>
+<p>Again, simply note that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}4^{\lg n}=2^{2\lg n}=\left(2^{\lg n}\right)^2=n^2\end{equation*}\]</div>
+<p>and that <span class="math notranslate nohighlight">\(n^2=\omega(n\lg n)\)</span>, (because <span class="math notranslate nohighlight">\(n/\lg n\)</span> goes to infinity as <span class="math notranslate nohighlight">\(n\)</span> increases).</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(n^3\)</span></p>
+<p>We have <span class="math notranslate nohighlight">\(n^3=\omega(n^2)\)</span> trivially.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\((\lg n)!\)</span></p>
+<p>For the factorial to make sense, we need to interpret this function as either <span class="math notranslate nohighlight">\(\lfloor\lg n\rfloor!\)</span> or <span class="math notranslate nohighlight">\(\lceil\lg n\rceil !\)</span> (or something similar). This does not make much difference, as <span class="math notranslate nohighlight">\(\lfloor\lg n\rfloor!\leq\lceil\lg n\rceil !\)</span> and we will show that <span class="math notranslate nohighlight">\(\lfloor\lg n\rfloor!=\omega(n^3)\)</span>. However, these two functions have different orders of growth, because</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+            \dfrac{\lceil\lg n\rceil !}{\lfloor\lg n\rfloor!}=\begin{cases}1&amp;\text{ if }n\text{ is a power of }2\\\lceil\lg n\rceil&amp;\text{otherwise}\end{cases},
+        \end{equation*}\]</div>
+<p>which shows that <span class="math notranslate nohighlight">\(\lfloor\lg n\rfloor!= O(\lceil\lg n\rceil !)\)</span> and that <span class="math notranslate nohighlight">\(\lfloor\lg n\rfloor!\not\in o(\lceil\lg n\rceil !)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be a (large) positive integer. Take <span class="math notranslate nohighlight">\(k=\lfloor \lg n\rfloor\)</span>. Then <span class="math notranslate nohighlight">\(\lg n&lt; (k+1)\)</span>, thus</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+            n^3&lt;(2^{k+1})^3=8^{k+1}.
+        \end{equation*}\]</div>
+<p>Hence,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+            \dfrac{\lfloor\lg n\rfloor !}{n^3} &gt; \dfrac{k!}{8^{k+1}},
+        \end{equation*}\]</div>
+<p>which grows indefinitely as <span class="math notranslate nohighlight">\(n\)</span> increases (this is a general fact analogous to Equation (3.27), which can be proven in a similar manner as done in Exercise 3.3-4: <span class="math notranslate nohighlight">\(n!=\omega(c^n)\)</span> for any <span class="math notranslate nohighlight">\(c&gt;0\)</span>). Therefore, <span class="math notranslate nohighlight">\(\lfloor\lg n\rfloor!=\omega(n^3)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(n^{\lg \lg n}\)</span>, <span class="math notranslate nohighlight">\(\left(\lg n\right)^{\lg n}\)</span></p>
+<p>These two functions are equal by Equation (3.21). To compare it with the previous one (taking the “largest interpretation”), let <span class="math notranslate nohighlight">\(k=\lfloor \lg n\rfloor\)</span>. Then, similarly to the proof of Equation (3.26) in Exercise 3.3-4, assuming <span class="math notranslate nohighlight">\(k\geq 2\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+            \dfrac{\left(\lg n\right)^{\lg n}}{\lceil \lg n\rceil!}
+                &amp; \geq\dfrac{k^k}{(k+1)!}\\
+                &amp; = \dfrac{k}{k+1}\cdot\dfrac{k}{k}\cdot\dfrac{k}{k-1}\cdots\dfrac{k}{2}\cdot\dfrac{1}{1}\\
+                &amp; \geq \dfrac{k}{k+1}\cdot1^{k-2}\cdot\dfrac{k}{2}\cdot 1,
+        \end{align*}\]</div>
+<p>which tends to infinity with <span class="math notranslate nohighlight">\(n\)</span>. Therefore, <span class="math notranslate nohighlight">\(\left(\lg n\right)^{\lg n}=\omega(\lceil\lg n\rceil!)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\left(3/2\right)^n\)</span></p>
+<p>First, we should remark that the argumento below can be trivially adapted to consider any <span class="math notranslate nohighlight">\(c&gt;1\)</span> in place of the value <span class="math notranslate nohighlight">\(3/2\)</span> to show that <span class="math notranslate nohighlight">\(c^n=\omega\left(\left(\lg n\right)^{\lg n}\right)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(a_n=\left(3/2\right)^n\)</span>, <span class="math notranslate nohighlight">\(b_n=\left(\lg n\right)^{\lg n}\)</span> and <span class="math notranslate nohighlight">\(x_n=a_n/b_n\)</span>. We need to verify that <span class="math notranslate nohighlight">\(\lim_{n\to\infty}x_n=\infty\)</span>. To this end, let us try to compare <span class="math notranslate nohighlight">\(x_n\)</span> with a geometric sequence.</p>
+<p>First, note that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{a_{n+1}}{a_n}=3/2,\end{equation*}\]</div>
+<p>and that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{b_{n+1}}{b_n}=\dfrac{\lg (n+1)^{\lg(n+1)}}{\left(\lg n\right)^{\lg n}}.\end{equation*}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\operatorname{pow}_2\colon x\mapsto 2^x\)</span>. Then, by continuity of <span class="math notranslate nohighlight">\(\operatorname{pow}_2\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+        \lim_{n\to\infty}\dfrac{b_{n+1}}{b_n}
+            &amp;=\lim_{n\to\infty}\dfrac{\lg (n+1)^{\lg(n+1)}}{\left(\lg n\right)^{\lg n}}\\
+            &amp;=\operatorname{pow}_2\left(\lim_{n\to\infty}\lg\left(\dfrac{\lg (n+1)^{\lg(n+1)}}{\left(\lg n\right)^{\lg n}}\right)\right)\\
+            &amp;=\operatorname{pow}_2\left(\lim_{n\to\infty}\lg(n+1)\lg(\lg(n+1)) - (\lg n)\lg(\lg n)\right)\tag{3-3.1}
+        \end{align*}\]</div>
+<p>By Taylor’s Theorem (or the Fundamental Theorem of Calculus, or the Mean Value Theorem), for all <span class="math notranslate nohighlight">\(x,\epsilon&gt;0\)</span> we have <span class="math notranslate nohighlight">\(\lg(x+\epsilon)\leq \lg x+\dfrac{\epsilon\lg e}{x}\)</span>. Hence,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg(n+1)\leq \lg n+\dfrac{\lg e}{n}\end{equation*}\]</div>
+<p>and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg(\lg(n+1))\leq\lg\left(\lg n+\dfrac{\lg e}{n}\right)\leq\lg(\lg n)+\dfrac{(\lg e)^2}{n \lg n}.\end{equation*}\]</div>
+<p>This implies that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+            \lg(n+1)\lg(\lg(n+1))
+                &amp;\leq \left(\lg n +\dfrac{\lg e}{n}\right)\left(\lg(\lg n)+\dfrac{(\lg e)^2}{n \lg n}\right)\\
+                &amp;=(\lg n)(\lg(\lg n)) +\dfrac{(\lg e)^2}{n} + \lg(e)\dfrac{\lg(\lg n)}{n} + \dfrac{(\lg e)^3}{n^2 \lg n},
+        \end{align*}\]</div>
+<p>so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+            \lg(n+1)\lg(\lg(n+1)) - (\lg n)(\lg(\lg n))
+                &amp;\leq\dfrac{(\lg e)^2}{n} + \lg(e)\dfrac{\lg(\lg n)}{n} + \dfrac{(\lg e)^3}{n^2 \lg n},
+        \end{align*}\]</div>
+<p>and the right-hand side goes to <span class="math notranslate nohighlight">\(0\)</span> as <span class="math notranslate nohighlight">\(n\)</span> increases. (Also note that the left-hand side is positive.)</p>
+<p>Applying this in Equation (3-3.1) yields</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lim_{n\to\infty}\dfrac{b_{n+1}}{b_n}=\operatorname{pow}_2(0)=2^0=1.\end{equation*}\]</div>
+<p>So, we have shown that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lim_{n\to\infty}\dfrac{a_{n+1}}{a_n}=\dfrac{3}{2}\qquad\text{and}\qquad\lim_{n\to\infty}\dfrac{b_{n+1}}{b_n}=1.\end{equation*}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(\lim_{n\to\infty}\dfrac{x_{n+1}}{x_n}=\dfrac{3}{2}\)</span>. The remainder of the argument is standard: As all <span class="math notranslate nohighlight">\(x_n\)</span> are positive, then <span class="math notranslate nohighlight">\(\left\{x_n\right\}_{n=2}^\infty\)</span> is eventually larger than a geometric sequence of the form <span class="math notranslate nohighlight">\(c(3/2)^n\)</span> for some <span class="math notranslate nohighlight">\(c&gt;0\)</span>. As this geometric sequence diverges to <span class="math notranslate nohighlight">\(\infty\)</span> (as the base is greater than <span class="math notranslate nohighlight">\(1\)</span>), so does <span class="math notranslate nohighlight">\(\left\{x_n\right\}_{n=2}^\infty\)</span>, just as we wanted.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(2^n\)</span></p>
+<p>As <span class="math notranslate nohighlight">\(\lim_{n\to\infty}\dfrac{2^n}{(3/2)^n}=\lim_{n\to\infty}(4/3)^n=\infty\)</span>, then <span class="math notranslate nohighlight">\(2^n=\omega((3/2)^n)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(n\cdot 2^n\)</span></p>
+<p>Another simple computation yields <span class="math notranslate nohighlight">\(n2^n=\omega(2^n)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(e^n\)</span>.</p>
+<p>We have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{e^n}{n2^n}=\dfrac{(e/2)^n}{n},\end{equation*}\]</div>
+<p>and since exponentials grow faster than polynomials (as in Equation 3.13), we see that <span class="math notranslate nohighlight">\(e^n=\omega\left(n 2^n\right)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(n!\)</span></p>
+<p>The proof that <span class="math notranslate nohighlight">\(n!=\omega(e^n)\)</span> is similar to that of Equation (3.27) in Exercise 3.3-4.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\((n+1)!\)</span></p>
+<p>Since <span class="math notranslate nohighlight">\(\lim_{n\to\infty}\dfrac{(n+1)!}{n!}=\lim_{n\to\infty}n+1=\infty\)</span>, then <span class="math notranslate nohighlight">\((n+1)!=\omega(n!)\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(2^{2^n}\)</span></p>
+<p>We can do even better: First, note that <span class="math notranslate nohighlight">\(n^n=\omega((n+1)!)\)</span> (with a similar proof of that of Equation (3.26) in <a class="reference internal" href="clrs_ita_3.3.html#exercise3-3-4"><span class="std std-ref">Exercise 3.3-4</span></a>). Let us then prove that <span class="math notranslate nohighlight">\(2^{2^n}=\omega(n^n)\)</span>.</p>
+<p>By making the (discrete variable) substitution <span class="math notranslate nohighlight">\(k=2^n\)</span>, we obtain</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lim_{n\to\infty}\dfrac{2^{2^n}}{n^n}=\lim_{k\to\infty}\dfrac{2^k}{\left(\lg k\right)^{\lg k}}=\infty,\end{equation*}\]</div>
+<p>where the latter limit was calculated 6 items above (with <span class="math notranslate nohighlight">\(3/2\)</span> in place of <span class="math notranslate nohighlight">\(2\)</span>).</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(2^{2^{n+1}}\)</span></p>
+<p>Indeed,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lim_{n\to\infty}\dfrac{2^{2^{n+1}}}{2^{2^n}}=\lim_{n\to\infty}2^{2^{n+1}-2^n}=\lim_{n\to\infty}2^{2^n}=\infty.\end{equation*}\]</div>
+</li>
+</ul>
+<p>Thus, our table is completed with the following setting of <span class="math notranslate nohighlight">\(g_1(n),g_2(n),\ldots,g_{30}(n)\)</span> (writing many possible indexes for functions which belong to a same <span class="math notranslate nohighlight">\(\Theta\)</span> class:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\begin{array}{cccccc}
+        \lg(\lg^* n)=g_{28}(n)
+            &amp; 2^{\lg^* n}= g_{25}(n)
+                &amp; \left(\sqrt{2}\right)^{\lg n}=g_{19}(n)
+                    &amp; n^2=g_{13/14}(n)
+                        &amp; n!=g_4(n)
+                            &amp; (\lg n)!=g_{11}(n)\\
+        (3/2)^n=g_8(n)
+            &amp; n^3=g_{12}(n)
+                &amp; \lg^2 n=g_{21}(n)
+                    &amp; \lg(n!)=g_{15/16}(n)
+                        &amp; 2^{2^n}=g_2(n)
+                            &amp; n^{1/\lg n}= g_{29/30}(n)\\
+        \ln \ln n = g_{24}(n)
+            &amp; \lg^* n = g_{26/27}(n)
+                &amp; n\cdot 2^n=g_6(n)
+                    &amp; n^{\lg \lg n}=g_{9/10}(n)
+                        &amp; \ln n = g_{22}(n)
+                            &amp; 1 = g_{29/30}(n)\\
+        2^{\lg n}=g_{17/18}(n)
+            &amp; (\lg n)^{\lg n}=g_{9/10}(n)
+                &amp; e^n=g_5(n)
+                    &amp; 4^{\lg n}=g_{13/14}(n)
+                        &amp; (n+1)!=g_3(n)
+                            &amp; \sqrt{\lg n}=g_{23}(n)\\
+        \lg^*(\lg n)= g_{26/27}(n)
+            &amp; 2^{\sqrt{2\lg n}}=g_{20}(n)
+                &amp; n=g_{17/18}(n)
+                    &amp; 2^n=g_7(n)
+                        &amp; n\lg n=g_{15/16}(n)
+                            &amp; 2^{2^{n+1}}=g_1(n)
+    \end{array}\end{equation*}\]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(f(n)=2^{2^{2^{n+1}}}\cdot (1+(-1)^n)\)</span>. This function is of a strictly higher order of growth than the fastest growing function in the previous item (<span class="math notranslate nohighlight">\(2^{2^{n+1}}\)</span>), so <span class="math notranslate nohighlight">\(f(n)\)</span> is not <span class="math notranslate nohighlight">\(O(g_i(n))\)</span> for any <span class="math notranslate nohighlight">\(i\)</span>. However, <span class="math notranslate nohighlight">\(f(n)\)</span> is zero infinitely often (at all odd <span class="math notranslate nohighlight">\(n\)</span>), whereas all <span class="math notranslate nohighlight">\(g_i(n)\)</span> are eventually nonzero. Thus, <span class="math notranslate nohighlight">\(f(n)\)</span> is also not <span class="math notranslate nohighlight">\(\Omega(g_i(n))\)</span> for any <span class="math notranslate nohighlight">\(i\)</span>. (If you want an eventually nonzero function, take <span class="math notranslate nohighlight">\(f(n)+1/n\)</span>.)</p></li>
+</ol>
+<p><span class="resetol"></span></p>
+</section>
+<section id="asymptotic-notation-properties">
+<span id="problem3-4"></span><h2>3-4 Asymptotic notation properties<a class="headerlink" href="#asymptotic-notation-properties" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(f(n)\)</span> and <span class="math notranslate nohighlight">\(g(n)\)</span> be asymptotically positive functions. Prove or disprove each of the following conjectures.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(n)=O(g(n))\)</span> implies <span class="math notranslate nohighlight">\(g(n)=O(f(n))\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(n)+g(n) = \Theta(\min\left\{f(n),g(n)\right\})\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(n)=O(g(n))\)</span> implies <span class="math notranslate nohighlight">\(\lg f(n) = O(\lg g(n))\)</span>, where <span class="math notranslate nohighlight">\(\lg g(n)\geq 1\)</span> and <span class="math notranslate nohighlight">\(f(n)\geq 1\)</span> for all sufficiently large <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(n)=O(g(n))\)</span> implies <span class="math notranslate nohighlight">\(2^{f(n)} = O(2^{g(n)})\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(n) = O((f(n))^2)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(n)=O(g(n))\)</span> implies <span class="math notranslate nohighlight">\(g(n)=\Omega(f(n))\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(n)=\Theta(f(n/2))\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(n)+o(f(n)) = \Theta(f(n))\)</span>.</p></li>
+</ol>
+</div></blockquote>
+<p><span class="resetol"></span></p>
+<p>We assume that <span class="math notranslate nohighlight">\(n\)</span> below is sufficiently large.</p>
+<ol>
+<li><p>False. Take <span class="math notranslate nohighlight">\(f(n)=1\)</span> and <span class="math notranslate nohighlight">\(g(n)=n\)</span>.</p></li>
+<li><p>False. Take <span class="math notranslate nohighlight">\(f(n)=1\)</span>, <span class="math notranslate nohighlight">\(g(n)=n\)</span>.</p></li>
+<li><p>True.</p>
+<p>If <span class="math notranslate nohighlight">\(f(n)=O(g(n))\)</span> then <span class="math notranslate nohighlight">\(f(n)\leq cg(n)\)</span> for some constant <span class="math notranslate nohighlight">\(c\)</span>, which we can assume to be larger than <span class="math notranslate nohighlight">\(2\)</span>, so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+        \lg f(n)
+            &amp; \leq \lg c + \lg g(n)\\
+            &amp; \leq (\lg c)(\lg g(n)) + \lg g(n)\tag{since $\lg g(n)\geq 1$}\\
+            &amp; \leq (\lg c + 1) \lg g(n).
+    \end{align*}\]</div>
+</li>
+<li><p>False.</p>
+<p>Take <span class="math notranslate nohighlight">\(f(n)=2n\)</span> and <span class="math notranslate nohighlight">\(g(n)=n\)</span>. Then <span class="math notranslate nohighlight">\(f(n)=O(g(n))\)</span>, but</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}2^{f(n)} / 2^{g(n)} = 2^n\end{equation*}\]</div>
+<p>goes to infinity as <span class="math notranslate nohighlight">\(n\to\infty\)</span>. So not only we do not have <span class="math notranslate nohighlight">\(2^{f(n)}=O(2^{g(n)})\)</span>, but actually <span class="math notranslate nohighlight">\(2^{f(n)} = \omega(2^{g(n)})\)</span>.</p>
+</li>
+<li><p>False. Take <span class="math notranslate nohighlight">\(f(n)=n\)</span>.</p></li>
+<li><p>True by definition.</p></li>
+<li><p>False. Take <span class="math notranslate nohighlight">\(f(n)=2^n\)</span>, similarly to item <strong>d.</strong></p></li>
+<li><p>True. In fact, <span class="math notranslate nohighlight">\(f(n)+O(f(n))=\Theta(f(n))\)</span>.</p>
+<p>Indeed, if <span class="math notranslate nohighlight">\(g(n)=O(f(n))\)</span> then we have <span class="math notranslate nohighlight">\(g(n) \leq c f(n)\)</span> for all sufficiently large <span class="math notranslate nohighlight">\(n\)</span> and some <span class="math notranslate nohighlight">\(c\)</span> constant. As <span class="math notranslate nohighlight">\(g(n)\)</span> is asymptoticaly positive, then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        f(n)\leq f(n) + g(n) \leq (c+1)f(n),
+    \end{equation*}\]</div>
+<p>which entails <span class="math notranslate nohighlight">\(f(n)+g(n)=\Theta(f(n))\)</span>.</p>
+<p>This is generalized in <a class="reference internal" href="#problem3-5"><span class="std std-ref">Problem 3-5</span></a>b.</p>
+</li>
+</ol>
+<p><span class="resetol"></span></p>
+</section>
+<section id="manipulating-asymptotic-notation">
+<span id="problem3-5"></span><h2>3-5 Manipulating asymptotic notation.<a class="headerlink" href="#manipulating-asymptotic-notation" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(f(n)\)</span> and <span class="math notranslate nohighlight">\(g(n)\)</span> be asymptotically positive functions. Prove the following identities:</p>
+<ol>
+<li><p><span class="math notranslate nohighlight">\(\Theta(\Theta(f(n))) = \Theta(f(n))\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Theta(f(n))+O(f(n)) = \Theta(f(n))\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Theta(f(n)) + \Theta(g(n)) = \Theta(f(n)+g(n))\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Theta(f(n))\cdot\Theta(g(n)) = \Theta(f(n)\cdot g(n))\)</span>.</p></li>
+<li><p>Argue that for any real constants <span class="math notranslate nohighlight">\(a_1, b_1&gt;0\)</span> and integer constants <span class="math notranslate nohighlight">\(k_1,k_2\)</span>, the following asymptotic bound holds:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}(a_1 n)^{k_1} \lg^{k_2}(a_2 n) = \Theta(n^{k_1} \lg^{k_2} n).\end{equation*}\]</div>
+</li>
+<li><p>(★) Prove that for <span class="math notranslate nohighlight">\(S\subseteq \mathbb{Z}\)</span>, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\sum_{k\in S}\Theta(f(k)) = \Theta\left(\sum_{k\in S} f(k)\right),\end{equation*}\]</div>
+<p>assuming that both sums converge.</p>
+</li>
+<li><p>(★) Show that for <span class="math notranslate nohighlight">\(S\subseteq \mathbb{Z}\)</span>, the following asymptotic bound does not necessarily hold, even assuming that both products converge, by giving a counterexample:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\prod_{k\in S} \Theta(f(k)) = \Theta\left(\prod_{k\in S}f(k)\right).\end{equation*}\]</div>
+</li>
+</ol>
+</div></blockquote>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Items <strong>f.</strong> and <strong>g.</strong> are not well-stated and cannot be solved as they are presented. See the discussion in <a class="reference external" href="https://math.stackexchange.com/questions/4522776/sums-and-products-of-big-theta-notation-clrs">https://math.stackexchange.com/questions/4522776/sums-and-products-of-big-theta-notation-clrs</a> and the links therein, where several additional hypotheses and modifications of the given statement are considered.</p>
+<p>This is a new exercise in the 4t<sup>th</sup> edition, which seems to be an attempt at a formalization of what is written in section “Linearity” in p. 1141. Namely, the misuse of variables in <span class="math notranslate nohighlight">\(\Theta\)</span>-notation seems to be the problem.</p>
+<p>Instead of writing “<span class="math notranslate nohighlight">\(\Theta(f(n))\)</span>” let us simply write “<span class="math notranslate nohighlight">\(\Theta(f)\)</span>”, which is more precise (as already noted in <a class="reference internal" href="clrs_ita_3.2.html#notation"><span class="std std-ref">Section 3.2</span></a>). In the equation</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\sum_{k=1}^n \Theta(f(k)) = \Theta(\sum_{k=1}^n f(k)),\end{equation*}\]</div>
+<p>present in p. 1141, the term “<span class="math notranslate nohighlight">\(\Theta(f(k))\)</span>” is meant to represent “<span class="math notranslate nohighlight">\(g(k)\)</span>” for some function <span class="math notranslate nohighlight">\(g\)</span> in <span class="math notranslate nohighlight">\(\Theta(f)\)</span>. Formally, it should read as follows: For any function <span class="math notranslate nohighlight">\(g=\Theta(f)\)</span>, defining <span class="math notranslate nohighlight">\(G(n)=\sum_{k=1}^n g(k)\)</span> and <span class="math notranslate nohighlight">\(F(n)=\sum_{k=1}^n f(n)\)</span> we have <span class="math notranslate nohighlight">\(G\in \Theta(F)\)</span>. Of course, we also need to assume that the functions <span class="math notranslate nohighlight">\(F\)</span> and <span class="math notranslate nohighlight">\(G\)</span> are asymptotically nonnegative for this to make sense.</p>
+<p>The solutions for items <strong>f.</strong> and <strong>g.</strong> use the interpretation that the summations were meant to be taken as above.</p>
+</div>
+<p><span class="resetol"></span></p>
+<ol>
+<li><p>Suppose that <span class="math notranslate nohighlight">\(g(n)=\Theta(\Theta(f(n)))\)</span>. Then there is a function <span class="math notranslate nohighlight">\(h(n)=\Theta(f(n))\)</span> and some <span class="math notranslate nohighlight">\(c&gt;0\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        \dfrac{1}{c}h(n) \leq g(n) \leq ch(n)
+    \end{equation*}\]</div>
+<p>for all large <span class="math notranslate nohighlight">\(n\)</span>. But since <span class="math notranslate nohighlight">\(h(n)=\Theta(f(n))\)</span>, then there is also <span class="math notranslate nohighlight">\(d &gt; 0\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        \dfrac{1}{d}f(n) \leq h(n) \leq d f(n),
+    \end{equation*}\]</div>
+<p>hence</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+        \dfrac{1}{cd} f(n)
+            &amp;\leq \dfrac{1}{c}h(n)\\
+            &amp;\leq g(n)\\
+            &amp;\leq ch(n)\leq (cd)f(n),
+    \end{align*}\]</div>
+<p>so <span class="math notranslate nohighlight">\(g(n)=\Theta(f(n))\)</span>.</p>
+<p>The reverse inclusion is clear enough.</p>
+</li>
+<li><p>Suppose <span class="math notranslate nohighlight">\(g(n)=\Theta(f(n))\)</span> and <span class="math notranslate nohighlight">\(h(n)=O(f(n))\)</span>. Then there is a constant <span class="math notranslate nohighlight">\(c\)</span> (which we can assume to be the same for both <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span>, looking at the largest one obtained from <span class="math notranslate nohighlight">\(\Theta\)</span> and <span class="math notranslate nohighlight">\(O\)</span>-definitions) for which</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{1}{c}f(n) \leq g(n) \leq c f(n)\end{equation*}\]</div>
+<p>and
+\begin{equation}h(n)\leq cf(n)\end{equation*}
+for all sufficiently large <span class="math notranslate nohighlight">\(n\)</span>. Thus, as <span class="math notranslate nohighlight">\(h(n)\)</span> is asymptotically positive,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{1}{c}f(n) \leq g(n) \leq g(n)+h(n) \leq (2c)f(n),\end{equation*}\]</div>
+<p>so <span class="math notranslate nohighlight">\(g(n)+h(n) = \Theta(f(n))\)</span>.</p>
+<p>The reverse inclusion is also clear enough.</p>
+</li>
+<li><p>Just take a large constant <span class="math notranslate nohighlight">\(c\)</span> in the definition of <span class="math notranslate nohighlight">\(\Theta\)</span>-notation.</p></li>
+<li><p>Similar to <strong>c.</strong></p></li>
+<li><p>The ratio</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        \dfrac{(a_1 n)^{k_1} \lg^{k_2}(a_2 n)}{n^{k_1} \lg^{k_2} n} = a_1^{k_1} \left( \dfrac{\lg a_2}{\lg n}+1\right)^{k_2}
+    \end{equation*}\]</div>
+<p>converges to <span class="math notranslate nohighlight">\(a_1^{k_1}\)</span> as <span class="math notranslate nohighlight">\(n\)</span> goes to infinity.</p>
+</li>
+<li><p>(Modified) Suppose that <span class="math notranslate nohighlight">\(g=\Theta(f)\)</span>. Let us prove that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        \sum_{k=1}^n g(k) = \Theta\left(\sum_{k=1}^n f(k)\right)
+    \end{equation*}\]</div>
+<p>If one of <span class="math notranslate nohighlight">\(f\)</span> or <span class="math notranslate nohighlight">\(g\)</span> is eventually constant to zero then so is the other function, and then both <span class="math notranslate nohighlight">\(\sum_{k=1}^n g(k)\)</span> and <span class="math notranslate nohighlight">\(\sum_{k=1}^n f(k)\)</span> are eventually constant, so the result follows. Let us thus assume nor <span class="math notranslate nohighlight">\(f\)</span> nor <span class="math notranslate nohighlight">\(g\)</span> are eventually constant equal to zero. This is to say that there infinitely many <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(f(n)&gt;0\)</span>, and similarly for <span class="math notranslate nohighlight">\(g\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(g=\Theta(f)\)</span>, then there is <span class="math notranslate nohighlight">\(c&gt;0\)</span> and <span class="math notranslate nohighlight">\(N\)</span> such that, for all <span class="math notranslate nohighlight">\(n\geq N\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}g(n) \leq c f(n).\end{equation*}\]</div>
+<p>Making <span class="math notranslate nohighlight">\(N\)</span> larger if necessary, we can also assume that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\sum_{k=1}^{N-1} f(k) \geq 0\qquad\text{and}\qquad f(N) &gt; 0.\end{equation*}\]</div>
+<p>In particular, <span class="math notranslate nohighlight">\(\sum_{k=1}^N f(k)\geq f(N)&gt;0\)</span>. Letting <span class="math notranslate nohighlight">\(d=c+\sum_{k=1}^N\dfrac{|g(k)|}{f(N)}\)</span>, we obtain both</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        \sum_{k=1}^N g(k)\leq d \sum_{k=1}^N f(k)
+    \end{equation*}\]</div>
+<p>and <span class="math notranslate nohighlight">\(c\leq d\)</span>. Thus, for all <span class="math notranslate nohighlight">\(n\geq N\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+        \sum_{k=1}^n g(k)
+            &amp;= \sum_{k=1}^N g(k) + \sum_{k=N+1}^n g(k)\\
+            &amp;\leq d\sum_{k=1}^N f(k) + \sum_{k=N+1}^n df(k)\\
+            &amp;= d\sum_{k=1}^N f(k).
+    \end{align*}\]</div>
+<p>This proves that <span class="math notranslate nohighlight">\(\sum_{k=1}^n g(k) = O\left(\sum_{k=1}^n g(k)\right)\)</span>. Symmetrically, we obtain <span class="math notranslate nohighlight">\(\sum_{k=1}^n g(k) = O\left(\sum_{k=1}^n g(k)\right)\)</span>, which finishes the proof.</p>
+</li>
+<li><p>(Modified) Let <span class="math notranslate nohighlight">\(f(n) = 1\)</span> and <span class="math notranslate nohighlight">\(g(n)=2\)</span>. Then <span class="math notranslate nohighlight">\(g=\Theta(f)\)</span>. However,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\prod_{k=1}^n f(k) = n\end{equation*}\]</div>
+<p>whereas</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\prod_{k=1}^n g(k) = 2^n,\end{equation*}\]</div>
+<p>which are not <span class="math notranslate nohighlight">\(\Theta\)</span>-equivalent.</p>
+</li>
+</ol>
+<p><span class="resetol"></span></p>
+</section>
+<section id="variations-on-o-and-omega">
+<span id="problem3-6"></span><h2>3-6 Variations on <span class="math notranslate nohighlight">\(O\)</span> and <span class="math notranslate nohighlight">\(\Omega\)</span><a class="headerlink" href="#variations-on-o-and-omega" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Some authors define <span class="math notranslate nohighlight">\(\Omega\)</span>-notation in a slightly different way than this textbook does. We’ll use the nomenclature <span class="math notranslate nohighlight">\(\overset{\infty}{\Omega}\)</span> (read “omega infinity”) for this alternative definition. We say that <span class="math notranslate nohighlight">\(f(n)=\overset{\infty}{\Omega}(g(n))\)</span> if there exists a positive constant <span class="math notranslate nohighlight">\(c\)</span> such that <span class="math notranslate nohighlight">\(f(n) \geq c g(n) \geq 0\)</span> for infinitely many integers <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<ol class="simple">
+<li><p>Show that for any two asymptotically nonnegative functions <span class="math notranslate nohighlight">\(f(n)\)</span> and <span class="math notranslate nohighlight">\(g(n)\)</span>, we have <span class="math notranslate nohighlight">\(f(n)=O(g(n))\)</span> or <span class="math notranslate nohighlight">\(f(n)=\overset{\infty}{\Omega}(g(n))\)</span> (or both).</p></li>
+<li><p>Show that there exist two asymptotically nonnegative functions <span class="math notranslate nohighlight">\(f(n)\)</span> and <span class="math notranslate nohighlight">\(g(n)\)</span> for which neither <span class="math notranslate nohighlight">\(f(n)=O(g(n))\)</span> nor <span class="math notranslate nohighlight">\(f(n)=\Omega(g(n))\)</span> holds.</p></li>
+<li><p>Describe the potential advantages and disadvantages of using <span class="math notranslate nohighlight">\(\overset{\infty}{\Omega}\)</span>-notation instead of <span class="math notranslate nohighlight">\(\Omega\)</span>-notation to characterize the running times of programs.</p></li>
+</ol>
+<p>Some authors also define <span class="math notranslate nohighlight">\(O\)</span> in a slightly different manner. We’ll use <span class="math notranslate nohighlight">\(O'\)</span> for the alternative definition: <span class="math notranslate nohighlight">\(f(n)=O'(g(n))\)</span> if and only if <span class="math notranslate nohighlight">\(|f(n)|=O(g(n))\)</span>.</p>
+<ol class="simple">
+<li><p>What happens to each direction of the “if and only if” in Theorem 3.1 on page 56 if we substitute <span class="math notranslate nohighlight">\(O'\)</span> for <span class="math notranslate nohighlight">\(O\)</span> but still use <span class="math notranslate nohighlight">\(\Omega\)</span>?</p></li>
+</ol>
+<p>Some authors define <span class="math notranslate nohighlight">\(\widetilde{O}\)</span> (read “soft-oh”) to mean <span class="math notranslate nohighlight">\(O\)</span> with logarithmic factors ignored:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\begin{array}{ccccl}
+\widetilde{O}(g(n))
+    &amp; =
+        &amp; \left\{f(n)\right.
+            &amp; \colon
+                &amp; \text{there exist positive constants} c, k,\text{ and }n_0\text{ such that }\\
+    &amp;   &amp;   &amp;   &amp; \left. 0 \leq f(n) \leq c g(n) \lg^k(n)\text{ for all }n\geq n_0\right\}
+\end{array}
+\end{equation*}\]</div>
+<ol class="simple">
+<li><p>Define <span class="math notranslate nohighlight">\(\widetilde{O}\)</span> and <span class="math notranslate nohighlight">\(\widetilde{\Theta}\)</span> in a similar manner. Prove the corresponding analog to Theorem 3.1.</p></li>
+</ol>
+</div></blockquote>
+<p><span class="resetol"></span></p>
+<ol>
+<li><p><span class="math notranslate nohighlight">\(\overset{\infty}{\Omega}(g(n))\)</span> is the complement of <span class="math notranslate nohighlight">\(o(g(n))\)</span>. Thus, every function is <span class="math notranslate nohighlight">\(\overset{\infty}{\Omega}(g(n))\)</span> or <span class="math notranslate nohighlight">\(o(g(n))\)</span>, and in particular <span class="math notranslate nohighlight">\(O(g(n))\)</span> in the latter case.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(n)=1\)</span> if <span class="math notranslate nohighlight">\(n\)</span> is even and <span class="math notranslate nohighlight">\(n\)</span> if <span class="math notranslate nohighlight">\(n\)</span> is odd, and <span class="math notranslate nohighlight">\(g(n)=f(n+1)\)</span>.</p></li>
+<li><p>As noticed before, <span class="math notranslate nohighlight">\(\overset{\infty}{\Omega}\)</span>-notation is simply the complement of <span class="math notranslate nohighlight">\(o\)</span>-notation, so this notion comes with all advantages and disadvantages as <span class="math notranslate nohighlight">\(o\)</span>-notation comes with when compared with <span class="math notranslate nohighlight">\(O\)</span>-notation.</p>
+<p>More particularly, if we really wish to use just <span class="math notranslate nohighlight">\(\overset{\infty}{\Omega}\)</span> as-is, to state that <span class="math notranslate nohighlight">\(f(n)=\overset{\infty}{\Omega}(g(n))\)</span> means to say that “a part of <span class="math notranslate nohighlight">\(f(n)\)</span> grows at least as fast as the respective part of <span class="math notranslate nohighlight">\(g(n)\)</span>”, or that “we cannot ever garantee that <span class="math notranslate nohighlight">\(f(n)\)</span> will be asymptotically smaller than <span class="math notranslate nohighlight">\(g(n)\)</span>”, which cannot be so well-stated directly in terms of <span class="math notranslate nohighlight">\(\Omega\)</span>. On the other hand, <span class="math notranslate nohighlight">\(\Omega\)</span> allows us to make a statement of which function is certainly faster or slower asymptotically, which cannot be easily stated in terms of <span class="math notranslate nohighlight">\(\overset{\infty}{\Omega}\)</span>.</p>
+</li>
+<li><p>The theorems remains valid, since the statement that <span class="math notranslate nohighlight">\(f(n)=\Omega(g(n))\)</span> already implies that <span class="math notranslate nohighlight">\(f(n)\)</span> is asymptotically positive, so stating that <span class="math notranslate nohighlight">\(f(n)=O(g(n))\)</span> is the same as stating that <span class="math notranslate nohighlight">\(f(n)=O'(g(n))\)</span>.</p></li>
+<li><p>All trivial.</p></li>
+</ol>
+</section>
+<section id="iterated-functions">
+<span id="problem3-7"></span><h2>3-7 Iterated functions<a class="headerlink" href="#iterated-functions" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>We can apply the iteration operator <span class="math notranslate nohighlight">\({}^*\)</span> used in the <span class="math notranslate nohighlight">\(\lg^*\)</span> function to any monotonically increasing function <span class="math notranslate nohighlight">\(f(n)\)</span> over the reals. For a given constant <span class="math notranslate nohighlight">\(c\in\mathbb{R}\)</span>, we define the iterated function <span class="math notranslate nohighlight">\(f^*_c\)</span> by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*} f^*_c(n)=\min\left\{i\geq 0\colon f^{(i)}(n)\leq c\right\},\end{equation*}\]</div>
+<p>which need not be well-defined in all cases. In other words, the quantity <span class="math notranslate nohighlight">\(f^*_c(n)\)</span> is the minimum number of iterated applications of the function <span class="math notranslate nohighlight">\(f\)</span> required to reduce its argument down to <span class="math notranslate nohighlight">\(c\)</span> or less.</p>
+<p>For each of the functions <span class="math notranslate nohighlight">\(f(n)\)</span> and constants <span class="math notranslate nohighlight">\(c\)</span> in the table below, give as tight a bound as possible on <span class="math notranslate nohighlight">\(f^*_c(n)\)</span>. If there is no <span class="math notranslate nohighlight">\(i\)</span> such that <span class="math notranslate nohighlight">\(f^{(i)}(n)\leq c\)</span>, write “undefined” as your answer.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(f(n)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(c\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(f^*_c(n)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>a.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n-1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>b.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lg n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>c.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n/2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>d.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n/2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>e.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt(n)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>f.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt(n)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>g.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^{1/3}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><span class="resetol"></span></p>
+<ol>
+<li><p>We have <span class="math notranslate nohighlight">\(f^{(i)}(n) = n-i\)</span>, so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        f^*_c(n) = \begin{cases}
+                    0&amp;\text{, if }n\leq 0\\
+                    \lceil n\rceil&amp;\text{, otherwise.}
+                   \end{cases}
+    \end{equation*}\]</div>
+</li>
+<li><p>By definition, <span class="math notranslate nohighlight">\(f^*_c(n)=\lg^*(n)\)</span> in this case.</p></li>
+<li><p>We have <span class="math notranslate nohighlight">\(f^{(i)}(n)=\dfrac{n}{2^i}\)</span>. Since</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{n}{2^i}\leq 1\qquad\text{if, and only if}\qquad i\geq\lg n,\end{equation*}\]</div>
+<p>then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        f^*_c(n) =
+            \begin{cases}
+                0&amp;\text{, if }n\leq 1\\
+                \lceil \lg n\rceil&amp;\text{, otherwise.}\end{cases}\end{equation*}\]</div>
+</li>
+<li><p>Similarly to the previous item,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        f^*_c(n) =
+            \begin{cases}
+                0&amp;\text{, if }n\leq 2\\
+                \lceil \lg n\rceil-1&amp;\text{, otherwise.}\end{cases}\end{equation*}\]</div>
+</li>
+<li><p>We have <span class="math notranslate nohighlight">\(f^{(i)}(n)=n^{2^{-i}}\)</span>. Since</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+        n^{2^{-i}}\leq 2
+            &amp;\iff 2^{-i} \lg n \leq 1\\
+            &amp;\iff (-i)+\lg\lg n\leq 0\\
+            &amp;\iff i\geq \lg \lg n,
+    \end{align*}\]</div>
+<p>then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        f^*_c(n) =
+            \begin{cases}
+                0&amp;\text{, if }n\leq 2\\
+                \lceil\lg \lg n\rceil&amp;\text{, otherwise.}
+            \end{cases}
+    \end{equation*}\]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(f^*_c(n) = 0\)</span> if <span class="math notranslate nohighlight">\(n\leq 1\)</span> and undefined otherwise.</p></li>
+<li><p>Similarly to item <strong>e.</strong>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        f^*_c(n) =
+            \begin{cases}
+                0&amp;\text{, if }n\leq 2\\
+                \left\lceil\log_3 \lg n\right\rceil&amp;\text{, otherwise.}
+            \end{cases}
+    \end{equation*}\]</div>
+</li>
+</ol>
+<p>Therefore, assuming <span class="math notranslate nohighlight">\(n\geq 1\)</span> integer, our completed table is</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(f(n)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(c\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(f^*_c(n)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>a.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n-1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>b.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lg n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lg^* n\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>c.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n/2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lceil\lg n\rceil\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>d.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n/2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lceil\lg n\rceil-1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>e.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt(n)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lceil\lg\lg n\rceil\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>f.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt(n)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p>undefined</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>g.</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^{1/3}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lceil\log_3\lg n\rceil\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "c"
+        },
+        kernelOptions: {
+            kernelName: "c",
+            path: "./jupyter_files/ch3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'c'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="clrs_ita_3.3.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">3.3 Standard notations and common functions</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luiz Gustavo Cordeiro<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

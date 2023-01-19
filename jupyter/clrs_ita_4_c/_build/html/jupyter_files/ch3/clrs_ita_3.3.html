@@ -1,0 +1,992 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3.3 Standard notations and common functions &#8212; CLRS - Introduction to Algorithms, 4&lt;sup&gt;th&lt;/sup&gt; edition&lt;br/&gt;Solutions and implementations in C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Problems" href="clrs_ita_3.P.html" />
+    <link rel="prev" title="3.2 Asymptotic notation: formal definitions" href="clrs_ita_3.2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../clrs_ita_main.html">
+                    CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch1/clrs_ita_1.html">
+   Chapter 1 - The Role of Algorithms in Computing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.1.html">
+     1.1 Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.2.html">
+     1.2 Algorithms as a technology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch2/clrs_ita_2.html">
+   Chapter 2 - Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.1.html">
+     2.1 Insertion sort
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.2.html">
+     2.2 Analyzing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.3.html">
+     2.3 Designing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="clrs_ita_3.html">
+   Chapter 3 - Characterizing Running Times
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_3.1.html">
+     3.1
+     <span class="math notranslate nohighlight">
+      \(O\)
+     </span>
+     -notation,
+     <span class="math notranslate nohighlight">
+      \(\Omega\)
+     </span>
+     -notation, and
+     <span class="math notranslate nohighlight">
+      \(\Theta\)
+     </span>
+     -notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_3.2.html">
+     3.2 Asymptotic notation: formal definitions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.3 Standard notations and common functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_3.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/luizgcordeiro//master?urlpath=tree/docs/jupyter_files/ch3/clrs_ita_3.3.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/luizgcordeiro/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/luizgcordeiro//issues/new?title=Issue%20on%20page%20%2Fjupyter_files/ch3/clrs_ita_3.3.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/jupyter_files/ch3/clrs_ita_3.3.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-1">
+   3.3-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-2">
+   3.3-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-3">
+   3.3-3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-4">
+   3.3-4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-5">
+   ★ 3.3-5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-6">
+   ★ 3.3-6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-7">
+   3.3-7
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-8">
+   3.3-8
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-9">
+   3.3-9
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>3.3 Standard notations and common functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-1">
+   3.3-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-2">
+   3.3-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-3">
+   3.3-3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-4">
+   3.3-4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-5">
+   ★ 3.3-5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-6">
+   ★ 3.3-6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-7">
+   3.3-7
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-8">
+   3.3-8
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise3-3-9">
+   3.3-9
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="standard-notations-and-common-functions">
+<h1>3.3 Standard notations and common functions<a class="headerlink" href="#standard-notations-and-common-functions" title="Permalink to this headline">#</a></h1>
+<style>
+ol>li {
+  counter-increment: mycounter;
+ }
+
+ol {
+  list-style: none;
+}
+    
+ol>li::marker {
+  font-weight: bold;
+  content: counter(mycounter,lower-alpha) ". ";
+}
+
+ol:first-of-type {
+  counter-reset: mycounter;
+}
+
+.resetol {
+  counter-reset: mycounter;
+}
+.incrementol {
+  counter-increment: mycounter;
+  /* display:none;*/
+  content: counter(mycounter);
+}
+</style><section id="exercise3-3-1">
+<span id="id1"></span><h2>3.3-1<a class="headerlink" href="#exercise3-3-1" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Show that if <span class="math notranslate nohighlight">\(f(n)\)</span> and <span class="math notranslate nohighlight">\(g(n)\)</span> are monotonically increasing functions, then so are the functions <span class="math notranslate nohighlight">\(f(n)+g(n)\)</span> and <span class="math notranslate nohighlight">\(f(g(n))\)</span>, and if <span class="math notranslate nohighlight">\(f(n)\)</span> and <span class="math notranslate nohighlight">\(g(n)\)</span> are in addition nonnegative, then <span class="math notranslate nohighlight">\(f(n)\cdot g(n)\)</span> is monotonically increasing.</p>
+</div></blockquote>
+<p>The fact that composition of monotonically increasing functions follows from the transitivity of conditionals. The other properties are basically the order axioms of the real numbers along with transitivity of conditionals.</p>
+</section>
+<section id="exercise3-3-2">
+<span id="id2"></span><h2>3.3-2<a class="headerlink" href="#exercise3-3-2" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Prove that <span class="math notranslate nohighlight">\(\lfloor\alpha n\rfloor + \lceil(1-\alpha)n\rceil = n\)</span> for any integer <span class="math notranslate nohighlight">\(n\)</span> and real number <span class="math notranslate nohighlight">\(\alpha\)</span> in the range <span class="math notranslate nohighlight">\(0\leq \alpha\leq 1\)</span>.</p>
+</div></blockquote>
+<p>On one hand, <span class="math notranslate nohighlight">\(n-\lfloor \alpha n\rfloor\)</span> is an integer and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    n - \lfloor \alpha n\rfloor
+        &amp;\geq n-\alpha n\\
+        &amp;=(1-\alpha)n,
+\end{align*}\]</div>
+<p>so <span class="math notranslate nohighlight">\(\lceil (1-\alpha)n\rceil \leq n - \lfloor \alpha n\rfloor\)</span>, which is to say that <span class="math notranslate nohighlight">\(\lfloor \alpha n\rfloor + \lceil (1-\alpha)n\rceil\leq n\)</span>.</p>
+<p>On the other hand, <span class="math notranslate nohighlight">\(n-\lceil (1-\alpha)n\rceil\)</span> is an integer and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+n-\lceil (1-\alpha)n\rceil
+    &amp;\leq n- (1-\alpha)n\\
+    &amp;=\alpha n
+\end{align*}\]</div>
+<p>so <span class="math notranslate nohighlight">\(\lfloor \alpha n\rfloor \geq n-\lceil (1-\alpha)n\rceil\)</span>, which is to say that <span class="math notranslate nohighlight">\(\lfloor \alpha n\rfloor + \lceil (1-\alpha)n\rceil \geq n\)</span>.</p>
+</section>
+<section id="exercise3-3-3">
+<span id="id3"></span><h2>3.3-3<a class="headerlink" href="#exercise3-3-3" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Use equation (3.14) or other means to show that <span class="math notranslate nohighlight">\((n+o(n))^k=\Theta(n^k)\)</span> for any real constant <span class="math notranslate nohighlight">\(k\)</span>. Conclude that <span class="math notranslate nohighlight">\(\lceil n\rceil^k=\Theta(n^k)\)</span> and <span class="math notranslate nohighlight">\(\lfloor n\rfloor^k=\Theta(n^k)\)</span>.</p>
+</div></blockquote>
+<p>We have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \lim_{n\to\infty} \dfrac{(n+o(n))^k}{n^k}
+        &amp;=\lim_{n\to\infty}\left(\lim_{n\to\infty}\dfrac{n+o(n)}{n}\right)^k\\
+        &amp;= 1^k\\
+        &amp;=1,
+\end{align*}\]</div>
+<p>so <span class="math notranslate nohighlight">\((n+o(n))^k=\Theta(n^k)\)</span>.</p>
+<p>As for the second part, let <span class="math notranslate nohighlight">\(c(n)=\lceil n\rceil-n\)</span>. Note that <span class="math notranslate nohighlight">\(\lceil n\rceil-n\in[0,1]\)</span>, so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \lim_{n\to\infty}\dfrac{\lceil n\rceil-n}{n}=0,
+\end{equation*}\]</div>
+<p>which entails <span class="math notranslate nohighlight">\(c(n) = o(n)\)</span>. By the first part,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    (\lceil n\rceil)^k = (n+c(n))^k = (n+o(n))^k = \Theta(n^k).
+\end{equation*}\]</div>
+<p>The equation involving the floor function is dealt with similarly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><p>The second part only makes sense if we allow <span class="math notranslate nohighlight">\(n\in\mathbb{R}\)</span>, because if <span class="math notranslate nohighlight">\(n\)</span> is integer then <span class="math notranslate nohighlight">\(n=\lceil n\rceil = \lfloor n \rfloor\)</span>.</p></li>
+<li><p>We can also notice that <span class="math notranslate nohighlight">\(\Theta(\lfloor n^k\rfloor)=\Theta(\lceil n^k\rceil)=\Theta(n^k)\)</span>. Indeed,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        n^k-1\leq \lfloor n^k\rfloor \leq n^k,
+    \end{equation*}\]</div>
+<p>hence</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+        1-\dfrac{1}{n^k}\leq\dfrac{\lfloor n^k\rfloor}{n^k}\leq 1,
+    \end{equation*}\]</div>
+<p>and thus <span class="math notranslate nohighlight">\(\lim_{n\to\infty}\dfrac{\lfloor n^k\rfloor}{n^k}=1\)</span>, by the Squeeze Theorem. This proves that <span class="math notranslate nohighlight">\(\Theta(\lfloor n^k\rfloor)=\Theta(n^k)\)</span>, and we prove that <span class="math notranslate nohighlight">\(\Theta(\lceil n^k\rceil)=\Theta(n^k)\)</span> similarly.</p>
+</li>
+</ul>
+</div>
+<p><span class="resetol"></span></p>
+</section>
+<section id="exercise3-3-4">
+<span id="id4"></span><h2>3.3-4<a class="headerlink" href="#exercise3-3-4" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Prove the following:</p>
+<ol class="simple">
+<li><p>Equation (3.21).</p></li>
+<li><p>Equations (3.26)-(3.28).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lg(\Theta(n))=\Theta(\lg(n))\)</span>.</p></li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Equation (3.21) states that, for <span class="math notranslate nohighlight">\(a,b,c&gt;0\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}a^{\log_b c}=c^{\log_b a},\tag{3.21}\end{equation*}\]</div>
+<p>and equations (3.26)-(3.28) state that, for <span class="math notranslate nohighlight">\(n\)</span> a positive integer,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}n!=o(n^n),\tag{3.26}\end{equation*}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}n!=\omega(2^n)\tag{3.27}\end{equation*}\]</div>
+<p>and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg(n!)=\Theta(n\lg n).\tag{3.28}\end{equation*}\]</div>
+</div>
+<p><span class="resetol"></span></p>
+<ol>
+<li><p>Properties of logarithms yield</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\log_b(a^{\log_b c}) = (\log_b c) \cdot (\log_b a) = \log_b(c^{\log_b a}),\end{equation*}\]</div>
+<p>so taking exponents in base <span class="math notranslate nohighlight">\(b\)</span> in the first and third terms above give us the desired equality as in (3.21).</p>
+</li>
+<li><p>Equation (3.26) is easy enough: For <span class="math notranslate nohighlight">\(n\geq 2\)</span>, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{n!}{n^n} = \dfrac{1}{n} \cdot \dfrac{2}{n} \cdot \dfrac{3}{n} \cdots \dfrac{n}{n}\leq \dfrac{1}{n},\end{equation*}\]</div>
+<p>so letting <span class="math notranslate nohighlight">\(n\to\infty\)</span> yields <span class="math notranslate nohighlight">\(n!\)</span> = <span class="math notranslate nohighlight">\(o(n^n)\)</span>.</p>
+<p>Equation (3.27) is similar: For <span class="math notranslate nohighlight">\(n\geq 2\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{2^n}{n!} = \dfrac{2}{1}\cdot\dfrac{2}{2}\cdot\dfrac{2}{3}\cdots\dfrac{2}{n}\leq\dfrac{4}{n},\end{equation*}\]</div>
+<p>and again letting <span class="math notranslate nohighlight">\(n\to\infty\)</span> yields <span class="math notranslate nohighlight">\(2^n = o(n!)\)</span>, or equivalently <span class="math notranslate nohighlight">\(n!=\omega(2^n)\)</span>.</p>
+<p>Equation (3.28) is more interesting: Properties of logarithms yield</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg(n!)=\sum_{j=1}^n \lg(j).\end{equation*}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(k\geq 1\)</span>. Note that there are at most <span class="math notranslate nohighlight">\(\left\lfloor\dfrac{n}{k}\right\rfloor\)</span> positive integers <span class="math notranslate nohighlight">\(j\)</span> satisfying <span class="math notranslate nohighlight">\(j&lt;\dfrac{n}{k}\)</span>. The remaining <span class="math notranslate nohighlight">\(n-\left\lfloor\dfrac{n}{k}\right\rfloor\)</span> values for <span class="math notranslate nohighlight">\(j\)</span> in <span class="math notranslate nohighlight">\([0,1,...,n]\)</span> all satisfy <span class="math notranslate nohighlight">\(\lg(j)\geq \lg\left(\dfrac{n}{k}\right)\)</span>. Therefore, as long as <span class="math notranslate nohighlight">\(n\geq k\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+        \lg(n!)
+            &amp;\geq \left(n-\left\lfloor \dfrac{n}{k}\right\rfloor\right) \lg\left(\dfrac{n}{k}\right)\\
+            &amp;\geq n\left(1-\dfrac{1}{k}\right)\lg\left(\dfrac{n}{k}\right)\\
+            &amp;= n\left(1-\dfrac{1}{k}\right)(\lg n - \lg k).
+    \end{align*}\]</div>
+<p>Thus,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{\lg(n!)}{n\lg n}\geq \left(1-\dfrac{1}{k}\right)\left(1 - \dfrac{\lg k}{\lg n}\right),\end{equation*}\]</div>
+<p>which goes to <span class="math notranslate nohighlight">\(1-\dfrac{1}{k}\)</span> as <span class="math notranslate nohighlight">\(n\)</span> increases. This argument with <span class="math notranslate nohighlight">\(k\geq 2\)</span> shows that <span class="math notranslate nohighlight">\(\lg(n!)=\Omega(n\lg n)\)</span>.</p>
+<p>Conversely, note that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+      n \lg n
+          &amp; = \lg (n^n)\\
+          &amp;\geq \lg(n!),
+    \end{align*}\]</div>
+<p>thus <span class="math notranslate nohighlight">\(\limsup_{n\to\infty}\dfrac{\lg(n!)}{n \lg n}\leq 1\)</span>, which implies that <span class="math notranslate nohighlight">\(\lg(n!) = O(n\lg n)\)</span>.</p>
+<p>The two inclusions above mean that <span class="math notranslate nohighlight">\(\lg(n!)=\Theta(n\lg n)\)</span>, as we wanted for Equation (3.28).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Letting <span class="math notranslate nohighlight">\(k\to\infty\)</span> in the first part of the argument and using it with the second part, we actually obtain the limit <span class="math notranslate nohighlight">\(\lim_{n\to\infty}\dfrac{\lg(n!)}{n\lg n}=1\)</span>.</p>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(f(n)=\Theta(n)\)</span>. Then there is a constant <span class="math notranslate nohighlight">\(c&gt;0\)</span> such that, for sufficiently large <span class="math notranslate nohighlight">\(n\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{n}{c} &lt; f(n) &lt; cn.\end{equation*}\]</div>
+<p>Taking logarithms:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg n - \lg c &lt; \lg f(n) &lt; \lg n + \lg c.\end{equation*}\]</div>
+<p>If in addition we consider <span class="math notranslate nohighlight">\(n&gt;\max\left\{c,c^2\right\}\)</span>, then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg n + \lg c &lt; 2\lg n,\end{equation*}\]</div>
+<p>and also</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg n - \lg c &gt; \lg n - \dfrac{1}{2}\lg n = \dfrac{1}{2} \lg n,\end{equation*}\]</div>
+<p>so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{1}{2}\lg n &lt; \ln f(n) &lt; 2 \lg n\end{equation*}\]</div>
+<p>for all sufficiently large <span class="math notranslate nohighlight">\(n\)</span>, which proves that <span class="math notranslate nohighlight">\(f(n) =  \Theta(\lg n)\)</span>, as we wanted.</p>
+</li>
+</ol>
+</section>
+<section id="exercise3-3-5">
+<span id="id5"></span><h2>★ 3.3-5<a class="headerlink" href="#exercise3-3-5" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Is the function <span class="math notranslate nohighlight">\(\lceil \lg n\rceil !\)</span> polynomially bounded? Is the function <span class="math notranslate nohighlight">\(\lceil \lg \lg n\rceil !\)</span> polynomially bounded?</p>
+</div></blockquote>
+<p>First, let us prove that <span class="math notranslate nohighlight">\(\lceil\lg n\rceil!\)</span> is not polynomially bounded. To this end, we need to prove that, for all (integer) <span class="math notranslate nohighlight">\(p&gt;0\)</span> there exist <span class="math notranslate nohighlight">\(n\)</span> as large as necessary such that <span class="math notranslate nohighlight">\(\lceil\lg n\rceil!\geq n^p\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(k\)</span> be a large integer, so that <span class="math notranslate nohighlight">\(n=2^{kp}\)</span> is also a large integer (as big as one wants). Then</p>
+<div class="math notranslate nohighlight">
+\[\lceil \lg n\rceil ! = (kp)!\]</div>
+<p>However, we know that <span class="math notranslate nohighlight">\(m!=\omega(2^m)\)</span> by Equation (3.27) (proven in the previous exercise), so for all <span class="math notranslate nohighlight">\(m\)</span> sufficienly large one has <span class="math notranslate nohighlight">\(m!\geq 2^m\)</span>. In particular, taking <span class="math notranslate nohighlight">\(m=kp\)</span> (where <span class="math notranslate nohighlight">\(k\)</span> is our initial large integer)</p>
+<div class="math notranslate nohighlight">
+\[\lceil \lg n\rceil ! = (kp)! = m!\geq 2^k = 2^{kp} = n^p,\]</div>
+<p>just as we wanted.</p>
+<p>Therefore, <span class="math notranslate nohighlight">\(\lceil \lg n\rceil!\)</span> is not polynomially bounded.</p>
+<p>On the other hand, <span class="math notranslate nohighlight">\(\lceil\lg \lg n\rceil!\)</span> is constant on all intervals of the form <span class="math notranslate nohighlight">\([2^{2^k},2^{2^{k+1}}-1]\)</span>, so we need only to analyze its growth on the “steps” of the form <span class="math notranslate nohighlight">\(n=2^{2^k}\)</span>, on which we have
+<span class="math notranslate nohighlight">\(\lceil \lg \lg n\rceil! = k!\)</span>. We just need to verify that this is smaller than <span class="math notranslate nohighlight">\(n\)</span>, which can be done by induction.</p>
+<blockquote>
+<div><p><strong>Claim</strong>: <span class="math notranslate nohighlight">\(k!&lt;2^{2^k}\)</span> for all integers <span class="math notranslate nohighlight">\(k\geq 0\)</span>.</p>
+</div></blockquote>
+<p>The claim is verified directly for <span class="math notranslate nohighlight">\(k=0,1,2,3\)</span>. As for the inductive step, simply notice that, for <span class="math notranslate nohighlight">\(k\geq 3\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[(k+1)\leq 2k\leq k!,\]</div>
+<p>so <span class="math notranslate nohighlight">\((k+1)!\leq (k!)^2\)</span>. Using the induction hypothesis on the right-hand side yields the result</p>
+<p>Thus, on the steps <span class="math notranslate nohighlight">\(n=2^{2^k}\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\lceil\lg\lg n\rceil!=k!&lt;2^{2^k}=n\]</div>
+<p>so also <span class="math notranslate nohighlight">\(\lceil\lg\lg n\rceil!&lt;n\)</span> for all positive integers <span class="math notranslate nohighlight">\(n\)</span>. This suffices to show that <span class="math notranslate nohighlight">\(\lceil\lg\lg n\rceil!\)</span> is polynomially bounded.</p>
+<p>For good practice, let us verify that <span class="math notranslate nohighlight">\(\lceil\lg\lg n\rceil!\ll n\ll\lceil \lg n\rceil!\)</span> for small <span class="math notranslate nohighlight">\(n\)</span>, of the form <span class="math notranslate nohighlight">\(n=2^k\)</span> with <span class="math notranslate nohighlight">\(k\leq 20\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+unsigned long long fact( unsigned long long n) ; // factorial
+unsigned long long pow_long(unsigned long long m , unsigned long long n) ; // m^n
+
+int main() {
+    unsigned long long k,n;
+    
+    printf(&quot;| %7s | %19s | %14s |\n&quot;,&quot;n&quot;,&quot;ceil(lg n)!&quot;,&quot;ceil(lg lg n)!&quot;);
+    printf(&quot;|---------|---------------------|----------------|\n&quot;);
+    
+    printf(&quot;| %7d | %19d | %14s |\n&quot;,1,fact(ceil(log2(1))),&quot;undefined&quot; ); // n=1
+    for (k=1;k&lt;21;k++) {
+        n=pow_long(2,k);
+        printf(&quot;| %7llu | %19llu | %14llu |\n&quot;,n,fact(ceil(log2(n))),fact(ceil(log2(log2(n)))) );
+    }
+    
+    return 0;
+}
+
+unsigned long long fact( unsigned long long n) {
+    if (n==0) return 1;
+    return n*fact(n-1);
+}
+
+unsigned long long pow_long(unsigned long long m,unsigned long long n){
+    if (n==0) return 1;
+    return m*pow_long(m,n-1);
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|       n |         ceil(lg n)! | ceil(lg lg n)! |
+|---------|---------------------|----------------|
+|       1 |                   1 |      undefined |
+|       2 |                   1 |              1 |
+|       4 |                   2 |              1 |
+|       8 |                   6 |              2 |
+|      16 |                  24 |              2 |
+|      32 |                 120 |              6 |
+|      64 |                 720 |              6 |
+|     128 |                5040 |              6 |
+|     256 |               40320 |              6 |
+|     512 |              362880 |             24 |
+|    1024 |             3628800 |             24 |
+|    2048 |            39916800 |             24 |
+|    4096 |           479001600 |             24 |
+|    8192 |          6227020800 |             24 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|   16384 |         87178291200 |             24 |
+|   32768 |       1307674368000 |             24 |
+|   65536 |      20922789888000 |             24 |
+|  131072 |     355687428096000 |            120 |
+|  262144 |    6402373705728000 |            120 |
+|  524288 |  121645100408832000 |            120 |
+| 1048576 | 2432902008176640000 |            120 |
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise3-3-6">
+<span id="id6"></span><h2>★ 3.3-6<a class="headerlink" href="#exercise3-3-6" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Which is asymptotically larger: <span class="math notranslate nohighlight">\(\lg(\lg^* n)\)</span> or <span class="math notranslate nohighlight">\(\lg^*(\lg n)\)</span>?</p>
+</div></blockquote>
+<p>First, note that <span class="math notranslate nohighlight">\(\lg^*(n)\)</span> is the smallest integer <span class="math notranslate nohighlight">\(i\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg^{(i)} n \leq 1,\end{equation*}\]</div>
+<p>which is equivalent to saying that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}n\leq \operatorname{pow}_2^{(i)}(1),\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\operatorname{pow}_2\colon x\mapsto 2^x\)</span> is the exponential function in base <span class="math notranslate nohighlight">\(2\)</span>. Thus, we can determine <span class="math notranslate nohighlight">\(\lg^*\)</span> as follows: Consider the sequence <span class="math notranslate nohighlight">\(\left\{x_n\right\}_{n=1}^\infty\)</span> given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}x_1=1,\qquad x_{n+1}=2^{x_n}.\end{equation*}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\lg^*x=n\)</span> if and only if <span class="math notranslate nohighlight">\(x_n\leq x&lt;x_{n+1}\)</span> for all <span class="math notranslate nohighlight">\(x\geq 1\)</span>. In this manner, we can see what are the “steps” that the functions <span class="math notranslate nohighlight">\(\lg(\lg^* n)\)</span> and <span class="math notranslate nohighlight">\(\lg^*(\lg n)\)</span> take. Given a positive integer <span class="math notranslate nohighlight">\(k\)</span>, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg(\lg^* n) \geq k\iff \lg^* n \geq 2^k \iff n\geq x_{2^k}\tag{3.3-6.1}\end{equation*}\]</div>
+<p>and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg^*(\lg n)\geq k\iff \lg n \geq x_k\iff n\geq 2^{x_k}=x_{k+1}.\tag{3.3-6.2}\end{equation*}\]</div>
+<p>Since the sequence <span class="math notranslate nohighlight">\(\left\{x_k\right\}_{k=1}^\infty\)</span> is increasing and <span class="math notranslate nohighlight">\(2^k\geq k+1\)</span> for all <span class="math notranslate nohighlight">\(k\geq 1\)</span>, then <span class="math notranslate nohighlight">\(x_{2^k}\geq x_{k+1}\)</span>. This is an indication that <span class="math notranslate nohighlight">\(\lg(\lg^* n)\)</span> grows much slower than <span class="math notranslate nohighlight">\(\lg^*(\lg n)\)</span>. However, since <span class="math notranslate nohighlight">\(\lg(\lg^* n)\)</span> takes non-integer values, we need to be a little more precise in our considerations.</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be a large integer, and consider the number <span class="math notranslate nohighlight">\(k=k(n)\)</span> such that <span class="math notranslate nohighlight">\(x_{2^k}\leq n&lt;x_{2^{k+1}}\)</span>. By Equation (3.3-6.1), we have <span class="math notranslate nohighlight">\(\lg(\lg^* n)&lt;k+1\)</span>, and by Equation (3.3-6.2) we have <span class="math notranslate nohighlight">\(\lg^*(\lg n)\geq 2^k\)</span>. Thus,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\dfrac{\lg^*(\lg n)}{\lg(\lg^* n)}&gt;\dfrac{2^k}{k+1}\end{equation*}\]</div>
+<p>As <span class="math notranslate nohighlight">\(k=k(n)\)</span> grows along with <span class="math notranslate nohighlight">\(n\)</span> (albeit very slowly), we conclude that <span class="math notranslate nohighlight">\(\lim_{n\to\infty}\dfrac{\lg^*(\lg n)}{\lg(\lg^* n)}=\infty\)</span>, which is to say that <span class="math notranslate nohighlight">\(\lg^*(\lg n)\)</span> is asymptotically larger than <span class="math notranslate nohighlight">\(\lg(\lg^* n)\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In <a class="reference internal" href="clrs_ita_3.P.html#problem3-7"><span class="std std-ref">Problem 3-7</span></a>, we will see that <span class="math notranslate nohighlight">\(\lg^*(\lg n)=\lg n -1\)</span>.</p>
+</div>
+</section>
+<section id="exercise3-3-7">
+<span id="id7"></span><h2>3.3-7<a class="headerlink" href="#exercise3-3-7" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Show that the golden ration <span class="math notranslate nohighlight">\(\phi\)</span> and its conjugate <span class="math notranslate nohighlight">\(\widehat{\phi}\)</span> both satisfy the equation <span class="math notranslate nohighlight">\(x^2=x+1\)</span>.</p>
+</div></blockquote>
+<p>Trivial.</p>
+</section>
+<section id="exercise3-3-8">
+<span id="id8"></span><h2>3.3-8<a class="headerlink" href="#exercise3-3-8" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Prove by induction that the <span class="math notranslate nohighlight">\(i\)</span>th Fibonacci number satisfies the equation</p>
+<div class="math notranslate nohighlight">
+\[F_i=(\phi^i-\widehat{\phi}^i)/\sqrt{5},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\phi\)</span> is the golden ration and <span class="math notranslate nohighlight">\(\widehat{\phi}\)</span> is its conjugate.</p>
+</div></blockquote>
+<p>For <span class="math notranslate nohighlight">\(i=0\)</span> and <span class="math notranslate nohighlight">\(i=1\)</span> the equality is verified directly.</p>
+<p>Assuming that the equation holds for <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(i+1\)</span>, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    F_{i+2}
+        &amp; = F_i + F_{i+1}
+            \tag{Definition of Fibonacci sequence}\\
+        &amp; = \dfrac{\phi^i-\widehat{\phi}^i}{\sqrt{5}} + \dfrac{\phi^{i+1}-\widehat{\phi}^{i+1}}{\sqrt{5}}
+            \tag{Inductive hypothesis}\\
+        &amp; = \dfrac{\phi^i(\phi+1) - \widehat{\phi}^i(\widehat{\phi}+1)}{\sqrt(5)}
+            \tag{Elementary algebra}\\
+        &amp; = \dfrac{\phi^i\phi^2 - \widehat{\phi}^i\widehat{\phi}^2}{\sqrt{5}}
+            \tag{Exercise 3.3-7}\\
+        &amp; = \dfrac{\phi^{i+2}-\widehat{\phi}^{i+2}}{\sqrt{5}},
+            \tag{Elementary algebra}
+\end{align*}\]</div>
+<p>which is the desired equality for <span class="math notranslate nohighlight">\(i+2\)</span>.</p>
+</section>
+<section id="exercise3-3-9">
+<span id="id9"></span><h2>3.3-9<a class="headerlink" href="#exercise3-3-9" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Show that <span class="math notranslate nohighlight">\(k\lg k = \Theta(n)\)</span> implies <span class="math notranslate nohighlight">\(k=\Theta(n/\lg n)\)</span>.</p>
+</div></blockquote>
+<p>Naturally, we are assuming <span class="math notranslate nohighlight">\(k=k(n)\)</span>. Suppose that <span class="math notranslate nohighlight">\(k \lg k = \Theta(n)\)</span>. Then there exists <span class="math notranslate nohighlight">\(c,d&gt;0\)</span> such that, for sufficiently large <span class="math notranslate nohighlight">\(n\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}dn \leq k \lg k \leq cn\tag{3.3-9.1}.\end{equation*}\]</div>
+<p>Moreover, <span class="math notranslate nohighlight">\(k \lg k \leq k^2\)</span>, so the first inequality of (3.3-9.1) implies that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg d + \lg n \leq 2 \lg k,\end{equation*}\]</div>
+<p>thus</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}k \lg n \leq k (2\lg k - \lg d) \leq 2k \lg k \leq 2cn,\end{equation*}\]</div>
+<p>which yields, on one hand,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}k \leq 2c(n/ \lg n).\tag{3.3-9.2}\end{equation*}\]</div>
+<p>On the other hand, the first inequality of (3.3-9.1) also implies that, for <span class="math notranslate nohighlight">\(n\)</span> sufficiently large, we have <span class="math notranslate nohighlight">\(k\geq 2\)</span>, so the second inequality gives us</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}k\leq k \lg k \leq cn,\end{equation*}\]</div>
+<p>so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\lg k\leq \lg c + \lg n \leq 2 \lg n,\end{equation*}\]</div>
+<p>again assuming <span class="math notranslate nohighlight">\(n\)</span> sufficiently large. Thus, the first inequality of (3.3-9.1) yields</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}n \leq (k/d) \lg k \leq (2/d)k \lg n,\end{equation*}\]</div>
+<p>that is,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}n/\lg n \leq (2/d)k.\tag{3.3-9.3}\end{equation*}\]</div>
+<p>Inequalities (3.3-9.2) and (3.3-9.3) imply that <span class="math notranslate nohighlight">\(k=\Theta(n/\lg n)\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "c"
+        },
+        kernelOptions: {
+            kernelName: "c",
+            path: "./jupyter_files/ch3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'c'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="clrs_ita_3.2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">3.2 Asymptotic notation: formal definitions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="clrs_ita_3.P.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Problems</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luiz Gustavo Cordeiro<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
