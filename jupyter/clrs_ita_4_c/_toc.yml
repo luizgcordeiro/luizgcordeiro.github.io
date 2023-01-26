@@ -21,3 +21,7 @@ chapters:
   - file: jupyter_files/ch3/clrs_ita_3.2
   - file: jupyter_files/ch3/clrs_ita_3.3
   - file: jupyter_files/ch3/clrs_ita_3.P
+- file: jupyter_files/ch4/clrs_ita_4
+  sections:
+  - file: jupyter_files/ch4/clrs_ita_4.1
+  - file: jupyter_files/ch4/clrs_ita_4.2

@@ -1,0 +1,1578 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4.1 Multiplying square matrices &#8212; CLRS - Introduction to Algorithms, 4&lt;sup&gt;th&lt;/sup&gt; edition&lt;br/&gt;Solutions and implementations in C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.2 Strassen’s algorithm for matrix multiplication" href="clrs_ita_4.2.html" />
+    <link rel="prev" title="Chapter 4 - Divide-and-Conquer" href="clrs_ita_4.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../clrs_ita_main.html">
+                    CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch1/clrs_ita_1.html">
+   Chapter 1 - The Role of Algorithms in Computing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.1.html">
+     1.1 Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.2.html">
+     1.2 Algorithms as a technology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch2/clrs_ita_2.html">
+   Chapter 2 - Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.1.html">
+     2.1 Insertion sort
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.2.html">
+     2.2 Analyzing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.3.html">
+     2.3 Designing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch3/clrs_ita_3.html">
+   Chapter 3 - Characterizing Running Times
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.1.html">
+     3.1
+     <span class="math notranslate nohighlight">
+      \(O\)
+     </span>
+     -notation,
+     <span class="math notranslate nohighlight">
+      \(\Omega\)
+     </span>
+     -notation, and
+     <span class="math notranslate nohighlight">
+      \(\Theta\)
+     </span>
+     -notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.2.html">
+     3.2 Asymptotic notation: formal definitions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.3.html">
+     3.3 Standard notations and common functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="clrs_ita_4.html">
+   Chapter 4 - Divide-and-Conquer
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.1 Multiplying square matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_4.2.html">
+     4.2 Strassen’s algorithm for matrix multiplication
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/luizgcordeiro//master?urlpath=tree/docs/jupyter_files/ch4/clrs_ita_4.1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/luizgcordeiro/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/luizgcordeiro//issues/new?title=Issue%20on%20page%20%2Fjupyter_files/ch4/clrs_ita_4.1.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/jupyter_files/ch4/clrs_ita_4.1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementing-matrix-multiplication">
+   Implementing matrix multiplication
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   4.1-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.1-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   4.1-3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   4.1-4
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>4.1 Multiplying square matrices</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementing-matrix-multiplication">
+   Implementing matrix multiplication
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   4.1-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.1-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   4.1-3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   4.1-4
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="multiplying-square-matrices">
+<h1>4.1 Multiplying square matrices<a class="headerlink" href="#multiplying-square-matrices" title="Permalink to this headline">#</a></h1>
+<section id="implementing-matrix-multiplication">
+<span id="implementation"></span><h2>Implementing matrix multiplication<a class="headerlink" href="#implementing-matrix-multiplication" title="Permalink to this headline">#</a></h2>
+<p>Let us implement the two matrix multiplication algorithms (“standard” and recursive) described in the book for good measure. As in the book, we pass matrices by reference to our functions, and consider only square integer matrices of order a power of <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<p>As a point of interest, let us make it so that each algorithm returns the number of multiplications and additions of numbers that are made, just so that we can verify that the cost is <span class="math notranslate nohighlight">\(\Theta(n^3)\)</span> (in fact, thenumber of operations for both algorithms is <span class="math notranslate nohighlight">\(2n^3\)</span>).</p>
+<p>Moreover, two techniques for matrix partitioning are mentined in the book:</p>
+<ol>
+<li><p>Create submatrices by allocating new memory and copying entries. This is implemented as <code class="docutils literal notranslate"><span class="pre">matrix_multiply_recursive_copy</span></code> below.</p>
+<p>This option uses more resources, as copying and allocating are considered to be constant-time operations. Namely, for a matrix of order <span class="math notranslate nohighlight">\(n\)</span>, copying it into <span class="math notranslate nohighlight">\(4\)</span> submatrices (which corresponds to line 6. of algorithm <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-RECURSIVE</span></code> in the book) has cost <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>. In any case, the Master Theorem (Theorem 4.1, item 1.) still imples that the overall cost is <span class="math notranslate nohighlight">\(\Theta(n^3)\)</span> (see also <span class="xref myst">Exercise 4.1-3</span>).</p>
+<p>However, copying submatrices also has a memory cost:</p>
+<ul class="simple">
+<li><p>Each initial <span class="math notranslate nohighlight">\(n\times n\)</span> matrices are copied to <span class="math notranslate nohighlight">\(4\)</span> <span class="math notranslate nohighlight">\((n/2)\times(n/2)\)</span> submatrices.</p></li>
+<li><p>Each <span class="math notranslate nohighlight">\((n/2)\times(n/2)\)</span> submatrix is copied to <span class="math notranslate nohighlight">\(4\)</span> <span class="math notranslate nohighlight">\((n/4)\times(n/4)\)</span> submatrices.</p></li>
+<li><p>Each <span class="math notranslate nohighlight">\((n/4)\times(n/4)\)</span> submatrix is copied to <span class="math notranslate nohighlight">\(4\)</span> <span class="math notranslate nohighlight">\((n/8)\times(n/8)\)</span> submatrices.</p></li>
+</ul>
+<p>and so on, until we get to a base case. This adds up - for each initial matrix of order <span class="math notranslate nohighlight">\(n\times n\)</span> - to a memory cost (throughout almost the whole algorithm) of</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\sum_{i=1}^{\lg n} 4 \cdot\left(\dfrac{n}{2^i}\right)^2 = \dfrac{4}{3}(n^2-1)\end{equation*}\]</div>
+<p>/(assuming <span class="math notranslate nohighlight">\(n\)</span> a power of <span class="math notranslate nohighlight">\(2\)</span>), which essentially multiplies memory usage by <span class="math notranslate nohighlight">\(7/3\)</span>, but still is quite controlled.</p>
+</li>
+<li><p>Use index calculations for submatrices, which is implemented below as <code class="docutils literal notranslate"><span class="pre">matrix_multiply_recursive_index</span></code></p>
+<p>This is to say that, instead of simply giving <span class="math notranslate nohighlight">\(A=\begin{bmatrix}a_{ij}\end{bmatrix}_{ij}\)</span> as an argument, we use a matrix <span class="math notranslate nohighlight">\(A\)</span> as well as indexes <span class="math notranslate nohighlight">\(i_1,i_2,j_1\)</span> and <span class="math notranslate nohighlight">\(j_2\)</span> as arguments, to mean that the matrix being multiplied is in fact the submatrix consisting of the entries of <span class="math notranslate nohighlight">\(A\)</span> between rows <span class="math notranslate nohighlight">\(i_1\)</span> and <span class="math notranslate nohighlight">\(i_2\)</span> and columns <span class="math notranslate nohighlight">\(j_1\)</span> and <span class="math notranslate nohighlight">\(j_2\)</span>.</p>
+<p>As a downside, this approach makes the code messier.</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int matrix_multiply ( int ** A , int ** B , int ** C , size_t n ) {
+    // Standard matrix multiplication
+    
+    int ops = 0; // number of operations
+    size_t i,j,k; // indices
+    for (i=0;i&lt;n;i++) {
+        for (j=0;j&lt;n;j++) {
+            for (k=0;k&lt;n;k++) {
+                C[i][j] += A[i][k]*B[k][j];
+                ops+=2;
+            }
+        }
+    }
+    return ops;
+}
+
+// Function that alocates a copy of a submatrix dynamically
+
+int ** submatrix ( int ** A , size_t i1 , size_t i2 , size_t j1 , size_t j2 ) {
+    // Creates a submatrix A[i1:i2,j1:j2] (inclusive)
+    size_t i,j; // indices
+    size_t m = i2-i1+1;
+    size_t n = j2-j1+1;
+    
+    int ** A_ = malloc(m * sizeof(int *));
+    
+    for (i=0;i&lt;m;i++) {
+        A_[i] = malloc(n*sizeof(int));
+        for (j=0;j&lt;n;j++) {
+            A_[i][j]=A[i+i1][j+j1];
+        }
+    }
+            
+    return A_;
+}
+
+// Free dinamically allocated matrix for convenience
+
+void free_allocated_matrix(int ** A , size_t m) {
+    // Frees a dinamically allocated matrix A with m rows.
+    size_t i;
+    
+    for (i=0;i&lt;m;i++) {
+        free(A[i]);
+    }
+    
+    free(A);
+}
+
+int matrix_multiply_recursive_copy ( int ** A , int ** B , int ** C , size_t n ) {
+    
+    //Works only for powers of 2
+    
+    
+    if (n==1) {
+        C[0][0] += A[0][0]*B[0][0];
+        return 2;
+    }
+    
+    size_t i,j; // Indices
+    
+    int ops = 0; // number of operations
+    
+    //Create submatrices
+    size_t m = n/2;
+    
+    int ** A11 = submatrix(A,0,m-1,0,m-1);
+    int ** A12 = submatrix(A,0,m-1,m,n-1);
+    int ** A21 = submatrix(A,m,n-1,0,m-1);
+    int ** A22 = submatrix(A,m,n-1,m,n-1);
+    int ** B11 = submatrix(B,0,m-1,0,m-1);
+    int ** B12 = submatrix(B,0,m-1,m,n-1);
+    int ** B21 = submatrix(B,m,n-1,0,m-1);
+    int ** B22 = submatrix(B,m,n-1,m,n-1);
+    int ** C11 = submatrix(C,0,m-1,0,m-1);
+    int ** C12 = submatrix(C,0,m-1,m,n-1);
+    int ** C21 = submatrix(C,m,n-1,0,m-1);
+    int ** C22 = submatrix(C,m,n-1,m,n-1);
+    
+    ops += matrix_multiply_recursive_copy(A11,B11,C11,m);
+    ops += matrix_multiply_recursive_copy(A12,B21,C11,m);
+    ops += matrix_multiply_recursive_copy(A11,B12,C12,m);
+    ops += matrix_multiply_recursive_copy(A12,B22,C12,m);
+    ops += matrix_multiply_recursive_copy(A21,B11,C21,m);
+    ops += matrix_multiply_recursive_copy(A22,B21,C21,m);
+    ops += matrix_multiply_recursive_copy(A21,B12,C22,m);
+    ops += matrix_multiply_recursive_copy(A22,B22,C22,m);
+    
+    // Copy the results back to the original matrices
+    
+    for (i=0;i&lt;m;i++) {
+        for (j=0;j&lt;m;j++) {
+            A[i][j] = A11[i][j];
+            B[i][j] = B11[i][j];
+            C[i][j] = C11[i][j];
+        }
+        for (;j&lt;n;j++) {
+            A[i][j] = A12[i][j-m];
+            B[i][j] = B12[i][j-m];
+            C[i][j] = C12[i][j-m];
+        }
+    }
+    for (;i&lt;n;i++) {
+        for (j=0;j&lt;m;j++) {
+            A[i][j] = A21[i-m][j];
+            B[i][j] = B21[i-m][j];
+            C[i][j] = C21[i-m][j];
+        }
+        for (;j&lt;n;j++) {
+            A[i][j] = A22[i-m][j-m];
+            B[i][j] = B22[i-m][j-m];
+            C[i][j] = C22[i-m][j-m];
+        }
+    }    
+    
+    free_allocated_matrix(A11,m);
+    free_allocated_matrix(A12,m);
+    free_allocated_matrix(A21,n-m);
+    free_allocated_matrix(A22,n-m);
+    free_allocated_matrix(B11,m);
+    free_allocated_matrix(B12,m);
+    free_allocated_matrix(B21,n-m);
+    free_allocated_matrix(B22,n-m);
+    free_allocated_matrix(C11,m);
+    free_allocated_matrix(C12,m);
+    free_allocated_matrix(C21,n-m);
+    free_allocated_matrix(C22,n-m);
+    
+    return ops;
+}
+
+int matrix_multiply_recursive_index ( int ** A , size_t iA1 , size_t iA2 , size_t jA1 , size_t jA2 ,
+                                      int ** B , size_t iB1 , size_t iB2 , size_t jB1 , size_t jB2 ,
+                                      int ** C , size_t iC1 , size_t iC2 , size_t jC1 , size_t jC2 ) {
+    
+    // Works only for powers of 2
+    // Assumes submatrices are of same order
+    /*
+        Takes submatrices of A and B and adds their product to a submatrix of C
+        Indexes i*1 ad i*2 determine that the submatrix has rows of index i
+        satisfying
+            i1 &lt;= i &lt; i2
+        and similarly for j*1 and j*2 
+        
+        To take all of A (square of order n by n), simply use iA1 = jA1 = 0 and iA2 = jA2 = n
+    */
+    
+    size_t n = iA2-iA1; // order of all matrices
+    
+    if (n==1) {
+        C[iC1][jC1] += A[iA1][jA1]*B[iB1][jB1];
+        return 2;
+    }
+    
+    int ops = 0; // number of operations
+    
+    //Create submatrices
+    size_t m = n/2; // half of order
+    
+    /*
+        A11 = A[i1:i1+m][j1:j1+m]
+        A12 = A[i1:i1+m][j1+m:j2]
+        A11 = A[i1+m:i2][j1:j1+m]
+        A12 = A[i1+m:i2][j1+m:j2]
+        
+        and similarly for B11, B12 etc.
+    */
+    
+    //C11 += A11*B11
+    ops += matrix_multiply_recursive_index( A , iA1 , iA1+m , jA1 , jA1+m ,
+                                            B , iB1 , iB1+m , jB1 , jB1+m ,
+                                            C , iC1 , iC1+m , jC1 , jC1+m );
+    //C11 += A12*B21
+    ops += matrix_multiply_recursive_index( A , iA1 , iA1+m , jA1+m , jA2 ,
+                                            B , iB1+m , iB2 , jB1 , jB1+m ,
+                                            C , iC1 , iC1+m , jC1 , jC1+m);
+    //C12 += A11*B12
+    ops += matrix_multiply_recursive_index( A , iA1 , iA1+m , jA1 , jA1+m ,
+                                            B , iB1 , iB1+m , jB1+m , jB2 ,
+                                            C , iC1 , iC1+m , jC1+m , jC2 );
+    //C12 += A12*B22
+    ops += matrix_multiply_recursive_index( A , iA1 , iA1+m , jA1+m , jA2 ,
+                                            B , iB1+m , jB2 , jB1+m , jB2 ,
+                                            C , iC1 , iC1+m , jC1+m , jC2 );
+    //C21 += A21*B11
+    ops += matrix_multiply_recursive_index( A , iA1+m , iA2 , jA1 , jA1+m ,
+                                            B , iB1 , iB1+m , jB1 , jB1+m ,
+                                            C , iC1+m , iC2 , jC1 , jC1+m );
+    //C21 += A22*B21
+    ops += matrix_multiply_recursive_index( A , iA1+m , iA2 , jA1+m , jA2 ,
+                                            B , iB1+m , iB2 , jB1 , jB1+m ,
+                                            C , iC1+m , iC2 , jC1 , jC1+m );
+    //C22 += A21*B12
+    ops += matrix_multiply_recursive_index( A , iA1+m , iA2 , jA1 , jA1+m ,
+                                            B , iB1 , iB1+m , jB1+m , jB2 ,
+                                            C , iC1+m , iC2 , jC1+m , jC2 );
+    //C22 += A22*B22
+    ops += matrix_multiply_recursive_index( A , iA1+m , iA2 , jA1+m , jA2 ,
+                                            B , iB1+m , iB2 , jB1+m , jB2 ,
+                                            C , iC1+m , iC2 , jC1+m , jC2 );
+    
+    
+    return ops;
+}
+
+// print matrix nicely
+
+void print_matrix (int ** A , size_t m , size_t n ) {
+    //prints a matrix A in a nice, python-compatible format
+    size_t i,j; // indices
+    printf(&quot;[\n&quot;);
+    for (i=0;i&lt;m-1;i++) {
+        printf(&quot;  [&quot;);
+        for (j=0;j&lt;n-1;j++) {
+            printf(&quot; %6d ,&quot; , A[i][j]);
+        }
+        printf(&quot; %6d],\n&quot; , A[i][j]);
+    }
+    
+    // last row
+    printf(&quot;  [&quot;);
+    for (j=0;j&lt;n-1;j++) {
+        printf(&quot; %6d ,&quot; , A[i][j]);
+    }
+    printf(&quot; %6d]\n&quot; , A[i][j]);
+    
+    printf(&quot;]&quot;);
+    
+}
+
+int main() {
+    srand(time(NULL)); // random seed
+    
+    // Order of matrices; 8 is large-ish and readable
+    size_t n = 8;
+    
+    size_t i,j; // indices
+    
+    // Create random matrices with entries between -99 and 99
+    int ** A , ** B , ** C , ** D , **E;
+    
+    A = malloc(n*sizeof(int*));
+    B = malloc(n*sizeof(int*));
+    C = malloc(n*sizeof(int*));
+    D = malloc(n*sizeof(int*));
+    E = malloc(n*sizeof(int*));
+    
+    for (i=0;i&lt;n;i++) {
+        A[i] = malloc(n*sizeof(int));
+        B[i] = malloc(n*sizeof(int));
+        C[i] = malloc(n*sizeof(int));
+        D[i] = malloc(n*sizeof(int));
+        E[i] = malloc(n*sizeof(int));
+        
+        for (j=0;j&lt;n;j++) {
+            // between -99 and 99
+            A[i][j] = rand()%199 - 99;
+            B[i][j] = rand()%199 - 99;
+            C[i][j] = 0;
+            D[i][j] = 0;
+            E[i][j] = 0;
+        }
+    }
+    
+    // Start calculating products and number of operations
+    int number_of_operations;
+    
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;Random matrices:\n&quot;);
+    printf(&quot;A =\n&quot;);
+    print_matrix(A,n,n);
+    
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;B =\n&quot;);
+    print_matrix(B,n,n);
+    
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+
+    printf(&quot;Matrix product calculated through standard matrix multiplication:\n&quot;);
+    
+    number_of_operations = matrix_multiply(A,B,C,n);
+    
+    printf(&quot;A*B =\n&quot;);
+    print_matrix(C,n,n);
+    
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;Number of operations: %d&quot; , number_of_operations);
+    
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+    printf(&quot;Matrix product calculated through recursive matrix multiplication with copying submatrices:\n&quot;);
+    
+    number_of_operations = matrix_multiply_recursive_copy(A,B,D,n);
+    
+    printf(&quot;A*B =\n&quot;);
+    print_matrix(D,n,n);
+    
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;Number of operations: %d&quot; , number_of_operations);
+    
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+    printf(&quot;Matrix product calculated through recursive matrix multiplication with index calculations:\n&quot;);
+    
+    number_of_operations = matrix_multiply_recursive_index( A , 0 , n , 0 , n ,
+                                                            B , 0 , n , 0 , n ,
+                                                            E , 0 , n , 0 , n );
+    
+    printf(&quot;A*B =\n&quot;);
+    print_matrix(E,n,n);
+    
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;Number of operations: %d&quot; , number_of_operations);
+    
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+    
+    for (i=0;i&lt;n;i++) {
+        for (j=0;j&lt;n;j++) {
+            if (C[i][j]!=D[i][j] || C[i][j]!=E[i][j]) {
+                printf(&quot;Entries (i,j)=(%zu,%zu) were calculated differently!\n&quot;,i,j);
+                i=n+1;
+                j=n+1;
+            }
+        }
+    }
+    if (i==n &amp;&amp; j==n) {
+        printf(&quot;The products were calculated the same.&quot;);
+    }
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;n;i++) {
+        free(A[i]);
+        free(B[i]);
+        free(C[i]);
+        free(D[i]);
+        free(E[i]);
+    }
+    
+    
+    
+    free(A);
+    free(B);
+    free(C);
+    free(D);
+    free(E);
+    
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==============================
+Random matrices:
+A =
+[
+  [     37 ,    -59 ,     45 ,     67 ,      3 ,     -1 ,    -40 ,    -45],
+  [     77 ,     59 ,     74 ,    -35 ,     91 ,    -93 ,    -90 ,     18],
+  [    -37 ,     41 ,    -47 ,     55 ,     67 ,     35 ,     92 ,     71],
+  [    -63 ,     83 ,     34 ,    -71 ,     93 ,     12 ,    -29 ,     26],
+  [     65 ,     -6 ,     52 ,     28 ,    -21 ,     -1 ,    -70 ,    -83],
+  [     78 ,    -46 ,    -97 ,     91 ,    -52 ,     51 ,    -13 ,    -95],
+  [     -2 ,    -75 ,     23 ,     22 ,     68 ,    -73 ,    -55 ,    -58],
+  [     97 ,     12 ,      8 ,     48 ,     59 ,    -26 ,     30 ,    -24]
+]
+B =
+[
+  [    -96 ,    -81 ,     -5 ,     71 ,    -18 ,    -74 ,     61 ,     91],
+  [    -30 ,    -85 ,    -96 ,    -81 ,     68 ,    -89 ,    -41 ,     46],
+  [     58 ,     84 ,      8 ,     33 ,    -46 ,    -96 ,     90 ,     69],
+  [     31 ,    -89 ,    -74 ,      2 ,    -88 ,     79 ,    -92 ,     10],
+  [    -56 ,     95 ,    -51 ,     -4 ,    -37 ,    -29 ,    -29 ,    -33],
+  [     77 ,     12 ,    -40 ,     72 ,    -20 ,     18 ,    -46 ,    -47],
+  [     -2 ,    -73 ,     29 ,     79 ,     97 ,     98 ,    -56 ,    -77],
+  [    -28 ,     99 ,    -20 ,     56 ,     -1 ,    -53 ,    -44 ,    -72]
+]
+==============================
+Matrix product calculated through standard matrix multiplication:
+A*B =
+[
+  [   4000 ,  -1427 ,    508 ,   3261 , -16570 ,   1846 ,   6741 ,  10696],
+  [ -18536 ,  13960 ,  -6758 , -10102 ,  -7953 , -34905 ,  18045 ,  21479],
+  [  -1928 ,  -2233 , -11766 ,   6107 ,   6450 ,  11886 , -25057 , -20226],
+  [  -1625 ,  20893 ,  -8711 , -10559 ,   4942 , -18299 ,   -423 ,  -3551],
+  [   1387 ,  -7993 ,   -664 ,  -3293 , -12344 ,  -8926 ,  14542 ,  21613],
+  [    612 , -31439 ,  -1349 ,   3778 ,  -8340 ,  21010 ,  -6388 ,   6359],
+  [  -3237 ,  10368 ,   4783 ,  -6385 , -14391 ,    751 ,  10017 ,   7773],
+  [ -12414 , -11750 ,  -5744 ,   5193 ,  -4251 ,  -3189 ,    590 ,   9104]
+]
+Number of operations: 1024
+==============================
+Matrix product calculated through recursive matrix multiplication with copying submatrices:
+A*B =
+[
+  [   4000 ,  -1427 ,    508 ,   3261 , -16570 ,   1846 ,   6741 ,  10696],
+  [ -18536 ,  13960 ,  -6758 , -10102 ,  -7953 , -34905 ,  18045 ,  21479],
+  [  -1928 ,  -2233 , -11766 ,   6107 ,   6450 ,  11886 , -25057 , -20226],
+  [  -1625 ,  20893 ,  -8711 , -10559 ,   4942 , -18299 ,   -423 ,  -3551],
+  [   1387 ,  -7993 ,   -664 ,  -3293 , -12344 ,  -8926 ,  14542 ,  21613],
+  [    612 , -31439 ,  -1349 ,   3778 ,  -8340 ,  21010 ,  -6388 ,   6359],
+  [  -3237 ,  10368 ,   4783 ,  -6385 , -14391 ,    751 ,  10017 ,   7773],
+  [ -12414 , -11750 ,  -5744 ,   5193 ,  -4251 ,  -3189 ,    590 ,   9104]
+]
+Number of operations: 1024
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==============================
+Matrix product calculated through recursive matrix multiplication with index calculations:
+A*B =
+[
+  [   4000 ,  -1427 ,    508 ,   3261 , -16570 ,   1846 ,   6741 ,  10696],
+  [ -18536 ,  13960 ,  -6758 , -10102 ,  -7953 , -34905 ,  18045 ,  21479],
+  [  -1928 ,  -2233 , -11766 ,   6107 ,   6450 ,  11886 , -25057 , -20226],
+  [  -1625 ,  20893 ,  -8711 , -10559 ,   4942 , -18299 ,   -423 ,  -3551],
+  [   1387 ,  -7993 ,   -664 ,  -3293 , -12344 ,  -8926 ,  14542 ,  21613],
+  [    612 , -31439 ,  -1349 ,   3778 ,  -8340 ,  21010 ,  -6388 ,   6359],
+  [  -3237 ,  10368 ,   4783 ,  -6385 , -14391 ,    751 ,  10017 ,   7773],
+  [ -12414 , -11750 ,  -5744 ,   5193 ,  -4251 ,  -3189 ,    590 ,   9104]
+]
+Number of operations: 1024
+==============================
+The products were calculated the same.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>4.1-1<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Generalize <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-RECURSIVE</span></code> to multiply <span class="math notranslate nohighlight">\(n\times n\)</span> matrices for which <span class="math notranslate nohighlight">\(n\)</span> is not necessarily an exact power of <span class="math notranslate nohighlight">\(2\)</span>. Give a recurrence describing its running time. Argue that it runs in <span class="math notranslate nohighlight">\(\Theta(n^3)\)</span> time in the worst case.</p>
+</div></blockquote>
+<p>For the general case, we will need to be able to multiply rectangular matrices. This is so because we need to be able to break up a matrix into smaller ones and operate on block matrices recursively until we get to <span class="math notranslate nohighlight">\(1\times 1\)</span> matrices.</p>
+<p>For example, if we start with a <span class="math notranslate nohighlight">\(3\times 3\)</span> matrix and try to break it up into four submatrices, we will end up with a <span class="math notranslate nohighlight">\(2\times 1\)</span> and a <span class="math notranslate nohighlight">\(1\times 2\)</span> matrix, which we should be able to operate with.</p>
+<p>So we will deal with three arguments for the order of the matrices: <span class="math notranslate nohighlight">\(m\)</span> , <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. We assume that <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(m\times n\)</span>, <span class="math notranslate nohighlight">\(B\)</span> is <span class="math notranslate nohighlight">\(n\times p\)</span> and <span class="math notranslate nohighlight">\(C=AB\)</span> is <span class="math notranslate nohighlight">\(m\times p\)</span>. In this case, it is also useful to allow for “empty matrices”, since the algorithm might end up trying to divide a single column or row into two submatrices, one of which will be empty. (An alternative would be to consider cases of rows and/or columns separately inside an “if-else” thread.)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MATRIX-MULTIPLY-RECURSIVE ( A , B , C , m , n , p)
+1.  if (m==0) or (n==0) or (p==0):
+2.      return
+3.  if (m==1) and (n==1) and (p==1):
+4.      c[1][1] += a[1][1]*b[1][1]
+5.      return
+6.  Let m_1 = floor(m/2),
+        m_2 = m - m_1,
+        n_1 = floor(n/2),
+        n_2 = n - n_1,
+        p_1 = floor(p/2),
+        p_2 = p - p_1,
+7.  Partition A, B and C into submatrices
+        A_11, A_12, A_21, A_22,
+        B_11, B_12, B_21, B_22,
+        C_11, C_12, C_21, C_22
+    with A_ij of order m_i x n_j
+         B_ij of order n_i x p_j
+         C_ij of order m_i x p_j
+8.  for i = 1, 2
+9.      for j = 1, 2
+10.         for k = 1, 2
+11.             MATRIX-MULTIPLY-RECURSIVE ( A_ik , B_kj , C_ij , m_i , n_k , p_j )
+</pre></div>
+</div>
+<p>Let us implement this algorithm. We can adapt the last algorithm <a class="reference internal" href="#implementation"><span class="std std-ref">above</span></a>, so that the orders of the (sub)matrices involved need not be explicit, as they can be immediately calculated from the index arguments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int matrix_multiply ( int ** A , int ** B , int ** C , size_t m , size_t n , size_t p ) {
+    /*
+        Standard matrix multiplication
+        A of order m x n , B of order n x p , C += A*B of order m x p
+    */
+    
+    int ops = 0; // number of operations
+    size_t i,j,k; // indices
+    for (i=0;i&lt;m;i++) {
+        for (j=0;j&lt;p;j++) {
+            for (k=0;k&lt;n;k++) {
+                C[i][j] += A[i][k]*B[k][j];
+                ops+=2;
+            }
+        }
+    }
+    return ops;
+}
+
+int matrix_multiply_recursive ( int ** A , size_t iA1 , size_t iA2 , size_t jA1 , size_t jA2 ,
+                                int ** B , size_t iB1 , size_t iB2 , size_t jB1 , size_t jB2 ,
+                                int ** C , size_t iC1 , size_t iC2 , size_t jC1 , size_t jC2 ) {
+    
+    // Works only for powers of 2
+    // Assumes submatrices are of same order
+    /*
+        Takes submatrices of A and B and adds their product to a submatrix of C
+        Indexes i*1 ad i*2 determine that the submatrix has rows of index i
+        satisfying
+            i1 &lt;= i &lt; i2
+        and similarly for j*1 and j*2 
+        
+        To take all of A (square of order n by n), simply use iA1 = jA1 = 0 and iA2 = jA2 = n
+    */
+    
+    // Matrix orders
+    size_t m = iA2-iA1;
+    size_t n = iB2-iB1;
+    size_t p = jB2-jB1;
+    
+    if ( m==0 || n==0 || p==0 ) {
+        return 0;
+    }
+    
+    if ( m==1 &amp;&amp; n==1 &amp;&amp; p==1 ) {
+        C[iC1][jC1] += A[iA1][jA1]*B[iB1][jB1];
+        return 2;
+    }
+    
+    int ops = 0; // number of operations
+    
+    //Create submatrices
+    size_t m_ = m/2; // half of order
+    size_t n_ = n/2; // half of order
+    size_t p_ = p/2; // half of order
+    
+    /*
+        A11 = A[i1:i1+m][j1:j1+m]
+        A12 = A[i1:i1+m][j1+m:j2]
+        A11 = A[i1+m:i2][j1:j1+m]
+        A12 = A[i1+m:i2][j1+m:j2]
+        
+        and similarly for B11, B12 etc.
+    */
+    
+    //C11 += A11*B11
+    ops += matrix_multiply_recursive( A , iA1 , iA1+m_ , jA1 , jA1+n_ ,
+                                            B , iB1 , iB1+n_ , jB1 , jB1+p_ ,
+                                            C , iC1 , iC1+m_ , jC1 , jC1+p_ );
+    //C11 += A12*B21
+    ops += matrix_multiply_recursive( A , iA1 , iA1+m_ , jA1+n_ , jA2 ,
+                                            B , iB1+n_ , iB2 , jB1 , jB1+p_ ,
+                                            C , iC1 , iC1+m_ , jC1 , jC1+p_);
+    //C12 += A11*B12
+    ops += matrix_multiply_recursive( A , iA1 , iA1+m_ , jA1 , jA1+n_ ,
+                                            B , iB1 , iB1+n_ , jB1+p_ , jB2 ,
+                                            C , iC1 , iC1+m_ , jC1+p_ , jC2 );
+    //C12 += A12*B22
+    ops += matrix_multiply_recursive( A , iA1 , iA1+m_ , jA1+n_ , jA2 ,
+                                            B , iB1+n_ , iB2 , jB1+p_ , jB2 ,
+                                            C , iC1 , iC1+m_ , jC1+p_ , jC2 );
+    //C21 += A21*B11
+    ops += matrix_multiply_recursive( A , iA1+m_ , iA2 , jA1 , jA1+n_ ,
+                                            B , iB1 , iB1+n_ , jB1 , jB1+p_ ,
+                                            C , iC1+m_ , iC2 , jC1 , jC1+p_ );
+    //C21 += A22*B21
+    ops += matrix_multiply_recursive( A , iA1+m_ , iA2 , jA1+n_ , jA2 ,
+                                            B , iB1+n_ , iB2 , jB1 , jB1+p_ ,
+                                            C , iC1+m_ , iC2 , jC1 , jC1+p_ );
+    //C22 += A21*B12
+    ops += matrix_multiply_recursive( A , iA1+m_ , iA2 , jA1 , jA1+n_ ,
+                                            B , iB1 , iB1+n_ , jB1+p_ , jB2 ,
+                                            C , iC1+m_ , iC2 , jC1+p_ , jC2 );
+    //C22 += A22*B22
+    ops += matrix_multiply_recursive( A , iA1+m_ , iA2 , jA1+n_ , jA2 ,
+                                            B , iB1+n_ , iB2 , jB1+p_ , jB2 ,
+                                            C , iC1+m_ , iC2 , jC1+p_ , jC2 );
+    
+    return ops;
+}
+
+// print matrix nicely
+
+void print_matrix (int ** A , size_t m , size_t n ) {
+    //prints a matrix A in a nice, python-compatible format
+    size_t i,j; // indices
+    printf(&quot;[\n&quot;);
+    for (i=0;i&lt;m-1;i++) {
+        printf(&quot;  [&quot;);
+        for (j=0;j&lt;n-1;j++) {
+            printf(&quot; %6d ,&quot; , A[i][j]);
+        }
+        printf(&quot; %6d],\n&quot; , A[i][j]);
+    }
+    
+    // last row
+    printf(&quot;  [&quot;);
+    for (j=0;j&lt;n-1;j++) {
+        printf(&quot; %6d ,&quot; , A[i][j]);
+    }
+    printf(&quot; %6d]\n&quot; , A[i][j]);
+    
+    printf(&quot;]&quot;);
+    
+}
+
+/////////////////
+
+int main() {
+    srand(time(NULL)); // random seed
+    
+    // Order of matrices;
+    
+    size_t m = 4 + rand()%15;
+    size_t n = 4 + rand()%15;
+    size_t p = 4 + rand()%15;
+
+    size_t i,j; // indices
+
+    // Create random matrices with entries between -99 and 99
+    int ** A , ** B , ** C , **E;
+
+    A = malloc(m*sizeof(int*));
+    B = malloc(n*sizeof(int*));
+    C = malloc(m*sizeof(int*));
+    E = malloc(m*sizeof(int*));
+
+    for (i=0;i&lt;m;i++) {
+        A[i] = malloc(n*sizeof(int));
+        for (j=0;j&lt;n;j++) {
+            A[i][j] = rand()%199 - 99;
+        }
+    }
+
+    for (i=0;i&lt;n;i++) {
+        B[i] = malloc(p*sizeof(int));
+        for (j=0;j&lt;p;j++) {
+            B[i][j] = rand()%199 - 99;
+        }
+    }
+
+    for (i=0;i&lt;m;i++) {
+        C[i] = malloc(p*sizeof(int));
+        E[i] = malloc(p*sizeof(int));
+        for (j=0;j&lt;p;j++) {
+            C[i][j] = 0;
+            E[i][j] = 0;
+        }
+    }
+
+    // Start calculating products and number of operations
+    int number_of_operations;
+
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+
+    printf(&quot;\n&quot;);
+
+    printf(&quot;Random matrices:\n&quot;);
+    printf(&quot;A =\n&quot;);
+    print_matrix(A,m,n);
+
+    printf(&quot;\n&quot;);
+
+    printf(&quot;B =\n&quot;);
+    print_matrix(B,n,p);
+
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+
+    printf(&quot;Matrix product calculated through standard matrix multiplication:\n&quot;);
+
+    number_of_operations = matrix_multiply(A,B,C,m,n,p);
+
+    printf(&quot;A*B =\n&quot;);
+    print_matrix(C,m,p);
+
+    printf(&quot;\n&quot;);
+
+    printf(&quot;Number of operations: %d&quot; , number_of_operations);
+
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+    printf(&quot;Matrix product calculated through recursive matrix multiplication with index calculations:\n&quot;);
+
+    number_of_operations = matrix_multiply_recursive( A , 0 , m , 0 , n ,
+                                                      B , 0 , n , 0 , p ,
+                                                      E , 0 , m , 0 , p );
+
+    printf(&quot;A*B =\n&quot;);
+    print_matrix(E,m,p);
+
+    printf(&quot;\n&quot;);
+
+    printf(&quot;Number of operations: %d&quot; , number_of_operations);
+
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+
+    for (i=0;i&lt;m;i++) {
+        for (j=0;j&lt;p;j++) {
+            if (C[i][j]!=E[i][j]) {
+                printf(&quot;Entries (i,j)=(%zu,%zu) were calculated differently!\n&quot;,i,j);
+                i=n+1;
+                j=p+1;
+            }
+        }
+    }
+    if (i==m &amp;&amp; j==p) {
+        printf(&quot;The products were calculated the same.&quot;);
+    }
+    printf(&quot;\n&quot;);
+
+    for (i=0;i&lt;m;i++) {
+        free(A[i]);
+        free(C[i]);
+        free(E[i]);
+    }
+
+    for (i=0;i&lt;n;i++) {
+        free(B[i]);
+    }
+
+    free(A);
+    free(B);
+    free(C);
+    free(E);
+
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==============================
+Random matrices:
+A =
+[
+  [    -81 ,     45 ,     -5 ,     67 ,     71 ,      3 ,    -18 ,     -1 ,    -74 ,    -40 ,     61 ,    -45 ,     91 ,     77],
+  [    -30 ,     59 ,    -85 ,     74 ,    -96 ,    -35 ,    -81 ,     91 ,     68 ,    -93 ,    -89 ,    -90 ,    -41 ,     18],
+  [     46 ,    -37 ,     58 ,     41 ,     84 ,    -47 ,      8 ,     55 ,     33 ,     67 ,    -46 ,     35 ,    -96 ,     92],
+  [     90 ,     71 ,     69 ,    -63 ,     31 ,     83 ,    -89 ,     34 ,    -74 ,    -71 ,      2 ,     93 ,    -88 ,     12],
+  [     79 ,    -29 ,    -92 ,     26 ,     10 ,     65 ,    -56 ,     -6 ,     95 ,     52 ,    -51 ,     28 ,     -4 ,    -21],
+  [    -37 ,     -1 ,    -29 ,    -70 ,    -29 ,    -83 ,    -33 ,     78 ,     77 ,    -46 ,     12 ,    -97 ,    -40 ,     91],
+  [     72 ,    -52 ,    -20 ,     51 ,     18 ,    -13 ,    -46 ,    -95 ,    -47 ,     -2 ,     -2 ,    -75 ,    -73 ,     23],
+  [     29 ,     22 ,     79 ,     68 ,     97 ,    -73 ,     98 ,    -55 ,    -56 ,    -58 ,    -77 ,     97 ,    -28 ,     12]
+]
+B =
+[
+  [     99 ,      8 ,    -20 ,     48 ,     56 ,     59 ,     -1 ,    -26 ,    -53 ,     30 ,    -44 ,    -24 ,    -72 ,     30 ,    -23 ,    -69],
+  [    -46 ,    -94 ,     29 ,    -67 ,     73 ,     26 ,    -41 ,     48 ,     71 ,    -21 ,     66 ,     70 ,    -24 ,    -61 ,    -41 ,    -48],
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  [     23 ,     38 ,     99 ,    -21 ,     -2 ,     -1 ,     30 ,     21 ,    -71 ,     85 ,     73 ,    -67 ,     15 ,    -50 ,    -37 ,     45],
+  [    -68 ,     91 ,     54 ,    -95 ,     -6 ,     90 ,     30 ,    -58 ,    -31 ,     -4 ,    -87 ,     22 ,     11 ,    -52 ,     73 ,    -65],
+  [     86 ,     73 ,     13 ,    -39 ,    -51 ,    -57 ,     81 ,    -46 ,    -95 ,     31 ,    -37 ,     -3 ,     57 ,     25 ,    -58 ,     88],
+  [     -7 ,     96 ,     69 ,     86 ,     86 ,     -1 ,    -94 ,    -68 ,     95 ,    -82 ,     53 ,    -17 ,    -35 ,     27 ,     -6 ,    -72],
+  [    -23 ,     84 ,    -12 ,     25 ,    -96 ,    -54 ,     55 ,    -91 ,     53 ,    -82 ,      5 ,     10 ,     19 ,     46 ,     -2 ,    -88],
+  [     19 ,    -32 ,     74 ,    -18 ,     43 ,     79 ,     14 ,     15 ,     73 ,    -56 ,     98 ,    -84 ,     70 ,     -8 ,    -57 ,    -53],
+  [    -24 ,      8 ,     48 ,    -43 ,     30 ,      3 ,    -35 ,    -16 ,     -3 ,     46 ,     93 ,    -84 ,    -31 ,    -31 ,    -73 ,     88],
+  [     13 ,     78 ,    -53 ,    -44 ,     34 ,     60 ,     71 ,      8 ,    -95 ,     46 ,      0 ,     51 ,    -85 ,     19 ,     75 ,    -32],
+  [    -73 ,      0 ,     24 ,     57 ,    -96 ,     88 ,    -59 ,      0 ,     34 ,    -89 ,     -7 ,    -97 ,    -21 ,     19 ,     67 ,     91],
+  [    -26 ,    -85 ,    -75 ,    -91 ,     51 ,     95 ,     16 ,     32 ,     41 ,     92 ,    -16 ,     55 ,     11 ,    -41 ,     99 ,     38],
+  [     35 ,     23 ,    -28 ,     38 ,     11 ,    -11 ,    -84 ,    -78 ,     -1 ,      8 ,    -98 ,     55 ,    -96 ,     68 ,     46 ,    -45],
+  [     59 ,     47 ,    -37 ,     11 ,     42 ,     55 ,    -57 ,    -40 ,     47 ,      3 ,     92 ,    -42 ,     38 ,     91 ,     72 ,    -26]
+]
+==============================
+Matrix product calculated through standard matrix multiplication:
+A*B =
+[
+  [  -2579 ,  10845 ,   5330 ,    713 , -10817 ,    974 , -12041 , -12326 ,   6058 , -14435 , -10739 ,   4098 ,   7052 ,  10360 ,  12815 ,   -970],
+  [ -11467 , -21523 ,  15224 , -10642 ,  19065 ,   3262 , -13140 ,  10833 ,  20467 , -10003 ,  16842 ,  -5181 ,  12163 , -14922 , -19831 , -14202],
+  [  17811 ,  14944 ,   1374 , -21344 ,   5061 ,  14068 ,  26569 ,    233 , -20633 ,  21067 ,  16735 , -12783 ,  16677 ,   -851 ,  -1228 ,   5536],
+  [  12210 , -22893 ,   8706 ,   1936 ,  25479 ,  13216 ,  -6904 ,  17686 ,  11530 ,   7915 ,  18727 ,  -6277 ,   9923 , -10877 ,  -9955 ,   3488],
+  [   6862 ,   6043 ,  -5913 ,  -3106 ,  22549 ,   8720 ,  -3977 ,  -5816 ,  -5495 ,   8745 ,  -4957 ,   3440 , -15675 ,    607 ,  -1218 ,  -4598],
+  [   3973 , -14397 ,   5574 ,   5019 ,  -2775 ,  -4043 ,  -8210 ,  10292 ,   9821 ,  -7642 ,  30609 , -25498 ,  15070 ,   5438 , -18503 ,  13128],
+  [   8484 ,  13832 ,  -4695 ,   7554 ,  -6683 ,  -4022 ,   7052 ,  -1819 , -21645 ,   2573 , -17279 ,   -285 ,   -992 ,   4008 ,   3500 ,    499],
+  [   8023 ,   4122 ,  -5868 , -24010 , -11451 ,  -7010 ,  28423 ,  -5984 , -15034 ,  21233 , -14704 ,  16103 ,  17907 ,  -8174 ,   1981 ,  -1284]
+]
+Number of operations: 3584
+==============================
+Matrix product calculated through recursive matrix multiplication with index calculations:
+A*B =
+[
+  [  -2579 ,  10845 ,   5330 ,    713 , -10817 ,    974 , -12041 , -12326 ,   6058 , -14435 , -10739 ,   4098 ,   7052 ,  10360 ,  12815 ,   -970],
+  [ -11467 , -21523 ,  15224 , -10642 ,  19065 ,   3262 , -13140 ,  10833 ,  20467 , -10003 ,  16842 ,  -5181 ,  12163 , -14922 , -19831 , -14202],
+  [  17811 ,  14944 ,   1374 , -21344 ,   5061 ,  14068 ,  26569 ,    233 , -20633 ,  21067 ,  16735 , -12783 ,  16677 ,   -851 ,  -1228 ,   5536],
+  [  12210 , -22893 ,   8706 ,   1936 ,  25479 ,  13216 ,  -6904 ,  17686 ,  11530 ,   7915 ,  18727 ,  -6277 ,   9923 , -10877 ,  -9955 ,   3488],
+  [   6862 ,   6043 ,  -5913 ,  -3106 ,  22549 ,   8720 ,  -3977 ,  -5816 ,  -5495 ,   8745 ,  -4957 ,   3440 , -15675 ,    607 ,  -1218 ,  -4598],
+  [   3973 , -14397 ,   5574 ,   5019 ,  -2775 ,  -4043 ,  -8210 ,  10292 ,   9821 ,  -7642 ,  30609 , -25498 ,  15070 ,   5438 , -18503 ,  13128],
+  [   8484 ,  13832 ,  -4695 ,   7554 ,  -6683 ,  -4022 ,   7052 ,  -1819 , -21645 ,   2573 , -17279 ,   -285 ,   -992 ,   4008 ,   3500 ,    499],
+  [   8023 ,   4122 ,  -5868 , -24010 , -11451 ,  -7010 ,  28423 ,  -5984 , -15034 ,  21233 , -14704 ,  16103 ,  17907 ,  -8174 ,   1981 ,  -1284]
+]
+Number of operations: 3584
+==============================
+The products were calculated the same.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>4.1-2<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>How quickly can you multiply a <span class="math notranslate nohighlight">\(kn\times n\)</span> matrix ( <span class="math notranslate nohighlight">\(kn\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns) by an <span class="math notranslate nohighlight">\(n\times kn\)</span> matrix, where <span class="math notranslate nohighlight">\(k\geq 1\)</span>, using <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-RECURSIVE</span></code> as a subroutine? Answer the same question for multiplying an <span class="math notranslate nohighlight">\(n\times kn\)</span> matrix by a <span class="math notranslate nohighlight">\(kn\times n\)</span> matrix. Which is asymptotically faster, and by how much?</p>
+</div></blockquote>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(kn\times n\)</span> matrix and <span class="math notranslate nohighlight">\(B\)</span> be a <span class="math notranslate nohighlight">\(n\times kn\)</span> matrix. Then, we can partition <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> into <span class="math notranslate nohighlight">\(n\times n\)</span> matrices as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}A=\begin{bmatrix}A_1\\A_2\\\vdots\\A_k\end{bmatrix}\qquad\text{and}\qquad B=\begin{bmatrix}B_1&amp;B_2&amp;\cdots&amp;B_k\end{bmatrix}.\end{equation*}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(AB\)</span> is the <span class="math notranslate nohighlight">\(kn\times kn\)</span> block matrix</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}AB=\begin{bmatrix}A_1B_1&amp;A_1B_2&amp;\cdots&amp;A_1B_k\\A_2B_1&amp;A_2B_2&amp;\cdots&amp;A_2B_k\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\A_kB_1&amp;A_kB_2&amp;\cdots&amp;A_kB_k\end{bmatrix},\end{equation*}\]</div>
+<p>and each product <span class="math notranslate nohighlight">\(A_iB_j\)</span> may be computed with <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-RECURSIVE</span></code> in <span class="math notranslate nohighlight">\(\Theta(n^3)\)</span> time. Since there are <span class="math notranslate nohighlight">\(k^2\)</span> such products, this is (approximately) <span class="math notranslate nohighlight">\(k^2\)</span> times slower than a single application of <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-RECURSIVE</span></code> takes.</p>
+<p>Similarly, <span class="math notranslate nohighlight">\(BA\)</span> is the <span class="math notranslate nohighlight">\(n\times n\)</span> matrix</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}BA=B_1A_1+B_2A_2+\cdots+B_kA_k.\end{equation*}\]</div>
+<p>Each term <span class="math notranslate nohighlight">\(B_iA_i\)</span> may b computed with <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-RECURSIVE</span></code>. There are <span class="math notranslate nohighlight">\(k\)</span> such terms to compute, and adding them up takes time <span class="math notranslate nohighlight">\(\Theta(kn^2)\)</span>, which is asymptotically negligible. Thus, computing <span class="math notranslate nohighlight">\(BA\)</span> takes (approximately, asymptotically) <span class="math notranslate nohighlight">\(k\)</span> times slower than a single application of <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-RECURSIVE</span></code> takes.</p>
+<p>In this manner, multiplying a <span class="math notranslate nohighlight">\(kn\times n\)</span> matrix by a <span class="math notranslate nohighlight">\(n\times kn\)</span> matrix is (asymptotically) <span class="math notranslate nohighlight">\(k\)</span> times slower than multiplying a <span class="math notranslate nohighlight">\(n\times kn\)</span> matrix by a <span class="math notranslate nohighlight">\(kn\times n\)</span> matrix, even though the running times for both problems are <span class="math notranslate nohighlight">\(\Theta(n^3)\)</span>.</p>
+</section>
+<section id="id3">
+<h2>4.1-3<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Suppose that instead of partitioning matrices by index calculation in <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-RECURSIVE</span></code>, you copy the appropriate elements of <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span> into separate <span class="math notranslate nohighlight">\(n/2\times n/2\)</span> submatrices <span class="math notranslate nohighlight">\(A_{11},A_{12},A_{21},A_{22};B_{11},B_{12},B_{21},B_{22};C_{11},C_{12},C_{21},C_{22}\)</span>, respectively. After the recursive calls, you copy the results from <span class="math notranslate nohighlight">\(C_{11},C_{12},C_{21}\)</span>, and <span class="math notranslate nohighlight">\(C_{22}\)</span> back into the appropriate places. How does recurrence (4.9) change, and what is its solution?</p>
+</div></blockquote>
+<p>This version of the algorithm was already implemented <a class="reference internal" href="#implementation"><span class="std std-ref">above</span></a>. The pseudocode is</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MATRIX-MULTIPLY-RECURSIVE(A,B,C,n)
+1   if n == 1
+2   // Base case.
+3       C[1,1] = C[1,1] + A[1,1]*B[1,1]
+4       return
+5   // Divide.
+6   copy A, B, and C into n/2 x n/2 submatrices
+    A11, A12, A21, A22; B11, B12, B21, B22;
+    and C11, C12, C21, C22; respectively
+7   // Conquer.
+8   MATRIX-MULTIPLY-RECURSIVE(A11, B11, C11, n/2)
+9   MATRIX-MULTIPLY-RECURSIVE(A11, B12, C12, n/2)
+10  MATRIX-MULTIPLY-RECURSIVE(A21, B11, C21, n/2)
+11  MATRIX-MULTIPLY-RECURSIVE(A21, B12, C22, n/2)
+12  MATRIX-MULTIPLY-RECURSIVE(A12, B21, C11, n/2)
+13  MATRIX-MULTIPLY-RECURSIVE(A12, B22, C12, n/2)
+14  MATRIX-MULTIPLY-RECURSIVE(A22, B21, C21, n/2)
+15  MATRIX-MULTIPLY-RECURSIVE(A22, B22, C22, n/2)
+16  copy C11, C12, C21, C22 back into C.
+</pre></div>
+</div>
+<p>The only difference is in lines 6 and 16. Both take time <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span> instead of time <span class="math notranslate nohighlight">\(\Theta(1)\)</span>. Thus, the recurrence for the running time of this version of the algorithm is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n) = 8T(n/2) +\Theta(n^2).\end{equation*}\]</div>
+<p>By the Master Theorem (Theorem 4.1, item 1.), the solution to this recurrence is still <span class="math notranslate nohighlight">\(T(n)=\Theta(n^3)\)</span>.</p>
+</section>
+<section id="id4">
+<h2>4.1-4<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Write pseudocode for a divide-and-conquer algorithm <code class="docutils literal notranslate"><span class="pre">MATRIX-ADD-RECURSIVE</span></code> that sums two <span class="math notranslate nohighlight">\(n\times n\)</span> matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> by partitioning each of them into four <span class="math notranslate nohighlight">\(n/2\times n/2\)</span> submatrices and then recursively summing corresponding pairs of sub-matrices. Assume that matrix partitioning uses <span class="math notranslate nohighlight">\(\Theta(1)\)</span>-time index calculations. Write a recurrence for the worst-case running time of <code class="docutils literal notranslate"><span class="pre">MATRIX-ADD-RECURSIVE</span></code> and solve your recurrence. What happens if you use <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>-time copying to implement the partitioning instead of index calculations?</p>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MATRIX-ADD-RECURSIVE(A,B,C,n)
+1   // Base case.
+2   if n==1
+3       C[1,1] = C[1,1] + A[1,1] + B[1,1]
+4       return
+5   // Divide.
+6   partition A, B, and C into n/2 x n/2 submatrices
+        A11, A12, A21, A22; B11, B12, B21, B22;
+        and C11, C12, C21, C22; respectively
+7   // Conquer.
+8   MATRIX-ADD-RECURSIVE(A11, B11, C11, n/2)
+9   MATRIX-ADD-RECURSIVE(A12, B12, C12, n/2)
+10  MATRIX-ADD-RECURSIVE(A21, B21, C21, n/2)
+11  MATRIX-ADD-RECURSIVE(A22, B22, C22, n/2)
+</pre></div>
+</div>
+<p>The recursion for the running-time of this algorithm is
+(equation4.1-4(1))=</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n) = 4T(n/2) + \Theta(1).\tag{4.1-4(1)}\end{equation*}\]</div>
+<p>By the Master Theorem, the solution to this recurrence is <span class="math notranslate nohighlight">\(T(n)=\Theta(n^2)\)</span>.</p>
+<p>If we use <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>-time copying of submatrices instead of index calculations, the running-time recursion becomes
+(equation4.1-4(2))=</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n) = 4T(n/2)+\Theta(n^2).\tag{4.1-4(2)}\end{equation*}\]</div>
+<p>By the Master Theorem, the solution to this recurrence is <span class="math notranslate nohighlight">\(T(n)=\Theta(n^2\lg n)\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We may solve recusions <span class="xref myst">4.1-4(1)</span> and <span class="xref myst">4.1-4(2)</span> in a manner similar to that of Chapter 2. The first recursion becomes essentially</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n)=4T(n/2)+c.\end{equation*}\]</div>
+<p>Thus,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T(n)
+        &amp;= 4T(n/2) + c\\
+        &amp;=4(4T(n/2^2)+c)+c\\
+        &amp;=4(4(4T(n/2^3)+c)+c)+c
+\end{align*}\]</div>
+<p>and so on. So, assuming that <span class="math notranslate nohighlight">\(n\)</span> is a power of <span class="math notranslate nohighlight">\(2\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T(n)
+        &amp;= 4^{\lg n} T(1) + \left(\sum_{i=0}^{\lg n - 1}4^i\right)c\\
+        &amp;= 4^{\lg n} T(1) + \dfrac{4^{\lg n}-1}{4-1}c\\
+        &amp;= n^2 T(1) + \dfrac{n^2 - 1}{3}c,
+\end{align*}\]</div>
+<p>which is <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>.</p>
+<p>The second recursion becomes essentially</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n)=4T(n/2)+cn^2.\end{equation*}\]</div>
+<p>Thus,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T(n)
+        &amp;= 4T(n/2) + cn^2\\
+        &amp;=4(4T(n/2^2)+c(n/2)^2)+cn^2\\
+        &amp;=4(4(4T(n/2^3)+c(n/2^2)^2)+c(n/2)^2)+cn^2
+\end{align*}\]</div>
+<p>and so on. So, assuming that <span class="math notranslate nohighlight">\(n\)</span> is a power of <span class="math notranslate nohighlight">\(2\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T(n)
+        &amp;= 4^{\lg n} T(1) + \left(\sum_{i=0}^{\lg n - 1}4^i\left(\dfrac{n}{2^i}\right)^2\right)c\\
+        &amp;= 4^{\lg n} T(1) + \left(\sum_{i=0}^{\lg n - 1}n^2\right)c\\
+        &amp;= n^2 T(1) + (n^2\lg n) c
+\end{align*}\]</div>
+<p>which is <span class="math notranslate nohighlight">\(\Theta(n^2\lg n)\)</span>.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "c"
+        },
+        kernelOptions: {
+            kernelName: "c",
+            path: "./jupyter_files/ch4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'c'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="clrs_ita_4.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 4 - Divide-and-Conquer</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="clrs_ita_4.2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4.2 Strassen’s algorithm for matrix multiplication</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luiz Gustavo Cordeiro<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

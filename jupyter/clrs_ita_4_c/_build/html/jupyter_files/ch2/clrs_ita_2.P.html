@@ -219,6 +219,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch4/clrs_ita_4.html">
+   Chapter 4 - Divide-and-Conquer
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch4/clrs_ita_4.1.html">
+     4.1 Multiplying square matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch4/clrs_ita_4.2.html">
+     4.2 Strassen’s algorithm for matrix multiplication
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -578,15 +600,17 @@ small-ish values of <span class="math notranslate nohighlight">\(k\)</span>. As 
 4               exchange A[j] with A[j-1]
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(A'\)</span> denote the array after <code class="docutils literal notranslate"><span class="pre">BUBBLESORT(A,n)</span></code> is executed. To prove that <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code> is correct, you need to prove that it terminates and that
-<span id="eq.2.5"></span>\begin{equation*}A’[1]\leq A’[2]\leq \cdots\leq A’[n].\tag{2.5}\end{equation*}
-In order to show that <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code> actually sorts, what else do you need to prove?</p></li>
+<ol>
+<li><p>Let <span class="math notranslate nohighlight">\(A'\)</span> denote the array after <code class="docutils literal notranslate"><span class="pre">BUBBLESORT(A,n)</span></code> is executed. To prove that <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code> is correct, you need to prove that it terminates and that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}A'[1]\leq A'[2]\leq \cdots\leq A'[n].\tag{2.5}\end{equation*}\]</div>
+<p>In order to show that <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code> actually sorts, what else do you need to prove?</p>
+</li>
 </ol>
-<p>The next two parts prove inequality <a class="reference external" href="#eq.2.5">(2.5)</a>.</p>
+<p>The next two parts prove inequality (2.5).</p>
 <ol class="simple">
 <li><p>State precisely a loop invariant for the <strong>for</strong> loop in lines 2-4, and prove that this loop invariant holds. Your proof should use the structure of the loop-invariant proof presented in this chapter.</p></li>
-<li><p>Using the termination condition of the loop invariant proved in part (b), state a loop invariant for the <strong>for</strong> loop in lines 1-4 that allows you to prove inequality <a class="reference external" href="#eq.2.5">(2.5)</a>. Your proof should use the structure of the loop-invariant proof presented in this chapter.</p></li>
+<li><p>Using the termination condition of the loop invariant proved in part (b), state a loop invariant for the <strong>for</strong> loop in lines 1-4 that allows you to prove inequality (2-2(1)). Your proof should use the structure of the loop-invariant proof presented in this chapter.</p></li>
 <li><p>What is the worst-case running time of <code class="docutils literal notranslate"><span class="pre">BUBBLESORT</span></code>? How does it compare with the running time of <code class="docutils literal notranslate"><span class="pre">INSERTION-SORT</span></code>?</p></li>
 </ol>
 </div></blockquote>
@@ -686,10 +710,10 @@ int main() {
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array created:
-  -1, -3, 3, 1, 3, -1, 5, 5, 0, 3.
+  0, -4, 0, 3, 1, 1, -5, 1, 2, -4.
 
 Ordered array:
-  -3, -1, -1, 0, 1, 3, 3, 3, 5, 5.
+  -5, -4, -4, 0, 0, 1, 1, 1, 2, 3.
 </pre></div>
 </div>
 </div>
@@ -802,7 +826,7 @@ int main() {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+(0)*(3)^0+(1)*(3)^1+(-3)*(3)^2 = -24
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+(-2)*(-3)^0+(-3)*(-3)^1+(-1)*(-3)^2+(-1)*(-3)^3 = 25
 </pre></div>
 </div>
 </div>
@@ -1014,46 +1038,37 @@ int * random_int_array(size_t n) {
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array created:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  81 , 92 , 1 , 90 , 66 , 25 , 86 , 69 , 9 , 45
+  83 , 31 , 12 , 44 , 57 , 50 , 97 , 20 , 67 , 28
 
 Brute-force listing of all inversions:
-  Inversion 1: indexes (0,2); values 81 &gt; 1
-  Inversion 2: indexes (0,4); values 81 &gt; 66
-  Inversion 3: indexes (0,5); values 81 &gt; 25
-  Inversion 4: indexes (0,7); values 81 &gt; 69
-  Inversion 5: indexes (0,8); values 81 &gt; 9
-  Inversion 6: indexes (0,9); values 81 &gt; 45
-  Inversion 7: indexes (1,2); values 92 &gt; 1
-  Inversion 8: indexes (1,3); values 92 &gt; 90
-  Inversion 9: indexes (1,4); values 92 &gt; 66
-  Inversion 10: indexes (1,5); values 92 &gt; 25
-  Inversion 11: indexes (1,6); values 92 &gt; 86
-  Inversion 12: indexes (1,7); values 92 &gt; 69
-  Inversion 13: indexes (1,8); values 92 &gt; 9
-  Inversion 14: indexes (1,9); values 92 &gt; 45
-  Inversion 15: indexes (3,4); values 90 &gt; 66
-  Inversion 16: indexes (3,5); values 90 &gt; 25
-  Inversion 17: indexes (3,6); values 90 &gt; 86
-  Inversion 18: indexes (3,7); values 90 &gt; 69
-  Inversion 19: indexes (3,8); values 90 &gt; 9
-  Inversion 20: indexes (3,9); values 90 &gt; 45
-  Inversion 21: indexes (4,5); values 66 &gt; 25
-  Inversion 22: indexes (4,8); values 66 &gt; 9
-  Inversion 23: indexes (4,9); values 66 &gt; 45
-  Inversion 24: indexes (5,8); values 25 &gt; 9
-  Inversion 25: indexes (6,7); values 86 &gt; 69
-  Inversion 26: indexes (6,8); values 86 &gt; 9
-  Inversion 27: indexes (6,9); values 86 &gt; 45
-  Inversion 28: indexes (7,8); values 69 &gt; 9
-  Inversion 29: indexes (7,9); values 69 &gt; 45
+  Inversion 1: indexes (0,1); values 83 &gt; 31
+  Inversion 2: indexes (0,2); values 83 &gt; 12
+  Inversion 3: indexes (0,3); values 83 &gt; 44
+  Inversion 4: indexes (0,4); values 83 &gt; 57
+  Inversion 5: indexes (0,5); values 83 &gt; 50
+  Inversion 6: indexes (0,7); values 83 &gt; 20
+  Inversion 7: indexes (0,8); values 83 &gt; 67
+  Inversion 8: indexes (0,9); values 83 &gt; 28
+  Inversion 9: indexes (1,2); values 31 &gt; 12
+  Inversion 10: indexes (1,7); values 31 &gt; 20
+  Inversion 11: indexes (1,9); values 31 &gt; 28
+  Inversion 12: indexes (3,7); values 44 &gt; 20
+  Inversion 13: indexes (3,9); values 44 &gt; 28
+  Inversion 14: indexes (4,5); values 57 &gt; 50
+  Inversion 15: indexes (4,7); values 57 &gt; 20
+  Inversion 16: indexes (4,9); values 57 &gt; 28
+  Inversion 17: indexes (5,7); values 50 &gt; 20
+  Inversion 18: indexes (5,9); values 50 &gt; 28
+  Inversion 19: indexes (6,7); values 97 &gt; 20
+  Inversion 20: indexes (6,8); values 97 &gt; 67
+  Inversion 21: indexes (6,9); values 97 &gt; 28
+  Inversion 22: indexes (8,9); values 67 &gt; 28
 
-Number of inversions counted by modified MERGE-SORT: 29
+Number of inversions counted by modified MERGE-SORT: 22
 
 Ordered array:
 
-  1 , 9 , 25 , 45 , 66 , 69 , 81 , 86 , 90 , 92
+  12 , 20 , 28 , 31 , 44 , 50 , 57 , 67 , 83 , 97
 </pre></div>
 </div>
 </div>

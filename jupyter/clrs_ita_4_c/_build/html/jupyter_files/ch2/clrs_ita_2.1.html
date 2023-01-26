@@ -219,6 +219,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch4/clrs_ita_4.html">
+   Chapter 4 - Divide-and-Conquer
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch4/clrs_ita_4.1.html">
+     4.1 Multiplying square matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch4/clrs_ita_4.2.html">
+     4.2 Strassen’s algorithm for matrix multiplication
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -568,12 +590,10 @@ int main() {
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array created:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2, -4, 7, -5, 6, -2, 8, 0, 4, -1.
+  5, 5, 1, -6, -10, -1, 1, 4, 7, -8.
 
 Ordered array:
-  -5, -4, -2, -1, 0, 2, 4, 6, 7, 8.
+  -10, -8, -6, -1, 1, 1, 4, 5, 5, 7.
 </pre></div>
 </div>
 </div>
@@ -670,10 +690,10 @@ int main() {
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array created:
-  2, -4, 7, -5, 6, -2, 8, 0, 4, -1.
+  5, 5, 1, -6, -10, -1, 1, 4, 7, -8.
 
 Monotonically decreasing array:
-  8, 7, 6, 4, 2, 0, -1, -2, -4, -5.
+  7, 5, 5, 4, 1, 1, -1, -6, -8, -10.
 </pre></div>
 </div>
 </div>
@@ -775,11 +795,11 @@ int main() {
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array created:
-  3, 5, 4, -3, -3, -1, 5, -1, -5, 1.
+  3, 1, 1, -5, 5, 1, 2, 3, -1, -4.
 
 Key: 5
 
-The key was found at index 1.
+The key was found at index 4.
 </pre></div>
 </div>
 </div>
@@ -791,8 +811,7 @@ The key was found at index 1.
 <div><p>Consider the problem of adding two <span class="math notranslate nohighlight">\(n\)</span>-bit binary integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, stored in two <span class="math notranslate nohighlight">\(n\)</span>-element arrays <span class="math notranslate nohighlight">\(A[0:n-1]\)</span> and <span class="math notranslate nohighlight">\(B[0:n-1]\)</span>, where each element is either <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(a=\sum_{i=0}^{n-1}A[i]\cdot 2^i\)</span>, and <span class="math notranslate nohighlight">\(b=\sum_{i=0}^{n-1}B[i]\cdot 2^i\)</span>. The sum <span class="math notranslate nohighlight">\(c=a+b\)</span> of the two integers should be stored in binary form in an <span class="math notranslate nohighlight">\((n+1)\)</span>-element array <span class="math notranslate nohighlight">\(C[0:n]\)</span>, where <span class="math notranslate nohighlight">\(c=\sum_{i=0}^n C[i]\cdot 2^i\)</span>. Write a procedure <code class="docutils literal notranslate"><span class="pre">ADD-BINARY-INTEGERS</span></code> that takes as input arrays <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, along with the length <span class="math notranslate nohighlight">\(n\)</span>, and returns array <span class="math notranslate nohighlight">\(C\)</span> holding the sum.</p>
 </div></blockquote>
 <p>We do standard addition with carrying (which takes time <span class="math notranslate nohighlight">\(O(n)=O(\lg a)\)</span>), or we can use the recursive definition of addition, as “<span class="math notranslate nohighlight">\(a+b)=(a+(b-1))+1\)</span>” (which takes time <span class="math notranslate nohighlight">\(O(a)\)</span>). Let us implement the former.</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ADD-BINARY-INTEGERS(A,B,n)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ADD-BINARY-INTEGERS(A,B,n)
 1.  Initialize C[0:n]
 2.  carry = 0
 3.    for i=0 to n-1
@@ -811,7 +830,6 @@ The key was found at index 1.
 16. C[n]=carry
 </pre></div>
 </div>
-</div></blockquote>
 <p>Implementation below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -884,10 +902,10 @@ int main() {
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Testing the sum. Note that numbers are written little endian, with carry to the right.
- 1001011100
-+0101011011
+ 1101110000
++1010101110
  ___________
- 11001010001
+ 00001000010
 </pre></div>
 </div>
 </div>

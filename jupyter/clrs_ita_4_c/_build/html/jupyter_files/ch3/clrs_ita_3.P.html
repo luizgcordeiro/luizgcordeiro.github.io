@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter 4 - Divide-and-Conquer" href="../ch4/clrs_ita_4.html" />
     <link rel="prev" title="3.3 Standard notations and common functions" href="clrs_ita_3.3.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -214,6 +215,28 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch4/clrs_ita_4.html">
+   Chapter 4 - Divide-and-Conquer
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch4/clrs_ita_4.1.html">
+     4.1 Multiplying square matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch4/clrs_ita_4.2.html">
+     4.2 Strassen’s algorithm for matrix multiplication
     </a>
    </li>
   </ul>
@@ -572,14 +595,15 @@ ol:first-of-type {
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}p(n) = \sum_{i=0}^d a_i n^i,\end{equation*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(a_d&gt;0\)</span>, be a degree-<span class="math notranslate nohighlight">\(d\)</span> polynomial in <span class="math notranslate nohighlight">\(n\)</span>, and let <span class="math notranslate nohighlight">\(k\)</span> be a constant. Use the definitions of the asymptotic notations to prove the following properties.</p>
-<ul class="simple">
-<li><p>(a) If <span class="math notranslate nohighlight">\(k\geq d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = O(n^k)\)</span>.</p></li>
-<li><p>(b) If <span class="math notranslate nohighlight">\(k\leq d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = \Omega(n^k)\)</span>.</p></li>
-<li><p>(c) If <span class="math notranslate nohighlight">\(k=d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = \Theta(n^k)\)</span>.</p></li>
-<li><p>(d) If <span class="math notranslate nohighlight">\(k&gt;d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = o(n^k)\)</span>.</p></li>
-<li><p>(e) If <span class="math notranslate nohighlight">\(k&lt;d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = \omega(n^k)\)</span>.</p></li>
-</ul>
+<ol class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(k\geq d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = O(n^k)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(k\leq d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = \Omega(n^k)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(k=d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = \Theta(n^k)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(k&gt;d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = o(n^k)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(k&lt;d\)</span>, then <span class="math notranslate nohighlight">\(p(n) = \omega(n^k)\)</span>.</p></li>
+</ol>
 </div></blockquote>
+<p><span class="resetol"></span></p>
 <p>Elementary Calculus exercise.</p>
 </section>
 <section id="relative-asymptotic-growths">
@@ -1158,9 +1182,10 @@ ol:first-of-type {
 <li><p>Suppose <span class="math notranslate nohighlight">\(g(n)=\Theta(f(n))\)</span> and <span class="math notranslate nohighlight">\(h(n)=O(f(n))\)</span>. Then there is a constant <span class="math notranslate nohighlight">\(c\)</span> (which we can assume to be the same for both <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span>, looking at the largest one obtained from <span class="math notranslate nohighlight">\(\Theta\)</span> and <span class="math notranslate nohighlight">\(O\)</span>-definitions) for which</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}\dfrac{1}{c}f(n) \leq g(n) \leq c f(n)\end{equation*}\]</div>
-<p>and
-\begin{equation}h(n)\leq cf(n)\end{equation*}
-for all sufficiently large <span class="math notranslate nohighlight">\(n\)</span>. Thus, as <span class="math notranslate nohighlight">\(h(n)\)</span> is asymptotically positive,</p>
+<p>and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}h(n)\leq cf(n)\end{equation*}\]</div>
+<p>for all sufficiently large <span class="math notranslate nohighlight">\(n\)</span>. Thus, as <span class="math notranslate nohighlight">\(h(n)\)</span> is asymptotically positive,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}\dfrac{1}{c}f(n) \leq g(n) \leq g(n)+h(n) \leq (2c)f(n),\end{equation*}\]</div>
 <p>so <span class="math notranslate nohighlight">\(g(n)+h(n) = \Theta(f(n))\)</span>.</p>
@@ -1451,6 +1476,13 @@ for all sufficiently large <span class="math notranslate nohighlight">\(n\)</spa
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">3.3 Standard notations and common functions</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ch4/clrs_ita_4.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 4 - Divide-and-Conquer</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

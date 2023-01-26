@@ -219,6 +219,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch4/clrs_ita_4.html">
+   Chapter 4 - Divide-and-Conquer
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch4/clrs_ita_4.1.html">
+     4.1 Multiplying square matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch4/clrs_ita_4.2.html">
+     4.2 Strassen’s algorithm for matrix multiplication
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -610,28 +632,26 @@ int main() {
 </div>
 </div>
 <p>To finish the question, we simply need to verify that <span class="math notranslate nohighlight">\(100n^2&lt;2^n\)</span> for all <span class="math notranslate nohighlight">\(n\geq 15\)</span>. We can do this - again - by comparing derivatives. This can be done both in the continuous and discrete settings.</p>
-<ul class="simple">
-<li><p><strong>Discrete version</strong>: For <span class="math notranslate nohighlight">\(n\geq 15\)</span>, the sequence <span class="math notranslate nohighlight">\(\left\{100n^2\right\}_n\)</span> grows at a (geometric) rate of</p></li>
-</ul>
+<ul>
+<li><p><strong>Discrete version</strong>: For <span class="math notranslate nohighlight">\(n\geq 15\)</span>, the sequence <span class="math notranslate nohighlight">\(\left\{100n^2\right\}_n\)</span> grows at a (geometric) rate of</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\dfrac{100(n+1)^2}{100n^2}=\left(1+\dfrac{1}{n}\right)^2\leq \left(1+\dfrac{1}{15}\right)^2,
-\end{equation*}\]</div>
+    \dfrac{100(n+1)^2}{100n^2}=\left(1+\dfrac{1}{n}\right)^2\leq \left(1+\dfrac{1}{15}\right)^2,
+    \end{equation*}\]</div>
 <p>whereas the sequence <span class="math notranslate nohighlight">\(\left\{2^n\right\}_n\)</span> grows at a (geometric) rate of <span class="math notranslate nohighlight">\(2\)</span>, which is strictly faster. Since <span class="math notranslate nohighlight">\(100\cdot(15)^2&lt;2^{15}\)</span>, we have <span class="math notranslate nohighlight">\(100n^2&lt;2^n\)</span> for all integer <span class="math notranslate nohighlight">\(n\geq 15\)</span>.</p>
-<ul class="simple">
-<li><p><strong>Continuous version</strong>: Taking logarithms, the inequality above equivalent to <span class="math notranslate nohighlight">\(\log 100 + 2\log n &lt; n \log 2\)</span> for <span class="math notranslate nohighlight">\(n=15\)</span>. The (continuous) derivative of the left-hand side is</p></li>
-</ul>
+</li>
+<li><p><strong>Continuous version</strong>: Taking logarithms, the inequality above equivalent to <span class="math notranslate nohighlight">\(\log 100 + 2\log n &lt; n \log 2\)</span> for <span class="math notranslate nohighlight">\(n=15\)</span>. The (continuous) derivative of the left-hand side is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\dfrac{d}{dn}(\log 100 + 2\log n)=\dfrac{2}{n}&lt;\dfrac{1}{4}\end{equation*}\]</div>
+    \dfrac{d}{dn}(\log 100 + 2\log n)=\dfrac{2}{n}&lt;\dfrac{1}{4}\end{equation*}\]</div>
 <p>whereas the (continuous) derivative of the right-hand side is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\dfrac{d}{dn}(n\log 2)=\log 2&gt;\dfrac{1}{2}&gt;\dfrac{1}{4}.
-\end{equation*}\]</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>This actually shows that for any **real** $n\geq 15$ we have $100n^2&lt;2^n$.
-</pre></div>
-</div>
+    \dfrac{d}{dn}(n\log 2)=\log 2&gt;\dfrac{1}{2}&gt;\dfrac{1}{4}.
+    \end{equation*}\]</div>
+<p>This actually shows that for any <strong>real</strong> <span class="math notranslate nohighlight">\(n\geq 15\)</span> we have <span class="math notranslate nohighlight">\(100n^2&lt;2^n\)</span>.</p>
+</li>
+</ul>
 </section>
 </section>
 

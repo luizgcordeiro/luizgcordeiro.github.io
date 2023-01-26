@@ -1,0 +1,1328 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4.2 Strassen’s algorithm for matrix multiplication &#8212; CLRS - Introduction to Algorithms, 4&lt;sup&gt;th&lt;/sup&gt; edition&lt;br/&gt;Solutions and implementations in C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="4.1 Multiplying square matrices" href="clrs_ita_4.1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../clrs_ita_main.html">
+                    CLRS - Introduction to Algorithms, 4<sup>th</sup> edition<br/>Solutions and implementations in C
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch1/clrs_ita_1.html">
+   Chapter 1 - The Role of Algorithms in Computing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.1.html">
+     1.1 Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.2.html">
+     1.2 Algorithms as a technology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/clrs_ita_1.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch2/clrs_ita_2.html">
+   Chapter 2 - Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.1.html">
+     2.1 Insertion sort
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.2.html">
+     2.2 Analyzing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.3.html">
+     2.3 Designing algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch2/clrs_ita_2.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ch3/clrs_ita_3.html">
+   Chapter 3 - Characterizing Running Times
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.1.html">
+     3.1
+     <span class="math notranslate nohighlight">
+      \(O\)
+     </span>
+     -notation,
+     <span class="math notranslate nohighlight">
+      \(\Omega\)
+     </span>
+     -notation, and
+     <span class="math notranslate nohighlight">
+      \(\Theta\)
+     </span>
+     -notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.2.html">
+     3.2 Asymptotic notation: formal definitions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.3.html">
+     3.3 Standard notations and common functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch3/clrs_ita_3.P.html">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="clrs_ita_4.html">
+   Chapter 4 - Divide-and-Conquer
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="clrs_ita_4.1.html">
+     4.1 Multiplying square matrices
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.2 Strassen’s algorithm for matrix multiplication
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/luizgcordeiro//master?urlpath=tree/docs/jupyter_files/ch4/clrs_ita_4.2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/luizgcordeiro/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/luizgcordeiro//issues/new?title=Issue%20on%20page%20%2Fjupyter_files/ch4/clrs_ita_4.2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/jupyter_files/ch4/clrs_ita_4.2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-of-strassen-s-algorithm">
+   Implementation of Strassen’s algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-1">
+   4.2-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-2">
+   4.2-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-3">
+   4.2-3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-4">
+   4.2-4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-5">
+   4.2-5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   4.2-6
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>4.2 Strassen’s algorithm for matrix multiplication</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-of-strassen-s-algorithm">
+   Implementation of Strassen’s algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-1">
+   4.2-1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-2">
+   4.2-2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-3">
+   4.2-3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-4">
+   4.2-4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise4-2-5">
+   4.2-5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   4.2-6
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="strassen-s-algorithm-for-matrix-multiplication">
+<h1>4.2 Strassen’s algorithm for matrix multiplication<a class="headerlink" href="#strassen-s-algorithm-for-matrix-multiplication" title="Permalink to this headline">#</a></h1>
+<section id="implementation-of-strassen-s-algorithm">
+<h2>Implementation of Strassen’s algorithm<a class="headerlink" href="#implementation-of-strassen-s-algorithm" title="Permalink to this headline">#</a></h2>
+<p>Let us implement Strassen’s algorithm. Notice that the pseudocode is available in <a class="reference internal" href="#exercise4-2-2"><span class="std std-ref">Exercise 4.2-2</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-text/x-csrc notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+// Standard matrix multiplication for comparison
+// Only square matrices, just as in Strassen&#39;s algorithm
+
+unsigned long long matrix_multiply ( int ** A , int ** B , int ** C , size_t n ) {
+    // Standard matrix multiplication
+    
+    unsigned long long ops = 0; // number of operations
+    size_t i,j,k; // indices
+    for (i=0;i&lt;n;i++) {
+        for (j=0;j&lt;n;j++) {
+            for (k=0;k&lt;n;k++) {
+                C[i][j] += A[i][k]*B[k][j];
+                ops+=2;
+            }
+        }
+    }
+    return ops;
+}
+
+// Matrix addition is necessary for Strassen&#39;s algorithm
+
+unsigned long long matrix_add ( int ** A , size_t iA , size_t jA ,
+                 int ** B , size_t iB , size_t jB ,
+                 int ** C , size_t iC , size_t jC ,
+                 size_t n ) {
+    /*
+        Matrix addition for square submatrices of order n, with indices
+            i*, i*+1, ... i*+(n-1)
+        and similarly for j*
+    */
+    
+    // Could be made recursive.
+    
+    unsigned long long ops = 0; // number of operations
+    size_t i,j; // indices
+    for (i=0;i&lt;n;i++) {
+        for (j=0;j&lt;n;j++) {
+            C[iC+i][jC+j] += A[iA+i][jA+j]+B[iB+i][jB+j];
+            ops+=2;
+        }
+    }
+    
+    return ops;
+}
+
+unsigned long long matrix_subtract ( int ** A , size_t iA , size_t jA ,
+                      int ** B , size_t iB , size_t jB ,
+                      int ** C , size_t iC , size_t jC ,
+                      size_t n ) {
+    /*
+        Matrix subtraction for square submatrices of order n, with indices
+            i*, i*+1, ... i*+(n-1)
+        and similarly for j*
+    */
+    
+    // Could be made recursive.
+    
+    unsigned long long ops = 0; // number of operations
+    size_t i,j; // indices
+    for (i=0;i&lt;n;i++) {
+        for (j=0;j&lt;n;j++) {
+            C[iC+i][jC+j] += A[iA+i][jA+j]-B[iB+i][jB+j];
+            ops+=2;
+        }
+    }
+    
+    return ops;
+}
+
+// print matrix nicely
+void print_matrix (int ** A , size_t m , size_t n ) {
+    //prints a matrix A in a nice, python-compatible format
+    size_t i,j; // indices
+    printf(&quot;[\n&quot;);
+    for (i=0;i&lt;m-1;i++) {
+        printf(&quot;  [&quot;);
+        for (j=0;j&lt;n-1;j++) {
+            printf(&quot; %6d ,&quot; , A[i][j]);
+        }
+        printf(&quot; %6d],\n&quot; , A[i][j]);
+    }
+    
+    // last row
+    printf(&quot;  [&quot;);
+    for (j=0;j&lt;n-1;j++) {
+        printf(&quot; %6d ,&quot; , A[i][j]);
+    }
+    printf(&quot; %6d]\n&quot; , A[i][j]);
+    
+    printf(&quot;]&quot;);
+    
+}
+
+unsigned long long strassen ( int ** A , size_t iA , size_t jA ,
+               int ** B , size_t iB , size_t jB ,
+               int ** C , size_t iC , size_t jC ,
+               size_t n ) {
+    
+    /*
+        Strassen algorithm on submatrices of order n, with indexes
+        starting at i* and j*
+    */
+    
+    ///////////////////////////
+    // Base case
+    if (n==1) {
+        C[iC][jC] += A[iA][jA]*B[iB][jB];
+        return 2;
+    }
+    
+    ///////////////////////////    
+    // Divide
+    size_t m = n/2; // half of order
+    
+    ///////////////////////////    
+    // Conquer
+    
+    size_t i,j; // indices
+    
+    unsigned long long ops = 0; // number of operations
+    
+    // Initialize auxiliary matrices
+    int *** S = malloc( 10 * sizeof(int*) );
+    for (i=0;i&lt;10;i++) {
+        S[i] = malloc( m * sizeof(int*) );
+        for (j=0;j&lt;m;j++) {
+            S[i][j] = calloc (m, sizeof(int) ); // initialize row to zero
+        }
+    }
+    
+    int *** P = malloc( 7 * sizeof(int*) );
+    for (i=0;i&lt;7;i++) {
+        P[i] = malloc( m * sizeof(int*) );
+        for (j=0;j&lt;m;j++) {
+            P[i][j] = calloc (m, sizeof(int) ); // initialize row to zero
+        }
+    }
+    
+    // Compute auxiliary matrices
+    
+    for (i=0;i&lt;m;i++) {
+        for (j=0;j&lt;m;j++) {
+            // S1 = B12 - B22
+            S[0][i][j] = B[iB+i][jB+m+j] - B[iB+m+i][jB+m+j];
+            // S2 = A11 + A12
+            S[1][i][j] = A[iA+i][jA+j] + A[iA+i][jA+m+j];
+            // S3 = A21 + A22
+            S[2][i][j] = A[iA+m+i][jA+j] + A[iA+m+i][jA+m+j];
+            // S4 = B21 - B11
+            S[3][i][j] = B[iB+m+i][jB+j] - B[iB+i][jB+j];
+            // S5 = A11 + A22
+            S[4][i][j] = A[iA+i][jA+j] + A[iA+m+i][jA+m+j];
+            // S6 = B11 + B22
+            S[5][i][j] = B[iB+i][jB+j] + B[iB+m+i][jB+m+j];
+            ops+=10;
+            // S7 = A12 - A22
+            S[6][i][j] = A[iA+i][jA+m+j]-A[iA+m+i][jA+m+j];
+            // S8 = B21 + B22
+            S[7][i][j] = B[iB+m+i][jB+j] + B[iB+m+i][jB+m+j];
+            // S9 = A11 - A21
+            S[8][i][j] = A[iA+i][jA+j] - A[iA+m+i][jA+j];
+            // S10 = B11 + B12
+            S[9][i][j] = B[iB+i][jB+j] + B[iB+i][jB+m+j];
+        }
+    }
+    
+    //P1 = A11 * S1
+    ops += strassen ( A    , iA     , jA     ,
+                      S[0] , 0      , 0      ,
+                      P[0] , 0      , 0      ,
+                      m );
+    //P2 = S2*B22
+    ops += strassen ( S[1] , 0      , 0      ,
+                      B    , iB + m , jB + m ,
+                      P[1] , 0      , 0      ,
+                      m );
+    //P3 = S3*B11
+    ops += strassen ( S[2] , 0      , 0      ,
+                      B    , iB     , jB     ,
+                      P[2] , 0      , 0      ,
+                      m );
+    //P4 = A22*S4
+    ops += strassen ( A    , iA + m , jA + m ,
+                      S[3] , 0      , 0      ,
+                      P[3] , 0      , 0      ,
+                      m );
+    //P5 = S5*S6
+    ops += strassen ( S[4] , 0      , 0      ,
+                      S[5] , 0      , 0      ,
+                      P[4] , 0      , 0      ,
+                      m );
+    //P6 = S7*S8
+    ops += strassen ( S[6] , 0      , 0      ,
+                      S[7] , 0      , 0      ,
+                      P[5] , 0      , 0      ,
+                      m );
+    //P7 = S9*S10
+    ops += strassen ( S[8] , 0      , 0      ,
+                      S[9] , 0      , 0      ,
+                      P[6] , 0      , 0      ,
+                      m );
+    
+    // Finish by updating product entries
+    for (i=0;i&lt;m;i++) {
+        for (j=0;j&lt;m;j++) {
+            // C11 += P5 + P4 - P2 + P6
+            C[iC+i][jC+j] += P[4][i][j] + P[3][i][j] - P[1][i][j] + P[5][i][j];
+            // C12 += P1 + P2
+            C[iC+i][jC+m+j] += P[0][i][j] + P[1][i][j];
+            // C21 += P3 + P4
+            C[iC+m+i][jC+j] += P[2][i][j] + P[3][i][j];
+            // C22 += P5 + P1 - P3 - P7
+            C[iC+m+i][jC+m+j] += P[4][i][j] + P[0][i][j] - P[2][i][j] - P[6][i][j];
+            ops+=12;
+        }
+    }
+    
+    // Free auxiliary matrices
+    for (i=0;i&lt;10;i++) {
+        for (j=0;j&lt;m;j++) {
+            free(S[i][j]);
+        }
+        free(S[i]);
+    }
+
+    for (i=0;i&lt;7;i++) {
+        for (j=0;j&lt;m;j++) {
+            free(P[i][j]);
+        }
+        free(P[i]);
+    }
+    
+    free(S);
+    free(P);
+    
+    return ops;
+}
+
+int main() {
+    srand(time(NULL)); // random seed
+    
+    // Order of matrices; 8 is large-ish and readable
+    size_t n = 8;
+    
+    size_t i,j; // indices
+    
+    // Create random matrices with entries between -99 and 99
+    int ** A , ** B , ** C , ** D;
+    
+    A = malloc(n*sizeof(int*));
+    B = malloc(n*sizeof(int*));
+    C = malloc(n*sizeof(int*));
+    D = malloc(n*sizeof(int*));
+    
+    for (i=0;i&lt;n;i++) {
+        A[i] = malloc(n*sizeof(int));
+        B[i] = malloc(n*sizeof(int));
+        C[i] = malloc(n*sizeof(int));
+        D[i] = malloc(n*sizeof(int));
+        
+        for (j=0;j&lt;n;j++) {
+            // between -99 and 99
+            A[i][j] = rand()%199 - 99;
+            B[i][j] = rand()%199 - 99;
+            C[i][j] = 0;
+            D[i][j] = 0;
+        }
+    }
+    
+    /*
+    A[0][0] = 1;
+    A[0][1] = 3;
+    A[1][0] = 7;
+    A[1][1] = 5;
+    B[0][0] = 6;
+    B[0][1] = 8;
+    B[1][0] = 4;
+    B[1][1] = 2;
+    */
+    
+    // Start calculating products and number of operations
+    unsigned long long number_of_operations;
+    
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;Random matrices:\n&quot;);
+    printf(&quot;A =\n&quot;);
+    print_matrix(A,n,n);
+    
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;B =\n&quot;);
+    print_matrix(B,n,n);
+    
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+
+    printf(&quot;Matrix product calculated through standard matrix multiplication:\n&quot;);
+    
+    number_of_operations = matrix_multiply(A,B,C,n);
+    
+    printf(&quot;A*B =\n&quot;);
+    print_matrix(C,n,n);
+    
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;Number of operations: %d&quot; , number_of_operations);
+    
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+    printf(&quot;Matrix product calculated through Strassen&#39;s algorithm:\n&quot;);
+    
+    number_of_operations = strassen ( A , 0 , 0 ,
+                                      B , 0 , 0 ,
+                                      D , 0 , 0 ,
+                                      n );
+    
+    printf(&quot;A*B =\n&quot;);
+    print_matrix(D,n,n);
+    
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;Number of operations: %d&quot; , number_of_operations);
+    
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+    
+    for (i=0;i&lt;n;i++) {
+        for (j=0;j&lt;n;j++) {
+            if (C[i][j]!=D[i][j]) {
+                printf(&quot;Entries (i,j)=(%zu,%zu) were calculated differently!\n&quot;,i,j);
+                i=n+1;
+                j=n+1;
+            }
+        }
+    }
+    if (i==n &amp;&amp; j==n) {
+        printf(&quot;The products were calculated the same.&quot;);
+    }
+    
+    for (i=0;i&lt;n;i++) {
+        free(A[i]);
+        free(B[i]);
+        free(C[i]);
+        free(D[i]);
+    }
+    
+    free(A);
+    free(B);
+    free(C);
+    free(D);
+    
+    
+    // Let us print the number of operations for small values of n
+    
+    n=1;
+    
+    unsigned long long operations_standard = 2, operations_strassen = 2;
+    // ==============================
+    printf(&quot;\n&quot;);
+    for (i=0;i&lt;30;i++) {
+        printf(&quot;=&quot;);
+    }
+    printf(&quot;\n&quot;);
+    
+    printf(&quot;\nThe following table shows the number of operations (additions and scalar multiplications)\n&quot;
+           &quot;performed to calculate C+=A*B with both standard multiplication and Strassen&#39;s algorithm.\n\n&quot;);
+    printf(&quot;| %15s | %15s | %15s |\n&quot;
+           &quot;|-----------------|-----------------|-----------------|\n&quot;,
+          &quot;n&quot;,
+          &quot;standard&quot;,
+          &quot;Strassen&quot;);
+    do {
+        printf(&quot;| %15d | %15llu | %15llu |\n&quot;,
+               n , operations_standard , operations_strassen);
+        
+        n*=2;
+        operations_standard = 2*n*n*n;
+        operations_strassen *= 7;
+        operations_strassen += (22*n*n)/4;
+            /*
+                T(n) requires
+                    7*T(n/2) (computing P_i);
+                    10*(n/2)^2 (computing S_i);
+                    12*(n/2)^2 (updatin C_ij.
+            */
+    } while ( (n&lt;=16384) &amp;&amp; (operations_standard&lt;=operations_strassen) );
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==============================
+Random matrices:
+A =
+[
+  [    -74 ,    -29 ,     37 ,    -39 ,     49 ,    -74 ,     49 ,    -18],
+  [      5 ,    -45 ,    -92 ,     60 ,    -62 ,     68 ,     33 ,    -71],
+  [     95 ,    -18 ,     46 ,     78 ,    -63 ,     66 ,    -93 ,    -91],
+  [     19 ,     93 ,     42 ,    -71 ,     96 ,    -75 ,    -60 ,    -57],
+  [     29 ,     43 ,    -56 ,     70 ,      2 ,    -80 ,     39 ,     72],
+  [    -79 ,     38 ,     -3 ,     -4 ,     63 ,     76 ,     27 ,    -86],
+  [     43 ,      8 ,    -68 ,     96 ,     68 ,     95 ,     74 ,     42],
+  [    -12 ,     35 ,    -77 ,    -69 ,    -18 ,     41 ,    -74 ,    -81]
+]
+B =
+[
+  [     52 ,     46 ,    -52 ,    -30 ,     18 ,    -29 ,    -74 ,    -54],
+  [     -6 ,     29 ,      3 ,     49 ,    -57 ,    -31 ,    -34 ,     59],
+  [     -1 ,      9 ,     19 ,     -4 ,    -96 ,     63 ,    -74 ,    -12],
+  [    -60 ,      3 ,     54 ,     56 ,     96 ,      7 ,    -70 ,    -65],
+  [     24 ,    -25 ,     -1 ,    -43 ,     14 ,    -15 ,    -95 ,    -65],
+  [     43 ,     40 ,     66 ,     -7 ,     -2 ,    -97 ,    -81 ,    -67],
+  [     33 ,     63 ,    -45 ,     11 ,     93 ,      7 ,     45 ,     95],
+  [    -43 ,     61 ,    -92 ,     62 ,    -92 ,     86 ,     31 ,     45]
+]
+==============================
+Matrix product calculated through standard matrix multiplication:
+A*B =
+[
+  [   -986 ,  -6225 ,  -3124 ,  -3699 ,     72 ,  10341 ,   9440 ,   9994],
+  [   2600 ,    295 ,  10694 ,   -476 ,  25844 , -15667 ,   3434 ,  -6307],
+  [   2492 ,  -2699 ,  17068 ,  -3966 ,   4517 , -12687 , -21649 , -25071],
+  [   4198 ,  -8921 ,   -847 ,  -7954 , -14649 ,   -772 , -10218 ,   -908],
+  [  -8095 ,   5886 , -12324 ,  10748 ,   7358 ,   8983 ,   5913 ,   9268],
+  [   5276 ,  -4651 ,  15599 ,  -4256 ,   7469 , -14628 ,  -8536 ,  -3688],
+  [   2849 ,  11210 ,    688 ,   4579 ,  19842 , -11212 , -14665 ,  -9139],
+  [   5755 ,  -7950 ,   9046 ,  -6830 ,  -1207 , -17262 ,   2774 ,  -4130]
+]
+Number of operations: 1024
+==============================
+Matrix product calculated through Strassen&#39;s algorithm:
+A*B =
+[
+  [   -986 ,  -6225 ,  -3124 ,  -3699 ,     72 ,  10341 ,   9440 ,   9994],
+  [   2600 ,    295 ,  10694 ,   -476 ,  25844 , -15667 ,   3434 ,  -6307],
+  [   2492 ,  -2699 ,  17068 ,  -3966 ,   4517 , -12687 , -21649 , -25071],
+  [   4198 ,  -8921 ,   -847 ,  -7954 , -14649 ,   -772 , -10218 ,   -908],
+  [  -8095 ,   5886 , -12324 ,  10748 ,   7358 ,   8983 ,   5913 ,   9268],
+  [   5276 ,  -4651 ,  15599 ,  -4256 ,   7469 , -14628 ,  -8536 ,  -3688],
+  [   2849 ,  11210 ,    688 ,   4579 ,  19842 , -11212 , -14665 ,  -9139],
+  [   5755 ,  -7950 ,   9046 ,  -6830 ,  -1207 , -17262 ,   2774 ,  -4130]
+]
+Number of operations: 2732
+==============================
+The products were calculated the same.
+==============================
+
+The following table shows the number of operations (additions and scalar multiplications)
+performed to calculate C+=A*B with both standard multiplication and Strassen&#39;s algorithm.
+
+|               n |        standard |        Strassen |
+|-----------------|-----------------|-----------------|
+|               1 |               2 |               2 |
+|               2 |              16 |              36 |
+|               4 |             128 |             340 |
+|               8 |            1024 |            2732 |
+|              16 |            8192 |           20532 |
+|              32 |           65536 |          149356 |
+|              64 |          524288 |         1068020 |
+|             128 |         4194304 |         7566252 |
+|             256 |        33554432 |        53324212 |
+|             512 |       268435456 |       374711276 |
+|            1024 |      2147483648 |      2628746100 |
+|            2048 |     17179869184 |     18424291372 |
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise4-2-1">
+<span id="id1"></span><h2>4.2-1<a class="headerlink" href="#exercise4-2-1" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Use Strassen’s algorithm to compute the matrix product</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\begin{bmatrix}1&amp;3\\7&amp;5\end{bmatrix} \begin{bmatrix}6&amp;8\\4&amp;2\end{bmatrix}.\end{equation*}\]</div>
+<p>Show your work.</p>
+</div></blockquote>
+<p>Let <span class="math notranslate nohighlight">\(A=\begin{bmatrix}1&amp;3\\7&amp;5\end{bmatrix}\)</span>, and <span class="math notranslate nohighlight">\(B=\begin{bmatrix}6&amp;8\\4&amp;2\end{bmatrix}\)</span>. In this case, the order of the matrices is <span class="math notranslate nohighlight">\(n=2\)</span>.</p>
+<ol class="simple">
+<li><p>Since <span class="math notranslate nohighlight">\(n&gt;1\)</span>, we need to partition our matrices into <span class="math notranslate nohighlight">\(n/2\times n/2\)</span> submatrices:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A_{11}=1\)</span>, <span class="math notranslate nohighlight">\(A_{12}=3\)</span>, <span class="math notranslate nohighlight">\(A_{21}=7\)</span>, <span class="math notranslate nohighlight">\(A_{22}=5\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(B_{11}=6\)</span>, <span class="math notranslate nohighlight">\(B_{12}=8\)</span>. <span class="math notranslate nohighlight">\(B_{21}=4\)</span>, <span class="math notranslate nohighlight">\(B_{22}=2\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{11}=C_{12}=C_{21}=C_{22}=0\)</span>.</p></li>
+</ul>
+</li>
+<li><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S_1=B_{12}-B_{22} = 8 - 2 = 6\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_2=A_{11}+A_{12} = 1 + 3 = 4\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_3=A_{21}+A_{22} = 7 + 5 = 12\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_4=B_{21}-B_{11} = 4 - 6 = -2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_5=A_{11}+A_{22} = 1 + 5 = 6\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_6=B_{11}+B_{22} = 6 + 2 = 8\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_7=A_{12}-A_{22} = 3 - 5 = -2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_8=B_{21}+B_{22} = 4 + 2 = 6\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_9=A_{11}-A_{21} = 1 - 7 = -6\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_{10}=B_{11}+B_{12} = 6 + 8 = 14\)</span>.</p></li>
+</ul>
+</li>
+<li><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_1=A_{11}\cdot S_1 = 1\cdot6 = 6\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_2=S_2\cdot B_{22} = 4 \cdot 2 = 8\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_3=S_3\cdot B_{11} = 12\cdot 6 = 72\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_4=A_{22}\cdot S_4 = 5\cdot(-2)=-10\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_5=S_5\cdot S_6 = 6\cdot 8 = 48\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_6=S_7\cdot S_8 = (-2)\cdot 6 = -12\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_7=S_9\cdot S_{10} = (-6)\cdot 14 = -84\)</span>.</p></li>
+</ul>
+</li>
+<li><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C_{11} = P_5+P_4-P_2+P_6 = 48 + (-10)-8-12 = 18\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{12} = P_1+P_2 = 6 + 8 = 14\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{21} = P_3+P_4 = 72 + (-10) = 62\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{22} = P_5+P_1-P_3-P_7 = 48 + 6 - 72 - (-84) = 66\)</span>.</p></li>
+</ul>
+</li>
+</ol>
+<p>Therefore,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\begin{bmatrix}1&amp;3\\7&amp;5\end{bmatrix}\cdot\begin{bmatrix}6&amp;8\\4&amp;2\end{bmatrix} = \begin{bmatrix}18 &amp; 14\\62&amp; 66\end{bmatrix}.\end{equation*}\]</div>
+</section>
+<section id="exercise4-2-2">
+<span id="id2"></span><h2>4.2-2<a class="headerlink" href="#exercise4-2-2" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Write pseudocode for Strassen’s algorithm.</p>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>STRASSEN(A,B,C,n)
+1   if n==1
+2   // Base case.
+3       C[1,1] = C[1,1]+A[1,1]*B[1,1]
+4       return
+5   // Divide.
+6   partition A, B, and C into n/2 x n/2 submatrices
+        A_11, A_12, A_21, A_22; B_11, B_12, B_21, B_22;
+        and C_11, C_12, C_21, C_22; respectively
+7   // Conquer
+8   Let S_1  = B_12 - B_22,
+        S_2  = A_11 + A_12,
+        S_3  = A_21 + A_22,
+        S_4  = B_21 - B_11,
+        S_5  = A_11 + A_22,
+        S_6  = B_11 + B_22,
+        S_7  = A_12 - A_22,
+        S_8  = B_21 + B_22,
+        S_9  = A_11 - A_21,
+        S_10 = B_11 + B_12.
+9   Initialize n/2 x n/2 zero matrices
+        P_1, P_2, P_3, P_4, P_5, P_6, P_7
+10  STRASSEN( A_11 , S_1  , P_1 , n/2)
+    STRASSEN( S_2  , B_22 , P_2 , n/2)
+    STRASSEN( S_3  , B_11 , P_3 , n/2)
+    STRASSEN( A_22 , S_4  , P_4 , n/2)
+    STRASSEN( S_5  , S_6  , P_5 , n/2)
+    STRASSEN( S_7  , S_8  , P_6 , n/2)
+    STRASSEN( S_9  , S_10 , P_7 , n/2)
+11 Let C_11 = C_11 + P_5 + P_4 - P_2 + P_6
+       C_12 = C_12 + P_1 + P_2
+       C_21 = C_21 + P_3 + P_4
+       C_22 = C_22 + P_5 + P_1 - P_3 - P_7
+12 return
+</pre></div>
+</div>
+</section>
+<section id="exercise4-2-3">
+<span id="id3"></span><h2>4.2-3<a class="headerlink" href="#exercise4-2-3" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>What is the largest <span class="math notranslate nohighlight">\(k\)</span> such that if you can multiply <span class="math notranslate nohighlight">\(3\times 3\)</span> matrices using <span class="math notranslate nohighlight">\(k\)</span> multiplications (not assuming commutativity of multiplication), then you can multiply <span class="math notranslate nohighlight">\(n\times n\)</span> matrices in <span class="math notranslate nohighlight">\(o(n^{\lg 7})\)</span> time? What is the running time of this algorithm?</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We should regard saying that we “can multiply <span class="math notranslate nohighlight">\(3\times 3\)</span> matrices using <span class="math notranslate nohighlight">\(k\)</span> multiplications (not assuming commutativity of multiplication)” as stating that we can perform a certain specific sequence of symbolic manipulations on the entries of <span class="math notranslate nohighlight">\(3\times 3\)</span> matrices using only addition and multiplications and its standard properties (associativity, properties of additive/multiplicative identities, etc.) <strong>except</strong> commutativity of the product, with multiplications being used at most <span class="math notranslate nohighlight">\(k\)</span> times, in order to construct the standard product of <span class="math notranslate nohighlight">\(3\times 3\)</span> matrices.</p>
+<p>In particular, this “sequence of symbolic manipulations” can also be applied with matrices in places of the formal symbols, which allows us to multiply <span class="math notranslate nohighlight">\(3\times 3\)</span> block matrices in terms of <span class="math notranslate nohighlight">\(k\)</span> products of their blocks, yielding a recursive formula for products of general square matrices with order a power of <span class="math notranslate nohighlight">\(3\)</span>.</p>
+<p>If we want to be even more formal, a “sequence of symbolic manipulations” could be regarded as an algorithm on the space of <span class="math notranslate nohighlight">\(3\times 3\)</span> matrices over the <a class="reference external" href="https://en.wikipedia.org/wiki/Free_algebra">free (non-commutative) <span class="math notranslate nohighlight">\(R\)</span>-algebra</a> generated by an infinite set, so in particular it also applies to any <span class="math notranslate nohighlight">\(R\)</span>-algebra, where <span class="math notranslate nohighlight">\(R\)</span> is an appropriate ring (such as <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> or <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>).</p>
+<p>Denoting by <span class="math notranslate nohighlight">\(M_n(R)\)</span> the space of <span class="math notranslate nohighlight">\(n\times n\)</span> matrices over <span class="math notranslate nohighlight">\(R\)</span>, we can apply this algorithm on <span class="math notranslate nohighlight">\(M_{3n}(R)\cong M_3(M_n(R))\)</span> to obtain the product of <span class="math notranslate nohighlight">\(3n\times 3n\)</span> matrices with at most <span class="math notranslate nohighlight">\(k\)</span> products of <span class="math notranslate nohighlight">\(n\times n\)</span> matrices and a finite (and bounded) sequence of sums, assignments, etc., all of which are <span class="math notranslate nohighlight">\(O(n^2)\)</span>.</p>
+</div>
+<p>Suppose that we can multiply <span class="math notranslate nohighlight">\(3\times 3\)</span> matrices without using commutativity of multiplication and <span class="math notranslate nohighlight">\(k\)</span> multiplications. Consider the following algorithm that multiplies two <span class="math notranslate nohighlight">\(n\times n\)</span> matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is a power of <span class="math notranslate nohighlight">\(3\)</span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MATRIX-MULTIPLY-3(A,B,n)
+1   if n==1
+2       return A[1,1]*B[1,1]
+3   partition A and B into n/3 x n/3 matrices
+4   Perform the multiplication of A and B with the given procedure
+        for 3x3 matrices, as if A and B were 3x3 matrices with each
+        n/3 x n/3 submatrix being an entry. Implement multiplication
+        of n/3 x n/3 (sub)matrices by MATRIX-MULTIPLY-3, and other
+        procedures (additions, reassignments, etc.) in the standard
+        manner.
+</pre></div>
+</div>
+<p>Lett <span class="math notranslate nohighlight">\(T(n)\)</span> be the (worst-case) running time of <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-3</span></code>. Line 3 above takes time <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>, whereas line 4 performs <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY-3</span></code> <span class="math notranslate nohighlight">\(k\)</span> times on <span class="math notranslate nohighlight">\(n/3 \times n/3\)</span> matrices, which in total takes time <span class="math notranslate nohighlight">\(kT(n/3)\)</span>, and also has a <span class="math notranslate nohighlight">\(O(n^2)\)</span> part (regarding the “other procedures”). Thus, <span class="math notranslate nohighlight">\(T(n)\)</span> satisfies the recursion</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+T(n) = kT(n/3)+O(n^2).
+\end{equation*}\]</div>
+<p>By the Master Theorem, we have
+$<span class="math notranslate nohighlight">\(T(n) = \Theta(n^{\log_3 k}).\)</span><span class="math notranslate nohighlight">\(
+In order for us to have \)</span>T(n)=o(n^{\lg 7})$, we need that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\log_3 k &lt; \lg 7,\end{equation*}\]</div>
+<p>that is,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}k&lt;3^{\lg 7}\approx 21.8.\end{equation*}\]</div>
+<p>Therefore, the largest <span class="math notranslate nohighlight">\(k\)</span> which the exercise asks for is <span class="math notranslate nohighlight">\(k=21\)</span>.</p>
+<p>Currently, the best algorithms to multiply <span class="math notranslate nohighlight">\(3\times 3\)</span> matrices directly take <span class="math notranslate nohighlight">\(23\)</span> operations, so their recursive versions for large matrices are still asymptotically worse than Strassen’s algorithm (although better than standard matrix multiplication, as <span class="math notranslate nohighlight">\(\log_3 23 \approx 2.85\)</span>). See <a class="reference external" href="https://arxiv.org/abs/1108.2830">Courtois-Bard-Hulme, <em>A New General-Purpose Method to Multiply 3x3 Matrices Using Only 23 Multiplications</em></a>.</p>
+</section>
+<section id="exercise4-2-4">
+<span id="id4"></span><h2>4.2-4<a class="headerlink" href="#exercise4-2-4" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>V. Pan discovered a way of multiplying <span class="math notranslate nohighlight">\(68\times 68\)</span> matrices using <span class="math notranslate nohighlight">\(132,464\)</span> multiplications, a way of multiplying <span class="math notranslate nohighlight">\(70\times 70\)</span> matrices using <span class="math notranslate nohighlight">\(143,640\)</span> multiplications, and a way of multiplying <span class="math notranslate nohighlight">\(72\times 72\)</span> matrices using <span class="math notranslate nohighlight">\(155,424\)</span> multiplications. Which method yields the best asymptotic running time when used in a divide-and-conquer matrix-multiplication algorithm? How does it compare with Strassen’s algorithm?</p>
+</div></blockquote>
+<p>Analogously to Strassen’s algorithm and the <a class="reference internal" href="#exercise4-2-3"><span class="std std-ref">previous exercise</span></a>, if we have a general method for multiplying <span class="math notranslate nohighlight">\(k\times k\)</span> matrices with <span class="math notranslate nohighlight">\(p\)</span> multiplications, then we can apply it recursively to multiply <span class="math notranslate nohighlight">\(n\times n\)</span> matrices, with <span class="math notranslate nohighlight">\(n\)</span> a power of <span class="math notranslate nohighlight">\(k\)</span>, by applying this method to <span class="math notranslate nohighlight">\(k\times k\)</span> block matrices. This yields a recursion for the running time <span class="math notranslate nohighlight">\(T(n)\)</span> of such a recursive algorithm satisfying</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n) = pT(n/k) + O(n^2).\end{equation*}\]</div>
+<p>By the Master Theorem,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}T(n)=\Theta(n^{\log_k p})\end{equation*}\]</div>
+<p>(as long as <span class="math notranslate nohighlight">\(2&lt;\log_k p\)</span>, i.e., <span class="math notranslate nohighlight">\(k^2&lt;p\)</span>, which is satisfied below).</p>
+<p>For <span class="math notranslate nohighlight">\(k\in\left\{68,70,72\right\}\)</span>, let <span class="math notranslate nohighlight">\(T_k(n)\)</span> be the running time of the recursive algorithm obtained by applying the previous paragraph to V. Pan’s algorithm for multiplying <span class="math notranslate nohighlight">\(k\times k\)</span> matrices. Then</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(T_{68}(n)=\Theta(n^{\log_{68} 132464})\)</span>, where <span class="math notranslate nohighlight">\(\log_{68} 132464 \approx 2.795128\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_{70}(n)=\Theta(n^{\log_{70} 143640})\)</span>, where <span class="math notranslate nohighlight">\(\log_{70} 143640 \approx 2.795123\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_{72}(n)=\Theta(n^{\log_{72} 155424})\)</span>, where <span class="math notranslate nohighlight">\(\log_{72} 155424 \approx 2.795147\)</span>.</p></li>
+</ul>
+<p>Therefore, the divide-and-conquer method applied to V. Pan’s algorithm for multiplying <span class="math notranslate nohighlight">\(70\times 70\)</span> matrices is the fastest one, and it is asymptotically faster than Strassen’s algorithm (in fact, all three algorithms thus obtained are faster than Strassen’s).</p>
+</section>
+<section id="exercise4-2-5">
+<span id="id5"></span><h2>4.2-5<a class="headerlink" href="#exercise4-2-5" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Show how to multiply the complex numbers <span class="math notranslate nohighlight">\(a + bi\)</span> and <span class="math notranslate nohighlight">\(c+ d i\)</span> using only three multiplications of real numbers. The algorithm should take <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> , <span class="math notranslate nohighlight">\(c\)</span> , and <span class="math notranslate nohighlight">\(d\)</span> as input and produce the real component <span class="math notranslate nohighlight">\(ac +bd\)</span> and the imaginary component <span class="math notranslate nohighlight">\(ad+ bc\)</span> separately.</p>
+</div></blockquote>
+<p>Basically, we want expressions involving “mixed products” between the pairs of numbers <span class="math notranslate nohighlight">\((a,b)\)</span> and <span class="math notranslate nohighlight">\((c,d)\)</span>. A simple way to obtain these is with expressions of the form</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}(a\pm b)(c\pm d)=ac\pm ad\pm bc\pm bd,\end{equation*}\]</div>
+<p>which is computed with only one multiplication. Then we need to get rid of some of the mixed products in the expression above to get to the real and imaginary parts of <span class="math notranslate nohighlight">\((a+bi)(c+di)\)</span>. One possibility follows,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>COMPLEX-MULTIPLY (a,b,c,d)
+1   Let s = a-b and t = c+d
+2   Compute x = s*t,
+            y = a*d,
+        and z = b*c
+3   return x-y+z (real component)
+       and y+z (imaginary component)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The mathematical-minded reader would probably start to tackle this exercise by using the standard mapping from complex number to real <span class="math notranslate nohighlight">\(2\times 2\)</span> matrices,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}x+yi\longmapsto\begin{bmatrix}x&amp;-y\\y&amp;-x\end{bmatrix},\end{equation*}\]</div>
+<p>which respects all necessary structure (addition, multiplication and scalar multiplication; that is, it is an <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>-algebra homomorphism). Then we could apply Strassen’s algorithm to the compute the matrix product</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\begin{bmatrix}a&amp;-b\\b&amp;a\end{bmatrix}\begin{bmatrix}c&amp;-d\\d&amp;c\end{bmatrix}=\begin{bmatrix}(ac-bd)&amp;-(ad+bc)\\(ad+bc)&amp;(ac-bd)\end{bmatrix}.\end{equation*}\]</div>
+<p>and try to get rid of a few extra products as the matrices are so well-structured (they are antisymmetric).</p>
+<p>However, this effort is to no avail. In this case, using the same notation as in Strassen’s algorithm,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_1 = -ac - ad\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_2 = ac - bc\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_3 = ac + bc\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_4 = -ac + ad\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_5 = 4ac\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_6 = -ac - ad - bc - bd\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_7 = ac - ad - bc + bd\)</span></p></li>
+</ul>
+<p>The real part of the product of <span class="math notranslate nohighlight">\(a+bi\)</span> and <span class="math notranslate nohighlight">\(c+di\)</span> is <span class="math notranslate nohighlight">\(C_{11}\)</span> or <span class="math notranslate nohighlight">\(C_{22}\)</span>, so computing it requises in any case computing <span class="math notranslate nohighlight">\(P_5\)</span>, which is equivalent to computing <span class="math notranslate nohighlight">\(ac\)</span>.</p>
+<p>The imaginary part of the product of <span class="math notranslate nohighlight">\(a+bi\)</span> and <span class="math notranslate nohighlight">\(c+di\)</span> is <span class="math notranslate nohighlight">\(C_{12}\)</span> (up to signal) or <span class="math notranslate nohighlight">\(C_{21}\)</span>, so necessarily we would need to compute <span class="math notranslate nohighlight">\(P_1\)</span> or <span class="math notranslate nohighlight">\(P_3\)</span>. Since <span class="math notranslate nohighlight">\(ac\)</span> needs to be computed, in any case this would be equivalent to computing <span class="math notranslate nohighlight">\(ad\)</span> as well. Similarly, we would also need to compute <span class="math notranslate nohighlight">\(bc\)</span>.</p>
+<p>Going back to the real part, we would need to compute <span class="math notranslate nohighlight">\(P_6\)</span> or <span class="math notranslate nohighlight">\(P_7\)</span>, so using the computations above this would be the same as computing <span class="math notranslate nohighlight">\(bd\)</span>.</p>
+<p>Thus, computing the product of <span class="math notranslate nohighlight">\(a+bi\)</span> and <span class="math notranslate nohighlight">\(c+di\)</span> via Strassen’s algorithm (in a symbolic manner) would entail computing some <span class="math notranslate nohighlight">\(P_i\)</span> which generate a vector subspace (of the free commutative <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>-algebra generated by <span class="math notranslate nohighlight">\(a,b,c,d\)</span>) containing <span class="math notranslate nohighlight">\(ac,ad,bc\)</span> and <span class="math notranslate nohighlight">\(bd\)</span>, which are linearly independent and thus this vector subspace has dimension at least <span class="math notranslate nohighlight">\(4\)</span>. Therefore, at least <span class="math notranslate nohighlight">\(4\)</span> of the products among the <span class="math notranslate nohighlight">\(P_i\)</span> would need to be computed, which does not solve the exercise.</p>
+</div>
+</section>
+<section id="id6">
+<h2>4.2-6<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Suppose that you have a <span class="math notranslate nohighlight">\(\Theta(n^\alpha)\)</span>-time algorithm for squaring <span class="math notranslate nohighlight">\(n\times n\)</span> matrices, where <span class="math notranslate nohighlight">\(\alpha\geq 2\)</span>. Show how to use that algorithm to multiply two different <span class="math notranslate nohighlight">\(n\times n\)</span> matrices in <span class="math notranslate nohighlight">\(\Theta(n^\alpha)\)</span> time.</p>
+</div></blockquote>
+<p>Suppose the algorithm <code class="docutils literal notranslate"><span class="pre">MATRIX-SQUARE(A,n)</span></code> returns the square of the <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> in time <span class="math notranslate nohighlight">\(\Theta(n^\alpha)\)</span>. Since</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}AB = \dfrac{1}{2}\left((A+B)^2 -A^2-B^2\right),\end{equation*}\]</div>
+<p>the following algorithm returns the product of two <span class="math notranslate nohighlight">\(n\times n\)</span> matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MATRIX-MULTIPLY_(A,B,C,n)
+1   Let X = A-B
+2   Let X = MATRIX-SQUARE(X)
+        Y = MATRIX-SQUARE(A)
+        Z = MATRIX-SQUARE(B)
+3   Let W = (X-Y-Z)/2
+4   return W
+</pre></div>
+</div>
+<p>Lines 1 and 3 run in time <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>, whereas line 2 runs in time <span class="math notranslate nohighlight">\(3\Theta(n^\alpha)=\Theta(n^\alpha)\)</span>. Therefore, the running time of the <code class="docutils literal notranslate"><span class="pre">MATRIX-MULTIPLY_(A,B,n)</span></code> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}\Theta(n^2)+\Theta(n^\alpha)=\Theta(n^\alpha),\end{equation*}\]</div>
+<p>since <span class="math notranslate nohighlight">\(\alpha\geq 2\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "c"
+        },
+        kernelOptions: {
+            kernelName: "c",
+            path: "./jupyter_files/ch4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'c'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="clrs_ita_4.1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">4.1 Multiplying square matrices</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luiz Gustavo Cordeiro<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
