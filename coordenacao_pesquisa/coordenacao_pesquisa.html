@@ -1,0 +1,276 @@
+<!DOCTYPE html />
+<html>
+
+	<head>
+		<meta http-equiv='content-type' content='text/html; charset=UTF-8'/>
+		<title>
+			Luiz Gustavo Cordeiro's website
+		</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+	</head>
+	<style>
+		body {
+		background-color:#4C4C4C;
+		margin-top: 0;
+		}
+		#topnav {
+		list-style-type: none;
+		width: 700px;
+		max-width: 60%;
+		padding:0;
+		margin: 0 auto 0 auto;
+		/* order: 3px solid #73AD21;*/
+		overflow: hidden;
+		background-color:#DADADA;
+		}
+		#topnav li {
+		margin:0;
+		padding:0;
+		display:inline;
+		float:left;
+		width:120px;}
+		#topnav li a {
+			display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: #A9CCE3;
+    color: #0000FF;
+    height: 30px;
+		}
+		#topnav li a.active {
+		background-color: #7FB3D5;
+		color:#0000C0;
+		}
+		#topnav li a:hover {
+		background-color: #5499C7;
+		color:#000080;
+		}
+		.main{
+		display:block;
+		margin: auto;
+		width: 660px;
+		max-width: 60%;
+		/* border: 3px solid #73AD21;*/
+		padding: 20px;
+		background-color:#DADADA;
+		}
+		#shortcv {
+		display:block;
+		}
+		.basicinfo {
+		padding:2%;
+		vertical-align: middle;
+		display: inline-block;
+		right:0px;
+		margin-left:5%;
+		}
+		#tableshortcv {
+		border-collapse: collapse;
+		width: 95%;
+		margin: auto;
+		}
+		#tableshortcv th{
+		width:30%;
+		}
+		#tableshortcv td, #tableshortcv th{
+		border: 1px solid;
+		padding:5px;
+		}
+		.listofpublications .title {
+		font-weight:bold;}
+		.listofpublications .journal {
+		font-style:italic;}
+		.listofpublications .arxiv {
+		font-family:monospace;}
+
+
+
+
+
+		#calculator-container {
+        max-width: 400px;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      label.calculatorLabel {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      input.calculatorInput,
+      button.calculatorButton {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+      }
+
+      button.calculatorButton {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button.calculatorButton:hover {
+        background-color: #45a049;
+      }
+
+      #result {
+        font-weight: bold;
+        text-align: center;
+      }
+	</style>
+	<body>
+		<ul id='topnav'>
+			<li>
+				<a href='http://www.mtm.ufsc.br/~cordeiro' class='active'>Home</a>
+			</li>
+			<li>
+				<a href='#ensino'>Ensino</a>
+			</li>
+			<li>
+				<a href='#research'>Research</a>
+			</li>
+			<li>
+				<a href='#agenda'>Agenda</a>
+			</li>
+			<li>
+				<a href='#outrasatividades'>Outros</a>
+			</li>
+			<li>
+				<a href='https://luizgcordeiro.github.io/coordenacao_pesquisa/coordenacao_pesquisa.html'>Coordenação de Pesquisa</a>
+			</li>
+		</ul>
+		<div class='main'>
+			<ul>
+				<li>
+					<a href="https://propesq.ufsc.br/formularios/">Página de introdução ao SIGPEX da Propesq</a>.
+				</li>
+				<li>
+					<a href="https://propesq.ufsc.br/files/2022/11/Manual-Sigpex-Pesquisa-2022.pdf">Manual do SIGPEX da Propesq</a> (<a href="Manual-Sigpex-Pesquisa-2022.pdf">Backup</a>)
+				</li>
+				<li>
+					<a href="https://sinova.ufsc.br/suporte-aos-pesquisadores/modelos/">Modelos de documentos diversos (SINOVA)</a>
+				</li>
+				<li>
+					<a href="https://contratos.ufsc.br/sobre-convenios-acordos-de-cooperacao/">Modelos de contratos e acordos</a>
+				</li>
+			</ul>
+
+			<h3>Cálculo de horas a registrar no SIGPEX</h3>
+
+			<p>O SIGPEX considera que a hora registrada é a média das horas trabalhadas semanalmente durante cada semestre. Por exemplo, se um projeto inicia no dia 1º de março de 2020 e finaliza em 23 de Outubro de 2021, então no semestre 2020/1 foram trabalhadas 4h/semana durante 122 dias (01/03 a 30/06), enquanto o semestre tem 182 dias. Assim, deve-se registrar 4*122/182 = 2.68h/semana no SIGPEX para o semestre 2020/1. O mesmo raciocínio vale para o semestre 2020/2, com 4h/semana durante 183 dias (01/07 a 31/12), e para o semestre 2021/1, com 4h/semana durante 181 dias (01/01 a 30/06). No semestre 2021/2, trabalha-se 4h/semana em 115 dias, dentro de um semestre com 184, e assim deve-se registrar 4*115/184 = 2.5h/semana no SIGPEX para o semestre 2021/2.</p>
+
+			<p>As seguintes ferramentas foram desenvolvidas para facilitar o seu trabalho:</p>
+
+			<ul>
+				<li>
+					Programa em Python/Tkinter: <a href="calculadorahorasSIGPEX.py">calculadorahorasSIGPEX.py</a>
+				</li>
+				<li>
+					Executável (criado a partir da fonte acima com <code>pyinstaller -F --hidden-import babel.numbers calculadorahorasSIGPEX.py</code>): <a href="calculadorahorasSIGPEX.exe">calculadorahorasSIGPEX.exe</a>,
+				</li>
+				<li>
+					App web:
+
+					<div id="calculator-container">
+						<label class="calculatorLabel" for="start-date">Data de início:</label>
+						<input class="calculatorInput" type="text" id="start-date" placeholder="Selecione a data de início">
+				  
+						<label class="calculatorLabel" for="end-date">Data de término:</label>
+						<input class="calculatorInput" type="text" id="end-date" placeholder="Selecione a data de término">
+				  
+						<label class="calculatorLabel" for="avg-hours">Média de horas/semana:</label>
+						<input class="calculatorInput" type="text" id="avg-hours" placeholder="Digite a média de horas/semana">
+				  
+						<button class="calculatorButton" onclick="calculateHours()">Calcular</button>
+				  
+						<div id="result"></div>
+					  </div>
+				  
+					  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+					  <script>
+						document.addEventListener('DOMContentLoaded', function() {
+						  const options = {
+							//dateFormat: 'd/m/Y',
+							locale: 'pt',
+							weekNumbers: false
+						  };
+				  
+						  flatpickr("#start-date", options);
+						  flatpickr("#end-date", options);
+						});
+				  
+						function calculateHours() {
+						  const startDate = flatpickr("#start-date").selectedDates[0];
+						  const endDate = flatpickr("#end-date").selectedDates[0];
+						  const avgHours = parseFloat(document.getElementById('avg-hours').value);
+				  
+						  if (isNaN(avgHours)) {
+							document.getElementById('result').innerText = "Entrada inválida. Por favor, verifique o formato de horas.";
+							return;
+						  }
+				  
+						  const semesterHours = [];
+						  let start = startDate;
+				  
+						  while (start <= endDate) {
+							const daysInSemester = start.getMonth() <= 5 ? daysBetweenDates(minDate(start, new Date(start.getFullYear() , 0 , 1)), new Date(start.getFullYear(), 5, 30)) :
+							  daysBetweenDates(minDate(start, new Date(start.getFullYear() , 6 , 1)), new Date(start.getFullYear(), 11, 31));
+							const semester = start.getMonth() <= 5 ? 1 : 2;
+							const daysWorked = start.getMonth() <= 5 ? daysBetweenDates(start, minDate(endDate, new Date(start.getFullYear(), 5, 30))) :
+							  daysBetweenDates(start, minDate(endDate, new Date(start.getFullYear(), 11, 31)));
+							const hoursPerWeek = avgHours * daysWorked / daysInSemester;
+				  
+							semesterHours.push({
+							  year: start.getFullYear(),
+							  semester: semester,
+							  hours: hoursPerWeek.toFixed(2)
+							});
+				  
+							if (start.getMonth() <= 5) {
+							  start = new Date(start.getFullYear(), 6, 1);
+							} else {
+							  start = new Date(start.getFullYear() + 1, 0, 1);
+							}
+						  }
+				  
+						  const resultText = semesterHours.map(entry => `${entry.year}/${entry.semester}: ${entry.hours} horas/semana`).join('\n');
+						  document.getElementById('result').innerText = resultText;
+						}
+				  
+						function daysBetweenDates(date1, date2) {
+						  // Convert both dates to UTC to ensure consistency
+						  const utcDate1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+						  const utcDate2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+				  
+						  // Calculate the number of milliseconds between the two dates
+						  const millisecondsPerDay = 24 * 60 * 60 * 1000;
+						  const timeDifference = Math.abs(utcDate1 - utcDate2);
+				  
+						  // Calculate and return the number of days
+						  return Math.floor(timeDifference / millisecondsPerDay) + 1; // +1 to include both start and end dates
+						}
+				  
+						function minDate(date1, date2) {
+						  // Convert both dates to UTC to ensure consistency
+						  return date1 <= date2 ? date1 : date2;
+						}
+				  
+					  </script>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
