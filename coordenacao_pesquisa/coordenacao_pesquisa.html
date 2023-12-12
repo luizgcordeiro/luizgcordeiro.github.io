@@ -170,7 +170,9 @@
 
 			<h3>Cálculo de horas a registrar no SIGPEX</h3>
 
-			<p>O SIGPEX considera que a hora registrada é a média das horas trabalhadas semanalmente durante cada semestre. Por exemplo, se um projeto inicia no dia 1º de março de 2020 e finaliza em 23 de Outubro de 2021, então no semestre 2020/1 foram trabalhadas 4h/semana durante 122 dias (01/03 a 30/06), enquanto o semestre tem 182 dias. Assim, deve-se registrar 4*122/182 = 2.68h/semana no SIGPEX para o semestre 2020/1. O mesmo raciocínio vale para o semestre 2020/2, com 4h/semana durante 183 dias (01/07 a 31/12), e para o semestre 2021/1, com 4h/semana durante 181 dias (01/01 a 30/06). No semestre 2021/2, trabalha-se 4h/semana em 115 dias, dentro de um semestre com 184, e assim deve-se registrar 4*115/184 = 2.5h/semana no SIGPEX para o semestre 2021/2.</p>
+			<p>O SIGPEX considera que a carga horária registrada é a média das horas trabalhadas semanalmente durante cada semestre por inteiro. Por isso, é necessario normalizar a carga horarem semestres que não estão completamente contidos no período de execução do projeto (em geral, o primeiro e o último semestres de execução).</p>
+			
+			<p>Por exemplo, considere um projeto que inicia no dia 1º de março de 2020 e finaliza em 23 de Outubro de 2021, e o pesquisador irá dedicar 4 horas por semana <b>durante a execudo projeto</b>. Então no semestre 2020/1 são trabalhadas 4h/semana durante 122 dias (01/03 a 30/06), mas o semestre 2020/1 tem 182 dias. Assim, deve-se registrar 4*122/182 = 2.68h/semana no SIGPEX para o semestre 2020/1. Nos semestres 2020/2 e 2021/2, nos quais há a execução do projeto em durante os semestre inteiros, registram-se 4h/semana. No semestre 2021/2, trabalha-se 4h/semana em 115 dias, dentro de um semestre com 184, e assim deve-se registrar 4*115/184 = 2.5h/semana no SIGPEX para o semestre 2021/2.</p>
 
 			<p>As seguintes ferramentas foram desenvolvidas para facilitar o seu trabalho:</p>
 
