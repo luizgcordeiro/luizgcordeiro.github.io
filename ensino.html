@@ -1,0 +1,173 @@
+<!DOCTYPE html />
+<html>
+
+  <head>
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8' />
+    <title>
+      Luiz Gustavo Cordeiro's website
+    </title>
+  </head>
+  <style>
+    body {
+      background-color: #4C4C4C;
+      margin-top: 0;
+    }
+
+    #topnav {
+      list-style-type: none;
+      width: 700px;
+      max-width: 60%;
+      padding: 0;
+      margin: 0 auto 0 auto;
+      /* order: 3px solid #73AD21;*/
+      overflow: hidden;
+      background-color: #DADADA;
+    }
+
+    .topnav-item {
+      margin: 0;
+      padding: 0;
+      display: inline;
+      float: left;
+      width: 120px;
+      flex:1;
+    }
+
+    .topnav-item a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      text-decoration: none;
+      font-size: 17px;
+      background-color: #A9CCE3;
+      color: #0000FF;
+      height: 30px;
+    }
+
+    .topnav-item a.active {
+      background-color: #7FB3D5;
+      color: #0000C0;
+    }
+
+    .topnav-item a:hover {
+      background-color: #5499C7;
+      color: #000080;
+    }
+
+    .main {
+      display: block;
+      margin: auto;
+      width: 660px;
+      max-width: 60%;
+      /* border: 3px solid #73AD21;*/
+      padding: 20px;
+      background-color: #DADADA;
+    }
+
+    #shortcv {
+      display: block;
+    }
+
+    .basicinfo {
+      padding: 2%;
+      vertical-align: middle;
+      display: inline-block;
+      right: 0px;
+      margin-left: 5%;
+    }
+
+    #tableshortcv {
+      border-collapse: collapse;
+      width: 95%;
+      margin: auto;
+    }
+
+    #tableshortcv th {
+      width: 30%;
+    }
+
+    #tableshortcv td,
+    #tableshortcv th {
+      border: 1px solid;
+      padding: 5px;
+    }
+
+    .listofpublications .title {
+      font-weight: bold;
+    }
+
+    .listofpublications .journal {
+      font-style: italic;
+    }
+
+    .listofpublications .arxiv {
+      font-family: monospace;
+    }
+
+  </style>
+
+  <body>
+    <div id='topnav' style="display:flex; flex-direction:row;">
+      <div class='topnav-item'>
+        <a href='https://luizgcordeiro.github.io'>Home</a>
+      </div>
+      <div class='topnav-item'>
+        <a href='#ensino' class='active'>Ensino</a>
+      </div>
+      <div class='topnav-item'>
+        <a href='#research'>Research</a>
+      </div>
+      <div class='topnav-item'>
+        <a href='#agenda'>Agenda</a>
+      </div>
+      <div class='topnav-item'>
+        <a href='#outrasatividades'>Outros</a>
+      </div>
+      <div class='topnav-item'>
+        <a href='https://luizgcordeiro.github.io/coordenacao_pesquisa/coordenacao_pesquisa.html'>Coordenação de Pesquisa</a>
+      </div>
+    </div>
+    <div class='main'>
+      <!-- Ensino -->
+      <h2 id='ensino'>
+        Ensino
+      </h2>
+      <ul>
+        <li>
+          <a href='https://www.youtube.com/playlist?list=PLCu2J2ApGrRzMFK96fRuBVqTEbEWUquVS'>Videoaulas de Álgebra Linear (MTM3112)</a> e <a href='ensino/MTM3112 slides/MTM3112_slides.html'>slides das videoaulas</a> (corrigidos)
+        </li>
+      </ul>
+
+      <h3>Projetos de Álgebra Linear</h3>
+
+      <p>
+        Os seguintes projetos foram desenvolvidos e estão atualmente sendo implementados na disciplina EMB5007 &ndash; Álgebra
+        Linear, como aplicação de uma metodologia de aprendizado baseado em problemas.
+      </p>
+
+      <p>
+        Estes projetos foram desenvolvidos como parte do projeto de Extensão "Livros didáticos interativos
+        para disciplinas de Matemática".
+      </p>
+
+      <h4>Projeto 1: Lights Out (Introdução aos corpos)</h4>
+
+      <p>Neste projeto, os alunos são introduzidos à aritmética do corpo com dois elementos. O professor tem a
+      oportunidade de discutir a definição de corpo e estender os processos envolvendo matrizes, que comumente
+      são restritos a matrizes racionais nas disciplinas introdutórias de Álgebra Linear, para corpos arbitrários.</p>
+
+      <p>O roteiro da aula pode ser disponibilizado aos alunos, divididos em grupos de até 4 pessoas. Na primeira parte,
+      um grupo cria um jogo de lights out. Este jogo é passado a um outro grupo, que na segunda parte segue um
+      passo-a-passo para o resolver.</p>
+
+      <ul>
+        <li>Roteiro de aula: download</li>
+        <li>Implementação do jogo Lights Out: download</li>
+        <li>Programa auxiliar para realizar escalonamento com aritmética modular: download</li>
+      </ul>
+    </div>
+  </body>
+
+</html>
