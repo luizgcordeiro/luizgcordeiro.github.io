@@ -1,0 +1,41 @@
+---
+title: "TesteSeno"
+format: dashboard
+server: shiny
+---
+## Row {height=40%}
+
+### Column
+
+::: {.card title="Teste Seno"}
+* Este e um arquivo teste para as funcoes de criacao de graficos e mudanca dinamica de variaveis
+* Anotacoes -- O quarto nao aceita caracteres especiais
+:::
+
+### Column
+
+``` {python}
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.ticker as ticker
+from shiny.express import render, ui
+
+
+def sin(a, b):
+  fig, ax = plt.subplots()
+  x = np.linspace(0, 10, 10000) #retorna 100 valores entre 0 e 10
+  y = np.sin(int(a)*x+int (b))
+  plt.plot(x, y, linewidth = 1)
+  ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+         ylim=(-1.5, 1.5), yticks=np.arange(-1, 2))
+
+ui.input_slider("sliderA", "Slider", 0, 25, 1, animate = True)
+ui.input_slider("sliderB", "Slider", 0, 25, 1 , animate = True)
+```
+
+## Row {height=60%}
+``` {python}
+@render.plot
+def value():
+  return sin(input.sliderA(), input.sliderB())
+```
